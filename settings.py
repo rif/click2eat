@@ -1,4 +1,6 @@
-# Django settings for bucatar project.
+import os
+def rel(*x):
+    return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -32,22 +34,32 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
+# email settings
+EMAIL_HOST = 'smtp.oce.net'
+EMAIL_PORT = '25'
+EMAIL_SUBJECT_PREFIX = ' [elMonumental] '
+ACCOUNT_ACTIVATION_DAYS = 7
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = rel('media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL =  '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '-4+i0ac6q-$7e@!sy55hlbmb*4)2+a5oc!ah2@5rn9gqlurk-#'
+
+LOGOUT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+AUTH_PROFILE_MODULE = 'scheduler.PlayerProfile'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -66,10 +78,17 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'bucatar.urls'
 
+if DEBUG:
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+INTERNAL_IPS = ('127.0.0.1',)
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+    'HIDE_DJANGO_SQL': True,
+}
+
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    rel('templates'),
 )
 
 INSTALLED_APPS = (
@@ -81,11 +100,15 @@ INSTALLED_APPS = (
     'django.contrib.admin',    
     'django.contrib.admindocs',
     # external apps
-    'django-profiles',
-    'django-registration'
-    'django-extensions',
+    'profiles',
+    'registration',
+    'django_extensions',
     'south',
     # my apps
     'restaurant',
     'userprofiles'
 )
+
+if DEBUG:
+    INSTALLED_APPS += ('debug_toolbar',)
+

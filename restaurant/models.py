@@ -15,20 +15,13 @@ class PaymentMethod(models.Model):
     name = models.CharField(max_length=100)
     details = models.TextField()
 
-class Rating(models.Model):
-    user = models.OneToOneField(User)
-    restaurant = models.ForeignKey(Unit)
-    quality = models.SmallIntegerField()
-    delivery_time = models.SmallIntegerField()
-    feedback = models.TextField()
-
 class DeliveryType(models.Model):
     name = models.CharField(max_length=100)
     price = models.FloatField()
 
 class Employee(models.Model):
     name = models.CharField(max_length=100)
-    address = models.CharField(max)
+    address = models.CharField(max_length=200)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
     start_date = models.DateField()
@@ -50,10 +43,16 @@ class Unit(models.Model):
     minimum_ord_val = models.IntegerField()
     payment_method = models.ForeignKey(PaymentMethod)
     employee = models.ForeignKey(Employee)
-    contact_person = models.CharField(max_length=50)
-    rating = models.ForeignKey(Rating)
+    contact_person = models.CharField(max_length=50)    
     logo_path = models.FilePathField()
     delivery_time_user = models.FloatField()
     delivery_type = models.ForeignKey(DeliveryType)
     info = models.TextField()
     active = models.BooleanField(default=True)
+
+class Rating(models.Model):
+    user = models.OneToOneField(User)
+    restaurant = models.ForeignKey(Unit)
+    quality = models.SmallIntegerField()
+    delivery_time = models.SmallIntegerField()
+    feedback = models.TextField()
