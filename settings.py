@@ -81,9 +81,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',    
     'django.contrib.admindocs',
     # external apps
+    'django-profiles',
+    'django-registration'
     'django-extensions',
     'south',
     # my apps
     'restaurant',
-    'orders'
+    'userprofiles'
 )
