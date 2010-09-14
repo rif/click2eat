@@ -1,4 +1,38 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class DeliveryArea(models.Model):
+    name = models.CharField(max_length=200)
+
+class Communication(models.Model):
+    name = models.CharField(max_length=200)
+
+class PartnerPackage(models.Model):
+    name = models.CharField(max_length=100)
+    details = models.TextField()
+
+class PaymentMethod(models.Model):
+    name = models.CharField(max_length=100)
+    details = models.TextField()
+
+class Rating(models.Model):
+    user = models.OneToOneField(User)
+    restaurant = models.ForeignKey(Unit)
+    quality = models.SmallIntegerField()
+    delivery_time = models.SmallIntegerField()
+    feedback = models.TextField()
+
+class DeliveryType(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.FloatField()
+
+class Employee(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    start_date = models.DateField()
+    end_date = models.DateField()
 
 class Unit(models.Model):
     name = models.CharField(max_length=50)
@@ -22,3 +56,4 @@ class Unit(models.Model):
     delivery_time_user = models.FloatField()
     delivery_type = models.ForeignKey(DeliveryType)
     info = models.TextField()
+    active = models.BooleanField(default=True)
