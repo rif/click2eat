@@ -43,7 +43,7 @@ class Unit(models.Model):
     overall_discount = models.FloatField()
     latitude = models.FloatField()
     longitude = models.FloatField()
-    delicery_time = models.IntegerField()
+    delivery_time = models.IntegerField()
     communication = models.ForeignKey(Communication)
     package = models.ForeignKey(PartnerPackage)
     open_hours = models.CharField(max_length=10)
