@@ -35,9 +35,10 @@ USE_I18N = True
 USE_L10N = True
 
 # email settings
-EMAIL_HOST = 'smtp.oce.net'
+EMAIL_HOST = 'mail.filemkaer-solutions.net'
 EMAIL_PORT = '25'
-EMAIL_SUBJECT_PREFIX = ' [elMonumental] '
+
+EMAIL_SUBJECT_PREFIX = ' [bucatar] '
 ACCOUNT_ACTIVATION_DAYS = 7
 
 # Absolute path to the directory that holds media.
@@ -75,17 +76,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
-
-ROOT_URLCONF = 'bucatar.urls'
-
 if DEBUG:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
-INTERNAL_IPS = ('127.0.0.1',)
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-    'HIDE_DJANGO_SQL': True,
-}
+ROOT_URLCONF = 'bucatar.urls'
 
 TEMPLATE_DIRS = (
     rel('templates'),
@@ -112,3 +106,8 @@ INSTALLED_APPS = (
 if DEBUG:
     INSTALLED_APPS += ('debug_toolbar',)
 
+INTERNAL_IPS = ('127.0.0.1',)
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+    'HIDE_DJANGO_SQL': True,
+}

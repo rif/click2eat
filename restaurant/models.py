@@ -44,7 +44,7 @@ class Unit(models.Model):
     payment_method = models.ForeignKey(PaymentMethod)
     employee = models.ForeignKey(Employee)
     contact_person = models.CharField(max_length=50)    
-    logo_path = models.FilePathField()
+    logo_path = models.ImageField(upload_to="sport_icons", null=True)
     delivery_time_user = models.FloatField()
     delivery_type = models.ForeignKey(DeliveryType)
     info = models.TextField()
