@@ -38,6 +38,6 @@ admin.site.register(DeliveryType, DeliveryTypeAdmin)
 admin.site.register(PaymentMethod,PaymentMethodAdmin)
 admin.site.register(Communication, CommunicationAdmin)
 admin.site.register(PartnerPackage, PartnerPackageAdmin)
-admin.site.register(PaymentMethodAdmin, PaymentMethodAdminAdmin)
+admin.site.register(DeliveryArea, DeliveryAreaAdmin )
 
 

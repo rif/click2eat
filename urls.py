@@ -4,12 +4,17 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^bucatar/', include('bucatar.foo.urls')),
-
+    (r'^', include('restaurant.urls')),    
+    (r'^admin/', include(admin.site.urls)),
+    
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
 )
+
+# if we're in DEBUG mode, allow django to serve media
+# This is considered inefficient and isn't secure.
+from django.conf import settings
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )
