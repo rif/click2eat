@@ -1,6 +1,6 @@
 from settings_dev import *
 
-DEBUG = TEMPLATE_DEBUG = True
+DEBUG = TEMPLATE_DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'sqlite3',
