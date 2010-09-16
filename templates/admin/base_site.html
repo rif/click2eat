@@ -3,6 +3,11 @@
 
 {% block title %}{{ title }} | {% trans 'Bucatar site admin' %}{% endblock %}
 
+{% block extrastyle %}
+    <link type="text/css" href="{{ MEDIA_URL }}css/main.css" rel="stylesheet"/>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
+{% endblock %}
+
 {% block branding %}
 <h1 id="site-name">{% trans 'Bucatar administration' %}</h1>
 {% endblock %}
@@ -11,4 +16,8 @@
 <div style="text-align: right;margin-right: 10px;">
     <a style="font-size:90%; text-decoration: none;" href="/">Back to public interface</a>
 </div>
+{% endblock %}
+
+{% block footer %}
+{% block scripts %}{% endblock %}
 {% endblock %}

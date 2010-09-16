@@ -59,7 +59,7 @@ SECRET_KEY = '-4+i0ac6q-$7e@!sy55hlbmb*4)2+a5oc!ah2@5rn9gqlurk-#'
 
 LOGOUT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
-AUTH_PROFILE_MODULE = 'scheduler.PlayerProfile'
+AUTH_PROFILE_MODULE = 'userprofiles.UserProfile'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'registration',
     'django_extensions',
     'south',
+    'uni_form',
     # my apps
     'restaurant',
     'menu',

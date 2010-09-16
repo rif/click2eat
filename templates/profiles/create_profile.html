@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load uni_form_tags %}
+
+{% block title %}Page not found{% endblock %}
+
+{% block content %}
+<form method="POST" action="" class="uniForm">
+  <fieldset class="inlineLabels">
+    {{ form|as_uni_form }}
+    <div class = "form_block">
+      <input type="submit" value="{% trans 'add bookmark' %}">
+    </div>
+  </fieldset>
+</form>
+
+<p>Sorry, but the requested page could not be found.</p>
+{% endblock %}
+
