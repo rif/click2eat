@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 class Order(models.Model):
     STATUS_CHOICES = (
@@ -10,9 +11,9 @@ class Order(models.Model):
     )
     user = models.ForeignKey(User, verbose_name=_('user'))
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
-    status = models.CharField(_(status), max_length=2, choices=STATUS_CHOICES, editable=False)
+    status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, editable=False)
     total_amount = models.FloatField(_('total amount'))
-    unit = models.ForeignKey(_('unit'), 'restaurant.Unit')
+    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'),)
     
     class Meta:
         verbose_name = _('Order')
