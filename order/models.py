@@ -8,12 +8,20 @@ class Order(models.Model):
       ('DL', 'Delivered'),
       ('SV', 'Served'),
     )
-    user = models.ForeignKey(User)
-    creation_date = models.DateTimeField(auto_now_add=True, editable=False)
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES, editable=False)
-    total_amount = models.FloatField()
-    unit = models.ForeignKey('restaurant.Unit')
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
+    status = models.CharField(_(status), max_length=2, choices=STATUS_CHOICES, editable=False)
+    total_amount = models.FloatField(_('total amount'))
+    unit = models.ForeignKey(_('unit'), 'restaurant.Unit')
+    
+    class Meta:
+        verbose_name = _('Order')
+        verbose_name_plural = _('Order')
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order)
-    item = models.ForeignKey('menu.Item')
+    order = models.ForeignKey(Order, verbose_name=_('order'))
+    item = models.ForeignKey('menu.Item', verbose_name=_('item'))
+    
+    class Meta:
+      verbose_name = _('Order Item')
+      verbose_name_plural = _('Order Items')
