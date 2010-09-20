@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+<form action="{% url registration_register %}" method="POST">{% csrf_token %}
+  <table>
+    {{ form.as_table }}
+   </table>
+    <input type="submit" value="Register"/>
+</form>
+{% endblock %}
