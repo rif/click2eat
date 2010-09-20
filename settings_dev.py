@@ -106,7 +106,8 @@ INSTALLED_APPS = (
     # my apps
     'restaurant',
     'menu',
-    'userprofiles'
+    'userprofiles',
+    'order',
 )
 
 if DEBUG:
