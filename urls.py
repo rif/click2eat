@@ -5,9 +5,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^', include('restaurant.urls', namespace='restaurant')),
+    (r'^menu/', include('menu.urls', namespace='menu')),
+    (r'^order/', include('order.urls', namespace='order')),
     (r'^admin/', include(admin.site.urls)),
-    (r'^profiles/', include('profiles.urls')),
-    (r'^accounts/', include('registration.backends.default.urls')),
+    (r'^profiles/', include('profiles.urls', namespace='profiles')),
+    (r'^accounts/', include('registration.backends.default.urls', namespace='registration')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),

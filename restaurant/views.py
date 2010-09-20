@@ -5,4 +5,7 @@ from django.template import RequestContext
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse('Hello bucatar, please head to <a href="%s">admin section</a>' % reverse("admin:index"))
+    if request.user.is_authenticated():
+        return HttpResponse('Hello %s, you can logout <a href="%s">here</a>' % (request.user, "/accounts/logout/"))
+    else:
+        return HttpResponse('Hello %s, please <a href="%s">login</a>' % (request.user, "/accounts/login/"))

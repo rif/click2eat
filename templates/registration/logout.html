@@ -1,6 +1,6 @@
 {% extends "admin/base_site.html" %}
 
 {% block content %}
-<h2>Thank you for using elMonumental.</h2>
-<a href="/">Home</a> or <a href="{% url auth_login %}">Log in</a>
+<h2>Thank you for using our site.</h2>
+<a href="/">Home</a> or <a href="{% url registration:auth_login %}">Log in</a>
 {% endblock %}
