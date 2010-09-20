@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class DeliveryAddress(models.Model):
   primary = models.BooleanField()
@@ -15,12 +16,17 @@ class UserProfile(models.Model):
       ('M', 'Male'),
       ('F', 'Female'),
   )
+  user = models.ForeignKey(User, unique=True)
   phone = models.CharField(max_length=15)
   newsletter = models.BooleanField(help_text="Do you want to receive our newsletter?")
   sex = models.CharField(max_length=1, choices=GENDER_CHOICES)
   birth_date = models.DateField()
   delivery_address = models.ForeignKey('DeliveryAddress')
 
+  def is_filled(self):
+      return self.phone != '' or self.sex != '' or self.birthday != ''
+
   @models.permalink
   def get_absolute_url(self):
         return ('profiles_profile_detail', (), { 'username': self.user.username })
+    

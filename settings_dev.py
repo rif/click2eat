@@ -34,10 +34,15 @@ USE_I18N = True
 USE_L10N = True
 
 # email settings
-EMAIL_HOST = 'mail.filemkaer-solutions.net'
-EMAIL_PORT = '25'
-
+#EMAIL_HOST = 'mail.filemkaer-solutions.ro'
+#EMAIL_PORT = '25'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ustest@gmail.com'
+EMAIL_HOST_PASSWORD = 'greta.1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = ' [bucatar] '
+
 ACCOUNT_ACTIVATION_DAYS = 7
 
 # Absolute path to the directory that holds media.
