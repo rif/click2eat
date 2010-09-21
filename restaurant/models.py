@@ -24,7 +24,7 @@ class Communication(models.Model):
 
 class PartnerPackage(models.Model):
     name = models.CharField(_('name'), max_length=100)
-    css_class = models.CharField(_('name'), max_length=10, help_text=_('The css class for this package'))
+    slug = models.SlugField(_('slug'), help_text=_('The css class for this package'))
     details = models.TextField(_('details'))
     
     def __unicode__(self):

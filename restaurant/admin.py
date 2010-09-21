@@ -10,6 +10,7 @@ class CommunicationAdmin(admin.ModelAdmin):
 class PartnerPackageAdmin(admin.ModelAdmin):
     list_display = ('name', 'details')
     search_fields = ['name', 'details']
+    prepopulated_fields = {"slug": ("name",)}
 
 class PaymentMethodAdmin(admin.ModelAdmin):
     list_display = ('name', 'details')
