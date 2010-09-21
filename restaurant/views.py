@@ -9,8 +9,9 @@ from restaurant.models import Unit
 from userprofiles.models import UserProfile
 def index(request):
     units = Unit.objects.order_by('?')
+    user = request.user
     try:
-        if request.user.get_profile().is_filled():
+        if not user.is_authenticated() or user.get_profile().is_filled():
             return render_to_response('restaurant/index.html', {
                                                                 'units': units,
                                                                 'gold': units.filter(package__slug='gold')[0],

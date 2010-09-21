@@ -10,6 +10,19 @@
   <script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
 </head>
 <body>
+  <div id="header">
+    {% if user.is_authenticated %}
+                <p>
+                    {% if user.is_superuser %}
+                        Welcome, <a href="{% url admin:index %}">{{ user.username }}</a>.
+                    {% else %}
+                        Welcome, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
+                    {% endif %}
+                <a href="{% url auth_logout %}">log out</a></p>
+            {% else %}
+                <p>Please <a href="{% url auth_login %}">log in</a> or <a href="{% url registration_register %}">sign up.</a></p>
+            {% endif %}
+  </div>
 {% block content%}
 {% endblock %}
 </body>
