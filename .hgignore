@@ -5,3 +5,5 @@ syntax: glob
 nbproject
 .DS_Store
 .idea
+media/restaurant_logos
+

@@ -5,13 +5,16 @@ from django.template import RequestContext
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from restaurant.models import Unit
 def index(request):
-    try:
-        if request.user.get_profile() != None:
-            return render_to_response('restaurant/index.html', context_instance=RequestContext(request))
+        units = Unit.objects.all()
+    #try:
+        if request.user.get_profile().is_filled():
+            return render_to_response('restaurant/index.html', {
+                                                                'units': units,
+                                                                }, context_instance=RequestContext(request))
         else:
             return redirect('profiles_create_profile')
-    except NotFoundError:
-        return redirect('profiles_create_profile')
+    #except:
+    #    return redirect('profiles_create_profile')
 

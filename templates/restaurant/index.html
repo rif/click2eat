@@ -2,4 +2,9 @@
 
 {% block content %}
 <p>Hello, <a href="{% url profiles_profile_detail user %}">{{ user.get_full_name }}</a></p>
+<ul>
+{% for unit in units|random %}
+<a href="">{{ unit }}</a>
+{% endfor %}
+</ul>
 {% endblock %}
