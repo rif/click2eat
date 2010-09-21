@@ -1,5 +1,10 @@
 from django.db import models
+from multiling import MultilingualModel
 from django.utils.translation import ugettext_lazy as _
+
+class Language(models.Model):
+    code = models.CharField(max_length=5)
+    name = models.CharField(max_length=16)
 
 class VAT(models.Model):
   value = models.FloatField()
@@ -24,10 +29,14 @@ class SubCategory(models.Model):
       verbose_name = _('Subcategory')
       verbose_name_plural = _('Subcategories')
 
-class Item(models.Model):
-  unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
+class ItemTranslation(models.Model):
+  language = models.ForeignKey('Language')
   name = models.CharField(_('name'), max_length=100)
   description = models.TextField(_('description'))
+  model = models.ForeignKey('Item')
+
+class Item(models.Model):
+  unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   price = models.FloatField(_('price'))
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   discount = models.IntegerField(_('discount'))
@@ -37,6 +46,10 @@ class Item(models.Model):
   new_item_end_date = models.DateField(_('new item end date'))
   sub_category = models.ForeignKey(SubCategory, verbose_name=_('sub category'))
   special = models.BooleanField(_('special'))
+  
+  class Meta:
+      translation = ItemTranslation
+      multilingual = ['name', 'description']
   
   class Meta:
       verbose_name = _('Item')
