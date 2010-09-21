@@ -5,12 +5,18 @@ from django.utils.translation import ugettext_lazy as _
 class DeliveryArea(models.Model):
     name = models.CharField(_('name'), max_length=200)
     
+    def __unicode__(self):
+        return self.name
+    
     class Meta:
       verbose_name = _('Delivery Area')
       verbose_name_plural = _('Deliver Areas')
 
 class Communication(models.Model):
     name = models.CharField(_('name'), max_length=200)
+    
+    def __unicode__(self):
+        return self.name
 
     class Meta:
       verbose_name = _('Communication')
@@ -20,6 +26,9 @@ class PartnerPackage(models.Model):
     name = models.CharField(_('name'), max_length=100)
     details = models.TextField(_('details'))
     
+    def __unicode__(self):
+        return self.name
+    
     class Meta:
       verbose_name = _('Partner Package')
       verbose_name_plural = _('Partner Packages')
@@ -28,6 +37,9 @@ class PaymentMethod(models.Model):
     name = models.CharField(_('name'), max_length=100)
     details = models.TextField(_('details'))
     
+    def __unicode__(self):
+        return self.name
+    
     class Meta:
       verbose_name = _('Payment Method')
       verbose_name_plural = _('Payment Methods')
@@ -35,6 +47,9 @@ class PaymentMethod(models.Model):
 class DeliveryType(models.Model):
     name = models.CharField(_('name'), max_length=100)
     price = models.FloatField(_('price'), )
+    
+    def __unicode__(self):
+        return name
     
     class Meta:
       verbose_name = _('Delivery Type')
@@ -47,6 +62,9 @@ class Employee(models.Model):
     phone = models.CharField(_('phone'), max_length=15)
     start_date = models.DateField(_('start_date'))
     end_date = models.DateField(_('end_date'))
+    
+    def __unicode__(self):
+        return self.anem
     
     class Meta:
       verbose_name = _('Employee')
