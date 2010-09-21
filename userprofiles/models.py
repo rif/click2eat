@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 class DeliveryAddress(models.Model):
@@ -42,4 +43,12 @@ class UserProfile(models.Model):
   class Meta:
       verbose_name = _('User Profile')
       verbose_name_plural = _('User Profiles')
-    
+
+def user_profile_handler(sender, **kwargs):
+    newProfile = kwargs['instance']
+    user = newProfile.user
+    user.first_name = newProfile.first_name
+    user.last_name = newProfile.last_name
+    user.save()
+
+post_save.connect(user_profile_handler, sender=UserProfile)
