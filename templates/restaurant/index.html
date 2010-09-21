@@ -4,12 +4,15 @@
 {% block content %}
 <p>Hello, <a href="{% url profiles_profile_detail user %}">{{ user.get_full_name }}</a>, <a href="{% url auth_logout %}">{% trans 'log out' %}</a></p>
 <div id="platinum_units">
+  <h3>Platinum</h3>
 {% include 'restaurant/platinum_restaurant_list.html' %}
 </div>
 <div id="gold_units">
+  <h3>Gold</h3>
 {% include 'restaurant/gold_restaurant_list.html' %}
 </div>
 <div id="silver_units">
+  <h3>Silver</h3>
 {% include 'restaurant/silver_restaurant_list.html' %}
 </div>
 {% endblock %}

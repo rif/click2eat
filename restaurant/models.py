@@ -24,6 +24,7 @@ class Communication(models.Model):
 
 class PartnerPackage(models.Model):
     name = models.CharField(_('name'), max_length=100)
+    css_class = models.CharField(_('name'), max_length=10, help_text=_('The css class for this package'))
     details = models.TextField(_('details'))
     
     def __unicode__(self):
@@ -90,7 +91,7 @@ class Unit(models.Model):
     #logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True)
     delivery_time_user = models.FloatField(_('delivery time user'))
     delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
-    info = models.TextField(_('info'))
+    info = models.TextField(_('info'), null=True, blank=True)
     active = models.BooleanField(_('active'), default=True)
     
     def __unicode__(self):
