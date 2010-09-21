@@ -1,1 +1,5 @@
-<a href="">{{ platinum }}</a>
+{% if platinum.count > 0 %}
+<a href="">{{ platinum.0 }}</a>
+{% else %}
+<p>No platinum partners available.</p>
+{% endif %}
