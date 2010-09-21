@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block title %}{% trans 'Edit your profile' %}{% endblock %}
+
+{% block content %}
+<form method="POST" action="" class="uniForm">{% csrf_token %}
+    {{ form|as_uni_form }}
+    <input type="submit" value="{% trans 'Create profile' %}">
+</form>
+{% endblock %}
+

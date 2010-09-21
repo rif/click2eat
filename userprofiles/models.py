@@ -22,11 +22,15 @@ class UserProfile(models.Model):
       ('F', 'Female'),
   )
   user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+  first_name = models.CharField(_('first name'), max_length=50)
+  last_name = models.CharField(_('last name'), max_length=50)
   phone = models.CharField(_('phone'), max_length=15)
-  newsletter = models.BooleanField(_('newsletter'), help_text=_("Do you want to receive our newsletter?"))
   sex = models.CharField(_('sex'), max_length=1, choices=GENDER_CHOICES)
   birth_date = models.DateField(_('birth date'))
-  delivery_address = models.ForeignKey('DeliveryAddress', verbose_name=_('delivery address'))
+  newsletter = models.BooleanField(_('newsletter'), help_text=_("Do you want to receive our newsletter?"))
+  
+  def __unicode__(self):
+      return self.first_name + " " + self.last_name
 
   def is_filled(self):
       return self.phone != '' or self.sex != '' or self.birthday != ''
