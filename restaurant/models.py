@@ -69,11 +69,14 @@ class Unit(models.Model):
     payment_method = models.ForeignKey(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'))
     contact_person = models.CharField(_('contact persoon'), max_length=50)    
-    logo_path = models.ImageField(_('logo path'), upload_to="sport_icons", null=True)
+    logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True)
     delivery_time_user = models.FloatField(_('delivery time user'))
     delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
     info = models.TextField(_('info'))
     active = models.BooleanField(_('active'), default=True)
+    
+    def __unicode__(self):
+        return self.name
     
     class Meta:
       verbose_name = _('Unit')

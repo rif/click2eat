@@ -34,7 +34,7 @@ class UserProfile(models.Model):
       return self.first_name + " " + self.last_name
 
   def is_filled(self):
-      return self.phone != '' or self.sex != '' or self.birthday != ''
+      return self.first_name != '' or self.last_name != '' or self.phone != '' or self.sex != '' or self.birthday != ''
 
   @models.permalink
   def get_absolute_url(self):
