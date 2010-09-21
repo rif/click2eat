@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from restaurant.models import Unit
+from userprofiles.models import UserProfile
 def index(request):
     units = Unit.objects.all()
     try:
@@ -15,6 +16,6 @@ def index(request):
                                                                 }, context_instance=RequestContext(request))
         else:
             return redirect('profiles_create_profile')
-    except User.DoesNotExist:
+    except UserProfile.DoesNotExist:
         return redirect('profiles_create_profile')
 
