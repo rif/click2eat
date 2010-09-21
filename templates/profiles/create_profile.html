@@ -1,18 +1,13 @@
 {% extends "admin/base_site.html" %}
+{% load i18n %}
 {% load uni_form_tags %}
 
-{% block title %}Page not found{% endblock %}
+{% block title %}{% trans 'Create your profile' %}{% endblock %}
 
 {% block content %}
 <form method="POST" action="" class="uniForm">
-  <fieldset class="inlineLabels">
     {{ form|as_uni_form }}
-    <div class = "form_block">
-      <input type="submit" value="{% trans 'add bookmark' %}">
-    </div>
-  </fieldset>
+    <input type="submit" value="{% trans 'Create profile' %}">
 </form>
-
-<p>Sorry, but the requested page could not be found.</p>
 {% endblock %}
 

@@ -5,6 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 class Language(models.Model):
     code = models.CharField(max_length=5)
     name = models.CharField(max_length=16)
+    
+    def __unicode__(self):
+        return self.name
 
 class VAT(models.Model):
   value = models.FloatField()
