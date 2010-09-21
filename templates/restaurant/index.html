@@ -1,10 +1,15 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<p>Hello, <a href="{% url profiles_profile_detail user %}">{{ user.get_full_name }}</a></p>
-<ul>
-{% for unit in units %}
-<a href="">{{ unit }}</a>
-{% endfor %}
-</ul>
+<p>Hello, <a href="{% url profiles_profile_detail user %}">{{ user.get_full_name }}</a>, <a href="{% url auth_logout %}">{% trans 'log out' %}</a></p>
+<div id="platinum_units">
+{% include 'restaurant/platinum_restaurant_list.html' %}
+</div>
+<div id="gold_units">
+{% include 'restaurant/gold_restaurant_list.html' %}
+</div>
+<div id="silver_units">
+{% include 'restaurant/silver_restaurant_list.html' %}
+</div>
 {% endblock %}

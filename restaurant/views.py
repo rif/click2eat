@@ -8,7 +8,7 @@ from django.contrib import messages
 from restaurant.models import Unit
 from userprofiles.models import UserProfile
 def index(request):
-    units = Unit.objects.all()
+    units = Unit.objects.order_by('?')
     try:
         if request.user.get_profile().is_filled():
             return render_to_response('restaurant/index.html', {
