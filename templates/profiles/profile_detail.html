@@ -12,5 +12,6 @@
 <li>{% trans 'Newsletter' %}: {{ profile.newsletter }}</li>
 <ul>
 
-<a href="{% url profiles_edit_profile %}">Edit</a>
+<a href="{% url profiles_edit_profile %}">Edit</a><nbsp>
+<a href="{% url restaurant:index %}">Home</a>
 {% endblock %}

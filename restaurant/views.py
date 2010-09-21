@@ -12,6 +12,6 @@ def index(request):
             return render_to_response('restaurant/index.html', context_instance=RequestContext(request))
         else:
             return redirect('profiles_create_profile')
-    except:
+    except NotFoundError:
         return redirect('profiles_create_profile')
 

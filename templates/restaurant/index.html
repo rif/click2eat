@@ -1,5 +1,5 @@
-{% extends "admin/base_site.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-<p>Hello, {{ user.get_full_name }}!</p>
+<p>Hello, <a href="{% url profiles_profile_detail user %}">{{ user.get_full_name }}</a></p>
 {% endblock %}
