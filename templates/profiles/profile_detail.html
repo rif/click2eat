@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Your profile' %}{% endblock %}
+
+{% block content %}
+<ul>
+<li>{% trans 'First name' %}: {{ profile.first_name }}</li>
+<li>{% trans 'Last name' %}: {{ profile.last_name }}</li>
+<li>{% trans 'First name' %}: {{ profile.first_name }}</li>
+<li>{% trans 'Phone' %}: {{ profile.phone }}</li>
+<li>{% trans 'Sex' %}: {{ profile.sex }}</li>
+<li>{% trans 'Newsletter' %}: {{ profile.newsletter }}</li>
+<ul>
+
+<a href="{% url profiles_edit_profile %}">Edit</a>
+{% endblock %}
