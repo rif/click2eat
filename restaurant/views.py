@@ -19,7 +19,7 @@ def index(request):
                                                                 }, context_instance=RequestContext(request))
         else:
             return redirect('profiles_create_profile')
-    except User.DoesNotExist:
+    except:
         return redirect('profiles_create_profile')
 
     
