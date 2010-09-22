@@ -7,4 +7,6 @@ from restaurant import views
 
 urlpatterns = patterns('',
                        url(r'^$', views.index, name='index'),
+                       url(r'^platinum/$', views.get_random_platinum, name='get_random_platinum'),
+                       url(r'^gold/$', views.get_random_gold, name='get_random_gold'),
                        )
