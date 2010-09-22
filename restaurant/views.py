@@ -8,6 +8,7 @@ from restaurant.models import Unit
 
 
 def __user_has_profile(user):
+    if not user.is_authenticated(): return None
     try:
         print user.userprofile
         return None
@@ -28,4 +29,15 @@ def index(request):
     else:
         return redirect('profiles_create_profile')
 
-    
+
+def get_random_platinum(request):
+    units = Unit.objects.order_by('?')
+    return render_to_response('restaurant/platinum_restaurant_list.html', {
+                                  'platinum': units.filter(package__slug='platinum'),
+                                  }, context_instance=RequestContext(request))
+
+def get_random_gold(request):
+    units = Unit.objects.order_by('?')
+    return render_to_response('restaurant/gold_restaurant_list.html', {
+                                  'gold': units.filter(package__slug='gold'),
+                                  }, context_instance=RequestContext(request))
