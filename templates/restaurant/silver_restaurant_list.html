@@ -1,5 +1,5 @@
 <ul>
 {% for unit in units %}
-<li class="{{ unit.package.slug }}"><a href="">{{ unit }}</a></li>
+<li class="{{ unit.package.slug }}"><a href="{% url restaurant:restaurant_detail unit.id %}">{{ unit }}</a></li>
 {% endfor %}
 </ul>

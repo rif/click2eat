@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ object.name }}{% endblock%}
+
+{% block content %}
+<h1>{% trans 'Menu' %}</h1>
+{% for ig in object.itemgroup_set.iterator %}
+
+<h2>{% trans 'Special Items' %}</h2>
+<ul>
+{% for sitem in ig.specialitem_set.iterator %}
+<li>{{ sitem }}</li>
+{% endfor %}
+</ul>
+
+<h2>{% trans 'Usual items' %}</h2>
+<ul>
+{% for item in ig.item_set.iterator %}
+<li>{{ item.name_ro }} <span class="item-desc">{{item.description_ro}}</span><br/>
+  <span class="item-desc">{{ item.name_en }} {{item.description_en}}</span></li>
+{% endfor %}
+</ul>
+{% endfor %}
+
+{% endblock %}
