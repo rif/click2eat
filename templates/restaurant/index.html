@@ -7,11 +7,11 @@
     $(function(){
         $("#platinum_units").everyTime(1000*5,function(i) { //every 5 seconds
           $(this).fadeOut('slow')
-            $(this).load("{% url restaurant:get_random_platinum %}", function(){$(this).fadeIn();});
+            $(this).load("{% url restaurant:get_random_platinum %}", function(){$(this).fadeIn('slow');});
         });
         $("#gold_units").everyTime(1000*5,function(i) { //every 5 seconds
             $(this).fadeOut('slow')
-            $(this).load("{% url restaurant:get_random_gold %}", function(){$(this).fadeIn();});
+            $(this).load("{% url restaurant:get_random_gold %}", function(){$(this).fadeIn('slow');});
         });
     })
 </script>
