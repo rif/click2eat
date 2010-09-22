@@ -6,7 +6,7 @@
 <ul>
 <li>{% trans 'First name' %}: {{ profile.first_name }}</li>
 <li>{% trans 'Last name' %}: {{ profile.last_name }}</li>
-<li>{% trans 'First name' %}: {{ profile.first_name }}</li>
+<li>{% trans 'Birth date' %}: {{ profile.birth_date }}</li>
 <li>{% trans 'Phone' %}: {{ profile.phone }}</li>
 <li>{% trans 'Sex' %}: {{ profile.sex }}</li>
 <li>{% trans 'Newsletter' %}: {{ profile.newsletter }}</li>
@@ -31,7 +31,7 @@
             <td>{{ forloop.counter }}</td>
             <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
             <td>{{ addr.street }}</td>
-            <td><a href="{% url userprofiles:delete_address addr.id %}">Delete</a></td>
+            <td><a href="{% url userprofiles:delete_address addr.id %}">Delete</a> <a href="{% url userprofiles:update_address addr.id %}">Edit</a></td>
         </tr>
         {% empty %}
         <tr><td>You have not defined any delivery address. <a href="{% url userprofiles:create_address %}">Add one now</a></td></tr>
