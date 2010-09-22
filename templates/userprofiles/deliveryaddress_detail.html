@@ -14,5 +14,5 @@
     <li>{% trans 'Apartment number' %}: {{ object.ap_number }}</li>
     <li>{% trans 'Additional information' %}: {{ object.additional_info }}</li>
 </ul>
-<a href="{% url profiles_profile_detail user %}">Back</a>
+<a href="{% url profiles_profile_detail user %}">Back</a> <a href="{% url userprofiles:update_address object.id %}">Edit</a>
 {% endblock %}
