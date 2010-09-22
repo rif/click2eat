@@ -41,3 +41,5 @@ def get_random_gold(request):
     return render_to_response('restaurant/gold_restaurant_list.html', {
                                   'gold': units.filter(package__slug='gold'),
                                   }, context_instance=RequestContext(request))
+
+    

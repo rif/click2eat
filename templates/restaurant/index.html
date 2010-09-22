@@ -6,8 +6,8 @@
 <script type="text/javascript">
     $(function(){
         $("body").everyTime(1000*5,function(i) { //every 5 seconds
-          var platinum = $("#platinum_units");
-          var gold = $("#gold_units");
+          var platinum = $("#platinum-units");
+          var gold = $("#gold-units");
           
           platinum.fadeOut('slow')
           platinum.load("{% url restaurant:get_random_platinum %}", function(){platinum.fadeIn();});
@@ -21,15 +21,15 @@
 
 {% block content %}
   <h3>Platinum</h3>
-<div id="platinum_units">
+<div id="platinum-units">
     {% include 'restaurant/platinum_restaurant_list.html' %}
 </div>
 <h3>Gold</h3>
-<div id="gold_units">
+<div id="gold-units">
     {% include 'restaurant/gold_restaurant_list.html' %}
 </div>
 <h3>Silver</h3>
-<div id="silver_units">
+<div id="silver-units">
     {% include 'restaurant/silver_restaurant_list.html' %}
 </div>
 {% endblock %}
