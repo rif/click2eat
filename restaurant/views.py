@@ -10,7 +10,7 @@ from restaurant.models import Unit
 def __user_has_profile(user):
     if not user.is_authenticated(): return None
     try:
-        print user.userprofile
+        user.get_profile()
         return None
     except:
         return redirect('profiles_create_profile')
