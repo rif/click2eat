@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 from restaurant import views
-from restaurant.models import *
+#from restaurant import models
 
 #sport_context = {'extra_context': {'sport_list': Sport.objects.annotate(Count('matchday_sport'))}}
 #feeds = {'latest': LatestMatchDays, 'news': LatestNews}

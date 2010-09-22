@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Confirm address deletion' %}{% endblock %}
+
+{% block content %}
+<h1>{{ object }}</h1>
+<ul>
+    <li>{% trans 'Primary' %}: {{ object.primary|yesno }}</li>
+    <li>{% trans 'City' %}: {{ object.city }}</li>
+    <li>{% trans 'Street' %}: {{ object.street }}</li>
+    <li>{% trans 'House number' %}: {{ object.house_number }}</li>
+    <li>{% trans 'Street number' %}: {{ object.street_number }}</li>
+    <li>{% trans 'Floor' %}: {{ object.floor }}</li>
+    <li>{% trans 'Apartment number' %}: {{ object.ap_number }}</li>
+    <li>{% trans 'Additional information' %}: {{ object.additional_info }}</li>
+</ul>
+<a href="{% url profiles_profile_detail user %}">Back</a>
+{% endblock %}

@@ -10,8 +10,27 @@
 <li>{% trans 'Phone' %}: {{ profile.phone }}</li>
 <li>{% trans 'Sex' %}: {{ profile.sex }}</li>
 <li>{% trans 'Newsletter' %}: {{ profile.newsletter }}</li>
-<ul>
+</ul>
 
 <a href="{% url profiles_edit_profile %}">Edit</a><nbsp>
 <a href="{% url restaurant:index %}">Home</a>
+<br/>
+<div id="delivery_addresses">
+<table>
+    <thead>
+        <tr>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for addr in user.deliveryaddress_set.iterator %}
+        <tr>
+            <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a> <a href="{% url userprofiles:delete_address addr.id %}">Delete</a></td>
+        </tr>
+        {% empty %}
+        <tr><td>You have not defined any delivery address. <a href="{% url userprofiles:create_address %}">Add one now</a></td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
 {% endblock %}
