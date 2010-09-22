@@ -21,7 +21,7 @@ class DeliveryTypeAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 class UnitAdmin(admin.ModelAdmin):    
-    list_display = ('name', 'address','email', 'phone')
+    list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
     
 class EmployeeAdmin(admin.ModelAdmin):
