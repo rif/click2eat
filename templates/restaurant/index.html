@@ -6,11 +6,11 @@
 <script type="text/javascript">
     $(function(){
         $("#platinum_units").everyTime(1000*5,function(i) { //every 5 seconds
-          $(this).fadeOut()
+          $(this).fadeOut('slow')
             $(this).load("{% url restaurant:get_random_platinum %}", function(){$(this).fadeIn();});
         });
         $("#gold_units").everyTime(1000*5,function(i) { //every 5 seconds
-            $(this).fadeOut()
+            $(this).fadeOut('slow')
             $(this).load("{% url restaurant:get_random_gold %}", function(){$(this).fadeIn();});
         });
     })
