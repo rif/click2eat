@@ -19,13 +19,19 @@
 <table>
     <thead>
         <tr>
-            <th>Address</th>
+            <th>#</th>
+            <th>{% trans 'Address' %}</th>
+            <th>{% trans 'Street' %}</th>
+            <th>{% trans 'Operation' %}</td>
         </tr>
     </thead>
     <tbody>
         {% for addr in user.deliveryaddress_set.iterator %}
         <tr>
-            <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a> <a href="{% url userprofiles:delete_address addr.id %}">Delete</a></td>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
+            <td>{{ addr.street }}</td>
+            <td><a href="{% url userprofiles:delete_address addr.id %}">Delete</a></td>
         </tr>
         {% empty %}
         <tr><td>You have not defined any delivery address. <a href="{% url userprofiles:create_address %}">Add one now</a></td></tr>
@@ -33,4 +39,6 @@
     </tbody>
 </table>
 </div>
+<br/>
+<a href="{% url userprofiles:create_address %}">Add delivery address</a>
 {% endblock %}
