@@ -4,10 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 
 class Order(models.Model):
     STATUS_CHOICES = (
+      ('AB', 'Abandoned'),
       ('ST', 'Sent'),
       ('RV', 'Received'),
       ('DL', 'Delivered'),
       ('SV', 'Served'),
+      ('CA', 'Canceled'),
     )
     user = models.ForeignKey(User, verbose_name=_('user'))
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
