@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 
 urlpatterns = patterns('django.views.generic.create_update',
                        url(r'^create/$', views.create, name='create_address'),
-                       url(r'^update/(?P<object_id>\d+)/$', 'update_object', {'model': DeliveryAddress, 'post_save_redirect': reverse('restaurant:index'), 'login_required': True}, name='update_address'),
+                       url(r'^update/(?P<object_id>\d+)/$', 'update_object', {'model': DeliveryAddress, 'login_required': True}, name='update_address'),
                        url(r'^delete/(?P<object_id>\d+)/$', 'delete_object', {'model': DeliveryAddress, 'post_delete_redirect': reverse('restaurant:index'), 'login_required': True}, name='delete_address'),
                        )
 
