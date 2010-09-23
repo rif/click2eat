@@ -5,17 +5,21 @@ from django.utils.translation import ugettext_lazy as _
 class Order(models.Model):
     STATUS_CHOICES = (
       ('AB', 'Abandoned'),
+      ('CR', 'Created'),
       ('ST', 'Sent'),
       ('RV', 'Received'),
       ('DL', 'Delivered'),
       ('SV', 'Served'),
       ('CA', 'Canceled'),
     )
-    user = models.ForeignKey(User, verbose_name=_('user'))
+    user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
-    status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, editable=False)
-    total_amount = models.FloatField(_('total amount'))
+    status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, editable=False, default='CR')
+    total_amount = models.FloatField(_('total amount'), default=0)
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'),)
+    
+    def __unicode__(self):
+        return unicode(self.creation_date) + " - " + self.get_status_display()
     
     class Meta:
         verbose_name = _('Order')
@@ -24,6 +28,9 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('order'))
     item = models.ForeignKey('menu.Item', verbose_name=_('item'))
+    
+    def __unicode__(self):
+        return self.order + " : " + self.item
     
     class Meta:
       verbose_name = _('Order Item')
