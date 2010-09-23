@@ -10,6 +10,8 @@ from menu.models import Item
 def __get_current_order(request, unit):
     try:
         co = Order.objects.filter(status='CR').get(unit__id=unit.id)
+        if co.is_abandoned():
+            raise
     except:
         unit = Unit.objects.get(pk=unit.id)
         co = Order.objects.create(user=request.user, unit=unit)
@@ -37,3 +39,8 @@ def add_item(request, item_id):
         return HttpResponse(str(order_item))
     except:
         raise Http404()
+    
+@login_required
+def get_current_order(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    return HttpResponse(__get_current_order(request, unit))
