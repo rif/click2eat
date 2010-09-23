@@ -3,6 +3,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
+from django.core.exceptions import ValidationError
+
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     primary = models.BooleanField(_('primary'), help_text=_('Is this your most frequent used address?'))
@@ -23,7 +25,14 @@ class DeliveryAddress(models.Model):
             postfix = u' primary address'
         else:
             postfix = u' alternative address'
-        return self.user.get_full_name() + postfix 
+        return self.user.get_full_name() + postfix
+    
+    def save(self, *args, **kwargs):
+        if self.primary == True:
+            da = DeliveryAddress.objects.filter(user__id=self.user.id).filter(primary=True)
+            if da.count() > 0:
+              da.update(primary=False)  
+        super(DeliveryAddress, self).save(*args, **kwargs) # Call the "real" save() method.
   
     class Meta:
         verbose_name = _('Delivery Address')
