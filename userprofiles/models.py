@@ -29,7 +29,7 @@ class DeliveryAddress(models.Model):
     
     def save(self, *args, **kwargs):
         if self.primary == True:
-            da = DeliveryAddress.objects.filter(user__id=self.user.id).filter(primary=True)
+            da = DeliveryAddress.objects.filter(user__id=self.user_id).filter(primary=True)
             if da.count() > 0:
               da.update(primary=False)  
         super(DeliveryAddress, self).save(*args, **kwargs) # Call the "real" save() method.
