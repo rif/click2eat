@@ -14,6 +14,10 @@ class DeliveryAddress(models.Model):
     ap_number = models.SmallIntegerField(_('apartment number'),)
     additional_info = models.TextField(_('additional info'), null=True, blank=True)
     
+    @models.permalink
+    def get_absolute_url(self):
+        return ('profiles_profile_detail', (), {'username': self.user.username})
+    
     def __unicode__(self):
         if self.primary:
             postfix = u' primary address'
