@@ -10,6 +10,7 @@
 <li>{% trans 'Phone' %}: {{ profile.phone }}</li>
 <li>{% trans 'Sex' %}: {{ profile.sex }}</li>
 <li>{% trans 'Newsletter' %}: {{ profile.newsletter }}</li>
+<li>{% trans 'Communication' %}: {% for com in profile.communication.iterator %}{{ com.name }} {% endfor %}</li>
 </ul>
 
 <a href="{% url profiles_edit_profile %}">Edit</a><nbsp>
