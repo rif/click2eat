@@ -30,7 +30,7 @@ class OrderItem(models.Model):
     item = models.ForeignKey('menu.Item', verbose_name=_('item'))
     
     def __unicode__(self):
-        return self.order + " : " + self.item
+        return str(self.order) + " : " + str(self.item)
     
     class Meta:
       verbose_name = _('Order Item')
