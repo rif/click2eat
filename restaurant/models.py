@@ -81,7 +81,7 @@ class Unit(models.Model):
     latitude = models.FloatField(_('latitude'))
     longitude = models.FloatField(_('longitude'))
     delivery_time = models.IntegerField(_('delivery time'))
-    communication = models.ForeignKey(Communication, verbose_name=_('communication'))
+    communication = models.ManyToManyField(Communication, verbose_name=_('communication'))
     package = models.ForeignKey(PartnerPackage, verbose_name=_('package'))
     open_hours = models.CharField(_('open_hours'), max_length=10)
     minimum_ord_val = models.IntegerField(_('minimum order value'))
