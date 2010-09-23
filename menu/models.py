@@ -23,6 +23,7 @@ class ItemGroup(models.Model):
   internal_name = models.CharField(_('internal name'), max_length=50)
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   exclusive = models.BooleanField(_('exclusive'))
+  active = models.BooleanField(_('active'), default=True)
   
   def __unicode__(self):
       return self.internal_name
@@ -67,6 +68,7 @@ class Item(MultilingualModel):
   new_item_end_date = models.DateField(_('new item end date'))
   sub_category = models.ForeignKey(SubCategory, verbose_name=_('sub category'))
   special = models.BooleanField(_('special'))
+  active = models.BooleanField(_('active'), default=True)
   
   def __unicode__(self):
       return self.internal_name
@@ -91,6 +93,7 @@ class SpecialItem(MultilingualModel):
   time_start = models.DateTimeField(_('time start'))
   time_end = models.DateTimeField(_('time end'))
   item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'))
+  active = models.BooleanField(_('active'), default=True)
   
   def __unicode__(self):
       return self.internal_name

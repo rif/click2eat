@@ -18,6 +18,13 @@ class Order(models.Model):
     total_amount = models.FloatField(_('total amount'), default=0)
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'),)
     
+    def update_total_ammount(self):
+        total = 0
+        for oi in self.orderitem_set.iterator():
+            total += oi.item.price
+        self.total_amount = total
+        self.save()
+    
     def __unicode__(self):
         return unicode(self.creation_date) + " - " + self.get_status_display()
     
@@ -31,6 +38,10 @@ class OrderItem(models.Model):
     
     def __unicode__(self):
         return str(self.order) + " : " + str(self.item)
+    
+    def save(self, *args, **kwargs): 
+        super(OrderItem, self).save(*args, **kwargs) # Call the "real" save() method.
+        self.order.update_total_ammount()
     
     class Meta:
       verbose_name = _('Order Item')
