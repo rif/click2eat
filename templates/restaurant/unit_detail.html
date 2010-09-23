@@ -3,9 +3,28 @@
 
 {% block title %}{{ object.name }}{% endblock%}
 
-{% block content %}
-<h1>{% trans 'Menu' %}</h1>
+{% block scripts %}
+<script type="text/javascript">
+  $(function(){
+    $("#current-order").load("{% url order:get_current_order object.id %}");
+  })
+</script>
+{% endblock %}
 
+{% block content %}
+<img src="{{object.logo_path}}" alt="Restaurant logo" /><h1>{{ object.name }}{% trans ' details' %}</h1>
+<ul>
+<li>{% trans 'Name' %}: {{ object.name }}</li>
+<li>{% trans 'Address' %}: {{ object.address }}</li>
+<li>{% trans 'Email' %}: {{ object.email }}</li>
+<li>{% trans 'Phone' %}: {{ object.phone }}</li>
+</ul>
+
+<h2>Current order:</h2>
+<div id="current-order">
+</div>
+
+<h1>{% trans 'Menu' %}</h1>
 <h2>{% trans 'Special Items' %}</h2>
 <ul>
 {% for sitem in object.specialitem_set.iterator %}
@@ -20,6 +39,6 @@
   {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
 {% endfor %}
 </ul>
-
-
+<br/>
+<a href="{% url restaurant:index %}">{% trans 'Home' %}</a>
 {% endblock %}

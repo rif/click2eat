@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from datetime import datetime
 
 class Order(models.Model):
     STATUS_CHOICES = (
@@ -25,7 +26,16 @@ class Order(models.Model):
         self.total_amount = total
         self.save()
     
+    def is_abandoned(self):
+        delta = datetime.now() - self.creation_date
+        if delta.days > 60:
+            self.status = 'AB'
+            self.save()
+            return True
+        return False
+    
     def __unicode__(self):
+        self.is_abandoned()
         return unicode(self.creation_date) + " - " + self.get_status_display()
     
     class Meta:
