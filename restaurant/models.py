@@ -88,7 +88,7 @@ class Unit(models.Model):
     payment_method = models.ForeignKey(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'))
     contact_person = models.CharField(_('contact persoon'), max_length=50)    
-    #logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True)
+    logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True, blank=True)
     delivery_time_user = models.FloatField(_('delivery time user'))
     delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
     info = models.TextField(_('info'), null=True, blank=True)
@@ -109,5 +109,5 @@ class Rating(models.Model):
     feedback = models.TextField(_('feedback'))
 
     class Meta:
-      verbose_name = _('Item')
-      verbose_name_plural = _('Items')
+      verbose_name = _('Rating')
+      verbose_name_plural = _('Ratings')

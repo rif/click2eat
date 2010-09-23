@@ -5,22 +5,21 @@
 
 {% block content %}
 <h1>{% trans 'Menu' %}</h1>
-{% for ig in object.itemgroup_set.iterator %}
 
 <h2>{% trans 'Special Items' %}</h2>
 <ul>
-{% for sitem in ig.specialitem_set.iterator %}
+{% for sitem in object.specialitem_set.iterator %}
 <li>{{ sitem }}</li>
 {% endfor %}
 </ul>
 
 <h2>{% trans 'Usual items' %}</h2>
 <ul>
-{% for item in ig.item_set.iterator %}
+{% for item in object.item_set.iterator %}
 <li>{{ item.name_ro }} - <span class="item-desc">{{item.description_ro}}</span><br/>
   {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
 {% endfor %}
 </ul>
-{% endfor %}
+
 
 {% endblock %}
