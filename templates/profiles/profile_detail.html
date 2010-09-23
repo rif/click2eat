@@ -13,8 +13,10 @@
 <li>{% trans 'Communication' %}: {% for com in profile.communication.iterator %}{{ com.name }} {% endfor %}</li>
 </ul>
 
-<a href="{% url profiles_edit_profile %}">Edit</a><nbsp>
-<a href="{% url restaurant:index %}">Home</a>
+<a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a><nbsp>
+<a href="{% url restaurant:index %}">{% trans 'Home' %}</a>
+<br/>
+<a href="{% url order:list %}">{% trans 'Order History' %}</a>
 <br/>
 <div id="delivery_addresses">
 <table>
@@ -32,10 +34,10 @@
             <td>{{ forloop.counter }}</td>
             <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
             <td>{{ addr.street }}</td>
-            <td><a href="{% url userprofiles:delete_address addr.id %}">Delete</a> <a href="{% url userprofiles:update_address addr.id %}">Edit</a></td>
+            <td><a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a> <a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a></td>
         </tr>
         {% empty %}
-        <tr><td>You have not defined any delivery address. <a href="{% url userprofiles:create_address %}">Add one now</a></td></tr>
+        <tr><td>You have not defined any delivery address. <a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a></td></tr>
         {% endfor %}
     </tbody>
 </table>
