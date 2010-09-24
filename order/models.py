@@ -28,7 +28,7 @@ class Order(models.Model):
 
     def is_abandoned(self):
         delta = datetime.now() - self.creation_date
-        if delta.seconds > 10:
+        if delta.days > 1:
             if self.total_amount > 0:
               self.status = 'AB'
               self.save()
@@ -48,6 +48,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('order'))
     item = models.ForeignKey('menu.Item', verbose_name=_('item'))
+    cart = models.CharField(_('cart'), max_length=15, null=True, blank=True)
 
     def __unicode__(self):
         return str(self.order) + " : " + str(self.item)

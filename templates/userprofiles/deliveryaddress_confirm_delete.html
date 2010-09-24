@@ -5,13 +5,13 @@
 {% block content %}
 <h1>{% trans 'Are you sure?' %}</h1>
 
-{% blocktrans %} Are you sure you want to delete the selected Delivery Address objects? All of the following objects and their related items will be deleted: {% endblocktrans %} 
-        
+{% blocktrans %} Are you sure you want to delete the selected Delivery Address objects? All of the following objects and their related items will be deleted: {% endblocktrans %}
+
         <ul>  <li>{% trans 'Delivery Address' %}: <a href="{% url userprofiles:address_detail object.id %}">{{object}}</a></li></ul>
-    
+
     <form action="" method="post">{% csrf_token %}
     <div>
-    <input type="submit" value="{% trans "Yes, I'm sure" %}" />
+    <input type="submit" value="{% trans 'Yes, I'm sure' %}" />
     </div>
     </form>
 
