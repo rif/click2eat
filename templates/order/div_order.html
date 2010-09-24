@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<h1>{% trans 'Order details' %}</h1>
+<ul>
+<li>{% trans 'Unit' %}: {{ object.unit }}</li>
+<li>{% trans 'Creation date' %}: {{ object.creation_date }}</li>
+<li>{% trans 'Status' %}: {{ object.get_status_display }}</li>
+<li>{% trans 'Total amount' %}: {{ object.total_amount }}</li>
+</ul>
+<h2>{% trans 'Order Items' %}</h2>
+<ul>
+{% for oi in object.orderitem_set.iterator %}
+<li>{{ oi }}</li>
+{% empty %}
+<li>{% trans 'This order does not contain any items.' %}</li>
+{% endfor %}
+</ul>
