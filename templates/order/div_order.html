@@ -7,6 +7,8 @@
 <li>{% trans 'Status' %}: {{ object.get_status_display }}</li>
 <li>{% trans 'Total amount' %}: {{ object.total_amount }}</li>
 </ul>
+
+<div id="order-items">
 <h2>{% trans 'Order Items' %}</h2>
 <ul>
 {% for oi in object.orderitem_set.iterator %}
@@ -15,3 +17,4 @@
 <li>{% trans 'This order does not contain any items.' %}</li>
 {% endfor %}
 </ul>
+</div>
