@@ -24,7 +24,7 @@ def list(request):
                                   'order_list': orders,
                                   }, context_instance=RequestContext(request))
 
-"""@login_required    
+"""@login_required
 def create(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     order = Order.objects.create(user=request.user, unit=unit)
@@ -36,11 +36,13 @@ def add_item(request, item_id):
     try:
         current_order = __get_current_order(request, item.unit)
         order_item = OrderItem.objects.create(order=current_order, item=item)
-        return HttpResponse(str(order_item))
+        return HttpResponse(str(order_item.id))
     except:
         raise Http404()
-    
+
 @login_required
 def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    return HttpResponse(__get_current_order(request, unit))
+    return render_to_response('order/div_order.html', {
+                                  'object': __get_current_order(request, unit),
+                                  }, context_instance=RequestContext(request))

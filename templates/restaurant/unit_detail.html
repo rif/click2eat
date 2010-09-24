@@ -6,13 +6,15 @@
 {% block scripts %}
 <script type="text/javascript">
   $(function(){
-    $("#current-order").load("{% url order:get_current_order object.id %}");
+    $("#current-order").load("{% url order:get_current object.id %}");
   })
 </script>
 {% endblock %}
 
 {% block content %}
-<img src="{{object.logo_path}}" alt="Restaurant logo" /><h1>{{ object.name }}{% trans ' details' %}</h1>
+<img src="{{ object.logo_path }}" alt="logo" />
+<h1>{{ object.name }}{% trans ' details' %}</h1>
+
 <ul>
 <li>{% trans 'Name' %}: {{ object.name }}</li>
 <li>{% trans 'Address' %}: {{ object.address }}</li>
