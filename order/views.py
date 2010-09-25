@@ -20,7 +20,7 @@ def __get_current_order(request, unit):
 
 @login_required
 def list(request):
-    orders = Order.objects.filter(user__id=request.user.id)
+    orders = Order.objects.filter(user__id=request.user.id).exclude(status='CR')
     return render_to_response('order/order_list.html', {
                                   'order_list': orders,
                                   }, context_instance=RequestContext(request))
