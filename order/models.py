@@ -26,6 +26,12 @@ class Order(models.Model):
         self.total_amount = total
         self.save()
 
+    def get_cart_subtotal(self, cart):
+      subtotal = 0
+      for oi in self.orderitem_set.filter(cart=cart).iterator():
+        subtotal += oi.item.price
+      return subtotal
+
     def is_abandoned(self):
         delta = datetime.now() - self.creation_date
         if delta.days > 0:
