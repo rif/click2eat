@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% trans 'Order: ' %}{% endblock %}
+{% block title %}{% trans 'Order: ' %}{{ order }}{% endblock %}
 
 {% block content %}
-{% include 'order/div_order.html' %}
+{% include 'order/order_div.html' %}
 <br/>
 <a href="{% url order:list %}">{% trans 'Back' %}</a>
 

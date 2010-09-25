@@ -54,8 +54,13 @@ class OrderItem(models.Model):
         return str(self.order) + " : " + str(self.item)
 
     def save(self, *args, **kwargs):
-        super(OrderItem, self).save(*args, **kwargs) # Call the "real" save() method.
+        super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_ammount()
+
+    def delete(self, *args, **kwargs):
+        ex_order = self.order
+        super(OrderItem, self).delete(*args, **kwargs)
+        ex_order.update_total_ammount()
 
     class Meta:
       verbose_name = _('Order Item')

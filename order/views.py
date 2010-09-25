@@ -42,10 +42,16 @@ def add_item(request, item_id, cart_name):
         raise Http404()
 
 @login_required
+def remove_item(request, item_id):
+    item = get_object_or_404(OrderItem, pk=item_id)
+    item.delete()
+    return HttpResponse('ok')
+
+@login_required
 def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    return render_to_response('order/div_order.html', {
-                                  'object': __get_current_order(request, unit),
+    return render_to_response('order/order_div.html', {
+                                  'order': __get_current_order(request, unit),
                                   }, context_instance=RequestContext(request))
 
 @login_required
@@ -57,4 +63,11 @@ def add_cart(request, unit_id):
   next_cart = _("cart") + str(len(carts))
   return render_to_response('order/order_cart.html', {
                                   'cartname': next_cart,
+                                  'object': unit,
                                   }, context_instance=RequestContext(request))
+
+@login_required
+def get_total_amount(request, unit_id):
+  unit = get_object_or_404(Unit, pk=unit_id)
+  current_order = __get_current_order(request, unit)
+  return HttpResponse(str(current_order.total_amount))

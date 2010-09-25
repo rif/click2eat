@@ -20,13 +20,14 @@
         <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.mouse.js"></script>
         <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.draggable.js"></script>
         <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.droppable.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}js/order_items.js"></script>
 <script type="text/javascript">
 
   $(function(){
     $("#current-order").load("{% url order:get_current object.id %}");
     $(".add-item").click(function(e){
-      $.get("/order/add_item/" + $(this).parent("li").attr("id"), function(response){
-          $("#current-order").load("{% url order:get_current object.id %}");
+      $.get("/order/add_item/" + $(this).parent("li").attr("id") + "/{{ user.username }}" , function(response){
+          $("#current-order").load("{% url order:get_current object.id %}")
         });
         e.preventDefault();
     });

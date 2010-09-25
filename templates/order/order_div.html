@@ -1,0 +1,33 @@
+{% load i18n %}
+
+<h1>{% trans 'Order details' %}</h1>
+<ul>
+<li>{% trans 'Unit' %}: {{ order.unit }}</li>
+<li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
+<li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
+<li>{% trans 'Total amount' %}: {{ order.total_amount }}</li>
+</ul>
+
+<script type="text/javascript">
+$(function(){
+  $(".remove-orderitem").click(function(e){
+    $.get($(this).attr("href"));
+    $(this).parent().css("text-decoration", "line-through");
+    $("#order-total-amount").load("{% url order:get_total_amount order.unit.id %}");
+    e.preventDefault();
+  });
+})
+</script>
+
+<div id="order-items">
+<h2>{% trans 'Order Items' %}</h2>
+<ul>
+{% for oi in order.orderitem_set.iterator %}
+<li>{{ oi }} {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}</li>
+{% empty %}
+<li>{% trans 'This order does not contain any items.' %}</li>
+{% endfor %}
+</ul>
+</div>
+
+<h4>{% trans 'Total ammount' %}: <span id="order-total-amount">{{ order.total_amount }}</span></h4>
