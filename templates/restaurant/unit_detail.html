@@ -39,16 +39,18 @@
                         hoverClass: "ui-state-hover",
                         drop: function(event, ui) {
                                 $(this).find(".placeholder").remove();
-                                //console.log($(this).parents(".cart").attr("id"));
-                                //console.log(ui.draggable.attr("id"));
+                                var $cart_id = $(this).parents(".cart").attr("id");
+                                var $item_id = ui.draggable.attr("id");
                                 $("<li></li>").text(ui.draggable.text()).appendTo(this);
-                                $.get("/order/add_item/" + ui.draggable.attr("id"), function(response){
+                                $.get("/order/add_item/" + $item_id + "/" + $cart_id + "/", function(response){
                                     $("#current-order").load("{% url order:get_current object.id %}");
                                 });
                         }
                 });
     $("#add-cart").click(function(e){
-      $("#carts").append("<div class=\"cart\" id=\"newcart\"><h4 class=\"ui-widget-header\">newcart</h4><div class=\"ui-widget-content\"><ol><li class=\"placeholder\">Add your items here</li></ol></div></div>")
+      $.get("{% url order:add_cart object.id %}", function(data){
+          $("#carts").append(data);
+        });
       e.preventDefault();
     });
   });

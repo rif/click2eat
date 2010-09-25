@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
+from django.utils.translation import ugettext_lazy as _
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
@@ -31,11 +32,11 @@ def create(request, unit_id):
     return HttpResponse(str(order))"""
 
 @login_required
-def add_item(request, item_id):
+def add_item(request, item_id, cart_name):
     item = get_object_or_404(Item, pk=item_id)
     try:
         current_order = __get_current_order(request, item.unit)
-        order_item = OrderItem.objects.create(order=current_order, item=item)
+        order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name)
         return HttpResponse(str(order_item.id))
     except:
         raise Http404()
@@ -45,4 +46,15 @@ def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     return render_to_response('order/div_order.html', {
                                   'object': __get_current_order(request, unit),
+                                  }, context_instance=RequestContext(request))
+
+@login_required
+def add_cart(request, unit_id):
+  unit = get_object_or_404(Unit, pk=unit_id)
+  current_order = __get_current_order(request, unit)
+  carts = current_order.orderitem_set.values_list('cart', flat=True)
+  carts = [cart for cart in carts if cart != None]
+  next_cart = _("cart") + str(len(carts))
+  return render_to_response('order/order_cart.html', {
+                                  'cartname': next_cart,
                                   }, context_instance=RequestContext(request))
