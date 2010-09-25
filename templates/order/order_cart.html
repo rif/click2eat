@@ -1,3 +1,22 @@
+
+<script type="text/javascript">
+
+  $(function(){
+                $("#{{ cartname }} ol").droppable({
+                        activeClass: "ui-state-default",
+                        hoverClass: "ui-state-hover",
+                        drop: function(event, ui) {
+                                $(this).find(".placeholder").remove();
+                                var $cart_id = $(this).parents(".cart").attr("id");
+                                var $item_id = ui.draggable.attr("id");
+                                $("<li></li>").text(ui.draggable.text()).appendTo(this);
+                                $.get("/order/add_item/" + $item_id + "/" + $cart_id + "/", function(response){
+                                    $("#current-order").load("{% url order:get_current object.id %}");
+                                });
+                        }
+                });
+</script>
+
 <div class="cart" id="{{ cartname }}">
         <h4 class="ui-widget-header">{{ cartname }}</h4>
         <div class="ui-widget-content">
