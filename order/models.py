@@ -28,7 +28,7 @@ class Order(models.Model):
 
     def is_abandoned(self):
         delta = datetime.now() - self.creation_date
-        if delta.days > 1:
+        if delta.days > 0:
             if self.total_amount > 0:
               self.status = 'AB'
               self.save()
