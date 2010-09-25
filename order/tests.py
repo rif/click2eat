@@ -37,3 +37,12 @@ class OrderTest(TestCase):
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=2))
     self.failUnlessEqual(11.23, ord.total_amount)
 
+  def test_cart_subtotal(self):
+    ord = Order.objects.create(user=self.user, unit=self.unit)
+    OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1), cart="1")
+    OrderItem.objects.create(order=ord, item=Item.objects.get(pk=2), cart="1")
+    OrderItem.objects.create(order=ord, item=Item.objects.get(pk=2), cart="2")
+    self.failUnlessEqual(21.23, ord.total_amount)
+    self.failUnlessEqual(11.23, ord.get_cart_subtotal("1"))
+    self.failUnlessEqual(10, ord.get_cart_subtotal("2"))
+
