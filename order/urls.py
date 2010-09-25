@@ -7,6 +7,7 @@ urlpatterns = patterns('',
                        url(r'^list/$', views.list, name='list'),
                        url(r'^(?P<object_id>\d+)/$', list_detail.object_detail, {'queryset': Order.objects.all()}, name='detail'),
                        #url(r'^create/(?P<unit_id>\d+)/$', views.create, name='create'),
-                       url(r'^add_item/(?P<item_id>\d+)/$', views.add_item, name='add_item'),
+                       url(r'^add_item/(?P<item_id>\d+)/(?P<cart_name>.+)/$', views.add_item, name='add_item'),
                        url(r'^get_current/(?P<unit_id>\d+)/$', views.get_current_order, name='get_current'),
+                       url(r'^add_cart/(?P<unit_id>\d+)/$', views.add_cart, name='add_cart'),
                        )
