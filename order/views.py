@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
+from order.forms import CartNameForm
 
 def __get_current_order(request, unit):
     try:
@@ -36,6 +37,7 @@ def add_item(request, item_id, cart_name):
     item = get_object_or_404(Item, pk=item_id)
     try:
         current_order = __get_current_order(request, item.unit)
+        if cart_name == '': cart_name = request.user.username
         order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name)
         return HttpResponse(str(order_item.id))
     except:
@@ -57,14 +59,22 @@ def get_current_order(request, unit_id):
 @login_required
 def add_cart(request, unit_id):
   unit = get_object_or_404(Unit, pk=unit_id)
-  current_order = __get_current_order(request, unit)
-  carts = current_order.orderitem_set.values_list('cart', flat=True)
-  carts = [cart for cart in carts if cart != None]
-  next_cart = _("cart") + str(len(carts))
-  return render_to_response('order/order_cart.html', {
+  if request.method == 'POST':
+      form = CartNameForm(request.POST)
+      if form.is_valid(): # All validation rules pass
+          next_cart = request.POST['name']
+          return render_to_response('order/order_cart.html', {
                                   'cartname': next_cart,
                                   'object': unit,
                                   }, context_instance=RequestContext(request))
+  else:
+      form = CartNameForm() # An unbound form
+  return render_to_response('order/cart_name.html', {
+        'form': form,
+        'object': unit,
+    }, context_instance=RequestContext(request))
+
+
 
 @login_required
 def get_total_amount(request, unit_id):

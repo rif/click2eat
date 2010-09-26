@@ -1,0 +1,20 @@
+{% load i18n %}
+<script type="text/javascript">
+$(function(){
+  $("#cart-name-form").submit(function(){
+    var $action = $("#form-modificare-articol").attr("action");
+    $.post($action,
+    { /*csrfmiddlewaretoken:  $("input:first").val(),*/
+      name:                   $("#id_name").val(),
+    },function(data){
+      console.log(data);
+    });
+    return false;
+    });
+});
+
+</script>
+<form id="cart-name-form" method="post" action="{% url order:add_cart object.id %}">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="{% trans 'Submit' %}" />
+</form>
