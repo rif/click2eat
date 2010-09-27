@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Order: ' %}{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Are you ready to send the order?' %}</h1>
+{% include 'order/div_order.html' %}
+<br/>
+<a href="{% url order:list %}">{% trans 'Back' %}</a>
+<form action="" method="post">{% csrf_token %}
+    <div>
+    <input type="submit" value="{% trans 'Yes, send the order' %}" />
+    </div>
+    </form>
+{% endblock %}

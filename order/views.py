@@ -3,9 +3,11 @@ from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
+from django.utils.translation import ugettext_lazy as _
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
+from order.forms import CartNameForm
 
 def __get_current_order(request, unit):
     try:
@@ -19,31 +21,41 @@ def __get_current_order(request, unit):
 
 @login_required
 def list(request):
-    orders = Order.objects.filter(user__id=request.user.id)
+    orders = Order.objects.filter(user__id=request.user.id).exclude(status='CR')
     return render_to_response('order/order_list.html', {
                                   'order_list': orders,
                                   }, context_instance=RequestContext(request))
 
-"""@login_required    
+"""@login_required
 def create(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     order = Order.objects.create(user=request.user, unit=unit)
     return HttpResponse(str(order))"""
 
 @login_required
-def add_item(request, item_id):
+def add_item(request, item_id, cart_name):
     item = get_object_or_404(Item, pk=item_id)
     try:
         current_order = __get_current_order(request, item.unit)
-        order_item = OrderItem.objects.create(order=current_order, item=item)
-        return HttpResponse(str(order_item))
+        if cart_name == '': cart_name = request.user.username
+        order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name)
+        return HttpResponse(str(order_item.id))
     except:
         raise Http404()
-    
+
+@login_required
+def remove_item(request, item_id):
+    item = get_object_or_404(OrderItem, pk=item_id)
+    item.delete()
+    return HttpResponse('ok')
+
 @login_required
 def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    return HttpResponse(__get_current_order(request, unit))
+    return render_to_response('order/order_div.html', {
+                                  'order': __get_current_order(request, unit),
+                                  }, context_instance=RequestContext(request))
+
 
 @login_required
 def send(request, unit_id):
@@ -58,3 +70,28 @@ def send(request, unit_id):
     return render_to_response('order/sending_complete.html', {
                                   'order': current_order,
                                   }, context_instance=RequestContext(request))
+
+def add_cart(request, unit_id):
+  unit = get_object_or_404(Unit, pk=unit_id)
+  if request.method == 'POST':
+      form = CartNameForm(request.POST)
+      if form.is_valid(): # All validation rules pass
+          next_cart = request.POST['name']
+          return render_to_response('order/order_cart.html', {
+                                  'cartname': next_cart,
+                                  'object': unit,
+                                  }, context_instance=RequestContext(request))
+  else:
+      form = CartNameForm() # An unbound form
+  return render_to_response('order/cart_name.html', {
+        'form': form,
+        'object': unit,
+    }, context_instance=RequestContext(request))
+
+
+
+@login_required
+def get_total_amount(request, unit_id):
+  unit = get_object_or_404(Unit, pk=unit_id)
+  current_order = __get_current_order(request, unit)
+  return HttpResponse(str(current_order.total_amount))
