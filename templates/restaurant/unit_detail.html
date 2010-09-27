@@ -73,7 +73,8 @@
 <h2>Current order:</h2>
 <div id="current-order">
 </div>
-
+<a href="{% url order:send object.id %}">{% trans 'Send' %}</a>
+  
 <h1>{% trans 'Menu' %}</h1>
 <h2 class="ui-widget-header">{% trans 'Special Items' %}</h2>
 <ul>
