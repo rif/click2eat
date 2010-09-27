@@ -4,7 +4,7 @@ $(function(){
   $("#cart-name-form").submit(function(){
     var $action = $("#cart-name-form").attr("action");
     $.post($action,
-    { /*csrfmiddlewaretoken:  $("input:first").val(),*/
+    { csrfmiddlewaretoken:  $("input:first").val(),
       name:                   $("#id_name").val(),
     },function(data){
       $("#new-cart").replaceWith(data);

@@ -11,6 +11,7 @@ urlpatterns = patterns('',
                        url(r'^remove_item/(?P<item_id>\d+)/$', views.remove_item, name='remove_item'),
                        url(r'^get_current/(?P<unit_id>\d+)/$', views.get_current_order, name='get_current'),
                        url(r'^send/(?P<unit_id>\d+)/$', views.send, name='send'),
-                       url(r'^get_total_amount/(?P<unit_id>\d+)/$', views.get_total_amount, name='get_total_amount'),
+                       url(r'^get_total_amount/(?P<order_id>\d+)/$', views.get_total_amount, name='get_total_amount'),
+                       url(r'^get_subtotal/(?P<unit_id>\d+)/(?P<cart_name>.+)/$', views.get_subtotal, name='get_subtotal'),
                        url(r'^add_cart/(?P<unit_id>\d+)/$', views.add_cart, name='add_cart'),
                        )

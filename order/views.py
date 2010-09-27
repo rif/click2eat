@@ -97,7 +97,12 @@ def add_cart(request, unit_id):
 
 
 @login_required
-def get_total_amount(request, unit_id):
+def get_total_amount(request, order_id):
+  order = get_object_or_404(Order, pk=order_id)
+  return HttpResponse(str(order.total_amount))
+
+@login_required
+def get_subtotal(request, unit_id, cart_name):
   unit = get_object_or_404(Unit, pk=unit_id)
   current_order = __get_current_order(request, unit)
-  return HttpResponse(str(current_order.total_amount))
+  return HttpResponse(str(current_order.get_cart_subtotal(cart_name)))
