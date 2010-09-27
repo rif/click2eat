@@ -25,7 +25,7 @@
         <div class="ui-widget-content">
                 <ol>
                     {% for oi in oil %}
-                      <li>{{ oi }}</li>
+                      <li>{{ oi }} <a class="remove-orderitem" href="{% url order:remove_item oi.id %}">x</a></li>
                     {% empty %}
                         <li class="placeholder">Add your items here</li>
                     {% endfor %}
