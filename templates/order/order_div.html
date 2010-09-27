@@ -31,3 +31,4 @@ $(function(){
 </div>
 
 <h4>{% trans 'Total ammount' %}: <span id="order-total-amount">{{ order.total_amount }}</span></h4>
+<a href="{% url order:send order.unit.id %}">{% trans 'Send' %}
