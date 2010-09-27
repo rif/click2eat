@@ -1,0 +1,247 @@
+[
+    {
+        "pk": 1, 
+        "model": "restaurant.deliveryarea", 
+        "fields": {
+            "name": "Area 1"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "restaurant.communication", 
+        "fields": {
+            "name": "Email"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "restaurant.communication", 
+        "fields": {
+            "name": "SMS"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "restaurant.communication", 
+        "fields": {
+            "name": "Phone"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "restaurant.partnerpackage", 
+        "fields": {
+            "details": "Cheapest package", 
+            "name": "Silver", 
+            "slug": "silver"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "restaurant.partnerpackage", 
+        "fields": {
+            "details": "Medium package", 
+            "name": "Gold", 
+            "slug": "gold"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "restaurant.partnerpackage", 
+        "fields": {
+            "details": "Most expensive package", 
+            "name": "Platinum", 
+            "slug": "platinum"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "restaurant.paymentmethod", 
+        "fields": {
+            "name": "card", 
+            "details": "credit card"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "restaurant.deliverytype", 
+        "fields": {
+            "price": 15.0, 
+            "name": "taxi"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "restaurant.employee", 
+        "fields": {
+            "name": "emp1", 
+            "end_date": "2010-09-21", 
+            "start_date": "2010-09-21", 
+            "phone": "09732809732", 
+            "address": "1", 
+            "email": "emp1@emp.ro"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "restaurant.unit", 
+        "fields": {
+            "info": "ceva info", 
+            "delivery_time": 1, 
+            "delivery_type": 1, 
+            "employee": 1, 
+            "name": "Restaurant 1", 
+            "open_hours": "1", 
+            "package": 1, 
+            "payment_method": 1, 
+            "communication": [], 
+            "minimum_ord_val": 1, 
+            "longitude": 1.0, 
+            "overall_discount": 1.0, 
+            "active": true, 
+            "phone": "09732809732", 
+            "delivery_time_user": 11.0, 
+            "address": "1", 
+            "latitude": 1.0, 
+            "unit_devlivery": 1, 
+            "contact_person": "1", 
+            "logo_path": "", 
+            "email": "emp1@emp.ro"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "restaurant.unit", 
+        "fields": {
+            "info": "test", 
+            "delivery_time": 1, 
+            "delivery_type": 1, 
+            "employee": 1, 
+            "name": "Restaurant 2", 
+            "open_hours": "1", 
+            "package": 1, 
+            "payment_method": 1, 
+            "communication": [], 
+            "minimum_ord_val": 1, 
+            "longitude": 1.0, 
+            "overall_discount": 1.0, 
+            "active": true, 
+            "phone": "09732809732", 
+            "delivery_time_user": 1.0, 
+            "address": "1", 
+            "latitude": 1.0, 
+            "unit_devlivery": 1, 
+            "contact_person": "1", 
+            "logo_path": "", 
+            "email": "emp1@emp.ro"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "restaurant.unit", 
+        "fields": {
+            "info": "ceva info", 
+            "delivery_time": 1, 
+            "delivery_type": 1, 
+            "employee": 1, 
+            "name": "Restaurant 3", 
+            "open_hours": "1", 
+            "package": 2, 
+            "payment_method": 1, 
+            "communication": [], 
+            "minimum_ord_val": 1, 
+            "longitude": 1.0, 
+            "overall_discount": 21.0, 
+            "active": true, 
+            "phone": "09732809732", 
+            "delivery_time_user": 1.0, 
+            "address": "1", 
+            "latitude": 1.0, 
+            "unit_devlivery": 1, 
+            "contact_person": "1", 
+            "logo_path": "", 
+            "email": "emp1@emp.ro"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "restaurant.unit", 
+        "fields": {
+            "info": "", 
+            "delivery_time": 1, 
+            "delivery_type": 1, 
+            "employee": 1, 
+            "name": "Restaurant 4", 
+            "open_hours": "1", 
+            "package": 3, 
+            "payment_method": 1, 
+            "communication": [], 
+            "minimum_ord_val": 1, 
+            "longitude": 1.0, 
+            "overall_discount": 1.0, 
+            "active": true, 
+            "phone": "09732809732", 
+            "delivery_time_user": 11.0, 
+            "address": "1", 
+            "latitude": 1.0, 
+            "unit_devlivery": 1, 
+            "contact_person": "1", 
+            "logo_path": "", 
+            "email": "emp1@emp.ro"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "restaurant.unit", 
+        "fields": {
+            "info": "", 
+            "delivery_time": 1, 
+            "delivery_type": 1, 
+            "employee": 1, 
+            "name": "Restaurant 5", 
+            "open_hours": "1", 
+            "package": 3, 
+            "payment_method": 1, 
+            "communication": [], 
+            "minimum_ord_val": 1, 
+            "longitude": 1.0, 
+            "overall_discount": 21.0, 
+            "active": true, 
+            "phone": "09732809732", 
+            "delivery_time_user": 11.0, 
+            "address": "1", 
+            "latitude": 1.0, 
+            "unit_devlivery": 1, 
+            "contact_person": "1", 
+            "logo_path": "", 
+            "email": "emp1@emp.ro"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "restaurant.unit", 
+        "fields": {
+            "info": "", 
+            "delivery_time": 1, 
+            "delivery_type": 1, 
+            "employee": 1, 
+            "name": "Restaurant 6", 
+            "open_hours": "1", 
+            "package": 2, 
+            "payment_method": 1, 
+            "communication": [], 
+            "minimum_ord_val": 1, 
+            "longitude": 1.0, 
+            "overall_discount": 1.0, 
+            "active": true, 
+            "phone": "09732809732", 
+            "delivery_time_user": 1.0, 
+            "address": "1", 
+            "latitude": 1.0, 
+            "unit_devlivery": 1, 
+            "contact_person": "1", 
+            "logo_path": "", 
+            "email": "rest@test.ro"
+        }
+    }
+]

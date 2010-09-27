@@ -1,4 +1,5 @@
 import os
+
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 DEBUG = True
@@ -22,6 +23,14 @@ TIME_ZONE = 'Europe/Bucharest'
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
+ugettext = lambda s: s
+
+LANGUAGES = (
+  ('de', ugettext('German')),
+  ('en', ugettext('English')),
+  ('fr', ugettext('Romanian')),
+  ('ro', ugettext('Romanian')),
+)
 
 SITE_ID = 1
 

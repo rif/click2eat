@@ -1,0 +1,239 @@
+[
+    {
+        "pk": 1, 
+        "model": "menu.language", 
+        "fields": {
+            "code": "en", 
+            "name": "English"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.language", 
+        "fields": {
+            "code": "ro", 
+            "name": "Romana"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.vat", 
+        "fields": {
+            "value": 1.21
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.itemgroup", 
+        "fields": {
+            "active": false, 
+            "exclusive": false, 
+            "unit": 1, 
+            "internal_name": "Menu1"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.subcategory", 
+        "fields": {
+            "internal_name": "sos"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.subcategory", 
+        "fields": {
+            "internal_name": "supa"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 1, 
+            "name": "Cow and Chikin", 
+            "language": 1, 
+            "description": "Some description"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 1, 
+            "name": "Tocanita de puioc", 
+            "language": 2, 
+            "description": "Ceva descriere"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 2, 
+            "name": "Tomato soup", 
+            "language": 1, 
+            "description": "Soup that contain tomatoe juice"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 2, 
+            "name": "Supa de rosii", 
+            "language": 2, 
+            "description": "Supa care contine bulion"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 3, 
+            "name": "Mustard", 
+            "language": 1, 
+            "description": "Some desc"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 3, 
+            "name": "Mustar", 
+            "language": 2, 
+            "description": "Ceva desc"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 4, 
+            "name": "CatchUp", 
+            "language": 1, 
+            "description": "c"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 4, 
+            "name": "Catchup", 
+            "language": 2, 
+            "description": "c"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 5, 
+            "name": "some stuff", 
+            "language": 1, 
+            "description": "ds"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 5, 
+            "name": "chestiuune", 
+            "language": 2, 
+            "description": "ew"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.item", 
+        "fields": {
+            "discount_time_end": "2010-09-22 14:53:53", 
+            "sub_category": 2, 
+            "discount_time_start": "2010-09-22 14:53:51", 
+            "price": 1.23, 
+            "item_group": 1, 
+            "discount": 0, 
+            "new_item_end_date": "2010-09-22", 
+            "unit": 1, 
+            "internal_name": "tocanita de puisor", 
+            "active": false, 
+            "special": false, 
+            "vat": 1
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.item", 
+        "fields": {
+            "discount_time_end": "2010-09-22 15:29:48", 
+            "sub_category": 2, 
+            "discount_time_start": "2010-09-22 15:29:46", 
+            "price": 10.0, 
+            "item_group": 1, 
+            "discount": 1, 
+            "new_item_end_date": "2010-09-22", 
+            "unit": 1, 
+            "internal_name": "supa de rosii", 
+            "active": false, 
+            "special": false, 
+            "vat": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "menu.item", 
+        "fields": {
+            "discount_time_end": "2010-09-22 15:37:14", 
+            "sub_category": 1, 
+            "discount_time_start": "2010-09-22 15:37:12", 
+            "price": 1.0, 
+            "item_group": 1, 
+            "discount": 1, 
+            "new_item_end_date": "2010-09-22", 
+            "unit": 1, 
+            "internal_name": "Mustar", 
+            "active": false, 
+            "special": false, 
+            "vat": 1
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "menu.item", 
+        "fields": {
+            "discount_time_end": "2010-09-22 15:43:27", 
+            "sub_category": 1, 
+            "discount_time_start": "2010-09-22 15:43:26", 
+            "price": 1.0, 
+            "item_group": 1, 
+            "discount": 1, 
+            "new_item_end_date": "2010-09-22", 
+            "unit": 1, 
+            "internal_name": "Ceciup", 
+            "active": false, 
+            "special": false, 
+            "vat": 1
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "menu.item", 
+        "fields": {
+            "discount_time_end": "2010-09-23 12:24:04", 
+            "sub_category": 2, 
+            "discount_time_start": "2010-09-23 12:24:03", 
+            "price": 1.0, 
+            "item_group": 1, 
+            "discount": 1, 
+            "new_item_end_date": "2010-09-23", 
+            "unit": 2, 
+            "internal_name": "ceva chestie", 
+            "active": false, 
+            "special": false, 
+            "vat": 1
+        }
+    }
+]
