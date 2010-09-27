@@ -4,6 +4,9 @@
 	<title>{% block title %}bucatar{% endblock%}</title>
 	<meta name="author" content="Radu Fericean">
   {% block style %}{% endblock %}
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script=>
+  <!--script src="{{ MEDIA_URL }}js/jquery.min.js" type="text/javascript"></script-->
+  {% block scripts %}{% endblock %}
 </head>
 <body>
   <div id="header">
@@ -22,7 +25,4 @@
 {% block content%}
 {% endblock %}
 </body>
-  <!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script-->
-  <script src="{{ MEDIA_URL }}js/jquery.min.js" type="text/javascript"></script>
-  {% block scripts %}{% endblock %}
 </html>

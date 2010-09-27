@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>{% trans 'Are you ready to send the order?' %}</h1>
-{% include 'order/div_order.html' %}
+{% include 'order/order_div.html' %}
 <br/>
 <a href="{% url order:list %}">{% trans 'Back' %}</a>
 <form action="" method="post">{% csrf_token %}
