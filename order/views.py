@@ -44,3 +44,17 @@ def add_item(request, item_id):
 def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     return HttpResponse(__get_current_order(request, unit))
+
+@login_required
+def send(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    current_order = __get_current_order(request, unit)
+    if unit.minimum_ord_val > current_order.total_amount:
+         return render_to_response('order/minimum_val_fail.html', {
+                                  'order': current_order,
+                                  }, context_instance=RequestContext(request))
+    current_order.status = 'ST'
+    current_order.save()
+    return render_to_response('order/sending_complete.html', {
+                                  'order': current_order,
+                                  }, context_instance=RequestContext(request))

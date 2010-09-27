@@ -6,7 +6,7 @@
 {% block scripts %}
 <script type="text/javascript">
   $(function(){
-    $("#current-order").load("{% url order:get_current_order object.id %}");
+    $("#current-order").load("{% url order:get_current object.id %}");
   })
 </script>
 {% endblock %}

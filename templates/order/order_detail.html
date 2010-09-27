@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% trans 'Order: ' %}{% endblock %}
+{% block title %}{% trans 'Order: ' %}{{ object }}{% endblock %}
 
 {% block content %}
 <h1>{% trans 'Order details' %}</h1>
@@ -19,6 +19,5 @@
 {% endfor %}
 </ul>
 <br/>
-<a href="{% url order:list %}">{% trans 'Back' %}</a>
-
+<a href="{% url order:send object.unit.id %}">{% trans 'Send' %}</a> <a href="{% url order:list %}">{% trans 'Back' %}</a>
 {% endblock %}
