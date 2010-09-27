@@ -8,6 +8,8 @@ def get_cart_subtotal(parser, token):
 
 class SubtotalNode(template.Node):
     def render(self, context):
-        order = context['order']
-        cart = context['cart']
-        return order.get_cart_subtotal(cart)
+        if context.has_key('order') and context.has_key('cartname'): 
+            order = context['order']
+            cart = context['cartname']
+            return order.get_cart_subtotal(cart)
+        return '0'

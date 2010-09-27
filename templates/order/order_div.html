@@ -23,12 +23,12 @@ $(function(){
 <div id="order-items">
 <h2>{% trans 'Order Items' %}</h2>
 <ul>
-{% for cart, oil in order.get_carts.items %}
-<h3>{% trans 'Order items for' %} {{ cart }}</h3>
+{% for cartname, oil in order.get_carts.items %}
+<h3>{% trans 'Order items for' %} {{ cartname }}</h3>
  {% for oi in oil %}
     <li>{{ oi }} {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}</li>
  {% empty %}
-    <li>{% trans 'There are no order items for' %} {{cart}}</li>
+    <li>{% trans 'There are no order items for' %} {{cartname}}</li>
  {% endfor %}
  <b>{% trans 'Cart subtotal' %}: {% get_cart_subtotal %}</b>
 {% endfor %}
