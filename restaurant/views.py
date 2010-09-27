@@ -1,11 +1,11 @@
 from django.contrib.auth.decorators import login_required
 #from django.core.urlresolvers import reverse
-#from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from restaurant.models import Unit
-
+from order import views
 
 def __user_has_profile(user):
     if not user.is_authenticated(): return None
@@ -29,6 +29,15 @@ def index(request):
     else:
         return redirect('profiles_create_profile')
 
+@login_required
+def unit_detail(request, object_id):
+    unit = get_object_or_404(Unit, pk=object_id)
+    current_order = views.__get_current_order(request, unit)
+    return render_to_response('restaurant/unit_detail.html', {
+                                  'object': unit,
+                                  'order': current_order,
+                                  'carts': current_order.get_carts(),
+                                  }, context_instance=RequestContext(request))
 
 def get_random_platinum(request):
     units = Unit.objects.order_by('?')

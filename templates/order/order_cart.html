@@ -24,10 +24,14 @@
         <h4 class="ui-widget-header">{{ cartname }}</h4>
         <div class="ui-widget-content">
                 <ol>
-                        <li class="placeholder">{% trans 'Add your items here' %}</li>
-
+                    {% for oi in oil %}
+                      <li>{{ oi }}</li>
+                    {% empty %}
+                        <li class="placeholder">Add your items here</li>
+                    {% endfor %}
                 </ol>
                 <hr/>
-                <div>{% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal"></span></div>
+                <div>{% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal">{% get_cart_subtotal %}</span></div>
         </div>
 </div>
+

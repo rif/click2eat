@@ -10,5 +10,6 @@ urlpatterns = patterns('',
                        url(r'^$', views.index, name='index'),
                        url(r'^platinum/$', views.get_random_platinum, name='get_random_platinum'),
                        url(r'^gold/$', views.get_random_gold, name='get_random_gold'),
-                       url(r'^restaurant/(?P<object_id>\d+)/$', list_detail.object_detail, {'queryset': Unit.objects.all()}, name='restaurant_detail'),
+                       #url(r'^restaurant/(?P<object_id>\d+)/$', list_detail.object_detail, {'queryset': Unit.objects.all()}, name='restaurant_detail'),
+                       url(r'^restaurant/(?P<object_id>\d+)/$', views.unit_detail, name='restaurant_detail'),
                        )
