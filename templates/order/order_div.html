@@ -22,13 +22,15 @@ $(function(){
 <div id="order-items">
 <h2>{% trans 'Order Items' %}</h2>
 <ul>
-{% for oi in order.orderitem_set.iterator %}
-<li>{{ oi }} {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}</li>
-{% empty %}
-<li>{% trans 'This order does not contain any items.' %}</li>
+{% for cart, oil in order.get_carts.items %}
+<h3>{{ cart }}</h3>
+ {% for oi in oil %}
+    <li>{{ oi }} {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}</li>
+ {% empty %}
+    <li>{% trans 'There are no order items for' %} {{cart}}</li>
+ {% endfor %}
 {% endfor %}
 </ul>
 </div>
 
 <h4>{% trans 'Total ammount' %}: <span id="order-total-amount">{{ order.total_amount }}</span></h4>
-<a href="{% url order:send order.unit.id %}">{% trans 'Send' %}
