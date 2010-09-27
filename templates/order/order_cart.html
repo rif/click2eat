@@ -1,4 +1,5 @@
-
+{% load i18n %}
+{% load order_tags %}
 <script type="text/javascript">
 
   $(function(){
@@ -12,6 +13,7 @@
                                 $("<li></li>").text(ui.draggable.text()).appendTo(this);
                                 $.get("/order/add_item/" + $item_id + "/" + $cart_id + "/", function(response){
                                     $("#current-order").load("{% url order:get_current object.id %}");
+                                    $("#{{cartname}}_subtotal").load("{% url order:get_subtotal object.id cartname %}");
                                 });
                         }
                 });
@@ -22,8 +24,10 @@
         <h4 class="ui-widget-header">{{ cartname }}</h4>
         <div class="ui-widget-content">
                 <ol>
-                        <li class="placeholder">Add your items here</li>
+                        <li class="placeholder">{% trans 'Add your items here' %}</li>
 
                 </ol>
+                <hr/>
+                <div>{% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal"></span></div>
         </div>
 </div>

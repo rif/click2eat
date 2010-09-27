@@ -14,7 +14,7 @@ $(function(){
   $(".remove-orderitem").click(function(e){
     $.get($(this).attr("href"));
     $(this).parent().fadeOut();
-    $("#order-total-amount").load("{% url order:get_total_amount order.unit.id %}");
+    $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
     e.preventDefault();
   });
 })
