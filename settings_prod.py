@@ -14,7 +14,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = ' [bucatar] '
 
-LOGIN_URL="/stand/accounts/login/"
+#LOGIN_URL="/stand/accounts/login/"
 
 SERVER='apache.filemaker-solutions.ro'
 MEDIA_URL = 'http://%s/static/media/' % SERVER
