@@ -1,16 +1,23 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load i18n %}
-{% block title %}{% trans 'Order: ' %}{% endblock %}
+{% load uni_form_tags %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/default.uni-form.css" type="text/css" />
+{% endblock %}
+{% block scripts %}
+<script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block title %}{% trans 'Order' %}: {{ order }}{% endblock %}
 
 {% block content %}
 <h1>{% trans 'Are you ready to send the order?' %}</h1>
 {% include 'order/order_div.html' %}
 
-<form action="" method="post">{% csrf_token %}
-    <div>
+<form method="POST" action="" class="uniForm">{% csrf_token %}
+    {{ form|as_uni_form }}
     <input type="submit" value="{% trans 'Yes, send the order' %}" />
-    </div>
 </form>
-<br/>
-<a href="{% url order:list %}">{% trans 'Back' %}</a>
 {% endblock %}

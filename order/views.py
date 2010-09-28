@@ -9,7 +9,7 @@ from django.contrib import messages
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
-from order.forms import CartNameForm
+from order.forms import CartNameForm, OrderForm
 
 def __get_current_order(request, unit):
     try:
@@ -75,12 +75,17 @@ def send(request, unit_id):
             return render_to_response('order/minimum_val_fail.html', {
                                   'order': current_order,
                                   }, context_instance=RequestContext(request))
-        current_order.status = 'ST'
-        current_order.save()
-        messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
-        return redirect('order:timer', unit_id=unit.id)
+        form = OrderForm(request.POST, instance=current_order)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.status = 'ST'
+            order.save()
+            messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
+            return redirect('order:timer', unit_id=unit.id)
     else:
-        return render_to_response('order/send_confirmation.html', {
+        form = OrderForm(instance=current_order)
+    return render_to_response('order/send_confirmation.html', {
+                                  'form': form,                                 
                                   'order': current_order,
                                   }, context_instance=RequestContext(request))
 

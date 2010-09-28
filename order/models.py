@@ -10,14 +10,13 @@ class Order(models.Model):
       ('ST', 'Sent'),
       ('RV', 'Received'),
       ('DL', 'Delivered'),
-      ('SV', 'Served'),
-      ('CA', 'Canceled'),
     )
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, editable=False, default='CR')
     total_amount = models.FloatField(_('total amount'), default=0)
-    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'),)
+    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'), editable=False)
+    additional_info = models.TextField(_('additional info'), null=True, blank=True, help_text=_('Add here any relevant information.'))
 
     def update_total_ammount(self):
         total = 0
