@@ -106,3 +106,10 @@ def get_subtotal(request, unit_id, cart_name):
   unit = get_object_or_404(Unit, pk=unit_id)
   current_order = __get_current_order(request, unit)
   return HttpResponse(str(current_order.get_cart_subtotal(cart_name)))
+  
+@login_required
+def timer(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    return render_to_response('order/timer.html', {
+                                  'unit': unit,
+                                  }, context_instance=RequestContext(request))
