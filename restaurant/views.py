@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from restaurant.models import Unit
+from restaurant.forms import RatingForm
 from order import views
 
 def __user_has_profile(user):
@@ -51,4 +52,19 @@ def get_random_gold(request):
                                   'gold': units.filter(package__slug='gold'),
                                   }, context_instance=RequestContext(request))
 
-    
+def feedback(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            new_rating = form.save(commit=False)
+            new_rating.user = request.user
+            new_rating.restaurant = unit
+            new_rating.save()
+            return redirect('restaurant:index')
+    else:
+        form = RatingForm()
+
+    return render_to_response('restaurant/feedback.html', {
+                                  'form': form,
+                                  }, context_instance=RequestContext(request))

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/default.uni-form.css" type="text/css" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block title %}{% trans 'Feedback' %}{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Please provide your feedback on latest order' %}</h1>
+<form method="POST" action="" class="uniForm">{% csrf_token %}
+    {{ form|as_uni_form }}
+    <input type="submit" value="{% trans 'Submit feedback' %}">
+</form>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ValidationError
 
 class DeliveryArea(models.Model):
     name = models.CharField(_('name'), max_length=200)
@@ -101,12 +102,16 @@ class Unit(models.Model):
       verbose_name = _('Unit')
       verbose_name_plural = _('Units')
 
+def rating_range(value):
+    if value < 0 or value > 5:
+        raise ValidationError(_('Value must be in the range [0,5]'))
+
 class Rating(models.Model):
     user = models.OneToOneField(User, verbose_name=_('user'))
     restaurant = models.ForeignKey(Unit, verbose_name=_('restaurant'))
-    quality = models.SmallIntegerField(_('quality'))
-    delivery_time = models.SmallIntegerField(_('delivery time'))
-    feedback = models.TextField(_('feedback'))
+    quality = models.SmallIntegerField(_('quality'), validators=[rating_range], help_text=_('0 worst quality, 5 highest quality'))
+    delivery_time = models.SmallIntegerField(_('delivery time'), validators=[rating_range], help_text=_('0 worst delivery time, 5 best delivery time'))
+    feedback = models.TextField(_('feedback'), null=True, blank=True)
 
     class Meta:
       verbose_name = _('Rating')

@@ -12,4 +12,5 @@ urlpatterns = patterns('',
                        url(r'^gold/$', views.get_random_gold, name='get_random_gold'),
                        #url(r'^restaurant/(?P<object_id>\d+)/$', list_detail.object_detail, {'queryset': Unit.objects.all()}, name='restaurant_detail'),
                        url(r'^restaurant/(?P<object_id>\d+)/$', views.unit_detail, name='restaurant_detail'),
+                       url(r'^feedback/(?P<unit_id>\d+)/$', views.feedback, name='feedback'),
                        )
