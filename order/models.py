@@ -10,6 +10,7 @@ class Order(models.Model):
       ('ST', 'Sent'),
       ('RV', 'Received'),
       ('DL', 'Delivered'),
+      ('CN', 'Canceled'),
     )
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)

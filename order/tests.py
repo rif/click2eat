@@ -55,3 +55,13 @@ class OrderTest(TestCase):
     self.failUnlessEqual(oi2, ord.get_carts()['1'][1])
     self.failUnlessEqual(oi3, ord.get_carts()['2'][0])
 
+  def test_clone(self):
+    ord1 = Order.objects.create(user=self.user, unit=self.unit)
+    oi1 = OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=1), cart="1")
+    oi2 = OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=2), cart="1")
+    oi3 = OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=3), cart="2")
+    ord2 = ord1.clone()
+    self.assertTrue((ord2.creation_date - datetime.now()).seconds < 5)
+    self.failUnlessEqual('CR', ord2.status)
+    self.failUnlessEqual(3, ord2.orderitem_set.count())
+

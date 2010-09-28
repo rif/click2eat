@@ -136,3 +136,26 @@ def clone(request, order_id):
     if new_order.total_amount != order.total_amount:
         messages.add_message(request, messages.WARNING, _('The price of some items has changed. Please review the order!'))
     return redirect('restaurant:restaurant_detail', object_id=order.unit_id)
+
+@login_required
+def restlist(request, unit_id):
+    orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
+    return render_to_response('order/restaurant_order_list.html', {
+                                  'order_list': orders,
+                                  }, context_instance=RequestContext(request))
+
+@login_required
+def restdetail(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    order.status = 'RV'
+    order.save()
+    return render_to_response('order/restaurant_order_detail.html', {
+                                  'order': order,
+                                  }, context_instance=RequestContext(request))
+
+@login_required
+def mark_delivered(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    order.status = 'DL'
+    order.save()
+    return HttpResponse(order.get_status_display())

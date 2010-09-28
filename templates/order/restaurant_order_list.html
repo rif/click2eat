@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'List profile all' %}{% endblock %}
+
+{% block content %}
+<ul>
+{% for order in order_list %}
+<li><a href="{% url order:restaurant_detail order.id %}">{{order.user.get_full_name }} {{order.creation_date|timesince}}</a></a></li>
+{% endfor %}
+</ul>
+{% endblock %}
