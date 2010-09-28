@@ -5,6 +5,7 @@ from order.models import Order
 
 urlpatterns = patterns('',
                        url(r'^list/$', views.list, name='list'),
+                       url(r'^list/(?P<unit_id>\d+)/$', views.list_unit, name='list_unit'),
                        url(r'^(?P<object_id>\d+)/$', list_detail.object_detail, {'queryset': Order.objects.all(), 'template_object_name': 'order'}, name='detail'),
                        #url(r'^create/(?P<unit_id>\d+)/$', views.create, name='create'),
                        url(r'^add_item/(?P<item_id>\d+)/(?P<cart_name>.+)/$', views.add_item, name='add_item'),
@@ -15,4 +16,5 @@ urlpatterns = patterns('',
                        url(r'^get_subtotal/(?P<unit_id>\d+)/(?P<cart_name>.+)/$', views.get_subtotal, name='get_subtotal'),
                        url(r'^add_cart/(?P<unit_id>\d+)/$', views.add_cart, name='add_cart'),
                        url(r'^countdown/(?P<unit_id>\d+)/$', views.timer, name='timer'),
+                       url(r'^clone/(?P<order_id>\d+)/$', views.clone, name='clone'),
                        )

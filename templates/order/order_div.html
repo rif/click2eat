@@ -13,7 +13,7 @@
 $(function(){
   $(".remove-orderitem").click(function(e){
     $.get($(this).attr("href"));
-    $(this).parent().fadeOut();
+    $(this).parents("tr").fadeOut();
     $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
     $("#cart-subtotal-amount").load($("#cart-subtotal-amount").attr("href"));
     e.preventDefault();
@@ -23,17 +23,32 @@ $(function(){
 
 <div id="order-items">
 <h2>{% trans 'Order Items' %}</h2>
-<ul>
+<table>
+  <thead>
+    <tr>
+      <th>{% trans 'Item' %}</th>
+      <th>{% trans 'Price' %}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
 {% for cartname, oil in order.get_carts.items %}
-<h3>{% trans 'Order items for' %} {{ cartname }}</h3>
- {% for oi in oil %}
-    <li>{{ oi }} {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}</li>
- {% empty %}
-    <li>{% trans 'There are no order items for' %} {{cartname}}</li>
- {% endfor %}
- <b>{% trans 'Cart subtotal' %}: <span id="cart-subtotal-amount" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></b>
+    <tr><td><h4>{% trans 'Order items for' %} {{ cartname }}</h4><td></tr>
+     {% for oi in oil %}
+        <tr>
+          <td>{{ oi }}</td>
+          <td>{{ oi.old_price }}</td>
+          <td>
+            {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}
+            {% if order.status != 'CR' %}<a href="{% url order:clone order.id%}">{% trans 'Clone' %}</a>{% endif %}
+          </td>
+          </tr>
+     {% empty %}
+        <tr>{% trans 'There are no order items for' %} {{cartname}}</tr>
+     {% endfor %}
+     <tr><td><b>{% trans 'Cart subtotal' %}:</b></td></td><b><span id="cart-subtotal-amount" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></b></td></tr>
 {% endfor %}
-</ul>
+  <tr><td><h3>{% trans 'Total ammount' %}</h3></td><td><h3><span id="order-total-amount">{{ order.total_amount }}</span></h3></td></tr>
+</tbody>
+</table>
 </div>
-
-<h4>{% trans 'Total ammount' %}: <span id="order-total-amount">{{ order.total_amount }}</span></h4>

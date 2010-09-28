@@ -51,6 +51,13 @@ class Order(models.Model):
         for cart in unique_carts_set:
             carts_dict[cart] = ois.filter(cart=cart)
         return carts_dict
+    
+    def clone(self):
+        new_order = Order.objects.create(user=self.user, status='CR', unit=self.unit)
+        for oi in self.orderitem_set.iterator():
+            new_oi = OrderItem.objects.create(order=new_order, item=oi.item, old_price=oi.item.price, cart=oi.cart)
+        return new_order
+        
 
     def __unicode__(self):
         self.is_abandoned()
@@ -59,6 +66,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = _('Order')
         verbose_name_plural = _('Order')
+        ordering = ['-creation_date']
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('order'))
@@ -67,7 +75,7 @@ class OrderItem(models.Model):
     cart = models.CharField(_('cart'), max_length=15, null=True, blank=True)
 
     def __unicode__(self):
-        return str(self.order) + " : " + str(self.item)
+        return str(self.item)
 
     def save(self, *args, **kwargs):
         super(OrderItem, self).save(*args, **kwargs)
