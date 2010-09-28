@@ -14,4 +14,5 @@ urlpatterns = patterns('',
                        url(r'^get_total_amount/(?P<order_id>\d+)/$', views.get_total_amount, name='get_total_amount'),
                        url(r'^get_subtotal/(?P<unit_id>\d+)/(?P<cart_name>.+)/$', views.get_subtotal, name='get_subtotal'),
                        url(r'^add_cart/(?P<unit_id>\d+)/$', views.add_cart, name='add_cart'),
+                       url(r'^countdown/(?P<unit_id>\d+)/$', views.timer, name='timer'),
                        )

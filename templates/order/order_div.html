@@ -15,6 +15,7 @@ $(function(){
     $.get($(this).attr("href"));
     $(this).parent().fadeOut();
     $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
+    $("#cart-subtotal-amount").load($("#cart-subtotal-amount").attr("href"));
     e.preventDefault();
   });
 })
@@ -30,7 +31,7 @@ $(function(){
  {% empty %}
     <li>{% trans 'There are no order items for' %} {{cartname}}</li>
  {% endfor %}
- <b>{% trans 'Cart subtotal' %}: {% get_cart_subtotal %}</b>
+ <b>{% trans 'Cart subtotal' %}: <span id="cart-subtotal-amount" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></b>
 {% endfor %}
 </ul>
 </div>

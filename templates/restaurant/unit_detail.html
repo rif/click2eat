@@ -83,15 +83,10 @@
 {% include 'order/order_cart.html' %}
 
 {% empty %}
-<div class="cart" id="{{ user.username }}">
-        <h4 class="ui-widget-header">{{ user.username }}</h4>
-        <div class="ui-widget-content">
-                <ol>
-                        <li class="placeholder">Add your items here</li>
+{% with user.username as cartname %}
+  {% include 'order/order_cart.html' %}
+{% endwith %}
 
-                </ol>
-        </div>
-</div>
 {% endfor %}
 </div>
 <a id="add-cart" href="#">Add cart</a>

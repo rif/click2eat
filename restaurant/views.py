@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 from restaurant.models import Unit
 from restaurant.forms import RatingForm
 from order import views
@@ -61,6 +63,7 @@ def feedback(request, unit_id):
             new_rating.user = request.user
             new_rating.restaurant = unit
             new_rating.save()
+            messages.add_message(request, messages.INFO, _('Thank you! Your feedback is very appreciated!'))
             return redirect('restaurant:index')
     else:
         form = RatingForm()

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}css/jquery.countdown.css" type="text/css" />
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.countdown.pack.js"></script>
+<script type="text/javascript">
+    var delivery = new Date();
+    delivery.setMinutes(delivery.getMinutes() + {{ unit.delivery_time }});
+    $(function(){
+        
+       $('#countdown').countdown({until: delivery, onExpiry: countUp, description: 'To delivery deadline.'}); 
+    })
+
+function countUp() {
+  $('#countup').countdown({since: delivery, format: 'MS', description: 'Since delivery deadline.'});
+}
+</script>
+{% endblock %}
+
+{% block title %}{% trans 'Order countdown' %}{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Order countdown' %}</h1>
+<h2><a href="{% url restaurant:feedback unit.id %}">{% trans 'Has arrived!' %}</a></h2>
+<div id="countdown">
+</div>
+<div id="countup">
+</div>
+{% endblock %}
+
