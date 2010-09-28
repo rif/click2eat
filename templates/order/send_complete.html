@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-{% load i18n %}
-{% block title %}{% trans 'Order: ' %}{{order}}{% trans 'sent'%}{% endblock %}
-
-{% block content %}
-<p>{% trans 'Your order has been sent to the restaurant' %}!</p>
-<a href="{% url restaurant:index %}">{% trans 'Back' %}</a>
-{% endblock %}

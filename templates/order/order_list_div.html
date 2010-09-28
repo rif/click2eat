@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<ul>
+{% for order in order_list %}
+<li><a href="{% url order:detail order.id %}">{{order}}</a> <a href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></li>
+{% endfor %}
+</ul>

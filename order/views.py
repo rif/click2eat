@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
 from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
@@ -23,6 +25,13 @@ def __get_current_order(request, unit):
 def list(request):
     orders = Order.objects.filter(user__id=request.user.id).exclude(status='CR')
     return render_to_response('order/order_list.html', {
+                                  'order_list': orders,
+                                  }, context_instance=RequestContext(request))
+
+@login_required
+def list_unit(request, unit_id):
+    orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')
+    return render_to_response('order/order_list_div.html', {
                                   'order_list': orders,
                                   }, context_instance=RequestContext(request))
 
@@ -68,9 +77,8 @@ def send(request, unit_id):
                                   }, context_instance=RequestContext(request))
         current_order.status = 'ST'
         current_order.save()
-        return render_to_response('order/send_complete.html', {
-                                  'order': current_order,
-                                  }, context_instance=RequestContext(request))
+        messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
+        return redirect('order:timer', unit_id=unit.id)
     else:
         return render_to_response('order/send_confirmation.html', {
                                   'order': current_order,
@@ -113,3 +121,13 @@ def timer(request, unit_id):
     return render_to_response('order/timer.html', {
                                   'unit': unit,
                                   }, context_instance=RequestContext(request))
+
+@login_required
+def clone(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    current_order = __get_current_order(request, order.unit)
+    current_order.delete()
+    new_order = order.clone()
+    if new_order.total_amount != order.total_amount:
+        messages.add_message(request, messages.WARNING, _('The price of some items has changed. Please review the order!'))
+    return redirect('restaurant:restaurant_detail', object_id=order.unit_id)

@@ -5,5 +5,5 @@
 {% block content %}
 {% include 'order/order_div.html' %}
 <br/>
-<a href="{% url order:list %}">{% trans 'Back' %}</a>
+<a href="{% url order:clone order.id %}">{% trans 'Clone' %}</a> <a href="{% url order:list %}">{% trans 'Back' %}</a>
 {% endblock %}

@@ -41,8 +41,8 @@
         });
       e.preventDefault();
     });
+    $("#last-orders").load("{% url order:list_unit object.id %}");
   });
-
 </script>
 {% endblock %}
 
@@ -57,7 +57,11 @@
 <li>{% trans 'Phone' %}: {{ object.phone }}</li>
 </ul>
 
-<h2>Current order:</h2>
+<h2>{% trans 'Previous orders at this restaurant' %}</h2>
+<div id="last-orders">
+</div>
+
+<h2>{% trans 'Current order' %}</h2>
 <div id="current-order">
 </div>
 <a href="{% url order:send object.id %}">{% trans 'Send' %}</a>
