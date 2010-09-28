@@ -17,4 +17,11 @@ urlpatterns = patterns('',
                        url(r'^add_cart/(?P<unit_id>\d+)/$', views.add_cart, name='add_cart'),
                        url(r'^countdown/(?P<unit_id>\d+)/$', views.timer, name='timer'),
                        url(r'^clone/(?P<order_id>\d+)/$', views.clone, name='clone'),
+                       url(r'^clone/(?P<order_id>\d+)/$', views.clone, name='clone'),
+                       )
+
+urlpatterns += patterns('',
+                       url(r'^restlist/(?P<unit_id>\d+)/$', views.restlist, name='restaurant_list'),
+                       url(r'^rest/(?P<order_id>\d+)/$', views.restdetail, name='restaurant_detail'),
+                       url(r'^delivered/(?P<order_id>\d+)/$', views.mark_delivered, name='restaurant_deliver'),
                        )
