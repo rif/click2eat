@@ -22,14 +22,14 @@ class Order(models.Model):
     def update_total_ammount(self):
         total = 0
         for oi in self.orderitem_set.iterator():
-            total += oi.item.price
+            total += oi.old_price
         self.total_amount = total
         self.save()
 
     def get_cart_subtotal(self, cart):
       subtotal = 0
       for oi in self.orderitem_set.filter(cart=cart).iterator():
-        subtotal += oi.item.price
+        subtotal += oi.old_price
       return subtotal
 
     def is_abandoned(self):
@@ -63,6 +63,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('order'))
     item = models.ForeignKey('menu.Item', verbose_name=_('item'))
+    old_price = models.FloatField(_('price'), default=0)
     cart = models.CharField(_('cart'), max_length=15, null=True, blank=True)
 
     def __unicode__(self):

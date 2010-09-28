@@ -29,7 +29,7 @@ class EmployeeAdmin(admin.ModelAdmin):
     search_fields = ['name', 'address']
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'restaurant', 'quality', 'delivery_time', 'feedback')
+    list_display = ('restaurant', 'user', 'quality', 'delivery_time', 'feedback')
     search_fields = ['user', 'restaurant', 'feedback']
 
 admin.site.register(Rating, RatingAdmin)
