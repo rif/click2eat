@@ -9,6 +9,7 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied 
 from django.contrib.sites.models import Site
+import csv
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
@@ -169,6 +170,21 @@ def restlist_ajax(request, unit_id):
     return render_to_response('order/restaurant_order_list_div.html', {
                                   'order_list': orders,
                                   }, context_instance=RequestContext(request))
+
+
+@login_required
+def restlist_csv(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    __is_restaurant_administrator(request, unit)
+    
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=somefilename.csv'
+    
+    writer = csv.writer(response)
+    writer.writerow(['Name', 'Address', 'Date', 'Status', 'Amount', 'Additional info'])
+    for o in Order.objects.filter(unit=unit_id).iterator():
+        writer.writerow([o.user.get_full_name(), o.address, o.creation_date, o.get_status_display(), o.total_amount, o.additional_info])
+    return response
 
 @login_required
 def restdetail(request, order_id):

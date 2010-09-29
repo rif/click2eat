@@ -57,6 +57,8 @@
 <li>{% trans 'Phone' %}: {{ object.phone }}</li>
 </ul>
 
+<a href="{% url restaurant:feedback object.id %}">{% trans 'Rate this restaurant' %}</a>
+
 <h2>{% trans 'Previous orders at this restaurant' %}</h2>
 <div id="last-orders">
 </div>
