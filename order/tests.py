@@ -10,6 +10,7 @@ class OrderTest(TestCase):
   fixtures = ['restaurant.json', 'menu.json', 'order.json']
   def setUp(self):
     self.user = User.objects.create_user('rif', 'test@test.te', 'test')
+    self.user = User.objects.create_user('rif1', 'test@test.te', 'test')
     self.unit = Unit.objects.get(pk=1)
 
   def test_abandoned_empty_removal(self):
@@ -82,5 +83,22 @@ class OrderTest(TestCase):
       self.failUnlessEqual(200, r.status_code)
       self.failUnlessEqual('Delivered', r.content)
       #self.failUnlessEqual(u'DL', ord.status)
-    
-      
+  
+  def test_restricted_views(self):
+      ord = Order.objects.create(user=self.user, unit=self.unit)
+      self.client.login(username='rif', password='test')
+      r = self.client.get(reverse('order:restaurant_detail', args=[ord.id]))
+      self.failUnlessEqual(200, r.status_code)
+      r = self.client.get(reverse('order:restaurant_list', args=[self.unit.id]))
+      self.failUnlessEqual(200, r.status_code)
+      r = self.client.get(reverse('order:restaurant_list_ajax', args=[self.unit.id]))
+      self.failUnlessEqual(200, r.status_code)
+      self.client.login(username='rif1', password='test')
+      r = self.client.get(reverse('order:restaurant_detail', args=[ord.id]))
+      self.failUnlessEqual(403, r.status_code)
+      r = self.client.get(reverse('order:restaurant_list', args=[self.unit.id]))
+      self.failUnlessEqual(403, r.status_code)
+      r = self.client.get(reverse('order:restaurant_list_ajax', args=[self.unit.id]))
+      self.failUnlessEqual(403, r.status_code)
+      r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
+      self.failUnlessEqual(403, r.status_code)
