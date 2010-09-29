@@ -36,11 +36,10 @@ $(function(){
     <tr><td><h4>{% trans 'Order items for' %} {{ cartname }}</h4><td></tr>
      {% for oi in oil %}
         <tr>
-          <td>{{ oi }}</td>
+          <td>{{ oi.item.name_ro }}</td>
           <td>{{ oi.old_price }}</td>
           <td>
             {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}
-            {% if order.status != 'CR' %}<a href="{% url order:clone order.id%}">{% trans 'Clone' %}</a>{% endif %}
           </td>
           </tr>
      {% empty %}
