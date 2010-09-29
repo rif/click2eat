@@ -28,6 +28,8 @@
 {% endblock %}
 
 {% block content %}
+<a href="{% url order:restaurant_list_csv unit_id %}">{% trans 'Download all orders (CSV)' %}</a>
+
 <div id="order-list">
   {% include 'order/restaurant_order_list_div.html' %}
 </div>
