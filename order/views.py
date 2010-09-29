@@ -47,7 +47,7 @@ def add_item(request, item_id, cart_name):
     try:
         current_order = __get_current_order(request, item.unit)
         if cart_name == '': cart_name = request.user.username
-        order_item = OrderItem.objects.create(order=current_order, item=item, old_price=item.price, cart=cart_name)
+        order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name)
         return HttpResponse(str(order_item.id))
     except:
         raise Http404()

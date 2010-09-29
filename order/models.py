@@ -78,6 +78,8 @@ class OrderItem(models.Model):
         return str(self.item)
 
     def save(self, *args, **kwargs):
+        if not self.id:
+            self.old_price = self.item.price
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_ammount()
 
