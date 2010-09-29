@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
-{% load i18n %}
-{% block title %}{% trans 'Order: ' %}{{ order }}{% endblock %}
 
-{% block scripts %}
+{% load i18n %}
 <script type="text/javascript">
 $(function(){
   $("#deliver-link").click(function(e){
@@ -13,10 +10,6 @@ $(function(){
   });
 });
 </script>
-{% endblock %}
-
-{% block content %}
-{% load order_tags %}
 
 <h1>{% trans 'Order details' %}</h1>
 <ul>
@@ -39,5 +32,3 @@ $(function(){
 {% if order.status == 'RV' %}
 <h1 id="deliver-response"><a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a></h1>
 {% endif %}
-<a href="{% url order:restaurant_list order.unit.id %}">{% trans 'Back' %}</a>
-{% endblock %}

@@ -142,6 +142,14 @@ def restlist(request, unit_id):
     orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
     return render_to_response('order/restaurant_order_list.html', {
                                   'order_list': orders,
+                                  'unit_id': unit_id,
+                                  }, context_instance=RequestContext(request))
+
+@login_required
+def restlist_ajax(request, unit_id):
+    orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
+    return render_to_response('order/restaurant_order_list_div.html', {
+                                  'order_list': orders,
                                   }, context_instance=RequestContext(request))
 
 @login_required
