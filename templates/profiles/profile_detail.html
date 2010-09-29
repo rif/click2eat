@@ -37,7 +37,7 @@
             <td><a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a> <a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a></td>
         </tr>
         {% empty %}
-        <tr><td>You have not defined any delivery address. <a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a></td></tr>
+        <tr><td>{% trans 'You have not defined any delivery address.' %} <a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a></td></tr>
         {% endfor %}
     </tbody>
 </table>
