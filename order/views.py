@@ -5,8 +5,10 @@ from django.shortcuts import redirect
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
 from django.utils.translation import ugettext_lazy as _
+from django.core.mail import send_mail
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied 
+from django.contrib.sites.models import Site
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
@@ -88,6 +90,11 @@ def send(request, unit_id):
             order.status = 'ST'
             order.save()
             messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
+            send_mail('New Order',
+                       render_to_response('order/restaurant_order_detail.html', {'order': order}, context_instance=RequestContext(request)),
+                       'bucatar@filemaker-solutions.ro',
+                       [unit.email],
+                       fail_silently=False)
             return redirect('order:timer', unit_id=unit.id)
     else:
         form = OrderForm(instance=current_order)
@@ -181,3 +188,16 @@ def mark_delivered(request, order_id):
     order.status = u'DL'
     order.save()
     return HttpResponse(order.get_status_display())
+
+@login_required
+def send_confiramtion_email(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    __is_restaurant_administrator(request, order.unit)
+    send_mail('Order received',
+                       render_to_response('order/confirmation_email.txt',
+                                          {'order': order, 'site_name': Site.objects.get_current().domain},
+                                          context_instance=RequestContext(request)),
+                       order.unit.email,
+                       [order.user.email],
+                       fail_silently=False)
+    return HttpResponse('Sent!')

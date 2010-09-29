@@ -8,14 +8,21 @@ $(function(){
     });
     e.preventDefault();
   });
+  $("#confirm-link").click(function(e){
+    $.get($(this).attr("href"), function(data){
+      $("#confirm-response").text(data);
+    });
+    e.preventDefault();
+  });
 });
 </script>
 
-<h1>{% trans 'Order details' %}</h1>
+<h1>{% trans 'Order details' %} id: {{ order.id }}</h1>
 <ul>
 <li>{% trans 'User' %}: {{ user.get_full_name }}</li>
 <li>{% trans 'Phone' %}: {{ user.get_profile.phone }}</li>
 <li>{% trans 'Address' %}: {{ order.address }}</li>
+{% if order.address.additional_info %}<li>{% trans 'Address additional info' %}: {{ order.address.additional_info }}</li>{% endif %}
 <li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
 <li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
 <li>{% trans 'Total amount' %}: {{ order.total_amount }}</li>
@@ -28,7 +35,10 @@ $(function(){
   <li>{{ oi }}</li>
   {% endfor %}
 </ol>
+<h2>{% trans 'Additional info' %}</h2>
+<p>{{ order.additional_info }}</p>
 </div>
 {% if order.status == 'RV' %}
+<h1 id="confirm-response"><a id="confirm-link" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a></h1>
 <h1 id="deliver-response"><a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a></h1>
 {% endif %}
