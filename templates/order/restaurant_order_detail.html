@@ -21,6 +21,8 @@ $(function(){
 <h1>{% trans 'Order details' %}</h1>
 <ul>
 <li>{% trans 'User' %}: {{ user.get_full_name }}</li>
+<li>{% trans 'Phone' %}: {{ user.get_profile.phone }}</li>
+<li>{% trans 'Address' %}: {{ order.address }}</li>
 <li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
 <li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
 <li>{% trans 'Total amount' %}: {{ order.total_amount }}</li>
@@ -36,5 +38,6 @@ $(function(){
 </div>
 {% if order.status == 'RV' %}
 <h1 id="deliver-response"><a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a></h1>
+<a href="{% url order:restaurant_list order.unit.id %}">{% trans 'Back' %}</a>
 {% endif %}
 {% endblock %}

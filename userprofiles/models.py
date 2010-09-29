@@ -21,11 +21,15 @@ class DeliveryAddress(models.Model):
         return ('profiles_profile_detail', (), {'username': self.user.username})
     
     def __unicode__(self):
-        if self.primary:
+        """if self.primary:
             postfix = u' primary address'
         else:
             postfix = u' alternative address'
-        return self.user.get_full_name() + postfix
+        return self.user.get_full_name() + postfix"""
+        return self.get_full_address()
+    
+    def get_full_address(self):
+        return _('%(street)s %(house_number)s floor %(floor)d ap. %(ap)d, %(city)s other info: %(info)s') % {'street': self.street, 'house_number': self.house_number, 'floor': self.floor, 'ap': self.ap_number, 'city': self.city, 'info': self.additional_info}
     
     def save(self, *args, **kwargs):
         if self.primary == True:
@@ -35,6 +39,7 @@ class DeliveryAddress(models.Model):
         super(DeliveryAddress, self).save(*args, **kwargs) # Call the "real" save() method.
   
     class Meta:
+        ordering = ['-primary']
         verbose_name = _('Delivery Address')
         verbose_name_plural = _('Delivery Addresses')
 

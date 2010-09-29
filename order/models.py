@@ -13,6 +13,7 @@ class Order(models.Model):
       ('CN', 'Canceled'),
     )
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
+    address = models.ForeignKey('userprofiles.DeliveryAddress', verbose_name=_('address'), null=True, blank=True)
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, editable=False, default='CR')
     total_amount = models.FloatField(_('total amount'), default=0)
