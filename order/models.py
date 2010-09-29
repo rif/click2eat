@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.db.models import F
 from datetime import datetime
 
 class Order(models.Model):
@@ -13,7 +14,7 @@ class Order(models.Model):
       ('CN', 'Canceled'),
     )
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
-    address = models.ForeignKey('userprofiles.DeliveryAddress', verbose_name=_('address'), null=True, blank=True)
+    address = models.ForeignKey('userprofiles.DeliveryAddress', verbose_name=_('address'), null=True, blank=True, limit_choices_to = {'user': F('user')})
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, default='CR')
     total_amount = models.FloatField(_('total amount'), default=0)
