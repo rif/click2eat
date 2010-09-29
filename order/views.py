@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.http import HttpResponse, Http404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied 
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
@@ -20,6 +21,12 @@ def __get_current_order(request, unit):
         unit = Unit.objects.get(pk=unit.id)
         co = Order.objects.create(user=request.user, unit=unit)
     return co
+
+def __is_restaurant_administrator(request, unit):
+    if not unit.admin_users: raise PermissionDenied()
+    admin_user_list = [u.strip() for u in unit.admin_users.split(",")]
+    if request.user.username not in admin_user_list:
+        raise PermissionDenied()
 
 @login_required
 def list(request):
@@ -139,6 +146,8 @@ def clone(request, order_id):
 
 @login_required
 def restlist(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    __is_restaurant_administrator(request, unit)
     orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
     return render_to_response('order/restaurant_order_list.html', {
                                   'order_list': orders,
