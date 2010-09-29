@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from datetime import datetime
 from order.models import Order, OrderItem
 from restaurant.models import Unit
@@ -13,7 +14,7 @@ class OrderTest(TestCase):
 
   def test_abandoned_empty_removal(self):
     old = Order.objects.create(user=self.user, unit=self.unit)
-    old.creation_date=datetime(2010,9,24)
+    old.creation_date = datetime(2010, 9, 24)
     old.save()
     self.failUnlessEqual(12, Order.objects.count())
     self.failUnlessEqual(0.0, old.total_amount)
@@ -22,7 +23,7 @@ class OrderTest(TestCase):
 
   def test_abandoned_nonempty_status(self):
     old = Order.objects.create(user=self.user, unit=self.unit)
-    old.creation_date=datetime(2010,9,24)
+    old.creation_date = datetime(2010, 9, 24)
     old.save()
     self.failUnlessEqual(12, Order.objects.count())
     OrderItem.objects.create(order=old, item=Item.objects.get(pk=1))
@@ -66,4 +67,20 @@ class OrderTest(TestCase):
     self.failUnlessEqual('CR', ord2.status)
     self.failUnlessEqual(3, ord2.orderitem_set.count())
     self.failUnlessEqual(12.23, ord2.total_amount)
-
+  
+  def test_mark_delivered(self):
+      ord = Order.objects.create(user=self.user, unit=self.unit)
+      self.client.login(username='rif', password='test')
+      r = self.client.get(reverse('order:restaurant_detail', args=[ord.id]))
+      self.failUnlessEqual(200, r.status_code)
+      #self.failUnlessEqual(u'RV', ord.status)
+  
+  def test_mark_delivered(self):
+      ord = Order.objects.create(user=self.user, unit=self.unit)
+      self.client.login(username='rif', password='test')
+      r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
+      self.failUnlessEqual(200, r.status_code)
+      self.failUnlessEqual('Delivered', r.content)
+      #self.failUnlessEqual(u'DL', ord.status)
+    
+      
