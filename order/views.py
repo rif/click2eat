@@ -156,6 +156,8 @@ def restlist(request, unit_id):
 
 @login_required
 def restlist_ajax(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    __is_restaurant_administrator(request, unit)
     orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
     return render_to_response('order/restaurant_order_list_div.html', {
                                   'order_list': orders,
@@ -164,6 +166,7 @@ def restlist_ajax(request, unit_id):
 @login_required
 def restdetail(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
+    __is_restaurant_administrator(request, order.unit)
     if order.status == 'ST':
         order.status = u'RV'
         order.save()
@@ -174,6 +177,7 @@ def restdetail(request, order_id):
 @login_required
 def mark_delivered(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
+    __is_restaurant_administrator(request, order.unit)
     order.status = u'DL'
     order.save()
     return HttpResponse(order.get_status_display())
