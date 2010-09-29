@@ -38,6 +38,6 @@ $(function(){
 </div>
 {% if order.status == 'RV' %}
 <h1 id="deliver-response"><a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a></h1>
-<a href="{% url order:restaurant_list order.unit.id %}">{% trans 'Back' %}</a>
 {% endif %}
+<a href="{% url order:restaurant_list order.unit.id %}">{% trans 'Back' %}</a>
 {% endblock %}

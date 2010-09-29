@@ -147,8 +147,9 @@ def restlist(request, unit_id):
 @login_required
 def restdetail(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
-    order.status = 'RV'
-    order.save()
+    if order.status == 'ST':
+        order.status = u'RV'
+        order.save()
     return render_to_response('order/restaurant_order_detail.html', {
                                   'order': order,
                                   }, context_instance=RequestContext(request))
@@ -156,6 +157,6 @@ def restdetail(request, order_id):
 @login_required
 def mark_delivered(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
-    order.status = 'DL'
+    order.status = u'DL'
     order.save()
     return HttpResponse(order.get_status_display())
