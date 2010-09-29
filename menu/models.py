@@ -65,7 +65,7 @@ class Item(MultilingualModel):
   discount_time_start = models.DateTimeField(_('discount time start'), null=True, blank=True)
   discount_time_end = models.DateTimeField(_('discount time end'), null=True, blank=True)
   item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'), null=True, blank=True)
-  new_item_end_date = models.DateField(_('new item end date'))
+  new_item_end_date = models.DateField(_('new item end date'), null=True, blank=True)
   sub_category = models.ForeignKey(SubCategory, verbose_name=_('sub category'))
   special = models.BooleanField(_('special'))
   active = models.BooleanField(_('active'), default=True)
