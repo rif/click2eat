@@ -46,10 +46,7 @@ def list(request):
 
 @login_required
 def list_unit(request, unit_id):
-    #if request.method == 'POST':
     orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')
-    #else:
-    #    orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')[:5]
     return list_detail.object_list(
         request,
         queryset = orders,
@@ -57,9 +54,6 @@ def list_unit(request, unit_id):
         template_name = 'order/order_list_div.html',
         template_object_name = 'order',
     )
-    #return render_to_response('order/order_list_div.html', {
-    #                              'order_list': orders,
-    #                              }, context_instance=RequestContext(request))
 
 """@login_required
 def create(request, unit_id):

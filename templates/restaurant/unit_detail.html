@@ -43,12 +43,6 @@
     $("#last-orders").load("{% url order:list_unit object.id %}", function(){
       pageLinks();
     });
-    $("#all-orders-link").click(function(e){
-      $.post($(this).attr("href"), function(data){
-        $("#last-orders").html(data);
-      });
-      e.preventDefault();
-    });
   });
   function pageLinks(){
     $(".page-link").click(function(e){
@@ -78,7 +72,6 @@
 <h2>{% trans 'Previous orders at this restaurant' %}</h2>
 <div id="last-orders">
 </div>
-<a href="{% url order:list_unit object.id %}" id="all-orders-link">{% trans 'See all orders' %}</a>
 <br>
 <h2>{% trans 'Current order' %}</h2>
 <div id="current-order">
