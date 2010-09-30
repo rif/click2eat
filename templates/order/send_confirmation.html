@@ -16,7 +16,7 @@
 <h1>{% trans 'Are you ready to send the order?' %}</h1>
 {% include 'order/order_div.html' %}
 
-<p>{% trans "If you don't have aa deliuvery address" %}: <a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a></p>
+<p>{% trans "If you don't have aa deliuvery address" %}: <a href="{% url userprofiles:create_address %}" target="_blank">{% trans 'Add one now' %}</a></p>
 <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
     <input type="submit" value="{% trans 'Yes, send the order' %}" />

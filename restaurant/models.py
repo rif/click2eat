@@ -101,7 +101,7 @@ class Unit(models.Model):
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))
     contact_person = models.CharField(_('contact persoon'), max_length=50)    
-    delivery_time_user = models.FloatField(_('delivery time user'), null=True, blank=True, help_text=_('Calculated as a avg from user feedback.'))
+    delivery_time_user = models.FloatField(_('delivery time user'), null=True, blank=True, editable=False, help_text=_('Calculated as a avg from user feedback.'))
     delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
     admin_users = models.CharField(_('admin users'), max_length=100, null=True, blank=True, help_text=_('the users that can access front-end administration pages for this unit.'))
     info = models.TextField(_('info'), null=True, blank=True)

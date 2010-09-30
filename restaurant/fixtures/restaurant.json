@@ -64,6 +64,13 @@
     }, 
     {
         "pk": 1, 
+        "model": "restaurant.currency", 
+        "fields": {
+            "name": "RON"
+        }
+    }, 
+    {
+        "pk": 1, 
         "model": "restaurant.deliverytype", 
         "fields": {
             "price": 15.0, 
@@ -94,9 +101,10 @@
                 2, 
                 3
             ], 
+            "currency": 1, 
             "employee": 1, 
             "latitude": 1.0, 
-            "email": "emp1@emp.ro", 
+            "email": "restaurant1@mailinator.com", 
             "delivery_type": 1, 
             "open_hours": "1", 
             "minimum_ord_val": 1, 
@@ -126,6 +134,7 @@
             "communication": [
                 1
             ], 
+            "currency": 1, 
             "employee": 1, 
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
@@ -158,6 +167,7 @@
             "communication": [
                 2
             ], 
+            "currency": 1, 
             "employee": 1, 
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
@@ -186,6 +196,7 @@
         "fields": {
             "payment_method": [], 
             "communication": [], 
+            "currency": 1, 
             "employee": 1, 
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
@@ -214,6 +225,7 @@
         "fields": {
             "payment_method": [], 
             "communication": [], 
+            "currency": 1, 
             "employee": 1, 
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
@@ -242,6 +254,7 @@
         "fields": {
             "payment_method": [], 
             "communication": [], 
+            "currency": 1, 
             "employee": 1, 
             "latitude": 1.0, 
             "email": "rest@test.ro", 
@@ -348,6 +361,17 @@
             "feedback": "Nimic", 
             "delivery_time": 3, 
             "quality": 2, 
+            "user": 2, 
+            "restaurant": 1
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "restaurant.rating", 
+        "fields": {
+            "feedback": "eewewqc wq ewr ew", 
+            "delivery_time": 2, 
+            "quality": 4, 
             "user": 2, 
             "restaurant": 1
         }

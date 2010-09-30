@@ -24,7 +24,7 @@
         <tr>
             <th>#</th>
             <th>{% trans 'Address' %}</th>
-            <th>{% trans 'Street' %}</th>
+            <th>{% trans 'Primary' %}</th>
             <th>{% trans 'Operation' %}</td>
         </tr>
     </thead>
@@ -33,7 +33,7 @@
         <tr>
             <td>{{ forloop.counter }}</td>
             <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
-            <td>{{ addr.street }}</td>
+            <td>{{ addr.primary }}</td>
             <td><a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a> <a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a></td>
         </tr>
         {% empty %}
