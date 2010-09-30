@@ -17,20 +17,20 @@ class OrderTest(TestCase):
     old = Order.objects.create(user=self.user, unit=self.unit)
     old.creation_date = datetime(2010, 9, 24)
     old.save()
-    self.failUnlessEqual(12, Order.objects.count())
+    self.failUnlessEqual(26, Order.objects.count())
     self.failUnlessEqual(0.0, old.total_amount)
     old.is_abandoned()
-    self.failUnlessEqual(11, Order.objects.count())
+    self.failUnlessEqual(25, Order.objects.count())
 
   def test_abandoned_nonempty_status(self):
     old = Order.objects.create(user=self.user, unit=self.unit)
     old.creation_date = datetime(2010, 9, 24)
     old.save()
-    self.failUnlessEqual(12, Order.objects.count())
+    self.failUnlessEqual(26, Order.objects.count())
     OrderItem.objects.create(order=old, item=Item.objects.get(pk=1))
     self.failUnlessEqual(1.23, old.total_amount)
     old.is_abandoned()
-    self.failUnlessEqual(12, Order.objects.count())
+    self.failUnlessEqual(26, Order.objects.count())
     self.failUnlessEqual('AB', old.status)
 
   def test_total_amount(self):

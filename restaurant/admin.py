@@ -41,16 +41,16 @@ class UnitAdmin(admin.ModelAdmin):
     inlines = [ItemGroupInline, ItemInline]
     fieldsets = (
         (None, {
-            'fields': ('name', 'address', 'email', 'phone', 'logo_path', 'package', 'open_hours')
+            'fields': ('name', 'address', ('email', 'phone'), 'logo_path', 'open_hours', 'package')
         }),
         ('Location options', {
-            'fields': ('unit_devlivery', 'latitude', 'longitude', 'delivery_type', 'delivery_time', 'delivery_time_user')
+            'fields': ('unit_devlivery', ('latitude', 'longitude'), 'delivery_type', 'delivery_time')
         }),
         ('Administration', {
             'fields': ('contact_person', 'admin_users', 'employee', 'communication')
         }),
         ('Payment info', {
-            'fields': ('payment_method', 'currency', 'overall_discount', 'minimum_ord_val')
+            'fields': (('payment_method', 'currency'), 'overall_discount', 'minimum_ord_val')
         }),
         ('Other info', {
             'classes': ('collapse',),

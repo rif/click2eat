@@ -9,11 +9,13 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied 
 from django.contrib.sites.models import Site
+from django import forms
 import csv
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
 from order.forms import CartNameForm, OrderForm
+from userprofiles.models import DeliveryAddress
 
 def __get_current_order(request, unit):
     try:
@@ -80,6 +82,9 @@ def get_current_order(request, unit_id):
 def send(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = __get_current_order(request, unit)
+    if current_order.status != 'CR':
+        messages.add_message(request, messages.INFO, _('Current order already sent.'))
+        return redirect('order:timer', unit_id=unit.id)
     if request.method == 'POST':
         if unit.minimum_ord_val > current_order.total_amount:
             return render_to_response('order/minimum_val_fail.html', {
@@ -88,6 +93,7 @@ def send(request, unit_id):
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():
             order = form.save(commit=False)
+            print form.cleaned_data
             order.status = 'ST'
             order.save()
             messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
@@ -99,6 +105,7 @@ def send(request, unit_id):
             return redirect('order:timer', unit_id=unit.id)
     else:
         form = OrderForm(instance=current_order)
+    form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
     return render_to_response('order/send_confirmation.html', {
                                   'form': form,                                 
                                   'order': current_order,
@@ -178,7 +185,7 @@ def restlist_csv(request, unit_id):
     __is_restaurant_administrator(request, unit)
     
     response = HttpResponse(mimetype='text/csv')
-    response['Content-Disposition'] = 'attachment; filename=somefilename.csv'
+    response['Content-Disposition'] = 'attachment; filename=orders.csv'
     
     writer = csv.writer(response)
     writer.writerow(['Name', 'Address', 'Date', 'Status', 'Amount', 'Additional info'])
