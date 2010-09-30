@@ -7,3 +7,9 @@ django-debug-toolbar
 django-extensions
 PIL
 Werkzeug
+python-memcached
+setproctitle
+greenlet
+gevent
+gunicorn
+gunicorn-console
