@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied 
 from django.contrib.sites.models import Site
 from django import forms
+from django.views.generic import list_detail
 import csv
 from order.models import Order, OrderItem
 from restaurant.models import Unit
@@ -36,19 +37,29 @@ def __is_restaurant_administrator(request, unit):
 @login_required
 def list(request):
     orders = Order.objects.filter(user__id=request.user.id).exclude(status='CR')
-    return render_to_response('order/order_list.html', {
-                                  'order_list': orders,
-                                  }, context_instance=RequestContext(request))
+    return list_detail.object_list(
+        request,
+        queryset = orders,
+        paginate_by = 5,
+        template_object_name = 'order',
+    )
 
 @login_required
 def list_unit(request, unit_id):
-    if request.method == 'POST':
-        orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')
-    else:
-        orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')[:5]
-    return render_to_response('order/order_list_div.html', {
-                                  'order_list': orders,
-                                  }, context_instance=RequestContext(request))
+    #if request.method == 'POST':
+    orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')
+    #else:
+    #    orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')[:5]
+    return list_detail.object_list(
+        request,
+        queryset = orders,
+        paginate_by = 5,
+        template_name = 'order/order_list_div.html',
+        template_object_name = 'order',
+    )
+    #return render_to_response('order/order_list_div.html', {
+    #                              'order_list': orders,
+    #                              }, context_instance=RequestContext(request))
 
 """@login_required
 def create(request, unit_id):

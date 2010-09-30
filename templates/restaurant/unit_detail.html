@@ -40,7 +40,9 @@
         });
       e.preventDefault();
     });
-    $("#last-orders").load("{% url order:list_unit object.id %}");
+    $("#last-orders").load("{% url order:list_unit object.id %}", function(){
+      pageLinks();
+    });
     $("#all-orders-link").click(function(e){
       $.post($(this).attr("href"), function(data){
         $("#last-orders").html(data);
@@ -48,6 +50,15 @@
       e.preventDefault();
     });
   });
+  function pageLinks(){
+    $(".page-link").click(function(e){
+        $.get("{% url order:list_unit object.id %}"+ $(this).attr("href"), function(data){
+          $("#last-orders").html(data);
+          pageLinks();
+        });
+        e.preventDefault();
+      });
+  }
 </script>
 {% endblock %}
 
