@@ -21,6 +21,7 @@ class VAT(models.Model):
 
 class ItemGroup(models.Model):
   internal_name = models.CharField(_('internal name'), max_length=50)
+  index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   exclusive = models.BooleanField(_('exclusive'))
   active = models.BooleanField(_('active'), default=True)
@@ -29,6 +30,7 @@ class ItemGroup(models.Model):
       return self.internal_name
 
   class Meta:
+      ordering = ['index']
       verbose_name = _('Item Group')
       verbose_name_plural = _('Item Groups')
 
@@ -57,9 +59,16 @@ class ItemTranslation(models.Model):
   model = models.ForeignKey('Item')
 
 class Item(MultilingualModel):
+  MU_CHOICES = (
+      ('GR', 'Grams'),
+      ('ML', 'Mililiters'),
+      )
   internal_name = models.CharField(_('internal name'), max_length=50)
+  index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   price = models.FloatField(_('price'))
+  quantity = models.IntegerField(_('quantity'))
+  measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR') 
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   discount = models.IntegerField(_('discount'), null=True, blank=True)
   discount_time_start = models.DateTimeField(_('discount time start'), null=True, blank=True)
@@ -74,32 +83,8 @@ class Item(MultilingualModel):
       return self.internal_name
   
   class Meta:
+      ordering = ['index']
       translation = ItemTranslation
       multilingual = ['name', 'description']
       verbose_name = _('Item')
       verbose_name_plural = _('Items')
-
-
-class SpecialItemTranslation(models.Model):
-  language = models.ForeignKey('Language')
-  name = models.CharField(_('name'), max_length=100)
-  description = models.TextField(_('description'))
-  model = models.ForeignKey('SpecialItem')
-
-class SpecialItem(MultilingualModel):
-  internal_name = models.CharField(_('internal name'), max_length=50)
-  price = models.FloatField(_('price'),)
-  vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
-  time_start = models.DateTimeField(_('time start'))
-  time_end = models.DateTimeField(_('time end'))
-  item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'))
-  active = models.BooleanField(_('active'), default=True)
-  
-  def __unicode__(self):
-      return self.internal_name
-  
-  class Meta:
-      translation = SpecialItemTranslation
-      multilingual = ['name', 'description']
-      verbose_name = _('Special item')
-      verbose_name_plural = _('Special items')
