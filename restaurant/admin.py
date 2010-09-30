@@ -1,5 +1,6 @@
 from django.contrib import admin
-from restaurant.models import *
+from restaurant import models
+from menu.models import Item, ItemGroup 
 
 class DeliveryAreaAdmin(admin.ModelAdmin):
     search_fields = ['name']
@@ -20,9 +21,20 @@ class DeliveryTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'price')
     search_fields = ['name']
 
+class ItemInline(admin.TabularInline):
+   model = Item
+   extra = 0
+   min_num = 1
+   
+class ItemGroupInline(admin.TabularInline):
+   model = ItemGroup
+   extra = 0
+   min_num = 1
+
 class UnitAdmin(admin.ModelAdmin):    
     list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
+    inlines = [ItemGroupInline, ItemInline]
     
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('name', 'address', 'email', 'phone', 'start_date', 'end_date')
@@ -32,13 +44,13 @@ class RatingAdmin(admin.ModelAdmin):
     list_display = ('restaurant', 'user', 'quality', 'delivery_time', 'feedback')
     search_fields = ['user', 'restaurant', 'feedback']
 
-admin.site.register(Rating, RatingAdmin)
-admin.site.register(Employee, EmployeeAdmin)
-admin.site.register(Unit, UnitAdmin)
-admin.site.register(DeliveryType, DeliveryTypeAdmin)
-admin.site.register(PaymentMethod,PaymentMethodAdmin)
-admin.site.register(Communication, CommunicationAdmin)
-admin.site.register(PartnerPackage, PartnerPackageAdmin)
-admin.site.register(DeliveryArea, DeliveryAreaAdmin )
+admin.site.register(models.Rating, RatingAdmin)
+admin.site.register(models.Employee, EmployeeAdmin)
+admin.site.register(models.Unit, UnitAdmin)
+admin.site.register(models.DeliveryType, DeliveryTypeAdmin)
+admin.site.register(models.PaymentMethod,PaymentMethodAdmin)
+admin.site.register(models.Communication, CommunicationAdmin)
+admin.site.register(models.PartnerPackage, PartnerPackageAdmin)
+admin.site.register(models.DeliveryArea, DeliveryAreaAdmin )
 
 

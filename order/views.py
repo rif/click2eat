@@ -17,7 +17,7 @@ from order.forms import CartNameForm, OrderForm
 
 def __get_current_order(request, unit):
     try:
-        co = Order.objects.filter(status='CR').get(unit__id=unit.id)
+        co = Order.objects.filter(user=request.user).filter(status='CR').get(unit__id=unit.id)
         if co.is_abandoned():
             raise
     except:

@@ -4,7 +4,7 @@ from order.models import Order, OrderItem
 class OrderItemInline(admin.TabularInline):
    model = OrderItem
    extra = 0
-   min_num = 0
+   min_num = 1
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('user', 'unit', 'status', 'creation_date', 'total_amount', 'additional_info')

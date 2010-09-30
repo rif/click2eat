@@ -8,7 +8,7 @@ class CartNameForm(forms.Form):
     name = forms.CharField(max_length=10)
 
 class OrderForm(forms.ModelForm):
-    address = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user = F('user')))
+    address = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user = F('user')), empty_label=None)
     
     def clean_address(self):
         address = self.cleaned_data['address']
@@ -18,4 +18,4 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ('address', 'additional_info',)
+        fields = ('additional_info',)
