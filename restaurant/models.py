@@ -46,6 +46,16 @@ class PaymentMethod(models.Model):
       verbose_name = _('Payment Method')
       verbose_name_plural = _('Payment Methods')
 
+class Currency(models.Model):
+    name = models.CharField(_('name'), max_length=20)
+    
+    def __unicode__(self):
+        return self.name
+    
+    class Meta:
+      verbose_name = _('Currency')
+      verbose_name_plural = _('Currency')
+
 class DeliveryType(models.Model):
     name = models.CharField(_('name'), max_length=100)
     price = models.FloatField(_('price'), )
@@ -77,7 +87,9 @@ class Unit(models.Model):
     address = models.CharField(_('address'), max_length=200)
     email = models.EmailField(_('email'))
     phone = models.CharField(_('phone'), max_length=15)
+    logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True, blank=True)
     unit_devlivery = models.ForeignKey(DeliveryArea, verbose_name=_('unit delivery'))
+    currency = models.ForeignKey(Currency, verbose_name=_('accepted currencies'), related_name='units_using_this')
     overall_discount = models.FloatField(_('overall_discount'))
     latitude = models.FloatField(_('latitude'))
     longitude = models.FloatField(_('longitude'))
@@ -89,8 +101,7 @@ class Unit(models.Model):
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))
     contact_person = models.CharField(_('contact persoon'), max_length=50)    
-    logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True, blank=True)
-    delivery_time_user = models.FloatField(_('delivery time user'))
+    delivery_time_user = models.FloatField(_('delivery time user'), null=True, blank=True, help_text=_('Calculated as a avg from user feedback.'))
     delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
     admin_users = models.CharField(_('admin users'), max_length=100, null=True, blank=True, help_text=_('the users that can access front-end administration pages for this unit.'))
     info = models.TextField(_('info'), null=True, blank=True)

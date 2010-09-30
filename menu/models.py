@@ -68,7 +68,7 @@ class Item(MultilingualModel):
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   price = models.FloatField(_('price'))
   quantity = models.IntegerField(_('quantity'))
-  measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR') 
+  measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR', help_text=_('Measurement unit.')) 
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   discount = models.IntegerField(_('discount'), null=True, blank=True)
   discount_time_start = models.DateTimeField(_('discount time start'), null=True, blank=True)
