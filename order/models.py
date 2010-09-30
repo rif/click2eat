@@ -62,7 +62,7 @@ class Order(models.Model):
 
     def __unicode__(self):
         self.is_abandoned()
-        return unicode(self.creation_date) + " - " + self.get_status_display()
+        return self.creation_date.strftime('%A %d%B%Y %H:%M') + ' - ' + self.get_status_display()
 
     class Meta:
         verbose_name = _('Order')

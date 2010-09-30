@@ -41,6 +41,12 @@
       e.preventDefault();
     });
     $("#last-orders").load("{% url order:list_unit object.id %}");
+    $("#all-orders-link").click(function(e){
+      $.post($(this).attr("href"), function(data){
+        $("#last-orders").html(data);
+      });
+      e.preventDefault();
+    });
   });
 </script>
 {% endblock %}
@@ -61,21 +67,14 @@
 <h2>{% trans 'Previous orders at this restaurant' %}</h2>
 <div id="last-orders">
 </div>
-
+<a href="{% url order:list_unit object.id %}" id="all-orders-link">{% trans 'See all orders' %}</a>
+<br>
 <h2>{% trans 'Current order' %}</h2>
 <div id="current-order">
 </div>
 <a href="{% url order:send object.id %}">{% trans 'Send' %}</a>
   
-<h1>{% trans 'Menu' %}</h1>
-<h2 class="ui-widget-header">{% trans 'Special Items' %}</h2>
-<ul>
-{% for sitem in object.specialitem_set.iterator %}
-<li>{{ sitem }}</li>
-{% endfor %}
-</ul>
-
-<h2 class="ui-widget-header">{% trans 'Usual items' %}</h2>
+<h1 class="ui-widget-header">{% trans 'Menu' %}</h1>
 <ul id="menu">
 {% for item in object.item_set.iterator %}
 <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
