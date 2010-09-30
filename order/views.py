@@ -85,11 +85,10 @@ def send(request, unit_id):
     if current_order.status != 'CR':
         messages.add_message(request, messages.INFO, _('Current order already sent.'))
         return redirect('order:timer', unit_id=unit.id)
+    if unit.minimum_ord_val > current_order.total_amount:
+        messages.add_message(request, messages.WARNING, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
+        return redirect('restaurant:restaurant_detail', object_id=unit.id)
     if request.method == 'POST':
-        if unit.minimum_ord_val > current_order.total_amount:
-            return render_to_response('order/minimum_val_fail.html', {
-                                  'order': current_order,
-                                  }, context_instance=RequestContext(request))
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():
             order = form.save(commit=False)
