@@ -6,6 +6,8 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 from restaurant.models import Unit
 from restaurant.forms import RatingForm
 from order import views
@@ -17,7 +19,9 @@ def __user_has_profile(user):
         return None
     except:
         return redirect('profiles_create_profile')
-
+        
+@cache_page(60 * 15)
+@vary_on_cookie
 def index(request):
     units = Unit.objects.order_by('?')
     user = request.user
