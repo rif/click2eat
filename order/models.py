@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.db.models import permalink
 from datetime import datetime
 
 class Order(models.Model):
@@ -63,7 +64,11 @@ class Order(models.Model):
     def __unicode__(self):
         self.is_abandoned()
         return self.creation_date.strftime('%A %d%B%Y %H:%M') + ' - ' + self.get_status_display()
-
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('order:detail', [str(self.id)])
+    
     class Meta:
         verbose_name = _('Order')
         verbose_name_plural = _('Order')
