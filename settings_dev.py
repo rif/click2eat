@@ -3,7 +3,7 @@ import os
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
     
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -54,6 +54,8 @@ EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = ' [bucatar] '
 
 ACCOUNT_ACTIVATION_DAYS = 7
+
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
