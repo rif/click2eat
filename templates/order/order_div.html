@@ -47,7 +47,7 @@ $(function(){
      {% endfor %}
      <tr><td><b>{% trans 'Cart subtotal' %}:</b></td></td><b><span id="cart-subtotal-amount" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></b></td></tr>
 {% endfor %}
-  <tr><td><h3>{% trans 'Total ammount' %}</h3></td><td><h3><span id="order-total-amount">{{ order.total_amount }}</span></h3></td></tr>
+  <tr><td><h3>{% trans 'Total amount' %}</h3></td><td><h3><span id="order-total-amount">{{ order.total_amount }}</span></h3></td></tr>
 </tbody>
 </table>
 </div>
