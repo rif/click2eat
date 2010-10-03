@@ -8,6 +8,9 @@ django-extensions
 PIL
 Werkzeug
 python-memcached
+coverage
+django-annoying
+# gunicorn staff
 setproctitle
 greenlet
 gevent
