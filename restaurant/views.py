@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
+from annoying.decorators import render_to
 from restaurant.models import Unit
 from restaurant.forms import RatingForm
 from order import views
@@ -19,7 +20,7 @@ def __user_has_profile(user):
         return None
     except:
         return redirect('profiles_create_profile')
-        
+
 @cache_page(60 * 15)
 @vary_on_cookie
 def index(request):
@@ -37,26 +38,21 @@ def index(request):
         return redirect('profiles_create_profile')
 
 @login_required
+@render_to('restaurant/unit_detail.html')
 def unit_detail(request, object_id):
     unit = get_object_or_404(Unit, pk=object_id)
     current_order = views.__get_current_order(request, unit)
-    return render_to_response('restaurant/unit_detail.html', {
-                                  'object': unit,
-                                  'order': current_order,
-                                  'carts': current_order.get_carts(),
-                                  }, context_instance=RequestContext(request))
+    return {'object': unit, 'order': current_order, 'carts': current_order.get_carts()}
 
+@render_to('restaurant/platinum_restaurant_list.html')
 def get_random_platinum(request):
     units = Unit.objects.order_by('?')
-    return render_to_response('restaurant/platinum_restaurant_list.html', {
-                                  'platinum': units.filter(package__slug='platinum'),
-                                  }, context_instance=RequestContext(request))
+    return {'platinum': units.filter(package__slug='platinum')}
 
+@render_to('restaurant/gold_restaurant_list.html')
 def get_random_gold(request):
     units = Unit.objects.order_by('?')
-    return render_to_response('restaurant/gold_restaurant_list.html', {
-                                  'gold': units.filter(package__slug='gold'),
-                                  }, context_instance=RequestContext(request))
+    return {'gold': units.filter(package__slug='gold')}
 
 def feedback(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)

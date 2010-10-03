@@ -7,10 +7,11 @@ from django.http import HttpResponse, Http404
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import send_mail
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied 
+from django.core.exceptions import PermissionDenied
 from django.contrib.sites.models import Site
 from django import forms
 from django.views.generic import list_detail
+from annoying.decorators import render_to
 import csv
 from order.models import Order, OrderItem
 from restaurant.models import Unit
@@ -54,13 +55,6 @@ def list_unit(request, unit_id):
         template_name = 'order/order_list_div.html',
         template_object_name = 'order',
     )
-
-"""@login_required
-def create(request, unit_id):
-    unit = get_object_or_404(Unit, pk=unit_id)
-    order = Order.objects.create(user=request.user, unit=unit)
-    return HttpResponse(str(order))"""
-
 @login_required
 def add_item(request, item_id, cart_name):
     item = get_object_or_404(Item, pk=item_id)
@@ -79,11 +73,10 @@ def remove_item(request, item_id):
     return HttpResponse('ok')
 
 @login_required
+@render_to('order/order_div.html')
 def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    return render_to_response('order/order_div.html', {
-                                  'order': __get_current_order(request, unit),
-                                  }, context_instance=RequestContext(request))
+    return {'order': __get_current_order(request, unit)}
 
 
 @login_required
@@ -114,11 +107,11 @@ def send(request, unit_id):
         form = OrderForm(instance=current_order)
     form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
     return render_to_response('order/send_confirmation.html', {
-                                  'form': form,                                 
+                                  'form': form,
                                   'order': current_order,
                                   }, context_instance=RequestContext(request))
 
-
+@login_required
 def add_cart(request, unit_id):
   unit = get_object_or_404(Unit, pk=unit_id)
   if request.method == 'POST':
@@ -148,13 +141,12 @@ def get_subtotal(request, unit_id, cart_name):
   unit = get_object_or_404(Unit, pk=unit_id)
   current_order = __get_current_order(request, unit)
   return HttpResponse(str(current_order.get_cart_subtotal(cart_name)))
-  
+
 @login_required
+@render_to('order/timer.html')
 def timer(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    return render_to_response('order/timer.html', {
-                                  'unit': unit,
-                                  }, context_instance=RequestContext(request))
+    return {'unit': unit}
 
 @login_required
 def clone(request, order_id):
@@ -167,33 +159,29 @@ def clone(request, order_id):
     return redirect('restaurant:restaurant_detail', object_id=order.unit_id)
 
 @login_required
+@render_to('order/restaurant_order_list.html')
 def restlist(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
     orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
-    return render_to_response('order/restaurant_order_list.html', {
-                                  'order_list': orders,
-                                  'unit_id': unit_id,
-                                  }, context_instance=RequestContext(request))
+    return {'order_list': orders, 'unit_id': unit_id}
 
 @login_required
+@render_to('order/restaurant_order_list_div.html')
 def restlist_ajax(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
     orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
-    return render_to_response('order/restaurant_order_list_div.html', {
-                                  'order_list': orders,
-                                  }, context_instance=RequestContext(request))
-
+    return {'order_list': orders}
 
 @login_required
 def restlist_csv(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
-    
+
     response = HttpResponse(mimetype='text/csv')
     response['Content-Disposition'] = 'attachment; filename=orders.csv'
-    
+
     writer = csv.writer(response)
     writer.writerow(['Name', 'Address', 'Date', 'Status', 'Amount', 'Additional info'])
     for o in Order.objects.filter(unit=unit_id).iterator():
@@ -201,15 +189,14 @@ def restlist_csv(request, unit_id):
     return response
 
 @login_required
+@render_to('order/restaurant_order_detail.html')
 def restdetail(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     __is_restaurant_administrator(request, order.unit)
     if order.status == 'ST':
         order.status = u'RV'
         order.save()
-    return render_to_response('order/restaurant_order_detail.html', {
-                                  'order': order,
-                                  }, context_instance=RequestContext(request))
+    return{'order': order}
 
 @login_required
 def mark_delivered(request, order_id):

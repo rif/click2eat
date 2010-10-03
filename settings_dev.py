@@ -2,8 +2,8 @@ import os
 
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
-    
-DEBUG = False
+
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -23,7 +23,7 @@ TIME_ZONE = 'Europe/Bucharest'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ro-ro'
 ugettext = lambda s: s
 
 LANGUAGES = (
@@ -86,6 +86,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'annoying.middlewares.StaticServe',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
