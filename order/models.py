@@ -20,7 +20,7 @@ class Order(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'), editable=False)
     additional_info = models.TextField(_('additional info'), null=True, blank=True, help_text=_('Add here any relevant information.'))
 
-    def update_total_ammount(self):
+    def update_total_amount(self):
         total = 0
         for oi in self.orderitem_set.iterator():
             total += oi.old_price
@@ -43,7 +43,7 @@ class Order(models.Model):
               self.delete()
             return True
         return False
-    
+
     def get_carts(self):
         carts_dict = {}
         ois = OrderItem.objects.select_related().filter(order__id=self.id)
@@ -52,22 +52,22 @@ class Order(models.Model):
         for cart in unique_carts_set:
             carts_dict[cart] = ois.filter(cart=cart)
         return carts_dict
-    
+
     def clone(self):
         new_order = Order.objects.create(user=self.user, status='CR', unit=self.unit)
         for oi in self.orderitem_set.iterator():
             new_oi = OrderItem.objects.create(order=new_order, item=oi.item, old_price=oi.item.price, cart=oi.cart)
         return new_order
-        
+
 
     def __unicode__(self):
         self.is_abandoned()
         return self.creation_date.strftime('%A %d%B%Y %H:%M') + ' - ' + self.get_status_display()
-    
+
     @models.permalink
     def get_absolute_url(self):
         return ('order:detail', [str(self.id)])
-    
+
     class Meta:
         verbose_name = _('Order')
         verbose_name_plural = _('Order')
@@ -86,12 +86,12 @@ class OrderItem(models.Model):
         if not self.id:
             self.old_price = self.item.price
         super(OrderItem, self).save(*args, **kwargs)
-        self.order.update_total_ammount()
+        self.order.update_total_amount()
 
     def delete(self, *args, **kwargs):
         ex_order = self.order
         super(OrderItem, self).delete(*args, **kwargs)
-        ex_order.update_total_ammount()
+        ex_order.update_total_amount()
 
     class Meta:
       verbose_name = _('Order Item')
