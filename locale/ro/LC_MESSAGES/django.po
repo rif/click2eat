@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-09-30 17:08+0300\n"
-"PO-Revision-Date: 2010-09-30 17:28+0300\n"
+"PO-Revision-Date: 2010-10-03 20:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -62,42 +62,42 @@ msgstr "Grup de articole"
 
 #: menu/models.py:35
 msgid "Item Groups"
-msgstr ""
+msgstr "Grupuri de articole"
 
 #: menu/models.py:39 menu/models.py:44 menu/models.py:57
 #: restaurant/models.py:7 restaurant/models.py:17 restaurant/models.py:27
 #: restaurant/models.py:39 restaurant/models.py:50 restaurant/models.py:60
 #: restaurant/models.py:71 restaurant/models.py:86
 msgid "name"
-msgstr ""
+msgstr "nume"
 
 #: menu/models.py:52
 msgid "Subcategory"
-msgstr ""
+msgstr "Subcategorie"
 
 #: menu/models.py:53
 msgid "Subcategories"
-msgstr ""
+msgstr "Subcategorii"
 
 #: menu/models.py:58
 msgid "description"
-msgstr ""
+msgstr "descriere"
 
 #: menu/models.py:69 order/models.py:75 restaurant/models.py:61
 msgid "price"
-msgstr ""
+msgstr "preț"
 
 #: menu/models.py:70
 msgid "quantity"
-msgstr ""
+msgstr "cantitate"
 
 #: menu/models.py:71
 msgid "MU"
-msgstr ""
+msgstr "UM"
 
 #: menu/models.py:71
 msgid "Measurement unit."
-msgstr ""
+msgstr "Unitate de masură."
 
 #: menu/models.py:73
 msgid "discount"
@@ -841,4 +841,5 @@ msgstr ""
 #: userprofiles/models.py:72
 msgid "User Profiles"
 msgstr ""
+
 
