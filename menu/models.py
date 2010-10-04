@@ -68,6 +68,7 @@ class Item(MultilingualModel):
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   price = models.FloatField(_('price'))
   quantity = models.IntegerField(_('quantity'))
+  promotion = models.ForeignKey('Promotion', verbose_name=_('promotion'), null=True, blank=True)
   measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR', help_text=_('Measurement unit.')) 
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'), null=True, blank=True)
@@ -94,3 +95,21 @@ class Topping(Item):
       multilingual = ['name', 'description']
       verbose_name = _('Topping')
       verbose_name_plural = _('Toppings')
+      
+class Promotion(models.Model):
+    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
+    name = models.CharField(_('name'), max_length=50)
+    start_date = models.DateTimeField(_('start date'), null=True, blank=True)
+    end_date = models.DateTimeField(_('end date'), null=True, blank=True)
+    weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, null=True, blank=True, help_text=_('integer, comma separated, starting Monday e.g. 1,2,3,4,5'))
+    start_hour = models.CharField(_('start hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 10:30'))
+    end_hour = models.CharField(_('end hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 15:00'))
+    value = models.IntegerField(_('value'), default=0, help_text=_('Percentage'))
+    
+    def __unicode__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['-start_date']
+        verbose_name = _('Promotion')
+        verbose_name_plural = _('Promotions')
