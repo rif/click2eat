@@ -1,8 +1,8 @@
 from django.contrib import admin
 from menu import models
 
-class SubCategoryInline(admin.TabularInline):
-   model = models.SubCategoryTranslation
+class ItemGroupInline(admin.TabularInline):
+   model = models.ItemGroupTranslation
    extra = 0
    min_num = 1
 
@@ -16,6 +16,11 @@ class ItemInline(admin.TabularInline):
    extra = 0
    min_num = 1
 
+class ToppingInline(admin.TabularInline):
+   model = models.Topping
+   extra = 0
+   min_num = 1
+
 class VATAdmin(admin.ModelAdmin):
     list_display = ('value',)
 
@@ -25,28 +30,39 @@ class ItemGroupAdmin(admin.ModelAdmin):
     search_fields = ['internal_name']
     list_filter = ['unit']
     inlines = [ItemInline]
+    inlines = [ItemGroupInline]
 
-class SubCategoryAdmin(admin.ModelAdmin):
+class ToppingGroupAdmin(admin.ModelAdmin):
     list_display = ('internal_name',)
     search_fields = ['internal_name']
-    inlines = [SubCategoryInline]
+    inlines = [ToppingInline]
     
 class ItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index', 'unit', 'price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'sub_category', 'special', 'active')
+    list_display = ('internal_name', 'index', 'unit', 'price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'toppings', 'active')
     search_fields = ['internal_name']
-    list_filter = ['unit', 'special']
+    list_filter = ['unit']
     inlines = [ItemTranslationInline]
     fieldsets = (
         (None, {
-            'fields': ('internal_name', 'index', 'unit', ('price', 'vat'), ('quantity', 'measurement_unit'), 'item_group', 'sub_category', 'special')
-        }),
-        ('Discount', {
-            'classes': ('collapse',),
-            'fields': ('discount', 'discount_time_start', 'discount_time_end')
+            'fields': ('internal_name', 'index', 'unit', ('price', 'vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
         }),
         ('Extra options', {
-            'classes': ('collapse',),
+            'fields': ('new_item_end_date', 'active')
+        }),
+    )
+
+class ToppingAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"index": ("internal_name",)}
+    list_display = ('internal_name', 'index', 'unit', 'price', 'quantity', 'measurement_unit', 'vat', 'active')
+    search_fields = ['internal_name']
+    list_filter = ['unit']
+    inlines = [ItemTranslationInline]
+    fieldsets = (
+        (None, {
+            'fields': ('internal_name', 'index', 'unit', ('price', 'vat'), ('quantity', 'measurement_unit'), 'topping_groups')
+        }),
+        ('Extra options', {
             'fields': ('new_item_end_date', 'active')
         }),
     )
@@ -54,5 +70,6 @@ class ItemAdmin(admin.ModelAdmin):
 admin.site.register(models.Language)
 admin.site.register(models.Item, ItemAdmin)
 admin.site.register(models.VAT, VATAdmin)
-admin.site.register(models.SubCategory, SubCategoryAdmin)
 admin.site.register(models.ItemGroup, ItemGroupAdmin)
+admin.site.register(models.Topping, ToppingAdmin)
+admin.site.register(models.ToppingGroup, ToppingGroupAdmin)

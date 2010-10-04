@@ -1,6 +1,6 @@
 from django.contrib import admin
 from restaurant import models
-from menu.models import Item, ItemGroup 
+from menu.models import Item, ItemGroup, Topping
 
 class DeliveryAreaAdmin(admin.ModelAdmin):
     search_fields = ['name']
@@ -35,10 +35,15 @@ class ItemGroupInline(admin.TabularInline):
    extra = 0
    min_num = 1
 
+class ToppingInline(admin.TabularInline):
+   model = Topping
+   extra = 0
+   min_num = 1
+
 class UnitAdmin(admin.ModelAdmin):    
     list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
-    inlines = [ItemGroupInline, ItemInline]
+    inlines = [ItemGroupInline, ItemInline, ToppingInline]
     fieldsets = (
         (None, {
             'fields': ('name', 'address', ('email', 'phone'), 'logo_path', 'open_hours', 'package')
@@ -53,7 +58,6 @@ class UnitAdmin(admin.ModelAdmin):
             'fields': (('payment_method', 'currency'), 'overall_discount', 'minimum_ord_val')
         }),
         ('Other info', {
-            'classes': ('collapse',),
             'fields': ('info', 'active')
         }),
     )
