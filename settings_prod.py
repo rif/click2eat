@@ -14,6 +14,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = ' [bucatar] '
 
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+
 #LOGIN_URL="/stand/accounts/login/"
 
 SERVER='apache.filemaker-solutions.ro'

@@ -23,13 +23,13 @@ TIME_ZONE = 'Europe/Bucharest'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'ro-ro'
+LANGUAGE_CODE = 'en-us'
 ugettext = lambda s: s
 
 LANGUAGES = (
   ('de', ugettext('German')),
   ('en', ugettext('English')),
-  ('fr', ugettext('Romanian')),
+  ('fr', ugettext('French')),
   ('ro', ugettext('Romanian')),
 )
 
@@ -55,7 +55,7 @@ EMAIL_SUBJECT_PREFIX = ' [bucatar] '
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_BACKEND = 'locmem://'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"

@@ -80,9 +80,23 @@
   
 <h1 class="ui-widget-header">{% trans 'Menu' %}</h1>
 <ul id="menu">
-{% for item in object.item_set.iterator %}
-<li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
-  {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
+{% for itemgroup in object.itemgroup_set.iterator %}
+  <b>{{ itemgroup }}</b>
+  {% for item in itemgroup.item_set.iterator %}
+  {% if item.active %}
+    <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
+    {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
+    {% trans 'Toppings' %}:
+    <ul>
+    {% if item.toppings %}
+      {% for top in item.toppings.topping_set.iterator %}
+      <li id="{{ top.id }}"><a href="#" class="add-item">{{ top.name_ro }}</a> - <span class="item-desc">{{top.description_ro}}</span><br/>
+    {{ top.name_en }} - <span class="item-desc">{{top.description_en}}</span></li>
+      {% endfor %}
+    {% endif %}
+    </ul>
+  {% endif %}
+  {% endfor %}
 {% endfor %}
 </ul>
 <div id="carts">
