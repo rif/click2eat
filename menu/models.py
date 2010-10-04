@@ -1,5 +1,6 @@
 from django.db import models
 from multiling import MultilingualModel
+from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
 
 class Language(models.Model):
@@ -101,13 +102,28 @@ class Promotion(models.Model):
     name = models.CharField(_('name'), max_length=50)
     start_date = models.DateTimeField(_('start date'), null=True, blank=True)
     end_date = models.DateTimeField(_('end date'), null=True, blank=True)
-    weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, null=True, blank=True, help_text=_('integer, comma separated, starting Monday e.g. 1,2,3,4,5'))
+    weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, null=True, blank=True, help_text=_('integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5'))
     start_hour = models.CharField(_('start hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 10:30'))
     end_hour = models.CharField(_('end hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 15:00'))
     value = models.IntegerField(_('value'), default=0, help_text=_('Percentage'))
     
     def __unicode__(self):
         return self.name
+    
+    def is_active(self):
+        now = datetime.now()
+        weekday = now.isoweekday()
+        if start_date and now < start_date:
+            return False
+        if end_date and now > end_date:
+            return False
+        if str(weekday) not in weekdays:
+            return False
+        return True
+    
+    def get_new_price(self, old_price):
+        return (old * (100-self.value))/100
+        
     
     class Meta:
         ordering = ['-start_date']
