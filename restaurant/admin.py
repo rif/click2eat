@@ -46,7 +46,7 @@ class UnitAdmin(admin.ModelAdmin):
     inlines = [ItemGroupInline, ItemInline, ToppingInline]
     fieldsets = (
         (None, {
-            'fields': ('name', 'address', ('email', 'phone'), 'logo_path', 'open_hours', 'package')
+            'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path', 'open_hours', 'package')
         }),
         ('Location options', {
             'fields': ('unit_devlivery', ('latitude', 'longitude'), 'delivery_type', 'delivery_time')

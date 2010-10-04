@@ -3,17 +3,18 @@ from multiling import MultilingualModel
 from django.utils.translation import ugettext_lazy as _
 
 class Language(models.Model):
-    code = models.CharField(max_length=5)
-    name = models.CharField(max_length=16)
+    code = models.CharField(_('code'), max_length=5)
+    name = models.CharField(_('name'), max_length=16)
     
     def __unicode__(self):
         return self.name
 
 class VAT(models.Model):
-  value = models.FloatField()
+  name = models.CharField(_('name'), max_length=20)
+  value = models.FloatField(_('value'))
   
   def __unicode__(self):
-      return "VAT: " + str(self.value)
+      return self.name
   
   class Meta:
       verbose_name = _('VAT')
