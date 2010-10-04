@@ -22,7 +22,7 @@ class ToppingInline(admin.TabularInline):
    min_num = 1
 
 class VATAdmin(admin.ModelAdmin):
-    list_display = ('value',)
+    list_display = ('name', 'value')
 
 class ItemGroupAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}

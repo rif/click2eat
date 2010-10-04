@@ -87,6 +87,7 @@ class Unit(models.Model):
     address = models.CharField(_('address'), max_length=200)
     email = models.EmailField(_('email'))
     phone = models.CharField(_('phone'), max_length=15)
+    mobile = models.CharField(_('mobile'), max_length=15)
     logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True, blank=True)
     unit_devlivery = models.ForeignKey(DeliveryArea, verbose_name=_('unit delivery'))
     currency = models.ForeignKey(Currency, verbose_name=_('accepted currencies'), related_name='units_using_this')
