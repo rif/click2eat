@@ -111,14 +111,25 @@ class Promotion(models.Model):
         return self.name
     
     def is_active(self):
-        now = datetime.now()
+        return self._is_active(datetime.now())
+    
+    def _is_active(self, check_date):
+        now = check_date
         weekday = now.isoweekday()
-        if start_date and now < start_date:
+        if self.start_date and now < self.start_date:
             return False
-        if end_date and now > end_date:
+        if self.end_date and now > self.end_date:
             return False
-        if str(weekday) not in weekdays:
+        if self.weekdays and str(weekday) not in self.weekdays:
             return False
+        if self.start_hour:
+            starth = datetime.strptime(now.strftime("%d-%m-%Y ") + self.start_hour, "%d-%m-%Y %H:%M")
+            if now < starth:
+                return False
+        if self.end_hour:
+            endh = datetime.strptime(now.strftime("%d-%m-%Y ") + self.end_hour, "%d-%m-%Y %H:%M")
+            if now > endh:
+                return False
         return True
     
     def get_new_price(self, old_price):
