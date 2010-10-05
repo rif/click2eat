@@ -86,15 +86,15 @@
   {% if item.active %}
     <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
     {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
+    {% if item.toppings %}
     {% trans 'Toppings' %}:
     <ul>
-    {% if item.toppings %}
       {% for top in item.toppings.topping_set.iterator %}
       <li id="{{ top.id }}"><a href="#" class="add-item">{{ top.name_ro }}</a> - <span class="item-desc">{{top.description_ro}}</span><br/>
     {{ top.name_en }} - <span class="item-desc">{{top.description_en}}</span></li>
       {% endfor %}
+    </ul>  
     {% endif %}
-    </ul>
   {% endif %}
   {% endfor %}
 {% endfor %}
