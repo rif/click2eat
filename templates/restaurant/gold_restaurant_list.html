@@ -1,5 +1,5 @@
 {% if gold.count > 0 %}
-<a href="">{{ gold.0 }}</a>
+<a href="{% url restaurant:restaurant_detail gold.0.id %}">{{ gold.0 }}</a>
 {% else %}
 <p>No gold partners available.</p>
 {% endif %}
