@@ -30,18 +30,20 @@
             {% else %}
                 <p>Please <a href="{% url auth_login %}">log in</a> or <a href="{% url registration_register %}">sign up.</a></p>
             {% endif %}
+		<div style="float:right" id="languages">
 		<form action="/i18n/setlang/" method="post">
-{% csrf_token %}
-<input name="next" type="hidden" value="/restaurant/1/" />
-<select name="language">
-{% for lang in LANGUAGES %}
-<option value="{{ lang.0 }}">{{ lang.1 }}</option>
-{% endfor %}
-</select>
-<input type="submit" value="Go" />
-</form>
+		  {% csrf_token %}
+		  <input name="next" type="hidden" value="/" />
+		  <select name="language">
+		    {% for lang in LANGUAGES %}
+		    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+		    {% endfor %}
+		  </select>
+		  <input type="submit" value="Go" />
+		</form>
+		</div>
   </div>
-<div id="messages">
+  <div id="messages">
     {% if messages %}
       <ul class="messages">
       {% for message in messages %}
