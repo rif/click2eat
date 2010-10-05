@@ -91,6 +91,23 @@
     }, 
     {
         "pk": 1, 
+        "model": "restaurant.interval", 
+        "fields": {
+            "start_hour": "09:00", 
+            "end_hour": "18:00", 
+            "weekdays": "1,2,3,4", 
+            "schedule": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "restaurant.schedule", 
+        "fields": {
+            "unit": 1
+        }
+    }, 
+    {
+        "pk": 1, 
         "model": "restaurant.unit", 
         "fields": {
             "payment_method": [
@@ -106,7 +123,7 @@
             "latitude": 1.0, 
             "email": "restaurant1@mailinator.com", 
             "delivery_type": 1, 
-            "open_hours": "1", 
+            "open_hours": 1, 
             "minimum_ord_val": 1, 
             "delivery_time_user": 11.0, 
             "overall_discount": 1.0, 
@@ -119,6 +136,7 @@
             "admin_users": "test, rif", 
             "name": "Restaurant 1", 
             "package": 1, 
+            "mobile": "", 
             "longitude": 1.0, 
             "unit_devlivery": 1, 
             "contact_person": "1"
@@ -139,7 +157,7 @@
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
             "delivery_type": 1, 
-            "open_hours": "1", 
+            "open_hours": 1, 
             "minimum_ord_val": 1, 
             "delivery_time_user": 1.0, 
             "overall_discount": 1.0, 
@@ -152,6 +170,7 @@
             "admin_users": "rif", 
             "name": "Restaurant 2", 
             "package": 1, 
+            "mobile": "", 
             "longitude": 1.0, 
             "unit_devlivery": 1, 
             "contact_person": "1"
@@ -172,7 +191,7 @@
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
             "delivery_type": 1, 
-            "open_hours": "1", 
+            "open_hours": 1, 
             "minimum_ord_val": 1, 
             "delivery_time_user": 1.0, 
             "overall_discount": 21.0, 
@@ -185,6 +204,7 @@
             "admin_users": "rif,test", 
             "name": "Restaurant 3", 
             "package": 2, 
+            "mobile": "", 
             "longitude": 1.0, 
             "unit_devlivery": 1, 
             "contact_person": "1"
@@ -201,7 +221,7 @@
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
             "delivery_type": 1, 
-            "open_hours": "1", 
+            "open_hours": 1, 
             "minimum_ord_val": 1, 
             "delivery_time_user": 11.0, 
             "overall_discount": 1.0, 
@@ -214,6 +234,7 @@
             "admin_users": null, 
             "name": "Restaurant 4", 
             "package": 3, 
+            "mobile": "", 
             "longitude": 1.0, 
             "unit_devlivery": 1, 
             "contact_person": "1"
@@ -230,7 +251,7 @@
             "latitude": 1.0, 
             "email": "emp1@emp.ro", 
             "delivery_type": 1, 
-            "open_hours": "1", 
+            "open_hours": 1, 
             "minimum_ord_val": 1, 
             "delivery_time_user": 11.0, 
             "overall_discount": 21.0, 
@@ -243,6 +264,7 @@
             "admin_users": null, 
             "name": "Restaurant 5", 
             "package": 3, 
+            "mobile": "", 
             "longitude": 1.0, 
             "unit_devlivery": 1, 
             "contact_person": "1"
@@ -259,7 +281,7 @@
             "latitude": 1.0, 
             "email": "rest@test.ro", 
             "delivery_type": 1, 
-            "open_hours": "1", 
+            "open_hours": 1, 
             "minimum_ord_val": 1, 
             "delivery_time_user": 1.0, 
             "overall_discount": 1.0, 
@@ -272,6 +294,7 @@
             "admin_users": null, 
             "name": "Restaurant 6", 
             "package": 2, 
+            "mobile": "", 
             "longitude": 1.0, 
             "unit_devlivery": 1, 
             "contact_person": "1"
