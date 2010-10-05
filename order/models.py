@@ -56,7 +56,7 @@ class Order(models.Model):
     def clone(self):
         new_order = Order.objects.create(user=self.user, status='CR', unit=self.unit)
         for oi in self.orderitem_set.iterator():
-            new_oi = OrderItem.objects.create(order=new_order, item=oi.item, old_price=oi.item.price, cart=oi.cart)
+            new_oi = OrderItem.objects.create(order=new_order, item=oi.item, old_price=oi.item.get_price(), cart=oi.cart)
         return new_order
 
 
@@ -84,7 +84,7 @@ class OrderItem(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.old_price = self.item.price
+            self.old_price = self.item.get_price()
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_amount()
 

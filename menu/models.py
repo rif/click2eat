@@ -79,6 +79,11 @@ class Item(MultilingualModel):
   
   def __unicode__(self):
       return self.internal_name
+
+  def get_price(self):
+      if self.promotion:
+          return self.promotion.get_new_price(self.price)
+      return self.price
   
   class Meta:
       ordering = ['index']
@@ -133,7 +138,7 @@ class Promotion(models.Model):
         return True
     
     def get_new_price(self, old_price):
-        return (old * (100-self.value))/100
+        return (old_price * (100-self.value))/100
         
     
     class Meta:
