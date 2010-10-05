@@ -39,13 +39,13 @@ class ToppingGroupAdmin(admin.ModelAdmin):
     
 class ItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index', 'unit', 'price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'toppings', 'active')
+    list_display = ('internal_name', 'index', 'unit', 'get_price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'toppings', 'active')
     search_fields = ['internal_name']
     list_filter = ['unit']
     inlines = [ItemTranslationInline]
     fieldsets = (
         (None, {
-            'fields': ('internal_name', 'index', 'unit', ('price', 'vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
+            'fields': ('internal_name', 'index', 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
         }),
         ('Extra options', {
             'fields': ('new_item_end_date', 'active')
@@ -54,13 +54,13 @@ class ItemAdmin(admin.ModelAdmin):
 
 class ToppingAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index', 'unit', 'price', 'quantity', 'measurement_unit', 'vat', 'active')
+    list_display = ('internal_name', 'index', 'unit', 'get_price', 'quantity', 'measurement_unit', 'vat', 'active')
     search_fields = ['internal_name']
     list_filter = ['unit']
     inlines = [ItemTranslationInline]
     fieldsets = (
         (None, {
-            'fields': ('internal_name', 'index', 'unit', ('price', 'vat'), ('quantity', 'measurement_unit'), 'topping_groups')
+            'fields': ('internal_name', 'index', 'unit', ('price', 'promotion', 'vat'), ('quantity', 'measurement_unit'), 'topping_groups')
         }),
         ('Extra options', {
             'fields': ('new_item_end_date', 'active')
