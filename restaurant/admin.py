@@ -40,6 +40,17 @@ class ToppingInline(admin.TabularInline):
    extra = 0
    min_num = 1
 
+class IntervalInline(admin.TabularInline):
+   model = models.Interval
+   extra = 0
+   min_num = 1
+
+class ScheduleAdmin(admin.ModelAdmin):
+    list_display = ('description', 'unit')
+    list_filter= ['unit']
+    search_fields = ['unit', 'description']
+    inlines = [IntervalInline]
+
 class UnitAdmin(admin.ModelAdmin):    
     list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
@@ -79,3 +90,5 @@ admin.site.register(models.Communication, CommunicationAdmin)
 admin.site.register(models.PartnerPackage, PartnerPackageAdmin)
 admin.site.register(models.DeliveryArea, DeliveryAreaAdmin)
 admin.site.register(models.Currency, CurrencyAdmin)
+admin.site.register(models.Schedule, ScheduleAdmin)
+

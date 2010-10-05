@@ -65,6 +65,7 @@
 <li>{% trans 'Address' %}: {{ object.address }}</li>
 <li>{% trans 'Email' %}: {{ object.email }}</li>
 <li>{% trans 'Phone' %}: {{ object.phone }}</li>
+<li>{% trans 'Open hours' %}: {{ object.open_hours }}</li>
 </ul>
 
 <a href="{% url restaurant:feedback object.id %}">{% trans 'Rate this restaurant' %}</a>

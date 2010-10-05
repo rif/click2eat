@@ -89,6 +89,9 @@ def send(request, unit_id):
     if unit.minimum_ord_val > current_order.total_amount:
         messages.add_message(request, messages.WARNING, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
         return redirect('restaurant:restaurant_detail', object_id=unit.id)
+    if not unit.open_hours.is_open():
+        messages.add_message(request, messages.WARNING, _('This restaurant is now closed! Please check the open hours and come back later.'))
+        return redirect('restaurant:restaurant_detail', object_id=unit.id)
     if request.method == 'POST':
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():

@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
@@ -82,6 +83,54 @@ class Employee(models.Model):
       verbose_name = _('Employee')
       verbose_name_plural = _('Employees')
 
+class Interval(models.Model):
+    schedule = models.ForeignKey('Schedule', verbose_name=_('schedule'))
+    weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, help_text=_('integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5'))
+    start_hour = models.CharField(_('start hour'), max_length=5, help_text=_('e.g. 10:30'))
+    end_hour = models.CharField(_('end hour'), max_length=5, help_text=_('e.g. 15:00'))
+
+    def __unicode__(self):
+        return self.weekdays + ' ' + self.start_hour + '-' + self.end_hour
+    
+    def is_open(self):
+        return self._is_open(datetime.now())
+
+    def _is_open(self, check_date):
+        now = check_date
+        weekday = now.isoweekday()
+        if str(weekday) not in self.weekdays:
+            return False
+        if self.start_hour:
+            starth = datetime.strptime(now.strftime("%d-%m-%Y ") + self.start_hour, "%d-%m-%Y %H:%M")
+            if now < starth:
+                return False
+        if self.end_hour:
+            endh = datetime.strptime(now.strftime("%d-%m-%Y ") + self.end_hour, "%d-%m-%Y %H:%M")
+            if now > endh:
+                return False
+        return True
+
+    class Meta:
+      verbose_name = _('Interval')
+      verbose_name_plural = _('Intervals')
+
+class Schedule(models.Model):
+    description = models.CharField(_('description'), max_length=100, help_text=_('This text will appear on the frontend for open hours.'))
+    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
+    
+    def is_open(self):
+        for interval in self.interval_set.iterator():
+            if interval.is_open():
+                return True
+        return False
+    
+    def __unicode__(self):
+        return self.description
+
+    class Meta:
+      verbose_name = _('Schedule')
+      verbose_name_plural = _('Schedules')
+
 class Unit(models.Model):
     name = models.CharField(_('name'), max_length=50)
     address = models.CharField(_('address'), max_length=200)
@@ -97,7 +146,7 @@ class Unit(models.Model):
     delivery_time = models.IntegerField(_('delivery time'))
     communication = models.ManyToManyField(Communication, verbose_name=_('communication'))
     package = models.ForeignKey(PartnerPackage, verbose_name=_('package'))
-    open_hours = models.CharField(_('open_hours'), max_length=10)
+    open_hours = models.ForeignKey(Schedule, verbose_name=_('open hours'), related_name='sceduled_units')
     minimum_ord_val = models.IntegerField(_('minimum order value'))
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))
