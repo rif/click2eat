@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -21,14 +22,24 @@
     {% if user.is_authenticated %}
                 <p>
                     {% if user.is_superuser %}
-                        Welcome, <a href="{% url admin:index %}">{{ user.username }}</a>.
+                        {% trans 'Welcome' %}, <a href="{% url admin:index %}">{{ user.username }}</a>.
                     {% else %}
-                        Welcome, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
+                        {% trans 'Welcome' %}, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
                     {% endif %}
                 <a href="{% url auth_logout %}">log out</a></p>
             {% else %}
                 <p>Please <a href="{% url auth_login %}">log in</a> or <a href="{% url registration_register %}">sign up.</a></p>
             {% endif %}
+		<form action="/i18n/setlang/" method="post">
+{% csrf_token %}
+<input name="next" type="hidden" value="/restaurant/1/" />
+<select name="language">
+{% for lang in LANGUAGES %}
+<option value="{{ lang.0 }}">{{ lang.1 }}</option>
+{% endfor %}
+</select>
+<input type="submit" value="Go" />
+</form>
   </div>
 <div id="messages">
     {% if messages %}
