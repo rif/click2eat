@@ -45,6 +45,11 @@ class IntervalInline(admin.TabularInline):
    extra = 0
    min_num = 1
 
+class ScheduleInline(admin.TabularInline):
+   model = models.Schedule
+   extra = 0
+   min_num = 1
+
 class ScheduleAdmin(admin.ModelAdmin):
     list_display = ('description', 'unit')
     list_filter= ['unit']
@@ -54,10 +59,10 @@ class ScheduleAdmin(admin.ModelAdmin):
 class UnitAdmin(admin.ModelAdmin):    
     list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
-    inlines = [ItemGroupInline, ItemInline, ToppingInline]
+    inlines = [ScheduleInline, ItemGroupInline, ItemInline, ToppingInline]
     fieldsets = (
         (None, {
-            'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path', 'open_hours', 'package')
+            'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path', 'package')
         }),
         ('Location options', {
             'fields': ('unit_devlivery', ('latitude', 'longitude'), 'delivery_type', 'delivery_time')

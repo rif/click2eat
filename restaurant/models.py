@@ -116,7 +116,7 @@ class Interval(models.Model):
 
 class Schedule(models.Model):
     description = models.CharField(_('description'), max_length=100, help_text=_('This text will appear on the frontend for open hours.'))
-    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
+    unit = models.OneToOneField('Unit', verbose_name=_('unit'))
     
     def is_open(self):
         for interval in self.interval_set.iterator():
@@ -146,7 +146,6 @@ class Unit(models.Model):
     delivery_time = models.IntegerField(_('delivery time'))
     communication = models.ManyToManyField(Communication, verbose_name=_('communication'))
     package = models.ForeignKey(PartnerPackage, verbose_name=_('package'))
-    open_hours = models.ForeignKey(Schedule, verbose_name=_('open hours'), related_name='sceduled_units')
     minimum_ord_val = models.IntegerField(_('minimum order value'))
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))

@@ -1,5 +1,5 @@
 {% if platinum.count > 0 %}
-<a href="">{{ platinum.0 }}</a>
+<a href="{% url restaurant:restaurant_detail platinum.0.id %}">{{ platinum.0 }}</a>
 {% else %}
 <p>No platinum partners available.</p>
 {% endif %}
