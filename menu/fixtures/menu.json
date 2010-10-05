@@ -19,7 +19,34 @@
         "pk": 1, 
         "model": "menu.vat", 
         "fields": {
-            "value": 1.21
+            "name": "RO_full", 
+            "value": 1.24
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.vat", 
+        "fields": {
+            "name": "RO_half", 
+            "value": 1.8999999999999999
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.itemgrouptranslation", 
+        "fields": {
+            "model": 1, 
+            "name": "meniu", 
+            "language": 2
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.itemgrouptranslation", 
+        "fields": {
+            "model": 1, 
+            "name": "menu", 
+            "language": 1
         }
     }, 
     {
@@ -35,16 +62,9 @@
     }, 
     {
         "pk": 1, 
-        "model": "menu.subcategory", 
+        "model": "menu.toppinggroup", 
         "fields": {
-            "internal_name": "sos"
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "menu.subcategory", 
-        "fields": {
-            "internal_name": "supa"
+            "internal_name": "PizzaTopping"
         }
     }, 
     {
@@ -148,22 +168,39 @@
         }
     }, 
     {
+        "pk": 11, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 6, 
+            "name": "branzica", 
+            "language": 2, 
+            "description": "branzica toipta"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "menu.itemtranslation", 
+        "fields": {
+            "model": 6, 
+            "name": "cheese", 
+            "language": 1, 
+            "description": "melted cheese"
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "menu.item", 
         "fields": {
-            "discount_time_end": "2010-09-22 14:53:53", 
             "index": "1", 
-            "sub_category": 2, 
-            "discount_time_start": "2010-09-22 14:53:51", 
+            "toppings": 1, 
             "price": 1.23, 
             "item_group": 1, 
-            "discount": 0, 
             "new_item_end_date": "2010-09-22", 
             "vat": 1, 
             "internal_name": "tocanita de puisor", 
-            "active": false, 
+            "active": true, 
             "measurement_unit": "GR", 
-            "special": false, 
+            "promotion": null, 
             "unit": 1, 
             "quantity": 0
         }
@@ -172,19 +209,16 @@
         "pk": 2, 
         "model": "menu.item", 
         "fields": {
-            "discount_time_end": "2010-09-22 15:29:48", 
             "index": "1", 
-            "sub_category": 2, 
-            "discount_time_start": "2010-09-22 15:29:46", 
+            "toppings": null, 
             "price": 10.0, 
             "item_group": 1, 
-            "discount": 1, 
             "new_item_end_date": "2010-09-22", 
             "vat": 1, 
             "internal_name": "supa de rosii", 
-            "active": false, 
+            "active": true, 
             "measurement_unit": "GR", 
-            "special": false, 
+            "promotion": null, 
             "unit": 1, 
             "quantity": 0
         }
@@ -193,19 +227,16 @@
         "pk": 3, 
         "model": "menu.item", 
         "fields": {
-            "discount_time_end": "2010-09-22 15:37:14", 
             "index": "1", 
-            "sub_category": 1, 
-            "discount_time_start": "2010-09-22 15:37:12", 
+            "toppings": null, 
             "price": 1.0, 
             "item_group": 1, 
-            "discount": 1, 
             "new_item_end_date": "2010-09-22", 
             "vat": 1, 
             "internal_name": "Mustar", 
-            "active": false, 
+            "active": true, 
             "measurement_unit": "GR", 
-            "special": false, 
+            "promotion": null, 
             "unit": 1, 
             "quantity": 0
         }
@@ -214,19 +245,16 @@
         "pk": 4, 
         "model": "menu.item", 
         "fields": {
-            "discount_time_end": "2010-09-22 15:43:27", 
             "index": "1", 
-            "sub_category": 1, 
-            "discount_time_start": "2010-09-22 15:43:26", 
+            "toppings": null, 
             "price": 1.0, 
             "item_group": 1, 
-            "discount": 1, 
             "new_item_end_date": "2010-09-22", 
             "vat": 1, 
             "internal_name": "Ceciup", 
-            "active": false, 
+            "active": true, 
             "measurement_unit": "GR", 
-            "special": false, 
+            "promotion": null, 
             "unit": 1, 
             "quantity": 0
         }
@@ -235,21 +263,45 @@
         "pk": 5, 
         "model": "menu.item", 
         "fields": {
-            "discount_time_end": "2010-09-23 12:24:04", 
             "index": "1", 
-            "sub_category": 2, 
-            "discount_time_start": "2010-09-23 12:24:03", 
+            "toppings": null, 
             "price": 1.0, 
             "item_group": 1, 
-            "discount": 1, 
             "new_item_end_date": "2010-09-23", 
             "vat": 1, 
             "internal_name": "ceva chestie", 
-            "active": false, 
+            "active": true, 
             "measurement_unit": "GR", 
-            "special": false, 
+            "promotion": null, 
             "unit": 2, 
             "quantity": 0
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "menu.item", 
+        "fields": {
+            "index": "1", 
+            "toppings": null, 
+            "price": 1.0, 
+            "item_group": null, 
+            "new_item_end_date": null, 
+            "vat": 1, 
+            "internal_name": "mozzarela", 
+            "active": true, 
+            "measurement_unit": "GR", 
+            "promotion": null, 
+            "unit": 1, 
+            "quantity": 25
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "menu.topping", 
+        "fields": {
+            "topping_groups": [
+                1
+            ]
         }
     }
 ]
