@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-05 20:55+0300\n"
-"PO-Revision-Date: 2010-10-05 20:56+0300\n"
+"POT-Creation-Date: 2010-10-06 18:54+0300\n"
+"PO-Revision-Date: 2010-10-06 19:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -185,8 +185,8 @@ msgstr "Promoție"
 msgid "Promotions"
 msgstr "Promoții"
 
-#: order/models.py:15 restaurant/models.py:175 userprofiles/models.py:9
-#: userprofiles/models.py:51
+#: order/models.py:15 restaurant/models.py:175 userprofiles/models.py:11
+#: userprofiles/models.py:62
 msgid "user"
 msgstr "utilizator"
 
@@ -206,7 +206,7 @@ msgstr "status"
 msgid "total amount"
 msgstr "cantitatea totala"
 
-#: order/models.py:21 userprofiles/models.py:17
+#: order/models.py:21 userprofiles/models.py:20
 msgid "additional info"
 msgstr "informații suplimentare"
 
@@ -321,7 +321,7 @@ msgstr "Modurile de livrare"
 msgid "email"
 msgstr "e-mail"
 
-#: restaurant/models.py:75 restaurant/models.py:138 userprofiles/models.py:54
+#: restaurant/models.py:75 restaurant/models.py:138 userprofiles/models.py:65
 msgid "phone"
 msgstr "telefon"
 
@@ -385,11 +385,11 @@ msgstr "Monede acceptate"
 msgid "overall_discount"
 msgstr "Reducerea generală"
 
-#: restaurant/models.py:144
+#: restaurant/models.py:144 userprofiles/models.py:22
 msgid "latitude"
 msgstr "latitudine"
 
-#: restaurant/models.py:145
+#: restaurant/models.py:145 userprofiles/models.py:23
 msgid "longitude"
 msgstr "longitudine"
 
@@ -397,7 +397,7 @@ msgstr "longitudine"
 msgid "delivery time"
 msgstr "timpul de livrare"
 
-#: restaurant/models.py:147 userprofiles/models.py:58
+#: restaurant/models.py:147 userprofiles/models.py:69
 msgid "communication"
 msgstr "comunicare"
 
@@ -606,6 +606,7 @@ msgstr "Telefon"
 #: templates/order/restaurant_order_detail.html:24
 #: templates/profiles/profile_detail.html:26
 #: templates/restaurant/unit_detail.html:65
+#: templates/userprofiles/deliveryaddress_detail.html:65
 msgid "Address"
 msgstr "Adresa"
 
@@ -714,7 +715,7 @@ msgid "Order History"
 msgstr "Istoricul comenzilor"
 
 #: templates/profiles/profile_detail.html:27
-#: templates/userprofiles/deliveryaddress_detail.html:8
+#: templates/userprofiles/deliveryaddress_detail.html:77
 msgid "Primary"
 msgstr "Primară"
 
@@ -803,7 +804,6 @@ msgid "Menu"
 msgstr "Meniu"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:3
-#: templates/userprofiles/deliveryaddress_detail.html:3
 msgid "Confirm address deletion"
 msgstr "Confirmați ștergerea adresei"
 
@@ -818,7 +818,7 @@ msgid ""
 msgstr "Sunteți sigur/ă că vreți să ștergeți următoarea adresă de livrare?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:10
-#: userprofiles/models.py:43
+#: userprofiles/models.py:54
 msgid "Delivery Address"
 msgstr "Adresă de livrare"
 
@@ -826,33 +826,57 @@ msgstr "Adresă de livrare"
 msgid "Yes, I"
 msgstr "Da,"
 
-#: templates/userprofiles/deliveryaddress_detail.html:9
+#: templates/userprofiles/deliveryaddress_detail.html:3
+msgid "Address detail"
+msgstr "Detalii adresă"
+
+#: templates/userprofiles/deliveryaddress_detail.html:64
+msgid "Coordinates"
+msgstr "Coordonate"
+
+#: templates/userprofiles/deliveryaddress_detail.html:78
 msgid "City"
 msgstr "Oraș"
 
-#: templates/userprofiles/deliveryaddress_detail.html:10
+#: templates/userprofiles/deliveryaddress_detail.html:79
 msgid "Street"
-msgstr "Stradă"
+msgstr "Strada"
 
-#: templates/userprofiles/deliveryaddress_detail.html:11
-msgid "House number"
-msgstr "Numărul casei"
+#: templates/userprofiles/deliveryaddress_detail.html:80
+msgid "Number"
+msgstr "Număr"
 
-#: templates/userprofiles/deliveryaddress_detail.html:12
-msgid "Street number"
-msgstr "Numărul străzii"
+#: templates/userprofiles/deliveryaddress_detail.html:81
+msgid "Block info"
+msgstr "Informații bloc"
 
-#: templates/userprofiles/deliveryaddress_detail.html:13
-msgid "Floor"
-msgstr "Etaj"
+#: templates/userprofiles/deliveryaddress_detail.html:82
+msgid "ent."
+msgstr "sc."
 
-#: templates/userprofiles/deliveryaddress_detail.html:14
-msgid "Apartment number"
-msgstr "Numărul apartamentului"
+#: templates/userprofiles/deliveryaddress_detail.html:83
+msgid "fl."
+msgstr "et."
 
-#: templates/userprofiles/deliveryaddress_detail.html:15
+#: templates/userprofiles/deliveryaddress_detail.html:84
+msgid "apt."
+msgstr "ap."
+
+#: templates/userprofiles/deliveryaddress_detail.html:85
 msgid "Additional information"
 msgstr "Informații suplimentare"
+
+#: templates/userprofiles/deliveryaddress_detail.html:89
+msgid "Did we pinpoint your address?"
+msgstr "Am reușit să vă localizăm adresa?"
+
+#: templates/userprofiles/deliveryaddress_detail.html:90
+msgid "If not, please let us know by clicking"
+msgstr "Dacă nu, vă rugăm să ne anunțați apăsând"
+
+#: templates/userprofiles/deliveryaddress_detail.html:90
+msgid "here"
+msgstr "aici"
 
 #: templates/userprofiles/deliveryaddress_form.html:13
 msgid "Add a delivery address"
@@ -862,78 +886,101 @@ msgstr "Adăugați adresă de livrare"
 msgid "Finish"
 msgstr "Termină"
 
-#: userprofiles/models.py:10
+#: userprofiles/models.py:12
 msgid "primary"
 msgstr "primară"
 
-#: userprofiles/models.py:10
+#: userprofiles/models.py:12
 msgid "Is this your most frequent used address?"
 msgstr "Este aceasta adresa cea mai folosită?"
 
-#: userprofiles/models.py:11
+#: userprofiles/models.py:13
 msgid "city"
 msgstr "oraș"
 
-#: userprofiles/models.py:12
+#: userprofiles/models.py:14
 msgid "street"
 msgstr "strada"
 
-#: userprofiles/models.py:13
-msgid "house number"
-msgstr "numărul casei"
-
-#: userprofiles/models.py:14
-msgid "street number"
-msgstr "numărul străzii"
-
 #: userprofiles/models.py:15
+msgid "number"
+msgstr "număr"
+
+#: userprofiles/models.py:16
+msgid "block"
+msgstr "bloc"
+
+#: userprofiles/models.py:17
+msgid "entrance"
+msgstr "scara"
+
+#: userprofiles/models.py:18
 msgid "floor"
 msgstr "etaj"
 
-#: userprofiles/models.py:16
+#: userprofiles/models.py:19
 msgid "apartment number"
 msgstr "numărul apartamentului"
 
-#: userprofiles/models.py:32
-#, python-format
-msgid "%(street)s %(house_number)s floor %(floor)d ap. %(ap)d, %(city)s"
-msgstr "%(street)s %(house_number)s etaj %(floor)d ap. %(ap)d, %(city)s"
+#: userprofiles/models.py:21
+msgid "geolocated address"
+msgstr "adresa geolocalizată"
 
-#: userprofiles/models.py:44
+#: userprofiles/models.py:38
+#, python-format
+msgid "%(street)s %(number)s floor %(floor)d ap. %(ap)d, %(city)s"
+msgstr "%(street)s %(number)s et. %(floor)d ap. %(ap)d, %(city)s"
+
+#: userprofiles/models.py:55
 msgid "Delivery Addresses"
 msgstr "Adrese de livrare"
 
-#: userprofiles/models.py:52
+#: userprofiles/models.py:63
 msgid "first name"
 msgstr "prenume"
 
-#: userprofiles/models.py:53
+#: userprofiles/models.py:64
 msgid "last name"
 msgstr "nume"
 
-#: userprofiles/models.py:55
+#: userprofiles/models.py:66
 msgid "sex"
 msgstr "sexul"
 
-#: userprofiles/models.py:56
+#: userprofiles/models.py:67
 msgid "birth date"
 msgstr "Data nașterii"
 
-#: userprofiles/models.py:57
+#: userprofiles/models.py:68
 msgid "newsletter"
 msgstr "email de știri"
 
-#: userprofiles/models.py:57
+#: userprofiles/models.py:68
 msgid "Do you want to receive our newsletter?"
 msgstr "Doriți să primiți e-mail cu știri?"
 
-#: userprofiles/models.py:71
+#: userprofiles/models.py:82
 msgid "User Profile"
 msgstr "Profil iutilizator"
 
-#: userprofiles/models.py:72
+#: userprofiles/models.py:83
 msgid "User Profiles"
 msgstr "Profiluri utilizator"
+
+#~ msgid "Street number"
+#~ msgstr "Numărul străzii"
+
+#~ msgid "Floor"
+#~ msgstr "Etaj"
+
+#~ msgid "Apartment number"
+#~ msgstr "Numărul apartamentului"
+
+#~ msgid "house number"
+#~ msgstr "numărul casei"
+
+#~ msgid "street number"
+#~ msgstr "numărul străzii"
 
 #~ msgid "Subcategory"
 #~ msgstr "Subcategorie"
