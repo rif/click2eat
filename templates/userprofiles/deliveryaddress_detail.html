@@ -15,9 +15,9 @@ function initialize() {
   lat = 45.75060;
   lgt = 21.22417;
   point = new GLatLng(lat, lgt);
-  if({{ object.latitude }} != 1 && {{ object.longitude }} != 1) {
-     lat = {{ object.latitude }};
-     lgt = {{ object.longitude }};
+  if({{ object.latitude }} != 0 && {{ object.longitude }} != 0) {
+     lat = "{{ object.latitude }}".replace(",", ".");
+     lgt = "{{ object.longitude }}".replace(",", ".");
      point = new GLatLng(lat, lgt);
      marker = new GMarker(point);
      map.addOverlay(marker);

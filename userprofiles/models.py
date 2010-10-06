@@ -19,8 +19,8 @@ class DeliveryAddress(models.Model):
     ap_number = models.SmallIntegerField(_('apartment number'), null=True, blank=True)
     additional_info = models.TextField(_('additional info'), null=True, blank=True)
     geolocated_address = models.CharField(_('geolocated address'), max_length=200, editable=False)
-    latitude = models.FloatField(_('latitude'), editable=False)
-    longitude = models.FloatField(_('longitude'), editable=False)
+    latitude = models.FloatField(_('latitude'), editable=False, default=0)
+    longitude = models.FloatField(_('longitude'), editable=False, default=0)
 
     @models.permalink
     def get_absolute_url(self):
