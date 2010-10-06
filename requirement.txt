@@ -10,11 +10,11 @@ Werkzeug
 python-memcached
 coverage
 django-annoying
+geopy
+django-sentry
 # gunicorn staff
 setproctitle
 greenlet
 gevent
 gunicorn
 gunicorn-console
-#sentry
-django-sentry
