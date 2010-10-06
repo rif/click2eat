@@ -16,3 +16,5 @@ greenlet
 gevent
 gunicorn
 gunicorn-console
+#sentry
+django-sentry

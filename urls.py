@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('profiles.urls')),
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^i18n/', include('django.conf.urls.i18n')),
+    (r'^sentry/', include('sentry.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),

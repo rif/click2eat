@@ -117,6 +117,10 @@ INSTALLED_APPS = (
     'django_extensions',
     'south',
     'uni_form',
+    'indexer',
+    'paging',
+    'sentry',
+    'sentry.client',
     # my apps
     'restaurant',
     'menu',
