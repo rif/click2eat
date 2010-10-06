@@ -4,14 +4,18 @@
         "model": "userprofiles.deliveryaddress", 
         "fields": {
             "city": "Timisoara", 
-            "street_number": "Holde", 
+            "entrance": null, 
             "floor": 3, 
-            "house_number": "B91", 
+            "geolocated_address": "", 
             "ap_number": 14, 
-            "primary": false, 
+            "number": "", 
+            "longitude": 1.0, 
+            "primary": true, 
             "street": "Holdelor B91", 
             "user": 2, 
-            "additional_info": ""
+            "latitude": 1.0, 
+            "additional_info": "", 
+            "block": null
         }
     }, 
     {
@@ -19,14 +23,18 @@
         "model": "userprofiles.deliveryaddress", 
         "fields": {
             "city": "1", 
-            "street_number": "1", 
+            "entrance": null, 
             "floor": 1, 
-            "house_number": "1", 
+            "geolocated_address": "", 
             "ap_number": 1, 
+            "number": "", 
+            "longitude": 1.0, 
             "primary": false, 
             "street": "1", 
             "user": 2, 
-            "additional_info": ""
+            "latitude": 1.0, 
+            "additional_info": "", 
+            "block": null
         }
     }, 
     {
@@ -34,14 +42,18 @@
         "model": "userprofiles.deliveryaddress", 
         "fields": {
             "city": "2", 
-            "street_number": "", 
+            "entrance": null, 
             "floor": 2, 
-            "house_number": "2", 
+            "geolocated_address": "", 
             "ap_number": 2, 
+            "number": "", 
+            "longitude": 1.0, 
             "primary": false, 
             "street": "2", 
             "user": 2, 
-            "additional_info": ""
+            "latitude": 1.0, 
+            "additional_info": "", 
+            "block": null
         }
     }, 
     {
@@ -49,14 +61,18 @@
         "model": "userprofiles.deliveryaddress", 
         "fields": {
             "city": "3", 
-            "street_number": "3", 
+            "entrance": null, 
             "floor": 3, 
-            "house_number": "3", 
+            "geolocated_address": "", 
             "ap_number": 3, 
+            "number": "", 
+            "longitude": 1.0, 
             "primary": false, 
             "street": "3", 
             "user": 2, 
-            "additional_info": ""
+            "latitude": 1.0, 
+            "additional_info": "", 
+            "block": null
         }
     }, 
     {
@@ -64,14 +80,37 @@
         "model": "userprofiles.deliveryaddress", 
         "fields": {
             "city": "4", 
-            "street_number": "4", 
+            "entrance": null, 
             "floor": 4, 
-            "house_number": "4", 
+            "geolocated_address": "", 
             "ap_number": 4, 
-            "primary": true, 
+            "number": "", 
+            "longitude": 1.0, 
+            "primary": false, 
             "street": "4", 
             "user": 2, 
-            "additional_info": ""
+            "latitude": 1.0, 
+            "additional_info": "", 
+            "block": null
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "userprofiles.deliveryaddress", 
+        "fields": {
+            "city": "test", 
+            "entrance": null, 
+            "floor": 1, 
+            "geolocated_address": "", 
+            "ap_number": 1, 
+            "number": "", 
+            "longitude": 1.0, 
+            "primary": false, 
+            "street": "test", 
+            "user": 3, 
+            "latitude": 1.0, 
+            "additional_info": "test address", 
+            "block": null
         }
     }, 
     {
