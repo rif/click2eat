@@ -25,7 +25,6 @@ def __get_current_order(request, unit):
         if co.is_abandoned():
             raise
     except:
-        logging.info('New cart created')
         unit = Unit.objects.get(pk=unit.id)
         co = Order.objects.create(user=request.user, unit=unit)
     return co
