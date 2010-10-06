@@ -27,15 +27,10 @@ class DeliveryAddress(models.Model):
         return ('userprofiles:address_detail', (), {'object_id': self.id})
     
     def __unicode__(self):
-        """if self.primary:
-            postfix = u' primary address'
-        else:
-            postfix = u' alternative address'
-        return self.user.get_full_name() + postfix"""
         return self.get_full_address()
     
     def get_full_address(self):
-        return _('%(street)s %(number)s floor %(floor)d ap. %(ap)d, %(city)s') % {'street': self.street, 'number': self.number, 'floor': self.floor, 'ap': self.ap_number, 'city': self.city}
+        return _('%(street)s %(number)s floor %(floor)d ap. %(ap)s, %(city)s') % {'street': self.street, 'number': self.number, 'floor': self.floor, 'ap': str(self.ap_number), 'city': self.city}
     
     def save(self, *args, **kwargs):
         if self.primary == True:
