@@ -21,6 +21,8 @@ class DeliveryAddress(models.Model):
     geolocated_address = models.CharField(_('geolocated address'), max_length=200, editable=False)
     latitude = models.FloatField(_('latitude'), editable=False, default=0)
     longitude = models.FloatField(_('longitude'), editable=False, default=0)
+    geolocation_error = models.BooleanField(_('geolocation error'), editable=False)
+    verified = models.BooleanField(_('verified'), editable=False)
 
     @models.permalink
     def get_absolute_url(self):
@@ -43,7 +45,9 @@ class DeliveryAddress(models.Model):
         else: nb = self.number
         try:
             self.geolocated_address, (self.latitude, self.longitude) = y.geocode("%s %s, %s, Romania" % (nb, self.street, self.city))
+            self.geolocation_error = False
         except:
+            self.geolocation_error = True
         super(DeliveryAddress, self).save(*args, **kwargs) # Call the "real" save() method.
   
     class Meta:
