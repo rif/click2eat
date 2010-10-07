@@ -41,7 +41,9 @@ class DeliveryAddress(models.Model):
         nb = re.findall(r'(\d+)', self.number) 
         if len(nb) > 0: nb = nb[0] 
         else: nb = self.number
-        self.geolocated_address, (self.latitude, self.longitude) = y.geocode("%s %s, %s, Romania" % (nb, self.street, self.city))
+        try:
+            self.geolocated_address, (self.latitude, self.longitude) = y.geocode("%s %s, %s, Romania" % (nb, self.street, self.city))
+        except:
         super(DeliveryAddress, self).save(*args, **kwargs) # Call the "real" save() method.
   
     class Meta:
@@ -59,7 +61,7 @@ class UserProfile(models.Model):
     last_name = models.CharField(_('last name'), max_length=50)
     phone = models.CharField(_('phone'), max_length=15)
     sex = models.CharField(_('sex'), max_length=1, choices=GENDER_CHOICES)
-    birth_date = models.DateField(_('birth date'))
+    birth_date = models.DateField(_('birth date'), null=True, blank=True)
     newsletter = models.BooleanField(_('newsletter'), help_text=_("Do you want to receive our newsletter?"))
     public = models.BooleanField(_('public'), help_text=_("Do you want your profile to be public?"))
     communication = models.ManyToManyField('restaurant.Communication', verbose_name=_('communication'))
