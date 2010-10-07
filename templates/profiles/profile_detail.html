@@ -18,6 +18,7 @@
 <br/>
 <a href="{% url order:list %}">{% trans 'Order History' %}</a>
 <br/>
+{% if profile %}
 <div id="delivery_addresses">
 <table>
     <thead>
@@ -29,7 +30,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for addr in user.deliveryaddress_set.iterator %}
+        {% for addr in profile.user.deliveryaddress_set.iterator %}
         <tr>
             <td>{{ forloop.counter }}</td>
             <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
@@ -42,6 +43,7 @@
     </tbody>
 </table>
 </div>
+{% endif %}
 <br/>
 <a href="{% url userprofiles:create_address %}">Add delivery address</a>
 {% endblock %}

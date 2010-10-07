@@ -36,6 +36,16 @@ def __is_restaurant_administrator(request, unit):
         raise PermissionDenied()
 
 @login_required
+def limited_object_detail(*args, **kwargs):
+    request = args[0]
+    queryset = kwargs['queryset']
+    object_id = kwargs['object_id']
+    ord = queryset.get(pk=object_id)
+    if ord.user_id != request.user.id:
+        raise PermissionDenied()
+    return list_detail.object_detail(*args, **kwargs)
+
+@login_required
 def list(request):
     orders = Order.objects.filter(user__id=request.user.id).exclude(status='CR')
     return list_detail.object_list(
