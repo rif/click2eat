@@ -10,3 +10,4 @@ urlpatterns = patterns('',
                        url(r'^restaurant/(?P<object_id>\d+)/$', views.unit_detail, name='restaurant_detail'),
                        url(r'^feedback/(?P<unit_id>\d+)/$', views.feedback, name='feedback'),
                        )
+
