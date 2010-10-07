@@ -78,10 +78,11 @@ $(function(){
     <li>{% trans 'City' %}: {{ object.city }}</li>
     <li>{% trans 'Street' %}: {{ object.street }}</li>
     <li>{% trans 'Number' %}: {{ object.number }}</li>
-    <li>{% trans 'Block info' %}: {{ object.block }}
+    <li>{% trans 'Block info' %}: 
+      {% if object.block %}{{ object.block }}{% endif %}
       {% if object.entrance %}{% trans 'ent.' %} {{ object.entrance }} {% endif %}
       {% if object.floor %}{% trans 'fl.' %} {{ object.floor }}{% endif %}
-      {% if object.ap_number %}{% trans 'apt.' %} {{ object.ap_number }}{% endif %}</li>
+    {% if object.ap_number %}{% trans 'apt.' %} {{ object.ap_number }}{% endif %}</li>
     {% if object.additional_info %}<li>{% trans 'Additional information' %}: {{ object.additional_info }}</li>{% endif %}
 </ul>
 <a href="{% url profiles_profile_detail user %}">Back</a> <a href="{% url userprofiles:update_address object.id %}">Edit</a>
