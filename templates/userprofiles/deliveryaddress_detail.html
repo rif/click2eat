@@ -88,7 +88,7 @@ $(function(){
 <a href="{% url profiles_profile_detail user %}">Back</a> <a href="{% url userprofiles:update_address object.id %}">Edit</a>
 
 <h2>{% trans 'Did we pinpoint your address?' %}</h2>
-<p>{% trans 'If not, please let us know by clicking' %} <a href="">{% trans 'here' %}</a>.</p>
+<p>{% trans 'If not, please let us know by clicking' %} <a href="{% url userprofiles:geolocation_error object.id %}">{% trans 'here' %}</a>.</p>
 <form action="#" onsubmit="showAddress(this.address.value); return false">
   <p>
     <input type="text" size="60" name="address" value="Piaţa Libertăţii, Timisoara">
