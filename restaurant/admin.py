@@ -2,9 +2,6 @@ from django.contrib import admin
 from restaurant import models
 from menu.models import Item, ItemGroup, Topping
 
-class DeliveryAreaAdmin(admin.ModelAdmin):
-    search_fields = ['name']
-    
 class CommunicationAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
@@ -65,7 +62,7 @@ class UnitAdmin(admin.ModelAdmin):
             'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path', 'package')
         }),
         ('Location options', {
-            'fields': ('unit_devlivery', ('latitude', 'longitude'), 'delivery_type', 'delivery_time')
+            'fields': (('latitude', 'longitude', 'delivery_range'), ('delivery_type', 'delivery_time'))
         }),
         ('Administration', {
             'fields': ('contact_person', 'admin_users', 'employee', 'communication')
@@ -93,7 +90,6 @@ admin.site.register(models.DeliveryType, DeliveryTypeAdmin)
 admin.site.register(models.PaymentMethod,PaymentMethodAdmin)
 admin.site.register(models.Communication, CommunicationAdmin)
 admin.site.register(models.PartnerPackage, PartnerPackageAdmin)
-admin.site.register(models.DeliveryArea, DeliveryAreaAdmin)
 admin.site.register(models.Currency, CurrencyAdmin)
 admin.site.register(models.Schedule, ScheduleAdmin)
 
