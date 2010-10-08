@@ -3,6 +3,9 @@
 {% block title %}{% trans 'Your profile' %}{% endblock %}
 
 {% block content %}
+{% if not profile %}
+<h1>{% trans 'This profile is not public' %}</h1>
+{% else %}
 <ul>
 <li>{% trans 'First name' %}: {{ profile.first_name }}</li>
 <li>{% trans 'Last name' %}: {{ profile.last_name }}</li>
@@ -12,13 +15,12 @@
 <li>{% trans 'Newsletter' %}: {{ profile.newsletter|yesno }}</li>
 <li>{% trans 'Communication' %}: {% for com in profile.communication.iterator %}{{ com.name }} {% endfor %}</li>
 </ul>
-
 <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a><nbsp>
 <a href="{% url restaurant:index %}">{% trans 'Home' %}</a>
 <br/>
 <a href="{% url order:list %}">{% trans 'Order History' %}</a>
 <br/>
-{% if profile != None %}
+
 <div id="delivery_addresses">
 <table>
     <thead>
@@ -43,7 +45,7 @@
     </tbody>
 </table>
 </div>
-{% endif %}
 <br/>
 <a href="{% url userprofiles:create_address %}">Add delivery address</a>
+{% endif %}
 {% endblock %}

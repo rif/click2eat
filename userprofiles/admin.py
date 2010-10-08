@@ -7,9 +7,9 @@ class DeliveryAddressAdmin(admin.ModelAdmin):
     search_fields = ['user__first_name', 'user__last_name', 'street', 'additional_info', 'geolocated_address']
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'phone', 'sex', 'birth_date', 'newsletter')
+    list_display = ('__unicode__', 'phone', 'sex', 'birth_date', 'public', 'newsletter')
     search_fields = ['__unicode__']
-    list_filter = ['newsletter']
+    list_filter = ['newsletter', 'public']
 
 admin.site.register(models.DeliveryAddress, DeliveryAddressAdmin)
 admin.site.register(models.UserProfile, UserProfileAdmin)

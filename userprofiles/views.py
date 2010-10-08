@@ -9,7 +9,15 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from userprofiles.forms import DeliveryAddressForm
 from userprofiles.models import DeliveryAddress
+from profiles import views
 
+@login_required
+def profile_detail(request, username):
+    dict = {'username': username}
+    if username != request.user.username:
+        dict['public_profile_field'] = 'public'
+    return views.profile_detail(request, **dict)
+    
 @login_required
 def create(request):
     if request.method == 'POST':
