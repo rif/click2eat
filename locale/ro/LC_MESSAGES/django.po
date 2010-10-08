@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-08 11:12+0300\n"
-"PO-Revision-Date: 2010-10-08 11:15+0300\n"
+"POT-Creation-Date: 2010-10-08 12:23+0300\n"
+"PO-Revision-Date: 2010-10-08 12:23+0300\n"
 "Last-Translator: Filemaker <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -155,7 +155,7 @@ msgstr "Articole"
 msgid "Topping"
 msgstr "Garnitură"
 
-#: menu/models.py:120 templates/restaurant/unit_detail.html:91
+#: menu/models.py:120 templates/restaurant/unit_detail.html:93
 msgid "Toppings"
 msgstr "Garnituri"
 
@@ -724,7 +724,7 @@ msgid "Edit"
 msgstr "Editați"
 
 #: templates/profiles/profile_detail.html:17
-#: templates/restaurant/unit_detail.html:117
+#: templates/restaurant/unit_detail.html:119
 msgid "Home"
 msgstr "Acasă"
 
@@ -809,15 +809,15 @@ msgstr "Dați un calificativ acestui restaurant"
 msgid "Previous orders at this restaurant"
 msgstr "Comenzi anterioare la acest restaurant"
 
-#: templates/restaurant/unit_detail.html:77
+#: templates/restaurant/unit_detail.html:79
 msgid "Current order"
 msgstr "Comanda curentă"
 
-#: templates/restaurant/unit_detail.html:80
+#: templates/restaurant/unit_detail.html:82
 msgid "Send"
 msgstr "Trimite"
 
-#: templates/restaurant/unit_detail.html:82
+#: templates/restaurant/unit_detail.html:84
 msgid "Menu"
 msgstr "Meniu"
 
@@ -956,6 +956,14 @@ msgstr "%(street)s %(number)s et. %(floor)s ap. %(ap)s, %(city)s"
 #: userprofiles/models.py:55
 msgid "Delivery Addresses"
 msgstr "Adrese de livrare"
+
+#: userprofiles/models.py:59
+msgid "Male"
+msgstr "Masculin"
+
+#: userprofiles/models.py:60
+msgid "Female"
+msgstr "Feminin"
 
 #: userprofiles/models.py:63
 msgid "first name"
