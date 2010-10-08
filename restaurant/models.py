@@ -4,16 +4,6 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 
-class DeliveryArea(models.Model):
-    name = models.CharField(_('name'), max_length=200)
-    
-    def __unicode__(self):
-        return self.name
-    
-    class Meta:
-      verbose_name = _('Delivery Area')
-      verbose_name_plural = _('Deliver Areas')
-
 class Communication(models.Model):
     name = models.CharField(_('name'), max_length=200)
     
@@ -138,11 +128,11 @@ class Unit(models.Model):
     phone = models.CharField(_('phone'), max_length=15)
     mobile = models.CharField(_('mobile'), max_length=15)
     logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True, blank=True)
-    unit_devlivery = models.ForeignKey(DeliveryArea, verbose_name=_('unit delivery'))
     currency = models.ForeignKey(Currency, verbose_name=_('accepted currencies'), related_name='units_using_this')
     overall_discount = models.FloatField(_('overall_discount'))
     latitude = models.FloatField(_('latitude'))
     longitude = models.FloatField(_('longitude'))
+    delivery_range = models.FloatField(_('range'), help_text=_('Delivery range in km'))
     delivery_time = models.IntegerField(_('delivery time'))
     communication = models.ManyToManyField(Communication, verbose_name=_('communication'))
     package = models.ForeignKey(PartnerPackage, verbose_name=_('package'))
