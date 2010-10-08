@@ -10,7 +10,7 @@ class DeliveryAddressTest(TestCase):
     def test_primary_uniquenes(self):
         das = DeliveryAddress.objects.filter(user__id=self.user.id).filter(primary=True)
         self.failUnlessEqual(das.count(), 1)
-        da2 = DeliveryAddress.objects.create(user=self.user,primary=True,city='1',street='1',house_number='1',floor=1,ap_number=1)
+        DeliveryAddress.objects.create(user=self.user,primary=True,city='1',street='1',house_number='1',floor=1,ap_number=1)
         all_count = DeliveryAddress.objects.count()
         self.failUnlessEqual(all_count, 2)
         das = DeliveryAddress.objects.filter(user__id=self.user.id).filter(primary=True)
