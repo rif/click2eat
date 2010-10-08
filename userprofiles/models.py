@@ -5,12 +5,6 @@ import re
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
-import logging
-from sentry.client.handlers import SentryHandler
-
-logging.getLogger().addHandler(SentryHandler())
-# Add StreamHandler to sentry's default so you can catch missed exceptions
-logging.getLogger('sentry.errors').addHandler(logging.StreamHandler())
 
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
@@ -27,6 +21,7 @@ class DeliveryAddress(models.Model):
     latitude = models.FloatField(_('latitude'), default=0)
     longitude = models.FloatField(_('longitude'), default=0)
     geolocation_error = models.BooleanField(_('geolocation error'), editable=False)
+    perform_geolocation = models.BooleanField(_('geolocation error'), editable=False, default=True)
 
     @models.permalink
     def get_absolute_url(self):
@@ -43,18 +38,17 @@ class DeliveryAddress(models.Model):
             da = DeliveryAddress.objects.filter(user__id=self.user_id).filter(primary=True)
             if da.count() > 0:
               da.update(primary=False)
-        y = geocoders.Yahoo('a8K3iUXV34FvKG81x7uh1Kd1EpcZoopG8cgSlVJpAxIj.fEzzfs23tqewvQ-')
-        nb = re.findall(r'(\d+)', self.number) 
-        if len(nb) > 0: nb = nb[0] 
-        else: nb = self.number
-        try:
-            self.geolocated_address, (self.latitude, self.longitude) = y.geocode("%s %s, %s, Romania" % (nb, self.street, self.city))
-            self.geolocation_error = False
-            logging.error('There was some crazy error', extra={
-                'url': request.build_absolute_uri(),
-                'data': {'address': unicode(self), 'username': request.user.username}})
-        except:
-            self.geolocation_error = True
+        if(self.perform_geolocation):
+            y = geocoders.Yahoo('a8K3iUXV34FvKG81x7uh1Kd1EpcZoopG8cgSlVJpAxIj.fEzzfs23tqewvQ-')
+            nb = re.findall(r'(\d+)', self.number)
+            if len(nb) > 0: nb = nb[0] 
+            else: nb = self.number
+            try:
+                self.geolocated_address, (self.latitude, self.longitude) = y.geocode("%s %s, %s, Romania" % (nb, self.street, self.city))
+                self.geolocation_error = False
+            except:
+                self.geolocation_error = True
+        self.perform_geolocation = True
         super(DeliveryAddress, self).save(*args, **kwargs) # Call the "real" save() method.
   
     class Meta:

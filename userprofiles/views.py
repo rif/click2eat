@@ -7,8 +7,11 @@ from django.views.generic.list_detail import object_detail
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 from userprofiles.forms import DeliveryAddressForm
 from userprofiles.models import DeliveryAddress
+from annoying.utils import HttpResponseReload
 from profiles import views
 
 @login_required
@@ -35,11 +38,20 @@ def create(request):
     }, context_instance=RequestContext(request))
 
 @login_required
+def mark_geolocation_error(request, object_id):
+    addr = get_object_or_404(DeliveryAddress, pk=object_id)
+    if addr.user == request.user:
+        addr.geolocation_error = True
+        addr.perform_geolocation = False
+        addr.save()
+        messages.add_message(request, messages.INFO, _('Thank you, we will try to correct this.'))
+    return HttpResponseReload(request)
+
+@login_required
 def limited_update_object(*args, **kwargs):
     request = args[0]
-    model = kwargs['model']
     object_id = kwargs['object_id']
-    addr = get_object_or_404(model, pk=object_id)
+    addr = get_object_or_404(DeliveryAddress, pk=object_id)
     if addr.user_id != request.user.id:
         raise PermissionDenied()
     return update_object(*args, **kwargs)
