@@ -1,9 +1,8 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from datetime import datetime
-from order.models import Order, OrderItem
 from restaurant.models import Unit
-from menu.models import Item, Promotion
+from menu.models import Promotion
 
 class PromotionTest(TestCase):
     fixtures = ['restaurant.json', 'menu.json', 'order.json']
