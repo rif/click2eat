@@ -1,5 +1,6 @@
 from django.contrib import admin
 from menu import models
+from django.utils.translation import ugettext_lazy as _
 
 class ItemGroupInline(admin.TabularInline):
    model = models.ItemGroupTranslation
@@ -36,13 +37,14 @@ class ToppingGroupAdmin(admin.ModelAdmin):
     list_display = ('internal_name',)
     search_fields = ['internal_name']
     inlines = [ToppingInline]
-    
+
 class ItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
     list_display = ('internal_name', 'index', 'unit', 'get_price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'toppings', 'active')
     search_fields = ['internal_name']
     list_filter = ['unit']
     inlines = [ItemTranslationInline]
+    actions = ['clone_objects']
     fieldsets = (
         (None, {
             'fields': ('internal_name', 'index', 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
@@ -51,6 +53,18 @@ class ItemAdmin(admin.ModelAdmin):
             'fields': ('new_item_end_date', 'active')
         }),
     )
+
+    def clone_objects(self, request, queryset):
+        for object in queryset.iterator():
+            object.clone()
+        rows_updated = queryset.count()
+        if rows_updated == 1:
+            message_bit = _("1 item was")
+        else:
+            message_bit = _("%s items were") % rows_updated
+        self.message_user(request, _("%s successfully cloned.") % message_bit)
+    clone_objects.short_description = _('Clone selected items')
+
 
 class ToppingAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}

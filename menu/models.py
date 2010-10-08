@@ -84,6 +84,23 @@ class Item(MultilingualModel):
       if self.promotion:
           return self.promotion.get_new_price(self.price)
       return self.price
+
+  def clone(self):
+      ci = Item()
+      ci.internal_name = self.internal_name
+      ci.index = self.index
+      ci.unit = self.unit
+      ci.price = self.price
+      ci.quantity = self.quantity
+      ci.promotion = self.promotion
+      ci.measurement_unit = self.measurement_unit
+      ci.vat = self.vat
+      ci.item_group = self.item_group
+      ci.new_item_end_date = self.new_item_end_date
+      ci.toppings = self.toppings
+      ci.active = self.active
+      ci.save()
+      return ci
   
   class Meta:
       ordering = ['index']
