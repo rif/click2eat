@@ -56,8 +56,8 @@ class DeliveryAddress(models.Model):
 
 class UserProfile(models.Model):
     GENDER_CHOICES = (
-                      ('M', 'Male'),
-                      ('F', 'Female'),
+                      ('M', _('Male')),
+                      ('F', _('Female')),
                       )
     user = models.OneToOneField(User, verbose_name=_('user'))
     first_name = models.CharField(_('first name'), max_length=50)
