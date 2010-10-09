@@ -6,12 +6,14 @@ from django.views.generic.create_update import update_object, delete_object
 from django.views.generic.list_detail import object_detail
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from userprofiles.forms import DeliveryAddressForm
 from userprofiles.models import DeliveryAddress
 from annoying.utils import HttpResponseReload
+from userprofiles.forms import InviteFriendForm
 from profiles import views
 
 @login_required
@@ -49,8 +51,17 @@ def mark_geolocation_error(request, object_id):
 
 @login_required
 def invite_friend(request):
-    pass
-
+    if request.method == 'POST':
+        form = InviteFriendForm(request.POST)
+        if form.is_valid():
+            messages.add_message(request, messages.INFO, _('The email was send.'))
+            return redirect('profiles_profile_detail', username=request.user.username)
+    else:
+        form = InviteFriendForm()
+    return render_to_response('userprofiles/invite_friend_form.html', {
+        'form': form,
+        }, context_instance=RequestContext(request))
+            
 @login_required
 def limited_update_object(*args, **kwargs):
     request = args[0]

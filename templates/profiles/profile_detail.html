@@ -2,6 +2,25 @@
 {% load i18n %}
 {% block title %}{% trans 'Your profile' %}{% endblock %}
 
+{% block scripts %}
+<script type="text/javascript">
+function handleinviteform(){
+   $("#invite-form").submit(function(){
+    console.log("Submited!");
+    return True;
+   });
+}
+
+$(function(){
+   $("#invite-link").click(function(e){
+        $("#invite-placeholder").load($(this).attr("href"));
+        handleinviteform();
+        e.preventDefault();
+   });
+});
+</script>
+{% endblock %}
+
 {% block content %}
 {% if not profile %}
 <h1>{% trans 'This profile is not public' %}</h1>
@@ -25,7 +44,8 @@
 {% empty %}
 <p>{% trans "You currently don't have any friends :(" %}
 {% endfor %}
-<p><a href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
+<p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
+<div id="invite-placeholder"></div>
 
 <div id="delivery_addresses">
 <table>
