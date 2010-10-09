@@ -19,7 +19,13 @@
 <a href="{% url restaurant:index %}">{% trans 'Home' %}</a>
 <br/>
 <a href="{% url order:list %}">{% trans 'Order History' %}</a>
-<br/>
+<h2>{% trans 'Friends' %}</h2>
+{% for friend in profile.user.friends.iterator %}
+<a href="{% url profiles_profile_detail friend.user.username %}">{{ friend }}</a>,&nbsp;
+{% empty %}
+<p>{% trans "You currently don't have any friends :(" %}
+{% endfor %}
+<p><a href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
 
 <div id="delivery_addresses">
 <table>

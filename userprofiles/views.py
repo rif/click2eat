@@ -48,6 +48,10 @@ def mark_geolocation_error(request, object_id):
     return HttpResponseReload(request)
 
 @login_required
+def invite_friend(request):
+    pass
+
+@login_required
 def limited_update_object(*args, **kwargs):
     request = args[0]
     object_id = kwargs['object_id']
