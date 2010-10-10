@@ -14,6 +14,7 @@ from userprofiles.forms import DeliveryAddressForm
 from userprofiles.models import DeliveryAddress
 from annoying.utils import HttpResponseReload
 from userprofiles.forms import InviteFriendForm
+from django.core.mail import send_mail
 from profiles import views
 
 @login_required
@@ -54,8 +55,10 @@ def invite_friend(request):
     if request.method == 'POST':
         form = InviteFriendForm(request.POST)
         if form.is_valid():
-            messages.add_message(request, messages.INFO, _('The email was send.'))
-            return redirect('profiles_profile_detail', username=request.user.username)
+            email = form.cleaned_data['email']
+            send_mail(_('Come to supper'), 'Here is the message.', request.user.email, [email], fail_silently=False)
+            messages.add_message(request, messages.INFO, _('The invitation email was send to %s.') % email)
+            return HttpResponse('ok')
     else:
         form = InviteFriendForm()
     return render_to_response('userprofiles/invite_friend_form.html', {
