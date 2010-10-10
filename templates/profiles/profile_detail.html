@@ -6,15 +6,28 @@
 <script type="text/javascript">
 function handleinviteform(){
    $("#invite-form").submit(function(){
-    console.log("Submited!");
-    return True;
+$.post("{% url userprofiles:invite_friend %}",
+    { csrfmiddlewaretoken:  $("input:first").val(),
+      email:                   $("#id_email").val(),
+    },
+    function(data){
+      if(data == 'ok'){
+        window.location.reload();
+      } else {
+        $("#invite-placeholder").html(data);
+        handleinviteform();
+      }
+    }
+  );
+    return false;
    });
 }
 
 $(function(){
    $("#invite-link").click(function(e){
-        $("#invite-placeholder").load($(this).attr("href"));
-        handleinviteform();
+        $("#invite-placeholder").load($(this).attr("href"), function(){
+            handleinviteform();
+        });
         e.preventDefault();
    });
 });
