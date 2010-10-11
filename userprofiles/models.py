@@ -62,7 +62,7 @@ class UserProfile(models.Model):
                       ('F', _('Female')),
                       )
     user = models.OneToOneField(User, verbose_name=_('user'))
-    friend = models.ForeignKey(User, verbose_name=_('friend'), null=True, blank=True, related_name="friends")
+    #friend = models.ForeignKey(User, verbose_name=_('friend'), null=True, blank=True, related_name="friends")
     first_name = models.CharField(_('first name'), max_length=50)
     last_name = models.CharField(_('last name'), max_length=50)
     phone = models.CharField(_('phone'), max_length=15)

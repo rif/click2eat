@@ -53,6 +53,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = ' [bucatar] '
 
+SITE_NAME = 'bucatar'
+CONTACT_EMAIL = 'contact@mailinator.com'
+DEFAULT_FROM_EMAIL = 'default@mailinator.com'
+
 ACCOUNT_ACTIVATION_DAYS = 7
 
 CACHE_BACKEND = 'locmem://'
@@ -121,6 +125,9 @@ INSTALLED_APPS = (
     'paging',
     'sentry',
     'sentry.client',
+    'notification',
+    'friends',
+    'captcha',
     # my apps
     'restaurant',
     'menu',

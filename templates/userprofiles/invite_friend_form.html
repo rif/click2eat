@@ -1,5 +1,8 @@
 {% load i18n %}
+
 <form id="invite-form" method="POST" action="{% url userprofiles:invite_friend %}">{% csrf_token %}
-    {{ form.as_p }}
+<table>
+    {{ form.as_table }}
+</table>
     <input type="submit" value="{% trans 'Invite friend' %}">
 </form>

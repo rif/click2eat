@@ -1,0 +1,1 @@
+{% load i18n %}{% trans 'Invitation from' %} {{ user.get_full_name }}

@@ -16,6 +16,7 @@ from annoying.utils import HttpResponseReload
 from userprofiles.forms import InviteFriendForm
 from django.core.mail import send_mail
 from profiles import views
+from friends.models import JoinInvitation
 
 @login_required
 def profile_detail(request, username):
@@ -56,7 +57,10 @@ def invite_friend(request):
         form = InviteFriendForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            send_mail(_('Come to supper'), 'Here is the message.', request.user.email, [email], fail_silently=False)
+            message = form.cleaned_data['message']
+            if message.strip() == "":
+                message = _('Join me for lunch!')
+            JoinInvitation.objects.send_invitation(request.user, email, message)
             messages.add_message(request, messages.INFO, _('The invitation email was send to %s.') % email)
             return HttpResponse('ok')
     else:
@@ -64,6 +68,11 @@ def invite_friend(request):
     return render_to_response('userprofiles/invite_friend_form.html', {
         'form': form,
         }, context_instance=RequestContext(request))
+
+
+def invite_accept(request, confirmation_key):
+    ji = get_object_or_404(JoinInvitation, messages_key=messages_key)
+    ji.accept()
             
 @login_required
 def limited_update_object(*args, **kwargs):
