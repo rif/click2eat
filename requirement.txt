@@ -12,6 +12,9 @@ coverage
 django-annoying
 geopy
 django-sentry
+django-simple-captcha
+django-notification
+django-friends
 # gunicorn staff
 setproctitle
 greenlet
