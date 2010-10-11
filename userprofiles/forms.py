@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from userprofiles.models import DeliveryAddress
 
 class DeliveryAddressForm(forms.ModelForm):
@@ -8,3 +9,4 @@ class DeliveryAddressForm(forms.ModelForm):
         
 class InviteFriendForm(forms.Form):
     email = forms.EmailField()
+    message = forms.CharField(_('message'), initial=_('Join me for lunch!'), widget=forms.Textarea)

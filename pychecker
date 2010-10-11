@@ -1,0 +1,5 @@
+#!/bin/bash
+pylint --output-format=parseable "$1"
+pyflakes "$1"
+pep8 --repeat "$1"
+true

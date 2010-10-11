@@ -12,7 +12,7 @@ class DeliveryAddressAdmin(admin.ModelAdmin):
         print "saved from admin!"
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'phone', 'sex', 'birth_date', 'friend','public', 'newsletter')
+    list_display = ('__unicode__', 'phone', 'sex', 'birth_date','public', 'newsletter')
     search_fields = ['__unicode__']
     list_filter = ['newsletter', 'public']
 

@@ -103,12 +103,13 @@ def send(request, unit_id):
     if not unit.schedule.is_open():
         messages.add_message(request, messages.WARNING, _('This restaurant is now closed! Please check the open hours and come back later.'))
         return redirect('restaurant:restaurant_detail', object_id=unit.id)
+    if current_order.address:
         src = (unit.latitude, unit.longitude)
         dest = (current_order.address.latitude, current_order.address.longitude)
         dist = distance.distance(src, dest)
-    if  dist.km > unit.delivery_range:
-        messages.add_message(request, messages.WARNING, _('We are sorry, you are not in the delivery range of this restaurant.'))
-        return redirect('restaurant:restaurant_detail', object_id=unit.id)
+        if  dist.km > unit.delivery_range:
+            messages.add_message(request, messages.WARNING, _('We are sorry, you are not in the delivery range of this restaurant.'))
+            return redirect('restaurant:restaurant_detail', object_id=unit.id)
     if request.method == 'POST':
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():

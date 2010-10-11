@@ -5,10 +5,11 @@
 {% block scripts %}
 <script type="text/javascript">
 function handleinviteform(){
-   $("#invite-form").submit(function(){
+$("#invite-form").submit(function(){
 $.post("{% url userprofiles:invite_friend %}",
     { csrfmiddlewaretoken:  $("input:first").val(),
       email:                   $("#id_email").val(),
+      message:                   $("#id_message").val(),
     },
     function(data){
       if(data == 'ok'){
