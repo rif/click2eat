@@ -14,7 +14,6 @@ from userprofiles.forms import DeliveryAddressForm
 from userprofiles.models import DeliveryAddress
 from annoying.utils import HttpResponseReload
 from userprofiles.forms import InviteFriendForm
-from django.core.mail import send_mail
 from profiles import views
 from friends.models import JoinInvitation
 
@@ -72,7 +71,7 @@ def invite_friend(request):
 
 def invite_accept(request, confirmation_key):
     ji = get_object_or_404(JoinInvitation, confirmation_key=confirmation_key)
-    ji.accept()
+    return HttpResponse('ok')
             
 @login_required
 def limited_update_object(*args, **kwargs):
