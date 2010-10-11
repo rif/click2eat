@@ -71,7 +71,7 @@ def invite_friend(request):
 
 
 def invite_accept(request, confirmation_key):
-    ji = get_object_or_404(JoinInvitation, messages_key=messages_key)
+    ji = get_object_or_404(JoinInvitation, confirmation_key=confirmation_key)
     ji.accept()
             
 @login_required
