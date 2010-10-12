@@ -1,5 +1,7 @@
 <ul>
 {% for unit in units %}
-<li class="{{ unit.package.slug }} {% if not object.schedule.is_open %}closed-unit{% endif %}"><a href="{% url restaurant:restaurant_detail unit.id %}">{{ unit }}</a></li>
+<li class="{{ unit.package.slug }} {% if not unit.schedule.is_open %}closed-unit{% endif %} {% if unit.is_new %}new-unit{% endif %}">
+  <a href="{% url restaurant:restaurant_detail unit.id %}">{{ unit }}</a>
+</li>
 {% endfor %}
 </ul>
