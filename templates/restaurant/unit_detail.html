@@ -43,6 +43,10 @@
     $("#last-orders").load("{% url order:list_unit object.id %}", function(){
       pageLinks();
     });
+    $(".toggle-toppings").click(function(e){
+        $(this).next().slideToggle();
+        e.preventDefault();
+    });
   });
   function pageLinks(){
     $(".page-link").click(function(e){
@@ -66,6 +70,7 @@
 <li>{% trans 'Email' %}: {{ object.email }}</li>
 <li>{% trans 'Phone' %}: {{ object.phone }}</li>
 <li>{% trans 'Open hours' %}: {{ object.schedule }}, {% trans 'Open'%}: {{ object.schedule.is_open|yesno }}</li>
+{% if object.info %}<li>{% trans 'Info' %}: {{ object.info|safe}}</li>{% endif %}
 </ul>
 
 <h2>{% trans 'Previous orders at this restaurant' %}</h2>
@@ -89,6 +94,8 @@
     <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
     {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
     {% if item.toppings %}
+    <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
+    <span class="topping-span" style="display:none">
     {% trans 'Toppings' %}:
     <ul>
       {% for top in item.toppings.topping_set.iterator %}
@@ -96,6 +103,7 @@
     {{ top.name_en }} - <span class="item-desc">{{top.description_en}}</span></li>
       {% endfor %}
     </ul>  
+    </span>
     {% endif %}
   {% endif %}
     {% empty %}
