@@ -79,7 +79,7 @@
 <h2>{% trans 'Current order' %}</h2>
 <div id="current-order">
 </div>
-<a href="{% url order:send object.id %}">{% trans 'Send' %}</a>
+<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Send' %}</a>
   
 <h1 class="ui-widget-header">{% trans 'Menu' %}</h1>
 <ul id="menu">

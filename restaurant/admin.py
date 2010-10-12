@@ -42,7 +42,8 @@ class IntervalInline(admin.TabularInline):
    extra = 0
    min_num = 1
 
-class ScheduleInline(admin.TabularInline):
+"""Currently not used because it was confiusing without intervals"""
+class ScheduleInline(admin.TabularInline): 
    model = models.Schedule
    extra = 0
    min_num = 1
@@ -56,7 +57,7 @@ class ScheduleAdmin(admin.ModelAdmin):
 class UnitAdmin(admin.ModelAdmin):    
     list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
-    inlines = [ScheduleInline, ItemGroupInline, ItemInline, ToppingInline]
+    inlines = [ItemGroupInline, ItemInline, ToppingInline]
     fieldsets = (
         (None, {
             'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path', 'package')
