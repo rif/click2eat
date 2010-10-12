@@ -27,7 +27,7 @@ def __get_current_order(request, unit):
             raise
     except:
         unit = Unit.objects.get(pk=unit.id)
-        co = Order.objects.create(user=request.user, unit=unit)
+        co = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id)
     return co
 
 def __is_restaurant_administrator(request, unit):
@@ -116,7 +116,6 @@ def send(request, unit_id):
             order = form.save(commit=False)
             print form.cleaned_data
             order.status = 'ST'
-            order.employee_id = unit.employee_id
             order.save()
             messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
             send_mail('New Order',
