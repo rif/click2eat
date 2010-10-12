@@ -1,13 +1,70 @@
 [
     {
+        "pk": 48, 
+        "model": "order.order", 
+        "fields": {
+            "status": "AB", 
+            "total_amount": 11.0, 
+            "creation_date": "2010-10-11 12:43:14", 
+            "user": 2, 
+            "address": 1, 
+            "employee": 1, 
+            "additional_info": "", 
+            "unit": 1
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "order.order", 
+        "fields": {
+            "status": "AB", 
+            "total_amount": 11.0, 
+            "creation_date": "2010-10-05 16:35:51", 
+            "user": 2, 
+            "address": null, 
+            "employee": 1, 
+            "additional_info": null, 
+            "unit": 1
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "order.order", 
+        "fields": {
+            "status": "AB", 
+            "total_amount": 3.23, 
+            "creation_date": "2010-10-04 09:52:11", 
+            "user": 2, 
+            "address": null, 
+            "employee": 1, 
+            "additional_info": null, 
+            "unit": 1
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "order.order", 
+        "fields": {
+            "status": "AB", 
+            "total_amount": 1.23, 
+            "creation_date": "2010-10-02 18:07:17", 
+            "user": 2, 
+            "address": 1, 
+            "employee": 1, 
+            "additional_info": "hello", 
+            "unit": 1
+        }
+    }, 
+    {
         "pk": 34, 
         "model": "order.order", 
         "fields": {
-            "status": "DL", 
+            "status": "AB", 
             "total_amount": 1.23, 
             "creation_date": "2010-09-30 13:51:37", 
             "user": 2, 
             "address": 3, 
+            "employee": 1, 
             "additional_info": "nn", 
             "unit": 1
         }
@@ -16,11 +73,12 @@
         "pk": 33, 
         "model": "order.order", 
         "fields": {
-            "status": "ST", 
+            "status": "AB", 
             "total_amount": 10.0, 
             "creation_date": "2010-09-30 13:50:31", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "test", 
             "unit": 1
         }
@@ -29,11 +87,12 @@
         "pk": 32, 
         "model": "order.order", 
         "fields": {
-            "status": "ST", 
+            "status": "AB", 
             "total_amount": 94.919999999999987, 
             "creation_date": "2010-09-30 13:47:22", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "mama", 
             "unit": 1
         }
@@ -42,11 +101,12 @@
         "pk": 31, 
         "model": "order.order", 
         "fields": {
-            "status": "RV", 
+            "status": "AB", 
             "total_amount": 21.23, 
             "creation_date": "2010-09-30 13:42:32", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 1
         }
@@ -55,11 +115,12 @@
         "pk": 30, 
         "model": "order.order", 
         "fields": {
-            "status": "RV", 
+            "status": "AB", 
             "total_amount": 1.0, 
             "creation_date": "2010-09-30 13:40:47", 
             "user": 3, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 2
         }
@@ -68,11 +129,12 @@
         "pk": 28, 
         "model": "order.order", 
         "fields": {
-            "status": "RV", 
+            "status": "AB", 
             "total_amount": 21.23, 
             "creation_date": "2010-09-30 13:28:59", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 1
         }
@@ -81,11 +143,12 @@
         "pk": 27, 
         "model": "order.order", 
         "fields": {
-            "status": "ST", 
+            "status": "AB", 
             "total_amount": 21.23, 
             "creation_date": "2010-09-29 16:42:31", 
             "user": 2, 
             "address": 2, 
+            "employee": 1, 
             "additional_info": "Sa aduceti calda", 
             "unit": 1
         }
@@ -94,11 +157,12 @@
         "pk": 26, 
         "model": "order.order", 
         "fields": {
-            "status": "DL", 
+            "status": "AB", 
             "total_amount": 23.690000000000001, 
             "creation_date": "2010-09-29 15:57:19", 
             "user": 2, 
             "address": 1, 
+            "employee": 1, 
             "additional_info": "More info here", 
             "unit": 1
         }
@@ -107,11 +171,12 @@
         "pk": 25, 
         "model": "order.order", 
         "fields": {
-            "status": "ST", 
+            "status": "AB", 
             "total_amount": 23.690000000000001, 
             "creation_date": "2010-09-29 15:16:14", 
             "user": 2, 
             "address": 5, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 1
         }
@@ -120,11 +185,12 @@
         "pk": 24, 
         "model": "order.order", 
         "fields": {
-            "status": "ST", 
+            "status": "AB", 
             "total_amount": 24.690000000000001, 
             "creation_date": "2010-09-29 15:11:19", 
             "user": 2, 
             "address": 3, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 1
         }
@@ -138,6 +204,7 @@
             "creation_date": "2010-09-29 12:39:11", 
             "user": 2, 
             "address": 1, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 1
         }
@@ -146,11 +213,12 @@
         "pk": 22, 
         "model": "order.order", 
         "fields": {
-            "status": "DL", 
+            "status": "AB", 
             "total_amount": 13.0, 
             "creation_date": "2010-09-29 11:12:33", 
             "user": 2, 
             "address": 1, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 2
         }
@@ -159,11 +227,12 @@
         "pk": 21, 
         "model": "order.order", 
         "fields": {
-            "status": "DL", 
+            "status": "AB", 
             "total_amount": 13.0, 
             "creation_date": "2010-09-29 11:08:22", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 2
         }
@@ -177,6 +246,7 @@
             "creation_date": "2010-09-29 10:51:11", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "dsds", 
             "unit": 1
         }
@@ -190,6 +260,7 @@
             "creation_date": "2010-09-29 10:45:50", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": "", 
             "unit": 1
         }
@@ -203,6 +274,7 @@
             "creation_date": "2010-09-28 15:35:05", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 1
         }
@@ -216,6 +288,7 @@
             "creation_date": "2010-09-28 15:30:44", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 1
         }
@@ -229,6 +302,7 @@
             "creation_date": "2010-09-28 15:27:30", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 1
         }
@@ -242,6 +316,7 @@
             "creation_date": "2010-09-27 12:21:49", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 2
         }
@@ -255,6 +330,7 @@
             "creation_date": "2010-09-27 10:51:20", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 1
         }
@@ -268,6 +344,7 @@
             "creation_date": "2010-09-25 12:27:22", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 1
         }
@@ -281,6 +358,7 @@
             "creation_date": "2010-09-24 13:16:13", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 2
         }
@@ -294,6 +372,7 @@
             "creation_date": "2010-09-24 10:38:49", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 1
         }
@@ -307,6 +386,7 @@
             "creation_date": "2010-09-23 16:18:04", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 2
         }
@@ -320,6 +400,7 @@
             "creation_date": "2010-09-23 15:18:20", 
             "user": 2, 
             "address": null, 
+            "employee": 1, 
             "additional_info": null, 
             "unit": 2
         }
@@ -2771,6 +2852,106 @@
             "item": 1, 
             "old_price": 1.23, 
             "order": 34, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 262, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 1, 
+            "old_price": 1.23, 
+            "order": 38, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 263, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 6, 
+            "old_price": 1.0, 
+            "order": 39, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 264, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 1, 
+            "old_price": 1.23, 
+            "order": 39, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 265, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 6, 
+            "old_price": 1.0, 
+            "order": 39, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 266, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 6, 
+            "old_price": 1.0, 
+            "order": 40, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 267, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 1, 
+            "old_price": 9.0, 
+            "order": 40, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 268, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 6, 
+            "old_price": 1.0, 
+            "order": 40, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 269, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 6, 
+            "old_price": 1.0, 
+            "order": 48, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 270, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 1, 
+            "old_price": 9.0, 
+            "order": 48, 
+            "cart": "rif"
+        }
+    }, 
+    {
+        "pk": 271, 
+        "model": "order.orderitem", 
+        "fields": {
+            "item": 6, 
+            "old_price": 1.0, 
+            "order": 48, 
             "cart": "rif"
         }
     }

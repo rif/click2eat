@@ -19,6 +19,7 @@ class Order(models.Model):
     total_amount = models.FloatField(_('total amount'), default=0)
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'), editable=False)
     additional_info = models.TextField(_('additional info'), null=True, blank=True, help_text=_('Add here any relevant information.'))
+    employee = models.ForeignKey('restaurant.Employee', verbose_name=_('employee'), help_text=_('The internal employee responsible for this order.'))
 
     def update_total_amount(self):
         total = 0
@@ -54,7 +55,7 @@ class Order(models.Model):
         return carts_dict
 
     def clone(self):
-        new_order = Order.objects.create(user=self.user, status='CR', unit=self.unit)
+        new_order = Order.objects.create(user=self.user, status='CR', unit_id=self.unit_id, employee_id=self.employee_id)
         for oi in self.orderitem_set.iterator():
             new_oi = OrderItem.objects.create(order=new_order, item=oi.item, old_price=oi.item.get_price(), cart=oi.cart)
         return new_order
