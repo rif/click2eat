@@ -85,8 +85,8 @@
 <ul id="menu">
 {% for itemgroup in object.itemgroup_set.iterator %}
 {% if itemgroup.active %}
-  <b>{{ itemgroup }}</b>
-  <!--{% for item in itemgroup.item_set.iterator %}
+  <h5>{{ itemgroup }}</h5>
+  {% for item in itemgroup.item_set.iterator %}
   {% if item.active %}
     <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
     {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
@@ -100,7 +100,9 @@
     </ul>  
     {% endif %}
   {% endif %}
-  {% endfor %}-->
+    {% empty %}
+    <li>{% trans 'No items in this group' %}</li>
+  {% endfor %}
 {% endif %}
 {% endfor %}
 </ul>
@@ -116,7 +118,7 @@
 
 {% endfor %}
 </div>
-<a id="add-cart" href="#">Add cart</a>
+<a id="add-cart" href="#">{% trans 'Add cart' %}</a>
 <br>
 <a href="{% url restaurant:index %}">{% trans 'Home' %}</a>
 {% endblock %}
