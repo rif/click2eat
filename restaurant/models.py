@@ -17,6 +17,7 @@ class Communication(models.Model):
 class PartnerPackage(models.Model):
     name = models.CharField(_('name'), max_length=100)
     slug = models.SlugField(_('slug'), help_text=_('The css class for this package'))
+    rate = models.FloatField(_('rate'))
     details = models.TextField(_('details'))
     
     def __unicode__(self):
@@ -65,6 +66,7 @@ class Employee(models.Model):
     phone = models.CharField(_('phone'), max_length=15)
     start_date = models.DateField(_('start_date'))
     end_date = models.DateField(_('end_date'))
+    rate = models.FloatField(_('rate'))
     
     def __unicode__(self):
         return self.name
