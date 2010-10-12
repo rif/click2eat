@@ -7,4 +7,4 @@ Your order with id {{ order.id}} was received and will be processed as soon as p
 Thank you for your order!
 {{ order.unit.name}}
 
-P.S. {% trans 'You can send a rating for our services'  %} <a href="http://{{ site_name }}{% url restaurant:feedback order.unit.id %}">{% trans 'here' %}</a>.
+P.S. {% trans 'You can send a rating for our services'  %} <a href="http://{{ site_name }}{% url order:feedback order.id %}">{% trans 'here' %}</a>.

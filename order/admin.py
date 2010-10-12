@@ -1,5 +1,5 @@
 from django.contrib import admin
-from order.models import Order, OrderItem
+from order.models import Order, OrderItem, Rating
 
 class OrderItemInline(admin.TabularInline):
    model = OrderItem
@@ -14,5 +14,10 @@ class OrderAdmin(admin.ModelAdmin):
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'item')
 
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('order', 'user', 'quality', 'delivery_time', 'feedback')
+    search_fields = ['feedback']
+
+admin.site.register(Rating, RatingAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)

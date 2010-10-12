@@ -97,3 +97,18 @@ class OrderItem(models.Model):
     class Meta:
       verbose_name = _('Order Item')
       verbose_name_plural = _('Order Items')
+
+def rating_range(value):
+    if value < 0 or value > 5:
+        raise ValidationError(_('Value must be in the range [0,5]'))
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    order = models.OneToOneField(Order, verbose_name=_('order'))
+    quality = models.SmallIntegerField(_('quality'), validators=[rating_range], help_text=_('0 worst quality, 5 highest quality'))
+    delivery_time = models.SmallIntegerField(_('delivery time'), validators=[rating_range], help_text=_('0 worst delivery time, 5 best delivery time'))
+    feedback = models.TextField(_('feedback'), null=True, blank=True)
+
+    class Meta:
+      verbose_name = _('Rating')
+      verbose_name_plural = _('Ratings')

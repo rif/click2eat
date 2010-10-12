@@ -10,7 +10,6 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from annoying.decorators import render_to
 from restaurant.models import Unit
-from restaurant.forms import RatingForm
 from order import views
 
 def __user_has_profile(user):
@@ -53,21 +52,3 @@ def get_random_platinum(request):
 def get_random_gold(request):
     units = Unit.objects.order_by('?')
     return {'gold': units.filter(package__slug='gold')}
-
-def feedback(request, unit_id):
-    unit = get_object_or_404(Unit, pk=unit_id)
-    if request.method == 'POST':
-        form = RatingForm(request.POST)
-        if form.is_valid():
-            new_rating = form.save(commit=False)
-            new_rating.user = request.user
-            new_rating.restaurant = unit
-            new_rating.save()
-            messages.add_message(request, messages.INFO, _('Thank you! Your feedback is very appreciated!'))
-            return redirect('restaurant:index')
-    else:
-        form = RatingForm()
-
-    return render_to_response('restaurant/feedback.html', {
-                                  'form': form,
-                                  }, context_instance=RequestContext(request))
