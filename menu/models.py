@@ -2,6 +2,7 @@ from django.db import models
 from multiling import MultilingualModel
 from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
+from taggit.managers import TaggableManager
 
 class Language(models.Model):
     code = models.CharField(_('code'), max_length=5)
@@ -76,6 +77,8 @@ class Item(MultilingualModel):
   new_item_end_date = models.DateField(_('new item end date'), null=True, blank=True)
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
+
+  tags = TaggableManager()
   
   def __unicode__(self):
       return self.internal_name

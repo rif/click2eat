@@ -15,6 +15,7 @@ django-sentry
 django-simple-captcha
 django-notification
 django-friends
+django-taggit
 # gunicorn staff
 setproctitle
 greenlet
