@@ -61,6 +61,8 @@ ACCOUNT_ACTIVATION_DAYS = 7
 
 CACHE_BACKEND = 'locmem://'
 
+CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.noise_arcs','captcha.helpers.noise_dots',)
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = rel('media')

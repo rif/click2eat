@@ -70,8 +70,8 @@ def invite_friend(request):
 
 
 def invite_accept(request, confirmation_key):
-    ji = get_object_or_404(JoinInvitation, confirmation_key=confirmation_key)
-    return HttpResponse('ok')
+    request.session['confirmation_key'] = confirmation_key
+    return redirect('registration_register')
             
 @login_required
 def limited_update_object(*args, **kwargs):

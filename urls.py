@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from userprofiles import views
+from userprofiles.forms import BucatarRegistrationForm
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -9,12 +10,16 @@ urlpatterns = patterns('',
                        (r'^order/', include('order.urls', namespace='order')),
                        (r'^userprofiles/', include('userprofiles.urls', namespace='userprofiles')),
                        (r'^admin/', include(admin.site.urls)),
+                       url(r'^accounts/register/$', 'registration.views.register',
+                                {'form_class': BucatarRegistrationForm, 'backend': 'userprofiles.forms.BucatarRegistrationBackend'},
+                                name='registration_register'),
                        (r'^accounts/', include('registration.backends.default.urls')),
                        (r'^i18n/', include('django.conf.urls.i18n')),
                        (r'^sentry/', include('sentry.urls')),
+                       (r'^notices/', include('notification.urls')),
                        
                        # Uncomment the admin/doc line below to enable admin documentation:
-                           (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+                       (r'^admin/doc/', include('django.contrib.admindocs.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',
@@ -22,8 +27,13 @@ urlpatterns += patterns('profiles.views',
                         url(r'^profiles/edit/$', 'edit_profile', name='profiles_edit_profile'),
                         url(r'^profiles/(?P<username>\w+)/$', views.profile_detail, name='profiles_profile_detail'),
                         url(r'^profiles/$', 'profile_list', {'public_profile_field': 'public'}, name='profiles_profile_list'),
-                       )
+                        )
 
 urlpatterns += patterns('',
                         url(r'^inviteaccept/(?P<confirmation_key>\w+)/$', views.invite_accept, name='friends_accept_join'),
-                       )
+                        )
+
+urlpatterns += patterns('',
+                        url(r'^captcha/', include('captcha.urls')),
+                        )
+
