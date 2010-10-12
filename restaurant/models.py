@@ -3,6 +3,7 @@ from datetime import datetime, date
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from taggit.managers import TaggableManager
 
 class Communication(models.Model):
     name = models.CharField(_('name'), max_length=200)
@@ -148,6 +149,8 @@ class Unit(models.Model):
     added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
     info = models.TextField(_('info'), null=True, blank=True)
     active = models.BooleanField(_('active'), default=True)
+    
+    tags = TaggableManager()
     
     def __unicode__(self):
         return self.name
