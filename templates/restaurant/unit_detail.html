@@ -85,7 +85,7 @@
 <ul id="menu">
 {% for itemgroup in object.itemgroup_set.iterator %}
 {% if itemgroup.active %}
-  <h5>{{ itemgroup }}</h5>
+  <h4>{{ itemgroup }}</h4>
   {% for item in itemgroup.item_set.iterator %}
   {% if item.active %}
     <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
