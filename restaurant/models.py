@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime, date
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
@@ -143,11 +143,16 @@ class Unit(models.Model):
     delivery_time_user = models.FloatField(_('delivery time user'), null=True, blank=True, editable=False, help_text=_('Calculated as a avg from user feedback.'))
     delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
     admin_users = models.CharField(_('admin users'), max_length=100, null=True, blank=True, help_text=_('the users that can access front-end administration pages for this unit.'))
+    added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
     info = models.TextField(_('info'), null=True, blank=True)
     active = models.BooleanField(_('active'), default=True)
     
     def __unicode__(self):
         return self.name
+
+    def is_new(self):
+        delta = date.today() - self.added_date
+        return delta.days < 7
     
     @models.permalink
     def get_absolute_url(self):
