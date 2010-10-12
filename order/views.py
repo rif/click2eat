@@ -17,7 +17,7 @@ from geopy import distance
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
-from order.forms import CartNameForm, OrderForm
+from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 
 def __get_current_order(request, unit):
@@ -96,7 +96,7 @@ def send(request, unit_id):
     current_order = __get_current_order(request, unit)
     if current_order.status != 'CR':
         messages.add_message(request, messages.INFO, _('Current order already sent.'))
-        return redirect('order:timer', unit_id=unit.id)
+        return redirect('order:timer', order_id=current_order.id)
     if unit.minimum_ord_val > current_order.total_amount:
         messages.add_message(request, messages.WARNING, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
         return redirect('restaurant:restaurant_detail', object_id=unit.id)
@@ -123,7 +123,7 @@ def send(request, unit_id):
                        'bucatar@filemaker-solutions.ro',
                        [unit.email],
                        fail_silently=False)
-            return redirect('order:timer', unit_id=unit.id)
+            return redirect('order:timer', order_id=current_order.id)
     else:
         form = OrderForm(instance=current_order)
     form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
@@ -165,9 +165,9 @@ def get_subtotal(request, unit_id, cart_name):
 
 @login_required
 @render_to('order/timer.html')
-def timer(request, unit_id):
-    unit = get_object_or_404(Unit, pk=unit_id)
-    return {'unit': unit}
+def timer(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    return {'order': order}
 
 @login_required
 def clone(request, order_id):
@@ -239,3 +239,30 @@ def send_confiramtion_email(request, order_id):
                        [order.user.email],
                        fail_silently=False)
     return HttpResponse('Sent!')
+
+@login_required
+def feedback(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    if request.user != order.user:
+        raise PermissionDenied()
+    try:
+        order.rating
+        #if the rating exists exit
+        messages.add_message(request, messages.INFO, _('Thank you! You already sent feedback for this order.'))
+        return redirect('restaurant:index')
+    except:
+        pass
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            new_rating = form.save(commit=False)
+            new_rating.user = order.user
+            new_rating.order = order
+            new_rating.save()
+            messages.add_message(request, messages.INFO, _('Thank you! Your feedback is very appreciated!'))
+            return redirect('restaurant:index')
+    else:
+        form = RatingForm()
+    return render_to_response('restaurant/feedback.html', {
+                                  'form': form,
+                                  }, context_instance=RequestContext(request))

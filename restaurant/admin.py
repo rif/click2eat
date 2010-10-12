@@ -80,11 +80,6 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('name', 'address', 'email', 'phone', 'start_date', 'end_date')
     search_fields = ['name', 'address']
 
-class RatingAdmin(admin.ModelAdmin):
-    list_display = ('restaurant', 'user', 'quality', 'delivery_time', 'feedback')
-    search_fields = ['user', 'restaurant', 'feedback']
-
-admin.site.register(models.Rating, RatingAdmin)
 admin.site.register(models.Employee, EmployeeAdmin)
 admin.site.register(models.Unit, UnitAdmin)
 admin.site.register(models.DeliveryType, DeliveryTypeAdmin)
