@@ -84,8 +84,9 @@
 <h1 class="ui-widget-header">{% trans 'Menu' %}</h1>
 <ul id="menu">
 {% for itemgroup in object.itemgroup_set.iterator %}
+{% if itemgroup.active %}
   <b>{{ itemgroup }}</b>
-  {% for item in itemgroup.item_set.iterator %}
+  <!--{% for item in itemgroup.item_set.iterator %}
   {% if item.active %}
     <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
     {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
@@ -99,7 +100,8 @@
     </ul>  
     {% endif %}
   {% endif %}
-  {% endfor %}
+  {% endfor %}-->
+{5 endif %}
 {% endfor %}
 </ul>
 <div id="carts">
