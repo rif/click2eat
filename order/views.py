@@ -263,6 +263,13 @@ def feedback(request, order_id):
             return redirect('restaurant:index')
     else:
         form = RatingForm()
-    return render_to_response('restaurant/feedback.html', {
+    return render_to_response('order/feedback.html', {
                                   'form': form,
+                                  'order': order,
                                   }, context_instance=RequestContext(request))
+
+@login_required
+@render_to('order/notrated_order_list.html')
+def not_rated(request):
+    orders = Order.objects.filter(user=request.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating=None)
+    return {'order_list': orders}

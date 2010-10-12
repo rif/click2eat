@@ -5,6 +5,7 @@ import re
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from order.models import Order
 
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
@@ -77,6 +78,9 @@ class UserProfile(models.Model):
 
     def is_filled(self):
         return self.first_name != '' or self.last_name != '' or self.phone != '' or self.sex != '' or self.birthday != ''
+    
+    def have_not_rated(self):
+        return Order.objects.filter(user=self.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating=None).exists()
 
     @models.permalink
     def get_absolute_url(self):
