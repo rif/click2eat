@@ -20,7 +20,7 @@ def __user_has_profile(user):
     except:
         return redirect('profiles_create_profile')
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 @vary_on_cookie
 def index(request):
     units = Unit.objects.order_by('?')
