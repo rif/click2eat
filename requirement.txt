@@ -16,6 +16,7 @@ django-simple-captcha
 django-notification
 django-friends
 django-taggit
+django-ckeditor
 # gunicorn staff
 setproctitle
 greenlet
