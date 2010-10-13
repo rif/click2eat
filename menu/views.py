@@ -6,3 +6,6 @@ from menu.filter import ItemFilter
 def item_list(request):
     f = ItemFilter(request.GET, queryset=Item.objects.all())
     return {'filter': f}
+
+def search(request):
+    pass
