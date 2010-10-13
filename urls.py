@@ -18,7 +18,6 @@ urlpatterns = patterns('',
                        (r'^sentry/', include('sentry.urls')),
                        (r'^notices/', include('notification.urls')),
                        (r'^ckeditor/', include('ckeditor.urls')),
-                       (r'^cache/', include('django_memcached.urls')),
                        
                        # Uncomment the admin/doc line below to enable admin documentation:
                        (r'^admin/doc/', include('django.contrib.admindocs.urls')),
