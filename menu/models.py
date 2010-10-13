@@ -74,12 +74,16 @@ class Item(MultilingualModel):
   measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR', help_text=_('Measurement unit.')) 
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'), null=True, blank=True)
-  new_item_end_date = models.DateField(_('new item end date'), null=True, blank=True)
+  added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
 
   tags = TaggableManager()
   
+  def is_new(self):
+        delta = date.today() - self.added_date
+        return delta.days < 7
+
   def __unicode__(self):
       return self.internal_name
 

@@ -91,7 +91,7 @@
   <h3>{{ itemgroup }}</h3>
   {% for item in itemgroup.item_set.iterator %}
   {% if item.active %}
-    <li id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
+    <li class="item {% if item.is_new %}new-item{% endif %}" id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_ro }}</a> - <span class="item-desc">{{item.description_ro}}</span><br/>
     {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
     {% if item.toppings %}
     <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>

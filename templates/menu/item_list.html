@@ -7,6 +7,6 @@
 </form>
 <hr>
 {% for obj in filter %}
-{{ obj.unit }} {{ obj.name_ro }} - ${{ obj.price }}<br />
+{{ obj.unit }} {{ obj.name_ro }} - ${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})<br />
 {% endfor %}
 {% endblock %}
