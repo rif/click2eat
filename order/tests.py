@@ -14,23 +14,25 @@ class OrderTest(TestCase):
     self.unit = Unit.objects.get(pk=1)
 
   def test_abandoned_empty_removal(self):
+    count = Order.objects.count()
     old = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
     old.creation_date = datetime(2010, 9, 24)
     old.save()
-    self.failUnlessEqual(30, Order.objects.count())
+    self.failUnlessEqual(count + 1, Order.objects.count())
     self.failUnlessEqual(0.0, old.total_amount)
     old.is_abandoned()
-    self.failUnlessEqual(29, Order.objects.count())
+    self.failUnlessEqual(count, Order.objects.count())
 
   def test_abandoned_nonempty_status(self):
+    count = Order.objects.count()
     old = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
     old.creation_date = datetime(2010, 9, 24)
     old.save()
-    self.failUnlessEqual(30, Order.objects.count())
+    self.failUnlessEqual(count + 1, Order.objects.count())
     OrderItem.objects.create(order=old, item=Item.objects.get(pk=1))
     self.failUnlessEqual(1.23, old.total_amount)
     old.is_abandoned()
-    self.failUnlessEqual(30, Order.objects.count())
+    self.failUnlessEqual(count + 1, Order.objects.count())
     self.failUnlessEqual('AB', old.status)
 
   def test_total_amount(self):
