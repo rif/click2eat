@@ -1,6 +1,8 @@
 from django.contrib import admin
 from restaurant import models
+from django import forms
 from menu.models import Item, ItemGroup, Topping
+from ckeditor.widgets import CKEditorWidget
 
 class CommunicationAdmin(admin.ModelAdmin):
     search_fields = ['name']
@@ -54,7 +56,19 @@ class ScheduleAdmin(admin.ModelAdmin):
     search_fields = ['unit', 'description']
     inlines = [IntervalInline]
 
+class ItemAdminForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ('name', 'info', 'address', 'package' , 'email', 'address', 'phone', 'mobile', 'email',
+                  'logo_path', 'contact_person', 'admin_users', 'employee', 'communication', 'latitude',
+                  'longitude', 'delivery_range', 'delivery_type', 'delivery_time', 'payment_method',
+                  'currency', 'overall_discount', 'minimum_ord_val', 'tags', 'info', 'active')
+        widgets = {
+            'info': CKEditorWidget(),
+        }
+
 class UnitAdmin(admin.ModelAdmin):    
+    form = ItemAdminForm
     list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
     inlines = [ItemGroupInline, ItemInline, ToppingInline]
