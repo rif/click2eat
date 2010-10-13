@@ -19,6 +19,7 @@ django-taggit
 django-ckeditor
 django-pagination
 django-memcache-status
+django-filter
 # gunicorn staff
 setproctitle
 greenlet

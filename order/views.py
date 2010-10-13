@@ -267,3 +267,4 @@ def feedback(request, order_id):
 def not_rated(request):
     orders = Order.objects.filter(user=request.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating=None)
     return {'order_list': orders}
+
