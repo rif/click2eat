@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <form action="" method="get">
   {{ filter.form.as_p }}
-  <input type="submit" />
+  <input type="{% trans 'Submit' %}" />
 </form>
 <hr>
 {% for obj in filter %}
