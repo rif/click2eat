@@ -50,7 +50,7 @@ class ItemAdmin(admin.ModelAdmin):
             'fields': ('internal_name', 'index', 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
         }),
         ('Extra options', {
-            'fields': ('tags', 'new_item_end_date', 'active')
+            'fields': ('tags', 'active')
         }),
     )
 
@@ -77,7 +77,7 @@ class ToppingAdmin(admin.ModelAdmin):
             'fields': ('internal_name', 'index', 'unit', ('price', 'promotion', 'vat'), ('quantity', 'measurement_unit'), 'topping_groups')
         }),
         ('Extra options', {
-            'fields': ('new_item_end_date', 'active')
+            'fields': ('tags', 'active')
         }),
     )
 
