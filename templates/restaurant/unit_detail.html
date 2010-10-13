@@ -49,7 +49,7 @@
     });
   });
   function pageLinks(){
-    $(".page-link").click(function(e){
+    $(".page, .next, .prev").click(function(e){
         $.get("{% url order:list_unit object.id %}"+ $(this).attr("href"), function(data){
           $("#last-orders").html(data);
           pageLinks();

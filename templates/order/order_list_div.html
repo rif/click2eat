@@ -1,22 +1,11 @@
 {% load i18n %}
+{% load pagination_tags %}
+
+{% autopaginate object_list 10 %}
 
 <ul>
-{% for order in order_list %}
+{% for order in object_list %}
 <li><a href="{% url order:detail order.id %}">{{order}}</a> <a href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></li>
 {% endfor %}
 </ul>
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{% trans 'previous' %}</a>
-        {% endif %}
-
-        <span class="current">
-            {% trans 'Page' %} {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans 'next' %}</a>
-        {% endif %}
-    </span>
-</div>
+{% paginate %}

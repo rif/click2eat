@@ -58,6 +58,8 @@ CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.n
 CKEDITOR_MEDIA_PREFIX = "/media/ckeditor/"
 CKEDITOR_UPLOAD_PATH =  rel('media/uploads')
 
+DJANGO_MEMCACHED_REQUIRE_STAFF = True
+
 MEDIA_ROOT = rel('media')
 MEDIA_URL =  '/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
@@ -82,7 +84,18 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-)
+    'pagination.middleware.PaginationMiddleware',
+    )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+    )
+
 if DEBUG:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
@@ -116,6 +129,7 @@ INSTALLED_APPS = (
     'taggit',
     'ckeditor',
     'pagination',
+    'django_memcached',
     # my apps
     'restaurant',
     'menu',

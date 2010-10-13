@@ -48,23 +48,17 @@ def limited_object_detail(*args, **kwargs):
 
 @login_required
 def list(request):
-    orders = Order.objects.filter(user__id=request.user.id).exclude(status='CR')
     return list_detail.object_list(
         request,
-        queryset = orders,
-        paginate_by = 5,
-        template_object_name = 'order',
+        queryset = Order.objects.filter(user__id=request.user.id).exclude(status='CR')
     )
 
 @login_required
 def list_unit(request, unit_id):
-    orders = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')
     return list_detail.object_list(
         request,
-        queryset = orders,
-        paginate_by = 5,
+        queryset = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR'),
         template_name = 'order/order_list_div.html',
-        template_object_name = 'order',
     )
 @login_required
 def add_item(request, item_id, cart_name):
