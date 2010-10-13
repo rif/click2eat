@@ -18,7 +18,7 @@ django-friends
 django-taggit
 django-ckeditor
 django-pagination
-django-memcached
+django-memcache-status
 # gunicorn staff
 setproctitle
 greenlet

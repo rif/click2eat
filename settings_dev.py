@@ -129,7 +129,7 @@ INSTALLED_APPS = (
     'taggit',
     'ckeditor',
     'pagination',
-    'django_memcached',
+    'memcache_status',
     # my apps
     'restaurant',
     'menu',
