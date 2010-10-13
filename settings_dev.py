@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'ckeditor',
     'pagination',
     'memcache_status',
+    'django_filters',
     # my apps
     'restaurant',
     'menu',
