@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 from userprofiles import views
 from userprofiles.forms import BucatarRegistrationForm
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -19,8 +20,6 @@ urlpatterns = patterns('',
                        (r'^notices/', include('notification.urls')),
                        (r'^ckeditor/', include('ckeditor.urls')),
                        (r'^captcha/', include('captcha.urls')),
-                       
-                       # Uncomment the admin/doc line below to enable admin documentation:
                        (r'^admin/doc/', include('django.contrib.admindocs.urls')),
                        )
 
