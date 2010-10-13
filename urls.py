@@ -11,13 +11,14 @@ urlpatterns = patterns('',
                        (r'^userprofiles/', include('userprofiles.urls', namespace='userprofiles')),
                        (r'^admin/', include(admin.site.urls)),
                        url(r'^accounts/register/$', 'registration.views.register',
-                                {'form_class': BucatarRegistrationForm, 'backend': 'userprofiles.forms.BucatarRegistrationBackend'},
-                                name='registration_register'),
+                           {'form_class': BucatarRegistrationForm, 'backend': 'userprofiles.forms.BucatarRegistrationBackend'},
+                           name='registration_register'),
                        (r'^accounts/', include('registration.backends.default.urls')),
                        (r'^i18n/', include('django.conf.urls.i18n')),
                        (r'^sentry/', include('sentry.urls')),
                        (r'^notices/', include('notification.urls')),
                        (r'^ckeditor/', include('ckeditor.urls')),
+                       url(r'^captcha/', include('captcha.urls')),
                        
                        # Uncomment the admin/doc line below to enable admin documentation:
                        (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -30,11 +31,4 @@ urlpatterns += patterns('profiles.views',
                         url(r'^profiles/$', 'profile_list', {'public_profile_field': 'public'}, name='profiles_profile_list'),
                         )
 
-urlpatterns += patterns('',
-                        url(r'^inviteaccept/(?P<confirmation_key>\w+)/$', views.invite_accept, name='friends_accept_join'),
-                        )
-
-urlpatterns += patterns('',
-                        url(r'^captcha/', include('captcha.urls')),
-                        )
 
