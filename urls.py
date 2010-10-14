@@ -20,7 +20,6 @@ urlpatterns = patterns('',
                        (r'^notices/', include('notification.urls')),
                        (r'^ckeditor/', include('ckeditor.urls')),
                        (r'^captcha/', include('captcha.urls')),
-                       (r'^admin/doc/', include('django.contrib.admindocs.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',
