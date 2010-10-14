@@ -1,6 +1,6 @@
 from django.db import models
 from multiling import MultilingualModel
-from datetime import datetime
+from datetime import datetime, date
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
 
