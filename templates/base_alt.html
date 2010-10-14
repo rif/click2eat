@@ -12,11 +12,7 @@
       $("#messages-close-link").click(function(e){
         $("#messages").fadeOut("slow");
         e.preventDefault();
-      });
-      $("#notrated-link").click(function(e){
-         $("#notrated-orders").load($(this).attr("href"));
-         e.preventDefault();
-      });
+      });      
     });
   </script>
   {% block scripts %}{% endblock %}
@@ -33,9 +29,7 @@
                 <a href="{% url auth_logout %}">log out</a></p>
             {% else %}
                 <p>Please <a href="{% url auth_login %}">log in</a> or <a href="{% url registration_register %}">sign up.</a></p>
-            {% endif %}
-		 {% if user.get_profile.have_not_rated %}<a id="notrated-link" href="{% url order:not_rated %}">{% trans 'You have not rated orders' %}</a>
-		 <div id="notrated-orders"></div>{% endif %}
+            {% endif %}		
 		<div style="float:right" id="languages">
 		<form action="/i18n/setlang/" method="post">
 		  {% csrf_token %}

@@ -79,8 +79,8 @@ class UserProfile(models.Model):
     def is_filled(self):
         return self.first_name != '' or self.last_name != '' or self.phone != '' or self.sex != '' or self.birthday != ''
     
-    def have_not_rated(self):
-        return Order.objects.filter(user=self.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating=None).exists()
+    def get_not_rated(self):
+        return Order.objects.filter(user=self.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating=None)
 
     @models.permalink
     def get_absolute_url(self):

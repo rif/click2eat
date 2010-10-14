@@ -3,6 +3,7 @@
 
 {% block content %}
 <form action="" method="get">
+  <p><label for="id_q">Search:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
   {{ filter.form.as_p }}
   <input type="{% trans 'Submit' %}" />
 </form>

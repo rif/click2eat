@@ -15,12 +15,28 @@
           gold.fadeOut('slow')
           gold.load("{% url restaurant:get_random_gold %}", function(){gold.fadeIn();});
         });
+        $("#notrated-link").click(function(e){
+           $("#notrated-orders").slideToggle();
+           e.preventDefault();
+        });
     })
 </script>
 {% endblock %}
 
 {% block content %}
-  <h3>Platinum</h3>
+{% with user.get_profile.get_not_rated as order_list %}
+{% if order_list.exists %}
+<a id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
+<div id="notrated-orders" style="display:none">
+  <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
+  <ul>
+    {% for order in order_list %}
+    <li><a href="{% url order:feedback order.id %}">{{ order }}</a></li>
+    {% endfor %}
+  </ul>
+</div>{% endif %}
+{% endwith %}
+<h3>Platinum</h3>
 <div id="platinum-units">
     {% include 'restaurant/platinum_restaurant_list.html' %}
 </div>
