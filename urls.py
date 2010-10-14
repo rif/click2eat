@@ -17,9 +17,9 @@ urlpatterns = patterns('',
                        (r'^accounts/', include('registration.backends.default.urls')),
                        (r'^i18n/', include('django.conf.urls.i18n')),
                        (r'^sentry/', include('sentry.urls')),
-                       (r'^notices/', include('notification.urls')),
-                       (r'^ckeditor/', include('ckeditor.urls')),
-                       (r'^captcha/', include('captcha.urls')),
+                       #(r'^notices/', include('notification.urls')),
+                       #(r'^ckeditor/', include('ckeditor.urls')),
+                       #(r'^captcha/', include('captcha.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',
