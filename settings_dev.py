@@ -55,9 +55,6 @@ CACHE_BACKEND = 'locmem://'
 
 CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.noise_arcs','captcha.helpers.noise_dots',)
 
-CKEDITOR_MEDIA_PREFIX = "/media/ckeditor/"
-CKEDITOR_UPLOAD_PATH =  rel('media/uploads')
-
 DJANGO_MEMCACHED_REQUIRE_STAFF = True
 
 MEDIA_ROOT = rel('media')
@@ -127,7 +124,6 @@ INSTALLED_APPS = (
     'friends',
     'captcha',
     'taggit',
-    'ckeditor',
     'pagination',
     'memcache_status',
     'django_filters',
