@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block scripts %}
+<script type="text/javascript">
+  $(function(){
+  $(".item-add-link").click(function(e){
+  var redir =  $(this).attr("redir");
+  $.get($(this).attr("href"), function(){
+  window.location = redir;
+  });
+  e.preventDefault();
+  });
+  });
+</script>
+{% endblock %}
+
 {% block content %}
 <form action="" method="get">
   <p><label for="id_q">Search:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
@@ -9,6 +23,6 @@
 </form>
 <hr>
 {% for obj in filter %}
-{{ obj.unit }} {{ obj.name_ro }} - ${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})<br />
+<a redir="{% url restaurant:restaurant_detail obj.unit_id %}" class="item-add-link" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }} {{ obj.name_def }}</a> - ${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})<br />
 {% endfor %}
 {% endblock %}
