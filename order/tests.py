@@ -105,3 +105,27 @@ class OrderTest(TestCase):
       self.failUnlessEqual(403, r.status_code)
       r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
       self.failUnlessEqual(403, r.status_code)
+
+  def test_count_amount(self):
+    ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
+    OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1))
+    OrderItem.objects.create(order=ord, count=5, item=Item.objects.get(pk=2))
+    self.failUnlessEqual(59.0, ord.total_amount)
+
+  def test_count_add(self):
+     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
+     oi = OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1), cart="rif")
+     self.failUnlessEqual(1, oi.count)
+     self.client.login(username='rif', password='test')
+     r = self.client.get(reverse('order:add_item', args=[oi.id, "rif"]))
+#     self.failUnlessEqual(200, r.status_code)
+#     self.failUnlessEqual(2, oi.count)
+
+  def test_count_remove(self):
+    ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
+    oi = OrderItem.objects.create(order=ord, count=2, item=Item.objects.get(pk=1), cart="rif")
+    self.failUnlessEqual(2, oi.count)
+    self.client.login(username='rif', password='test')
+    r = self.client.get(reverse('order:remove_item', args=[oi.id]))
+    self.failUnlessEqual(200, r.status_code)
+    self.failUnlessEqual("1", r.content)

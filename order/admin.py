@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines=[OrderItemInline]
 
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ('order', 'item')
+    list_display = ('order', 'item', 'count')
 
 class RatingAdmin(admin.ModelAdmin):
     list_display = ('order', 'user', 'quality', 'delivery_time', 'feedback')
