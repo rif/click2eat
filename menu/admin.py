@@ -40,8 +40,8 @@ class ToppingGroupAdmin(admin.ModelAdmin):
 
 class ItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index', 'unit', 'get_price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'toppings', 'active')
-    search_fields = ['internal_name']
+    list_display = ('internal_name', 'index','name_def', 'description_def', 'unit', 'get_price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'toppings', 'active')
+    search_fields = ['internal_name', 'name_def', 'description_def']
     list_filter = ['unit']
     inlines = [ItemTranslationInline]
     actions = ['clone_objects']
