@@ -25,7 +25,7 @@
   $(function(){
     $("#current-order").load("{% url order:get_current object.id %}");
     $(".add-item").click(function(e){
-      $.get("/order/add_item/" + $(this).parent("li").attr("id") + "/{{ user.username }}" , function(response){
+      $.get($(this).attr("href"), function(response){
           $("#current-order").load("{% url order:get_current object.id %}")
         });
         e.preventDefault();
@@ -91,7 +91,7 @@
   <h3>{{ itemgroup }}</h3>
   {% for item in itemgroup.item_set.iterator %}
   {% if item.active %}
-    <li class="item {% if item.is_new %}new-item{% endif %}" id="{{ item.id }}"><a href="#" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{item.description_def}}</span><br/>
+    <li class="item {% if item.is_new %}new-item{% endif %}" id="{{ item.id }}"><a href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{item.description_def}}</span><br/>
     {{ item.name_en }} - <span class="item-desc">{{item.description_en}}</span></li>
     {% if item.toppings %}
     <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
