@@ -12,10 +12,16 @@
 <script type="text/javascript">
 $(function(){
   $(".remove-orderitem").click(function(e){
-    $.get($(this).attr("href"));
-    $(this).parents("tr").fadeOut();
-    $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
-    $("#cart-subtotal-amount").load($("#cart-subtotal-amount").attr("href"));
+    var row = $(this).parents("tr");
+    $.get($(this).attr("href"), function(resp){
+       if(resp=="nook") {
+          row.fadeOut();
+       } else{
+          $(".count-td", row).text(resp);
+       }
+       $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
+       $("#cart-subtotal-amount").load($("#cart-subtotal-amount").attr("href"));
+    });
     e.preventDefault();
   });
 })
@@ -27,7 +33,8 @@ $(function(){
   <thead>
     <tr>
       <th>{% trans 'Item' %}</th>
-      <th>{% trans 'Price' %}</th>
+      <th>{% trans 'Count' %}</th>
+      <th>{% trans 'Unit Price' %}</th>
       <th></th>
     </tr>
   </thead>
@@ -36,7 +43,8 @@ $(function(){
     <tr><td><h4>{% trans 'Order items for' %} {{ cartname }}</h4><td></tr>
      {% for oi in oil %}
         <tr>
-          <td>{{ oi.item.name_ro }}</td>
+          <td>{{ oi.item.name_def }}</td>
+	  <td class="count-td">{{ oi.count }}</td>
           <td>{{ oi.old_price }}</td>
           <td>
             {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}

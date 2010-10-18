@@ -24,14 +24,14 @@ class Order(models.Model):
     def update_total_amount(self):
         total = 0
         for oi in self.orderitem_set.iterator():
-            total += oi.old_price
+            total += oi.count * oi.old_price
         self.total_amount = total
         self.save()
 
     def get_cart_subtotal(self, cart):
       subtotal = 0
       for oi in self.orderitem_set.filter(cart=cart).iterator():
-        subtotal += oi.old_price
+        subtotal += oi.count * oi.old_price
       return subtotal
 
     def is_abandoned(self):
@@ -57,7 +57,7 @@ class Order(models.Model):
     def clone(self):
         new_order = Order.objects.create(user=self.user, status='CR', unit_id=self.unit_id, employee_id=self.employee_id)
         for oi in self.orderitem_set.iterator():
-            new_oi = OrderItem.objects.create(order=new_order, item=oi.item, old_price=oi.item.get_price(), cart=oi.cart)
+            new_oi = OrderItem.objects.create(order=new_order, item=oi.item, count=oi.count, old_price=oi.item.get_price(), cart=oi.cart)
         return new_order
 
 
@@ -77,6 +77,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('order'))
     item = models.ForeignKey('menu.Item', verbose_name=_('item'))
+    count = models.IntegerField(_('count'), default=1)
     old_price = models.FloatField(_('price'), default=0)
     cart = models.CharField(_('cart'), max_length=15, null=True, blank=True)
 

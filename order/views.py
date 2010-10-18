@@ -66,7 +66,13 @@ def add_item(request, item_id, cart_name):
     try:
         current_order = __get_current_order(request, item.unit)
         if cart_name == '': cart_name = request.user.username
-        order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name)
+        order_item = OrderItem.objects.filter(order=current_order).filter(item=item).filter(cart=cart_name)
+        if order_item.exists():
+            order_item = order_item[0]
+            order_item.count += 1
+            order_item.save()
+        else:
+            order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name)
         return HttpResponse(str(order_item.id))
     except:
         raise Http404()
@@ -74,8 +80,13 @@ def add_item(request, item_id, cart_name):
 @login_required
 def remove_item(request, item_id):
     item = get_object_or_404(OrderItem, pk=item_id)
-    item.delete()
-    return HttpResponse('ok')
+    if item.count > 1:
+        item.count -= 1
+        item.save()
+        return HttpResponse(str(item.count))
+    else:
+        item.delete()
+        return HttpResponse('nook')
 
 @login_required
 @render_to('order/order_div.html')
