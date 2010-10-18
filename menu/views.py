@@ -11,3 +11,4 @@ def item_list(request):
         results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(unit__name__icontains=query))
     f = ItemFilter(request.GET, queryset=results)
     return {'query': query, 'filter': f}
+    

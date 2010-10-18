@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.sites.models import Site
 from django import forms
 from django.views.generic import list_detail
-from annoying.decorators import render_to
+from annoying.decorators import render_to, ajax_request
 import csv
 from geopy import distance
 from order.models import Order, OrderItem
@@ -274,3 +274,10 @@ def feedback(request, order_id):
                                   }, context_instance=RequestContext(request))
 
 
+
+@ajax_request
+def get_available_toppings(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    order = __get_current_order(request, unit_id)
+    itmes = order.orderitem_set.filter(item__toppings!=None).values()
+    return {'items': items}

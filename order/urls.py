@@ -16,6 +16,7 @@ urlpatterns = patterns('',
                        url(r'^countdown/(?P<order_id>\d+)/$', views.timer, name='timer'),
                        url(r'^clone/(?P<order_id>\d+)/$', views.clone, name='clone'),
                        url(r'^feedback/(?P<order_id>\d+)/$', views.feedback, name='feedback'),
+                       url(r'^getavailabletoppings/(?P<unit_id>\d+)/$', views.get_available_toppings, name='available_toppings'),
                        )
 
 urlpatterns += patterns('',
