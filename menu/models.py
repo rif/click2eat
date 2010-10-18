@@ -67,6 +67,8 @@ class Item(MultilingualModel):
       )
   internal_name = models.CharField(_('internal name'), max_length=50)
   index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
+  name_def = models.CharField(_('name'), max_length=50, help_text=_('The default name for this item'))
+  description_def = models.CharField(_('description'), max_length=200, help_text=_('The default description for this item'))
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   price = models.FloatField(_('price'))
   quantity = models.IntegerField(_('quantity'))
