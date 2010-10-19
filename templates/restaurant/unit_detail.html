@@ -26,14 +26,12 @@
     $("#current-order").load("{% url order:get_current object.id %}");
     $(".add-item").click(function(e){
       $.get($(this).attr("href"), function(response){
-          $("#current-order").load("{% url order:get_current object.id %}")
+          $("#current-order").load("{% url order:get_current object.id %}");
+          getAvailableToppings();
         });
         e.preventDefault();
     });
-                $("#menu li").draggable({
-                        appendTo: "body",
-                        helper: "clone"
-                });
+  $("#menu li").draggable({appendTo: "body", helper: "clone"});
     $("#add-cart").click(function(e){
       $.get("{% url order:add_cart object.id %}", function(data){
           $("#carts").append(data);
@@ -56,6 +54,18 @@
         });
         e.preventDefault();
       });
+  }
+  function getAvailableToppings(){
+    $.get("{% url order:available_toppings object.id %}", function(data){
+      var json = eval(data);
+      $(".top-span").each(function(){
+        if($.inArray($(this).attr("id"), json.items) != -1){
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
   }
 </script>
 {% endblock %}
@@ -93,7 +103,7 @@
   {% if item.active %}
     <li class="item {% if item.is_new %}new-item{% endif %}" id="{{ item.id }}"><a href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{ item.description_def }}</span><br/>
     {{ item.name_en }} - <span class="item-desc">{{ item.description_en }}</span></li>
-    <span id="top{{ item.id }}" style="display:none">
+    <span id="top{{ item.id }}" class="top-span" style="display:none">
     {% if item.toppings %}
     <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
     <span class="topping-span" style="display:none">

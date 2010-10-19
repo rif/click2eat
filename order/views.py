@@ -274,10 +274,9 @@ def feedback(request, order_id):
                                   }, context_instance=RequestContext(request))
 
 
-
 @ajax_request
 def get_available_toppings(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    order = __get_current_order(request, unit_id)
-    itmes = order.orderitem_set.filter(item__toppings!=None).values()
+    order = __get_current_order(request, unit)
+    items = ["top%s" % oi.item_id for oi in order.orderitem_set.exclude(item__toppings=None)]
     return {'items': items}
