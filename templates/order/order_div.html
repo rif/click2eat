@@ -16,6 +16,10 @@ $(function(){
     $.get($(this).attr("href"), function(resp){
        if(resp=="nook") {
           row.fadeOut();
+          if(typeof getAvailableToppings == 'function') {
+            /* check if function is defined in this context*/
+             getAvailableToppings();
+          }
        } else{
           $(".count-td", row).text(resp);
        }
