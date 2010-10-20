@@ -274,6 +274,7 @@ def feedback(request, order_id):
                                   }, context_instance=RequestContext(request))
 
 
+@login_required
 @ajax_request
 def get_available_toppings(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
