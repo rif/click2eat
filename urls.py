@@ -17,8 +17,6 @@ urlpatterns = patterns('',
                        (r'^accounts/', include('registration.backends.default.urls')),
                        (r'^i18n/', include('django.conf.urls.i18n')),
                        (r'^sentry/', include('sentry.urls')),
-                       (r'^notices/', include('notification.urls')),
-                       (r'^captcha/', include('captcha.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',
@@ -28,4 +26,7 @@ urlpatterns += patterns('profiles.views',
                         url(r'^profiles/$', 'profile_list', {'public_profile_field': 'public'}, name='profiles_profile_list'),
                         )
 
-
+urlpatterns += patterns('',
+                        url(r'^inviteaccept/(?P<confirmation_key>\w+)/$', views.invite_accept, name='friends_accept_join'),
+			url(r'^captcha/', include('captcha.urls')),
+                        )
