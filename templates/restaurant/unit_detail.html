@@ -71,8 +71,7 @@
 {% endblock %}
 
 {% block content %}
-<img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" />
-<h1>{{ object.name }}{% trans ' details' %}</h1>
+<h1><img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" /> {{ object.name }}{% trans ' details' %}</h1>
 
 <ul>
 <li>{% trans 'Name' %}: {{ object.name }}</li>
