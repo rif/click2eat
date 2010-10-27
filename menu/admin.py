@@ -27,7 +27,7 @@ class VATAdmin(admin.ModelAdmin):
 
 class ItemGroupAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index', 'unit', 'exclusive', 'active')
+    list_display = ('internal_name', 'name_def', 'index', 'unit', 'exclusive', 'active')
     search_fields = ['internal_name']
     list_filter = ['unit']
     inlines = [ItemGroupInline, ItemInline]
