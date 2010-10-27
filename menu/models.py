@@ -36,7 +36,7 @@ class ItemGroup(MultilingualModel):
   active = models.BooleanField(_('active'), default=True)
   
   def __unicode__(self):
-      return self.internal_name
+      return self.name_def
 
   class Meta:
       translation = ItemGroupTranslation
@@ -49,7 +49,7 @@ class ToppingGroup(models.Model):
   internal_name = models.CharField(_('internal name'), max_length=50)
   
   def __unicode__(self):
-      return self.name_def
+      return self.internal_name
 
   class Meta:
       verbose_name = _('ToppingGroup')
