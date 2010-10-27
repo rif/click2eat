@@ -30,6 +30,7 @@ class ItemGroupTranslation(models.Model):
 class ItemGroup(MultilingualModel):
   internal_name = models.CharField(_('internal name'), max_length=50)
   index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
+  name_def = models.CharField(_('name'), max_length=50, help_text=_('The default name for this group'))
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   exclusive = models.BooleanField(_('exclusive'))
   active = models.BooleanField(_('active'), default=True)
@@ -48,7 +49,7 @@ class ToppingGroup(models.Model):
   internal_name = models.CharField(_('internal name'), max_length=50)
   
   def __unicode__(self):
-      return self.internal_name
+      return self.name_def
 
   class Meta:
       verbose_name = _('ToppingGroup')
