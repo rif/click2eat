@@ -30,8 +30,7 @@ class ItemGroupAdmin(admin.ModelAdmin):
     list_display = ('internal_name', 'index', 'unit', 'exclusive', 'active')
     search_fields = ['internal_name']
     list_filter = ['unit']
-    inlines = [ItemInline]
-    inlines = [ItemGroupInline]
+    inlines = [ItemGroupInline, ItemInline]
 
 class ToppingGroupAdmin(admin.ModelAdmin):
     list_display = ('internal_name',)
@@ -40,14 +39,15 @@ class ToppingGroupAdmin(admin.ModelAdmin):
 
 class ItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index','name_def', 'description_def', 'unit', 'get_price', 'quantity', 'measurement_unit', 'vat', 'item_group', 'toppings', 'active')
+    list_display = ('internal_name', 'index','name_def', 'description_def', 'unit', 'get_price', 'promotion', 'quantity_with_mu', 'vat', 'item_group', 'toppings', 'active')
     search_fields = ['internal_name', 'name_def', 'description_def']
+    list_editable = ['promotion']
     list_filter = ['unit']
     inlines = [ItemTranslationInline]
     actions = ['clone_objects']
     fieldsets = (
         (None, {
-            'fields': ('internal_name', 'index', 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
+            'fields': ('internal_name', 'index', ('name_def', 'description_def'), 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
         }),
         ('Extra options', {
             'fields': ('tags', 'active')
