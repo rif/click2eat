@@ -120,7 +120,6 @@ INSTALLED_APPS = (
     'paging',
     'sentry',
     'sentry.client',
-    'notification',
     'friends',
     'captcha',
     'taggit',

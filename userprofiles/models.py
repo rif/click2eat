@@ -66,7 +66,7 @@ class UserProfile(models.Model):
     #friend = models.ForeignKey(User, verbose_name=_('friend'), null=True, blank=True, related_name="friends")
     first_name = models.CharField(_('first name'), max_length=50)
     last_name = models.CharField(_('last name'), max_length=50)
-    phone = models.CharField(_('phone'), max_length=15)
+    phone = models.CharField(_('phone'), max_length=15, unique=True)
     sex = models.CharField(_('sex'), max_length=1, choices=GENDER_CHOICES)
     birth_date = models.DateField(_('birth date'), null=True, blank=True)
     newsletter = models.BooleanField(_('newsletter'), help_text=_("Do you want to receive our newsletter?"))

@@ -13,7 +13,6 @@ django-annoying
 geopy
 django-sentry
 django-simple-captcha
-django-notification
 django-friends
 django-taggit
 django-pagination
