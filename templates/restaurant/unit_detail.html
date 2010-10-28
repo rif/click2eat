@@ -45,6 +45,7 @@
         $(this).next().slideToggle();
         e.preventDefault();
     });
+    getAvailableToppings();
   });
   function pageLinks(){
     $(".page, .next, .prev").click(function(e){
@@ -109,7 +110,7 @@
     {% trans 'Toppings' %}:
     <ul>
       {% for top in item.toppings.topping_set.iterator %}
-      <li id="{{ top.id }}"><a href="#" class="add-item">{{ top.name_def }}</a> - <span class="item-desc">{{ top.description_def }}</span><br/>
+      <li id="{{ top.id }}"><a href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a> - <span class="item-desc">{{ top.description_def }}</span><br/>
     {{ top.name_en }} - <span class="item-desc">{{ top.description_en }}</span></li>
       {% endfor %}
     </ul>  
