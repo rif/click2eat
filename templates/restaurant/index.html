@@ -19,13 +19,6 @@
            $("#notrated-orders").slideToggle();
            e.preventDefault();
         });
-        $(".item-add-link").click(function(e){
-           var redir =  $(this).attr("redir");
-           $.get($(this).attr("href"), function(){
-              window.location = redir;
-           });
-           e.preventDefault();
-        });
     });
 </script>
 {% endblock %}
@@ -55,7 +48,7 @@
     {% include 'restaurant/platinum_restaurant_list.html' %}
 </div>
 <h3>Gold</h3>
-<div id="gold-units">
+<div id="gold-units">\
     {% include 'restaurant/gold_restaurant_list.html' %}
 </div>
 <p>
