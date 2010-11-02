@@ -126,7 +126,6 @@ INSTALLED_APPS = (
     'pagination',
     'memcache_status',
     'django_filters',
-    'funserver',
     # my apps
     'restaurant',
     'menu',
