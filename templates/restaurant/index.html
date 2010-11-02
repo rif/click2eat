@@ -19,7 +19,14 @@
            $("#notrated-orders").slideToggle();
            e.preventDefault();
         });
-    })
+        $(".item-add-link").click(function(e){
+           var redir =  $(this).attr("redir");
+           $.get($(this).attr("href"), function(){
+              window.location = redir;
+           });
+           e.preventDefault();
+        });
+    });
 </script>
 {% endblock %}
 
@@ -36,6 +43,13 @@
   </ul>
 </div>{% endif %}
 {% endwith %}
+
+<form action="{% url menu:item_list %}" method="get">
+  <p><label for="id_q">{% trans 'Search' %}:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
+  {{ filter.form.as_p }}
+  <input type="{% trans 'Submit' %}" />
+</form>
+
 <h3>Platinum</h3>
 <div id="platinum-units">
     {% include 'restaurant/platinum_restaurant_list.html' %}
@@ -45,7 +59,6 @@
     {% include 'restaurant/gold_restaurant_list.html' %}
 </div>
 <p>
-<a href="{% url menu:item_list %}">{% trans 'Search for products' %}</a>
 </p>
 <h3>Silver</h3>
 <div id="silver-units">

@@ -20,28 +20,38 @@
 <body>
   <div id="header">
     {% if user.is_authenticated %}
-                <p>
-                    {% if user.is_superuser %}
-                        {% trans 'Welcome' %}, <a href="{% url admin:index %}">{{ user.username }}</a>.
-                    {% else %}
-                        {% trans 'Welcome' %}, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
-                    {% endif %}
-                <a href="{% url auth_logout %}">log out</a></p>
-            {% else %}
-                <p>Please <a href="{% url auth_login %}">log in</a> or <a href="{% url registration_register %}">sign up.</a></p>
-            {% endif %}		
-		<div style="float:right" id="languages">
-		<form action="/i18n/setlang/" method="post">
-		  {% csrf_token %}
-		  <input name="next" type="hidden" value="" />
-		  <select name="language">
-		    {% for lang in LANGUAGES %}
-		    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-		    {% endfor %}
-		  </select>
-		  <input type="submit" value="Go" />
+    <p>
+      {% if user.is_superuser %}
+      {% trans 'Welcome' %}, <a href="{% url admin:index %}">{{ user.username }}</a>.
+      {% else %}
+      {% trans 'Welcome' %}, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
+      {% endif %}
+      <a href="{% url auth_logout %}">log out</a></p>
+    {% else %}
+    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
+      <ul>
+	<li><label for="id_username">Username:</label> <input id="id_username" name="username" maxlength="30" type="text"></li>
+	<li><label for="id_password">Password:</label> <input name="password" id="id_password" type="password"></li>  
+      </ul>
+      <input type="submit" value="{% trans 'Log in' %}" />
+      <input type="hidden" name="next" value="{{ next }}" />
 		</form>
-		</div>
+    
+    <p>{% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}">{% trans 'Reset it' %}</a>!<br>
+      {% trans 'Not member?' %} <a href="{% url registration_register %}">{% trans 'Register' %}</a>!</p>
+    {% endif %}		
+    <div style="float:right" id="languages">
+      <form action="/i18n/setlang/" method="post">
+	{% csrf_token %}
+	<input name="next" type="hidden" value="" />
+	<select name="language">
+	  {% for lang in LANGUAGES %}
+	  <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+	  {% endfor %}
+	</select>
+	<input type="submit" value="Go" />
+      </form>
+    </div>
   </div>
   <div id="messages">
     {% if messages %}
