@@ -37,6 +37,9 @@ class Order(models.Model):
     def is_abandoned(self):
         if self.status in ('ST', 'RV', 'DL', 'CN'):
             return False
+        if self.status == 'AB':
+            return True
+        # if status is CR 
         delta = datetime.now() - self.creation_date        
         if delta.days > 0:
             if self.total_amount > 0:
