@@ -7,7 +7,7 @@ class CommunicationAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 class PartnerPackageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'details')
+    list_display = ('name', 'monthly_fee', 'rate', 'details')
     search_fields = ['name', 'details']
     prepopulated_fields = {"slug": ("name",)}
 

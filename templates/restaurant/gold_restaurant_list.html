@@ -1,6 +1,6 @@
 {% if gold.exists %}
 {% with gold.0 as gunit %}
-<a href="{% url restaurant:restaurant_detail gunit.id %}">{{ gunit }}</a>
+<a href="{% url restaurant:detail gunit.id %}">{{ gunit }}</a>
 {% endwith %}
 {% else %}
 <p>No gold partners available.</p>

@@ -18,7 +18,8 @@ class Communication(models.Model):
 class PartnerPackage(models.Model):
     name = models.CharField(_('name'), max_length=100)
     slug = models.SlugField(_('slug'), help_text=_('The css class for this package'))
-    rate = models.FloatField(_('rate'))
+    monthly_fee = models.FloatField(_('monthly fee'))
+    rate = models.FloatField(_('rate'), help_text=_('The procentage taken from every order'))
     details = models.TextField(_('details'))
     
     def __unicode__(self):
@@ -161,7 +162,7 @@ class Unit(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('restaurant:restaurant_detail', [str(self.id)])
+        return ('restaurant:detail', [str(self.id)])
     
     class Meta:
       verbose_name = _('Unit')
