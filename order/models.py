@@ -35,7 +35,7 @@ class Order(models.Model):
       return subtotal
 
     def is_abandoned(self):
-        if self.status in ('ST','RV', 'DL', 'CN'):
+        if self.status in ('ST', 'RV', 'DL', 'CN'):
             return False
         delta = datetime.now() - self.creation_date        
         if delta.days > 0:

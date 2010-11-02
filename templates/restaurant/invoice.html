@@ -19,7 +19,7 @@
       <td>{{ order }}</td><td>{{ order.total_amount }}</td>
     </tr>
     {% empty %}
-    <tr>{% trans 'Sorry, no orders for this restaurant' %}.</tr>
+    <tr><td>{% trans 'Sorry, no orders for this restaurant' %}.</td><td>0</td></tr>
     {% endfor %}
     <tr>
       <td></td><td><b>{{ total_sum|floatformat:2 }}</b></td>

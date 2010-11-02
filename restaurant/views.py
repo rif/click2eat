@@ -54,11 +54,13 @@ def get_random_gold(request):
     units = Unit.objects.order_by('?')
     return {'gold': units.filter(package__slug='gold')}
 
+@login_required
 @render_to('restaurant/package_history.html')
 def package_history(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     return {'platinum': units.filter(package__slug='platinum')}
 
+@login_required
 @render_to('restaurant/invoice.html')
 def invoice(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
