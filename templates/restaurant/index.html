@@ -37,12 +37,6 @@
 </div>{% endif %}
 {% endwith %}
 
-<form action="{% url menu:item_list %}" method="get">
-  <p><label for="id_q">{% trans 'Search' %}:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
-  {{ filter.form.as_p }}
-  <input type="{% trans 'Submit' %}" />
-</form>
-
 <h3>Platinum</h3>
 <div id="platinum-units">
     {% include 'restaurant/platinum_restaurant_list.html' %}
