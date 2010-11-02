@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Invoice for {{unit}}{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>Order</th><th>Sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders.iterator %}
+    <tr>
+      <td>{{ order }}</td><td>{{ order.total_amount }}</td>
+    </tr>
+    {% empty %}
+    <tr>{% trans 'Sorry, no orders for this restaurant' %}.</tr>
+    {% endfor %}
+    <tr>
+      <td></td><td><b>{{ total_sum|floatformat:2 }}</b></td>
+    </tr>
+    <tr>
+      <td>{{ unit.package }}{% trans ' pacakge monthly rate' %}</td><td>{{ unit.package.monthly_fee }}</td>
+    </tr>
+    <tr>
+      <td>{{ unit.package }}{% trans ' pacakge procentage rate' %}</td><td>{{ unit.package.rate }}</td>
+    </tr>
+    <tr>
+      <td>{% trans 'Total' %}</td><td><b>{{ grand_total|floatformat:2 }}</b></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

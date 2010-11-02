@@ -25,7 +25,8 @@
         "model": "restaurant.partnerpackage", 
         "fields": {
             "details": "Cheapest package", 
-            "rate": 1.0, 
+            "monthly_fee": 0.0, 
+            "rate": 0.80000000000000004, 
             "name": "Silver", 
             "slug": "silver"
         }
@@ -35,7 +36,8 @@
         "model": "restaurant.partnerpackage", 
         "fields": {
             "details": "Medium package", 
-            "rate": 1.0, 
+            "monthly_fee": 100.0, 
+            "rate": 0.80000000000000004, 
             "name": "Gold", 
             "slug": "gold"
         }
@@ -45,7 +47,8 @@
         "model": "restaurant.partnerpackage", 
         "fields": {
             "details": "Most expensive package", 
-            "rate": 1.0, 
+            "monthly_fee": 150.0, 
+            "rate": 0.80000000000000004, 
             "name": "Platinum", 
             "slug": "platinum"
         }

@@ -8,8 +8,11 @@ from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
+from django.db.models import Sum
 from annoying.decorators import render_to
+from datetime import date
 from restaurant.models import Unit
+from order.models import Order
 from order import views
 
 def __user_has_profile(user):
@@ -36,8 +39,8 @@ def index(request):
 
 @login_required
 @render_to('restaurant/unit_detail.html')
-def unit_detail(request, object_id):
-    unit = get_object_or_404(Unit, pk=object_id)
+def unit_detail(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
     current_order = views.__get_current_order(request, unit)
     return {'object': unit, 'order': current_order, 'carts': current_order.get_carts()}
 
@@ -50,3 +53,22 @@ def get_random_platinum(request):
 def get_random_gold(request):
     units = Unit.objects.order_by('?')
     return {'gold': units.filter(package__slug='gold')}
+
+@render_to('restaurant/package_history.html')
+def package_history(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    return {'platinum': units.filter(package__slug='platinum')}
+
+@render_to('restaurant/invoice.html')
+def invoice(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    today = date.today()
+    start = date(today.year, today.month - 1, 1)
+    end = date(today.year, today.month - 1, 30)
+    last_month_orders = Order.objects.filter(unit=unit).filter(creation_date__range=(start, end)).filter(status__in=['ST', 'RV', 'DL'])
+    total_amount_sum = last_month_orders.aggregate(Sum('total_amount'))['total_amount__sum']
+    if total_amount_sum != None:
+        grand_total = (total_amount_sum * unit.package.rate/100) + unit.package.monthly_fee
+    else:
+        grand_total = unit.package.monthly_fee
+    return {'unit': unit, 'orders': last_month_orders, 'total_sum': total_amount_sum, 'grand_total': grand_total}

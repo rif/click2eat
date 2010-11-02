@@ -80,7 +80,7 @@ class UserProfile(models.Model):
         return self.first_name != '' or self.last_name != '' or self.phone != '' or self.sex != '' or self.birthday != ''
     
     def get_not_rated(self):
-        return Order.objects.filter(user=self.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating=None)
+        return Order.objects.filter(user=self.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating__isnull=True)
 
     @models.permalink
     def get_absolute_url(self):

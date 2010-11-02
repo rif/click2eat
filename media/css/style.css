@@ -1,0 +1,490 @@
+/*
+ |----------------------------------------------------------------
+ | CLICK2IT CENTER
+ |----------------------------------------------------------------
+ |
+ | General stylesheet
+ |
+ | LICENSE: -
+ |
+ | @date          November 01, 2010
+ | @mod-date      -
+ | @mod-author    -
+ |
+ | @copyright     -
+ | @license       -
+ | @link          -
+ | @since         File available since Release 1.0
+ |
+ | @author        Sergiu Dihel
+ | @version       1.0
+ |
+ | ---
+ | CHANGES LOG
+ | ---
+ |  1. November 01, 2010 | Sergiu Dihel
+ |     Style created
+ */
+
+/**
+ * BODY
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+body
+{
+	margin:  0 auto;
+	padding: 0;
+
+	font-family: Tahoma, Arial, sans-serif;
+	font-size:   12px;
+	color:       #767676;
+
+	line-height: 1.5em;
+}
+
+/**
+ * GENERAL FONTS
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+h1, h2, h3, h4
+{
+	margin:  20px 0 0 0;
+	padding: 0;
+
+	font-weight: 100;
+	color:       #000000;
+	text-align:  left;
+}
+
+h1 { font-size: 21px; }
+h2 { font-weight: bold; color: #767676; }
+h3 { font-weight: bold; color: #767676; }
+h4 { font-weight: bold; color: #767676; }
+
+/**
+ * HEADER WRAPPER
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#top_site
+{
+	background: url("../images/template/top_site.png") repeat-x;
+
+	width:   100%;
+	height:  13px;
+}
+
+#header
+{
+	margin: 0 auto;
+	width:  1000px;
+}
+
+#header #logo
+{
+	background: url("../images/template/logo.png") repeat-x;
+
+	width:  426px;
+	height: 129px;
+
+	margin: 30px 0 0 0;
+
+	float: left;
+}
+
+#header #header_content
+{
+	width: 400px;
+	float: right;
+}
+
+#header #header_content #top_search
+{
+	background: url("../images/template/top_search_bg.png") no-repeat;
+
+	width:  400px;
+	height: 27px;
+
+	margin: 10px 0 0 90px;
+}
+
+#header #header_content #top_search form input
+{
+	font-size:   16px;
+	color:       #cccccc;
+	font-family: Tahoma, Arial, sans-serif;
+
+	background: transparent;
+	border:     0;
+
+	outline: none;
+}
+
+#header #header_content #top_search form input[type=text]
+{
+	width:  120px;
+	margin: 2px 0 0 6px;
+}
+
+#header #header_content #top_search form input[type=submit]
+{
+	width:  23px;
+	margin: 2px 0 0 0;
+}
+
+#header #header_content #top_register
+{
+	background: url("../images/template/top_register_bg.png") no-repeat;
+
+	width:  271px;
+	height: 150px;
+
+	margin: 10px 0 0 130px;
+
+	position: relative;
+	z-index:  2;
+}
+
+#header #header_content #top_register img
+{
+	margin: 10px 0 0 70px;
+}
+
+#header #header_content #top_register .reg_content
+{
+	margin: 6px 0 0 50px;
+}
+
+#header #header_content #top_register form .label
+{
+	width:   70px;
+	float:   left;
+
+	margin: -3px 0 0 0;
+}
+
+#header #header_content #top_register form input
+{
+	height: 8px;
+
+	font-size:   9px;
+	color:       #000000;
+	font-family: Tahoma, Arial, sans-serif;
+
+	background: transparent;
+	border:     0;
+
+	outline: none;
+}
+
+#header #header_content #top_register form input[type=text],
+#header #header_content #top_register form input[type=password]
+{
+	width:   100px;
+	height:  11px;
+}
+
+#header #header_content #top_register form input[type=text]
+{
+	margin: 1px 0 0 0;
+}
+
+#header #header_content #top_register form input[type=password]
+{
+	margin: 0 0 0 0;
+}
+
+#header #header_content #top_register form input[type=submit].pad
+{
+	margin: 0 0 0 67px;
+}
+
+#header #header_content #top_register form input[type=submit],
+#header #header_content #top_register form input[type=reset]
+{
+	width:   54px;
+	height:  18px;
+
+	color: #ffffff;
+}
+
+
+/**
+ * MENU TOP
+ *
+ * @date          November 02, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#menu_top
+{
+	width:      100%;
+	height:     51px;
+	background: transparent url("../images/template/menu_top_bg.png") repeat-x top left;
+
+	margin:   -30px 0 0 0;
+	position: absolute;
+}
+
+#menu_top ul#menu-list
+{
+	z-index: 1;
+
+	margin:  0 auto;
+	padding: 0;
+
+	list-style-type:none;
+
+	width:    1000px;
+	height:   51px;
+	position: relative;
+
+	display: block;
+}
+
+#menu_top ul#menu-list li
+{
+	display: block;
+	float:   left;
+	margin:  0;
+	padding: 0;
+}
+
+#menu_top ul#menu-list li a
+{
+	display: block;
+	float:   left;
+
+	font-size:       15px;
+	font-family:     Tahoma, Arial, sans-serif;
+	font-weight:     bold;
+	color:           #ffffff;
+	text-decoration: none;
+
+	padding:    15px 24px 0 24px;
+	height:     24px;
+}
+
+#menu_top ul#menu-list li a:hover
+{
+	background: transparent url("../images/template/vu_menu_hover.png") repeat-x top left;
+}
+
+/**
+ * WRAPPER
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#wrapper
+{
+	width:  1000px;
+	margin: 50px auto;
+
+	position: relative;
+}
+
+/**
+ * SIDEBAR
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#sidebar
+{
+	width:  250px;
+	float:  left;
+
+	padding: 0 25px;
+}
+
+#sidebar .menu_title
+{
+	background: url("../images/template/sidebar_menu_title_bg.png") repeat-x;
+
+	width:  250px;
+	height: 58px;
+}
+
+#sidebar .menu_title .house_icon
+{
+	background: url("../images/template/house_icon.png") no-repeat;
+
+	width:  78px;
+	height: 83px;
+
+	float: left;
+
+	margin: -15px 0 0 -30px;
+}
+
+#sidebar .menu_title .text
+{
+	padding: 35px 0 0 55px;
+
+	font-size: 17px;
+	color:     #ffffff;
+}
+
+#sidebar ul
+{
+	margin:  -10px 0 0 0;
+	padding: 0;
+
+	list-style: none;
+
+	background-color: #f2f2f2;
+}
+
+#sidebar li.first
+{
+	background-color: #ffffff;
+	margin:           18px 0 0 0;
+	padding:          0 0 0 40px;
+
+	font-weight: bold;
+	color:       #acacac;
+
+	border-bottom: none;
+}
+
+#sidebar li.first_star
+{
+	width:  28px;
+	height: 28px;
+
+	margin:  -23px 0 0 0;
+	padding: 0;
+
+	background: transparent url("../images/template/first_star.png") no-repeat top left;
+
+	border-bottom: none;
+}
+
+#sidebar li.second_star
+{
+	width:  21px;
+	height: 20px;
+
+	margin:  -20px 0 0 15px;
+	padding: 0;
+
+	background: transparent url("../images/template/second_star.png") no-repeat top left;
+
+	border-bottom: none;
+}
+
+#sidebar li.third_star
+{
+	width:  21px;
+	height: 20px;
+
+	margin:  -17px 0 0 19px;
+	padding: 0;
+
+	background: transparent url("../images/template/third_star.png") no-repeat top left;
+
+	border-bottom: none;
+}
+
+#sidebar li
+{
+	margin:  0;
+	padding: 0;
+
+	font-size: 13px;
+
+	padding: 2px 0 2px 40px;
+}
+
+#sidebar li a
+{
+	border-bottom: 1px dotted #cccccc;
+	padding:       4px 0;
+}
+
+#sidebar li span
+{
+	display: block;
+
+	padding: 0 0 3px 14px;
+
+	font-size: 11px;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+#sidebar h2
+{
+	letter-spacing: -.5px;
+	font-size:      21px;
+	color:          #666666;
+
+	padding-bottom: 10px;
+}
+
+#sidebar p { padding-bottom: 20px; }
+
+#sidebar .quote
+{
+	padding: 10px;
+
+	font-size:   11px;
+	font-style:  italic;
+	font-family: georgia, serif;
+}
+
+#sidebar a
+{
+	color:           #bcbcbc;
+	text-decoration: none;
+
+	font-family: Verdana, Arial, sans-serif;
+	font-size:   11px;
+}
+
+#sidebar a:hover
+{
+	text-decoration: none;
+}
+
+/**
+ * BODY
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#body_page
+{
+	width:  700px;
+	float:  right;
+}
+
+/**
+ * SPACER
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+.spacer { height: 60px; }
+.spacer-with-border { height: 10px; margin: 0 0 10px 0; border-bottom: 1px solid #d4d4d4;}
+
+/**
+ * CLEAR FIX
+ *
+ * @date          November 01, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+.clear { clear:both; }

@@ -32,6 +32,6 @@
 <hr>
 
 {% for obj in filter %}
-<a redir="{% url restaurant:restaurant_detail obj.unit_id %}" class="item-add-link" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }} {{ obj.name_def }}</a> - ${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})<br />
+<a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }} {{ obj.name_def }}</a> - ${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})<br />
 {% endfor %}
 {% endblock %}
