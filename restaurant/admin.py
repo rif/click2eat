@@ -1,7 +1,7 @@
 from django.contrib import admin
 from restaurant import models
-from django import forms
 from menu.models import Item, ItemGroup, Topping
+from restaurant.forms import UnitForm
 
 class CommunicationAdmin(admin.ModelAdmin):
     search_fields = ['name']
@@ -56,6 +56,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     inlines = [IntervalInline]
 
 class UnitAdmin(admin.ModelAdmin):    
+    form = UnitForm
     list_display = ('name', 'address', 'package', 'email', 'phone')
     search_fields = ['name', 'address']
     inlines = [ItemGroupInline, ItemInline, ToppingInline]
