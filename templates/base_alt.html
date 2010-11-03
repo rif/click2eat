@@ -36,6 +36,10 @@
 	  <input type="submit" value=""/>
 	</form>
       </div>
+      <div id="top_links"> 
+	 {% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}" target="_self">{% trans 'Reset it' %}</a>! |
+	 {% trans 'Not member?' %} <a href="{% url registration_register %}" target="_self">{% trans 'Register' %}</a>!
+      </div> 
       <div id="top_register">
 	<img src="{{ MEDIA_URL }}images/template/commands_text_ro.png" alt="">
 	<div class="reg_content">
@@ -61,10 +65,6 @@
 	    <input type="reset" value="Reset">
 	    <input type="hidden" name="next" value="{{ next }}" />
 	  </form>
-	  <p>
-	    {% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}">{% trans 'Reset it' %}</a>!<br>
-	    {% trans 'Not member?' %} <a href="{% url registration_register %}">{% trans 'Register' %}</a>!
-	  </p>
 	  {% endif %}		
 	</div> <!-- reg_content -->
       </div> <!-- top_register -->
