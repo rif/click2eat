@@ -18,6 +18,7 @@ django-taggit
 django-pagination
 django-memcache-status
 django-filter
+django-tinymce
 # gunicorn staff
 setproctitle
 greenlet
