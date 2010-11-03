@@ -19,7 +19,7 @@ class PartnerPackage(models.Model):
     name = models.CharField(_('name'), max_length=100)
     slug = models.SlugField(_('slug'), help_text=_('The css class for this package'))
     monthly_fee = models.FloatField(_('monthly fee'))
-    rate = models.FloatField(_('rate'), help_text=_('The procentage taken from every order'))
+    rate = models.FloatField(_('rate'), help_text=_('The percentage taken from every order'))
     details = models.TextField(_('details'))
     
     def __unicode__(self):
