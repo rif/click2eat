@@ -1,7 +1,7 @@
 Django==1.2.3
 South==0.7.2
 django-profiles==0.2
--f http://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz#egg=django-registration
+-f http://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz
 django-uni-form
 django-debug-toolbar
 django-extensions
