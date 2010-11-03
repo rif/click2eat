@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 #from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
@@ -60,7 +60,8 @@ def package_history(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     return {'platinum': units.filter(package__slug='platinum')}
 
-@login_required
+
+@user_passes_test(lambda u: u.is_authenticated() and u.is_staff)
 @render_to('restaurant/invoice.html')
 def invoice(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
