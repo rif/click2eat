@@ -106,15 +106,23 @@ h4 { font-weight: bold; color: #767676; }
 	float: right;
 }
 
+#header #header_content #top_links
+{
+	font-size: 9px;
+
+	margin: 6px 0 -5px 150px
+}
+
 #header #header_content #top_search
 {
 	background: url("../images/template/top_search_bg.png") no-repeat;
 
-	width:  400px;
+	width:  165px;
 	height: 27px;
 
-	margin: 10px 0 0 90px;
+	margin: 10px 0 0 235px;
 }
+
 
 #header #header_content #top_search form input
 {
@@ -147,7 +155,7 @@ h4 { font-weight: bold; color: #767676; }
 	width:  271px;
 	height: 150px;
 
-	margin: 10px 0 0 130px;
+	margin: 0 0 0 130px;
 
 	position: relative;
 	z-index:  2;
@@ -339,11 +347,12 @@ h4 { font-weight: bold; color: #767676; }
 #sidebar ul
 {
 	margin:  -10px 0 0 0;
-	padding: 0;
+	padding: 0 0 20px 0;
 
 	list-style: none;
 
 	background-color: #f2f2f2;
+	border-bottom:    6px solid #cccccc;
 }
 
 #sidebar li.first
@@ -469,6 +478,203 @@ h4 { font-weight: bold; color: #767676; }
 	width:  700px;
 	float:  right;
 }
+
+.content_area
+{
+	margin: 0 0 20px 0;
+}
+
+.content_area .title
+{
+	background-color: #cccccc;
+}
+
+.content_area .title h1
+{
+	padding:          8px;
+	margin:  0;
+
+	width: 200px;
+
+	font-size: 19px;
+	color:     #ffffff;
+}
+
+.content_area .title h1.light_green  { background-color: #99cc00; }
+.content_area .title h1.light_orange { background-color: #ffa200; }
+
+/**
+ * SHOPPING CART STYLE
+ *
+ * @date          November 03, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#cart
+{
+	background: #8dc100 url("../images/template/cart_bg.png") repeat-x top left;
+
+	margin:  10px 0;
+	padding: 15px;
+
+	-webkit-border-radius:  10px;
+	-moz-border-radius:     10px;
+	border-radius:          10px;
+}
+
+#cart h1
+{
+	margin:  0 0 8px 0;
+	padding: 0;
+
+	text-decoration: underline;
+	font-size:       13px;
+	font-weight:     bold;
+	color:           #ffffff;
+}
+
+#cart table
+{
+	width: 208px;
+
+	margin: 7px;
+	float: left;
+
+	color:     #ffffff;
+	font-size: 11px;
+}
+
+#cart table tr th
+{
+	text-align: left;
+}
+
+#cart table tr td.total
+{
+	border-top: 1px dotted #ffffff;
+
+	text-align:  right;
+	font-weight: bold;
+}
+
+#cart table tr td.price
+{
+	text-align: right;
+	
+	width: 70px;
+}
+
+#cart table tr th.del,
+#cart table tr td.del
+{
+	width: 12px;
+}
+
+#cart .order_now
+{
+	width:  152px;
+	height: 20px;
+
+	color:          #ffffff;
+	font-weight:    bold;
+	text-transform: uppercase;
+
+	margin:  10px 0 0 0;
+	padding: 0 0 0 40px;
+
+	background: url("../images/template/order_now_btn.png") no-repeat;
+}
+
+/**
+ * CURRENT ORDER
+ *
+ * @date          November 03, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#current_order
+{
+	margin: 0;
+}
+
+#current_order table
+{
+	width:  100%;
+
+	border-collapse:collapse;
+}
+
+#current_order table tr.header
+{
+	background-color: #d6d6d6;
+}
+
+#current_order table tr
+{
+	background-color: #f0f0f0;
+}
+
+#current_order table tr.odd
+{
+	background-color: #e5e5e5;
+}
+
+#current_order table th,
+#current_order table td
+{
+	padding: 3px;
+}
+
+#current_order table th.item
+{
+	text-align: left;
+}
+
+#current_order table td.item
+{
+	color:       #669900;
+	font-weight: bold;
+}
+
+#current_order table th.count,
+#current_order table th.price
+{
+	text-align: right;
+}
+
+#current_order table td.count,
+#current_order table td.price
+{
+	text-align:  right;
+	font-weight: bolder;
+
+	width: 90px;
+}
+
+#current_order .order_now
+{
+	width:  152px;
+	height: 20px;
+
+	color:          #ffffff;
+	font-weight:    bold;
+	text-transform: uppercase;
+
+	margin:  10px 0 0 0;
+	padding: 0 0 0 40px;
+
+	background: url("../images/template/order_now_btn.png") no-repeat;
+}
+
+/**
+ * LINKS
+ *
+ * @date          September 15, 2010
+ * @mod-date
+ * @mod-author
+ */
+a img { border: 0; }
+img   { border: 0; }
 
 /**
  * SPACER
