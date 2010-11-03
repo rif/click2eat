@@ -104,17 +104,17 @@ def send(request, unit_id):
         return redirect('order:timer', order_id=current_order.id)
     if unit.minimum_ord_val > current_order.total_amount:
         messages.add_message(request, messages.WARNING, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
-        return redirect('restaurant:detail', object_id=unit.id)
+        return redirect('restaurant:detail', unit_id=unit.id)
     if not unit.schedule.is_open():
         messages.add_message(request, messages.WARNING, _('This restaurant is now closed! Please check the open hours and come back later.'))
-        return redirect('restaurant:detail', object_id=unit.id)
+        return redirect('restaurant:detail', unit_id=unit.id)
     if current_order.address:
         src = (unit.latitude, unit.longitude)
         dest = (current_order.address.latitude, current_order.address.longitude)
         dist = distance.distance(src, dest)
         if  dist.km > unit.delivery_range:
             messages.add_message(request, messages.WARNING, _('We are sorry, you are not in the delivery range of this restaurant.'))
-            return redirect('restaurant:detail', object_id=unit.id)
+            return redirect('restaurant:detail', unit_id=unit.id)
     if request.method == 'POST':
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():
@@ -182,7 +182,7 @@ def clone(request, order_id):
     new_order = order.clone()
     if new_order.total_amount != order.total_amount:
         messages.add_message(request, messages.WARNING, _('The price of some items has changed. Please review the order!'))
-    return redirect('restaurant:detail', object_id=order.unit_id)
+    return redirect('restaurant:detail', unit_id=order.unit_id)
 
 @login_required
 @render_to('order/restaurant_order_list.html')
