@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'memcache_status',
     'django_filters',
     'tinymce',
+    'compressor',
     # my apps
     'restaurant',
     'menu',
