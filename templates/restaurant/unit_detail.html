@@ -4,6 +4,7 @@
 {% block title %}{{ object.name }}{% endblock%}
 
 {% block style %}
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/tabs_style.css"/> 
 {% endblock %}
 
 {% block scripts %}        
@@ -77,49 +78,51 @@
 </div><!-- content_area -->
 
 <div class="content_area"> 
-<div class="title"><h1 class="light_orange">{% trans 'Menu' %}</h1></div><br>
-<ul id="menu">
-{% for itemgroup in object.itemgroup_set.iterator %}
-{% if itemgroup.active %}
-  <h3>{{ itemgroup }}</h3>
-  {% for item in itemgroup.item_set.iterator %}
-  {% if item.active %}
+  <div class="title"><h1 class="light_orange">{% trans 'Menu' %}</h1></div><br>
+  <ul id="menu">
+    {% for itemgroup in object.itemgroup_set.iterator %}
+    {% if itemgroup.active %}
+    <h3>{{ itemgroup }}</h3>
+    {% for item in itemgroup.item_set.iterator %}
+    {% if item.active %}
     <li class="item {% if item.is_new %}new-item{% endif %}"><a id="{{ item.id }}" href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{ item.description_def }}</span></li>
     <span id="top{{ item.id }}" class="top-span" style="display:none">
-    {% if item.toppings %}
-    <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
-    <span class="topping-span" style="display:none">
-    {% trans 'Toppings' %}:
-    <ul>
-      {% for top in item.toppings.topping_set.iterator %}
-      <li><a id="{{ top.id }}" href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a> - <span class="item-desc">{{ top.description_def }}</span><br/>
-    {{ top.name_en }} - <span class="item-desc">{{ top.description_en }}</span></li>
-      {% endfor %}
-    </ul>  
+      {% if item.toppings %}
+      <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
+      <span class="topping-span" style="display:none">
+	{% trans 'Toppings' %}:
+	<ul>
+	  {% for top in item.toppings.topping_set.iterator %}
+	  <li><a id="{{ top.id }}" href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a> - <span class="item-desc">{{ top.description_def }}</span><br/>
+	    {{ top.name_en }} - <span class="item-desc">{{ top.description_en }}</span></li>
+	  {% endfor %}
+	</ul>  
+      </span>
+      {% endif %}
     </span>
     {% endif %}
-    </span>
-  {% endif %}
     {% empty %}
     <li>{% trans 'No items in this group' %}</li>
-  {% endfor %}
-{% endif %}
-{% endfor %}
-</ul>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </ul>
 </div><!-- content_area -->
-<div id="carts">
-<ul class="css-tabs"> 
-  {% for cartname in carts %}
-  <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
-  {% empty %}
-  <li><a id="cart-{{ user.username }}" href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li> 
-  {% endfor %}
-</ul> 
-<div class="css-panes">
-	<div style="display:block"></div>
-</div>
-
-
-<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
-<a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+<div class="content_area"> 
+  <div class="title"><h1 class="light_green">{% trans 'Current Order' %}</h1></div><br>
+  <div id="carts">
+    <ul class="css-tabs"> 
+      {% for cartname in carts %}
+      <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
+      {% empty %}
+      <li><a id="cart-{{ user.username }}" href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li> 
+      {% endfor %}
+    </ul> 
+    <div class="css-panes">
+      <div style="display:block"></div>
+    </div>
+    <div class="order_now"><a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a></div>
+    <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+  </div><!-- content_area -->
 {% endblock %}
+  

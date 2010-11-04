@@ -20,28 +20,28 @@ $(function(){
     e.preventDefault();
   });
 })
-
 </script>
-<table id="cart-{{ cartname }}-table"> 
-  <tr class="header"> 
-    <th class="item">{% trans 'Item' %}</th> 
-    <th class="count">{% trans 'Count' %}</th> 
-    <th class="price">{% trans 'Price' %}</th> 
-  </tr> 
-  {% for oi in oil %}
-  <tr class="{% cycle 'odd' 'even' %}"> 
-    <td class="item">{{ oi.item.name_def }}</td> 
-    <td class="count">{{ oi.count }}</td> 
-    <td class="price">{{ oi.old_price }}</td>
-    <td><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">x</a></td>
-  </tr> 
-  {% empty %}
-  <tr> 
-    <td class="placeholder">{% trans 'Click menu items to fill the plate' %}</td> 
-  </tr>
-  {% endfor %}
-</table> 
-
+<div id="current_order">
+  <table id="cart-{{ cartname }}-table"> 
+    <tr class="header"> 
+      <th class="item">{% trans 'Item' %}</th> 
+      <th class="count">{% trans 'Count' %}</th> 
+      <th class="price">{% trans 'Price' %}</th> 
+    </tr> 
+    {% for oi in oil %}
+    <tr class="{% cycle 'odd' 'even' %}"> 
+      <td class="item">{{ oi.item.name_def }}</td> 
+      <td class="count">{{ oi.count }}</td> 
+      <td class="price">{{ oi.old_price }}</td>
+      <td><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">x</a></td>
+    </tr> 
+    {% empty %}
+    <tr> 
+      <td class="placeholder">{% trans 'Click menu items to fill the plate' %}</td> 
+    </tr>
+    {% endfor %}
+  </table> 
+</div> <!-- current_order -->
 
 {% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}</span>
 
