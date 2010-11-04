@@ -3,7 +3,15 @@
 <script type="text/javascript">
 
 $(function(){
-  $(".remove-orderitem", "#cart-rif-table").click(function(e){
+  $(".add-orderitem").click(function(e){
+      var selected_cart = "{{ cartname }}";
+      $.get($(this).attr("href"), function(response){
+          $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
+          getAvailableToppings();
+        });
+        e.preventDefault();
+  });
+  $(".remove-orderitem").click(function(e){
     var row = $(this).parents("tr");
     $.get($(this).attr("href"), function(resp){
        if(resp=="nook") {
@@ -33,7 +41,12 @@ $(function(){
       <td class="item">{{ oi.item.name_def }}</td> 
       <td class="count">{{ oi.count }}</td> 
       <td class="price">{{ oi.old_price }}</td>
-      <td><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">x</a></td>
+      <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">
+	  <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
+      </a></td>
+      <td class="plus"><a class="plus add-orderitem" href="{% url order:add_item oi.item.id cartname %}">
+	  <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
+      </a></td>
     </tr> 
     {% empty %}
     <tr> 

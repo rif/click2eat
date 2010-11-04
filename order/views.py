@@ -63,7 +63,8 @@ def list_unit(request, unit_id):
     )
 @login_required
 def add_item(request, item_id, cart_name):
-    cart_name = cart_name.split("cart-")[1]
+    if cart_name.startswith("cart-"):
+        cart_name = cart_name.split("cart-")[1]
     item = get_object_or_404(Item, pk=item_id)
     try:
         current_order = __get_current_order(request, item.unit)

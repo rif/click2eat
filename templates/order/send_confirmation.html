@@ -14,7 +14,7 @@
 
 {% block content %}
 {% include 'order/order_div.html' %}
-
+<a href="{% url restaurant:detail order.unit.id %}">{% trans 'Return to menu selection' %}</a>
 <p>{% trans "If you don't have a delivery address" %}: <a href="{% url userprofiles:create_address %}" target="_blank">{% trans 'Add one now' %}</a></p>
 <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
