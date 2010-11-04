@@ -12,7 +12,7 @@ from django.db.models import Sum
 from annoying.decorators import render_to
 from datetime import date
 from restaurant.models import Unit
-from order.models import Order
+from order.models import Order, OrderItem
 from order import views
 
 def __user_has_profile(user):
@@ -42,7 +42,8 @@ def index(request):
 def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = views.__get_current_order(request, unit)
-    return {'object': unit, 'order': current_order, 'carts': current_order.get_carts()}
+    carts = OrderItem.objects.select_related().filter(order__id=current_order.id).values_list('cart', flat=True).distinct()
+    return {'object': unit, 'order': current_order, 'carts': carts}
 
 @render_to('restaurant/platinum_restaurant_list.html')
 def get_random_platinum(request):
