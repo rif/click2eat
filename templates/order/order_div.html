@@ -58,11 +58,13 @@ $(function(){
       {% endfor %}
       <tr> 
 	<td class="total">{% trans 'Subtotal' %}</td> 
+	<td></td> 
 	<td class="total"><span id="cart-subtotal-amount" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></td> 
 	<td></td> 
       </tr> 	
-      {% endfor %}
-      <tr><td><h3>{% trans 'Total amount' %}</h3></td><td><h3><span id="order-total-amount">{{ order.total_amount }}</span></h3></td></tr>
     </table>
+    {% cycle '' '' '<div class="clear"></div>' %}
+    {% endfor %}
+    <h1>{% trans 'Total amount' %} <span id="order-total-amount">{{ order.total_amount }}</span></h1>
   </div> <!-- cart -->
 </div> <!-- content_area -->
