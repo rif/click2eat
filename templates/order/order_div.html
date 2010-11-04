@@ -63,8 +63,11 @@ $(function(){
 	<td></td> 
       </tr> 	
     </table>
-    {% cycle '' '' '<div class="clear"></div>' %}
+    {% cycle '' '' '<div class="clear"></div>' %}    
     {% endfor %}
+    {% if forloop.counter < 3 %}
+    <div class="clear"></div>
+    {% endif %}
     <h1>{% trans 'Total amount' %} <span id="order-total-amount">{{ order.total_amount }}</span></h1>
   </div> <!-- cart -->
 </div> <!-- content_area -->
