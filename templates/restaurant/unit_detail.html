@@ -84,7 +84,7 @@
     {% if itemgroup.active %}
     <div class="category">
       <h1>{{ itemgroup }}</h1>
-      <ul>
+     <!-- <ul>
 	{% for item in itemgroup.item_set.iterator %}
 	{% if item.active %}
 	<li class="{% cycle 'even' 'odd' %} item {% if item.is_new %}new-item{% endif %}">
@@ -111,7 +111,7 @@
 	{% empty %}
 	<li>{% trans 'No items in this group' %}</li>	
 	{% endfor %}
-      </ul>
+      </ul>-->
       {% endif %}
     </div> <!-- category -->
     {% cycle '' '' '<div class="clear"></div>' %}
