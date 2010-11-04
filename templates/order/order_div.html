@@ -13,7 +13,7 @@ $(function(){
              getAvailableToppings();
           }
        } else{
-          $(".count-td", row).text(resp);
+          $(".count", row).text(resp);
        }
        $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
        $("#cart-subtotal-amount").load($("#cart-subtotal-amount").attr("href"));
@@ -48,7 +48,7 @@ $(function(){
       {% for oi in oil %}
       <tr>
         <td class="item">{{ oi.item.name_def }}</td>
-	<td class="count-td">{{ oi.count }}</td>
+	<td class="count">{{ oi.count }}</td>
         <td class="price">{{ oi.old_price }}</td>
         <td>
 	<td class="del">{% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}" title="" target="_self"><img src="{{ MEDIA_URL}}images/template/cart_delete_btn.png" alt="{% trans 'Remove' %}"></a>{% endif %}</td> 
