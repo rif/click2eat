@@ -27,10 +27,9 @@ $(function(){
 <div class="content_area">
   <div class="title"><h1 class="light_green">{% trans 'Order details' %}</h1></div>
   <ul>
-    <li>{% trans 'Unit' %}: {{ order.unit }}</li>
+    <li>{% trans 'Unit' %}: <a href="{% url restaurant:detail order.unit.id %}">{{ order.unit }}</a></li>
     <li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
     <li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
-    <li>{% trans 'Total amount' %}: {{ order.total_amount }}</li>
   </ul>
 </div> <!-- content_area -->
 
@@ -44,31 +43,45 @@ $(function(){
 	<th>{{ cartname }}</th> 
 	<th></th>
 	<th></th>
+	<th></th>
 	<th class="del">{% if order.status == 'CR' %}<a href="#" title="" target="_self"><img src="{{ MEDIA_URL }}images/template/cart_delete_btn.png" alt="{% trans 'Delete cart' %}"></a>{% endif %}</th> 
       </tr> 
       {% for oi in oil %}
       <tr>
         <td class="item">{{ oi.item.name_def }}</td>
 	<td class="count">{{ oi.count }}</td>
-        <td class="price">{{ oi.old_price }}</td>
-        <td>
-	<td class="del">{% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}" title="" target="_self"><img src="{{ MEDIA_URL}}images/template/cart_delete_btn.png" alt="{% trans 'Remove' %}"></a>{% endif %}</td> 
+        <td class="price">{{ oi.old_price }} RON</td>
+	<td class="minus">
+	  {% if order.status == 'CR' %}
+	  <a class="remove-orderitem" href="{% url order:remove_item oi.id %}" title="" target="_self">
+	    <img alt="-" src="{{ MEDIA_URL}}images/template/cart_minus_btn.png">
+	  </a>
+	  {% endif %}
+	</td>
+	<td class="plus">
+	  {% if order.status == 'CR' %}
+	  <a class="add-item" href="{% url order:add_item oi.item.id cartname %}">
+	    <img alt="+" src="{{ MEDIA_URL}}images/template/cart_plus_btn.png">
+	  </a>
+	  {% endif %}
+	</td> 
       </tr> 
       {% empty %}
       <tr>{% trans 'There are no order items for' %} {{ cartname }}</tr>
       {% endfor %}
-      <tr> 
-	<td class="total">{% trans 'Subtotal' %}</td> 
+      <tr class="total"> 
 	<td></td> 
-	<td class="total"><span class="cart-subtotal" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></td> 
+	<td>{% trans 'Subtotal' %}</td> 
+	<td><span class="cart-subtotal" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span> RON</td> 
+	<td></td> 
 	<td></td> 
       </tr> 	
     </table>
-    {% cycle '' '' '<div class="clear"></div>' %}    
+    {% cycle '' '' '<div class="clear"></div>' %}
     {% endfor %}
     {% if forloop.counter < 3 %}
     <div class="clear"></div>
     {% endif %}
-    <h1>{% trans 'Total amount' %} <span id="order-total-amount">{{ order.total_amount }}</span></h1>
+    <div class="total_price">{% trans 'Total amount' %} <span id="order-total-amount">{{ order.total_amount }}</span> RON</div>
   </div> <!-- cart -->
 </div> <!-- content_area -->
