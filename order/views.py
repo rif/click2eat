@@ -144,7 +144,7 @@ def add_cart(request, order_id):
       form = CartNameForm(request.POST)
       if form.is_valid(): # All validation rules pass
           next_cart = request.POST['name']
-          return HttpResponse('<li><a id="cart-%s" href="%s">%s</a></li> ' % (reverse('order:get_cart', args=[next_cart, order_id, next_cart]), next_cart))
+          return HttpResponse('<li><a id="cart-%s" href="%s">%s</a></li> ' % (next_cart, reverse('order:get_cart', args=[order_id, next_cart]), next_cart))
   else:
       form = CartNameForm() # An unbound form
   return render_to_response('order/cart_name.html', {
