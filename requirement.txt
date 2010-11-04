@@ -19,6 +19,8 @@ django-pagination
 django-memcache-status
 django-filter
 django-tinymce
+django-compressor
+BeautifulSoup
 # gunicorn staff
 setproctitle
 greenlet

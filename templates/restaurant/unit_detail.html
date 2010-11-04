@@ -4,34 +4,12 @@
 {% block title %}{{ object.name }}{% endblock%}
 
 {% block style %}
-<link type="text/css" href="{{MEDIA_URL}}css/jquery.ui.all.css" rel="stylesheet" />
-<style type="text/css">
-        h4 { padding: .2em; margin: 0; }
-        #menu { float:left; width: 500px; margin-right: 2em; }
-        .cart { width: 200px; float: left; margin:10px;}
-        /* style the list to maximize the droppable hitarea */
-        .cart ol { margin: 0; padding: 1em 0 1em 3em; }
-        </style>
 {% endblock %}
 
-{% block scripts %}
-        <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.core.js"></script>
-        <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.widget.js"></script>
-        <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.mouse.js"></script>
-        <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.draggable.js"></script>
-        <script type="text/javascript" src="{{MEDIA_URL}}js/ui/jquery.ui.droppable.js"></script>
+{% block scripts %}        
 <script type="text/javascript">
-
   $(function(){
-    $("#current-order").load("{% url order:get_current object.id %}");
-    $(".add-item").click(function(e){
-      $.get($(this).attr("href"), function(response){
-          $("#current-order").load("{% url order:get_current object.id %}");
-          getAvailableToppings();
-        });
-        e.preventDefault();
-    });
-  $("#menu li").draggable({appendTo: "body", helper: "clone"});
+  $("ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
     $("#add-cart").click(function(e){
       $.get("{% url order:add_cart object.id %}", function(data){
           $("#carts").append(data);
@@ -46,6 +24,10 @@
         e.preventDefault();
     });
     getAvailableToppings();
+    $("#show-previous-link").click(function(e){
+      $("#last-orders").toggle();
+      e.preventDefault();
+    })
   });
   function pageLinks(){
     $(".page, .next, .prev").click(function(e){
@@ -72,37 +54,29 @@
 {% endblock %}
 
 {% block content %}
-<h1><img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" /> {{ object.name }}{% trans ' details' %}</h1>
+<div class="content_area"> 
+  <div class="title"><h1 class="light_green"><img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" /> {{ object.name }}{% trans ' details' %}</h1></div><br> 
+  <ul>
+    <li>{% trans 'Name' %}: {{ object.name }}</li>
+    <li>{% trans 'Address' %}: {{ object.address }}</li>
+    <li>{% trans 'Email' %}: {{ object.email }}</li>
+    <li>{% trans 'Phone' %}: {{ object.phone }}</li>
+    <li>{% trans 'Open hours' %}: {{ object.schedule }}, {% trans 'Open'%}: {{ object.schedule.is_open|yesno }}</li>
+    {% if object.info %}<li>{% trans 'Info' %}: {{ object.info|safe}}</li>{% endif %}
+  </ul> 
+  <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
+  <div id="last-orders" style="display:none"></div>
+</div><!-- content_area -->
 
-<ul>
-<li>{% trans 'Name' %}: {{ object.name }}</li>
-<li>{% trans 'Address' %}: {{ object.address }}</li>
-<li>{% trans 'Email' %}: {{ object.email }}</li>
-<li>{% trans 'Phone' %}: {{ object.phone }}</li>
-<li>{% trans 'Open hours' %}: {{ object.schedule }}, {% trans 'Open'%}: {{ object.schedule.is_open|yesno }}</li>
-{% if object.info %}<li>{% trans 'Info' %}: {{ object.info|safe}}</li>{% endif %}
-</ul>
-
-<h2>{% trans 'Previous orders at this restaurant' %}</h2>
-<div id="last-orders">
-</div>
-
-<br>
-
-<h2>{% trans 'Current order' %}</h2>
-<div id="current-order">
-</div>
-<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Send' %}</a>
-  
-<h1 class="ui-widget-header">{% trans 'Menu' %}</h1>
+<div class="content_area"> 
+<div class="title"><h1 class="light_orange">{% trans 'Menu' %}</h1></div><br>
 <ul id="menu">
 {% for itemgroup in object.itemgroup_set.iterator %}
 {% if itemgroup.active %}
   <h3>{{ itemgroup }}</h3>
   {% for item in itemgroup.item_set.iterator %}
   {% if item.active %}
-    <li class="item {% if item.is_new %}new-item{% endif %}" id="{{ item.id }}"><a href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{ item.description_def }}</span><br/>
-    {{ item.name_en }} - <span class="item-desc">{{ item.description_en }}</span></li>
+    <li class="item {% if item.is_new %}new-item{% endif %}" id="{{ item.id }}"><a href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{ item.description_def }}</span></li>
     <span id="top{{ item.id }}" class="top-span" style="display:none">
     {% if item.toppings %}
     <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
@@ -124,19 +98,22 @@
 {% endif %}
 {% endfor %}
 </ul>
+</div><!-- content_area -->
 <div id="carts">
-{% for cartname, oil in carts.items %}
-
-{% include 'order/order_cart.html' %}
-
-{% empty %}
-{% with user.username as cartname %}
-  {% include 'order/order_cart.html' %}
-{% endwith %}
-
-{% endfor %}
+<ul class="css-tabs"> 
+  {% for cartname, oil in carts.items %}
+  <li><a href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
+  {% empty %}
+  {% with user.username as cartname %}
+  <li><a href="{% url order:get_cart order.id cartname %}">{{ cartname }} </a></li> 
+  {% endwith %}
+  {% endfor %}
+</ul> 
+<div class="css-panes">
+	<div style="display:block"></div>
 </div>
+
+
+<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Send' %}</a>
 <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
-<br>
-<a href="{% url restaurant:index %}">{% trans 'Home' %}</a>
 {% endblock %}

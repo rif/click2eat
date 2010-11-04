@@ -1,37 +1,27 @@
 {% load i18n %}
 {% load order_tags %}
-<script type="text/javascript">
 
-  $(function(){
-                $("#{{ cartname }} ol").droppable({
-                        activeClass: "ui-state-default",
-                        hoverClass: "ui-state-hover",
-                        drop: function(event, ui) {
-                                $(this).find(".placeholder").remove();
-                                var $cart_id = $(this).parents(".cart").attr("id");
-                                var $item_id = ui.draggable.attr("id");
-                                $("<li></li>").text(ui.draggable.text()).appendTo(this);
-                                $.get("/order/add_item/" + $item_id + "/" + $cart_id + "/", function(response){
-                                    $("#current-order").load("{% url order:get_current object.id %}");
-                                    $("#{{cartname}}_subtotal").load("{% url order:get_subtotal object.id cartname %}");
-                                });
-                        }
-                });
-  });
-</script>
+<table> 
+  <tr class="header"> 
+    <th class="item">{% trans 'Item' %}</th> 
+    <th class="count">{% trans 'Count' %}</th> 
+    <th class="price">{% trans 'Unit price' %}</th> 
+  </tr> 
+  {% for oi in oil %}
+  <tr class="{% cycle 'odd' '' %}"> 
+    <td class="item">{{ oi.item.name_def }}</td> 
+    <td class="count">{{ oi.count }}</td> 
+    <td class="price">{{ oi.old_price }}</td>
+    <td><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">x</a></td>
+  </tr> 
+  {% empty %}
+  <tr> 
+    <td class="placeholder">{% trans 'Click menu items to fill the plate' %}</td> 
+  </tr>
+  {% endfor %}
+</table> 
 
-<div class="cart" id="{{ cartname }}">
-        <h4 class="ui-widget-header">{{ cartname }}</h4>
-        <div class="ui-widget-content">
-                <ol>
-                    {% for oi in oil %}
-                      <li>{{ oi.item.name_ro }} <a class="remove-orderitem" href="{% url order:remove_item oi.id %}">x</a></li>
-                    {% empty %}
-                        <li class="placeholder">Add your items here</li>
-                    {% endfor %}
-                </ol>
-                <hr/>
-                <div>{% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal">{% get_cart_subtotal %}</span></div>
-        </div>
-</div>
+
+{% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal">{% get_cart_subtotal %}</span>
+
 
