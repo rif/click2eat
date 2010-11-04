@@ -8,7 +8,7 @@
     <th class="price">{% trans 'Unit price' %}</th> 
   </tr> 
   {% for oi in oil %}
-  <tr class="{% cycle 'odd' '' %}"> 
+  <tr class="{% cycle 'odd' 'even' %}"> 
     <td class="item">{{ oi.item.name_def }}</td> 
     <td class="count">{{ oi.count }}</td> 
     <td class="price">{{ oi.old_price }}</td>

@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
 from django.utils.translation import ugettext_lazy as _
@@ -138,21 +139,17 @@ def send(request, unit_id):
                                   }, context_instance=RequestContext(request))
 
 @login_required
-def add_cart(request, unit_id):
-  unit = get_object_or_404(Unit, pk=unit_id)
+def add_cart(request, order_id):
   if request.method == 'POST':
       form = CartNameForm(request.POST)
       if form.is_valid(): # All validation rules pass
           next_cart = request.POST['name']
-          return render_to_response('order/order_cart.html', {
-                                  'cartname': next_cart,
-                                  'object': unit,
-                                  }, context_instance=RequestContext(request))
+          return HttpResponse('<li><a class="" href="%s">%s</a></li> ' % (reverse('order:get_cart', args=[order_id, next_cart]), next_cart))
   else:
       form = CartNameForm() # An unbound form
   return render_to_response('order/cart_name.html', {
         'form': form,
-        'object': unit,
+        'order_id': order_id,
     }, context_instance=RequestContext(request))
 
 @login_required

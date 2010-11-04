@@ -53,9 +53,8 @@ class Order(models.Model):
     def get_carts(self):
         carts_dict = {}
         ois = OrderItem.objects.select_related().filter(order__id=self.id)
-        carts = ois.values_list('cart', flat=True)
-        unique_carts_set = set(carts)
-        for cart in unique_carts_set:
+        carts = ois.values_list('cart', flat=True).distinct()
+        for cart in carts:
             carts_dict[cart] = ois.filter(cart=cart)
         return carts_dict
 

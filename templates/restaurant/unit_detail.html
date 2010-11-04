@@ -9,10 +9,10 @@
 {% block scripts %}        
 <script type="text/javascript">
   $(function(){
-  $("ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
+  $("#carts>ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
     $("#add-cart").click(function(e){
-      $.get("{% url order:add_cart object.id %}", function(data){
-          $("#carts").append(data);
+      $.get("{% url order:add_cart order.id %}", function(data){
+          $("#carts>ul").append(data);
         });
       e.preventDefault();
     });
@@ -101,7 +101,7 @@
 </div><!-- content_area -->
 <div id="carts">
 <ul class="css-tabs"> 
-  {% for cartname, oil in carts.items %}
+  {% for cartname in carts %}
   <li><a href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
   {% empty %}
   {% with user.username as cartname %}
