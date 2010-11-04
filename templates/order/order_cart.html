@@ -1,7 +1,28 @@
 {% load i18n %}
 {% load order_tags %}
+<script type="text/javascript">
 
-<table> 
+$(function(){
+  $(".remove-orderitem", "#cart-rif-table").click(function(e){
+    var row = $(this).parents("tr");
+    $.get($(this).attr("href"), function(resp){
+       if(resp=="nook") {
+          row.fadeOut();
+          if(typeof getAvailableToppings == 'function') {
+            /* check if function is defined in this context*/
+             getAvailableToppings();
+          }
+       } else{
+          $(".count", row).text(resp);
+       }
+       $("#{{cartname}}_subtotal").load($("#{{cartname}}_subtotal").attr("href"));
+    });
+    e.preventDefault();
+  });
+})
+
+</script>
+<table id="cart-{{ cartname }}-table"> 
   <tr class="header"> 
     <th class="item">{% trans 'Item' %}</th> 
     <th class="count">{% trans 'Count' %}</th> 
@@ -22,6 +43,6 @@
 </table> 
 
 
-{% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal">{% get_cart_subtotal %}</span>
+{% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}</span>
 
 
