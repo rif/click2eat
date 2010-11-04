@@ -112,7 +112,7 @@
   {% for cartname in carts %}
   <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
   {% empty %}
-  <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id user.username %}">{{ cartname }} </a></li> 
+  <li><a id="cart-{{ user.username }}" href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li> 
   {% endfor %}
 </ul> 
 <div class="css-panes">
