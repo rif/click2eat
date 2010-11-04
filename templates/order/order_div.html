@@ -1,14 +1,6 @@
 {% load i18n %}
 {% load order_tags %}
 
-<h1>{% trans 'Order details' %}</h1>
-<ul>
-<li>{% trans 'Unit' %}: {{ order.unit }}</li>
-<li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
-<li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
-<li>{% trans 'Total amount' %}: {{ order.total_amount }}</li>
-</ul>
-
 <script type="text/javascript">
 $(function(){
   $(".remove-orderitem").click(function(e){
@@ -31,35 +23,46 @@ $(function(){
 })
 </script>
 
-<div id="order-items">
-<h2>{% trans 'Order Items' %}</h2>
-<table>
-  <thead>
-    <tr>
-      <th>{% trans 'Item' %}</th>
-      <th>{% trans 'Count' %}</th>
-      <th>{% trans 'Unit Price' %}</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-{% for cartname, oil in order.get_carts.items %}
-    <tr><td><h4>{% trans 'Order items for' %} {{ cartname }}</h4><td></tr>
-     {% for oi in oil %}
-        <tr>
-          <td>{{ oi.item.name_def }}</td>
-	  <td class="count-td">{{ oi.count }}</td>
-          <td>{{ oi.old_price }}</td>
-          <td>
-            {% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}">{% trans 'Remove' %}</a>{% endif %}
-          </td>
-          </tr>
-     {% empty %}
-        <tr>{% trans 'There are no order items for' %} {{cartname}}</tr>
-     {% endfor %}
-     <tr><td><b>{% trans 'Cart subtotal' %}:</b></td></td><b><span id="cart-subtotal-amount" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></b></td></tr>
-{% endfor %}
-  <tr><td><h3>{% trans 'Total amount' %}</h3></td><td><h3><span id="order-total-amount">{{ order.total_amount }}</span></h3></td></tr>
-</tbody>
-</table>
-</div>
+<div class="content_area">
+  <div class="title"><h1 class="light_orange">{% trans 'Order details' %}</h1></div>
+  <ul>
+    <li>{% trans 'Unit' %}: {{ order.unit }}</li>
+    <li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
+    <li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
+    <li>{% trans 'Total amount' %}: {{ order.total_amount }}</li>
+  </ul>
+</div> <!-- content_area -->
+
+<div class="content_area">
+  <div class="title"><h1 class="light_orange">{% trans 'Order Items' %}</h1></div>
+  <div id="cart"> 
+    <h1>{% trans 'Cart items' %}</h1> 
+    {% for cartname, oil in order.get_carts.items %}
+    <table>
+      <tr> 
+	<th>{{ cartname }}</th> 
+	<th></th>
+	<th></th>
+	<th class="del"><a href="#" title="" target="_self"><img src="{{ MEDIA_URL }}images/template/cart_delete_btn.png" alt="Delete cart"></a></th> 
+      </tr> 
+      {% for oi in oil %}
+      <tr>
+        <td class="item">{{ oi.item.name_def }}</td>
+	<td class="count-td">{{ oi.count }}</td>
+        <td class="price">{{ oi.old_price }}</td>
+        <td>
+	<td class="del">{% if order.status == 'CR' %}<a class="remove-orderitem" href="{% url order:remove_item oi.id %}" title="" target="_self"><img src="{{ MEDIA_URL}}images/template/cart_delete_btn.png" alt="{% trans 'Remove' %}"></a>{% endif %}</td> 
+      </tr> 
+      {% empty %}
+      <tr>{% trans 'There are no order items for' %} {{cartname}}</tr>
+      {% endfor %}
+      <tr> 
+	<td class="total">{% trans 'Subtotal' %}</td> 
+	<td class="total"><span id="cart-subtotal-amount" href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span></td> 
+	<td></td> 
+      </tr> 	
+      {% endfor %}
+      <tr><td><h3>{% trans 'Total amount' %}</h3></td><td><h3><span id="order-total-amount">{{ order.total_amount }}</span></h3></td></tr>
+    </table>
+  </div> <!-- cart -->
+</div> <!-- content_area -->
