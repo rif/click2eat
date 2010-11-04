@@ -63,6 +63,7 @@ def list_unit(request, unit_id):
     )
 @login_required
 def add_item(request, item_id, cart_name):
+    cart_name = cart_name.split("cart-")[1]
     item = get_object_or_404(Item, pk=item_id)
     try:
         current_order = __get_current_order(request, item.unit)
@@ -120,7 +121,6 @@ def send(request, unit_id):
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():
             order = form.save(commit=False)
-            print form.cleaned_data
             order.status = 'ST'
             order.save()
             messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
@@ -144,7 +144,7 @@ def add_cart(request, order_id):
       form = CartNameForm(request.POST)
       if form.is_valid(): # All validation rules pass
           next_cart = request.POST['name']
-          return HttpResponse('<li><a class="" href="%s">%s</a></li> ' % (reverse('order:get_cart', args=[order_id, next_cart]), next_cart))
+          return HttpResponse('<li><a id="cart-%s" href="%s">%s</a></li> ' % (reverse('order:get_cart', args=[next_cart, order_id, next_cart]), next_cart))
   else:
       form = CartNameForm() # An unbound form
   return render_to_response('order/cart_name.html', {
@@ -155,6 +155,8 @@ def add_cart(request, order_id):
 @login_required
 @render_to('order/order_cart.html')
 def get_cart(request, order_id, cartname):
+    if cartname.startswith("cart-"):
+        cartname = cartname.split("cart-")[1]
     order = get_object_or_404(Order, pk=order_id)
     oil = OrderItem.objects.filter(order__id=order.id).filter(cart=cartname)
     return {'order': order, 'cartname': cartname, 'oil': oil}

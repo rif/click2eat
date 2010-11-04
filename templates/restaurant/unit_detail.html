@@ -9,6 +9,14 @@
 {% block scripts %}        
 <script type="text/javascript">
   $(function(){
+  $(".add-item").click(function(e){
+      var selected_cart = $(".current", ".css-tabs").attr("id");
+      $.get("/order/add_item/" + $(this).attr("id") + "/" + selected_cart, function(response){
+          $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
+          getAvailableToppings();
+        });
+        e.preventDefault();
+    });
   $("#carts>ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
     $("#add-cart").click(function(e){
       $.get("{% url order:add_cart order.id %}", function(data){
@@ -76,7 +84,7 @@
   <h3>{{ itemgroup }}</h3>
   {% for item in itemgroup.item_set.iterator %}
   {% if item.active %}
-    <li class="item {% if item.is_new %}new-item{% endif %}" id="{{ item.id }}"><a href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{ item.description_def }}</span></li>
+    <li class="item {% if item.is_new %}new-item{% endif %}"><a id="{{ item.id }}" href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a> - <span class="item-desc">{{ item.description_def }}</span></li>
     <span id="top{{ item.id }}" class="top-span" style="display:none">
     {% if item.toppings %}
     <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
@@ -84,7 +92,7 @@
     {% trans 'Toppings' %}:
     <ul>
       {% for top in item.toppings.topping_set.iterator %}
-      <li id="{{ top.id }}"><a href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a> - <span class="item-desc">{{ top.description_def }}</span><br/>
+      <li><a id="{{ top.id }}" href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a> - <span class="item-desc">{{ top.description_def }}</span><br/>
     {{ top.name_en }} - <span class="item-desc">{{ top.description_en }}</span></li>
       {% endfor %}
     </ul>  
@@ -102,11 +110,9 @@
 <div id="carts">
 <ul class="css-tabs"> 
   {% for cartname in carts %}
-  <li><a href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
+  <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
   {% empty %}
-  {% with user.username as cartname %}
-  <li><a href="{% url order:get_cart order.id cartname %}">{{ cartname }} </a></li> 
-  {% endwith %}
+  <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id user.username %}">{{ cartname }} </a></li> 
   {% endfor %}
 </ul> 
 <div class="css-panes">
@@ -114,6 +120,6 @@
 </div>
 
 
-<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Send' %}</a>
+<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
 <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
 {% endblock %}
