@@ -99,9 +99,8 @@
 	    <ul>
 	      {% for top in item.toppings.topping_set.iterator %}
 	      <li>
-		<a id="{{ top.id }}" href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a>
-		- 
-		<span class="item-desc">{{ top.description_def }}</span>
+		<div class="name"><a id="{{ top.id }}" href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a></div>
+		<div class="description">{{ top.description_def }}</div>
 	      </li>
 	      {% endfor %}
 	    </ul>  
@@ -121,7 +120,7 @@
     <div class="clear"></div>
     {% endif %}
   </div> <!-- estabilshment-menu -->
-<!--</div><!-- content_area -->
+</div><!-- content_area -->
 
 <div class="content_area"> 
   <div class="title"><h1 class="light_green">{% trans 'Current Order' %}</h1></div><br>
