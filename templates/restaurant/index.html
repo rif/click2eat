@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="content_area">
+<div class="content_area">
   {% with user.get_profile.get_not_rated as order_list %}
   {% if order_list.exists %}
   <a id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
