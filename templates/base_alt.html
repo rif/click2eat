@@ -58,19 +58,18 @@
 	 {% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}" target="_self">{% trans 'Reset it' %}</a>! |
 	 {% trans 'Not member?' %} <a href="{% url registration_register %}" target="_self">{% trans 'Register' %}</a>!
       </div> 
-      <div id="top_register">
-	<img src="{{ MEDIA_URL }}images/template/commands_text_ro.png" alt="">
+      <div id="top_register{% if user.is_authenticated %}_auth{% endif %}">
 	<div class="reg_content">
 	  {% if user.is_authenticated %}
-	  <p>
-	    {% if user.is_superuser %}
-	    {% trans 'Welcome' %}, <a href="{% url admin:index %}">{{ user.username }}</a>.
-	    {% else %}
-	    {% trans 'Welcome' %}, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
-	    {% endif %}
-	    <a href="{% url auth_logout %}">log out</a>
-	  </p>
+	  <div class="avatar"></div>
+	  {% if user.is_superuser %}
+	  {% trans 'Welcome' %}, <a href="{% url admin:index %}">{{ user.username }}</a>.
 	  {% else %}
+	  {% trans 'Welcome' %}, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
+	  {% endif %}
+	  <a href="{% url auth_logout %}">{% trans 'Logout' %}</a>
+	  {% else %}
+	  <img src="{{ MEDIA_URL }}images/template/commands_text_ro.png" alt="">
 	  <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
 	    <div class="label">{% trans 'Username' %}: </div>
 	    <input id="id_username" name="username" maxlength="30" type="text"><br>
@@ -79,7 +78,7 @@
 	    <div class="label">{% trans 'Password' %}: </div>
 	    <input name="password" id="id_password" type="password">
 	    <div class="clear"></div>
-	    <input class="pad" type="submit" value="{% trans 'Log in' %}" />
+	    <input class="pad" type="submit" value="{% trans 'Login' %}" />
 	    <input type="reset" value="Reset">
 	    <input type="hidden" name="next" value="{{ next }}" />
 	  </form>
