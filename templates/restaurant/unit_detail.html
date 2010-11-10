@@ -137,6 +137,7 @@
     </div>
     <div class="order_now"><a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a></div>
     <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+  </div><!-- carts -->
   </div><!-- content_area -->
 {% endblock %}
   

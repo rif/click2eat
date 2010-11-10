@@ -24,27 +24,29 @@
 {% endblock %}
 
 {% block content %}
-{% with user.get_profile.get_not_rated as order_list %}
-{% if order_list.exists %}
-<a id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
-<div id="notrated-orders" style="display:none">
-  <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
-  <ul>
-    {% for order in order_list %}
-    <li><a href="{% url order:feedback order.id %}">{{ order }}</a></li>
+<div id="content_area">
+  {% with user.get_profile.get_not_rated as order_list %}
+  {% if order_list.exists %}
+  <a id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
+  <div id="notrated-orders" style="display:none">
+    <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
+    <ul>
+      {% for order in order_list %}
+      <li><a href="{% url order:feedback order.id %}">{{ order }}</a></li>
     {% endfor %}
-  </ul>
-</div>{% endif %}
-{% endwith %}
-
-<div id="establishment_list">
-  <ul>
-    <li class="title platinum">Platinum</li>
-    {% include 'restaurant/platinum_restaurant_list.html' %}
-    <li class="title gold">Gold</li>
-    {% include 'restaurant/gold_restaurant_list.html' %}
-    <li class="title silver">Silver</li>
-    {% include 'restaurant/silver_restaurant_list.html' %}
-  </ul>
-</div> <!-- establishment_list -->
+    </ul>
+  </div>{% endif %}
+  {% endwith %}
+  <div class="title"><h1 class="light_green">{% trans 'Restaurants' %}</h1></div>
+  <div id="establishment_list">
+    <ul>
+      <li class="title platinum">Platinum</li>
+      {% include 'restaurant/platinum_restaurant_list.html' %}
+      <li class="title gold">Gold</li>
+      {% include 'restaurant/gold_restaurant_list.html' %}
+      <li class="title silver">Silver</li>
+      {% include 'restaurant/silver_restaurant_list.html' %}
+    </ul>
+  </div> <!-- establishment_list -->
+</div>
 {% endblock %}
