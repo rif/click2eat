@@ -32,6 +32,18 @@
 </head>
 <body>
   <div id="top_site"></div>
+  <div style="float:right" id="langs">
+	<form action="/i18n/setlang/" method="post">
+	  {% csrf_token %}
+	  <input name="next" type="hidden" value="" />
+	  <select name="language">
+	    {% for lang in LANGUAGES %}
+	    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+	    {% endfor %}
+	  </select>
+	  <input type="submit" value="Go" />
+	</form>
+  </div> <!-- languages -->
   <div id="header">
     <div id="logo"></div>
     <div id="header_content">
@@ -73,19 +85,7 @@
 	  </form>
 	  {% endif %}		
 	</div> <!-- reg_content -->
-      </div> <!-- top_register -->
-      <div style="float:right" id="languages">
-	<form action="/i18n/setlang/" method="post">
-	  {% csrf_token %}
-	  <input name="next" type="hidden" value="" />
-	  <select name="language">
-	    {% for lang in LANGUAGES %}
-	    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-	    {% endfor %}
-	  </select>
-	  <input type="submit" value="Go" />
-	</form>
-      </div> <!-- languages -->
+      </div> <!-- top_register -->      
     </div> <!-- header_content -->
     <div class="clear"></div>
   </div> <!-- header -->
@@ -208,12 +208,64 @@
 	  <span></span>
 	</li>
       </ul>
-    </div>
+    </div><!-- sidebar -->
 
     <div id="body_page">
       {% block content%}
       {% endblock %}
+      <div class="clear"></div>
     </div>
-    <div class="clear"></div>
+  </div><!-- wrapper -->
+
+  <div id="footer">
+    <div id="wrapper">
+      <div class="box">
+	<ul>
+	  <li><a target="_self" href="#">Some item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	</ul>
+      </div>
+      
+      <div class="box">
+	<ul>
+	  <li><a target="_self" href="#">Some item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	</ul>
+      </div>
+      
+      <div class="box">
+	<ul>
+	  <li><a target="_self" href="#">Some item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Another item here</a></li>
+	</ul>
+      </div>
+      <div class="clear"></div>
+      
+      <p>
+	Some copyright informations here...<br>
+	Powered by Clik2Eat &copy; 2010 | Click2eat Group Corp.<br>
+	Designed by <a target="_blank" href="http://www.handsome.ro/">HANDSOME</a><br><br>
+	
+	<a target="_self" href="#">Home</a> |
+	<a target="_self" href="#">Restaurant</a> |
+	<a target="_self" href="#">How to order</a> |
+	<a target="_self" href="#">Privacy statement</a> |
+	<a target="_self" href="#">Contact</a>
+      </p>
+    </div>
+  </div> <!-- footer -->
 </body>
 </html>

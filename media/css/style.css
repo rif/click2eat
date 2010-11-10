@@ -82,6 +82,17 @@ h4 { font-weight: bold; color: #767676; }
 	height:  13px;
 }
 
+#langs
+{
+	width:  1000px;
+	margin: 0 auto;
+}
+
+#langs a
+{
+	margin: 0 0 0 4px;
+}
+
 #header
 {
 	margin: 0 auto;
@@ -90,12 +101,12 @@ h4 { font-weight: bold; color: #767676; }
 
 #header #logo
 {
-	background: url("../images/template/logo.png") repeat-x;
+	background: url("../images/template/logo.png") no-repeat;
 
-	width:  426px;
-	height: 129px;
+	width:  299px;
+	height: 136px;
 
-	margin: 30px 0 0 0;
+	margin: 10px 0 0 0;
 
 	float: left;
 }
@@ -224,6 +235,38 @@ h4 { font-weight: bold; color: #767676; }
 	color: #ffffff;
 }
 
+#header #header_content #top_register_auth
+{
+	background: url("../images/template/top_register_auth_bg.png") no-repeat;
+
+	width:  191px;
+	height: 110px;
+
+	margin:   0 0 0 130px;
+	padding:  20px 40px;
+
+	position: relative;
+	z-index:  2;
+}
+
+#header #header_content #top_register_auth a
+{
+	color: #ff0000;
+}
+
+#header #header_content #top_register_auth .avatar
+{
+	background-color: #ffffff;
+
+	width:  60px;
+	height: 60px;
+
+	margin: 0px 10px 3px 0px;
+
+	float: left;
+
+	border: 1px solid #000000;
+}
 
 /**
  * MENU TOP
@@ -489,7 +532,7 @@ h4 { font-weight: bold; color: #767676; }
 	background-color: #cccccc;
 }
 
-.content_area .title h1
+.content_area h1
 {
 	padding:          8px;
 	margin:  0;
@@ -500,8 +543,8 @@ h4 { font-weight: bold; color: #767676; }
 	color:     #ffffff;
 }
 
-.content_area .title h1.light_green  { background-color: #99cc00; }
-.content_area .title h1.light_orange { background-color: #ffa200; }
+.content_area h1.light_green  { background-color: #99cc00; }
+.content_area h1.light_orange { background-color: #ffa200; }
 
 /**
  * SHOPPING CART STYLE
@@ -699,6 +742,78 @@ h4 { font-weight: bold; color: #767676; }
 }
 
 /**
+ * ORDER HISTORY
+ *
+ * @date          November 03, 2010
+ * @mod-date      -
+ * @mod-author    -
+ */
+#order_history
+{
+	margin: 0;
+}
+
+#order_history table
+{
+	width:  100%;
+
+	border-collapse:collapse;
+}
+
+#order_history table tr.header
+{
+	background-color: transparent;
+}
+
+#order_history table tr
+{
+	background-color: #f0f0f0;
+}
+
+#order_history table tr.odd
+{
+	background-color: #e5e5e5;
+}
+
+#order_history table th,
+#order_history table td
+{
+	padding: 6px;
+}
+
+#order_history table th.item
+{
+	text-align: left;
+}
+
+#order_history table td.item
+{
+	color:       #669900;
+	font-weight: bold;
+}
+
+#order_history table th.count,
+#order_history table th.price
+{
+	text-align: right;
+}
+
+#order_history table td.count,
+#order_history table td.price
+{
+	text-align:  right;
+	font-weight: bolder;
+
+	width: 90px;
+}
+
+#order_history table td.minus,
+#order_history table td.plus
+{
+	width: 13px;
+}
+
+/**
  * ESTABLISHMENT MENU
  *
  * @date          November 04, 2010
@@ -760,6 +875,350 @@ h4 { font-weight: bold; color: #767676; }
 }
 
 /**
+ * ESTABLISHMENT DETAILS
+ *
+ * @date          September 15, 2010
+ * @mod-date
+ * @mod-author
+ */
+#establishment_details
+{
+	padding: 8px;
+	width:   216px;
+
+	font-size: 11px;
+
+	float: left;
+}
+
+#establishment_picture
+{
+	width:  282px;
+	height: 184px;
+
+	padding: 8px;
+
+	float: left;
+}
+
+#establishment_picture img
+{
+	border: 4px solid #cccccc;
+}
+
+/**
+ * ACCOUNT DETAILS
+ *
+ * @date          October 10, 2010
+ * @mod-date
+ * @mod-author
+ */
+#account_details
+{
+	width: 700px;
+}
+
+#account_details .avatar
+{
+	width:  155px;
+	height: 155px;
+
+	float: left;
+
+	border: 4px solid #8cbf00;
+}
+
+#account_details .details
+{
+	float: right;
+
+	width: 500px;
+}
+
+/**
+ * GENERAL BUTTON
+ *
+ * @date          October 10, 2010
+ * @mod-date
+ * @mod-author
+ */
+.general_button
+{
+	float:   left;
+	margin:  10px 4px 10px 0px;
+}
+
+.general_button a
+{
+	background-color: #8dc000;
+
+	padding: 8px;
+
+	color:           #ffffff;
+	font-weight:     bold;
+	text-decoration: none;
+
+	-webkit-border-radius:  15px;
+	-moz-border-radius:     15px;
+	border-radius:          15px;
+}
+
+.general_button a:hover
+{
+	background-color: #bcff00;
+	color:            #676767;
+}
+
+.dual_button
+{}
+
+.dual_button .left,
+.dual_button .right
+{
+	float:   left;
+	margin:  10px 4px 10px 0px;
+}
+
+.dual_button .left a,
+.dual_button .right a
+{
+	background-color: #8dc000;
+
+	padding: 8px;
+
+	color:           #ffffff;
+	font-weight:     bold;
+	text-decoration: none;
+}
+
+.dual_button .left a
+{
+	-moz-border-radius-topleft:      15px;
+	-moz-border-radius-topright:     0;
+	-moz-border-radius-bottomleft:   15px;
+	-moz-border-radius-bottomright:  0;
+
+	-webkit-border-top-left-radius:     15px;
+	-webkit-border-top-right-radius:    0;
+	-webkit-border-bottom-left-radius:  15px;
+	-webkit-border-bottom-right-radius: 0;
+
+	border-top-left-radius:     15px;
+	border-top-right-radius:    0;
+	border-bottom-left-radius:  15px;
+	border-bottom-right-radius: 0;
+}
+
+.dual_button .right a
+{
+	-moz-border-radius-topleft:      0;
+	-moz-border-radius-topright:     15px;
+	-moz-border-radius-bottomleft:   0;
+	-moz-border-radius-bottomright:  15px;
+
+	-webkit-border-top-left-radius:     0;
+	-webkit-border-top-right-radius:    15px;
+	-webkit-border-bottom-left-radius:  0;
+	-webkit-border-bottom-right-radius: 15px;
+
+	border-top-left-radius:     0;
+	border-top-right-radius:    15px;
+	border-bottom-left-radius:  0;
+	border-bottom-right-radius: 15px;
+}
+
+.dual_button .left a:hover,
+.dual_button .right a:hover
+{
+	background-color: #bcff00;
+	color:            #676767;
+}
+
+/**
+ * ESTABLISHMENTS LIST
+ *
+ * @date          September 15, 2010
+ * @mod-date
+ * @mod-author
+ */
+#establishment_list
+{
+	margin: 10px;
+}
+
+#establishment_list ul
+{
+	list-style: none;
+	padding:    0;
+	margin:     0;
+}
+
+#establishment_list ul li
+{
+	padding: 7px;
+	background-color: #eeeded;
+}
+
+#establishment_list ul li.odd
+{
+	background-color: #dad9d9;
+}
+
+#establishment_list ul li.title
+{
+	font-size:   14px;
+	font-weight: bold;
+
+	-moz-border-radius-topleft:      20px;
+	-moz-border-radius-topright:     0;
+	-moz-border-radius-bottomleft:   0;
+	-moz-border-radius-bottomright:  20px;
+
+	-webkit-border-top-left-radius:     20px;
+	-webkit-border-top-right-radius:    0;
+	-webkit-border-bottom-left-radius:  0;
+	-webkit-border-bottom-right-radius: 20px;
+
+	border-top-left-radius:     20px;
+	border-top-right-radius:    0;
+	border-bottom-left-radius:  0;
+	border-bottom-right-radius: 20px;
+}
+
+#establishment_list ul li.platinum
+{
+	background-color: #77c8f2;
+}
+
+#establishment_list ul li.gold
+{
+	background-color: #ffe295;
+}
+
+#establishment_list ul li.silver
+{
+	background-color: #b7b7b7;
+}
+
+/**
+ * FOOTER
+ *
+ * @date          September 15, 2010
+ * @mod-date
+ * @mod-author
+ */
+#footer
+{
+	background-color: #4b4b4b;
+	border-top:       4px solid #000000;
+}
+
+#footer #wrapper
+{
+	width:   1000px;
+	margin:  0 auto;
+	padding: 20px;
+
+	color: #ffffff;
+}
+
+#footer #wrapper p
+{
+	font-style: italic;
+	font-size:  11px;
+	text-align: center;
+}
+
+#footer #wrapper .box
+{
+	float: left;
+	
+	font-size: 11px;
+
+	padding:       0 15px 0 15px;
+	width:         300px;
+}
+
+#footer #wrapper .box ul
+{
+	list-style: none;
+	padding:    0;
+	margin:     0;
+}
+
+#footer #wrapper .box ul li
+{
+	border-bottom: 1px dotted #adadad;
+	padding:       2px 0;
+}
+
+#footer #wrapper .box ul li a
+{
+	color:           #ffffff;
+	text-decoration: none;
+}
+
+/**
+ * MESSAGES
+ *
+ * @date          September 15, 2010
+ * @mod-date
+ * @mod-author
+ */
+.success
+{
+	color: #6D675F;
+
+	border:  1px solid #b6f3b7;
+	padding: 5px 5px 5px 20px;
+	margin:  4px;
+
+	background-color: #daf4db;
+
+	border-radius:         1em 0 1em 0;
+	-moz-border-radius:    1em 0 1em 0;
+	-webkit-border-radius: 1em 0 1em 0;
+}
+
+.failure
+{
+	color: #6D675F;
+
+	border:  1px solid #F3E0B6;
+	padding: 5px 5px 5px 20px;
+	margin:  4px;
+
+	background-color: #ffeee7;
+
+	border-radius:         1em 0 1em 0;
+	-moz-border-radius:    1em 0 1em 0;
+	-webkit-border-radius: 1em 0 1em 0;
+}
+
+.notification
+{
+	color:       #737373;
+	font-weight: bold;
+
+	border:  1px solid #a4cce5;
+	padding: 5px 5px 5px 20px;
+	margin:  4px;
+
+	background-color: #e4f0f7;
+
+	border-radius:         1em 0 1em 0;
+	-moz-border-radius:    1em 0 1em 0;
+	-webkit-border-radius: 1em 0 1em 0;
+}
+
+.error
+{
+	padding: 5px 0 0 0;
+
+	color: #ff0000;
+}
+
+/**
  * LINKS
  *
  * @date          September 15, 2010
@@ -768,6 +1227,17 @@ h4 { font-weight: bold; color: #767676; }
  */
 a img { border: 0; }
 img   { border: 0; }
+
+a
+{
+	font-family: Arial, Verdana, sans-serif;
+	color:       #ffa200;
+}
+
+a:hover
+{
+	text-decoration: none;
+}
 
 /**
  * SPACER
