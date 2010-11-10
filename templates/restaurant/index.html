@@ -37,18 +37,14 @@
 </div>{% endif %}
 {% endwith %}
 
-<h3>Platinum</h3>
-<div id="platinum-units">
+<div id="establishment_list">
+  <ul>
+    <li class="title platinum">Platinum</li>
     {% include 'restaurant/platinum_restaurant_list.html' %}
-</div>
-<h3>Gold</h3>
-<div id="gold-units">
+    <li class="title gold">Gold</li>
     {% include 'restaurant/gold_restaurant_list.html' %}
-</div>
-<p>
-</p>
-<h3>Silver</h3>
-<div id="silver-units">
+    <li class="title silver">Silver</li>
     {% include 'restaurant/silver_restaurant_list.html' %}
-</div>
+  </ul>
+</div> <!-- establishment_list -->
 {% endblock %}
