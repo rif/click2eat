@@ -4,41 +4,54 @@
 $(function(){
   $("#deliver-link").click(function(e){
     $.get($(this).attr("href"), function(data){
-      $("#deliver-response").text(data);
+      $("#action-response").text(data);
+      $("#action-response").show();
     });
     e.preventDefault();
   });
   $("#confirm-link").click(function(e){
     $.get($(this).attr("href"), function(data){
-      $("#confirm-response").text(data);
+      $("#action-response").text(data);
+      $("#action-response").show();
     });
     e.preventDefault();
   });
 });
 </script>
 
-<h1>{% trans 'Order details' %} id: {{ order.id }}</h1>
-<ul>
-<li>{% trans 'User' %}: {{ user.get_full_name }}</li>
-<li>{% trans 'Phone' %}: {{ user.get_profile.phone }}</li>
-<li>{% trans 'Address' %}: {{ order.address }}</li>
-{% if order.address.additional_info %}<li>{% trans 'Address additional info' %}: {{ order.address.additional_info }}</li>{% endif %}
-<li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
-<li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
-<li>{% trans 'Total amount' %}: {{ order.total_amount }}</li>
-</ul>
-
-
-<div id="order-items">
-<ol>
-  {% for oi in order.orderitem_set.iterator %}
-  <li>{{ oi }}</li>
-  {% endfor %}
-</ol>
-<h2>{% trans 'Additional info' %}</h2>
-<p>{{ order.additional_info }}</p>
-</div>
-{% if order.status == 'RV' %}
-<h1 id="confirm-response"><a id="confirm-link" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a></h1>
-<h1 id="deliver-response"><a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a></h1>
-{% endif %}
+<div class="content_area">
+  <div class="title"><h1 class="light_orange">{% trans 'Order details' %} id: {{ order.id }}</h1></div>
+  <br>
+  <div class="details">
+    <strong>{% trans 'User' %}:</strong> {{ user.get_full_name }}<br>
+    <strong>{% trans 'Phone' %}:</strong> {{ user.get_profile.phone }}<br>
+    <strong>{% trans 'Address' %}:</strong> {{ order.address }}<br>
+    {% if order.address.additional_info %}<strong>{% trans 'Address additional info' %}:</strong> {{ order.address.additional_info }}<br>{% endif %}
+    <strong>{% trans 'Creation date' %}:</strong> {{ order.creation_date }}<br>
+    <strong>{% trans 'Status' %}:</strong> {{ order.get_status_display }}<br>
+    <strong>{% trans 'Order price' %}:</strong> {{ order.total_amount }}<br>
+  </div>
+  
+  
+  <div id="order-items">
+    <ol>
+      {% for oi in order.orderitem_set.iterator %}
+      <li>{{ oi }} x {{ oi.count }}</li>
+      {% endfor %}
+    </ol>    
+    <strong>{% trans 'Additional info' %}:</strong>
+    <p>{{ order.additional_info }}</p>
+  </div>
+  {% if order.status == 'RV' %}
+  <div class="dual_button">
+    <div class="left">
+      <a id="confirm-link" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a>
+    </div>
+    <div class="right">
+      <a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div id="action-response" class="success" style="display:none"></div>
+  {% endif %}
+</div><!-- content_area -->

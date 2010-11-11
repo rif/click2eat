@@ -88,13 +88,11 @@
     </div> <!-- header_content -->
     <div class="clear"></div>
   </div> <!-- header -->
-  <div id="messages" style="color:red">
+  <div id="messages">
     {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
     <a href="#" id="messages-close-link">{% trans 'Close' %}</a>
     {% endif %}
   </div><!-- messages -->
