@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
+from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
@@ -242,7 +243,7 @@ def send_confiramtion_email(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     __is_restaurant_administrator(request, order.unit)
     send_mail('Order received',
-                       render_to_response('order/confirmation_email.txt',
+                       render_to_string('order/confirmation_email.txt',
                                           {'order': order, 'site_name': Site.objects.get_current().domain},
                                           context_instance=RequestContext(request)),
                        order.unit.email,
