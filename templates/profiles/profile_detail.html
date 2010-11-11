@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load avatar_tags %}
+
 {% block title %}{% trans 'Your profile' %}{% endblock %}
 
 {% block scripts %}
@@ -44,7 +46,9 @@ $(function(){
   {% else %}
   <div id="account_details">
     <div class="avatar">
-      <img alt="" src="{{ MEDIA_URL }}images/avatar/avatar.png">
+      {% avatar user 155 %}
+      <br>
+      <a href="{% url avatar_change %}">{% trans 'Change' %}</a> | <a href="{% url avatar_delete %}">{% trans 'Delete' %}</a>
     </div>
     <div class="details">
       <strong>{% trans 'Name' %}:</strong> {{ profile.user.get_full_name }}<br>

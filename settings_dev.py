@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'django_filters',
     'tinymce',
     'compressor',
+    'avatar',
     # my apps
     'restaurant',
     'menu',

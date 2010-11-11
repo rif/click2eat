@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load compress %}
+{% load avatar_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -60,7 +61,7 @@
       </div> 
       <div id="top_register{% if user.is_authenticated %}_auth{% endif %}">
 	  {% if user.is_authenticated %}
-	  <div class="avatar"></div>
+	  <a class="avatar" href="{% url profiles_profile_detail user %}">{% avatar user 60 %}</a>
 	  {% if user.is_superuser %}
 	  {% trans 'Welcome' %}, <a href="{% url admin:index %}">{{ user.username }}</a>.
 	  {% else %}

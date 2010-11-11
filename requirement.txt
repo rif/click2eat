@@ -21,6 +21,7 @@ django-filter
 django-tinymce
 django-compressor
 BeautifulSoup
+git+https://github.com/ericflo/django-avatar.git
 # gunicorn staff
 setproctitle
 greenlet
