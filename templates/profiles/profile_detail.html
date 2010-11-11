@@ -36,56 +36,70 @@ $(function(){
 {% endblock %}
 
 {% block content %}
-{% if not profile %}
-<h1>{% trans 'This profile is not public' %}</h1>
-{% else %}
-<ul>
-<li>{% trans 'First name' %}: {{ profile.first_name }}</li>
-<li>{% trans 'Last name' %}: {{ profile.last_name }}</li>
-<li>{% trans 'Birth date' %}: {{ profile.birth_date }}</li>
-<li>{% trans 'Phone' %}: {{ profile.phone }}</li>
-<li>{% trans 'Sex' %}: {{ profile.get_sex_display }}</li>
-<li>{% trans 'Newsletter' %}: {{ profile.newsletter|yesno }}</li>
-<li>{% trans 'Communication' %}: {% for com in profile.communication.iterator %}{{ com.name }} {% endfor %}</li>
-</ul>
-<a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a><nbsp>
-<a href="{% url restaurant:index %}">{% trans 'Home' %}</a>
-<br/>
-<a href="{% url order:list %}">{% trans 'Order History' %}</a>
-<h2>{% trans 'Friends' %}</h2>
-{% for friend in profile.user.friends.iterator %}
-<a href="{% url profiles_profile_detail friend.user.username %}">{{ friend }}</a>,&nbsp;
-{% empty %}
-<p>{% trans "You currently don't have any friends :(" %}
-{% endfor %}
-<p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
-<div id="invite-placeholder"></div>
+<div class="content_area">
+  <div class="title"><h1 class="light_green">{% trans 'My account' %}</h1></div>
+  <br>
+  {% if not profile %}
+  <h1>{% trans 'This profile is not public' %}</h1>
+  {% else %}
+  <div id="account_details">
+    <div class="avatar">
+      <img alt="" src="{{ MEDIA_URL }}images/avatar/avatar.png">
+    </div>
+    <div class="details">
+      <strong>{% trans 'Name' %}:</strong> {{ profile.user.get_full_name }}<br>
+      <strong>{% trans 'Email' %}:</strong> <a target="_self" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a><br><br>
+      <strong>{% trans 'Birth date' %}:</strong> {{ profile.birth_date }}<br>
+      <strong>{% trans 'Phone' %}:</strong> {{ profile.phone }}<br>
+      <strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}<br>
+      <strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}<br>
+      <strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}<br>
+      <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> | 
+      <a href="{% url order:list %}">{% trans 'Order History' %}</a>      
+    </div> <!-- details -->
+    <div class="clear"></div>
+  </div> <!-- account_details -->
+</div><!-- content_area -->
 
-<div id="delivery_addresses">
-<table>
-    <thead>
+<div class="content_area">
+  <div class="title"><h1 class="light_orange">{% trans 'Friends' %}</h1></div>
+  {% for friend in profile.user.friends.iterator %}
+  <a href="{% url profiles_profile_detail friend.user.username %}">{{ friend }}</a>,&nbsp;
+  {% empty %}
+  <p>{% trans "You currently don't have any friends :(" %}
+    {% endfor %}
+  <p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
+  <div id="invite-placeholder"></div>
+</div><!-- content_area -->
+
+<div class="content_area">
+  <div class="title"><h1 class="light_green">{% trans 'Delivery addresses' %}</h1></div>
+  <div id="delivery_addresses">
+    <table>
+      <thead>
         <tr>
-            <th>#</th>
-            <th>{% trans 'Address' %}</th>
-            <th>{% trans 'Primary' %}</th>
-            <th>{% trans 'Operation' %}</td>
-        </tr>
-    </thead>
-    <tbody>
+          <th>#</th>
+          <th>{% trans 'Address' %}</th>
+          <th>{% trans 'Primary' %}</th>
+          <th>{% trans 'Operation' %}</th>
+	</tr>
+      </thead>
+      <tbody>
         {% for addr in profile.user.deliveryaddress_set.iterator %}
         <tr>
-            <td>{{ forloop.counter }}</td>
-            <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
-            <td>{{ addr.primary }}</td>
-            <td><a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a> <a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a></td>
+          <td>{{ forloop.counter }}</td>
+          <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
+          <td>{{ addr.primary }}</td>
+          <td><a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a> <a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a></td>
         </tr>
         {% empty %}
         <tr><td>{% trans 'You have not defined any delivery address.' %} <a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a></td></tr>
         {% endfor %}
-    </tbody>
-</table>
-</div>
-<br/>
-<a href="{% url userprofiles:create_address %}">Add delivery address</a>
+      </tbody>
+    </table>
+  </div>
+  <br/>
+  <a href="{% url userprofiles:create_address %}">Add delivery address</a>
+</div><!-- content_area -->
 {% endif %}
 {% endblock %}
