@@ -20,10 +20,13 @@
 {% endblock %}
 
 {% block content %}
+<div class="content_area">
+<div class="title"><h1 class="light_green">{% trans 'Search' %}</h1></div>
 <form action="" method="get">
   <p><label for="id_q">Search:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
     <br>
     <a id="show-advanced" href="#">{% trans 'Show/Hide advanced search' %}</a>
+
     <div id="advanced-search" style="display:none;">
       {{ filter.form.as_p }}
     </div>
@@ -34,4 +37,5 @@
 {% for obj in filter %}
 <a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }} {{ obj.name_def }}</a> - ${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})<br />
 {% endfor %}
+</div> <!-- content_area -->
 {% endblock %}
