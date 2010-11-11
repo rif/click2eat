@@ -22,10 +22,13 @@
 	    <![endif]-->		
 	<script type="text/javascript">
 	  $(function(){
-	  $("#messages-close-link").click(function(e){
-          $("#messages").fadeOut("slow");
-          e.preventDefault();
-	  });      
+	     $("#messages-close-link").click(function(e){
+                $("#messages").fadeOut("slow");
+                e.preventDefault();
+	      });
+	      $('.clearme').one("focus", function() {
+	        $(this).val("");
+              });
 	  });
 	</script>
 	{% block scripts %}{% endblock %}
@@ -50,7 +53,7 @@
     <div id="header_content">
       <div id="top_search">
 	<form class="search" action="{% url menu:item_list %}" method="get">
-	  <input type="text" name="q" id="id_q" value="{% if query %}{{ query }}{% else %}{% trans 'Search' %}{% endif %}" />
+	  <input class="clearme" type="text" name="q" id="id_q" value="{% if query %}{{ query }}{% else %}{% trans 'Search' %}{% endif %}" />
 	  
 	  <input type="submit" value=""/>
 	</form>
