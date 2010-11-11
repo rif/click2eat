@@ -5,7 +5,8 @@
 
 {% block content %}
 {% include 'order/order_list_div.html' %}
-<br/>
-<a href="{% url profiles_profile_detail user %}">{% trans 'Back' %}</a>
+<div class="general_button">
+  <a href="{% url profiles_profile_detail user %}">{% trans 'Back' %}</a>
+</div>
 {% endblock %}
 

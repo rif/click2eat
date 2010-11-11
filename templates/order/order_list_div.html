@@ -1,11 +1,21 @@
 {% load i18n %}
 {% load pagination_tags %}
 
-{% autopaginate object_list 10 %}
-
-<ul>
-{% for order in object_list %}
-<li><a href="{% url order:detail order.id %}">{{order}}</a> <a href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></li>
-{% endfor %}
-</ul>
-{% paginate %}
+<div class="content_area">
+  {% autopaginate object_list 10 %}
+  <div class="title"><h1 class="light_green">{% trans 'Order history' %}</h1></div>
+  <br>
+  <div id="order_history">
+    <table>
+      <tbody>
+	    {% for order in object_list %}
+	    <tr class="{% cycle 'odd' 'even' %}">
+	      <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
+	      <td><a target="_self" href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></td>
+	    </tr>
+	    {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% paginate %}
+</div>

@@ -64,17 +64,25 @@
 
 {% block content %}
 <div class="content_area"> 
-  <div class="title"><h1 class="light_green"><img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" /> {{ object.name }}{% trans ' details' %}</h1></div><br> 
-  <ul>
-    <li>{% trans 'Name' %}: {{ object.name }}</li>
-    <li>{% trans 'Address' %}: {{ object.address }}</li>
-    <li>{% trans 'Email' %}: {{ object.email }}</li>
-    <li>{% trans 'Phone' %}: {{ object.phone }}</li>
-    <li>{% trans 'Open hours' %}: {{ object.schedule }}, {% trans 'Open'%}: {{ object.schedule.is_open|yesno }}</li>
-    {% if object.info %}<li>{% trans 'Info' %}: {{ object.info|safe}}</li>{% endif %}
-  </ul> 
-  <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
+    <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div><br> 
+  <div id="establishment_details">
+	<strong>{% trans 'Name' %}:</strong> {{ object.name }}<br>
+	<strong>{% trans 'Address' %}:</strong> {{ object.address }}<br>
+	<strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br>
+	<strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br>
+	<strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open'%}: {{ object.schedule.is_open|yesno }}<br>
+	{% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe}}<br>{% endif %}
+  </div>
+  <div id="establishment_picture">
+    <img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" />
+  </div>
+  <div class="clear"></div>
+  <div class="general_button">
+    <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
+  </div>
+  <div class="clear"></div>
   <div id="last-orders" style="display:none"></div>
+  <div class="clear"></div>
 </div><!-- content_area -->
 
 <div class="content_area"> 
@@ -135,8 +143,14 @@
     <div class="css-panes">
       <div style="display:block"></div>
     </div>
-    <div class="order_now"><a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a></div>
-    <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+    <div class="dual_button">
+      <div class="left">
+	<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
+      </div>
+      <div class="right">
+      <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+      </div>
+    </div>
   </div><!-- carts -->
   </div><!-- content_area -->
 {% endblock %}
