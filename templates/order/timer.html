@@ -24,11 +24,17 @@ function countUp() {
 {% block title %}{% trans 'Order countdown' %}{% endblock %}
 
 {% block content %}
-<h1>{% trans 'Order countdown' %}</h1>
-<h2><a href="{% url order:feedback order.id %}">{% trans 'Has arrived!' %}</a></h2>
-<div id="countdown">
-</div>
-<div id="countup">
-</div>
+<div class="content_area">
+  <div class="title"><h1 class="light_green">{% trans 'Order countdown' %}</h1></div>
+  <br>
+  <div id="countdown">
+  </div>
+  <div id="countup">
+  </div>
+  <br>
+  <div class="general_button">
+    <a href="{% url order:feedback order.id %}">{% trans 'Has arrived!' %}</a>
+  </div>
+</div> <!-- content_area -->
 {% endblock %}
 
