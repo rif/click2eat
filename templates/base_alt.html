@@ -59,7 +59,6 @@
 	 {% trans 'Not member?' %} <a href="{% url registration_register %}" target="_self">{% trans 'Register' %}</a>!
       </div> 
       <div id="top_register{% if user.is_authenticated %}_auth{% endif %}">
-	<div class="reg_content">
 	  {% if user.is_authenticated %}
 	  <div class="avatar"></div>
 	  {% if user.is_superuser %}
@@ -70,20 +69,21 @@
 	  <a href="{% url auth_logout %}">{% trans 'Logout' %}</a>
 	  {% else %}
 	  <img src="{{ MEDIA_URL }}images/template/commands_text_ro.png" alt="">
-	  <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
-	    <div class="label">{% trans 'Username' %}: </div>
-	    <input id="id_username" name="username" maxlength="30" type="text"><br>
-	    <div class="clear"></div>
-	    
-	    <div class="label">{% trans 'Password' %}: </div>
-	    <input name="password" id="id_password" type="password">
-	    <div class="clear"></div>
-	    <input class="pad" type="submit" value="{% trans 'Login' %}" />
-	    <input type="reset" value="Reset">
-	    <input type="hidden" name="next" value="{{ next }}" />
-	  </form>
+	  <div class="reg_content">
+	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
+	      <div class="label">{% trans 'Username' %}: </div>
+	      <input id="id_username" name="username" maxlength="30" type="text"><br>
+	      <div class="clear"></div>
+	      
+	      <div class="label">{% trans 'Password' %}: </div>
+	      <input name="password" id="id_password" type="password">
+	      <div class="clear"></div>
+	      <input class="pad" type="submit" value="{% trans 'Login' %}" />
+	      <input type="reset" value="Reset">
+	      <input type="hidden" name="next" value="{{ next }}" />
+	    </form>
+	  </div> <!-- reg_content -->
 	  {% endif %}		
-	</div> <!-- reg_content -->
       </div> <!-- top_register -->      
     </div> <!-- header_content -->
     <div class="clear"></div>
