@@ -215,6 +215,23 @@
     </div><!-- sidebar -->
 
     <div id="body_page">
+        <div class="content_area">
+            <div id="ads">
+                <ul>
+                    <li style="display:block"><img src="{{ MEDIA_URL }}images/ads/1.jpg" alt=""></li>
+                    <li style="display:block;margin-left:-100px;z-index:3;"><img src="{{ MEDIA_URL }}images/ads/2.jpg" alt=""></li>
+                    <li style="display:block;margin-left:-130px;z-index:2;"><img src="{{ MEDIA_URL }}images/ads/3.jpg" alt=""></li>
+                    <li><img src="{{ MEDIA_URL }}images/ads/4.jpg" alt=""></li>
+                </ul>
+            </div>
+
+            <div id="ads-controls">
+                <div class="prev"></div>
+                <div class="next"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <br>
       {% block content%}
       {% endblock %}
       <div class="clear"></div>
