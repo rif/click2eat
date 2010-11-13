@@ -1,5 +1,5 @@
 {% for unit in units %}
-<li class="{{ unit.package.slug }}-unit {% if not unit.schedule.is_open %}lock{% endif %} {% if unit.is_new %}new-unit{% endif %} {% cycle 'even' 'odd'%}">
+<li class="{{ unit.package.slug }}-unit {{ unit.schedule.is_open|yesno:',lock' }} {{ unit.is_new|yesno:'new-unit,' }} {% cycle 'even' 'odd'%}">
   <a href="{% url restaurant:detail unit.id %}">{{ unit }}</a>
 </li>
 {% endfor %}
