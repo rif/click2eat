@@ -17,6 +17,6 @@
 <h1>{% trans 'Please provide your feedback on ' %}{{ order }}</h1>
 <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
-    <input type="submit" value="{% trans 'Submit feedback' %}">
+    <input class="form_button" type="submit" value="{% trans 'Submit feedback' %}">
 </form>
 {% endblock %}

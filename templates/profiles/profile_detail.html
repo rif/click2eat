@@ -4,6 +4,11 @@
 
 {% block title %}{% trans 'Your profile' %}{% endblock %}
 
+{% block style %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/default.uni-form.css" type="text/css" />
+{% endblock %}
+
 {% block scripts %}
 <script type="text/javascript">
 function handleinviteform(){
@@ -58,8 +63,8 @@ $(function(){
       <strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}<br>
       <strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}<br>
       <strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}<br>
-      <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> | 
-      <a href="{% url order:list %}">{% trans 'Order History' %}</a>      
+      <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> |
+      <a href="{% url order:list %}">{% trans 'Order History' %}</a>
     </div> <!-- details -->
     <div class="clear"></div>
   </div> <!-- account_details -->
