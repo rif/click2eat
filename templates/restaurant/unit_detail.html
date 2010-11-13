@@ -4,10 +4,10 @@
 {% block title %}{{ object.name }}{% endblock%}
 
 {% block style %}
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/tabs_style.css"/> 
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/tabs_style.css"/>
 {% endblock %}
 
-{% block scripts %}        
+{% block scripts %}
 <script type="text/javascript">
   $(function(){
   $(".add-item").click(function(e){
@@ -63,8 +63,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="content_area"> 
-    <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div><br> 
+<div class="content_area">
+    <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div><br>
   <div id="establishment_details">
 	<strong>{% trans 'Name' %}:</strong> {{ object.name }}<br>
 	<strong>{% trans 'Address' %}:</strong> {{ object.address }}<br>
@@ -85,7 +85,7 @@
   <div class="clear"></div>
 </div><!-- content_area -->
 
-<div class="content_area"> 
+<div class="content_area">
   <div class="title"><h1 class="light_orange">{% trans 'Menu' %}</h1></div>
   <div id="establishment-menu">
     {% for itemgroup in object.itemgroup_set.iterator %}
@@ -111,13 +111,13 @@
 		<div class="description">{{ top.description_def }}</div>
 	      </li>
 	      {% endfor %}
-	    </ul>  
+	    </ul>
 	  </span>
 	  {% endif %}
 	</span>
 	{% endif %}
 	{% empty %}
-	<li>{% trans 'No items in this group' %}</li>	
+	<li>{% trans 'No items in this group' %}</li>
 	{% endfor %}
       </ul>
     </div> <!-- category -->
@@ -130,22 +130,22 @@
   </div> <!-- estabilshment-menu -->
 </div><!-- content_area -->
 
-<div class="content_area"> 
+<div class="content_area">
   <div class="title"><h1 class="light_green">{% trans 'Current Order' %}</h1></div><br>
   <div id="carts">
-    <ul class="css-tabs"> 
+    <ul class="css-tabs">
       {% for cartname in carts %}
-      <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li> 
+      <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li>
       {% empty %}
-      <li><a id="cart-{{ user.username }}" href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li> 
+      <li><a id="cart-{{ user.username }}" href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li>
       {% endfor %}
-    </ul> 
+    </ul>
     <div class="css-panes">
       <div style="display:block"></div>
     </div>
     <div class="dual_button">
       <div class="left">
-	<a {% if not object.schedule.is_open %}class="closed-unit"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
+	<a {% if not object.schedule.is_open %}class="closed"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
       </div>
       <div class="right">
       <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
@@ -154,4 +154,4 @@
   </div><!-- carts -->
   </div><!-- content_area -->
 {% endblock %}
-  
+

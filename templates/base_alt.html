@@ -19,11 +19,11 @@
 	{% compress js %}
 	<!--[if lte IE 7]>
 	    <script type="text/javascript" src="scripts/js/ieCheck.js"></script>
-	    <![endif]-->		
+	    <![endif]-->
 	<script type="text/javascript">
 	  $(function(){
-	     $("#messages-close-link").click(function(e){
-                $("#messages").fadeOut("slow");
+	     $(".messages-close-link").click(function(e){
+                $(this).parents("div").fadeOut("slow");
                 e.preventDefault();
 	      });
 	      $('.clearme').one("focus", function() {
@@ -54,14 +54,14 @@
       <div id="top_search">
 	<form class="search" action="{% url menu:item_list %}" method="get">
 	  <input class="clearme" type="text" name="q" id="id_q" value="{% if query %}{{ query }}{% else %}{% trans 'Search' %}{% endif %}" />
-	  
+
 	  <input type="submit" value=""/>
 	</form>
       </div>
-      <div id="top_links"> 
+      <div id="top_links">
 	 {% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}" target="_self">{% trans 'Reset it' %}</a>! |
 	 {% trans 'Not member?' %} <a href="{% url registration_register %}" target="_self">{% trans 'Register' %}</a>!
-      </div> 
+      </div>
       <div id="top_register{% if user.is_authenticated %}_auth{% endif %}">
 	  {% if user.is_authenticated %}
 	  <a class="avatar" href="{% url profiles_profile_detail user %}">{% avatar user 60 %}</a>
@@ -78,7 +78,7 @@
 	      <div class="label">{% trans 'Username' %}: </div>
 	      <input id="id_username" name="username" maxlength="30" type="text"><br>
 	      <div class="clear"></div>
-	      
+
 	      <div class="label">{% trans 'Password' %}: </div>
 	      <input name="password" id="id_password" type="password">
 	      <div class="clear"></div>
@@ -87,19 +87,22 @@
 	      <input type="hidden" name="next" value="{{ next }}" />
 	    </form>
 	  </div> <!-- reg_content -->
-	  {% endif %}		
-      </div> <!-- top_register -->      
+	  {% endif %}
+      </div> <!-- top_register -->
     </div> <!-- header_content -->
     <div class="clear"></div>
   </div> <!-- header -->
-  <div id="messages">
+  <div class="content_area">
     {% if messages %}
     {% for message in messages %}
-    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+        <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""></a>
+    </div>
     {% endfor %}
-    <a href="#" id="messages-close-link">{% trans 'Close' %}</a>
     {% endif %}
-  </div><!-- messages -->
+    <div class="clear"></div>
+  </div><!-- content_area -->
   <div id="menu_top">
     <ul id="menu-list">
       <li><a href="{% url restaurant:index %}" title="{% trans 'Home page' %}" target="_self">{% trans 'Home' %}</a></li>
@@ -117,38 +120,38 @@
 	<div class="text">Restaurante</div>
       </div>
       <div class="clear"></div>
-      
+
       <ul>
 	<li class="first">
 	  Platinum Restaurants
 	</li>
 	<li class="first_star"></li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum sit dolor</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum sit</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum dolor amet</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li class="first">
 	  Gold Restaurants
 	</li>
@@ -158,52 +161,52 @@
 	  <a href="#">Lorem ipsum</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum sit dolor</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum sit</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum dolor amet</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li class="first">
 	  Silver Restaurants
 	</li>
 	<li class="third_star"></li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum sit dolor</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum sit</a><br>
 	  <span></span>
 	</li>
-	
+
 	<li>
 	  <a href="#">Lorem ipsum dolor amet</a><br>
 	  <span></span>
@@ -231,7 +234,7 @@
 	  <li><a target="_self" href="#">Another item here</a></li>
 	</ul>
       </div>
-      
+
       <div class="box">
 	<ul>
 	  <li><a target="_self" href="#">Some item here</a></li>
@@ -239,7 +242,7 @@
 	  <li><a target="_self" href="#">Another item here</a></li>
 	</ul>
       </div>
-      
+
       <div class="box">
 	<ul>
 	  <li><a target="_self" href="#">Some item here</a></li>
@@ -255,12 +258,12 @@
 	</ul>
       </div>
       <div class="clear"></div>
-      
+
       <p>
 	Some copyright informations here...<br>
 	Powered by Clik2Eat &copy; 2010 | Click2eat Group Corp.<br>
 	Designed by <a target="_blank" href="http://www.handsome.ro/">HANDSOME</a><br><br>
-	
+
 	<a target="_self" href="#">Home</a> |
 	<a target="_self" href="#">Restaurant</a> |
 	<a target="_self" href="#">How to order</a> |

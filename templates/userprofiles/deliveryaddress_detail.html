@@ -60,7 +60,7 @@ function showAddressInfo(response) {
     point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]);
     marker = new GMarker(point);
     map.addOverlay(marker);
-    marker.openInfoWindowHtml( 
+    marker.openInfoWindowHtml(
     '<b>{% trans 'Coordinates' %}: </b>' + place.Point.coordinates[1] + ", " + place.Point.coordinates[0] + '<br>' +
     '<b>{% trans 'Address' %}: </b>' + place.address + '<br>')
   }
@@ -78,7 +78,7 @@ $(function(){
     <li>{% trans 'City' %}: {{ object.city }}</li>
     <li>{% trans 'Street' %}: {{ object.street }}</li>
     <li>{% trans 'Number' %}: {{ object.number }}</li>
-    <li>{% trans 'Block info' %}: 
+    <li>{% trans 'Block info' %}:
       {% if object.block %}{{ object.block }}{% endif %}
       {% if object.entrance %}{% trans 'ent.' %} {{ object.entrance }} {% endif %}
       {% if object.floor %}{% trans 'fl.' %} {{ object.floor }}{% endif %}
@@ -92,7 +92,7 @@ $(function(){
 <form action="#" onsubmit="showAddress(this.address.value); return false">
   <p>
     <input type="text" size="60" name="address" value="Piaţa Libertăţii, Timisoara">
-    <input type="submit" value="Go!">
+    <input class="form_button" type="submit" value="Go!">
   </p>
   <div id="map_canvas" style="width: 500px; height: 300px"></div>
 </form>
