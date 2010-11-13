@@ -1,19 +1,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-09 12:52+0200\n"
-"PO-Revision-Date: 2010-11-09 12:57+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2010-11-13 20:16+0200\n"
+"PO-Revision-Date: 2010-11-13 20:37\n"
+"Last-Translator:   <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 
@@ -59,7 +60,7 @@ msgstr "Prețul mai mic decât"
 msgid "Quantity more than"
 msgstr "Cantitate mai mare ca"
 
-#: menu/filter.py:14 templates/base.html:106 templates/base_alt.html:106
+#: menu/filter.py:14 templates/base.html:110 templates/base_alt.html:110
 msgid "All restaurants"
 msgstr "Toate restaurantele"
 
@@ -188,7 +189,7 @@ msgstr "Articole"
 msgid "Topping"
 msgstr "Garnitură"
 
-#: menu/models.py:135 templates/restaurant/unit_detail.html:98
+#: menu/models.py:135 templates/restaurant/unit_detail.html:106
 msgid "Toppings"
 msgstr "Garnituri"
 
@@ -334,16 +335,11 @@ msgstr "Apreciere"
 msgid "Ratings"
 msgstr "Aprecieri"
 
-#: order/views.py:106
+#: order/views.py:107
 msgid "Current order already sent."
 msgstr "Comanda curentă este deja trimisă."
 
-#: order/views.py:109
-#, python-format
-msgid "This restaurant has a minimum order value of %(min)d"
-msgstr "Restaurantul are o comandă minimă de %(min)d"
-
-#: order/views.py:112
+#: order/views.py:110
 msgid ""
 "This restaurant is now closed! Please check the open hours and come back "
 "later."
@@ -351,28 +347,33 @@ msgstr ""
 "Acest restaurant este momentan închis! Vă rugam săconsultați orarul și să "
 "reveniți mai târziu."
 
-#: order/views.py:119
+#: order/views.py:113
+#, python-format
+msgid "This restaurant has a minimum order value of %(min)d"
+msgstr "Restaurantul are o comandă minimă de %(min)d"
+
+#: order/views.py:120
 msgid "We are sorry, you are not in the delivery range of this restaurant."
 msgstr "Ne pare rău, nu sunteți în raza de livrare a acestui restaurant."
 
-#: order/views.py:127
+#: order/views.py:128
 msgid "Your order has been sent to the restaurant!"
 msgstr "Comanda dumneavoastră a fost trimisă restaurantului!"
 
-#: order/views.py:189
+#: order/views.py:190
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
-#: order/views.py:261
+#: order/views.py:262
 msgid "Thank you! You already sent feedback for this order."
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
-#: order/views.py:272
+#: order/views.py:273
 msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
 #: restaurant/models.py:15 restaurant/models.py:16
-#: templates/profiles/profile_detail.html:49
+#: templates/profiles/profile_detail.html:65
 msgid "Communication"
 msgstr "Comunicare"
 
@@ -566,71 +567,71 @@ msgstr "Unitate"
 msgid "Units"
 msgstr "Unități"
 
-#: templates/base.html:40 templates/base_alt.html:40
+#: templates/base.html:56 templates/base_alt.html:56
+#: templates/menu/item_list.html:24
 msgid "Search"
 msgstr "Caută"
 
-#: templates/base.html:46 templates/base_alt.html:46
+#: templates/base.html:62 templates/base_alt.html:62
 #: templates/registration/login.html:26
 msgid "Forgot password?"
 msgstr "Ați uitat parola?"
 
-#: templates/base.html:46 templates/base_alt.html:46
+#: templates/base.html:62 templates/base_alt.html:62
 #: templates/registration/login.html:26
 msgid "Reset it"
 msgstr "Resetează"
 
-#: templates/base.html:47 templates/base_alt.html:47
+#: templates/base.html:63 templates/base_alt.html:63
 #: templates/registration/login.html:27
 msgid "Not member?"
 msgstr "Nu sunteti membru?"
 
-#: templates/base.html:47 templates/base_alt.html:47
+#: templates/base.html:63 templates/base_alt.html:63
 #: templates/registration/login.html:27
 #: templates/registration/registration_form.html:17
 msgid "Register"
 msgstr "Înregistrare"
 
-#: templates/base.html:55 templates/base.html.py:57 templates/base_alt.html:55
-#: templates/base_alt.html.py:57
+#: templates/base.html:69 templates/base.html.py:71 templates/base_alt.html:69
+#: templates/base_alt.html.py:71
 msgid "Welcome"
 msgstr "Bine ai venit"
 
-#: templates/base.html:63 templates/base_alt.html:63
+#: templates/base.html:73 templates/base_alt.html:73
+msgid "Logout"
+msgstr "Ieșire"
+
+#: templates/base.html:78 templates/base_alt.html:78
 msgid "Username"
 msgstr "Nume de utilizator"
 
-#: templates/base.html:67 templates/base_alt.html:67
+#: templates/base.html:82 templates/base_alt.html:82
 msgid "Password"
 msgstr "Parola"
 
-#: templates/base.html:70 templates/base_alt.html:70
-#: templates/registration/login.html:22
-msgid "Log in"
-msgstr "Log in"
+#: templates/base.html:85 templates/base_alt.html:85
+#: templates/registration/login.html:4
+msgid "Login"
+msgstr "Login"
 
-#: templates/base.html:99 templates/base_alt.html:99
-msgid "Close"
-msgstr "Închide"
-
-#: templates/base.html:104 templates/base_alt.html:104
+#: templates/base.html:108 templates/base_alt.html:108
 msgid "Home page"
 msgstr "Acasă"
 
-#: templates/base.html:104 templates/base_alt.html:104
-#: templates/profiles/profile_detail.html:52
+#: templates/base.html:108 templates/base_alt.html:108
 msgid "Home"
 msgstr "Acasă"
 
-#: templates/base.html:105 templates/base_alt.html:105
+#: templates/base.html:109 templates/base_alt.html:109
 msgid "How do I order"
 msgstr "Cum comand"
 
-#: templates/base.html:107 templates/base_alt.html:107
+#: templates/base.html:111 templates/base_alt.html:111
 msgid "Today's menu"
 msgstr "Meniul zilei"
 
-#: templates/base.html:108 templates/base_alt.html:108
+#: templates/base.html:112 templates/base_alt.html:112
 msgid "Wheel of fortune"
 msgstr "Roata norocului"
 
@@ -642,11 +643,42 @@ msgstr "Pagina de administrare Bucatar"
 msgid "Bucatar administration"
 msgstr "Administrare Bucatar"
 
-#: templates/menu/item_list.html:26
+#: templates/avatar/add.html:5 templates/avatar/change.html:5
+msgid "Your current avatar: "
+msgstr "Avatarul curent:"
+
+#: templates/avatar/add.html:8 templates/avatar/change.html:8
+msgid "You haven't uploaded an avatar yet. Please upload one now."
+msgstr "Nu ați încărcat un avatar încă. Vă rugăm să încărcați unul acum."
+
+#: templates/avatar/add.html:12 templates/avatar/change.html:19
+msgid "Upload New Image"
+msgstr "Încărcați o noua imagine"
+
+#: templates/avatar/change.html:14
+msgid "Choose new Default"
+msgstr "Alegeți pe cea implicită"
+
+#: templates/avatar/confirm_delete.html:5
+msgid "Please select the avatars that you would like to delete."
+msgstr "Vă rugăm să selectați avatarul pe care doriți să îl stergeți."
+
+#: templates/avatar/confirm_delete.html:8
+#, python-format
+msgid ""
+"You have no avatars to delete. Please <a href=\"%(avatar_change_url)s"
+"\">upload one</a> now."
+msgstr "Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s\">încărcați unul</a> acum."
+
+#: templates/avatar/confirm_delete.html:14
+msgid "Delete These"
+msgstr "Șterge"
+
+#: templates/menu/item_list.html:28
 msgid "Show/Hide advanced search"
 msgstr "Arată/ascunde cautarea avansată"
 
-#: templates/menu/item_list.html:30
+#: templates/menu/item_list.html:33
 #: templates/registration/password_change_form.html:16
 #: templates/registration/password_reset_confirm.html:18
 #: templates/registration/password_reset_form.html:16
@@ -685,7 +717,7 @@ msgstr "Subtotal"
 msgid "Order: "
 msgstr "Comanda: "
 
-#: templates/order/order_detail.html:8 templates/order/order_list_div.html:8
+#: templates/order/order_detail.html:8 templates/order/order_list_div.html:14
 msgid "Clone"
 msgstr "Clonă"
 
@@ -694,17 +726,17 @@ msgid "Back"
 msgstr "Înapoi"
 
 #: templates/order/order_div.html:28
-#: templates/order/restaurant_order_detail.html:20
+#: templates/order/restaurant_order_detail.html:23
 msgid "Order details"
 msgstr "Detalii comandă"
 
 #: templates/order/order_div.html:31
-#: templates/order/restaurant_order_detail.html:26
+#: templates/order/restaurant_order_detail.html:30
 msgid "Creation date"
 msgstr "Data de creare"
 
 #: templates/order/order_div.html:32
-#: templates/order/restaurant_order_detail.html:27
+#: templates/order/restaurant_order_detail.html:31
 msgid "Status"
 msgstr "Stare"
 
@@ -721,7 +753,6 @@ msgid "There are no order items for"
 msgstr "Nu sunt articole de comandă pentru"
 
 #: templates/order/order_div.html:85
-#: templates/order/restaurant_order_detail.html:28
 msgid "Total amount"
 msgstr "Suma totală"
 
@@ -731,42 +762,54 @@ msgstr "Suma totală"
 msgid "List profile all"
 msgstr "Listează toate profilele"
 
-#: templates/order/restaurant_order_detail.html:22
+#: templates/order/order_list_div.html:6
+msgid "Order history"
+msgstr "Istoricul comenzilor"
+
+#: templates/order/restaurant_order_detail.html:26
 msgid "User"
 msgstr "Utilizator"
 
-#: templates/order/restaurant_order_detail.html:23
-#: templates/profiles/profile_detail.html:46
+#: templates/order/restaurant_order_detail.html:27
+#: templates/profiles/profile_detail.html:62
 #: templates/restaurant/unit_detail.html:72
 msgid "Phone"
 msgstr "Telefon"
 
-#: templates/order/restaurant_order_detail.html:24
-#: templates/profiles/profile_detail.html:69
+#: templates/order/restaurant_order_detail.html:28
+#: templates/profiles/profile_detail.html:91
 #: templates/restaurant/unit_detail.html:70
 #: templates/userprofiles/deliveryaddress_detail.html:65
 msgid "Address"
 msgstr "Adresa"
 
-#: templates/order/restaurant_order_detail.html:25
+#: templates/order/restaurant_order_detail.html:29
 msgid "Address additional info"
 msgstr "Informații suplimentare despre adresă"
 
-#: templates/order/restaurant_order_detail.html:38
+#: templates/order/restaurant_order_detail.html:32
+msgid "Order price"
+msgstr "Prețul comenzii"
+
+#: templates/order/restaurant_order_detail.html:42
 msgid "Additional info"
 msgstr "Informații suplimentare"
 
-#: templates/order/restaurant_order_detail.html:42
+#: templates/order/restaurant_order_detail.html:48
 msgid "Send confirmation email"
 msgstr "Trimite e-mail de confirmare"
 
-#: templates/order/restaurant_order_detail.html:43
+#: templates/order/restaurant_order_detail.html:51
 msgid "Mark delivered"
 msgstr "Marchează ca livrat"
 
-#: templates/order/restaurant_order_list.html:31
+#: templates/order/restaurant_order_list.html:32
 msgid "Download all orders (CSV)"
 msgstr "Descarcă toate comenzile (CSV)"
+
+#: templates/order/restaurant_order_list_div.html:3
+msgid "Current orders"
+msgstr "Comenzile curente"
 
 #: templates/order/send_confirmation.html:17
 msgid "Return to menu selection"
@@ -777,7 +820,7 @@ msgid "If you don't have a delivery address"
 msgstr "Dacă nu ați definit o adresă de livrare"
 
 #: templates/order/send_confirmation.html:18
-#: templates/profiles/profile_detail.html:83
+#: templates/profiles/profile_detail.html:105
 msgid "Add one now"
 msgstr "Adăugați una acum"
 
@@ -785,11 +828,11 @@ msgstr "Adăugați una acum"
 msgid "Yes, send the order"
 msgstr "Da, trimite comanda"
 
-#: templates/order/timer.html:24 templates/order/timer.html.py:27
+#: templates/order/timer.html:24 templates/order/timer.html.py:28
 msgid "Order countdown"
 msgstr "Numărătoare inversă pentru comandă"
 
-#: templates/order/timer.html:28
+#: templates/order/timer.html:36
 msgid "Has arrived!"
 msgstr "A ajuns!"
 
@@ -814,75 +857,90 @@ msgstr "Editați profilul"
 msgid "Update profile"
 msgstr "Actualizați profilul"
 
-#: templates/profiles/profile_detail.html:3
+#: templates/profiles/profile_detail.html:5
 msgid "Your profile"
 msgstr "Profilul dumneavoastră"
 
-#: templates/profiles/profile_detail.html:40
+#: templates/profiles/profile_detail.html:47
+msgid "My account"
+msgstr "Contul meu"
+
+#: templates/profiles/profile_detail.html:50
 msgid "This profile is not public"
 msgstr "Acest profil nu este public"
 
-#: templates/profiles/profile_detail.html:43
-msgid "First name"
-msgstr "Prenume"
+#: templates/profiles/profile_detail.html:56
+msgid "Change"
+msgstr "Schimbă"
 
-#: templates/profiles/profile_detail.html:44
-msgid "Last name"
-msgstr "Nume de familie"
+#: templates/profiles/profile_detail.html:56
+#: templates/profiles/profile_detail.html:102
+msgid "Delete"
+msgstr "Șterge"
 
-#: templates/profiles/profile_detail.html:45
+#: templates/profiles/profile_detail.html:59
+#: templates/restaurant/unit_detail.html:69
+msgid "Name"
+msgstr "Nume"
+
+#: templates/profiles/profile_detail.html:60
+#: templates/restaurant/unit_detail.html:71
+msgid "Email"
+msgstr "e-mail"
+
+#: templates/profiles/profile_detail.html:61
 msgid "Birth date"
 msgstr "Data nașterii"
 
-#: templates/profiles/profile_detail.html:47
+#: templates/profiles/profile_detail.html:63
 msgid "Sex"
 msgstr "Sexul"
 
-#: templates/profiles/profile_detail.html:48
+#: templates/profiles/profile_detail.html:64
 msgid "Newsletter"
 msgstr "Scrisoare cu știri"
 
-#: templates/profiles/profile_detail.html:51
-#: templates/profiles/profile_detail.html:80
+#: templates/profiles/profile_detail.html:66
+#: templates/profiles/profile_detail.html:102
 msgid "Edit"
 msgstr "Editați"
 
-#: templates/profiles/profile_detail.html:54
+#: templates/profiles/profile_detail.html:67
 msgid "Order History"
 msgstr "Istoricul comenzilor"
 
-#: templates/profiles/profile_detail.html:55
+#: templates/profiles/profile_detail.html:74
 msgid "Friends"
 msgstr "Prieteni"
 
-#: templates/profiles/profile_detail.html:59
+#: templates/profiles/profile_detail.html:78
 msgid "You currently don't have any friends :("
 msgstr "Nu ai încă nici un prieten în acest site :("
 
-#: templates/profiles/profile_detail.html:61
+#: templates/profiles/profile_detail.html:80
 msgid "Invite a friend now"
 msgstr "Invită un prieten"
 
-#: templates/profiles/profile_detail.html:70
+#: templates/profiles/profile_detail.html:85
+msgid "Delivery addresses"
+msgstr "Adresele de livrare"
+
+#: templates/profiles/profile_detail.html:92
 #: templates/userprofiles/deliveryaddress_detail.html:77
 msgid "Primary"
 msgstr "Primară"
 
-#: templates/profiles/profile_detail.html:71
+#: templates/profiles/profile_detail.html:93
 msgid "Operation"
 msgstr "Operație"
 
-#: templates/profiles/profile_detail.html:80
-msgid "Delete"
-msgstr "Șterge"
-
-#: templates/profiles/profile_detail.html:83
+#: templates/profiles/profile_detail.html:105
 msgid "You have not defined any delivery address."
 msgstr "Nu ați introdus nici o adresa de livrare."
 
-#: templates/registration/login.html:4
-msgid "Login"
-msgstr "Login"
+#: templates/registration/login.html:22
+msgid "Log in"
+msgstr "Log in"
 
 #: templates/registration/password_reset_confirm.html:21
 msgid "Password reset failed"
@@ -892,13 +950,17 @@ msgstr "Resetarea parolei a eșuat"
 msgid "Sign Up"
 msgstr "înregistrați-vă"
 
-#: templates/restaurant/index.html:29
+#: templates/restaurant/index.html:30
 msgid "You have not rated orders"
 msgstr "Aveți comenzi la care nu ați dat feedback"
 
-#: templates/restaurant/index.html:31
+#: templates/restaurant/index.html:32
 msgid "Orders that still need your feedback"
 msgstr "Comenzi care mai au nevoie de feedback-ul dumneavoastră"
+
+#: templates/restaurant/index.html:40
+msgid "Restaurants"
+msgstr "Restaurante"
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"
@@ -920,14 +982,6 @@ msgstr "Total"
 msgid " details"
 msgstr "detalii"
 
-#: templates/restaurant/unit_detail.html:69
-msgid "Name"
-msgstr "Nume"
-
-#: templates/restaurant/unit_detail.html:71
-msgid "Email"
-msgstr "e-mail"
-
 #: templates/restaurant/unit_detail.html:73
 msgid "Open hours"
 msgstr "Program de lucru"
@@ -940,32 +994,31 @@ msgstr "Deschis"
 msgid "Info"
 msgstr "Informații"
 
-#: templates/restaurant/unit_detail.html:76
+#: templates/restaurant/unit_detail.html:81
 msgid "Previous orders at this restaurant"
 msgstr "Comenzi anterioare la acest restaurant"
 
-#: templates/restaurant/unit_detail.html:81
+#: templates/restaurant/unit_detail.html:89
 msgid "Menu"
 msgstr "Meniu"
 
-#: templates/restaurant/unit_detail.html:96
+#: templates/restaurant/unit_detail.html:104
 msgid "Toggle toppings"
 msgstr "Arată/ascunde garnituri"
 
-#: templates/restaurant/unit_detail.html:112
+#: templates/restaurant/unit_detail.html:120
 msgid "No items in this group"
 msgstr "Nu sunt articole în acest grup"
 
-#: templates/restaurant/unit_detail.html:126
-#, fuzzy
+#: templates/restaurant/unit_detail.html:134
 msgid "Current Order"
 msgstr "Comanda curentă"
 
-#: templates/restaurant/unit_detail.html:138
+#: templates/restaurant/unit_detail.html:148
 msgid "Preview order"
 msgstr "Verificați comanda curentă"
 
-#: templates/restaurant/unit_detail.html:139
+#: templates/restaurant/unit_detail.html:151
 msgid "Add cart"
 msgstr "Adaugă coș"
 
@@ -1052,7 +1105,7 @@ msgstr "Adăugați adresă de livrare"
 msgid "Finish"
 msgstr "Termină"
 
-#: templates/userprofiles/invite_friend_form.html:7
+#: templates/userprofiles/invite_friend_form.html:6
 msgid "Invite friend"
 msgstr "Invită prieten"
 
@@ -1173,6 +1226,15 @@ msgstr "Mulțumim, vom încerca să corectăm problema."
 #, python-format
 msgid "The invitation email was send to %s."
 msgstr "Email-ul de invitație a fost trimis catre %s."
+
+#~ msgid "Close"
+#~ msgstr "Închide"
+
+#~ msgid "First name"
+#~ msgstr "Prenume"
+
+#~ msgid "Last name"
+#~ msgstr "Nume de familie"
 
 #~ msgid "Unit Price"
 #~ msgstr "Preț per unitate"
