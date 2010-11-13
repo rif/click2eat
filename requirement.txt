@@ -22,6 +22,7 @@ django-tinymce
 django-compressor
 BeautifulSoup
 git+http://github.com/ericflo/django-avatar.git
+svn+http://django-rosetta.googlecode.com/svn/trunk/#egg=django-rosetta
 # gunicorn staff
 setproctitle
 greenlet

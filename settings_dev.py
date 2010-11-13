@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'tinymce',
     'compressor',
     'avatar',
+    'rosetta',
     # my apps
     'restaurant',
     'menu',
