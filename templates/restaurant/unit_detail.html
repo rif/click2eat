@@ -145,7 +145,7 @@
     </div>
     <div class="dual_button">
       <div class="left">
-	<a {% if not object.schedule.is_open %}class="closed"{% endif %} href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
+	<a class="{{ object.schedule.is_open|yesno:'open,closed'}}" href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
       </div>
       <div class="right">
       <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
