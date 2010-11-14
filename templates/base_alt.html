@@ -51,50 +51,7 @@
 	  <input class="form_button" type="submit" value="Go" />
 	</form>
   </div> <!-- languages -->
-  <div id="header">
-    <div id="logo"></div>
-    <div id="header_content">
-      <div id="top_search">
-	<form class="search" action="{% url menu:item_list %}" method="get">
-	  <input class="clearme" type="text" name="q" id="id_q" value="{% if query %}{{ query }}{% else %}{% trans 'Search' %}{% endif %}" />
-
-	  <input type="submit" value=""/>
-	</form>
-      </div>
-      <div id="top_links">
-	 {% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}" target="_self">{% trans 'Reset it' %}</a>! |
-	 {% trans 'Not member?' %} <a href="{% url registration_register %}" target="_self">{% trans 'Register' %}</a>!
-      </div>
-      <div id="top_register{% if user.is_authenticated %}_auth{% endif %}">
-	  {% if user.is_authenticated %}
-	  <a class="avatar" href="{% url profiles_profile_detail user %}">{% avatar user 60 %}</a>
-	  {% if user.is_superuser %}
-	  {% trans 'Welcome' %}, <a href="{% url admin:index %}">{{ user.username }}</a>.
-	  {% else %}
-	  {% trans 'Welcome' %}, <a href="{% url profiles_profile_detail user %}">{{ user.username }}</a>.
-	  {% endif %}
-	  <a href="{% url auth_logout %}">{% trans 'Logout' %}</a>
-	  {% else %}
-	  <img src="{{ MEDIA_URL }}images/template/commands_text_ro.png" alt="">
-	  <div class="reg_content">
-	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
-	      <div class="label">{% trans 'Username' %}: </div>
-	      <input id="id_username" name="username" maxlength="30" type="text"><br>
-	      <div class="clear"></div>
-
-	      <div class="label">{% trans 'Password' %}: </div>
-	      <input name="password" id="id_password" type="password">
-	      <div class="clear"></div>
-	      <input class="pad" type="submit" value="{% trans 'Login' %}" />
-	      <input type="reset" value="Reset">
-	      <input type="hidden" name="next" value="{{ next }}" />
-	    </form>
-	  </div> <!-- reg_content -->
-	  {% endif %}
-      </div> <!-- top_register -->
-    </div> <!-- header_content -->
-    <div class="clear"></div>
-  </div> <!-- header -->
+  {% include 'header.html' %}
   <div class="content_area">
     {% if messages %}
     {% for message in messages %}
