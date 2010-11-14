@@ -1,7 +1,0 @@
-{% if platinum.exists %}
-{% with platinum.0 as punit %}
-<li class="{{ punit.schedule.is_open|yesno:',lock' }} {{ punit.is_new|yesno:'new-unit,' }}"><a href="{% url restaurant:detail punit.id %}">{{ punit }}</a></li>
-{% endwith %}
-{% else %}
-<p>No platinum partners available.</p>
-{% endif %}

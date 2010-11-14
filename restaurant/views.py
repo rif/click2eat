@@ -8,11 +8,11 @@ from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
-from django.db.models import Sum
+from django.db.models import Sum, Avg, Count
 from annoying.decorators import render_to
 from datetime import date
 from restaurant.models import Unit
-from order.models import Order, OrderItem
+from order.models import Order, Rating, OrderItem
 from order import views
 
 def __user_has_profile(user):
@@ -24,7 +24,10 @@ def __user_has_profile(user):
         return redirect('profiles_create_profile')
 
 def index(request):
-    units = Unit.objects.order_by('?')
+    units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
+        annotate(avg_speed=Avg('order__rating__delivery_time')).\
+        annotate(comment_count=Count('order__rating__feedback')).\
+        order_by('?')
     user = request.user
     has_profile = __user_has_profile(user)
     if has_profile != None: return has_profile
@@ -45,22 +48,11 @@ def unit_detail(request, unit_id):
     carts = OrderItem.objects.select_related().filter(order__id=current_order.id).values_list('cart', flat=True).distinct()
     return {'object': unit, 'order': current_order, 'carts': carts}
 
-@render_to('restaurant/platinum_restaurant_list.html')
-def get_random_platinum(request):
-    units = Unit.objects.order_by('?')
-    return {'platinum': units.filter(package__slug='platinum')}
-
-@render_to('restaurant/gold_restaurant_list.html')
-def get_random_gold(request):
-    units = Unit.objects.order_by('?')
-    return {'gold': units.filter(package__slug='gold')}
-
 @login_required
-@render_to('restaurant/package_history.html')
-def package_history(request, unit_id):
+@render_to('restaurant/comments.html')
+def unit_comments(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    return {'platinum': units.filter(package__slug='platinum')}
-
+    return {'ratings': Rating.objects.filter(order__unit__id = unit.id)}
 
 @user_passes_test(lambda u: u.is_authenticated() and u.is_staff)
 @render_to('restaurant/invoice.html')

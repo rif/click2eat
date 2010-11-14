@@ -5,16 +5,9 @@
 <script src="{{ MEDIA_URL }}js/jquery.timers.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function(){
-        $("body").everyTime(1000*60,function(i) { //every 60 seconds
-          var platinum = $("#platinum-units");
-          var gold = $("#gold-units");
-          
-          platinum.fadeOut('slow')
-          platinum.load("{% url restaurant:get_random_platinum %}", function(){platinum.fadeIn();});
-      
-          gold.fadeOut('slow')
-          gold.load("{% url restaurant:get_random_gold %}", function(){gold.fadeIn();});
-        });
+        /*$("body").everyTime(1000*60,function(i) { //every 60 seconds
+            console.log('tick');
+        });*/
         $("#notrated-link").click(function(e){
            $("#notrated-orders").slideToggle();
            e.preventDefault();
@@ -39,14 +32,24 @@
   {% endwith %}
   <div class="title"><h1 class="light_green">{% trans 'Restaurants' %}</h1></div>
   <div id="establishment_list">
-    <ul>
-      <li class="title platinum">Platinum</li>
-      {% include 'restaurant/platinum_restaurant_list.html' %}
-      <li class="title gold">Gold</li>
-      {% include 'restaurant/gold_restaurant_list.html' %}
-      <li class="title silver">Silver</li>
-      {% include 'restaurant/silver_restaurant_list.html' %}
-    </ul>
+    <table>
+      <thead>
+        <th>{% trans 'Unit' %}</th>
+        <th>{% trans 'Quality (1:bad - 5:good)' %}</th>
+        <th>{% trans 'Delivery time' %} (1:bad - 5:good)</th>
+        <th>{% trans 'Comments' %}</th>
+      </thead>
+      <tbody>
+      {% for unit in units %}
+      <tr class="{{ unit.package.slug }}-unit {{ unit.schedule.is_open|yesno:',lock' }} {{ unit.is_new|yesno:'new-unit,' }} {% cycle 'even' 'odd'%}">
+        <td><a href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
+        <td>{{ unit.avg_quality|default_if_none:"N/A" }}</td>
+        <td>{{ unit.avg_speed|default_if_none:"N/A" }}</td>
+        <td><a href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
   </div> <!-- establishment_list -->
-</div>
+</div> <!-- content_area -->
 {% endblock %}
