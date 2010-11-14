@@ -1,19 +1,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-14 12:54+0200\n"
-"PO-Revision-Date: 2010-11-13 20:37\n"
+"POT-Creation-Date: 2010-11-14 12:57+0200\n"
+"PO-Revision-Date: 2010-11-14 12:58\n"
 "Last-Translator:   <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
@@ -773,7 +773,7 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: templates/order/restaurant_order_detail.html:28
-#: templates/profiles/profile_detail.html:98
+#: templates/profiles/profile_detail.html:100
 #: templates/restaurant/unit_detail.html:70
 #: templates/userprofiles/deliveryaddress_detail.html:65
 msgid "Address"
@@ -816,7 +816,7 @@ msgid "If you don't have a delivery address"
 msgstr "Dacă nu ați definit o adresă de livrare"
 
 #: templates/order/send_confirmation.html:18
-#: templates/profiles/profile_detail.html:112
+#: templates/profiles/profile_detail.html:114
 msgid "Add one now"
 msgstr "Adăugați una acum"
 
@@ -870,7 +870,7 @@ msgid "Change"
 msgstr "Schimbă"
 
 #: templates/profiles/profile_detail.html:57
-#: templates/profiles/profile_detail.html:109
+#: templates/profiles/profile_detail.html:111
 msgid "Delete"
 msgstr "Șterge"
 
@@ -897,7 +897,7 @@ msgid "Newsletter"
 msgstr "Scrisoare cu știri"
 
 #: templates/profiles/profile_detail.html:69
-#: templates/profiles/profile_detail.html:109
+#: templates/profiles/profile_detail.html:111
 msgid "Edit"
 msgstr "Editați"
 
@@ -911,30 +911,30 @@ msgstr "Prieteni"
 
 #: templates/profiles/profile_detail.html:81
 msgid "Sorry, no friends here :("
-msgstr ""
+msgstr "Ne pare rău, nu v-ați făcut prieteni aici :("
 
 #: templates/profiles/profile_detail.html:84
 msgid "Invite a friend now"
 msgstr "Invită un prieten"
 
-#: templates/profiles/profile_detail.html:87
+#: templates/profiles/profile_detail.html:88
 msgid "Become friend with"
-msgstr ""
+msgstr "Deveniți prieten cu"
 
-#: templates/profiles/profile_detail.html:92
+#: templates/profiles/profile_detail.html:94
 msgid "Delivery addresses"
 msgstr "Adresele de livrare"
 
-#: templates/profiles/profile_detail.html:99
+#: templates/profiles/profile_detail.html:101
 #: templates/userprofiles/deliveryaddress_detail.html:77
 msgid "Primary"
 msgstr "Primară"
 
-#: templates/profiles/profile_detail.html:100
+#: templates/profiles/profile_detail.html:102
 msgid "Operation"
 msgstr "Operație"
 
-#: templates/profiles/profile_detail.html:112
+#: templates/profiles/profile_detail.html:114
 msgid "You have not defined any delivery address."
 msgstr "Nu ați introdus nici o adresa de livrare."
 
@@ -953,7 +953,7 @@ msgstr "înregistrați-vă"
 #: templates/restaurant/comments.html:12
 #, fuzzy
 msgid "Sorry no feedback for this restaurant"
-msgstr "Ne pare rău, nu sunt comenzi pentru acest restaurant"
+msgstr "Ne pare rău, nu exista feedback pentru acest restaurant"
 
 #: templates/restaurant/index.html:23
 msgid "You have not rated orders"
@@ -968,17 +968,22 @@ msgid "Restaurants"
 msgstr "Restaurante"
 
 #: templates/restaurant/index.html:38
-msgid "Quality (1:bad - 5:good)"
-msgstr ""
+#, fuzzy
+msgid "Quality"
+msgstr "Calitate"
+
+#: templates/restaurant/index.html:38 templates/restaurant/index.html.py:39
+msgid "(1:bad - 5:good)"
+msgstr "(1:rău - 5:bun)"
 
 #: templates/restaurant/index.html:39
 #, fuzzy
 msgid "Delivery time"
-msgstr "timpul de livrare"
+msgstr "Timp de livrare"
 
 #: templates/restaurant/index.html:40 templates/restaurant/index.html.py:48
 msgid "Comments"
-msgstr ""
+msgstr "Comentarii"
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"
