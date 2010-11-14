@@ -1,7 +1,0 @@
-{% if gold.exists %}
-{% with gold.0 as gunit %}
-<li class="{{ gunit.schedule.is_open|yesno:',lock' }} {{ gunit.is_new|yesno:'new-unit,' }}"><a href="{% url restaurant:detail gunit.id %}">{{ gunit }}</a></li>
-{% endwith %}
-{% else %}
-<p>No gold partners available.</p>
-{% endif %}

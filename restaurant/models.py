@@ -7,7 +7,7 @@ from taggit.managers import TaggableManager
 
 class Communication(models.Model):
     name = models.CharField(_('name'), max_length=200)
-    
+
     def __unicode__(self):
         return self.name
 
@@ -21,10 +21,10 @@ class PartnerPackage(models.Model):
     monthly_fee = models.FloatField(_('monthly fee'))
     rate = models.FloatField(_('rate'), help_text=_('The percentage taken from every order'))
     details = models.TextField(_('details'))
-    
+
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
       verbose_name = _('Partner Package')
       verbose_name_plural = _('Partner Packages')
@@ -32,20 +32,20 @@ class PartnerPackage(models.Model):
 class PaymentMethod(models.Model):
     name = models.CharField(_('name'), max_length=100)
     details = models.TextField(_('details'))
-    
+
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
       verbose_name = _('Payment Method')
       verbose_name_plural = _('Payment Methods')
 
 class Currency(models.Model):
     name = models.CharField(_('name'), max_length=20)
-    
+
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
       verbose_name = _('Currency')
       verbose_name_plural = _('Currency')
@@ -53,10 +53,10 @@ class Currency(models.Model):
 class DeliveryType(models.Model):
     name = models.CharField(_('name'), max_length=100)
     price = models.FloatField(_('price'), )
-    
+
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
       verbose_name = _('Delivery Type')
       verbose_name_plural = _('Delivery Types')
@@ -69,10 +69,10 @@ class Employee(models.Model):
     start_date = models.DateField(_('start_date'))
     end_date = models.DateField(_('end_date'))
     rate = models.FloatField(_('rate'))
-    
+
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
       verbose_name = _('Employee')
       verbose_name_plural = _('Employees')
@@ -85,7 +85,7 @@ class Interval(models.Model):
 
     def __unicode__(self):
         return self.weekdays + ' ' + self.start_hour + '-' + self.end_hour
-    
+
     def is_open(self):
         return self._is_open(datetime.now())
 
@@ -111,13 +111,13 @@ class Interval(models.Model):
 class Schedule(models.Model):
     description = models.CharField(_('description'), max_length=100, help_text=_('This text will appear on the frontend for open hours.'))
     unit = models.OneToOneField('Unit', verbose_name=_('unit'))
-    
+
     def is_open(self):
         for interval in self.interval_set.iterator():
             if interval.is_open():
                 return True
         return False
-    
+
     def __unicode__(self):
         return self.description
 
@@ -143,27 +143,27 @@ class Unit(models.Model):
     minimum_ord_val = models.IntegerField(_('minimum order value'))
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))
-    contact_person = models.CharField(_('contact persoon'), max_length=50)    
+    contact_person = models.CharField(_('contact persoon'), max_length=50)
     delivery_time_user = models.FloatField(_('delivery time user'), null=True, blank=True, editable=False, help_text=_('Calculated as a avg from user feedback.'))
     delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
     admin_users = models.CharField(_('admin users'), max_length=100, null=True, blank=True, help_text=_('the users that can access front-end administration pages for this unit.'))
     added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
     info = models.TextField(_('info'), null=True, blank=True)
     active = models.BooleanField(_('active'), default=True)
-    
+
     tags = TaggableManager()
-    
+
     def __unicode__(self):
         return self.name
 
     def is_new(self):
         delta = date.today() - self.added_date
         return delta.days < 7
-    
+
     @models.permalink
     def get_absolute_url(self):
         return ('restaurant:detail', [str(self.id)])
-    
+
     class Meta:
       verbose_name = _('Unit')
       verbose_name_plural = _('Units')
