@@ -35,16 +35,16 @@
     <table>
       <thead>
         <th>{% trans 'Unit' %}</th>
-        <th>{% trans 'Quality' %} {% trans '(1:bad - 5:good)' %}</th>
-        <th>{% trans 'Delivery time' %}  {% trans '(1:bad - 5:good)' %}</th>
+        <th>{% trans 'Quality' %}</th>
+        <th>{% trans 'Delivery time' %}</th>
         <th>{% trans 'Comments' %}</th>
       </thead>
       <tbody>
       {% for unit in units %}
       <tr class="{{ unit.package.slug }}-unit {{ unit.schedule.is_open|yesno:',lock' }} {{ unit.is_new|yesno:'new-unit,' }} {% cycle 'even' 'odd'%}">
         <td><a href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
-        <td>{{ unit.avg_quality|default_if_none:"N/A" }}</td>
-        <td>{{ unit.avg_speed|default_if_none:"N/A" }}</td>
+        <td>{% if unit.avg_quality %}{{ unit.avg_quality|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
+        <td>{% if unit.avg_speed %}{{ unit.avg_speed|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
         <td><a href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
       </tr>
       {% endfor %}
