@@ -78,11 +78,13 @@ $(function(){
   {% for friend in profile.user.friends.iterator %}
   <a href="{% url profiles_profile_detail friend.user.username %}">{{ friend }}</a>,&nbsp;
   {% empty %}
-  <p>{% trans "You currently don't have any friends :(" %}
+  <p>{% trans "Sorry, no friends here :(" %}
     {% endfor %}
   {% if user == profile.user %}
   <p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
   <div id="invite-placeholder"></div>
+  {% else %}
+  <p><a href="#">{% trans 'Become friend with' %} {{ profile.user }}</a></p>
   {% endif %}
 </div><!-- content_area -->
 {% if user == profile.user %}
