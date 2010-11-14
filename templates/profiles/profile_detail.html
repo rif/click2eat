@@ -84,7 +84,9 @@ $(function(){
   <p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
   <div id="invite-placeholder"></div>
   {% else %}
-  <p><a href="#">{% trans 'Become friend with' %} {{ profile.user }}</a></p>
+  <div class="general_button">
+    <p><a href="#">{% trans 'Become friend with' %} {{ profile.user }}</a></p>
+  </div>
   {% endif %}
 </div><!-- content_area -->
 {% if user == profile.user %}

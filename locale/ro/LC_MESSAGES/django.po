@@ -1,19 +1,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-13 20:16+0200\n"
+"POT-Creation-Date: 2010-11-14 12:54+0200\n"
 "PO-Revision-Date: 2010-11-13 20:37\n"
 "Last-Translator:   <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
@@ -60,7 +60,7 @@ msgstr "Prețul mai mic decât"
 msgid "Quantity more than"
 msgstr "Cantitate mai mare ca"
 
-#: menu/filter.py:14 templates/base.html:110 templates/base_alt.html:110
+#: menu/filter.py:14 templates/base.html:70 templates/base_alt.html:70
 msgid "All restaurants"
 msgstr "Toate restaurantele"
 
@@ -373,7 +373,7 @@ msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
 #: restaurant/models.py:15 restaurant/models.py:16
-#: templates/profiles/profile_detail.html:65
+#: templates/profiles/profile_detail.html:67
 msgid "Communication"
 msgstr "Comunicare"
 
@@ -560,6 +560,7 @@ msgid "info"
 msgstr "informații"
 
 #: restaurant/models.py:168 templates/order/order_div.html:30
+#: templates/restaurant/index.html:37
 msgid "Unit"
 msgstr "Unitate"
 
@@ -567,73 +568,66 @@ msgstr "Unitate"
 msgid "Units"
 msgstr "Unități"
 
-#: templates/base.html:56 templates/base_alt.html:56
-#: templates/menu/item_list.html:24
+#: templates/base.html:68 templates/base_alt.html:68
+msgid "Home page"
+msgstr "Acasă"
+
+#: templates/base.html:68 templates/base_alt.html:68
+msgid "Home"
+msgstr "Acasă"
+
+#: templates/base.html:69 templates/base_alt.html:69
+msgid "How do I order"
+msgstr "Cum comand"
+
+#: templates/base.html:71 templates/base_alt.html:71
+msgid "Today's menu"
+msgstr "Meniul zilei"
+
+#: templates/base.html:72 templates/base_alt.html:72
+msgid "Wheel of fortune"
+msgstr "Roata norocului"
+
+#: templates/header.html:8 templates/menu/item_list.html:24
 msgid "Search"
 msgstr "Caută"
 
-#: templates/base.html:62 templates/base_alt.html:62
-#: templates/registration/login.html:26
+#: templates/header.html:14 templates/registration/login.html:26
 msgid "Forgot password?"
 msgstr "Ați uitat parola?"
 
-#: templates/base.html:62 templates/base_alt.html:62
-#: templates/registration/login.html:26
+#: templates/header.html:14 templates/registration/login.html:26
 msgid "Reset it"
 msgstr "Resetează"
 
-#: templates/base.html:63 templates/base_alt.html:63
-#: templates/registration/login.html:27
+#: templates/header.html:15 templates/registration/login.html:27
 msgid "Not member?"
 msgstr "Nu sunteti membru?"
 
-#: templates/base.html:63 templates/base_alt.html:63
-#: templates/registration/login.html:27
+#: templates/header.html:15 templates/registration/login.html:27
 #: templates/registration/registration_form.html:17
 msgid "Register"
 msgstr "Înregistrare"
 
-#: templates/base.html:69 templates/base.html.py:71 templates/base_alt.html:69
-#: templates/base_alt.html.py:71
+#: templates/header.html:21 templates/header.html.py:23
 msgid "Welcome"
 msgstr "Bine ai venit"
 
-#: templates/base.html:73 templates/base_alt.html:73
+#: templates/header.html:25
 msgid "Logout"
 msgstr "Ieșire"
 
-#: templates/base.html:78 templates/base_alt.html:78
+#: templates/header.html:30
 msgid "Username"
 msgstr "Nume de utilizator"
 
-#: templates/base.html:82 templates/base_alt.html:82
+#: templates/header.html:34
 msgid "Password"
 msgstr "Parola"
 
-#: templates/base.html:85 templates/base_alt.html:85
-#: templates/registration/login.html:4
+#: templates/header.html:37 templates/registration/login.html:4
 msgid "Login"
 msgstr "Login"
-
-#: templates/base.html:108 templates/base_alt.html:108
-msgid "Home page"
-msgstr "Acasă"
-
-#: templates/base.html:108 templates/base_alt.html:108
-msgid "Home"
-msgstr "Acasă"
-
-#: templates/base.html:109 templates/base_alt.html:109
-msgid "How do I order"
-msgstr "Cum comand"
-
-#: templates/base.html:111 templates/base_alt.html:111
-msgid "Today's menu"
-msgstr "Meniul zilei"
-
-#: templates/base.html:112 templates/base_alt.html:112
-msgid "Wheel of fortune"
-msgstr "Roata norocului"
 
 #: templates/admin/base_site.html:4
 msgid "Bucatar site admin"
@@ -668,7 +662,9 @@ msgstr "Vă rugăm să selectați avatarul pe care doriți să îl stergeți."
 msgid ""
 "You have no avatars to delete. Please <a href=\"%(avatar_change_url)s"
 "\">upload one</a> now."
-msgstr "Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s\">încărcați unul</a> acum."
+msgstr ""
+"Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s"
+"\">încărcați unul</a> acum."
 
 #: templates/avatar/confirm_delete.html:14
 msgid "Delete These"
@@ -771,13 +767,13 @@ msgid "User"
 msgstr "Utilizator"
 
 #: templates/order/restaurant_order_detail.html:27
-#: templates/profiles/profile_detail.html:62
+#: templates/profiles/profile_detail.html:64
 #: templates/restaurant/unit_detail.html:72
 msgid "Phone"
 msgstr "Telefon"
 
 #: templates/order/restaurant_order_detail.html:28
-#: templates/profiles/profile_detail.html:91
+#: templates/profiles/profile_detail.html:98
 #: templates/restaurant/unit_detail.html:70
 #: templates/userprofiles/deliveryaddress_detail.html:65
 msgid "Address"
@@ -820,7 +816,7 @@ msgid "If you don't have a delivery address"
 msgstr "Dacă nu ați definit o adresă de livrare"
 
 #: templates/order/send_confirmation.html:18
-#: templates/profiles/profile_detail.html:105
+#: templates/profiles/profile_detail.html:112
 msgid "Add one now"
 msgstr "Adăugați una acum"
 
@@ -869,72 +865,76 @@ msgstr "Contul meu"
 msgid "This profile is not public"
 msgstr "Acest profil nu este public"
 
-#: templates/profiles/profile_detail.html:56
+#: templates/profiles/profile_detail.html:57
 msgid "Change"
 msgstr "Schimbă"
 
-#: templates/profiles/profile_detail.html:56
-#: templates/profiles/profile_detail.html:102
+#: templates/profiles/profile_detail.html:57
+#: templates/profiles/profile_detail.html:109
 msgid "Delete"
 msgstr "Șterge"
 
-#: templates/profiles/profile_detail.html:59
+#: templates/profiles/profile_detail.html:61
 #: templates/restaurant/unit_detail.html:69
 msgid "Name"
 msgstr "Nume"
 
-#: templates/profiles/profile_detail.html:60
+#: templates/profiles/profile_detail.html:62
 #: templates/restaurant/unit_detail.html:71
 msgid "Email"
 msgstr "e-mail"
 
-#: templates/profiles/profile_detail.html:61
+#: templates/profiles/profile_detail.html:63
 msgid "Birth date"
 msgstr "Data nașterii"
 
-#: templates/profiles/profile_detail.html:63
+#: templates/profiles/profile_detail.html:65
 msgid "Sex"
 msgstr "Sexul"
 
-#: templates/profiles/profile_detail.html:64
+#: templates/profiles/profile_detail.html:66
 msgid "Newsletter"
 msgstr "Scrisoare cu știri"
 
-#: templates/profiles/profile_detail.html:66
-#: templates/profiles/profile_detail.html:102
+#: templates/profiles/profile_detail.html:69
+#: templates/profiles/profile_detail.html:109
 msgid "Edit"
 msgstr "Editați"
 
-#: templates/profiles/profile_detail.html:67
+#: templates/profiles/profile_detail.html:69
 msgid "Order History"
 msgstr "Istoricul comenzilor"
 
-#: templates/profiles/profile_detail.html:74
+#: templates/profiles/profile_detail.html:77
 msgid "Friends"
 msgstr "Prieteni"
 
-#: templates/profiles/profile_detail.html:78
-msgid "You currently don't have any friends :("
-msgstr "Nu ai încă nici un prieten în acest site :("
+#: templates/profiles/profile_detail.html:81
+msgid "Sorry, no friends here :("
+msgstr ""
 
-#: templates/profiles/profile_detail.html:80
+#: templates/profiles/profile_detail.html:84
 msgid "Invite a friend now"
 msgstr "Invită un prieten"
 
-#: templates/profiles/profile_detail.html:85
+#: templates/profiles/profile_detail.html:87
+msgid "Become friend with"
+msgstr ""
+
+#: templates/profiles/profile_detail.html:92
 msgid "Delivery addresses"
 msgstr "Adresele de livrare"
 
-#: templates/profiles/profile_detail.html:92
+#: templates/profiles/profile_detail.html:99
 #: templates/userprofiles/deliveryaddress_detail.html:77
 msgid "Primary"
 msgstr "Primară"
 
-#: templates/profiles/profile_detail.html:93
+#: templates/profiles/profile_detail.html:100
 msgid "Operation"
 msgstr "Operație"
 
-#: templates/profiles/profile_detail.html:105
+#: templates/profiles/profile_detail.html:112
 msgid "You have not defined any delivery address."
 msgstr "Nu ați introdus nici o adresa de livrare."
 
@@ -950,17 +950,35 @@ msgstr "Resetarea parolei a eșuat"
 msgid "Sign Up"
 msgstr "înregistrați-vă"
 
-#: templates/restaurant/index.html:30
+#: templates/restaurant/comments.html:12
+#, fuzzy
+msgid "Sorry no feedback for this restaurant"
+msgstr "Ne pare rău, nu sunt comenzi pentru acest restaurant"
+
+#: templates/restaurant/index.html:23
 msgid "You have not rated orders"
 msgstr "Aveți comenzi la care nu ați dat feedback"
 
-#: templates/restaurant/index.html:32
+#: templates/restaurant/index.html:25
 msgid "Orders that still need your feedback"
 msgstr "Comenzi care mai au nevoie de feedback-ul dumneavoastră"
 
-#: templates/restaurant/index.html:40
+#: templates/restaurant/index.html:33
 msgid "Restaurants"
 msgstr "Restaurante"
+
+#: templates/restaurant/index.html:38
+msgid "Quality (1:bad - 5:good)"
+msgstr ""
+
+#: templates/restaurant/index.html:39
+#, fuzzy
+msgid "Delivery time"
+msgstr "timpul de livrare"
+
+#: templates/restaurant/index.html:40 templates/restaurant/index.html.py:48
+msgid "Comments"
+msgstr ""
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"
@@ -1226,6 +1244,9 @@ msgstr "Mulțumim, vom încerca să corectăm problema."
 #, python-format
 msgid "The invitation email was send to %s."
 msgstr "Email-ul de invitație a fost trimis catre %s."
+
+#~ msgid "You currently don't have any friends :("
+#~ msgstr "Nu ai încă nici un prieten în acest site :("
 
 #~ msgid "Close"
 #~ msgstr "Închide"
