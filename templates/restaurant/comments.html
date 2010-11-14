@@ -7,7 +7,7 @@
 <ul>
     <div class="content_area">
         {% for rating in ratings %}
-        <li><a href="{% url profiles_profile_detail user %}">{{ rating.user}}</a>: {{ rating.feedback }}</li>
+        <li><a href="{% url profiles_profile_detail rating.user %}">{{ rating.user}}</a>: {{ rating.feedback }}</li>
         {% empty %}
         <li>{% trans 'Sorry no feedback for this restaurant' %}.</li>
         {% endfor %}
