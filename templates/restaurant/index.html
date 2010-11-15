@@ -20,7 +20,10 @@
 <div class="content_area">
   {% with user.get_profile.get_not_rated as order_list %}
   {% if order_list.exists %}
-  <a id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
+  <div class="general_button">
+    <a id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
+  </div>
+  <div class="clear"></div>
   <div id="notrated-orders" style="display:none">
     <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
     <ul>
