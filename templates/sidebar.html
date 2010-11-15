@@ -1,3 +1,4 @@
+{% load i18n %}
 <div id="sidebar">
       <div class="menu_title">
 	<div class="house_icon"></div>
@@ -67,33 +68,15 @@
 	</li>
 
 	<li class="first">
-	  Silver Restaurants
+	  Friends
 	</li>
 	<li class="third_star"></li>
-
-	<li>
-	  <a href="#">Lorem ipsum</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum sit dolor</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum sit</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum dolor amet</a><br>
-	  <span></span>
-	</li>
+	{% for friend in profile.user.friends.iterator %}
+	<li><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></li>
+	{% empty %}
+	<li>{% trans "Sorry, no friends here :(" %}</li>
+	  {% endfor %}	  
+	<li><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></li>
+	<div id="invite-placeholder"></div>
       </ul>
 </div><!-- sidebar -->
