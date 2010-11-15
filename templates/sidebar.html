@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load pagination_tags %}
+
 <div id="sidebar">
       <div class="menu_title">
 	<div class="house_icon"></div>
@@ -8,35 +10,25 @@
 
       <ul>
 	<li class="first">
-	  Platinum Restaurants
+	  Latest orders
 	</li>
 	<li class="first_star"></li>
-
-	<li>
-	  <a href="#">Lorem ipsum</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum sit dolor</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum sit</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum dolor amet</a><br>
-	  <span></span>
-	</li>
-
+	{% with user.order_set.all as object_list %}
+	{% autopaginate object_list 5 %}
+	<table>
+	  <tbody>
+	    {% for order in object_list %}
+	    <tr class="{% cycle 'odd' 'even' %}">
+	      <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
+	      <td><a target="_self" href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></td>
+	    </tr>
+	    {% empty %}
+	    <tr><td>No orders yet? Bon apetit ;)</td></tr>
+	    {% endfor %}
+	  </tbody>
+	</table>	
+	{% paginate %}
+	{% endwith %}
 	<li class="first">
 	  Gold Restaurants
 	</li>
