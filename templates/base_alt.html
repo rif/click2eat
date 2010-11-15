@@ -26,7 +26,7 @@
             cache: false
          });
 	     $(".messages-close-link").click(function(e){
-                $(this).parents("div").fadeOut("slow");
+                $(this).parent("div").fadeOut("slow");
                 e.preventDefault();
 	      });
 	      $('.clearme').one("focus", function() {
@@ -52,17 +52,6 @@
 	</form>
   </div> <!-- languages -->
   {% include 'header.html'%}
-  <div class="content_area">
-    {% if messages %}
-    {% for message in messages %}
-    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-        {{ message }}
-        <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""></a>
-    </div>
-    {% endfor %}
-    {% endif %}
-    <div class="clear"></div>
-  </div><!-- content_area -->
   <div id="menu_top">
     <ul id="menu-list">
       <li><a href="{% url restaurant:index %}" title="{% trans 'Home page' %}" target="_self">{% trans 'Home' %}</a></li>
@@ -76,23 +65,32 @@
   <div id="wrapper">
     {% include 'sidebar.html' %}
     <div id="body_page">
-        <div class="content_area">
-            <div id="ads">
-                <ul>
-                    <li style="display:block"><img src="{{ MEDIA_URL }}images/ads/1.jpg" alt=""></li>
-                    <li style="display:block;margin-left:-100px;z-index:3;"><img src="{{ MEDIA_URL }}images/ads/2.jpg" alt=""></li>
-                    <li style="display:block;margin-left:-130px;z-index:2;"><img src="{{ MEDIA_URL }}images/ads/3.jpg" alt=""></li>
-                    <li><img src="{{ MEDIA_URL }}images/ads/4.jpg" alt=""></li>
-                </ul>
-            </div>
-
-            <div id="ads-controls">
-                <div class="prev"></div>
-                <div class="next"></div>
-            </div>
+      <div id="messages">
+	{% if messages %}
+	{% for message in messages %}
+	<div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message }}
+          <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""></a>
+	</div>
+	{% endfor %}
+	{% endif %}
+      </div><!-- messages -->      
+      <div class="content_area">
+        <div id="ads">
+          <ul>
+            <li style="display:block"><img src="{{ MEDIA_URL }}images/ads/1.jpg" alt=""></li>
+            <li style="display:block;margin-left:-100px;z-index:3;"><img src="{{ MEDIA_URL }}images/ads/2.jpg" alt=""></li>
+            <li style="display:block;margin-left:-130px;z-index:2;"><img src="{{ MEDIA_URL }}images/ads/3.jpg" alt=""></li>
+            <li><img src="{{ MEDIA_URL }}images/ads/4.jpg" alt=""></li>
+          </ul>
+        </div>	
+        <div id="ads-controls">
+          <div class="prev"></div>
+          <div class="next"></div>
         </div>
-        <div class="clear"></div>
-        <br>
+      </div>
+      <div class="clear"></div>
+      <br>
       {% block content%}
       {% endblock %}
       <div class="clear"></div>

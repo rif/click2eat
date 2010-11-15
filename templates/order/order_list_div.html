@@ -13,6 +13,8 @@
 	      <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
 	      <td><a target="_self" href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></td>
 	    </tr>
+	    {% empty %}
+	    <tr><td>No orders yet? Bon apetit ;)</td></tr>
 	    {% endfor %}
       </tbody>
     </table>
