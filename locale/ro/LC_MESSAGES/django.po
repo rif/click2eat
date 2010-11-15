@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-14 21:56+0200\n"
-"PO-Revision-Date: 2010-11-14 21:58+0200\n"
-"Last-Translator: Filemaker <r.fericean@filemaker-solutions.ro>\n"
+"POT-Creation-Date: 2010-11-15 14:31+0200\n"
+"PO-Revision-Date: 2010-11-15 14:32+0200\n"
+"Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "Prețul mai mic decât"
 msgid "Quantity more than"
 msgstr "Cantitate mai mare ca"
 
-#: menu/filter.py:14 templates/base.html:70 templates/base_alt.html:70
+#: menu/filter.py:14 templates/base.html:59 templates/base_alt.html:59
 msgid "All restaurants"
 msgstr "Toate restaurantele"
 
@@ -141,7 +141,7 @@ msgstr "Numele implicit pentru acest articol"
 msgid "The default description for this item"
 msgstr "Descrierea implicită pentru acest articol"
 
-#: menu/models.py:74 order/models.py:85 restaurant/models.py:55
+#: menu/models.py:74 order/models.py:89 restaurant/models.py:55
 msgid "price"
 msgstr "preț"
 
@@ -237,7 +237,7 @@ msgstr "Promoție"
 msgid "Promotions"
 msgstr "Promoții"
 
-#: order/models.py:15 order/models.py:111 userprofiles/models.py:11
+#: order/models.py:15 order/models.py:115 userprofiles/models.py:11
 #: userprofiles/models.py:65
 msgid "user"
 msgstr "utilizator"
@@ -274,64 +274,69 @@ msgstr "angajat"
 msgid "The internal employee responsible for this order."
 msgstr "Angajatul intern responabil pentru această unitate."
 
-#: order/models.py:77 order/models.py:78
+#: order/models.py:73
+#, python-format
+msgid "%(weekday)s %(day)s%(month)s%(year)s - %(status)s"
+msgstr "%(weekday)s %(day)s%(month)s%(year)s - %(status)s"
+
+#: order/models.py:81 order/models.py:82
 #: templates/order/send_confirmation.html:13
 msgid "Order"
 msgstr "Comanda"
 
-#: order/models.py:82 order/models.py:112
+#: order/models.py:86 order/models.py:116
 msgid "order"
 msgstr "comanda"
 
-#: order/models.py:83
+#: order/models.py:87
 msgid "item"
 msgstr "articol"
 
-#: order/models.py:84
+#: order/models.py:88
 msgid "count"
 msgstr "număr"
 
-#: order/models.py:86
+#: order/models.py:90
 msgid "cart"
 msgstr "coș"
 
-#: order/models.py:103
+#: order/models.py:107
 msgid "Order Item"
 msgstr "Articol din comandă"
 
-#: order/models.py:104 templates/order/order_div.html:37
+#: order/models.py:108 templates/order/order_div.html:37
 msgid "Order Items"
 msgstr "Articolele din comandă"
 
-#: order/models.py:108
+#: order/models.py:112
 msgid "Value must be in the range [0,5]"
 msgstr "Valoarea trebuie sa fie in intervalul [0,5]"
 
-#: order/models.py:113
+#: order/models.py:117
 msgid "quality"
 msgstr "calitate"
 
-#: order/models.py:113
+#: order/models.py:117
 msgid "0 worst quality, 5 highest quality"
 msgstr "0 cea mai slabă calitate, 5 ce mai înaltă calitate"
 
-#: order/models.py:114 restaurant/models.py:140
+#: order/models.py:118 restaurant/models.py:140
 msgid "delivery time"
 msgstr "timpul de livrare"
 
-#: order/models.py:114
+#: order/models.py:118
 msgid "0 worst delivery time, 5 best delivery time"
 msgstr "0 cel mai prost timp de livrare, 5 cel mai bun timp de livrare"
 
-#: order/models.py:115
+#: order/models.py:119
 msgid "feedback"
 msgstr "feedback"
 
-#: order/models.py:118
+#: order/models.py:122
 msgid "Rating"
 msgstr "Apreciere"
 
-#: order/models.py:119
+#: order/models.py:123
 msgid "Ratings"
 msgstr "Aprecieri"
 
@@ -568,23 +573,23 @@ msgstr "Unitate"
 msgid "Units"
 msgstr "Unități"
 
-#: templates/base.html:68 templates/base_alt.html:68
+#: templates/base.html:57 templates/base_alt.html:57
 msgid "Home page"
 msgstr "Acasă"
 
-#: templates/base.html:68 templates/base_alt.html:68
+#: templates/base.html:57 templates/base_alt.html:57
 msgid "Home"
 msgstr "Acasă"
 
-#: templates/base.html:69 templates/base_alt.html:69
+#: templates/base.html:58 templates/base_alt.html:58
 msgid "How do I order"
 msgstr "Cum comand"
 
-#: templates/base.html:71 templates/base_alt.html:71
+#: templates/base.html:60 templates/base_alt.html:60
 msgid "Today's menu"
 msgstr "Meniul zilei"
 
-#: templates/base.html:72 templates/base_alt.html:72
+#: templates/base.html:61 templates/base_alt.html:61
 msgid "Wheel of fortune"
 msgstr "Roata norocului"
 
@@ -628,6 +633,20 @@ msgstr "Parola"
 #: templates/header.html:37 templates/registration/login.html:4
 msgid "Login"
 msgstr "Login"
+
+#: templates/sidebar.html:23 templates/order/order_detail.html:8
+#: templates/order/order_list_div.html:14
+msgid "Clone"
+msgstr "Clonă"
+
+#: templates/sidebar.html:67 templates/sidebar.html.py:71
+#: templates/profiles/profile_detail.html:84
+msgid "Invite a friend now"
+msgstr "Invită un prieten"
+
+#: templates/sidebar.html:69 templates/profiles/profile_detail.html:81
+msgid "Sorry, no friends here :("
+msgstr "Ne pare rău, nu v-ați făcut prieteni aici :("
 
 #: templates/admin/base_site.html:4
 msgid "Bucatar site admin"
@@ -712,10 +731,6 @@ msgstr "Subtotal"
 #: templates/order/order_detail.html:3
 msgid "Order: "
 msgstr "Comanda: "
-
-#: templates/order/order_detail.html:8 templates/order/order_list_div.html:14
-msgid "Clone"
-msgstr "Clonă"
 
 #: templates/order/order_detail.html:8 templates/order/order_list.html:9
 msgid "Back"
@@ -909,14 +924,6 @@ msgstr "Istoricul comenzilor"
 msgid "Friends"
 msgstr "Prieteni"
 
-#: templates/profiles/profile_detail.html:81
-msgid "Sorry, no friends here :("
-msgstr "Ne pare rău, nu v-ați făcut prieteni aici :("
-
-#: templates/profiles/profile_detail.html:84
-msgid "Invite a friend now"
-msgstr "Invită un prieten"
-
 #: templates/profiles/profile_detail.html:88
 msgid "Become friend with"
 msgstr "Deveniți prieten cu"
@@ -970,10 +977,6 @@ msgstr "Restaurante"
 msgid "Quality"
 msgstr "Calitate"
 
-#: templates/restaurant/index.html:38 templates/restaurant/index.html.py:39
-msgid "(1:bad - 5:good)"
-msgstr "(1:rău - 5:bun)"
-
 #: templates/restaurant/index.html:39
 msgid "Delivery time"
 msgstr "Timp de livrare"
@@ -981,6 +984,10 @@ msgstr "Timp de livrare"
 #: templates/restaurant/index.html:40 templates/restaurant/index.html.py:48
 msgid "Comments"
 msgstr "Comentarii"
+
+#: templates/restaurant/index.html:46 templates/restaurant/index.html.py:47
+msgid "N/A"
+msgstr "N/A"
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"
@@ -1246,6 +1253,9 @@ msgstr "Mulțumim, vom încerca să corectăm problema."
 #, python-format
 msgid "The invitation email was send to %s."
 msgstr "Email-ul de invitație a fost trimis catre %s."
+
+#~ msgid "(1:bad - 5:good)"
+#~ msgstr "(1:rău - 5:bun)"
 
 #~ msgid "You currently don't have any friends :("
 #~ msgstr "Nu ai încă nici un prieten în acest site :("
