@@ -64,10 +64,14 @@ class Order(models.Model):
             new_oi = OrderItem.objects.create(order=new_order, item=oi.item, count=oi.count, old_price=oi.item.get_price(), cart=oi.cart)
         return new_order
 
-
     def __unicode__(self):
         self.is_abandoned()
-        return self.creation_date.strftime('%A %d%B%Y %H:%M') + ' - ' + self.get_status_display()
+        weekday = self.creation_date.strftime('%A')
+        day = self.creation_date.strftime('%d')
+        month = self.creation_date.strftime('%b')
+        year = self.creation_date.strftime('%Y')
+        return _('%(weekday)s %(day)s%(month)s%(year)s - %(status)s') %\
+            {'weekday': weekday, 'day': day, 'month': month, 'year': year, 'status': self.get_status_display()}
 
     @models.permalink
     def get_absolute_url(self):
