@@ -104,13 +104,13 @@ def send(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = __get_current_order(request, unit)
     if current_order.status != 'CR':
-        messages.add_message(request, messages.INFO, _('Current order already sent.'))
+        messages.add_message(request, messages.WARNING, _('Current order already sent.'))
         return redirect('order:timer', order_id=current_order.id)
     if not unit.schedule.is_open():
-        messages.add_message(request, messages.WARNING, _('This restaurant is now closed! Please check the open hours and come back later.'))
+        messages.add_message(request, messages.ERROR, _('This restaurant is now closed! Please check the open hours and come back later.'))
         return redirect('restaurant:detail', unit_id=unit.id)
     if unit.minimum_ord_val > current_order.total_amount:
-        messages.add_message(request, messages.WARNING, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
+        messages.add_message(request, messages.ERROR, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
         return redirect('restaurant:detail', unit_id=unit.id)    
     if current_order.address:
         src = (unit.latitude, unit.longitude)
