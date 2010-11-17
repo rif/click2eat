@@ -34,22 +34,29 @@
   </div>{% endif %}
   {% endwith %}
   <div class="title"><h1 class="light_green">{% trans 'Restaurants' %}</h1></div>
+  <br>
   <div id="establishment_list">
     <table>
-      <thead>
-        <th>{% trans 'Unit' %}</th>
-        <th>{% trans 'Quality' %}</th>
-        <th>{% trans 'Delivery time' %}</th>
-        <th>{% trans 'Comments' %}</th>
-      </thead>
       <tbody>
-      {% for unit in units %}
-      <tr class="{{ unit.package.slug }}-unit {{ unit.schedule.is_open|yesno:',lock' }} {{ unit.is_new|yesno:'new-unit,' }} {% cycle 'even' 'odd'%}">
-        <td><a href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
-        <td>{% if unit.avg_quality %}{{ unit.avg_quality|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
-        <td>{% if unit.avg_speed %}{{ unit.avg_speed|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
-        <td><a href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
-      </tr>
+	<tr class="platinum">
+          <th>{% trans 'Unit' %}</th>
+	  <th></th>
+          <th>{% trans 'Quality' %}</th>
+          <th>{% trans 'Delivery time' %}</th>
+          <th>{% trans 'Comments' %}</th>
+	</tr>
+	{% for unit in units %}
+	<tr class="{{ unit.package.slug }}-unit {% cycle 'even' 'odd'%}">
+          <td><a href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
+	  <td class="functions">
+	    {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
+	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
+	    {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}">{% endif %}
+	  </td>
+          <td class="stars">{% if unit.avg_quality %}{{ unit.avg_quality|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
+          <td class="stars">{% if unit.avg_speed %}{{ unit.avg_speed|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
+          <td class="comments"><a href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
+	</tr>
       {% endfor %}
       </tbody>
     </table>
