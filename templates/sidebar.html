@@ -2,72 +2,84 @@
 {% load pagination_tags %}
 
 <div id="sidebar">
-      <div class="menu_title">
-	<div class="house_icon"></div>
-	<div class="text">Restaurante</div>
+  <div class="menu_title">
+    <div class="house_icon"></div>
+    <div class="text">{% trans 'Latest orders' %}</div>
+  </div>
+  <div class="clear"></div>
+  {% with user.order_set.all as object_list %}
+  <ul>
+  {% autopaginate object_list 5 %}
+    {% for order in object_list %}
+    <li>
+      <a href="{% url order:detail order.id %}">{{order}}<br><span>13 Nov 2010</span></a>
+      
+      <div class="right">
+	<a href="#" target="_self">Clone</a>
       </div>
       <div class="clear"></div>
+    </li>
+    {% empty %}
+    <li>No orders yet? Bon apetit ;)</li>
+    {% endfor %}
+  <li class="navigation">
+    {% paginate %}
+  </li> 
+  {% endwith %}
+  </ul>
+  
+  <div class="menu_title">
+    <div class="text">Points</div>
+  </div>
+  
+  <ul>
+    <li>
+      <span class="big">200pt</span>&nbsp;&nbsp;
+      <span class="medium">140pt</span>&nbsp;&nbsp;
+      <span class="small">50pt</span><br>
+      
+      <span class="big">30pt</span>&nbsp;&nbsp;
+      <span class="medium">110pt</span>&nbsp;&nbsp;
+      <span class="small">24pt</span><br>
+      
+      <span class="big">30pt</span>&nbsp;&nbsp;
+      <span class="medium">110pt</span>&nbsp;&nbsp;
+      <span class="small">24pt</span><br>
 
-      <ul>
-	<li class="first">
-	  Latest orders
-	</li>
-	<li class="first_star"></li>
-	{% with user.order_set.all as object_list %}
-	{% autopaginate object_list 5 %}
-	<table>
-	  <tbody>
-	    {% for order in object_list %}
-	    <tr class="{% cycle 'odd' 'even' %}">
-	      <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
-	    </tr>
-	    {% empty %}
-	    <tr><td>No orders yet? Bon apetit ;)</td></tr>
-	    {% endfor %}
-	  </tbody>
-	</table>	
-	{% paginate %}
-	{% endwith %}
-	<li class="first">
-	  Bonus points
-	</li>
-	<li class="second_star"></li>
-
-	<li>
-	  <a href="#">Lorem ipsum</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum sit dolor</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum sit</a><br>
-	  <span></span>
-	</li>
-
-	<li>
-	  <a href="#">Lorem ipsum dolor amet</a><br>
-	  <span></span>
-	</li>
-
-	<li class="first">
-	  Friends
-	</li>
-	<li class="third_star"></li>
-	{% for friend in profile.user.friends.iterator %}
-	<li><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></li>
-	{% empty %}
-	<li>{% trans "Sorry, no friends here :(" %}</li>
-	  {% endfor %}	  
-	<li><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></li>
-	<div id="invite-placeholder"></div>
-      </ul>
+      <span class="big">30pt</span>&nbsp;&nbsp;
+      <span class="medium">110pt</span>&nbsp;&nbsp;
+      <span class="small">24pt</span><br>
+    </li>
+  </ul>
+  
+  <div class="menu_title">
+    <div class="text">Friends</div>
+  </div>
+  <ul>
+    {% for friendship in user.get_profile.get_friends_iterator %}
+    <li>
+      <a href="{% url profiles_profile_detail friendship.friend %}">{{ friendship.friend }}<br><span>{% trans 'Last seen' %}: {{ friendship.friend.last_login|timesince }}</span></a>
+      <div class="right">
+	<a href="#" target="_self"></a>
+      </div>
+      <div class="clear"></div>
+    </li>
+    {% empty %}
+    <li>{% trans 'Sorry, no friends here :(' %}</li>
+    {% endfor %}	  
+    <li><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></li>
+    <div id="invite-placeholder"></div>
+    
+    <li class="navigation">
+      <div class="pagination">
+	<span class="disabled prev">« previous</span>
+	<span class="current page">1</span>
+	<a href="?page=2" class="page">2</a>
+	<a href="?page=2" class="page">3</a>
+	<a href="?page=2" class="page">4</a>
+	<a href="?page=2" class="page">5</a>
+	<a href="?page=2" class="next">next »</a>
+      </div>
+    </li>
+  </ul>
 </div><!-- sidebar -->

@@ -160,6 +160,13 @@ class Unit(models.Model):
         delta = date.today() - self.added_date
         return delta.days < 7
 
+    """ Returns true if the unit has an active promotion """
+    def has_promotion(self):
+        for promo in self.promotion_set.iterator:
+            if promo.is_active():
+                return True
+        return False
+
     @models.permalink
     def get_absolute_url(self):
         return ('restaurant:detail', [str(self.id)])
