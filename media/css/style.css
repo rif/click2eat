@@ -1281,8 +1281,8 @@ input.form_button.closed:hover,
 	position: absolute;
 	z-index:  5;
 
-	left: 900px;
-	top:  61px;
+	left: 140px;
+	top:  10px;
 }
 
 #ads2-container #ads2-left
@@ -1311,7 +1311,8 @@ input.form_button.closed:hover,
 
 	background: #eeeded;
 
-	float: right;
+	float:    right;
+	position: relative;
 
 	border-radius:         10px;
 	-moz-border-radius:    10px;
