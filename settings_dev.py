@@ -50,6 +50,7 @@ CONTACT_EMAIL = 'contact@mailinator.com'
 DEFAULT_FROM_EMAIL = 'default@mailinator.com'
 
 ACCOUNT_ACTIVATION_DAYS = 7
+PAGINATION_DEFAULT_WINDOW = 3
 
 CACHE_BACKEND = 'locmem://'
 
