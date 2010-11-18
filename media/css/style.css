@@ -8,8 +8,8 @@
  | LICENSE: -
  |
  | @date          November 01, 2010
- | @mod-date      -
- | @mod-author    -
+ | @mod-date      November 18, 2010
+ | @mod-author    Sergiu Dihel
  |
  | @copyright     -
  | @license       -
@@ -873,7 +873,7 @@ input, select { outline: none; }
 /**
  * ESTABLISHMENT DETAILS
  *
- * @date          September 15, 2010
+ * @date          November 05, 2010
  * @mod-date
  * @mod-author
  */
@@ -905,7 +905,7 @@ input, select { outline: none; }
 /**
  * ACCOUNT DETAILS
  *
- * @date          October 10, 2010
+ * @date          November 12, 2010
  * @mod-date
  * @mod-author
  */
@@ -934,7 +934,7 @@ input, select { outline: none; }
 /**
  * GENERAL BUTTON
  *
- * @date          October 10, 2010
+ * @date          November 6, 2010
  * @mod-date
  * @mod-author
  */
@@ -1069,7 +1069,7 @@ input.form_button.closed:hover,
 /**
  * ESTABLISHMENTS LIST
  *
- * @date          September 15, 2010
+ * @date          November 12, 2010
  * @mod-date
  * @mod-author
  */
@@ -1139,7 +1139,7 @@ input.form_button.closed:hover,
 /**
  * ADVANCED SEARCH
  *
- * @date          September 15, 2010
+ * @date          November 11, 2010
  * @mod-date
  * @mod-author
  */
@@ -1165,7 +1165,7 @@ input.form_button.closed:hover,
 /**
  * ADS STYLE
  *
- * @date          September 15, 2010
+ * @date          November 17, 2010
  * @mod-date
  * @mod-author
  */
@@ -1255,9 +1255,168 @@ input.form_button.closed:hover,
 }
 
 /**
+ * ADS -> SECOND STYLE
+ *
+ * @date          November 18, 2010
+ * @mod-date
+ * @mod-author
+ */
+#ads2-container
+{
+	width:  700px;
+	height: 200px;
+}
+
+#ads2-container #ads2-left img.flag-platinum
+{
+	position: absolute;
+	z-index:  5;
+
+	left: 320px;
+	top:  10px;
+}
+
+#ads2-container #ads2-right img.flag-gold
+{
+	position: absolute;
+	z-index:  5;
+
+	left: 900px;
+	top:  61px;
+}
+
+#ads2-container #ads2-left
+{
+	width:  420px;
+	height: 180px;
+
+	background: #eeeded;
+
+	padding: 10px;
+
+	float:    left;
+	position: relative;
+
+	border-radius:         10px;
+	-moz-border-radius:    10px;
+	-webkit-border-radius: 10px;
+}
+
+#ads2-container #ads2-right
+{
+	width:  220px;
+	height: 180px;
+
+	padding: 10px;
+
+	background: #eeeded;
+
+	float: right;
+
+	border-radius:         10px;
+	-moz-border-radius:    10px;
+	-webkit-border-radius: 10px;
+}
+
+#ads2-container #ads2-left ul,
+#ads2-container #ads2-right ul
+{
+	list-style: none;
+	padding:    0;
+	margin:     0;
+}
+
+#ads2-container #ads2-left ul li,
+#ads2-container #ads2-right ul li
+{
+	/*float: left;*/
+
+	position: relative;
+	display:  none;
+}
+
+#ads2-container #ads2-left .ads-controls
+{
+	width:   500px;
+	margin:  auto 0;
+	padding: 0;
+}
+
+#ads2-container #ads2-left .ads-controls .prev
+{
+	z-index: 5;
+
+	background: url("../images/template/btn_left.png") no-repeat top left;
+
+	margin: -110px 0px 0px -24px;
+
+	width:  44px;
+	height: 44px;
+
+	position: relative;
+
+	cursor: pointer;
+}
+
+#ads2-container #ads2-left .ads-controls .next
+{
+	z-index: 5;
+
+	background: url("../images/template/btn_right.png") no-repeat top left;
+
+	margin: -44px 0px 0px 401px;
+
+	width:  44px;
+	height: 44px;
+
+	position: relative;
+
+	cursor: pointer;
+}
+
+#ads2-container #ads2-right .ads-controls
+{
+	width:   500px;
+	margin:  auto 0;
+	padding: 0;
+}
+
+#ads2-container #ads2-right .ads-controls .prev
+{
+	z-index: 5;
+
+	background: url("../images/template/btn_left-gold.png") no-repeat top left;
+
+	margin: -45px 0px 0px 176px;
+
+	width:  33px;
+	height: 33px;
+
+	position: relative;
+
+	cursor: pointer;
+}
+
+#ads2-container #ads2-right .ads-controls .next
+{
+	z-index: 5;
+
+	background: url("../images/template/btn_right-gold.png") no-repeat top left;
+
+	margin: -33px 0px 0px 208px;
+
+	width:  33px;
+	height: 33px;
+
+	position: relative;
+
+	cursor: pointer;
+}
+
+/**
  * FOOTER
  *
- * @date          September 15, 2010
+ * @date          November 8, 2010
  * @mod-date
  * @mod-author
  */
@@ -1315,7 +1474,7 @@ input.form_button.closed:hover,
 /**
  * MESSAGES
  *
- * @date          September 15, 2010
+ * @date          November 8, 2010
  * @mod-date
  * @mod-author
  */
@@ -1389,7 +1548,7 @@ input.form_button.closed:hover,
 /**
  * LINKS
  *
- * @date          September 15, 2010
+ * @date          November 8, 2010
  * @mod-date
  * @mod-author
  */
