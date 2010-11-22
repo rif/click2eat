@@ -149,6 +149,7 @@ class Promotion(models.Model):
     
     def is_active(self):
         return self._is_active(datetime.now())
+    is_active.boolean = True
     
     def _is_active(self, check_date):
         now = check_date
