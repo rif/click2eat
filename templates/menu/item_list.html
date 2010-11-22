@@ -48,16 +48,16 @@
 	
 	{% for obj in filter %}
 	<tr class="{% cycle 'even' 'odd'%}">
-          <td><a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ unit.package.slug }}" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }}</a></td>	  
+          <td><a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ obj.unit.package.slug }}" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }}</a></td>	  
 	  <td class="align-center">
-	    {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
-	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
-	    {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}">{% endif %}
+	    {% if not obj.unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
+	    {% if obj.unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
+	    {% if obj.unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}">{% endif %}
 	  </td>
-	  <td><a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ unit.package.slug }}" href="{% url order:add_item obj.id user.username %}">{{ obj.name_def }}</a></td>
+	  <td><a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ obj.unit.package.slug }}" href="{% url order:add_item obj.id user.username %}">{{ obj.name_def }}</a></td>
 	  <td class="align-center">${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})</td>
-          <td class="align-right">{% if unit.avg_quality %}{{ unit.avg_quality|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
-          <td class="align-right">{% if unit.avg_speed %}{{ unit.avg_speed|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
+          <td class="align-right">{% if obj.unit.avg_quality %}{{ obj.unit.avg_quality|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
+          <td class="align-right">{% if obj.unit.avg_speed %}{{ obj.unit.avg_speed|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
 	</tr>
 	{% endfor %}
       </tbody>
