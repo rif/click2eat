@@ -82,7 +82,7 @@ class ToppingAdmin(admin.ModelAdmin):
     )
 
 class PromotionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'unit', 'value', 'start_date', 'end_date', 'weekdays', 'start_hour', 'end_hour')
+    list_display = ('name', 'unit', 'value', 'start_date', 'end_date', 'weekdays', 'start_hour', 'end_hour', 'is_active')
     list_filter = ['unit', 'start_date']
     search_fields = ['internal_name']
     fieldsets = (
