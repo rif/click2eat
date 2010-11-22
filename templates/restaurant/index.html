@@ -46,7 +46,7 @@
           <th>{% trans 'Comments' %}</th>
 	</tr>
 	{% for unit in units %}
-	<tr {% cycle 'even' 'odd'%}">
+	<tr class="{% cycle 'even' 'odd'%}">
           <td><a class="{{ unit.package.slug }}" href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
 	  <td class="align-center">
 	    {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
