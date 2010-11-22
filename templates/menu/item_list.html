@@ -21,21 +21,47 @@
 
 {% block content %}
 <div class="content_area">
-<div class="title"><h1 class="light_green">{% trans 'Search' %}</h1></div>
-<form action="" method="get">
-  <p><label for="id_q">Search:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
+  <div class="title"><h1 class="light_green">{% trans 'Search' %}</h1></div>
+  <form action="" method="get">
+    <p><label for="id_q">Search:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
     <br>
     <a id="show-advanced" href="#">{% trans 'Show/Hide advanced search' %}</a>
-
+    
     <div id="advanced-search" style="display:none;">
       {{ filter.form.as_p }}
     </div>
-  <input  class="form_button" type="submit" type="{% trans 'Submit' %}" />
-</form>
-<hr>
-
-{% for obj in filter %}
-<a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }} {{ obj.name_def }}</a> - ${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})<br />
-{% endfor %}
+    <input  class="form_button" type="submit" type="{% trans 'Submit' %}" />
+  </form>
+  <hr>
+  
+  <div id="establishment_list">
+    <table>
+      <tbody>
+	<tr class="platinum">
+          <th>{% trans 'Unit' %}</th>
+	  <th></th>
+	  <th>{% trans 'Name' %}</th>
+	  <th>{% trans 'Price' %}</th>
+          <th>{% trans 'Quality' %}</th>
+          <th>{% trans 'Delivery time' %}</th>
+	</tr>
+	
+	{% for obj in filter %}
+	<tr class="{% cycle 'even' 'odd'%}">
+          <td><a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ unit.package.slug }}" href="{% url order:add_item obj.id user.username %}">{{ obj.unit }}</a></td>	  
+	  <td class="align-center">
+	    {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
+	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
+	    {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}">{% endif %}
+	  </td>
+	  <td><a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ unit.package.slug }}" href="{% url order:add_item obj.id user.username %}">{{ obj.name_def }}</a></td>
+	  <td class="align-center">${{ obj.price }} ({{ obj.quantity }}{{obj.get_measurement_unit_display}})</td>
+          <td class="align-right">{% if unit.avg_quality %}{{ unit.avg_quality|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
+          <td class="align-right">{% if unit.avg_speed %}{{ unit.avg_speed|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
+  </div> <!-- establishment_list -->
 </div> <!-- content_area -->
 {% endblock %}
