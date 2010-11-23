@@ -1132,7 +1132,7 @@ input.form_button.closed:hover,
 	text-decoration: underline;
 }
 
-#establishment_list table a.platinum { color: #719200; }
+#establishment_list table a.platinum { color: #0f93ef; }
 #establishment_list table a.gold      { color: #FFA200; }
 #establishment_list table a.silver    { color: #666666; }
 
@@ -1470,6 +1470,95 @@ input.form_button.closed:hover,
 {
 	color:           #ffffff;
 	text-decoration: none;
+}
+
+/**
+ * LUCKY PLATE
+ *
+ * @date          November 22, 2010
+ * @mod-date
+ * @mod-author
+ */
+#lucky_plate_text
+{
+	float: left;
+	width: 300px;
+
+	padding: 50px 0 0 0;
+}
+
+#lucky_plate
+{
+	float: right;
+}
+
+#lucky_plate #plate
+{
+	width:  345px;
+	height: 347px;
+}
+
+#lucky_plate #plate.start
+{
+	background: url("../images/template/lucky_plate_start.png");
+}
+
+#lucky_plate #plate.processing
+{
+	background: url("../images/template/lucky_plate_processing.gif");
+}
+
+#lucky_plate #plate.generic
+{
+	background: url("../images/template/lucky_plate_generic.png");
+}
+
+#lucky_plate #control
+{
+	position: relative;
+
+	width:  362px;
+	height: 171px;
+	background: url("../images/template/lucky_plate_controls.png");
+
+	margin: -178px 0 0 -25px;
+}
+
+#lucky_plate #control #event
+{
+	position: absolute;
+
+	left:   125px;
+	bottom: 0;
+
+	width:  100px;
+	height: 22px;
+
+	text-align:  center;
+	color:       #ffffff;
+	font-weight: bold;
+
+	background: url("../images/template/lucky_plate_event_gradient.png");
+
+	cursor: pointer;
+}
+
+#lucky_plate #selected_plate
+{
+	width: 180px;
+
+	padding: 5px;
+	margin:  -180px 0 0 76px;
+
+	background-color: #99cc00;
+
+	text-align:  center;
+	color:       #ffffff;
+	font-weight: bold;
+
+	border-radius:         1em;
+	-moz-border-radius:    1em;
+	-webkit-border-radius: 1em;
 }
 
 /**
