@@ -355,12 +355,27 @@ input, select { outline: none; }
  * @mod-date      -
  * @mod-author    -
  */
+#sidebar_ornament
+{
+	background: url("../images/template/sidebar_ornament.png") no-repeat;
+
+	width:  110px;
+	height: 362px;
+
+	position: relative;
+	z-index:  1;
+
+	margin: 0px 0px -362px 205px;
+}
+
 #sidebar
 {
 	width:  250px;
 	float:  left;
 
 	padding: 0 25px;
+
+	position: relative;
 }
 
 #sidebar .menu_title
