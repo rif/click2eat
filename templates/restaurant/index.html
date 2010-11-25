@@ -73,8 +73,8 @@ $(".time-stars").stars({
 	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
 	    {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}">{% endif %}
 	  </td>
-	  <td class="align-center"><div class="rating_bar"><div style="width:{{ unit.get_avg_quality }}%"></div>({{ unit.avg_quality|floatformat }}/5)</div></td>
-	  <td class="align-center"><div class="rating_bar"><div style="width:{{ unit.get_avg_speed }}%"></div>({{ unit.avg_speed|floatformat }}/5)</div></td>
+	  <td><div class="rating_bar"><div style="width:{{ unit.get_avg_quality }}%"></div></div></td>
+	  <td><div class="rating_bar"><div style="width:{{ unit.get_avg_speed }}%"></div></div></td>
           <td class="align-center"><a class="{{ unit.package.slug }}" href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
 	</tr>
       {% endfor %}
