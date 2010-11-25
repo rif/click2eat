@@ -5,16 +5,32 @@
 {% block style %}
 <link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/uni-form.css" type="text/css" />
 <link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/default.uni-form.css" type="text/css" />
+<link href="{{ MEDIA_URL }}css/stars/crystal-stars.css" rel="stylesheet" type="text/css" media="screen">
 {% endblock %}
 
 {% block scripts %}
 <script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}js/jquery.ui.stars.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function() {
+   $("#div_id_quality").stars({
+        inputType: "select",
+        captionEl: $("#stars-cap-sp")
+   });
+   $("#div_id_delivery_time").stars({
+        inputType: "select",
+        captionEl: $("#stars-cap-dt")
+   });
+  });
+</script>
 {% endblock %}
 
 {% block title %}{% trans 'Feedback' %}{% endblock %}
 
 {% block content %}
 <h1>{% trans 'Please provide your feedback on ' %}{{ order }}</h1>
+<p>{% trans 'Rating for speed' %}: <span id="stars-cap-sp"></span></p>
+<p>{% trans 'Rating for delivery time' %}: <span id="stars-cap-dt"></span></p>
 <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
     <input class="form_button" type="submit" value="{% trans 'Submit feedback' %}">
