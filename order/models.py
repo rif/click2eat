@@ -5,12 +5,12 @@ from datetime import datetime
 
 class Order(models.Model):
     STATUS_CHOICES = (
-      ('AB', 'Abandoned'),
-      ('CR', 'Created'),
-      ('ST', 'Sent'),
-      ('RV', 'Received'),
-      ('DL', 'Delivered'),
-      ('CN', 'Canceled'),
+      ('AB', _('Abandoned')),
+      ('CR', _('Created')),
+      ('ST', _('Sent')),
+      ('RV', _('Received')),
+      ('DL', _('Delivered')),
+      ('CN', _('Canceled')),
     )
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     address = models.ForeignKey('userprofiles.DeliveryAddress', verbose_name=_('address'), null=True, blank=True)
@@ -107,15 +107,18 @@ class OrderItem(models.Model):
       verbose_name = _('Order Item')
       verbose_name_plural = _('Order Items')
 
-def rating_range(value):
-    if value < 0 or value > 5:
-        raise ValidationError(_('Value must be in the range [0,5]'))
-
 class Rating(models.Model):
+    RATING_CHOICES = (
+      ('1', _('Very Poor')),
+      ('2', _('Not that bad')),
+      ('3', _('Average')),
+      ('4', _('Good')),
+      ('5', _('perfect')),
+    )
     user = models.ForeignKey(User, verbose_name=_('user'))
     order = models.OneToOneField(Order, verbose_name=_('order'))
-    quality = models.SmallIntegerField(_('quality'), validators=[rating_range], help_text=_('0 worst quality, 5 highest quality'))
-    delivery_time = models.SmallIntegerField(_('delivery time'), validators=[rating_range], help_text=_('0 worst delivery time, 5 best delivery time'))
+    quality = models.CharField(_('quality'), max_length=1, choices=RATING_CHOICES, default='3')
+    delivery_time = models.CharField(_('delivery time'), max_length=2, choices=RATING_CHOICES, default='3')
     feedback = models.TextField(_('feedback'), null=True, blank=True)
 
     class Meta:

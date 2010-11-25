@@ -8,6 +8,19 @@
 {% endblock %}
 {% block scripts %}
 <script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function() {
+     $.datepicker.setDefaults( $.datepicker.regional[ "{{ LANGUAGE_CODE }}" ] );
+     $( "#id_birth_date" ).datepicker({
+       defaultDate: new Date(1978, 6, 10),
+       dateFormat: 'yy-mm-dd',
+       minDate: '-120y',
+       maxDate: '-10y',
+       changeMonth: true,
+       changeYear: true
+     });
+  });
+</script>
 {% endblock %}
 
 {% block title %}{% trans 'Create your profile' %}{% endblock %}
