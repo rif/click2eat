@@ -7,6 +7,7 @@
 	<title>{% block title %}click2eat.ro - Comanda mancare in Timisoara, Oferte Restaurante{% endblock%}</title>
 	<meta name="description" content="{% block description %}Aici poti comanda mancare online de la diferite restaurante din Timisoara, poti afla meniurile zilei, oferte, reduceri si poti afla pareri despre restaurantele din Timisoara{% endblock %}">
 	<meta name="author" content="Radu Fericean">
+	<meta name="keywords" content="restaurante, timisoara, mancare, pizza, comanda online, comanda mancare">
 	{% compress css %}
 	{% block style %}{% endblock %}
 	<!--/ CSS Files /-->
@@ -33,6 +34,16 @@
 	      $('.clearme').one("focus", function() {
 	        $(this).val("");
               });
+              $("#langs>a").click(function(e){
+	        $.post("/i18n/setlang/", {
+	             csrfmiddlewaretoken:  $("#langs>div>input[name='csrfmiddlewaretoken']").val(),
+	             language: $(this).attr("href")},
+	             function(data){
+                      location.reload(true);
+	             }
+	          );
+	        e.preventDefault();
+              });
 	  });
 	</script>
 	{% block scripts %}{% endblock %}
@@ -40,18 +51,12 @@
 </head>
 <body>
   <div id="top_site"></div>
-  <div style="float:right" id="langs">
-	<form action="/i18n/setlang/" method="post">
-	  {% csrf_token %}
-	  <input name="next" type="hidden" value="" />
-	  <select name="language">
-	    {% for lang in LANGUAGES %}
-	    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-	    {% endfor %}
-	  </select>
-	  <input class="form_button" type="submit" value="Go" />
-	</form>
-  </div> <!-- languages -->
+  <div id="langs">
+    {% csrf_token %}
+    {% for lang in LANGUAGES %}
+    <a href="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.png"></a>
+    {% endfor %}
+  </div>
   {% include 'header.html'%}
   <div id="menu_top">
     <ul id="menu-list">
