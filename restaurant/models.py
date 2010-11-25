@@ -167,6 +167,17 @@ class Unit(models.Model):
                 return True
         return False
 
+    def get_avg_quality(self):
+        if not self.avg_quality:
+            return 0
+        return self.avg_quality * 100/5
+
+    def get_avg_speed(self):
+        if not self.avg_speed:
+            return 0
+        return self.avg_speed * 100/5
+
+
     @models.permalink
     def get_absolute_url(self):
         return ('restaurant:detail', [str(self.id)])

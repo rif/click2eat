@@ -3,6 +3,18 @@
 
 {% block style %}
 <link href="{{ MEDIA_URL }}css/stars/jquery.ui.stars.min.css" rel="stylesheet" type="text/css" media="screen">
+<style>
+.rating_bar {
+  width: 55px;
+  background: url("{{ MEDIA_URL }}css/stars/star_x_grey.gif") 0 0 repeat-x;
+}
+
+.rating_bar div {
+  height: 12px;
+  background: url("{{ MEDIA_URL }}css/stars/star_x_orange.gif") 0 0 repeat-x;
+}
+
+</style>
 {% endblock %}
 
 {% block scripts %}
@@ -61,16 +73,8 @@ $(".time-stars").stars({
 	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
 	    {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}">{% endif %}
 	  </td>
-          <td class="align-right">{% if unit.avg_quality %}{{ unit.avg_quality|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td>
-          <!--td class="align-right">{% if unit.avg_speed %}{{ unit.avg_speed|floatformat }}{% else %}{% trans 'N/A' %}{% endif %}</td-->
-	  <td><span class="time-stars">
-	      <select name="selrate">
-		<option value="1">Very poor</option>
-		<option value="2">Not that bad</option>
-		<option value="3">Average</option>
-		<option value="4" selected="selected">Good</option>
-		<option value="5">Perfect</option>
-          </select></span></td>
+	  <td class="align-center"><div class="rating_bar"><div style="width:{{ unit.get_avg_quality }}%"></div>({{ unit.avg_quality|floatformat }}/5)</div></td>
+	  <td class="align-center"><div class="rating_bar"><div style="width:{{ unit.get_avg_speed }}%"></div>({{ unit.avg_speed|floatformat }}/5)</div></td>
           <td class="align-center"><a class="{{ unit.package.slug }}" href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
 	</tr>
       {% endfor %}
