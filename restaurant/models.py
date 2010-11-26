@@ -170,12 +170,12 @@ class Unit(models.Model):
     def get_avg_quality(self):
         if not self.avg_quality:
             return 0
-        return self.avg_quality * 100/5
+        return unicode(self.avg_quality * 100/5)
 
     def get_avg_speed(self):
         if not self.avg_speed:
             return 0
-        return self.avg_speed * 100/5
+        return unicode(self.avg_speed * 100/5)
 
 
     @models.permalink
