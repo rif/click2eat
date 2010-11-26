@@ -113,7 +113,7 @@ class Rating(models.Model):
       ('2', _('Not that bad')),
       ('3', _('Average')),
       ('4', _('Good')),
-      ('5', _('perfect')),
+      ('5', _('Perfect')),
     )
     user = models.ForeignKey(User, verbose_name=_('user'))
     order = models.OneToOneField(Order, verbose_name=_('order'))

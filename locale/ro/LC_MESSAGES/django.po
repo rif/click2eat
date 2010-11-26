@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-15 14:31+0200\n"
-"PO-Revision-Date: 2010-11-15 14:32+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2010-11-26 17:44+0200\n"
+"PO-Revision-Date: 2010-11-26 17:44+0200\n"
+"Last-Translator: Filemaker <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "Prețul mai mic decât"
 msgid "Quantity more than"
 msgstr "Cantitate mai mare ca"
 
-#: menu/filter.py:14 templates/base.html:59 templates/base_alt.html:59
+#: menu/filter.py:14 templates/base.html:68 templates/base_alt.html:68
 msgid "All restaurants"
 msgstr "Toate restaurantele"
 
@@ -229,16 +229,40 @@ msgstr "de ex. 15:00"
 msgid "Percentage"
 msgstr "Procentaj"
 
-#: menu/models.py:178
+#: menu/models.py:179
 msgid "Promotion"
 msgstr "Promoție"
 
-#: menu/models.py:179
+#: menu/models.py:180
 msgid "Promotions"
 msgstr "Promoții"
 
-#: order/models.py:15 order/models.py:115 userprofiles/models.py:11
-#: userprofiles/models.py:65
+#: order/models.py:8
+msgid "Abandoned"
+msgstr "Abandonat"
+
+#: order/models.py:9
+msgid "Created"
+msgstr "Creat"
+
+#: order/models.py:10
+msgid "Sent"
+msgstr "Trimis"
+
+#: order/models.py:11
+msgid "Received"
+msgstr "Primit"
+
+#: order/models.py:12
+msgid "Delivered"
+msgstr "Livrat"
+
+#: order/models.py:13
+msgid "Canceled"
+msgstr "Renunțat"
+
+#: order/models.py:15 order/models.py:118 userprofiles/models.py:12
+#: userprofiles/models.py:66
 msgid "user"
 msgstr "utilizator"
 
@@ -258,7 +282,7 @@ msgstr "status"
 msgid "total amount"
 msgstr "cantitatea totala"
 
-#: order/models.py:21 userprofiles/models.py:20
+#: order/models.py:21 userprofiles/models.py:21
 msgid "additional info"
 msgstr "informații suplimentare"
 
@@ -284,7 +308,7 @@ msgstr "%(weekday)s %(day)s%(month)s%(year)s - %(status)s"
 msgid "Order"
 msgstr "Comanda"
 
-#: order/models.py:86 order/models.py:116
+#: order/models.py:86 order/models.py:119
 msgid "order"
 msgstr "comanda"
 
@@ -309,34 +333,42 @@ msgid "Order Items"
 msgstr "Articolele din comandă"
 
 #: order/models.py:112
-msgid "Value must be in the range [0,5]"
-msgstr "Valoarea trebuie sa fie in intervalul [0,5]"
+msgid "Very Poor"
+msgstr "Foarte slabă"
 
-#: order/models.py:117
+#: order/models.py:113
+msgid "Not that bad"
+msgstr "Nu chiar așa de rea"
+
+#: order/models.py:114
+msgid "Average"
+msgstr "Medie"
+
+#: order/models.py:115
+msgid "Good"
+msgstr "Bună"
+
+#: order/models.py:116
+msgid "Perfect"
+msgstr "Perfect"
+
+#: order/models.py:120
 msgid "quality"
 msgstr "calitate"
 
-#: order/models.py:117
-msgid "0 worst quality, 5 highest quality"
-msgstr "0 cea mai slabă calitate, 5 ce mai înaltă calitate"
-
-#: order/models.py:118 restaurant/models.py:140
+#: order/models.py:121 restaurant/models.py:140
 msgid "delivery time"
 msgstr "timpul de livrare"
 
-#: order/models.py:118
-msgid "0 worst delivery time, 5 best delivery time"
-msgstr "0 cel mai prost timp de livrare, 5 cel mai bun timp de livrare"
-
-#: order/models.py:119
+#: order/models.py:122
 msgid "feedback"
 msgstr "feedback"
 
-#: order/models.py:122
+#: order/models.py:125
 msgid "Rating"
 msgstr "Apreciere"
 
-#: order/models.py:123
+#: order/models.py:126
 msgid "Ratings"
 msgstr "Aprecieri"
 
@@ -438,7 +470,7 @@ msgstr "Modurile de livrare"
 msgid "email"
 msgstr "e-mail"
 
-#: restaurant/models.py:68 restaurant/models.py:132 userprofiles/models.py:69
+#: restaurant/models.py:68 restaurant/models.py:132 userprofiles/models.py:70
 msgid "phone"
 msgstr "telefon"
 
@@ -498,11 +530,11 @@ msgstr "Monede acceptate"
 msgid "overall_discount"
 msgstr "Reducerea generală"
 
-#: restaurant/models.py:137 userprofiles/models.py:22
+#: restaurant/models.py:137 userprofiles/models.py:23
 msgid "latitude"
 msgstr "latitudine"
 
-#: restaurant/models.py:138 userprofiles/models.py:23
+#: restaurant/models.py:138 userprofiles/models.py:24
 msgid "longitude"
 msgstr "longitudine"
 
@@ -514,7 +546,7 @@ msgstr "raza"
 msgid "Delivery range in km"
 msgstr "Zona de livrare în km"
 
-#: restaurant/models.py:141 userprofiles/models.py:74
+#: restaurant/models.py:141 userprofiles/models.py:75
 msgid "communication"
 msgstr "comunicare"
 
@@ -564,32 +596,32 @@ msgstr ""
 msgid "info"
 msgstr "informații"
 
-#: restaurant/models.py:168 templates/order/order_div.html:30
-#: templates/restaurant/index.html:37
+#: restaurant/models.py:186 templates/menu/item_list.html:41
+#: templates/order/order_div.html:30 templates/restaurant/index.html:62
 msgid "Unit"
 msgstr "Unitate"
 
-#: restaurant/models.py:169
+#: restaurant/models.py:187
 msgid "Units"
 msgstr "Unități"
 
-#: templates/base.html:57 templates/base_alt.html:57
+#: templates/base.html:66 templates/base_alt.html:66
 msgid "Home page"
 msgstr "Acasă"
 
-#: templates/base.html:57 templates/base_alt.html:57
+#: templates/base.html:66 templates/base_alt.html:66
 msgid "Home"
 msgstr "Acasă"
 
-#: templates/base.html:58 templates/base_alt.html:58
+#: templates/base.html:67 templates/base_alt.html:67
 msgid "How do I order"
 msgstr "Cum comand"
 
-#: templates/base.html:60 templates/base_alt.html:60
+#: templates/base.html:69 templates/base_alt.html:69
 msgid "Today's menu"
 msgstr "Meniul zilei"
 
-#: templates/base.html:61 templates/base_alt.html:61
+#: templates/base.html:70 templates/base_alt.html:70
 msgid "Wheel of fortune"
 msgstr "Roata norocului"
 
@@ -634,27 +666,29 @@ msgstr "Parola"
 msgid "Login"
 msgstr "Login"
 
-#: templates/sidebar.html:23 templates/order/order_detail.html:8
-#: templates/order/order_list_div.html:14
-msgid "Clone"
-msgstr "Clonă"
+#: templates/sidebar.html:7
+msgid "Latest orders"
+msgstr "Ultimele comenzi"
 
-#: templates/sidebar.html:67 templates/sidebar.html.py:71
-#: templates/profiles/profile_detail.html:84
-msgid "Invite a friend now"
-msgstr "Invită un prieten"
+#: templates/sidebar.html:61
+msgid "Last seen"
+msgstr "Văzut acum"
 
-#: templates/sidebar.html:69 templates/profiles/profile_detail.html:81
+#: templates/sidebar.html:68 templates/profiles/profile_detail.html:81
 msgid "Sorry, no friends here :("
 msgstr "Ne pare rău, nu v-ați făcut prieteni aici :("
 
+#: templates/sidebar.html:70 templates/profiles/profile_detail.html:84
+msgid "Invite a friend now"
+msgstr "Invită un prieten"
+
 #: templates/admin/base_site.html:4
-msgid "Bucatar site admin"
-msgstr "Pagina de administrare Bucatar"
+msgid "click2eat.ro site admin"
+msgstr "click2eat.ro administrare site"
 
 #: templates/admin/base_site.html:7
-msgid "Bucatar administration"
-msgstr "Administrare Bucatar"
+msgid "click2eat.ro administration"
+msgstr "Administrare click2eat.ro"
 
 #: templates/avatar/add.html:5 templates/avatar/change.html:5
 msgid "Your current avatar: "
@@ -700,25 +734,50 @@ msgstr "Arată/ascunde cautarea avansată"
 msgid "Submit"
 msgstr "Trimite"
 
-#: templates/order/feedback.html:14
+#: templates/menu/item_list.html:43 templates/profiles/profile_detail.html:61
+#: templates/restaurant/unit_detail.html:69
+msgid "Name"
+msgstr "Nume"
+
+#: templates/menu/item_list.html:44 templates/order/order_cart.html:37
+msgid "Price"
+msgstr "Preț"
+
+#: templates/menu/item_list.html:51 templates/restaurant/index.html:72
+msgid "Closed"
+msgstr "Închis"
+
+#: templates/menu/item_list.html:52 templates/restaurant/index.html:73
+msgid "New"
+msgstr "Nou"
+
+#: templates/menu/item_list.html:53 templates/restaurant/index.html:74
+msgid "Has discount"
+msgstr "Are reduceri"
+
+#: templates/order/feedback.html:28
 msgid "Feedback"
 msgstr "Feedback"
 
-#: templates/order/feedback.html:17
+#: templates/order/feedback.html:31
 msgid "Please provide your feedback on "
 msgstr "Vă rugăm să dați un feedback pentru "
 
-#: templates/order/feedback.html:20
+#: templates/order/feedback.html:32
+msgid "Rating for quality"
+msgstr "Apreciere pentru calitate"
+
+#: templates/order/feedback.html:33
+msgid "Rating for delivery time"
+msgstr "Apreciere pentru timpul de livrare"
+
+#: templates/order/feedback.html:36
 msgid "Submit feedback"
 msgstr "Trimite feedback"
 
 #: templates/order/order_cart.html:36
 msgid "Count"
 msgstr "Număr"
-
-#: templates/order/order_cart.html:37
-msgid "Price"
-msgstr "Preț"
 
 #: templates/order/order_cart.html:53
 msgid "Click menu items to fill the plate"
@@ -731,6 +790,10 @@ msgstr "Subtotal"
 #: templates/order/order_detail.html:3
 msgid "Order: "
 msgstr "Comanda: "
+
+#: templates/order/order_detail.html:8 templates/order/order_list_div.html:14
+msgid "Clone"
+msgstr "Clonă"
 
 #: templates/order/order_detail.html:8 templates/order/order_list.html:9
 msgid "Back"
@@ -847,24 +910,24 @@ msgstr "Numărătoare inversă pentru comandă"
 msgid "Has arrived!"
 msgstr "A ajuns!"
 
-#: templates/profiles/create_profile.html:13
+#: templates/profiles/create_profile.html:26
 msgid "Create your profile"
 msgstr "Creați profilul dumneavoastră"
 
-#: templates/profiles/create_profile.html:16
+#: templates/profiles/create_profile.html:29
 #: templates/userprofiles/deliveryaddress_form.html:16
 msgid "Please fill up your profile"
 msgstr "Vă rugăm să completați profilul"
 
-#: templates/profiles/create_profile.html:19
+#: templates/profiles/create_profile.html:32
 msgid "Create profile"
 msgstr "Creați profilul"
 
-#: templates/profiles/edit_profile.html:13
+#: templates/profiles/edit_profile.html:25
 msgid "Edit your profile"
 msgstr "Editați profilul"
 
-#: templates/profiles/edit_profile.html:18
+#: templates/profiles/edit_profile.html:30
 msgid "Update profile"
 msgstr "Actualizați profilul"
 
@@ -888,11 +951,6 @@ msgstr "Schimbă"
 #: templates/profiles/profile_detail.html:111
 msgid "Delete"
 msgstr "Șterge"
-
-#: templates/profiles/profile_detail.html:61
-#: templates/restaurant/unit_detail.html:69
-msgid "Name"
-msgstr "Nume"
 
 #: templates/profiles/profile_detail.html:62
 #: templates/restaurant/unit_detail.html:71
@@ -961,33 +1019,29 @@ msgstr "înregistrați-vă"
 msgid "Sorry no feedback for this restaurant"
 msgstr "Ne pare rău, nu exista feedback pentru acest restaurant"
 
-#: templates/restaurant/index.html:23
+#: templates/restaurant/index.html:44
 msgid "You have not rated orders"
 msgstr "Aveți comenzi la care nu ați dat feedback"
 
-#: templates/restaurant/index.html:25
+#: templates/restaurant/index.html:48
 msgid "Orders that still need your feedback"
 msgstr "Comenzi care mai au nevoie de feedback-ul dumneavoastră"
 
-#: templates/restaurant/index.html:33
+#: templates/restaurant/index.html:56
 msgid "Restaurants"
 msgstr "Restaurante"
 
-#: templates/restaurant/index.html:38
+#: templates/restaurant/index.html:64
 msgid "Quality"
 msgstr "Calitate"
 
-#: templates/restaurant/index.html:39
+#: templates/restaurant/index.html:65
 msgid "Delivery time"
 msgstr "Timp de livrare"
 
-#: templates/restaurant/index.html:40 templates/restaurant/index.html.py:48
+#: templates/restaurant/index.html:66 templates/restaurant/index.html.py:78
 msgid "Comments"
 msgstr "Comentarii"
-
-#: templates/restaurant/index.html:46 templates/restaurant/index.html.py:47
-msgid "N/A"
-msgstr "N/A"
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"
@@ -1064,7 +1118,7 @@ msgid ""
 msgstr "Sunteți sigur/ă că vreți să ștergeți următoarea adresă de livrare?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:10
-#: userprofiles/models.py:57
+#: userprofiles/models.py:58
 msgid "Delivery Address"
 msgstr "Adresă de livrare"
 
@@ -1144,104 +1198,104 @@ msgstr "mesaj"
 msgid "Join me for lunch!"
 msgstr "Hai cu mine la masă!"
 
-#: userprofiles/models.py:12
+#: userprofiles/models.py:13
 msgid "primary"
 msgstr "primară"
 
-#: userprofiles/models.py:12
+#: userprofiles/models.py:13
 msgid "Is this your most frequent used address?"
 msgstr "Este aceasta adresa cea mai folosită?"
 
-#: userprofiles/models.py:13
+#: userprofiles/models.py:14
 msgid "city"
 msgstr "oraș"
 
-#: userprofiles/models.py:14
+#: userprofiles/models.py:15
 msgid "street"
 msgstr "strada"
 
-#: userprofiles/models.py:15
+#: userprofiles/models.py:16
 msgid "number"
 msgstr "număr"
 
-#: userprofiles/models.py:16
+#: userprofiles/models.py:17
 msgid "block"
 msgstr "bloc"
 
-#: userprofiles/models.py:17
+#: userprofiles/models.py:18
 msgid "entrance"
 msgstr "scara"
 
-#: userprofiles/models.py:18
+#: userprofiles/models.py:19
 msgid "floor"
 msgstr "etaj"
 
-#: userprofiles/models.py:19
+#: userprofiles/models.py:20
 msgid "apartment number"
 msgstr "numărul apartamentului"
 
-#: userprofiles/models.py:21
+#: userprofiles/models.py:22
 msgid "geolocated address"
 msgstr "adresa geolocalizată"
 
-#: userprofiles/models.py:24 userprofiles/models.py:25
+#: userprofiles/models.py:25 userprofiles/models.py:26
 msgid "geolocation error"
 msgstr "eroare de geolocare"
 
-#: userprofiles/models.py:35
+#: userprofiles/models.py:36
 #, python-format
 msgid "%(street)s %(number)s floor %(floor)s ap. %(ap)s, %(city)s"
 msgstr "%(street)s %(number)s et. %(floor)s ap. %(ap)s, %(city)s"
 
-#: userprofiles/models.py:58
+#: userprofiles/models.py:59
 msgid "Delivery Addresses"
 msgstr "Adrese de livrare"
 
-#: userprofiles/models.py:62
+#: userprofiles/models.py:63
 msgid "Male"
 msgstr "Masculin"
 
-#: userprofiles/models.py:63
+#: userprofiles/models.py:64
 msgid "Female"
 msgstr "Feminin"
 
-#: userprofiles/models.py:67
+#: userprofiles/models.py:68
 msgid "first name"
 msgstr "prenume"
 
-#: userprofiles/models.py:68
+#: userprofiles/models.py:69
 msgid "last name"
 msgstr "nume"
 
-#: userprofiles/models.py:70
+#: userprofiles/models.py:71
 msgid "sex"
 msgstr "sexul"
 
-#: userprofiles/models.py:71
+#: userprofiles/models.py:72
 msgid "birth date"
 msgstr "Data nașterii"
 
-#: userprofiles/models.py:72
+#: userprofiles/models.py:73
 msgid "newsletter"
 msgstr "email de știri"
 
-#: userprofiles/models.py:72
+#: userprofiles/models.py:73
 msgid "Do you want to receive our newsletter?"
 msgstr "Doriți să primiți e-mail cu știri?"
 
-#: userprofiles/models.py:73
+#: userprofiles/models.py:74
 msgid "public"
 msgstr "public"
 
-#: userprofiles/models.py:73
+#: userprofiles/models.py:74
 msgid "Do you want your profile to be public?"
 msgstr "Doriți ca profilul dumeanvoastră să fie public?"
 
-#: userprofiles/models.py:90
+#: userprofiles/models.py:94
 msgid "User Profile"
 msgstr "Profil iutilizator"
 
-#: userprofiles/models.py:91
+#: userprofiles/models.py:95
 msgid "User Profiles"
 msgstr "Profiluri utilizator"
 
@@ -1254,20 +1308,29 @@ msgstr "Mulțumim, vom încerca să corectăm problema."
 msgid "The invitation email was send to %s."
 msgstr "Email-ul de invitație a fost trimis catre %s."
 
+#~ msgid "Rating for speed"
+#~ msgstr "Apreciere pentru timpul de livrare"
+
+#~ msgid "Value must be in the range [0,5]"
+#~ msgstr "Valoarea trebuie sa fie in intervalul [0,5]"
+
+#~ msgid "0 worst quality, 5 highest quality"
+#~ msgstr "0 cea mai slabă calitate, 5 ce mai înaltă calitate"
+
+#~ msgid "0 worst delivery time, 5 best delivery time"
+#~ msgstr "0 cel mai prost timp de livrare, 5 cel mai bun timp de livrare"
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
 #~ msgid "(1:bad - 5:good)"
 #~ msgstr "(1:rău - 5:bun)"
 
 #~ msgid "You currently don't have any friends :("
 #~ msgstr "Nu ai încă nici un prieten în acest site :("
 
-#~ msgid "Close"
-#~ msgstr "Închide"
-
 #~ msgid "First name"
 #~ msgstr "Prenume"
-
-#~ msgid "Last name"
-#~ msgstr "Nume de familie"
 
 #~ msgid "Unit Price"
 #~ msgstr "Preț per unitate"

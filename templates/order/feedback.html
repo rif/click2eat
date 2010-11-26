@@ -29,7 +29,7 @@
 
 {% block content %}
 <h1>{% trans 'Please provide your feedback on ' %}{{ order }}</h1>
-<p>{% trans 'Rating for speed' %}: <span id="stars-cap-sp"></span></p>
+<p>{% trans 'Rating for quality' %}: <span id="stars-cap-sp"></span></p>
 <p>{% trans 'Rating for delivery time' %}: <span id="stars-cap-dt"></span></p>
 <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}

@@ -20,7 +20,7 @@ DATABASES = {
 }
 
 TIME_ZONE = 'Europe/Bucharest'
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ro-ro'
 ugettext = lambda s: s
 
 LANGUAGES = (
