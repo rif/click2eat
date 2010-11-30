@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'menu',
     'userprofiles',
     'order',
+    'wheel',
 )
 
 if DEBUG:
