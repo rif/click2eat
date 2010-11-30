@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-26 17:44+0200\n"
-"PO-Revision-Date: 2010-11-26 17:44+0200\n"
-"Last-Translator: Filemaker <r.fericean@filemaker-solutions.ro>\n"
+"POT-Creation-Date: 2010-11-30 16:44+0200\n"
+"PO-Revision-Date: 2010-11-30 16:50+0200\n"
+"Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "Prețul mai mic decât"
 msgid "Quantity more than"
 msgstr "Cantitate mai mare ca"
 
-#: menu/filter.py:14 templates/base.html:68 templates/base_alt.html:68
+#: menu/filter.py:14 templates/base.html:69 templates/base_alt.html:69
 msgid "All restaurants"
 msgstr "Toate restaurantele"
 
@@ -597,7 +597,7 @@ msgid "info"
 msgstr "informații"
 
 #: restaurant/models.py:186 templates/menu/item_list.html:41
-#: templates/order/order_div.html:30 templates/restaurant/index.html:62
+#: templates/order/order_div.html:30 templates/restaurant/index.html:61
 msgid "Unit"
 msgstr "Unitate"
 
@@ -605,23 +605,24 @@ msgstr "Unitate"
 msgid "Units"
 msgstr "Unități"
 
-#: templates/base.html:66 templates/base_alt.html:66
+#: templates/base.html:67 templates/base_alt.html:67
 msgid "Home page"
 msgstr "Acasă"
 
-#: templates/base.html:66 templates/base_alt.html:66
+#: templates/base.html:67 templates/base_alt.html:67
 msgid "Home"
 msgstr "Acasă"
 
-#: templates/base.html:67 templates/base_alt.html:67
+#: templates/base.html:68 templates/base_alt.html:68
 msgid "How do I order"
 msgstr "Cum comand"
 
-#: templates/base.html:69 templates/base_alt.html:69
+#: templates/base.html:70 templates/base_alt.html:70
 msgid "Today's menu"
 msgstr "Meniul zilei"
 
-#: templates/base.html:70 templates/base_alt.html:70
+#: templates/base.html:71 templates/base_alt.html:71
+#: templates/wheel/fortune.html:4
 msgid "Wheel of fortune"
 msgstr "Roata norocului"
 
@@ -743,15 +744,15 @@ msgstr "Nume"
 msgid "Price"
 msgstr "Preț"
 
-#: templates/menu/item_list.html:51 templates/restaurant/index.html:72
+#: templates/menu/item_list.html:51 templates/restaurant/index.html:71
 msgid "Closed"
 msgstr "Închis"
 
-#: templates/menu/item_list.html:52 templates/restaurant/index.html:73
+#: templates/menu/item_list.html:52 templates/restaurant/index.html:72
 msgid "New"
 msgstr "Nou"
 
-#: templates/menu/item_list.html:53 templates/restaurant/index.html:74
+#: templates/menu/item_list.html:53 templates/restaurant/index.html:73
 msgid "Has discount"
 msgstr "Are reduceri"
 
@@ -1019,27 +1020,27 @@ msgstr "înregistrați-vă"
 msgid "Sorry no feedback for this restaurant"
 msgstr "Ne pare rău, nu exista feedback pentru acest restaurant"
 
-#: templates/restaurant/index.html:44
+#: templates/restaurant/index.html:43
 msgid "You have not rated orders"
 msgstr "Aveți comenzi la care nu ați dat feedback"
 
-#: templates/restaurant/index.html:48
+#: templates/restaurant/index.html:47
 msgid "Orders that still need your feedback"
 msgstr "Comenzi care mai au nevoie de feedback-ul dumneavoastră"
 
-#: templates/restaurant/index.html:56
+#: templates/restaurant/index.html:55
 msgid "Restaurants"
 msgstr "Restaurante"
 
-#: templates/restaurant/index.html:64
+#: templates/restaurant/index.html:63
 msgid "Quality"
 msgstr "Calitate"
 
-#: templates/restaurant/index.html:65
+#: templates/restaurant/index.html:64
 msgid "Delivery time"
 msgstr "Timp de livrare"
 
-#: templates/restaurant/index.html:66 templates/restaurant/index.html.py:78
+#: templates/restaurant/index.html:65 templates/restaurant/index.html.py:77
 msgid "Comments"
 msgstr "Comentarii"
 
@@ -1189,6 +1190,19 @@ msgstr "Termină"
 #: templates/userprofiles/invite_friend_form.html:6
 msgid "Invite friend"
 msgstr "Invită prieten"
+
+#: templates/wheel/fortune.html:5
+msgid ""
+"If you are undecided about what to eat today, here you can let the fate "
+"decide. Just spin the wheel an find out what the it was ment for you today."
+msgstr ""
+"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa soarta "
+"să decidă pentru dumneavoastră. Doar învartiti roata ca să vedeți ce vi-a "
+"fost scris pentru astăzi."
+
+#: templates/wheel/fortune.html:48
+msgid "START"
+msgstr "START"
 
 #: userprofiles/forms.py:17
 msgid "message"
