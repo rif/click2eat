@@ -94,6 +94,12 @@ class PromotionAdmin(admin.ModelAdmin):
         }),
     )
 
+class MenuOfTheDayAdmin(admin.ModelAdmin):
+    list_display = ('unit', 'day', 'price')
+    list_filter = ['unit', 'day']
+    search_fields = ['items__name_def']
+
+
 admin.site.register(models.Language)
 admin.site.register(models.Item, ItemAdmin)
 admin.site.register(models.VAT, VATAdmin)
@@ -101,3 +107,4 @@ admin.site.register(models.ItemGroup, ItemGroupAdmin)
 admin.site.register(models.Topping, ToppingAdmin)
 admin.site.register(models.ToppingGroup, ToppingGroupAdmin)
 admin.site.register(models.Promotion, PromotionAdmin)
+admin.site.register(models.MenuOfTheDay, MenuOfTheDayAdmin)

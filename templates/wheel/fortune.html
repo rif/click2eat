@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}{% trans 'Wheel of fortune' %}{% endblock %}
-{% block description %}{% trans 'If you are undecided about what to eat today, here you can let the fate decide. Just spin the wheel an find out what the it was ment for you today.' %}{% endblock %}
+{% block description %}{% trans 'If you are undecided about what to eat today, here you can let the fate decide. Just spin the wheel an find out what the it was meant for you today.' %}{% endblock %}
 
 {% block scripts %}
 <script type="text/javascript">
@@ -10,14 +10,16 @@ $(function(){
    $("#event").click(function(e){
       if($("#plate").hasClass("start")) {
           $("#plate").attr("class", "processing");
+          $("#event").text("{% trans 'STOP' %}");
       } else if($("#plate").hasClass("processing")) {
           $("#selected_plate").show(); 
           $("#plate").attr("class", "generic");
+          $("#event").text("{% trans 'RESTART' %}");
       } else if($("#plate").hasClass("generic")) {
           $("#plate").attr("class", "processing");
           $("#selected_plate").hide();
+          $("#event").text("{% trans 'STOP' %}");
       }
-console.log($("#plate").attr("class"));
    });
 });
 </script>
@@ -25,28 +27,17 @@ console.log($("#plate").attr("class"));
 
 {% block content %}
 <div class="content_area">
-  <div class="title"><h1 class="light_green">Roata gastronomică</h1></div><br>
+  <div class="title"><h1 class="light_green">{% trans 'Wheel of fortune' %}</h1></div><br>
   
   <div id="lucky_plate_text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Praesent ultrices ligula ac elit vestibulum lacinia. Sed
-    non dui dolor, in sollicitudin urna. Aliquam lacus augue,
-    consectetur id dapibus semper, adipiscing ac velit. Etiam
-    elementum venenatis nulla ut facilisis. Sed gravida,
-    lorem in ultrices molestie, purus diam aliquet augue, vel
-    posuere dui libero sed quam. Vestibulum faucibus justo ac
-    purus tristique eu adipiscing massa pellentesque. Sed
-    fermentum erat ac elit congue iaculis ullamcorper ipsum
-    dictum. Etiam eleifend dignissim neque, at sagittis dui
-    tincidunt ac. In et urna eu lacus sagittis elementum ut
-    id erat. Mauris est sem, bibendum sed dignissim et, dictum
-    ac quam. Integer lobortis porttitor ipsum vel pharetra.
+    <p>{% trans 'If you are undecided about what to eat today, here you can let the fate decide. Just spin the wheel an find out what the it was meant for you today.' %}</p>
+    <p>{% trans 'Press the button once, let is spinn, press it again and set the table!' %}</p>
   </div>
 
   <div id="lucky_plate">
     <div id="plate" class="start"></div>
     <div id="control"><div id="event">{% trans 'START' %}</div></div>
-    <div id="selected_plate" style="display:none">Mama</div>
+    <div id="selected_plate" style="display:none">Pizza Margerita</div>
   </div>
   <div class="clear"></div>
 </div>
