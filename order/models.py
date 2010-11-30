@@ -84,7 +84,8 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('order'))
-    item = models.ForeignKey('menu.Item', verbose_name=_('item'))
+    item = models.ForeignKey('menu.Item', verbose_name=_('item'), null=True)
+    menu_of_the_day = models.ForeignKey('menu.MenuOfTheDay', verbose_name=_('menu of the day'), null=True)
     count = models.IntegerField(_('count'), default=1)
     old_price = models.FloatField(_('price'), default=0)
     cart = models.CharField(_('cart'), max_length=15, null=True, blank=True)
@@ -94,7 +95,10 @@ class OrderItem(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.old_price = self.item.get_price()
+            if item :
+                self.old_price = self.item.get_price()
+            if menu_of_the_day:
+                self.old_price = self.menu_of_the_day.price
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_amount()
 

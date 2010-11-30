@@ -178,3 +178,14 @@ class Promotion(models.Model):
         ordering = ['-start_date']
         verbose_name = _('Promotion')
         verbose_name_plural = _('Promotions')
+
+class MenuOfTheDay(models.Model):
+    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
+    day = models.DateField(_('day'))
+    items = models.ManyToManyField(Item, verbose_name=_('items'))
+    price = models.FloatField(_('price'))
+    
+    class Meta:
+        ordering = ['-day']
+        verbose_name = _('Menu of the day')
+        verbose_name_plural = _('Menu of the day')
