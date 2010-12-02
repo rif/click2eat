@@ -182,7 +182,8 @@ class Promotion(models.Model):
 class MenuOfTheDay(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
     day = models.DateField(_('day'))
-    items = models.ManyToManyField(Item, verbose_name=_('items'))
+    name = models.CharField(_('name'), max_length=50)
+    description = models.TextField(_('description'))
     price = models.FloatField(_('price'))
     
     class Meta:
