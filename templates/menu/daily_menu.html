@@ -4,11 +4,27 @@
 {% block title %}{% trans 'Wheel of fortune' %}{% endblock %}
 {% block description %}{% trans 'If you are undecided about what to eat today, here you can let the fate decide. Just spin the wheel an find out what the it was meant for you today.' %}{% endblock %}
 
+{% block style %}
+<style>
+.tooltip {
+	display:none;
+	background:url(http://static.flowplayer.org/tools/img/tooltip/black_arrow_big.png);
+	height:163px;
+	padding:30px 30px 10px 30px;
+	width:310px;
+	font-size:11px;
+	color:#fff;
+        z-index:6;
+}
+</style>
+{% endblock %}
+
 {% block scripts %}
 <script type="text/javascript">
 $(function(){
    $("#event").click(function(e){
    });
+   $("#daily_table td[title]").tooltip();
 });
 </script>
 {% endblock %}
@@ -17,7 +33,7 @@ $(function(){
 <div class="content_area">
   <div class="title"><h1 class="light_green">{% trans "Today's menu" %}</h1></div><br>
   <div id="establishment_list">
-    <table>
+    <table id="daily_table">
       <tbody>
 	<tr class="platinum">
           <th>{% trans 'Unit' %}</th>
@@ -32,7 +48,7 @@ $(function(){
 	    {% if not menu.unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
 	    {% if menu.unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
 	  </td>
-	  <td class="align-center">{{ menu.description }}</td>
+	  <td class="align-center" title="{{ menu.description|safe }}">{{ menu.name }}*</td>
 	  <td class="align-center">{{ menu.price }}</td>
 	</tr>	
 	{% empty %}
@@ -41,6 +57,7 @@ $(function(){
       </tbody>
     </table>
   </div> <!-- establishment_list -->
+  <p>* {% trans 'Hover the mouse over it to get a more detailed description.' %}</p>
   <div class="clear"></div>
 </div><!-- content_area -->
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.contrib import admin
-from menu import models
 from django.utils.translation import ugettext_lazy as _
+from menu import models
+from menu.forms import MenuOfTheDayForm
 
 class ItemGroupInline(admin.TabularInline):
    model = models.ItemGroupTranslation
@@ -95,9 +96,10 @@ class PromotionAdmin(admin.ModelAdmin):
     )
 
 class MenuOfTheDayAdmin(admin.ModelAdmin):
-    list_display = ('unit', 'day', 'price')
-    list_filter = ['unit', 'day']
-    search_fields = ['items__name_def']
+   form = MenuOfTheDayForm
+   list_display = ('unit', 'day', 'price')
+   list_filter = ['unit', 'day']
+   search_fields = ['items__name_def']
 
 
 admin.site.register(models.Language)

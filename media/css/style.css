@@ -97,7 +97,7 @@ input, select { outline: none; }
 
 #header
 {
-	margin: 0 auto;
+	margin: 0 auto 0 auto;
 	width:  1000px;
 }
 
@@ -285,8 +285,10 @@ input, select { outline: none; }
 	height:     51px;
 	background: transparent url("../images/template/menu_top_bg.png") repeat-x top left;
 
-	margin:   -30px 0 0 0;
-	/*position: absolute;*/
+	margin:   /*-30px*/ 0 0 0 0;
+
+	/*position: absolute;
+	top:      223px;*/
 }
 
 #menu_top ul#menu-list
@@ -300,6 +302,7 @@ input, select { outline: none; }
 
 	width:    1000px;
 	height:   51px;
+	
 	position: relative;
 
 	display: block;
