@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'compressor',
     'avatar',
     'rosetta',
+    'robots',
     # my apps
     'restaurant',
     'menu',
