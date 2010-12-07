@@ -23,7 +23,8 @@ urlpatterns = patterns('',
                        (r'^sentry/', include('sentry.urls')),
                        (r'^tinymce/', include('tinymce.urls')),
                        (r'^avatar/', include('avatar.urls')),
-                       (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
+                       (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+                       (r'^robots.txt$', include('robots.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',
