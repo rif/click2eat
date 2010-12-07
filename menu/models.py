@@ -186,6 +186,10 @@ class MenuOfTheDay(models.Model):
     description = models.TextField(_('description'))
     price = models.FloatField(_('price'))
     
+    @models.permalink
+    def get_absolute_url(self):
+	return ('menu:daily_menu', [str(self.id)])
+    
     class Meta:
         ordering = ['-day']
         verbose_name = _('Menu of the day')

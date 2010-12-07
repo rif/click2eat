@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
+from django.shortcuts import get_object_or_404
 from datetime import date
 from django.db.models import Q
 from menu.models import Item, MenuOfTheDay
@@ -17,7 +18,13 @@ def item_list(request):
 
     
 @login_required
-@render_to('menu/daily_menu.html')
-def daily_menu(request):    
+@render_to('menu/daily_menu_list.html')
+def daily_menues(request):    
     menues = MenuOfTheDay.objects.filter(day = date.today());
     return {'daily_menues': menues}
+
+@login_required
+@render_to('menu/daily_menu.html')
+def daily_menu(request, menu_id):    
+    obj = get_object_or_404(MenuOfTheDay, pk=menu_id)
+    return {'object': obj}
