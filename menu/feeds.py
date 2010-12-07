@@ -5,7 +5,7 @@ from menu.models import MenuOfTheDay
 
 class DailyMenuFeed(Feed):
     title = _("click2eat.ro menu of the day")
-    link = "/feeds/"
+    link = "/menu/feeds/"
     description = _("Menu of the day from various restaurants at click2eat.ro")
 
     def items(self):

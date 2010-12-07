@@ -2,6 +2,9 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 from userprofiles import views
 from userprofiles.forms import BucatarRegistrationForm
+from restaurant.sitemaps import UnitSitemap
+
+sitemaps = {'units': UnitSitemap}
 
 admin.autodiscover()
 
@@ -20,6 +23,7 @@ urlpatterns = patterns('',
                        (r'^sentry/', include('sentry.urls')),
                        (r'^tinymce/', include('tinymce.urls')),
                        (r'^avatar/', include('avatar.urls')),
+                       (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
                        )
 
 urlpatterns += patterns('profiles.views',
