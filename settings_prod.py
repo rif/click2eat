@@ -18,7 +18,7 @@ CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 
 #LOGIN_URL="/stand/accounts/login/"
 
-SERVER='apache.filemaker-solutions.ro'
+SERVER='click2eat.ro'
 MEDIA_URL = 'http://%s/static/media/' % SERVER
 ADMIN_MEDIA_PREFIX = 'http://%s/static/admin/media/' % SERVER
 
