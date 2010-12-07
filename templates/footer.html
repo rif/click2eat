@@ -1,36 +1,21 @@
+{% load i18n %}
 <div id="footer">
     <div class="wrapper">
       <div class="box">
 	<ul>
-	  <li><a target="_self" href="#">Some item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Comanda</a></li>
 	</ul>
       </div>
 
       <div class="box">
 	<ul>
-	  <li><a target="_self" href="#">Some item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Mancare</a></li>
 	</ul>
       </div>
 
       <div class="box">
 	<ul>
-	  <li><a target="_self" href="#">Some item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
-	  <li><a target="_self" href="#">Another item here</a></li>
+	  <li><a target="_self" href="#">Timisoara</a></li>
 	</ul>
       </div>
       <div class="clear"></div>
@@ -40,11 +25,11 @@
 	Powered by Clik2Eat &copy; 2010 | Click2eat Group Corp.<br>
 	Designed by <a target="_blank" href="http://www.handsome.ro/">HANDSOME</a><br><br>
 
-	<a target="_self" href="#">Home</a> |
-	<a target="_self" href="#">Restaurant</a> |
-	<a target="_self" href="#">How to order</a> |
-	<a target="_self" href="#">Privacy statement</a> |
-	<a target="_self" href="#">Contact</a>
+	<a target="_self" href="/">{% trans 'Home' %}</a> |
+	<a target="_self" href="#">{% trans 'Restaurant' %}</a> |
+	<a target="_self" href="#">{% trans 'How to order' %}</a> |
+	<a target="_self" href="#">{% trans 'Privacy statement' %}</a> |
+	<a target="_self" href="#">{% trans 'Contact' %}</a>
       </p>
     </div>
 </div> <!-- footer -->
