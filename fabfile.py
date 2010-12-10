@@ -22,3 +22,6 @@ def deploy():
 def reload():
     'fires an apache graceful reload'
     sudo('apachectl graceful')
+    with cd('/Users/rif/bucatar/'):
+	run('ls')
+	sudo('./delete_extra_cache.sh')
