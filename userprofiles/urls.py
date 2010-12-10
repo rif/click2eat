@@ -13,5 +13,5 @@ urlpatterns = patterns('',
                        )
 
 urlpatterns += patterns('',
-                        url(r'^invitefriend/$', views.invite_friend, name='invite_friend'),
+                         url(r'^invitefriend/$', views.invite_friend, name='invite_friend'),
                         )

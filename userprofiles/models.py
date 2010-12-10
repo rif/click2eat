@@ -5,8 +5,10 @@ import re
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.db.models import Sum
 from order.models import Order
 from friends.models import Friendship
+from bonus.models import Bonus
 
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
@@ -64,7 +66,6 @@ class UserProfile(models.Model):
                       ('F', _('Female')),
                       )
     user = models.OneToOneField(User, verbose_name=_('user'))
-    #friend = models.ForeignKey(User, verbose_name=_('friend'), null=True, blank=True, related_name="friends")
     first_name = models.CharField(_('first name'), max_length=50)
     last_name = models.CharField(_('last name'), max_length=50)
     phone = models.CharField(_('phone'), max_length=15, unique=True)
@@ -85,6 +86,10 @@ class UserProfile(models.Model):
 
     def get_friends_iterator(self):
         return Friendship.objects.friends_for_user(self.user)
+     
+    def get_bonus_points(self):
+	result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('points'))
+	return result['points__sum']
 
     @models.permalink
     def get_absolute_url(self):

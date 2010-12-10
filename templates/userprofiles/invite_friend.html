@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Invite friend' %}{% endblock %}
+{% block description %}{% trans "Here you can invite your friendts to join the site. You'll get bonus points for free meal if they join :)" %}{% endblock %}
+
+{% block content %}
+<div class="content_area">
+  <div class="title"><h1 class="light_green">{% trans 'Invite friend' %}</h1></div><br>
+  {% include 'userprofiles/invite_friend_form.html' %}  
+  <div class="clear"></div>
+</div>
+{% endblock %}
