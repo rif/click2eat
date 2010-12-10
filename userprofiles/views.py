@@ -61,12 +61,20 @@ def invite_friend(request):
                 message = _('Join me for lunch!')
             JoinInvitation.objects.send_invitation(request.user, email, message)
             messages.add_message(request, messages.INFO, _('The invitation email was send to %s.') % email)
-            return HttpResponse('ok')
+            if request.is_ajax():
+		return HttpResponse('ok')
+	    else:
+		return redirect('profiles_profile_detail', username=request.user.username)
     else:
         form = InviteFriendForm()
-    return render_to_response('userprofiles/invite_friend_form.html', {
-        'form': form,
-        }, context_instance=RequestContext(request))
+    if request.is_ajax():
+	return render_to_response('userprofiles/invite_friend_form.html', {
+	    'form': form,
+	    }, context_instance=RequestContext(request))
+    else:
+	 return render_to_response('userprofiles/invite_friend.html', {
+	    'form': form,
+	    }, context_instance=RequestContext(request))
 
 
 def invite_accept(request, confirmation_key):

@@ -6,6 +6,7 @@ from registration.backends.default import DefaultBackend
 from annoying.functions import get_object_or_None
 from userprofiles.models import DeliveryAddress
 from friends.models import JoinInvitation
+from bonus.models import Bonus
 
 class DeliveryAddressForm(forms.ModelForm):
     class Meta:
@@ -31,6 +32,9 @@ class BucatarRegistrationBackend(DefaultBackend):
              ji = get_object_or_None(JoinInvitation, confirmation_key=confirmation_key)
              if ji != None:
                  ji.accept(new_user)
+                 b = Bonus(user = ji.from_user)
+                 b.set_friend_bonus()
+                 b.save()
          return new_user
              
      def activate(self, request, activation_key):

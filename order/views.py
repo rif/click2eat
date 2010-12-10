@@ -21,6 +21,7 @@ from restaurant.models import Unit
 from menu.models import Item
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
+from bonus.models import Bonus
 
 def __get_current_order(request, unit):
     try:
@@ -270,6 +271,10 @@ def feedback(request, order_id):
             new_rating.user = order.user
             new_rating.order = order
             new_rating.save()
+            # create bonus
+            b  = Bonus(user = order.user)
+            b.set_rating_bonus()
+            b.save()
             messages.add_message(request, messages.INFO, _('Thank you! Your feedback is very appreciated!'))
             return redirect('restaurant:index')
     else:

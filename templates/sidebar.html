@@ -34,9 +34,10 @@
   
   <ul>
     <li>
-      <span class="big">200 {% trans 'points' %}</span>&nbsp;&nbsp;
-      <span class="medium">{% trans 'bonus' %}</span>&nbsp;&nbsp;
+      <span class="big">{{ user.userprofile.get_bonus_points }} {% trans 'points' %}</span>&nbsp;&nbsp;
+      <span class="medium">{% trans 'bonus' %}</span><br>
       <span class="small">{% trans 'free meal pending' %}</span><br>
+      <a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a>
     </li>
   </ul>
   

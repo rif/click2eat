@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'userprofiles',
     'order',
     'wheel',
+    'bonus',
 )
 
 if DEBUG:

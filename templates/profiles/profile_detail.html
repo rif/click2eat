@@ -65,6 +65,7 @@ $(function(){
       <strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}<br>
       <strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}<br>
       <strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}<br>
+      <strong>{% trans 'Bonus points' %}:</strong>{{ profile.get_bonus_points }} <a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a><br>
       {% if user == profile.user %}
       <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> | <a href="{% url order:list %}">{% trans 'Order History' %}</a>
       {% endif %}
