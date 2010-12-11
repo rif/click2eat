@@ -16,11 +16,22 @@ class Communication(models.Model):
       verbose_name_plural = _('Communication')
 
 class PartnerPackage(models.Model):
-    name = models.CharField(_('name'), max_length=100)
-    slug = models.SlugField(_('slug'), help_text=_('The css class for this package'))
+    PACKAGE_CHOICES = (
+      ('SV', _('Silver')),
+      ('GL', _('Gold')),
+      ('PL', _('Platinum'))
+    )
+    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
+    name = models.CharField(_('name'), max_length=2, choices=PACKAGE_CHOICES, default='SV')
     monthly_fee = models.FloatField(_('monthly fee'))
     rate = models.FloatField(_('rate'), help_text=_('The percentage taken from every order'))
     details = models.TextField(_('details'))
+    start_date = models.DateField(_('start date'), auto_now_add=True)
+    end_date = models.DateField(_('end date'), auto_now_add=True, null=True)
+    current = models.BooleanField(_('current'))
+    
+    def get_class(self):
+	return self.get_name_display().lower()
 
     def __unicode__(self):
         return self.name
@@ -28,6 +39,7 @@ class PartnerPackage(models.Model):
     class Meta:
       verbose_name = _('Partner Package')
       verbose_name_plural = _('Partner Packages')
+      ordering = ['-start_date']
 
 class PaymentMethod(models.Model):
     name = models.CharField(_('name'), max_length=100)
@@ -139,7 +151,6 @@ class Unit(models.Model):
     delivery_range = models.FloatField(_('range'), help_text=_('Delivery range in km'))
     delivery_time = models.IntegerField(_('delivery time'))
     communication = models.ManyToManyField(Communication, verbose_name=_('communication'))
-    package = models.ForeignKey(PartnerPackage, verbose_name=_('package'))
     minimum_ord_val = models.IntegerField(_('minimum order value'))
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))
@@ -177,6 +188,8 @@ class Unit(models.Model):
             return 0
         return unicode(self.avg_speed * 100/5)
 
+    def get_package(self):
+	return self.partnerpackage_set.get(current=True)
 
     @models.permalink
     def get_absolute_url(self):

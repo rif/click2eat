@@ -66,7 +66,7 @@ $(".time-stars").stars({
 	</tr>
 	{% for unit in units %}
 	<tr class="{% cycle 'even' 'odd'%}">
-          <td><a class="{{ unit.package.slug }}" href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
+          <td><a class="{{ unit.get_package.get_class }}" href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
 	  <td class="align-center">
 	    {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
 	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
@@ -74,7 +74,7 @@ $(".time-stars").stars({
 	  </td>
 	  <td><div class="rating_bar"><div style="width:{{ unit.get_avg_quality }}%"></div></div></td>
 	  <td><div class="rating_bar"><div style="width:{{ unit.get_avg_speed }}%"></div></div></td>
-          <td class="align-center"><a class="{{ unit.package.slug }}" href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
+          <td class="align-center"><a class="{{ unit.get_package.get_class }}" href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a></td>
 	</tr>
       {% endfor %}
       </tbody>

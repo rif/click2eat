@@ -84,7 +84,7 @@ class OrderTest(TestCase):
       self.client.login(username='rif', password='test')
       r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
       self.failUnlessEqual(200, r.status_code)
-      self.failUnlessEqual('Delivered', r.content)
+      self.failUnlessEqual('Livrat', r.content)
       #self.failUnlessEqual(u'DL', ord.status)
   
   def test_restricted_views(self):
