@@ -85,6 +85,13 @@
   <div class="clear"></div>
 </div><!-- content_area -->
 
+{% if motd %} 
+<div class="content_area">
+<div class="title"><h1 class="light_orange">{% trans 'Menu of the day' %}</h1></div>
+        <h2><a href="#">{{ motd.name }}</a></h2>
+        {{ motd.description|safe }}
+</div><!-- content_area -->
+{% endif %}
 <div class="content_area">
   <div class="title"><h1 class="light_orange">{% trans 'Menu' %}</h1></div>
   <div id="establishment-menu">
