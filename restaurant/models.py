@@ -27,7 +27,7 @@ class PartnerPackage(models.Model):
     rate = models.FloatField(_('rate'), help_text=_('The percentage taken from every order'))
     details = models.TextField(_('details'))
     start_date = models.DateField(_('start date'), auto_now_add=True)
-    end_date = models.DateField(_('end date'), null=True)
+    end_date = models.DateField(_('end date'), null=True, blank=True)
     current = models.BooleanField(_('current'))
     
     def get_class(self):
