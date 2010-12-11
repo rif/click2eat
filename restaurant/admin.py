@@ -7,9 +7,9 @@ class CommunicationAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 class PartnerPackageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'monthly_fee', 'rate', 'details')
+    list_display = ('unit','name', 'start_date', 'end_date', 'monthly_fee', 'rate', 'details', 'current')
+    list_filter= ['unit']
     search_fields = ['name', 'details']
-    prepopulated_fields = {"slug": ("name",)}
 
 class PaymentMethodAdmin(admin.ModelAdmin):
     list_display = ('name', 'details')
@@ -57,12 +57,12 @@ class ScheduleAdmin(admin.ModelAdmin):
 
 class UnitAdmin(admin.ModelAdmin):    
     form = UnitForm
-    list_display = ('name', 'address', 'package', 'email', 'phone')
+    list_display = ('name', 'address', 'email', 'phone')
     search_fields = ['name', 'address']
     inlines = [ItemGroupInline, ItemInline, ToppingInline]
     fieldsets = (
         (None, {
-            'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path', 'package')
+            'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path')
         }),
         ('Location options', {
             'fields': (('latitude', 'longitude', 'delivery_range'), ('delivery_type', 'delivery_time'))

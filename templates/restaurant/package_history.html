@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Partner package' %}{% endblock %}
+{% block description %}{% trans 'The partner package history for this unit.' %}{% endblock %}
+
+{% block content %}
+<div class="content_area">
+  <div class="title"><h1 class="light_green">{% trans 'Partner package' %}</h1></div><br>
+<div id="establishment_list">
+    <table id="daily_table">
+      <tbody>
+	<tr class="platinum">
+          <th>{% trans 'Unit' %}</th>
+          <th>{% trans 'Package' %}</th>
+	  <th>{% trans 'Start Date' %}</th>
+	  <th>{% trans 'End Date' %}</th>
+          <th>{% trans 'Active' %}</th>
+	</tr>
+	{% for package in history %}
+        <tr>
+        <td class="align-center">{{ package.unit }}</td>
+        <td class="align-center">{{ package.get_name_display }}</td>
+        <td class="align-center">{{ package.start_date }}</td>
+        <td class="align-center">{{ package.end_date }}</td>
+         <td class="align-center">{{ package.current|yesno }}</td>       
+        </tr>
+	{% empty %}
+	<tr><td colspan="5">{% trans 'Sorry no partner package information.' %}</td></tr>
+	{% endfor %}
+      </tbody>
+    </table>
+  </div> <!-- establishment_list -->
+  
+  <div class="clear"></div>
+</div>
+{% endblock %}

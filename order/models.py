@@ -95,9 +95,9 @@ class OrderItem(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            if item :
+            if self.item :
                 self.old_price = self.item.get_price()
-            if menu_of_the_day:
+            if self.menu_of_the_day:
                 self.old_price = self.menu_of_the_day.price
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_amount()
