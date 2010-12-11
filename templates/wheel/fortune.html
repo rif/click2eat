@@ -12,7 +12,10 @@ $(function(){
           $("#plate").attr("class", "processing");
           $("#event").text("{% trans 'STOP' %}");
       } else if($("#plate").hasClass("processing")) {
-          $("#selected_plate").show(); 
+          $.get("{% url wheel:fortune_ajax %}", function(data){
+            $("#selected_plate").text(data);
+            $("#selected_plate").show(); 
+          });
           $("#plate").attr("class", "generic");
           $("#event").text("{% trans 'RESTART' %}");
       } else if($("#plate").hasClass("generic")) {
@@ -37,7 +40,7 @@ $(function(){
   <div id="lucky_plate">
     <div id="plate" class="start"></div>
     <div id="control"><div id="event">{% trans 'START' %}</div></div>
-    <div id="selected_plate" style="display:none">Pizza Margerita</div>
+    <div id="selected_plate" style="display:none">?</div>
   </div>
   <div class="clear"></div>
 </div>
