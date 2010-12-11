@@ -14,6 +14,7 @@ from datetime import date
 from restaurant.models import Unit
 from order.models import Order, Rating, OrderItem
 from order import views
+from menu.models import MenuOfTheDay
 
 def __user_has_profile(user):
     if not user.is_authenticated(): return None
@@ -46,7 +47,12 @@ def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = views.__get_current_order(request, unit)
     carts = OrderItem.objects.select_related().filter(order__id=current_order.id).values_list('cart', flat=True).distinct()
-    return {'object': unit, 'order': current_order, 'carts': carts}
+    motd = MenuOfTheDay.objects.filter(unit__id=unit_id).filter(day=date.today())
+    if motd.exists():
+	motd = motd[0]
+    else:
+	motd = None
+    return {'object': unit, 'order': current_order, 'carts': carts, 'motd': motd}
 
 @login_required
 @render_to('restaurant/comments.html')
