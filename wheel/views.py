@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse
 from datetime import date
 from menu.models import MenuOfTheDay
@@ -9,7 +10,7 @@ def fortune_ajax(request):
     if motd.exists():
 	motd = motd[0].name
     else:
-	motd = 'Not Found'
+	motd = _('No menu of the day defined!')
     return HttpResponse(motd)
 
 
