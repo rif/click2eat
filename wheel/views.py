@@ -4,8 +4,9 @@ from django.http import HttpResponse
 from datetime import date
 from menu.models import MenuOfTheDay
 
-@login_required
 def fortune_ajax(request):
+    if not request.user.is_authenticated():
+        return HttpResponse(_('Please login!'))
     motd = MenuOfTheDay.objects.filter(day = date.today()).order_by('?')
     if motd.exists():
 	motd = motd[0].name
