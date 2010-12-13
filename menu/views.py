@@ -19,9 +19,9 @@ def item_list(request):
     
 @login_required
 @render_to('menu/daily_menu_list.html')
-def daily_menues(request):    
-    menues = MenuOfTheDay.objects.filter(day = date.today());
-    return {'daily_menues': menues}
+def daily_menus(request):    
+    menus = MenuOfTheDay.objects.filter(day = date.today());
+    return {'daily_menus': menus}
 
 @login_required
 @render_to('menu/daily_menu.html')

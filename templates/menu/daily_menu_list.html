@@ -41,7 +41,7 @@ $(function(){
 	  <th>{% trans 'Description' %}</th>
 	  <th>{% trans 'Price' %}</th>
 	</tr>
-	{% for menu in daily_menues %}
+	{% for menu in daily_menus %}
 	<tr class="{% cycle 'even' 'odd'%}">
           <td><a redir="{% url restaurant:detail menu.unit_id %}" class="item-add-link {{ menu.unit.get_package.get_class }}" href="{% url order:add_item menu.id user.username %}">{{ menu.unit }}</a></td>	  
 	  <td class="align-center">
@@ -52,7 +52,7 @@ $(function(){
 	  <td class="align-center">{{ menu.price }}</td>
 	</tr>	
 	{% empty %}
-	<tr><td>{% trans 'Sorry no special menues for today.' %}</td></tr>
+	<tr><td>{% trans 'Sorry no special menus for today.' %}</td></tr>
 	{% endfor %}
       </tbody>
     </table>
