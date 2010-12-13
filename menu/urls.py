@@ -5,7 +5,7 @@ from menu.feeds import DailyMenuFeed
 
 urlpatterns = patterns('',
                        url(r'^itemlist/$', views.item_list, name='item_list'),
-                       url(r'^dailymenues/$', views.daily_menues, name='daily_menues'),
+                       url(r'^dailymenus/$', views.daily_menus, name='daily_menus'),
                        url(r'^dailymenu/(?P<menu_id>\d+)/$', views.daily_menu, name='daily_menu'),
                        url(r'^feed/$', DailyMenuFeed(), name='daily_feed'),
                        )
