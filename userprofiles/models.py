@@ -9,6 +9,7 @@ from django.db.models import Sum
 from order.models import Order
 from friends.models import Friendship
 from bonus.models import Bonus
+from restaurant.models import Unit
 
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
@@ -94,10 +95,17 @@ class UserProfile(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('profiles_profile_detail', (), {'username': self.user.username})
-  
+
+    def administred_units(self):
+        return Unit.objects.filter(admin_users__contains=self.user.username)
+
+    def is_unit_admin(self):
+        return self.administred_units().exists()
+
     class Meta:
         verbose_name = _('User Profile')
         verbose_name_plural = _('User Profiles')
+
 
 def user_profile_handler(sender, ** kwargs):
     newProfile = kwargs['instance']

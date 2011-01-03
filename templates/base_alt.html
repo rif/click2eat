@@ -67,9 +67,11 @@
     <ul id="menu-list">
       <li><a href="{% url restaurant:index %}" title="{% trans 'Home page' %}" target="_self">{% trans 'Home' %}</a></li>
       <li><a href="#" title="{% trans 'How do I order' %}" target="_self">{% trans 'How do I order' %}</a></li>
-      <li><a href="/" title="{% trans 'All restaurants' %}" target="_self">{% trans 'All restaurants' %}</a></li>
       <li><a href="{% url menu:daily_menus %}" title="{% trans "Today's menu" %}" target="_self">{% trans "Today's menu" %}</a></li>
       <li><a href="{% url wheel:fortune %}" title="{% trans 'Wheel of fortune' %}" target="_self">{% trans 'Wheel of fortune' %}</a></li>
+      {% if user.get_profile.is_unit_admin %}
+      <li><a href="{% url restaurant:administrator %}" title="{% trans 'Unit administration' %}" target="_self">{% trans 'Unit administration' %}</a></li>
+      {% endif %}
     </ul>
   </div>
 

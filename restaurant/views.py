@@ -80,3 +80,4 @@ def invoice(request, unit_id):
     else:
         grand_total = unit.get_package().monthly_fee
     return {'unit': unit, 'orders': last_month_orders, 'total_sum': total_amount_sum, 'grand_total': grand_total}
+

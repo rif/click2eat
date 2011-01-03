@@ -12,3 +12,6 @@ urlpatterns = patterns('',
                        url(r'^package_history/(?P<unit_id>\d+)/$', views.package_history, name='package_history'),
                        )
 
+urlpatterns += patterns('django.views.generic.simple',
+                       url(r'^admini/$', 'direct_to_template', {'template': 'restaurant/administrator.html'}, name='administrator'),
+)
