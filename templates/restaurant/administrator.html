@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ object.name }}{% endblock%}
+
+{% block content %}
+<div class="content_area">
+  <div class="title"><h1 class="light_green">{% trans 'Your units' %}</h1></div><br>
+  <ul>
+    {% for unit in user.get_profile.administred_units %}
+    <li><a href="{% url order:restaurant_list unit.id %}">{{ unit }}</a></li>
+    {% empty %}
+    <li>{% trans "Sorry, you don't administer any units." %}</li>
+    {% endfor %}
+  </ul>
+</div><!-- content_area -->
+{% endblock %}
