@@ -25,6 +25,7 @@ urlpatterns = patterns('',
                        (r'^tinymce/', include('tinymce.urls')),
                        (r'^avatar/', include('avatar.urls')),
                        (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+                       (r'^flat/', include('django.contrib.flatpages.urls')),
                        (r'^robots.txt$', include('robots.urls')),
                        )
 

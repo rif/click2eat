@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ flatpage.title }}{% endblock %}
+
+{% block content %}
+<div class="content_area">
+  <div class="title"><h1 class="light_green">{{ flatpage.title }}</h1></div><br>
+{{ flatpage.content|safe }}
+</div> <!-- content_area -->
+{% endblock %}

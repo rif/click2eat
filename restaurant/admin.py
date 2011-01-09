@@ -1,7 +1,16 @@
 from django.contrib import admin
 from restaurant import models
 from menu.models import Item, ItemGroup, Topping
-from restaurant.forms import UnitForm
+from restaurant.forms import UnitForm, FlatPageForm
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
+from tinymce.widgets import TinyMCE
+
+class TinyMCEFlatPageAdmin(admin.ModelAdmin):
+    form = FlatPageForm
+
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 
 class CommunicationAdmin(admin.ModelAdmin):
     search_fields = ['name']
