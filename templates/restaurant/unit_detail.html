@@ -22,6 +22,7 @@
     $("#add-cart").click(function(e){
       $.get("{% url order:add_cart order.id %}", function(data){
           $("#carts>ul").append(data);
+          $("#id_name").focus();
         });
       e.preventDefault();
     });
