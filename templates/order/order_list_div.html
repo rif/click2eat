@@ -2,6 +2,7 @@
 {% load pagination_tags %}
 
 <div class="content_area">
+  {% if object_list.exists %}
   {% autopaginate object_list 10 %}
   <div class="title"><h1 class="light_green">{% trans 'Order history' %}</h1></div>
   <br>
@@ -20,4 +21,5 @@
     </table>
   </div>
   {% paginate %}
+  {% endif %}
 </div>
