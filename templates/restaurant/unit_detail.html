@@ -20,10 +20,12 @@
     });
   $("#carts>ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
     $("#add-cart").click(function(e){
+      if ($("#id_name").length == 0){ // we don't have one already
       $.get("{% url order:add_cart order.id %}", function(data){
           $("#carts>ul").append(data);
           $("#id_name").focus();
         });
+      }
       e.preventDefault();
     });
     $("#last-orders").load("{% url order:list_unit object.id %}", function(){
