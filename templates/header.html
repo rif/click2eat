@@ -27,7 +27,7 @@
 	  <img src="{{ MEDIA_URL }}images/template/commands_text_ro.png" alt="">
 	  <div class="reg_content">
 	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
-	      <div class="label">{% trans 'Username' %}: </div>
+	      <div class="label">{% trans 'User/email' %}: </div>
 	      <input id="id_username" name="username" maxlength="30" type="text"><br>
 	      <div class="clear"></div>
 
