@@ -77,7 +77,9 @@ $(function(){
 <div class="content_area">
   <div class="title"><h1 class="light_orange">{% trans 'Friends' %}</h1></div>
   {% for friend in profile.user.friends.iterator %}
+  {% if friend.user.username %}
   <a href="{% url profiles_profile_detail friend.user.username %}">{{ friend }}</a>,&nbsp;
+  {% endif %}
   {% empty %}
   <p>{% trans "Sorry, no friends here :(" %}
     {% endfor %}

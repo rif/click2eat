@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.sitemaps',
+    'django.contrib.flatpages',
     # external apps
     'profiles',
     'registration',
