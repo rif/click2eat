@@ -62,6 +62,23 @@
       });
     });
   }
+  function addCartName() {
+  $("#cart-name-form").submit(function(){
+    var $action = $("#cart-name-form").attr("action");
+    $.post($action,
+    { csrfmiddlewaretoken:  $("input[name='csrfmiddlewaretoken']").val(),
+      name:                   $("#id_name").val(),
+    },function(data){
+      var tabs_obj = $("#carts>ul.css-tabs");
+      $("#new-cart").replaceWith(data);
+      tabs_obj.tabs("div.css-panes > div", {effect: 'ajax'});
+      var api = tabs_obj.data("tabs");
+      var tabs_nb = $("li", tabs_obj).size() -1;
+      api.click(tabs_nb );
+    });
+    return false;
+    });
+  }
 </script>
 {% endblock %}
 
