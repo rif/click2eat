@@ -9,11 +9,23 @@
 {% endblock %}
 {% block scripts %}
 <script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+   $("#terms").change(function(){
+      if($("#terms:checked").val()) {
+          $("#submit").attr("disabled", false);
+      } else {
+          $("#submit").attr("disabled", true);
+      }
+   });
+});
+</script>
 {% endblock %}
 
 {% block content %}
 <form method="POST" action="{% url registration_register %}" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
-    <input class="form_button" type="submit" value="{% trans 'Register' %}">
+    <input id="submit" class="form_button" type="submit" value="{% trans 'Register' %}" disabled="true">
+   <input id="terms" type="checkbox" name="terms" value="agree" /> <a href="/flat/terms/{{ LANGUAGE_CODE }}/">{% trans 'I agree with the terms and conditions.' %}</a>
 </form>
 {% endblock %}

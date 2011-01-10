@@ -6,6 +6,7 @@ $(function(){
       $("#action-response").text(data);
       $("#action-response").show();
     });
+    $("#deliver-link").hide();
     e.preventDefault();
   });
   $("#confirm-link").click(function(e){
@@ -13,6 +14,7 @@ $(function(){
       $("#action-response").text(data);
       $("#action-response").show();
     });
+    $("#confirm-link").hide();
     e.preventDefault();
   });
 });
@@ -44,7 +46,7 @@ $(function(){
   {% if order.status == 'RV' %}
   <div class="dual_button">
     <div class="left">
-      <a id="confirm-link" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a>
+      <a id="confirm-link" class="historylink" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a>
     </div>
     <div class="right">
       <a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
