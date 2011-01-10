@@ -105,20 +105,24 @@ def send(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = __get_current_order(request, unit)
     if current_order.status != 'CR':
-        messages.add_message(request, messages.WARNING, _('Current order already sent.'))
+        messages.warning(request, _('Current order already sent.'))
         return redirect('order:timer', order_id=current_order.id)
-    if not unit.schedule or not unit.schedule.is_open():
-        messages.add_message(request, messages.ERROR, _('This restaurant is now closed! Please check the open hours and come back later.'))
+    try:
+        if  not unit.schedule.is_open():
+            messages.error(request, _('This restaurant is now closed! Please check the open hours and come back later.'))
+            return redirect('restaurant:detail', unit_id=unit.id)
+    except:
+        messages.error(request, _('This restaurant is now closed! Please check the open hours and come back later.'))
         return redirect('restaurant:detail', unit_id=unit.id)
     if unit.minimum_ord_val > current_order.total_amount:
-        messages.add_message(request, messages.ERROR, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
+        messages.error(request, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
         return redirect('restaurant:detail', unit_id=unit.id)    
     if current_order.address:
         src = (unit.latitude, unit.longitude)
         dest = (current_order.address.latitude, current_order.address.longitude)
         dist = distance.distance(src, dest)
         if  dist.km > unit.delivery_range:
-            messages.add_message(request, messages.WARNING, _('We are sorry, you are not in the delivery range of this restaurant.'))
+            messages.warning(reques, _('We are sorry, you are not in the delivery range of this restaurant.'))
             return redirect('restaurant:detail', unit_id=unit.id)
     if request.method == 'POST':
         form = OrderForm(request.POST, instance=current_order)
@@ -126,7 +130,7 @@ def send(request, unit_id):
             order = form.save(commit=False)
             order.status = 'ST'
             order.save()
-            messages.add_message(request, messages.WARNING, _('Your order has been sent to the restaurant!'))
+            messages.warning(request, _('Your order has been sent to the restaurant!'))
             send_mail('New Order',
                        render_to_response('order/restaurant_order_detail.html', {'order': order}, context_instance=RequestContext(request)),
                        'bucatar@filemaker-solutions.ro',
