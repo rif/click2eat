@@ -123,7 +123,7 @@
 	{% for item in itemgroup.item_set.iterator %}
 	{% if item.active %}
 	<li class="{% cycle 'even' 'odd' %} item {% if item.is_new %}new-item{% endif %}">
-	  <div class="name"><a id="{{ item.id }}" href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a></div>
+	  <div class="name"><a id="{{ item.id }}" href="#" class="add-item">{{ item.name_def }}</a></div>
 	  <div class="description">{{ item.description_def }}</div>
           <div class="price">{{item.get_price}}{% trans 'RON' %}</div>
 	</li>
@@ -135,7 +135,7 @@
 	    <ul>
 	      {% for top in item.toppings.topping_set.iterator %}
 	      <li>
-		<div class="name"><a id="{{ top.id }}" href="{% url order:add_item top.id user.username %}" class="add-item">{{ top.name_def }}</a></div>
+		<div class="name"><a id="{{ top.id }}" href="#" class="add-item">{{ top.name_def }}</a></div>
 		<div class="description">{{ top.description_def }}</div>
 	      </li>
 	      {% endfor %}
