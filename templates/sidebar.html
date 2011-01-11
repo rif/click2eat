@@ -7,7 +7,7 @@
     <div class="text">{% trans 'Latest orders' %}</div>
   </div>
   <div class="clear"></div>
-  {% with user.order_set.all as object_list %}
+  {% with user.order_set.all|slice:":20" as object_list %}
   <ul>
   {% autopaginate object_list 5 %}
     {% for order in object_list %}
