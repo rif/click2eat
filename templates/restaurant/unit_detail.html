@@ -93,9 +93,11 @@
 	<strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open'%}: {{ object.schedule.is_open|yesno }}<br>
 	{% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe}}<br>{% endif %}
   </div>
+{% if object.logo_path %}
   <div id="establishment_picture">
     <img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" />
   </div>
+{% endif %}
   <div class="clear"></div>
   <div class="general_button">
     <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
