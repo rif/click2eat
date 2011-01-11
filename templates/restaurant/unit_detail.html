@@ -125,6 +125,7 @@
 	<li class="{% cycle 'even' 'odd' %} item {% if item.is_new %}new-item{% endif %}">
 	  <div class="name"><a id="{{ item.id }}" href="{% url order:add_item item.id user.username %}" class="add-item">{{ item.name_def }}</a></div>
 	  <div class="description">{{ item.description_def }}</div>
+          <div class="price">{{item.get_price}}{% trans 'RON' %}</div>
 	</li>
 	<span id="top{{ item.id }}" class="top-span" style="display:none">
 	  {% if item.toppings %}

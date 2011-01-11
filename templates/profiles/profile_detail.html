@@ -16,7 +16,7 @@ $("#invite-form").submit(function(){
 $.post("{% url userprofiles:invite_friend %}",
     { csrfmiddlewaretoken:  $("input:first").val(),
       email:                   $("#id_email").val(),
-      message:                   $("#id_message").val(),
+      message:                   $("#id_message").val()
     },
     function(data){
       if(data == 'ok'){
@@ -43,12 +43,13 @@ $(function(){
 {% endblock %}
 
 {% block content %}
+  {% if not profile %}
+   <div class="error">
+      <p>{% trans 'This profile is not public' %}</p>
+   </div>
+  {% else %}
 <div class="content_area">
   <div class="title"><h1 class="light_green">{% trans 'My account' %}</h1></div>
-  <br>
-  {% if not profile %}
-  <h1>{% trans 'This profile is not public' %}</h1>
-  {% else %}
   <div id="account_details">
     <div class="avatar">
       {% avatar profile.user 155 %}
@@ -56,7 +57,7 @@ $(function(){
       {% if user == profile.user %}
       <a href="{% url avatar_change %}">{% trans 'Change' %}</a> | <a href="{% url avatar_delete %}">{% trans 'Delete' %}</a>
       {% endif %}
-    </div>
+    </div> <!-- avatar -->
     <div class="details">
       <strong>{% trans 'Name' %}:</strong> {{ profile.user.get_full_name }}<br>
       <strong>{% trans 'Email' %}:</strong> <a target="_self" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a><br><br>
@@ -76,13 +77,15 @@ $(function(){
 
 <div class="content_area">
   <div class="title"><h1 class="light_orange">{% trans 'Friends' %}</h1></div>
-  {% for friend in profile.user.friends.iterator %}
-  {% if friend.user.username %}
-  <a href="{% url profiles_profile_detail friend.user.username %}">{{ friend }}</a>,&nbsp;
-  {% endif %}
-  {% empty %}
-  <p>{% trans "Sorry, no friends here :(" %}
-    {% endfor %}
+  <ul>
+  {% for friendship in user.get_profile.get_friends_iterator %}
+    <li>
+      <a href="{% url profiles_profile_detail friendship.friend %}">{{ friendship.friend }}</a>
+    </li>
+    {% empty %}
+    <li>{% trans 'Sorry, no friends here :(' %}</li>
+   {% endfor %}
+  </ul>
   {% if user == profile.user %}
   <p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
   <div id="invite-placeholder"></div>
