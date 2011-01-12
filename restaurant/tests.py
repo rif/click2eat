@@ -17,3 +17,10 @@ class UnitTest(TestCase):
         self.assertFalse(i1._is_open(datetime(2010,10,5,12,1)))
         self.assertFalse(i1._is_open(datetime(2010,10,5,9,0)))
         self.assertFalse(i1._is_open(datetime(2010,10,6,11,0)))
+        
+    def test_after_midnight_schedule(self):
+        s = Schedule(unit=self.unit)
+        i1 = Interval(schedule=s, weekdays="1,2,3,4,5,6,7", start_hour="10:00", end_hour="01:00")
+        self.assertTrue(i1._is_open(datetime(2010,10,5,11,0)))
+        self.assertTrue(i1._is_open(datetime(2010,10,5,23,15)))
+        self.assertFalse(i1._is_open(datetime(2010,10,5,3,1)))
