@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseForbidden
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import send_mail
 from django.contrib import messages
@@ -70,6 +70,7 @@ def add_item(request, item_id, cart_name):
     item = get_object_or_404(Item, pk=item_id)
     try:
         current_order = __get_current_order(request, item.unit)
+        if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
         if cart_name == '': cart_name = request.user.username
         order_item = OrderItem.objects.filter(order=current_order).filter(item=item).filter(cart=cart_name)
         if order_item.exists():
@@ -85,6 +86,7 @@ def add_item(request, item_id, cart_name):
 @login_required
 def remove_item(request, item_id):
     item = get_object_or_404(OrderItem, pk=item_id)
+    if item.order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
     if item.count > 1:
         item.count -= 1
         item.save()

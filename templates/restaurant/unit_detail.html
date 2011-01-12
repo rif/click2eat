@@ -1,187 +1,196 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{{ object.name }}{% endblock%}
+{% block title %}{{ object.name }}{% endblock %}
 
 {% block style %}
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/tabs_style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/tabs_style.css"/>
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript">
-  $(function(){
-  $(".add-item").click(function(e){
-      var selected_cart = $(".current", ".css-tabs").attr("id");
-      $.get("/order/add_item/" + $(this).attr("id") + "/" + selected_cart, function(response){
-          $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
-          getAvailableToppings();
+    <script type="text/javascript">
+        $(function() {
+            $(".add-item").click(function(e) {
+                var selected_cart = $(".current", ".css-tabs").attr("id");
+                $.get("/order/add_item/" + $(this).attr("id") + "/" + selected_cart, function(response) {
+                    $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
+                    getAvailableToppings();
+                });
+                e.preventDefault();
+            });
+            $("#carts>ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
+            $("#add-cart").click(function(e) {
+                if ($("#id_name").length == 0) { // we don't have one already
+                    $.get("{% url order:add_cart order.id %}", function(data) {
+                        $("#carts>ul").append(data);
+                        $("#id_name").focus();
+                    });
+                }
+                e.preventDefault();
+            });
+            $("#last-orders").load("{% url order:list_unit object.id %}", function() {
+                pageLinks();
+            });
+            $(".toggle-toppings").click(function(e) {
+                $(this).next().slideToggle();
+                e.preventDefault();
+            });
+            getAvailableToppings();
+            $("#show-previous-link").click(function(e) {
+                $("#last-orders").toggle();
+                e.preventDefault();
+            })
         });
-        e.preventDefault();
-    });
-  $("#carts>ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
-    $("#add-cart").click(function(e){
-      if ($("#id_name").length == 0){ // we don't have one already
-      $.get("{% url order:add_cart order.id %}", function(data){
-          $("#carts>ul").append(data);
-          $("#id_name").focus();
-        });
-      }
-      e.preventDefault();
-    });
-    $("#last-orders").load("{% url order:list_unit object.id %}", function(){
-      pageLinks();
-    });
-    $(".toggle-toppings").click(function(e){
-        $(this).next().slideToggle();
-        e.preventDefault();
-    });
-    getAvailableToppings();
-    $("#show-previous-link").click(function(e){
-      $("#last-orders").toggle();
-      e.preventDefault();
-    })
-  });
-  function pageLinks(){
-    $(".page, .next, .prev").click(function(e){
-        $.get("{% url order:list_unit object.id %}"+ $(this).attr("href"), function(data){
-          $("#last-orders").html(data);
-          pageLinks();
-        });
-        e.preventDefault();
-      });
-  }
-  function getAvailableToppings(){
-    $.get("{% url order:available_toppings object.id %}", function(data){
-      var json = eval(data);
-      $(".top-span").each(function(){
-        if($.inArray($(this).attr("id"), json.items) != -1){
-          $(this).show();
-        } else {
-          $(this).hide();
+        function pageLinks() {
+            $(".page, .next, .prev").click(function(e) {
+                $.get("{% url order:list_unit object.id %}" + $(this).attr("href"), function(data) {
+                    $("#last-orders").html(data);
+                    pageLinks();
+                });
+                e.preventDefault();
+            });
         }
-      });
-    });
-  }
-  function addCartName() {
-  $("#cart-name-form").submit(function(){
-    var $action = $("#cart-name-form").attr("action");
-    $.post($action,
-    { csrfmiddlewaretoken:  $("input[name='csrfmiddlewaretoken']").val(),
-      name:                   $("#id_name").val(),
-    },function(data){
-      var tabs_obj = $("#carts>ul.css-tabs");
-      $("#new-cart").replaceWith(data);
-      tabs_obj.tabs("div.css-panes > div", {effect: 'ajax'});
-      var api = tabs_obj.data("tabs");
-      var tabs_nb = $("li", tabs_obj).size() -1;
-      api.click(tabs_nb );
-    });
-    return false;
-    });
-  }
-</script>
+        function getAvailableToppings() {
+            $.get("{% url order:available_toppings object.id %}", function(data) {
+                var json = eval(data);
+                $(".top-span").each(function() {
+                    if ($.inArray($(this).attr("id"), json.items) != -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        }
+        function addCartName() {
+            $("#cart-name-form").submit(function() {
+                var $action = $("#cart-name-form").attr("action");
+                $.post($action,
+                { csrfmiddlewaretoken:  $("input[name='csrfmiddlewaretoken']").val(),
+                    name:                   $("#id_name").val(),
+                }, function(data) {
+                    var tabs_obj = $("#carts>ul.css-tabs");
+                    $("#new-cart").replaceWith(data);
+                    tabs_obj.tabs("div.css-panes > div", {effect: 'ajax'});
+                    var api = tabs_obj.data("tabs");
+                    var tabs_nb = $("li", tabs_obj).size() - 1;
+                    api.click(tabs_nb);
+                });
+                return false;
+            });
+        }
+    </script>
 {% endblock %}
 
 {% block content %}
-<div class="content_area">
-    <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div><br>
-  <div id="establishment_details">
-	<strong>{% trans 'Name' %}:</strong> {{ object.name }}<br>
-	<strong>{% trans 'Address' %}:</strong> {{ object.address }}<br>
-	<strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br>
-	<strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br>
-	<strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open'%}: {{ object.schedule.is_open|yesno }}<br>
-	{% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe}}<br>{% endif %}
-  </div>
-{% if object.logo_path %}
-  <div id="establishment_picture">
-    <img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo" />
-  </div>
-{% endif %}
-  <div class="clear"></div>
-  <div class="general_button">
-    <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
-  </div>
-  <div class="clear"></div>
-  <div id="last-orders" style="display:none"></div>
-  <div class="clear"></div>
-</div><!-- content_area -->
+    <div class="content_area">
+        <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
+        <br>
+        <div id="establishment_details">
+            <strong>{% trans 'Name' %}:</strong> {{ object.name }}<br>
+            <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br>
+            <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br>
+            <strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br>
+            <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open' %}: {{ object.schedule.is_open|yesno }}
+        <br>
+            {% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe }}<br>{% endif %}
+        </div>
+        {% if object.logo_path %}
+            <div id="establishment_picture">
+                <img height="100px" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
+            </div>
+        {% endif %}
+        <div class="clear"></div>
+        <div class="general_button">
+            <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
+        </div>
+        <div class="clear"></div>
+        <div id="last-orders" style="display:none"></div>
+        <div class="clear"></div>
+    </div><!-- content_area -->
 
-{% if motd %} 
-<div class="content_area">
-<div class="title"><h1 class="light_orange">{% trans 'Menu of the day' %}</h1></div>
-        <h2><a href="#">{{ motd.name }}</a></h2>
-        {{ motd.description|safe }}
-</div><!-- content_area -->
-{% endif %}
-<div class="content_area">
-  <div class="title"><h1 class="light_orange">{% trans 'Menu' %}</h1></div>
-  <div id="establishment-menu">
-    {% for itemgroup in object.itemgroup_set.iterator %}
-    {% if itemgroup.active %}
-    <div class="category">
-      <h1>{{ itemgroup }}</h1>
-     <ul>
-	{% for item in itemgroup.item_set.iterator %}
-	{% if item.active %}
-	<li class="{% cycle 'even' 'odd' %} item {% if item.is_new %}new-item{% endif %}">
-	  <div class="name"><a id="{{ item.id }}" href="#" class="add-item">{{ item.name_def }}</a></div>
-	  <div class="description">{{ item.description_def }}</div>
-          <div class="price">{{item.get_price}}{% trans 'RON' %}</div>
-	</li>
-	<span id="top{{ item.id }}" class="top-span" style="display:none">
-	  {% if item.toppings %}
-	  <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">+</a>
-	  <span class="topping-span" style="display:none">
-	    {% trans 'Toppings' %}:
-	    <ul>
-	      {% for top in item.toppings.topping_set.iterator %}
-	      <li>
-		<div class="name"><a id="{{ top.id }}" href="#" class="add-item">{{ top.name_def }}</a></div>
-		<div class="description">{{ top.description_def }}</div>
-	      </li>
-	      {% endfor %}
-	    </ul>
-	  </span>
-	  {% endif %}
-	</span>
-	{% endif %}
-	{% empty %}
-	<li>{% trans 'No items in this group' %}</li>
-	{% endfor %}
-      </ul>
-    </div> <!-- category -->
+    {% if motd %}
+        <div class="content_area">
+            <div class="title"><h1 class="light_orange">{% trans 'Menu of the day' %}</h1></div>
+            <h2><a href="#">{{ motd.name }}</a></h2>
+            {{ motd.description|safe }}
+        </div><!-- content_area -->
     {% endif %}
-    {% cycle '' '' '<div class="clear"></div>' %}
-    {% endfor %}
-    {% if forloop.counter < 3 %}
-    <div class="clear"></div>
-    {% endif %}
-  </div> <!-- estabilshment-menu -->
-</div><!-- content_area -->
+    <div class="content_area">
+        <div class="title"><h1 class="light_orange">{% trans 'Menu' %}</h1></div>
+        <div id="establishment-menu">
+            {% for itemgroup in object.itemgroup_set.iterator %}
+                {% if itemgroup.active %}
+                    <div class="category">
+                        <h1>{{ itemgroup }}</h1>
+                        <ul>
+                            {% for item in itemgroup.item_set.iterator %}
+                                {% if item.active %}
+                                    <li class="{% cycle 'even' 'odd' %} item {% if item.is_new %}new-item{% endif %}">
+                                        <div class="name"><a id="{{ item.id }}" href="#"
+                                                             class="add-item">{{ item.name_def }}</a></div>
+                                        <div class="description">{{ item.description_def }}</div>
+                                        <div class="price">{{ item.get_price }}{% trans 'RON' %}</div>
+                                    </li>
+                                    <span id="top{{ item.id }}" class="top-span" style="display:none">
+                                        {% if item.toppings %}
+                                            <a class="toggle-toppings" href="#"
+                                               title="{% trans 'Toggle toppings' %}">+</a>
+                                            <span class="topping-span" style="display:none">
+                                                {% trans 'Toppings' %}:
+                                                <ul>
+                                                    {% for top in item.toppings.topping_set.iterator %}
+                                                        <li>
+                                                            <div class="name"><a id="{{ top.id }}" href="#"
+                                                                                 class="add-item">{{ top.name_def }}</a>
+                                                            </div>
+                                                            <div class="description">{{ top.description_def }}</div>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </span>
+                                        {% endif %}
+                                    </span>
+                                {% endif %}
+                            {% empty %}
+                                <li>{% trans 'No items in this group' %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div> <!-- category -->
+                {% endif %}
+                {% cycle '' '' '<div class="clear"></div>' %}
+            {% endfor %}
+            {% if forloop.counter < 3 %}
+                <div class="clear"></div>
+            {% endif %}
+        </div> <!-- estabilshment-menu -->
+    </div><!-- content_area -->
 
-<div class="content_area">
-  <div class="title"><h1 class="light_green">{% trans 'Current Order' %}</h1></div><br>
-  <div id="carts">
-    <ul class="css-tabs">
-      {% for cartname in carts %}
-      <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a></li>
-      {% empty %}
-      <li><a id="cart-{{ user.username }}" href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li>
-      {% endfor %}
-    </ul>
-    <div class="css-panes">
-      <div style="display:block"></div>
-    </div>
-    <div class="dual_button">
-      <div class="left {{ object.schedule.is_open|yesno:',closed'}}">
-	<a href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
-      </div>
-      <div class="right">
-      <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
-      </div>
-    </div>
-  </div><!-- carts -->
-  </div><!-- content_area -->
+    <div class="content_area">
+        <div class="title"><h1 class="light_green">{% trans 'Current Order' %}</h1></div>
+        <br>
+        <div id="carts">
+            <ul class="css-tabs">
+                {% for cartname in carts %}
+                    <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
+                    </li>
+                {% empty %}
+                    <li><a id="cart-{{ user.username }}"
+                           href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li>
+                {% endfor %}
+            </ul>
+            <div class="css-panes">
+                <div style="display:block"></div>
+            </div>
+            <div class="dual_button">
+                <div class="left {{ object.schedule.is_open|yesno:',closed'}}">
+                    <a href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
+                </div>
+                <div class="right">
+                    <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+                </div>
+            </div>
+        </div><!-- carts -->
+    </div><!-- content_area -->
 {% endblock %}
 
