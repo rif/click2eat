@@ -63,6 +63,8 @@ def list_unit(request, unit_id):
         queryset = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')[:50],
         template_name = 'order/order_list_div.html',
     )
+
+
 @login_required
 def add_item(request, item_id, cart_name):
     if cart_name.startswith("cart-"):
@@ -84,15 +86,38 @@ def add_item(request, item_id, cart_name):
         raise Http404()
 
 @login_required
+def add_topping(request, master_id, item_id, cart_name):
+    if cart_name.startswith("cart-"):
+        cart_name = cart_name.split("cart-")[1]
+    item = get_object_or_404(Item, pk=item_id)
+    try:
+        current_order = __get_current_order(request, item.unit)
+        if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
+        if cart_name == '': cart_name = request.user.username
+        master_item = OrderItem.objects.filter(order=current_order).filter(item__id=master_id).filter(cart=cart_name)
+        if master_item.exists():
+            master_item = master_item[0]
+        order_item = OrderItem.objects.filter(order=current_order).filter(master=master_item).filter(item=item).filter(cart=cart_name)
+        if order_item.exists():
+            order_item = order_item[0]
+            order_item.count += 1
+            order_item.save()
+        else:
+            order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name, master=master_item)
+        return HttpResponse(str(order_item.id))
+    except:
+        raise Http404()
+
+@login_required
 def remove_item(request, item_id):
-    item = get_object_or_404(OrderItem, pk=item_id)
-    if item.order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
-    if item.count > 1:
-        item.count -= 1
-        item.save()
-        return HttpResponse(str(item.count))
+    oi = get_object_or_404(OrderItem, pk=item_id)
+    if oi.order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
+    if oi.count > 1:
+        oi.count -= 1
+        oi.save()
+        return HttpResponse(str(oi.count))
     else:
-        item.delete()
+        oi.delete()
         return HttpResponse('nook')
 
 @login_required

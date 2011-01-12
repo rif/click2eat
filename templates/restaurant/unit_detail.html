@@ -18,6 +18,14 @@
                 });
                 e.preventDefault();
             });
+            $(".add-topping").click(function(e) {
+                var selected_cart = $(".current", ".css-tabs").attr("id");
+                $.get("/order/add_topping/" + $(this).attr("href") + "/" + $(this).attr("id") + "/" + selected_cart, function(response) {
+                    $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
+                    getAvailableToppings();
+                });
+                e.preventDefault();
+            });
             $("#carts>ul.css-tabs").tabs("div.css-panes > div", {effect: 'ajax'});
             $("#add-cart").click(function(e) {
                 if ($("#id_name").length == 0) { // we don't have one already
@@ -135,14 +143,14 @@
                                     <span id="top{{ item.id }}" class="top-span" style="display:none">
                                         {% if item.toppings %}
                                             <a class="toggle-toppings" href="#"
-                                               title="{% trans 'Toggle toppings' %}">+</a>
+                                               title="{% trans 'Toggle toppings' %}"><img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png"></a>
                                             <span class="topping-span" style="display:none">
                                                 {% trans 'Toppings' %}:
                                                 <ul>
                                                     {% for top in item.toppings.topping_set.iterator %}
                                                         <li>
-                                                            <div class="name"><a id="{{ top.id }}" href="#"
-                                                                                 class="add-item">{{ top.name_def }}</a>
+                                                            <div class="name"><a id="{{ top.id }}" href="{{ item.id }}"
+                                                                                 class="add-topping">{{ top.name_def }}</a>
                                                             </div>
                                                             <div class="description">{{ top.description_def }}</div>
                                                         </li>

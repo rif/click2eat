@@ -37,17 +37,35 @@
             <th class="price">{% trans 'Price' %}</th>
         </tr>
         {% for oi in oil %}
-            <tr class="{% cycle 'odd' 'even' %}">
-                <td class="item">{{ oi.item.name_def }}</td>
-                <td class="count">{{ oi.count }}</td>
-                <td class="price">{{ oi.old_price }}</td>
-                <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">
-                    <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
-                </a></td>
-                <td class="plus"><a class="plus add-orderitem" href="{% url order:add_item oi.item.id cartname %}">
-                    <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
-                </a></td>
-            </tr>
+            {% if not oi.master %}
+                <tr class="{% cycle 'odd' 'even' %}">
+                    <td class="item">{{ oi.item.name_def }}</td>
+                    <td class="count">{{ oi.count }}</td>
+                    <td class="price">{{ oi.old_price }}</td>
+                    <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">
+                        <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
+                    </a></td>
+                    <td class="plus"><a class="plus add-orderitem" href="{% url order:add_item oi.item.id cartname %}">
+                        <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
+                    </a></td>
+                </tr>
+                {% if oi.orderitem_set.exists %}
+                    <tr class="topping-row">
+                        {% for slave_oi in oi.orderitem_set.iterator %}
+                            <td class="item">*{{ slave_oi.item.name_def }}</td>
+                            <td class="count">{{ slave_oi.count }}</td>
+                            <td class="price">{{ slave_oi.old_price }}</td>
+                            <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item slave_oi.id %}">
+                                <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
+                            </a></td>
+                            <td class="plus"><a class="plus add-orderitem"
+                                                href="{% url order:add_topping oi.item.id slave_oi.item.id cartname %}">
+                                <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
+                            </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endif %}
         {% empty %}
             <tr>
                 <td class="placeholder">{% trans 'Click menu items to fill the plate' %}</td>
