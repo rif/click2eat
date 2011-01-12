@@ -103,6 +103,8 @@ class Interval(models.Model):
 
     def _is_open(self, check_date):
         now = check_date
+        starth = None
+        endh = None
         weekday = now.isoweekday()
         if str(weekday) not in self.weekdays:
             return False
@@ -112,6 +114,9 @@ class Interval(models.Model):
                 return False
         if self.end_hour:
             endh = datetime.strptime(now.strftime("%d-%m-%Y ") + self.end_hour, "%d-%m-%Y %H:%M")
+            # correct after midnight end hour
+            if starth and starth > endh:
+                endh = datetime(endh.year, endh.month, endh.day + 1, endh.hour, endh.minute) 
             if now > endh:
                 return False
         return True
