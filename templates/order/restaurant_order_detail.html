@@ -1,58 +1,87 @@
 {% load i18n %}
 <script type="text/javascript">
-$(function(){
-  $("#deliver-link").click(function(e){
-    $.get($(this).attr("href"), function(data){
-      $("#action-response").text(data);
-      $("#action-response").show();
+    $(function() {
+        $("#deliver-link").click(function(e) {
+            $.get($(this).attr("href"), function(data) {
+                $("#action-response").text(data);
+                $("#action-response").show();
+            });
+            $("#deliver-link").hide();
+            e.preventDefault();
+        });
+        $("#confirm-link").click(function(e) {
+            $.get($(this).attr("href"), function(data) {
+                $("#action-response").text(data);
+                $("#action-response").show();
+            });
+            $("#confirm-link").hide();
+            e.preventDefault();
+        });
     });
-    $("#deliver-link").hide();
-    e.preventDefault();
-  });
-  $("#confirm-link").click(function(e){
-    $.get($(this).attr("href"), function(data){
-      $("#action-response").text(data);
-      $("#action-response").show();
-    });
-    $("#confirm-link").hide();
-    e.preventDefault();
-  });
-});
 </script>
 
 <div class="content_area">
-  <div class="title"><h1 class="light_orange">{% trans 'Order details' %} id: {{ order.id }}</h1></div>
-  <br>
-  <div class="details">
-    <strong>{% trans 'User' %}:</strong> {{ user.get_full_name }}<br>
-    <strong>{% trans 'Phone' %}:</strong> {{ user.get_profile.phone }}<br>
-    <strong>{% trans 'Address' %}:</strong> {{ order.address }}<br>
-    {% if order.address.additional_info %}<strong>{% trans 'Address additional info' %}:</strong> {{ order.address.additional_info }}<br>{% endif %}
-    <strong>{% trans 'Creation date' %}:</strong> {{ order.creation_date }}<br>
-    <strong>{% trans 'Status' %}:</strong> {{ order.get_status_display }}<br>
-    <strong>{% trans 'Order price' %}:</strong> {{ order.total_amount }}<br>
-  </div>
-  
-  
-  <div id="order-items">
-    <ol>
-      {% for oi in order.orderitem_set.iterator %}
-      <li>{{ oi }} x {{ oi.count }}</li>
-      {% endfor %}
-    </ol>    
-    <strong>{% trans 'Additional info' %}:</strong>
-    <p>{{ order.additional_info }}</p>
-  </div>
-  {% if order.status == 'RV' %}
-  <div class="dual_button">
-    <div class="left">
-      <a id="confirm-link" class="historylink" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a>
+    <div class="title"><h1 class="light_orange">{% trans 'Order details' %} id: {{ order.id }}</h1></div>
+    <br>
+    <div class="details">
+        <strong>{% trans 'User' %}:</strong> {{ order.user.get_full_name }}<br>
+        <strong>{% trans 'Phone' %}:</strong> {{ order.user.get_profile.phone }}<br>
+        <strong>{% trans 'Address' %}:</strong> {{ order.address }}<br>
+        {% if order.address.additional_info %}
+            <strong>{% trans 'Address additional info' %}:</strong> {{ order.address.additional_info }}<br>{% endif %}
+        <strong>{% trans 'Creation date' %}:</strong> {{ order.creation_date }}<br>
+        <strong>{% trans 'Status' %}:</strong> {{ order.get_status_display }}<br>
+        <strong>{% trans 'Order price' %}:</strong> {{ order.total_amount }}<br>
     </div>
-    <div class="right">
-      <a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
+    <br>
+    <div id="current_order">
+        <table id="cart-{{ cartname }}-table" style="max-width:30%;">
+            <tr class="header">
+                <th class="item">{% trans 'Item' %}</th>
+                <th class="count">{% trans 'Count' %}</th>
+                <th class="price">{% trans 'Price (RON)' %}</th>
+            </tr>
+            {% for oi in order.orderitem_set.iterator %}
+                {% if not oi.master %}
+                    <tr class="{% cycle 'odd' 'even' %}">
+                        <td class="item">{{ oi.item.name_def }}</td>
+                        <td class="count">{{ oi.count }}</td>
+                        <td class="price">{{ oi.old_price }}</td>
+                    </tr>
+                    {% if oi.orderitem_set.exists %}
+                        <tr class="topping-row">
+                            {% for slave_oi in oi.orderitem_set.iterator %}
+                                <td class="item">*{{ slave_oi.item.name_def }}</td>
+                                <td class="count">{{ slave_oi.count }}</td>
+                                <td class="price">{{ slave_oi.old_price }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <tr>
+                <td class="item"><b>{% trans 'Total' %}</b></td>
+                <td></td>
+                <td class="price"><b>{{ order.total_amount }}</b></td>
+            </tr>
+        </table>
+        {% if order.additional_info %}
+            <strong>{% trans 'Additional info' %}:</strong>
+            <p>{{ order.additional_info }}</p>
+        {% endif %}
     </div>
-  </div>
-  <div class="clear"></div>
-  <div id="action-response" class="success" style="display:none"></div>
-  {% endif %}
+    <br>
+    {% if order.status == 'RV' %}
+        <div class="dual_button">
+            <div class="left">
+                <a id="confirm-link" class="historylink"
+                   href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a>
+            </div>
+            <div class="right">
+                <a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="action-response" class="success" style="display:none"></div>
+    {% endif %}
 </div><!-- content_area -->
