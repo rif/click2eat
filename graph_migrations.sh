@@ -1,0 +1,1 @@
+./manage.py graphmigrations | dot -Tpng -omigrations.png
