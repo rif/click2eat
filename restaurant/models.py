@@ -92,11 +92,11 @@ class Employee(models.Model):
 class Interval(models.Model):
     schedule = models.ForeignKey('Schedule', verbose_name=_('schedule'))
     weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, help_text=_('integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5'))
-    start_hour = models.CharField(_('start hour'), max_length=5, help_text=_('e.g. 10:30'))
-    end_hour = models.CharField(_('end hour'), max_length=5, help_text=_('e.g. 15:00'))
+    start_hour = models.TimeField(_('start hour'), help_text=_('e.g. 10:30:00'))
+    end_hour = models.TimeField(_('end hour'), help_text=_('e.g. 15:00:00'))
 
     def __unicode__(self):
-        return self.weekdays + ' ' + self.start_hour + '-' + self.end_hour
+        return self.weekdays + ' ' + self.start_hour.strftime("%H:%M") + '-' + self.end_hour.strftime("%H:%M")
 
     def is_open(self):
         return self._is_open(datetime.now())
@@ -109,11 +109,11 @@ class Interval(models.Model):
         if str(weekday) not in self.weekdays:
             return False
         if self.start_hour:
-            starth = datetime.strptime(now.strftime("%d-%m-%Y ") + self.start_hour, "%d-%m-%Y %H:%M")
+            starth = datetime.strptime(now.strftime("%d-%m-%Y ") + self.start_hour.strftime("%H:%M"), "%d-%m-%Y %H:%M")
             if now < starth:
                 return False
         if self.end_hour:
-            endh = datetime.strptime(now.strftime("%d-%m-%Y ") + self.end_hour, "%d-%m-%Y %H:%M")
+            endh = datetime.strptime(now.strftime("%d-%m-%Y ") + self.end_hour.strftime("%H:%M"), "%d-%m-%Y %H:%M")
             # correct after midnight end hour
             if starth and starth > endh:
                 endh = datetime(endh.year, endh.month, endh.day + 1, endh.hour, endh.minute) 
