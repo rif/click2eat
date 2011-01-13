@@ -71,6 +71,7 @@
       <li><a href="/flat/help/{{LANGUAGE_CODE}}/" title="{% trans 'How do I order' %}" target="_self">{% trans 'How do I order' %}</a></li>
       <li><a href="{% url menu:daily_menus %}" title="{% trans "Today's menu" %}" target="_self">{% trans "Today's menu" %}</a></li>
       <li><a href="{% url wheel:fortune %}" title="{% trans 'Wheel of fortune' %}" target="_self">{% trans 'Wheel of fortune' %}</a></li>
+      <li><a href="{% url order:list %}" title="{% trans 'My orders' %}" target="_self">{% trans 'My orders' %}</a></li>
       {% if user.get_profile.is_unit_admin %}
       <li><a href="{% url restaurant:administrator %}" title="{% trans 'Unit administration' %}" target="_self">{% trans 'Unit administration' %}</a></li>
       {% endif %}

@@ -11,7 +11,11 @@
       <tbody>
 	    {% for order in object_list %}
 	    <tr class="{% cycle 'odd' 'even' %}">
-	      <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
+                {% if order.status == 'CR' %}
+                <td class="item"><a target="_self" href="{% url restaurant:detail order.unit.id %}">{{order}}</a></td>
+                {% else %}
+                <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
+                {% endif %}
 	      <td><a target="_self" href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></td>
 	    </tr>
 	    {% empty %}
