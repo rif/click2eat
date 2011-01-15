@@ -15,7 +15,12 @@
             var row = $(this).parents("tr");
             $.get($(this).attr("href"), function(resp) {
                 if (resp == "nook") {
-                    row.fadeOut();
+                    if(row.hasClass('master')) {
+                         group = row.attr('group');
+                         $("tr[group|=" + group + "]").fadeOut();
+                    } else {
+                         row.fadeOut();
+                    }
                     if (typeof getAvailableToppings == 'function') {
                         /* check if function is defined in this context*/
                         getAvailableToppings();
@@ -27,7 +32,7 @@
             });
             e.preventDefault();
         });
-    })
+    });
 </script>
 <div id="current_order">
     <table id="cart-{{ cartname }}-table">
@@ -38,7 +43,7 @@
         </tr>
         {% for oi in oil %}
             {% if not oi.master %}
-                <tr class="{% cycle 'odd' 'even' %}">
+                <tr class="{% cycle 'odd' 'even' %} master" group="item-{{ oi.id }}">
                     <td class="item">{{ oi.item.name_def }}</td>
                     <td class="count">{{ oi.count }}</td>
                     <td class="price">{{ oi.old_price }}</td>
@@ -50,8 +55,8 @@
                     </a></td>
                 </tr>
                 {% if oi.orderitem_set.exists %}
-                    <tr class="topping-row">
                         {% for slave_oi in oi.orderitem_set.iterator %}
+                         <tr class="topping-row" group="item-{{ oi.id }}">
                             <td class="item">*{{ slave_oi.item.name_def }}</td>
                             <td class="count">{{ slave_oi.count }}</td>
                             <td class="price">{{ slave_oi.old_price }}</td>
@@ -62,8 +67,8 @@
                                                 href="{% url order:add_topping oi.item.id slave_oi.item.id cartname %}">
                                 <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
                             </a></td>
+                        </tr>
                         {% endfor %}
-                    </tr>
                 {% endif %}
             {% endif %}
         {% empty %}
