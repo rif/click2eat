@@ -43,6 +43,7 @@
         </tr>
         {% for oi in oil %}
             {% if not oi.master %}
+	        {% if oi.item %}
                 <tr class="{% cycle 'odd' 'even' %} master" group="item-{{ oi.id }}">
                     <td class="item">{{ oi.item.name_def }}</td>
                     <td class="count">{{ oi.count }}</td>
@@ -69,7 +70,21 @@
                             </a></td>
                         </tr>
                         {% endfor %}
-                {% endif %}
+		{% endif %}
+		{% endif %} <!-- oi.item -->
+		{% if oi.menu_of_the_day %}
+	            <tr class="{% cycle 'odd' 'even' %} master" group="item-{{ oi.id }}">
+                      <td class="item">{{ oi.menu_of_the_day.name }}</td>
+                      <td class="count">{{ oi.count }}</td>
+                      <td class="price">{{ oi.old_price }}</td>
+                      <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">
+                          <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
+                      </a></td>
+                      <td class="plus"><a class="plus add-orderitem" href="{% url order:add_motd oi.menu_of_the_day.id cartname %}">
+                          <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
+                      </a></td>
+                    </tr>
+	    {% endif %}
             {% endif %}
         {% empty %}
             <tr>

@@ -18,6 +18,14 @@
                 });
                 e.preventDefault();
             });
+	    $(".add-motd").click(function(e) {
+                var selected_cart = $(".current", ".css-tabs").attr("id");
+                $.get("/order/add_motd/" + $(this).attr("id") + "/" + selected_cart, function(response) {
+                    $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
+                    getAvailableToppings();
+                });
+                e.preventDefault();
+            });
             $(".add-topping").click(function(e) {
                 var selected_cart = $(".current", ".css-tabs").attr("id");
                 $.get("/order/add_topping/" + $(this).attr("href") + "/" + $(this).attr("id") + "/" + selected_cart, function(response) {
@@ -120,7 +128,7 @@
     {% if motd %}
         <div class="content_area">
             <div class="title"><h1 class="light_orange">{% trans 'Menu of the day' %}</h1></div>
-            <h2><a href="#">{{ motd.name }}</a></h2>
+            <h2><a id="{{ motd.id }}" class="add-motd" href="#">{{ motd.name }}</a></h2>
             {{ motd.description|safe }}
         </div><!-- content_area -->
     {% endif %}

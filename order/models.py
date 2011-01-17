@@ -92,7 +92,7 @@ class OrderItem(models.Model):
     cart = models.CharField(_('cart'), max_length=15, null=True, blank=True)
 
     def __unicode__(self):
-        return str(self.item)
+        return str(self.item or self.menu_of_the_day)
 
     def save(self, *args, **kwargs):
         if not self.id:

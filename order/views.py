@@ -18,7 +18,7 @@ import csv
 from geopy import distance
 from order.models import Order, OrderItem
 from restaurant.models import Unit
-from menu.models import Item
+from menu.models import Item, MenuOfTheDay
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import Bonus
@@ -107,7 +107,27 @@ def add_topping(request, master_id, item_id, cart_name):
         return HttpResponse(str(order_item.id))
     except:
         raise Http404()
-
+    
+def add_menu_of_the_day(request, item_id, cart_name):
+    if cart_name.startswith("cart-"):
+        cart_name = cart_name.split("cart-")[1]
+    item = get_object_or_404(MenuOfTheDay, pk=item_id)
+    try:
+        current_order = __get_current_order(request, item.unit)
+        print current_order.id
+        if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
+        if cart_name == '': cart_name = request.user.username
+        order_item = OrderItem.objects.filter(order=current_order).filter(menu_of_the_day=item).filter(cart=cart_name)
+        if order_item.exists():
+            order_item = order_item[0]
+            order_item.count += 1
+            order_item.save()
+        else:
+            order_item = OrderItem.objects.create(order=current_order, menu_of_the_day=item, cart=cart_name)
+        return HttpResponse(str(order_item.id))
+    except:
+        raise Http404()
+    
 @login_required
 def remove_item(request, item_id):
     oi = get_object_or_404(OrderItem, pk=item_id)
