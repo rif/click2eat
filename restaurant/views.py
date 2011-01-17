@@ -25,13 +25,16 @@ def __user_has_profile(user):
         return redirect('profiles_create_profile')
 
 def index(request):
-    if request.user.is_authenticated():
-        administred_units = request.user.get_profile().administred_units()
-        if administred_units.count() > 1:
-            return redirect('restaurant:administrator')
-        elif administred_units.count() == 1:
-            unit = administred_units[0]
-            return redirect('order:restaurant_list', unit_id = unit.id)
+    try:
+        if request.user.is_authenticated():
+            administred_units = request.user.get_profile().administred_units()
+            if administred_units.count() > 1:
+                return redirect('restaurant:administrator')
+                elif administred_units.count() == 1:
+                    unit = administred_units[0]
+                    return redirect('order:restaurant_list', unit_id = unit.id)
+     except:
+         pass
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
         annotate(avg_speed=Avg('order__rating__delivery_time')).\
         annotate(comment_count=Count('order__rating__feedback')).\
