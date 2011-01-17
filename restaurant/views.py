@@ -33,8 +33,7 @@ def index(request):
             elif administred_units.count() == 1:
                 unit = administred_units[0]
                 return redirect('order:restaurant_list', unit_id = unit.id)
-     except:
-         pass
+    except:pass
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
         annotate(avg_speed=Avg('order__rating__delivery_time')).\
         annotate(comment_count=Count('order__rating__feedback')).\
