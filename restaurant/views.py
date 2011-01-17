@@ -25,12 +25,13 @@ def __user_has_profile(user):
         return redirect('profiles_create_profile')
 
 def index(request):
-    administred_units = request.user.get_profile().administred_units()
-    if administred_units.count() > 1:
-        return redirect('restaurant:administrator')
-    elif administred_units.count() == 1:
-        unit = administred_units[0]
-        return redirect('order:restaurant_list', unit_id = unit.id)
+    if user.is_authenticated():
+        administred_units = request.user.get_profile().administred_units()
+        if administred_units.count() > 1:
+            return redirect('restaurant:administrator')
+        elif administred_units.count() == 1:
+            unit = administred_units[0]
+            return redirect('order:restaurant_list', unit_id = unit.id)
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
         annotate(avg_speed=Avg('order__rating__delivery_time')).\
         annotate(comment_count=Count('order__rating__feedback')).\
@@ -53,11 +54,9 @@ def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = views.__get_current_order(request, unit)
     carts = OrderItem.objects.select_related().filter(order__id=current_order.id).values_list('cart', flat=True).distinct()
-    motd = unit.menuoftheday_set.filter(day=date.today())
-    if motd.exists():
-	motd = motd[0]
-    else:
-	motd = None
+    motd = unit.get_motd()
+    if motd.exists(): motd = motd[0]
+    else: motd = None
     return {'object': unit, 'order': current_order, 'carts': carts, 'motd': motd}
 
 @login_required

@@ -196,6 +196,9 @@ class Unit(models.Model):
     def get_package(self):
 	return self.partnerpackage_set.get(current=True)
 
+    def get_motd(self):
+        return self.menuoftheday_set.filter(day=date.today()) 
+
     @models.permalink
     def get_absolute_url(self):
         return ('restaurant:detail', [str(self.id)])

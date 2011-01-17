@@ -15,7 +15,7 @@ $(function(){
         $("#event").attr("disabled", true);
         $(this).oneTime(1000, function() {
              $.get("{% url wheel:fortune_ajax %}", function(data){
-                $("#selected_plate").text(data);
+                $("#selected_plate").html(data);
                  $("#selected_plate").show(); 
              });
              $("#plate").attr("class", "generic");
@@ -23,6 +23,11 @@ $(function(){
          });
     });
 });
+function addMotd(href, redir) {
+       $.get(href, function(){
+          window.location = redir;
+       });
+}
 </script>
 {% endblock %}
 
