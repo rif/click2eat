@@ -159,7 +159,7 @@ def send(request, unit_id):
             order.save()
             messages.warning(request, _('Your order has been sent to the restaurant!'))
             send_mail('New Order',
-                       render_to_response('order/restaurant_order_detail.html', {'order': order}, context_instance=RequestContext(request)),
+                       render_to_string('order/mail_order_detail.html', {'order': order}, context_instance=RequestContext(request)),
                        'bucatar@filemaker-solutions.ro',
                        [unit.email],
                        fail_silently=False)
