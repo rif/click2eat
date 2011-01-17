@@ -25,7 +25,7 @@ def __user_has_profile(user):
         return redirect('profiles_create_profile')
 
 def index(request):
-    if user.is_authenticated():
+    if request.user.is_authenticated():
         administred_units = request.user.get_profile().administred_units()
         if administred_units.count() > 1:
             return redirect('restaurant:administrator')
