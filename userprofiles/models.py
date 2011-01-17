@@ -99,9 +99,6 @@ class UserProfile(models.Model):
     def administred_units(self):
         return Unit.objects.filter(admin_users__contains=self.user.username)
 
-    def is_unit_admin(self):
-        return self.administred_units().exists()
-
     class Meta:
         verbose_name = _('User Profile')
         verbose_name_plural = _('User Profiles')
