@@ -1,0 +1,7 @@
+- for snowing you only need to decomment the snowstorm.js line
+- for stars i havejquery.ui.stars-3.0.zip
+- for jquery ui we need:
+  - core + widget for star rating
+  - date picker for birthday
+  - UI lightness theme
+  - the localisation files are taken from datepicker demo section (last line)
