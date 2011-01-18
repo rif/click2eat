@@ -55,14 +55,14 @@ def limited_object_detail(*args, **kwargs):
 def list(request):
     return list_detail.object_list(
         request,
-        queryset = Order.objects.filter(user__id=request.user.id).exclude(status='CR')[:50]
+        queryset = Order.objects.filter(user__id=request.user.id).exclude(hidden=True).exclude(status='CR')[:50]
     )
 
 @login_required
 def list_unit(request, unit_id):
     return list_detail.object_list(
         request,
-        queryset = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(status='CR')[:50],
+        queryset = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(hidden=True).exclude(status='CR')[:50],
         template_name = 'order/order_list_div.html',
     )
 
@@ -345,3 +345,15 @@ def get_available_toppings(request, unit_id):
     order = __get_current_order(request, unit)
     items = ["top%s" % oi.item_id for oi in order.orderitem_set.exclude(item__toppings__isnull=True)]
     return {'items': items}
+
+@login_required
+@ajax_request
+def hide(request, order_id):
+    order = Order.objects.filter(user=request.user).filter(id=order_id)
+    if order.exists():
+        order = order[0]
+        order.hidden = True
+        order.save()
+        return {'order_id': order.id}
+    else:
+        return {'order_id': -1}

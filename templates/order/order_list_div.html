@@ -1,6 +1,21 @@
 {% load i18n %}
 {% load pagination_tags %}
 
+<script type="text/javascript">
+  $(function(){
+  $(".hide-link").click(function(e){
+  row = $(this).parents("tr");
+  $.get($(this).attr("href"), function(data) {
+  if(data.order_id != -1) {
+  row.fadeOut();
+  }
+  });
+  e.preventDefault();
+  });
+  });
+</script>
+
+
 <div class="content_area">
   {% if object_list.exists %}
   {% autopaginate object_list 10 %}
@@ -17,6 +32,7 @@
                 <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
                 {% endif %}
 	      <td><a target="_self" href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></td>
+	      <td><a class="hide-link" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a></td>
 	    </tr>
 	    {% empty %}
 	    <tr><td>No orders yet? Bon apetit ;)</td></tr>

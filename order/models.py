@@ -20,6 +20,7 @@ class Order(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'), editable=False)
     additional_info = models.TextField(_('additional info'), null=True, blank=True, help_text=_('Add here any relevant information.'))
     employee = models.ForeignKey('restaurant.Employee', verbose_name=_('employee'), help_text=_('The internal employee responsible for this order.'))
+    hidden = models.BooleanField(_('hidden'))
 
     def update_total_amount(self):
         total = 0
