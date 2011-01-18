@@ -6,7 +6,6 @@ from django.db.models import Q
 from menu.models import Item, MenuOfTheDay
 from menu.filter import ItemFilter
 
-@login_required
 @render_to('menu/item_list.html')
 def item_list(request):
     query = request.GET.get('q', '')
