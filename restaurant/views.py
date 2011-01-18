@@ -17,12 +17,12 @@ from order import views
 from menu.models import MenuOfTheDay
 
 def __user_has_profile(user):
-    if not user.is_authenticated(): return None
     try:
         user.get_profile()
         return None
     except:
         return redirect('profiles_create_profile')
+
 
 def index(request):
     try:

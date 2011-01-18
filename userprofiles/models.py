@@ -10,6 +10,8 @@ from order.models import Order
 from friends.models import Friendship
 from bonus.models import Bonus
 from restaurant.models import Unit
+from django.core.validators import RegexValidator
+from django.contrib.localflavor.ro.forms import ROPhoneNumberField
 
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
@@ -67,9 +69,9 @@ class UserProfile(models.Model):
                       ('F', _('Female')),
                       )
     user = models.OneToOneField(User, verbose_name=_('user'))
-    first_name = models.CharField(_('first name'), max_length=50)
-    last_name = models.CharField(_('last name'), max_length=50)
-    phone = models.CharField(_('phone'), max_length=15, unique=True)
+    first_name = models.CharField(_('first name'), max_length=50, validators=[RegexValidator(r'\A[a-zA-Z]+\Z', message=_('Only letters, please!'))])
+    last_name = models.CharField(_('last name'), max_length=50, validators=[RegexValidator(r'\A[a-zA-Z]+\Z', message=_('Only letters, please!'))])
+    phone = models.CharField(_('phone'), max_length=15, unique=True, validators=ROPhoneNumberField().validators)
     sex = models.CharField(_('sex'), max_length=1, choices=GENDER_CHOICES)
     birth_date = models.DateField(_('birth date'), null=True, blank=True)
     newsletter = models.BooleanField(_('newsletter'), help_text=_("Do you want to receive our newsletter?"))

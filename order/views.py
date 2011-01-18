@@ -24,6 +24,8 @@ from userprofiles.models import DeliveryAddress
 from bonus.models import Bonus
 
 def __get_current_order(request, unit):
+    if not request.user.is_authenticated():
+        return None
     try:
         co = Order.objects.filter(user=request.user).filter(status='CR').get(unit__id=unit.id)
         if co.is_abandoned():
