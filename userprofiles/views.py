@@ -59,8 +59,16 @@ def invite_friend(request):
             message = form.cleaned_data['message']
             if message.strip() == "":
                 message = _('Join me for lunch!')
+            # validations:
+            if email == request.user.email:
+                messages.error(request, _('You cannot sens an invitation to youself!'))
+                return redirect('profiles_profile_detail', username=request.user.username)
+            if JoinInvitation.objects.filter(from_user=request.user).filter(contact__email=email).exists():
+                messages.error(request, _('You allready sent an invitation to this email!'))
+                return redirect('profiles_profile_detail', username=request.user.username)
+            # end validations
             JoinInvitation.objects.send_invitation(request.user, email, message)
-            messages.add_message(request, messages.INFO, _('The invitation email was send to %s.') % email)
+            messages.info(request, _('The invitation email was send to %s.') % email)
             if request.is_ajax():
 		return HttpResponse('ok')
 	    else:
