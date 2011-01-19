@@ -25,7 +25,7 @@ class PaymentMethodAdmin(admin.ModelAdmin):
     search_fields = ['name', 'details']
 
 class DeliveryTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price')
+    list_display = ('name', 'price', 'require_address')
     search_fields = ['name']
 
 class CurrencyAdmin(admin.ModelAdmin):
