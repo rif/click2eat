@@ -26,7 +26,10 @@
     <div class="details">
         <strong>{% trans 'User' %}:</strong> {{ order.user.get_full_name }}<br>
         <strong>{% trans 'Phone' %}:</strong> {{ order.user.get_profile.phone }}<br>
+	<strong>{% trans 'Delivery type' %}:</strong> {{ order.address }}<br>
+	{% if order.delivery_type.require_address %}
         <strong>{% trans 'Address' %}:</strong> {{ order.address }}<br>
+	{% endif %}
         {% if order.address.additional_info %}
             <strong>{% trans 'Address additional info' %}:</strong> {{ order.address.additional_info }}<br>{% endif %}
         <strong>{% trans 'Creation date' %}:</strong> {{ order.creation_date }}<br>
