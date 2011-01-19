@@ -4,7 +4,6 @@ from geopy import geocoders
 import re
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import ValidationError
 from django.db.models import Sum
 from order.models import Order
 from friends.models import Friendship
@@ -89,6 +88,9 @@ class UserProfile(models.Model):
 
     def get_friends_iterator(self):
         return Friendship.objects.friends_for_user(self.user)
+
+    def get_friends_list(self):
+        return [f['friend'] for f in self.get_friends_iterator()]
      
     def get_bonus_points(self):
 	result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('points'))

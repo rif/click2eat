@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load avatar_tags %}
 
-{% block title %}{% trans 'Your profile' %}{% endblock %}
+{% block title %}{% trans 'Profile' %}{% endblock %}
 
 {% block style %}
 <link rel="stylesheet" href="{{ MEDIA_URL }}uni_form/uni-form.css" type="text/css" />
@@ -90,9 +90,11 @@ $(function(){
   <p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
   <div id="invite-placeholder"></div>
   {% else %}
+  {% if False and not profile.user in user.get_profile.get_friends_list %}
   <div class="general_button">
-    <p><a href="#">{% trans 'Become friend with' %} {{ profile.user }}</a></p>
+    <p><a id="" href="#">{% trans 'Become friend with' %} {{ profile.user }}</a></p>
   </div>
+  {% endif %}
   {% endif %}
 </div><!-- content_area -->
 {% if user == profile.user %}
