@@ -80,7 +80,31 @@
 
   <div id="wrapper">
     <div id="sidebar_ornament"></div>
+    {% if user.is_authenticated %}
     {% include 'sidebar.html' %}
+    {% else %}
+    <div id="sidebar">
+      <div class="menu_title">
+	<div class="house_icon"></div>
+	<div class="text">{% trans 'Please login' %}</div>
+      </div>
+      <div class="clear"></div>
+      <div class="reg_content">
+	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
+	      <div class="label">{% trans 'User/email' %}: </div>
+	      <input id="id_username" name="username" maxlength="30" type="text"><br>
+	      <div class="clear"></div>
+
+	      <div class="label">{% trans 'Password' %}: </div>
+	      <input name="password" id="id_password" type="password">
+	      <div class="clear"></div>
+	      <input class="pad" type="submit" value="{% trans 'Login' %}" />
+	      <input type="reset" value="Reset">
+	      <input type="hidden" name="next" value="{{ next }}" />
+	    </form>
+	  </div> <!-- reg_content -->
+    </div>
+    {% endif %}
     <div id="body_page">
       <div id="messages">
 	{% if messages %}

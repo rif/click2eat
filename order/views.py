@@ -188,7 +188,8 @@ def send(request, unit_id):
             return redirect('order:timer', order_id=current_order.id)
     else:
         form = OrderForm(instance=current_order)
-    form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
+    form.fields['delivery_type'] = forms.ModelChoiceField(current_order.unit.delivery_type.all(), required=True, initial={'primary': True})
+    form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True)#, initial={'primary': True})
     return render_to_response('order/send_confirmation.html', {
                                   'form': form,
                                   'order': current_order,

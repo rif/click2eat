@@ -65,6 +65,7 @@ class Currency(models.Model):
 class DeliveryType(models.Model):
     name = models.CharField(_('name'), max_length=100)
     price = models.FloatField(_('price'), )
+    require_address = models.BooleanField(_('require address'))
 
     def __unicode__(self):
         return self.name
@@ -161,7 +162,7 @@ class Unit(models.Model):
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))
     contact_person = models.CharField(_('contact persoon'), max_length=50)
     delivery_time_user = models.FloatField(_('delivery time user'), null=True, blank=True, editable=False, help_text=_('Calculated as a avg from user feedback.'))
-    delivery_type = models.ForeignKey(DeliveryType, verbose_name=_('delivery type'))
+    delivery_type = models.ManyToManyField(DeliveryType, verbose_name=_('delivery type'))
     admin_users = models.CharField(_('admin users'), max_length=100, null=True, blank=True, help_text=_('the users that can access front-end administration pages for this unit.'))
     added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
     info = models.TextField(_('info'), null=True, blank=True)
