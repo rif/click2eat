@@ -21,6 +21,7 @@ urlpatterns = patterns('',
                        url(r'^feedback/(?P<order_id>\d+)/$', views.feedback, name='feedback'),
                        url(r'^getavailabletoppings/(?P<unit_id>\d+)/$', views.get_available_toppings, name='available_toppings'),
                        url(r'^hide/(?P<order_id>\d+)/$', views.hide, name='hide'),
+                       url(r'^requireaddress/(?P<dt_id>\d+)/$', views.is_addres_required, name='require_address'),
                        )
 
 urlpatterns += patterns('',

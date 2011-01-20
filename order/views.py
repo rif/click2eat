@@ -15,9 +15,10 @@ from django import forms
 from django.views.generic import list_detail
 from annoying.decorators import render_to, ajax_request
 import csv
+from datetime import datetime
 from geopy import distance
 from order.models import Order, OrderItem
-from restaurant.models import Unit
+from restaurant.models import Unit, DeliveryType
 from menu.models import Item, MenuOfTheDay
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
@@ -177,6 +178,7 @@ def send(request, unit_id):
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():
             order = form.save(commit=False)
+            order.creation_date = datetime.now() # update the creation date of the order with the sending time
             order.status = 'ST'
             order.save()
             messages.warning(request, _('Your order has been sent to the restaurant!'))
@@ -358,3 +360,9 @@ def hide(request, order_id):
         return {'order_id': order.id}
     else:
         return {'order_id': -1}
+
+
+@ajax_request
+def is_addres_required(request, dt_id):
+    dt = get_object_or_404(DeliveryType, pk=dt_id)
+    return {'require_address': dt.require_address}
