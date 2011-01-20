@@ -11,12 +11,13 @@
 <script type="text/javascript">
   $(function(){
   $("#id_delivery_type").change(function(){
-  console.log($(this).val());
-  if($(this).val() <= 2) {
-  $("#div_id_address").fadeIn();
+  $.get("/order/requireaddress/" + $(this).val(), function(data){
+  if(data.require_address){
+  $("#div_id_address").fadeIn('fast');
   } else {
-  $("#div_id_address").fadeOut();
+  $("#div_id_address").fadeOut('fast');
   }
+  });
   });
   });
 </script>
