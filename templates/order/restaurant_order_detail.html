@@ -24,17 +24,19 @@
     <div class="title"><h1 class="light_orange">{% trans 'Order details' %} id: {{ order.id }}</h1></div>
     <br>
     <div class="details">
-        <strong>{% trans 'User' %}:</strong> {{ order.user.get_full_name }}<br>
-        <strong>{% trans 'Phone' %}:</strong> {{ order.user.get_profile.phone }}<br>
-	<strong>{% trans 'Delivery type' %}:</strong> {{ order.delivery_type }}<br>
-	{% if order.delivery_type.require_address %}
-        <strong>{% trans 'Address' %}:</strong> {{ order.address }}<br>
-	{% endif %}
-        {% if order.address.additional_info %}
-            <strong>{% trans 'Address additional info' %}:</strong> {{ order.address.additional_info }}<br>{% endif %}
-        <strong>{% trans 'Creation date' %}:</strong> {{ order.creation_date }}<br>
-        <strong>{% trans 'Status' %}:</strong> {{ order.get_status_display }}<br>
-        <strong>{% trans 'Order price' %}:</strong> {{ order.total_amount }}<br>
+      <strong>{% trans 'User' %}:</strong> {{ order.user.get_full_name }}<br>
+      <strong>{% trans 'Phone' %}:</strong> {{ order.user.get_profile.phone }}<br>
+      <strong>{% trans 'Delivery type' %}:</strong> {{ order.delivery_type }}<br>
+      {% if order.delivery_type.require_address %}
+      <strong>{% trans 'Address' %}:</strong> {{ order.address }}<br>
+      {% endif %}
+      {% if order.address.additional_info %}
+      <strong>{% trans 'Address additional info' %}:</strong> {{ order.address.additional_info }}<br>
+      {% endif %}
+      <strong>{% trans 'Desired delivery time' %}:</strong> {{ order.desired_delivery_time }}<br>
+      <strong>{% trans 'Send time' %}:</strong> {{ order.creation_date }}<br>
+      <strong>{% trans 'Status' %}:</strong> {{ order.get_status_display }}<br>
+      <strong>{% trans 'Order price' %}:</strong> {{ order.total_amount }}<br>
     </div>
     <br>
     <div id="current_order">

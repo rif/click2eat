@@ -20,7 +20,7 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         # delivery_type and address will be (re)defined in the view
-        fields = ('delivery_type', 'address', 'additional_info')
+        fields = ('delivery_type', 'address', 'desired_delivery_time', 'additional_info')
 
 
 class RatingForm(forms.ModelForm):
