@@ -9,7 +9,6 @@ class DeliveryAddressAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.perform_geolocation = False
         obj.save()
-        print "saved from admin!"
 
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'phone', 'sex', 'birth_date','public', 'newsletter')

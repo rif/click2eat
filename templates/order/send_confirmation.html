@@ -8,6 +8,16 @@
 {% endblock %}
 {% block scripts %}
 <script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function() {
+     $.datepicker.setDefaults( $.datepicker.regional[ "{{ LANGUAGE_CODE }}" ] );
+     $( "#id_desired_delivery_time" ).datepicker({
+       dateFormat: "yy-mm-dd 'hh:mm'",
+       showOn: 'button',
+     });
+  });
+</script>
 <script type="text/javascript">
   $(function(){
   $("#id_delivery_type").change(function(){

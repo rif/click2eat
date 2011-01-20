@@ -117,7 +117,6 @@ def add_menu_of_the_day(request, item_id, cart_name):
     item = get_object_or_404(MenuOfTheDay, pk=item_id)
     try:
         current_order = __get_current_order(request, item.unit)
-        print current_order.id
         if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
         if cart_name == '': cart_name = request.user.username
         order_item = OrderItem.objects.filter(order=current_order).filter(menu_of_the_day=item).filter(cart=cart_name)
@@ -178,7 +177,9 @@ def send(request, unit_id):
         form = OrderForm(request.POST, instance=current_order)
         if form.is_valid():
             order = form.save(commit=False)
-            order.creation_date = datetime.now() # update the creation date of the order with the sending time
+            order.creation_date = datetime.now() # update the creation time to sending time
+            if order.desired_delivery_time == None:
+                order.desired_delivery_time = datetime.now()
             order.status = 'ST'
             order.save()
             messages.warning(request, _('Your order has been sent to the restaurant!'))
@@ -252,7 +253,7 @@ def clone(request, order_id):
 def restlist(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
-    orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
+    orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV']).order_by('desired_delivery_time')
     return {'order_list': orders, 'unit_id': unit_id}
 
 @login_required
@@ -260,7 +261,7 @@ def restlist(request, unit_id):
 def restlist_ajax(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
-    orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV'])
+    orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV']).order_by('desired_delivery_time')
     return {'order_list': orders}
 
 @login_required
