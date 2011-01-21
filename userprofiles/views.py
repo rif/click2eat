@@ -10,6 +10,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
+from django.contrib.auth.models import User
 from userprofiles.forms import DeliveryAddressForm
 from userprofiles.models import DeliveryAddress
 from annoying.utils import HttpResponseReload
