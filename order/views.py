@@ -148,25 +148,31 @@ def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     return {'order': __get_current_order(request, unit)}
 
+def __check_desired_open(unit, form):
+    desired_delivery_time = None
+    if form.cleaned_data.has_key('desired_delivery_time'):
+        desired_delivery_time = form.cleaned_data['desired_delivery_time']
+    ve = forms.ValidationError(_('As the restaurant is closed please set a desired delivery time in the restaurant open hour range.'))
+    try:
+        print desired_delivery_time, unit.schedule._is_open(desired_delivery_time)
+        if not unit.schedule.is_open() and (not desired_delivery_time or not unit.schedule._is_open(desired_delivery_time)):
+            raise ve
+    except:
+        raise ve
 
 @login_required
 def send(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = __get_current_order(request, unit)
     if current_order.status != 'CR':
-        messages.warning(request, _('Current order already sent.'))
+        messages.warning(request, _('Current order already sent.'))        
         return redirect('order:timer', order_id=current_order.id)
-    try:
-        if  not unit.schedule.is_open():
-            messages.error(request, _('This restaurant is now closed! Please check the open hours and come back later.'))
-            return redirect('restaurant:detail', unit_id=unit.id)
-    except:
-        messages.error(request, _('This restaurant is now closed! Please check the open hours and come back later.'))
-        return redirect('restaurant:detail', unit_id=unit.id)
+    if not unit.is_open():
+        messages.warning(request, _('This restaurant is now closed! Please check the open hours and set desired delivery time accordingly.'))
     if unit.minimum_ord_val > current_order.total_amount:
         messages.error(request, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
         return redirect('restaurant:detail', unit_id=unit.id)    
-    if current_order.address:
+    if current_order.address and not current_order.address.geolocation_error:
         src = (unit.latitude, unit.longitude)
         dest = (current_order.address.latitude, current_order.address.longitude)
         dist = distance.distance(src, dest)
@@ -188,6 +194,8 @@ def send(request, unit_id):
                        'bucatar@filemaker-solutions.ro',
                        [unit.email],
                        fail_silently=False)
+            if not unit.is_open(): 
+                return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=current_order.id)
     else:
         form = OrderForm(instance=current_order)
