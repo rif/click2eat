@@ -10,10 +10,12 @@
 	  <input type="submit" value=""/>
 	</form>
       </div>
+      {% if not user.is_authenticated %}
       <div id="top_links">
 	 {% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}" target="_self">{% trans 'Reset it' %}</a>! |
 	 {% trans 'Not member?' %} <a href="{% url registration_register %}" target="_self">{% trans 'Register' %}</a>!
       </div>
+      {% endif %}
       <div id="top_register{% if user.is_authenticated %}_auth{% endif %}">
 	  {% if user.is_authenticated %}
 	  <a class="avatar" href="{% url profiles_profile_detail user %}">{% avatar user 60 %}</a>
