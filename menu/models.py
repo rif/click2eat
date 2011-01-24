@@ -55,6 +55,10 @@ class ToppingGroup(models.Model):
       verbose_name = _('ToppingGroup')
       verbose_name_plural = _('ToppingGroup')
 
+class MerchandiseCategoryGroup(models.Model):
+    index = models.IntegerField(_('index'))
+    name = models.CharField(_('name'), max_length=50)
+
 class ItemTranslation(models.Model):
   language = models.ForeignKey('Language')
   name = models.CharField(_('name'), max_length=100)
@@ -79,6 +83,7 @@ class Item(MultilingualModel):
   item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'), null=True, blank=True)
   added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
+  mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
 
   tags = TaggableManager()
