@@ -62,13 +62,13 @@ def invite_friend(request):
                 message = _('Join me for lunch!')
             # validations:
             if email == request.user.email:
-                messages.error(request, _('You cannot sens an invitation to youself!'))
+                messages.error(request, _('You cannot sens an invitation to yourself!'))
                 return redirect('profiles_profile_detail', username=request.user.username)
             if JoinInvitation.objects.filter(from_user=request.user).filter(contact__email=email).exists():
-                messages.error(request, _('You allready sent an invitation to this email!'))
+                messages.error(request, _('You already sent an invitation to this email!'))
                 return redirect('profiles_profile_detail', username=request.user.username)
             if User.objects.filter(email=email).exists():
-                messages.error(request, _('There is allready a register user with this email!'))
+                messages.error(request, _('There is already a register user with this email!'))
                 return redirect('profiles_profile_detail', username=request.user.username)
             # end validations
             JoinInvitation.objects.send_invitation(request.user, email, message)

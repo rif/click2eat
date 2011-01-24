@@ -148,18 +148,6 @@ def get_current_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     return {'order': __get_current_order(request, unit)}
 
-def __check_desired_open(unit, form):
-    desired_delivery_time = None
-    if form.cleaned_data.has_key('desired_delivery_time'):
-        desired_delivery_time = form.cleaned_data['desired_delivery_time']
-    ve = forms.ValidationError(_('As the restaurant is closed please set a desired delivery time in the restaurant open hour range.'))
-    try:
-        print desired_delivery_time, unit.schedule._is_open(desired_delivery_time)
-        if not unit.schedule.is_open() and (not desired_delivery_time or not unit.schedule._is_open(desired_delivery_time)):
-            raise ve
-    except:
-        raise ve
-
 @login_required
 def send(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
