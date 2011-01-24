@@ -28,6 +28,8 @@
 	<!--[if lte IE 7]>
 	    <script type="text/javascript" src="scripts/js/ieCheck.js"></script>
 	    <![endif]-->
+	{% block scripts-links %}{% endblock %}
+	{% compress js %}
 	<script type="text/javascript">
 	  $(function(){
          $.ajaxSetup({
@@ -52,8 +54,6 @@
               });
 	  });
 	</script>
-	{% block scripts-links %}{% endblock %}
-	{% compress js %}
 	{% block scripts %}{% endblock %}
 	{% endcompress %}
 </head>
