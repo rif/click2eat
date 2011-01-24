@@ -28,6 +28,7 @@
     <div class="title"><h1 class="light_green">{% trans 'Order details' %}</h1></div>
     <ul>
         <li>{% trans 'Unit' %}: <a href="{% url restaurant:detail order.unit.id %}">{{ order.unit }}</a></li>
+	<li><strong>{% trans 'Open hours' %}:</strong> {{ order.unit.schedule }}, {% trans 'Open' %}: {{ order.unit.schedule.is_open|yesno }}</li>
         <li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
         <li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
     </ul>
