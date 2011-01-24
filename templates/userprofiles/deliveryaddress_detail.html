@@ -2,6 +2,10 @@
 {% load i18n %}
 {% block title %}{% trans 'Address detail' %}{% endblock %}
 
+{% block script-links %}
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAA1fBAThoEkKdb3Z3hHSuoOxT7Hq_-yFqfuQ2J-Kys5K7ynRCQ7xSgm8cMPCANXyfR1_dOj6bsc6e1KA" type="text/javascript"></script>
+{% endblock %}
+
 {% block scripts %}
 <script type="text/javascript">
 var map;
@@ -68,7 +72,6 @@ $(function(){
 		      initialize();
 });
 </script>
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAA1fBAThoEkKdb3Z3hHSuoOxT7Hq_-yFqfuQ2J-Kys5K7ynRCQ7xSgm8cMPCANXyfR1_dOj6bsc6e1KA" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
