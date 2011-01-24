@@ -130,6 +130,12 @@ class Schedule(models.Model):
     description = models.CharField(_('description'), max_length=100, help_text=_('This text will appear on the frontend for open hours.'))
     unit = models.OneToOneField('Unit', verbose_name=_('unit'))
 
+    def is_open_at(self, checked_time):
+        for interval in self.interval_set.iterator():
+            if interval._is_open(checked_time):
+                return True
+        return False
+
     def is_open(self):
         for interval in self.interval_set.iterator():
             if interval.is_open():
@@ -199,6 +205,19 @@ class Unit(models.Model):
 
     def get_motd(self):
         return self.menuoftheday_set.filter(day=date.today()) 
+
+    def is_open_at(self, checked_time):
+        try:
+            return self.schedule.is_open_at(checked_time)
+        except:
+            return false
+
+    def is_open(self):
+        try:
+            return self.schedule.is_open()
+        except:
+            return false
+
 
     @models.permalink
     def get_absolute_url(self):
