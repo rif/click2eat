@@ -64,7 +64,7 @@
   <div id="langs">
     {% csrf_token %}
     {% for lang in LANGUAGES %}
-    <a href="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"></a>
+    <a href="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
     {% endfor %}
   </div>
   {% include 'header.html'%}
@@ -95,7 +95,7 @@
       <div class="reg_content">
 	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
 	      <div class="label">{% trans 'User/email' %}: </div>
-	      <input id="id_username1" name="username" maxlength="30" type="text"><br>
+	      <input id="id_username1" name="username" maxlength="30" type="text"/><br/>
 	      <div class="clear"></div>
 
 	      <div class="label">{% trans 'Password' %}: </div>
@@ -114,7 +114,7 @@
 	{% for message in messages %}
 	<div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
           {{ message }}
-          <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""></a>
+          <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
 	</div>
 	{% endfor %}
 	{% endif %}
