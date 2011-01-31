@@ -8,14 +8,14 @@
 	<meta name="description" content="{% block description %}Aici poti comanda mancare online de la diferite restaurante din Timisoara, poti afla meniurile zilei, oferte, reduceri si poti afla pareri despre restaurantele din Timisoara. Primesti puncte bonus pentru o masa gratis la fiecare comanda.{% endblock %}">
 	<meta name="author" content="Radu Fericean">
 	<meta name="keywords" content="restaurante,timisoara,mancare,pizza,comanda online,comanda mancare,restaurante timisoara,tm, ghid,domiciliu,livrare,rapid,bonus,gratis">
-	<meta name="google-site-verification" content="z9oHbAPMh7r-yPPEB_Mw3fGuCFb9sGEdBKoeFpu86UA" />
+	<meta name="google-site-verification" content="z9oHbAPMh7r-yPPEB_Mw3fGuCFb9sGEdBKoeFpu86UA">
 	{% compress css %}
 	{% block style %}{% endblock %}
 	<!--/ CSS Files /-->
 	<link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" media="screen">
 	<link href="{{ MEDIA_URL }}css/ui-lightness/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen">
 	{% endcompress %}
-        <link rel="alternate" type="application/rss+xml" href="{% url menu:daily_feed %}" title="RSS feed for elMonumental">
+        <link rel="alternate" type="application/rss+xml" href="{% url menu:daily_feed %}" title="RSS feed for clic2eat.ro">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 	<script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script>
 	<!--script src="{{ MEDIA_URL }}js/jquery.min.js" type="text/javascript"></script-->
@@ -99,9 +99,9 @@
 	      <div class="label">{% trans 'Password' %}: </div>
 	      <input name="password" id="id_password1" type="password">
 	      <div class="clear"></div>
-	      <input class="pad" type="submit" value="{% trans 'Login' %}" />
+	      <input class="pad" type="submit" value="{% trans 'Login' %}" >
 	      <input type="reset" value="Reset">
-	      <input type="hidden" name="next" value="{{ next }}" />
+	      <input type="hidden" name="next" value="{{ next }}" >
 	    </form>
 	  </div> <!-- reg_content -->
     </div>
