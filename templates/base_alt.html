@@ -1,7 +1,8 @@
 {% load i18n %}
 {% load compress %}
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>{% block title %}click2eat.ro - Comanda mancare in Timisoara, Oferte Restaurante{% endblock%}</title>
@@ -62,7 +63,7 @@
   <div id="langs">
     {% csrf_token %}
     {% for lang in LANGUAGES %}
-    <a href="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.png"></a>
+    <a href="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"></a>
     {% endfor %}
   </div>
   {% include 'header.html'%}
@@ -93,11 +94,11 @@
       <div class="reg_content">
 	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
 	      <div class="label">{% trans 'User/email' %}: </div>
-	      <input id="id_username" name="username" maxlength="30" type="text"><br>
+	      <input id="id_username1" name="username" maxlength="30" type="text"><br>
 	      <div class="clear"></div>
 
 	      <div class="label">{% trans 'Password' %}: </div>
-	      <input name="password" id="id_password" type="password">
+	      <input name="password" id="id_password1" type="password">
 	      <div class="clear"></div>
 	      <input class="pad" type="submit" value="{% trans 'Login' %}" />
 	      <input type="reset" value="Reset">
