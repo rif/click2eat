@@ -2,21 +2,21 @@
 {% load compress %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>{% block title %}click2eat.ro - Comanda mancare in Timisoara, Oferte Restaurante{% endblock%}</title>
-	<meta name="description" content="{% block description %}Aici poti comanda mancare online de la diferite restaurante din Timisoara, poti afla meniurile zilei, oferte, reduceri si poti afla pareri despre restaurantele din Timisoara. Primesti puncte bonus pentru o masa gratis la fiecare comanda.{% endblock %}">
-	<meta name="author" content="Radu Fericean">
-	<meta name="keywords" content="restaurante,timisoara,mancare,pizza,comanda online,comanda mancare,restaurante timisoara,tm, ghid,domiciliu,livrare,rapid,bonus,gratis">
-	<meta name="google-site-verification" content="z9oHbAPMh7r-yPPEB_Mw3fGuCFb9sGEdBKoeFpu86UA">
+	<meta name="description" content="{% block description %}Aici poti comanda mancare online de la diferite restaurante din Timisoara, poti afla meniurile zilei, oferte, reduceri si poti afla pareri despre restaurantele din Timisoara. Primesti puncte bonus pentru o masa gratis la fiecare comanda.{% endblock %}"/>
+	<meta name="author" content="Radu Fericean"/>
+	<meta name="keywords" content="restaurante,timisoara,mancare,pizza,comanda online,comanda mancare,restaurante timisoara,tm, ghid,domiciliu,livrare,rapid,bonus,gratis"/>
+	<meta name="google-site-verification" content="z9oHbAPMh7r-yPPEB_Mw3fGuCFb9sGEdBKoeFpu86UA"/>
 	{% compress css %}
 	{% block style %}{% endblock %}
 	<!--/ CSS Files /-->
-	<link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" media="screen">
-	<link href="{{ MEDIA_URL }}css/ui-lightness/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link href="{{ MEDIA_URL }}css/ui-lightness/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen"/>
 	{% endcompress %}
-        <link rel="alternate" type="application/rss+xml" href="{% url menu:daily_feed %}" title="RSS feed for clic2eat.ro">
+        <link rel="alternate" type="application/rss+xml" href="{% url menu:daily_feed %}" title="RSS feed for clic2eat.ro"/>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 	<script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script>
 	<!--script src="{{ MEDIA_URL }}js/jquery.min.js" type="text/javascript"></script-->
@@ -25,7 +25,7 @@
 	<script src="{{ MEDIA_URL }}js/jquery.ui.datepicker-{{ LANGUAGE_CODE }}.js" type="text/javascript"></script>
         {% endif %}
         {# <script type="text/javascript" src="{{ MEDIA_URL }}js/snowstorm-min.js"></script> #}
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 	<!--[if lte IE 7]>
 	    <script type="text/javascript" src="scripts/js/ieCheck.js"></script>
 	    <![endif]-->
@@ -98,11 +98,11 @@
 	      <div class="clear"></div>
 
 	      <div class="label">{% trans 'Password' %}: </div>
-	      <input name="password" id="id_password1" type="password">
+	      <input name="password" id="id_password1" type="password"/>
 	      <div class="clear"></div>
-	      <input class="pad" type="submit" value="{% trans 'Login' %}" >
-	      <input type="reset" value="Reset">
-	      <input type="hidden" name="next" value="{{ next }}" >
+	      <input class="pad" type="submit" value="{% trans 'Login' %}"/>
+	      <input type="reset" value="Reset"/>
+	      <input type="hidden" name="next" value="{{ next }}"/>
 	    </form>
 	  </div> <!-- reg_content -->
     </div>
