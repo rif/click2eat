@@ -56,7 +56,7 @@
   </div>{% endif %}
   {% endwith %}
   <div class="title"><h1 class="light_green">{% trans 'Restaurants' %}</h1></div>
-  <br>
+  <br/>
   <div id="establishment_list">
     <table>
       <tbody>
@@ -71,9 +71,9 @@
 	<tr class="{% cycle 'even' 'odd'%}">
           <td><a class="{{ unit.get_package.get_class|default:"silver" }}" href="{% url restaurant:detail unit.id %}">{{ unit }}</a></td>
 	  <td class="align-center">
-	    {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
-	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
-	    {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}">{% endif %}
+	    {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}"/>{% endif %}
+	    {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}"/>{% endif %}
+	    {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}"/>{% endif %}
 	  </td>
 	  <td><div class="rating_bar"><div style="width:{{ unit.get_avg_quality }}%"></div></div></td>
 	  <td><div class="rating_bar"><div style="width:{{ unit.get_avg_speed }}%"></div></div></td>
