@@ -93,7 +93,7 @@ class Item(MultilingualModel):
         return delta.days < 7
 
   def __unicode__(self):
-      return self.internal_name
+      return self.name_def
 
   def get_price(self):
       if self.promotion:

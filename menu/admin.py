@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django import forms
 from django.utils.translation import ugettext_lazy as _
 from menu import models
 from menu.forms import MenuOfTheDayForm
@@ -38,7 +39,21 @@ class ToppingGroupAdmin(admin.ModelAdmin):
     search_fields = ['internal_name']
     inlines = [ToppingInline]
 
+class ItemForm(forms.ModelForm):
+    class Meta:
+      model = models.Item
+
+    def clean(self):
+      unit = self.cleaned_data['unit']
+      group = None
+      if self.cleaned_data.has_key('item_group'):
+        group = self.cleaned_data['item_group']
+      if group and (unit != group.unit):
+        raise forms.ValidationError(_("Item's unit differs form item's group unit."))
+      return self.cleaned_data
+
 class ItemAdmin(admin.ModelAdmin):
+    form = ItemForm
     prepopulated_fields = {"index": ("internal_name",)}
     list_display = ('internal_name', 'index','name_def', 'description_def', 'unit', 'get_price', 'promotion', 'quantity_with_mu', 'vat', 'item_group', 'toppings', 'active')
     search_fields = ['internal_name', 'name_def', 'description_def']
