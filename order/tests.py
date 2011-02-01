@@ -9,8 +9,9 @@ from menu.models import Item
 class OrderTest(TestCase):
   fixtures = ['restaurant.json', 'menu.json', 'order.json']
   def setUp(self):
-    self.user = User.objects.create_user('rif', 'test@test.te', 'test')
-    self.user = User.objects.create_user('rif1', 'test@test.te', 'test')
+    self.user = User.objects.create_user('rif', 'rif@test.te', 'test')
+    self.user = User.objects.create_user('rif1', 'rif1@test.te', 'test')
+    self.user = User.objects.create_user('bobo', 'bobo@test.te', 'test')
     self.unit = Unit.objects.get(pk=1)
 
   def test_abandoned_empty_removal(self):
@@ -81,7 +82,7 @@ class OrderTest(TestCase):
   
   def test_mark_delivered(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-      self.client.login(username='rif', password='test')
+      self.client.login(username='bobo', password='test')
       r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
       self.failUnlessEqual(200, r.status_code)
       self.failUnlessEqual('Livrat', r.content)
@@ -89,7 +90,7 @@ class OrderTest(TestCase):
   
   def test_restricted_views(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-      self.client.login(username='rif', password='test')
+      self.client.login(username='bobo', password='test')
       r = self.client.get(reverse('order:restaurant_detail', args=[ord.id]))
       self.failUnlessEqual(200, r.status_code)
       r = self.client.get(reverse('order:restaurant_list', args=[self.unit.id]))
