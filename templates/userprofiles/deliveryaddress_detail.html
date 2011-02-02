@@ -94,7 +94,7 @@ $(function(){
 <p>{% trans 'If not, please let us know by clicking' %} <a href="{% url userprofiles:geolocation_error object.id %}">{% trans 'here' %}</a>.</p>
 <form action="#" onsubmit="showAddress(this.address.value); return false">
   <p>
-    <input type="text" size="60" name="address" value="Piaţa Libertăţii, Timisoara">
+    <input type="text" size="60" name="address">
     <input class="form_button" type="submit" value="Go!">
   </p>
   <div id="map_canvas" style="width: 500px; height: 300px"></div>
