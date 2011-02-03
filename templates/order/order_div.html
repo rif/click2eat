@@ -21,6 +21,17 @@
             });
             e.preventDefault();
         });
+    $(".add-item").click(function(e){
+    row = $(this).parents("tr");
+    table = $(this).parents("table");
+    count = $("td.count", row);
+    count.text(parseInt(count.text())+1);
+    $.get($(this).attr("href"), function(data){
+    $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
+    $(".cart-subtotal", table).load($(".cart-subtotal", table).attr("href"));
+    });
+    e.preventDefault();
+    });
     })
 </script>
 
