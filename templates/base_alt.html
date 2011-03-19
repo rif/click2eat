@@ -63,7 +63,6 @@
 	{% endcompress %}
 </head>
 <body>
-  {% include 'header.html'%}
   <!--div id="langs_and_links">
     <div id="langs">
       {% csrf_token %}
@@ -85,6 +84,7 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
 	</ul>
       </div>
   </div-->
+  {% include 'header.html'%}
   <div class="container">
     <div id="content" class="span-19">
       <div id="messages">
@@ -93,8 +93,8 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
 	<div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
           {{ message }}
           <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
-	</div>
-	{% endfor %}
+        </div>
+  	{% endfor %}
 	{% endif %}
       </div><!-- messages -->      
       {% block content%}
