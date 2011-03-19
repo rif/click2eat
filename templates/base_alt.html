@@ -13,9 +13,11 @@
 	{% compress css %}
 	{% block style %}{% endblock %}
 	<!--/ CSS Files /-->
-	<link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="{{ MEDIA_URL }}css/ui-lightness/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen"/>
 	{% endcompress %}
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection"/>
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css" type="text/css" media="print"/>	
+	<!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
         <link rel="alternate" type="application/rss+xml" href="{% url menu:daily_feed %}" title="RSS feed for clic2eat.ro"/>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 	<!-- ALL jQuery Tools. No jQuery library -->
@@ -60,107 +62,76 @@
 	{% endcompress %}
 </head>
 <body>
-  <div id="top_site"></div>
-  <div id="langs">
-    {% csrf_token %}
-    {% for lang in LANGUAGES %}
-    <a href="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
-    {% endfor %}
-  </div>
-  {% include 'header.html'%}
-  <div id="menu_top">
-    <ul id="menu-list">
-      <li><a href="{% url restaurant:index %}" title="{% trans 'Home page' %}" target="_self">{% trans 'Home' %}</a></li>
-      <li><a href="/flat/help/{{LANGUAGE_CODE}}/" title="{% trans 'How do I order' %}" target="_self">{% trans 'How do I order' %}</a></li>
-      <li><a href="{% url menu:daily_menus %}" title="{% trans "Today's menu" %}" target="_self">{% trans "Today's menu" %}</a></li>
-      <li><a href="{% url wheel:fortune %}" title="{% trans 'Wheel of fortune' %}" target="_self">{% trans 'Wheel of fortune' %}</a></li>
-      <li><a href="{% url order:list %}" title="{% trans 'My orders' %}" target="_self">{% trans 'My orders' %}</a></li>
-      {% if user.get_profile.administred_units.exists %}
-      <li><a href="{% url restaurant:administrator %}" title="{% trans 'Unit administration' %}" target="_self">{% trans 'Unit administration' %}</a></li>
-      {% endif %}
-    </ul>
-  </div>
-
-  <div id="wrapper">
-    <div id="sidebar_ornament"></div>
-    {% if user.is_authenticated %}
-    {% include 'sidebar.html' %}
-    {% else %}
-    <div id="sidebar">
-      <div class="menu_title">
-	<div class="house_icon"></div>
-	<div class="text">{% trans 'Please login' %}</div>
-      </div>
-      <div class="clear"></div>
-      <div class="reg_content">
-	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
-	      <div class="label">{% trans 'User/email' %}: </div>
-	      <input id="id_username1" name="username" maxlength="30" type="text"/><br/>
-	      <div class="clear"></div>
-
-	      <div class="label">{% trans 'Password' %}: </div>
-	      <input name="password" id="id_password1" type="password"/>
-	      <div class="clear"></div>
-	      <input class="pad" type="submit" value="{% trans 'Login' %}"/>
-	      <input type="reset" value="Reset"/>
-	      <input type="hidden" name="next" value="{{ next }}"/>
-	    </form>
-	  </div> <!-- reg_content -->
-    </div>
-    {% endif %}
-    <div id="body_page">
-      <div id="messages">
-	{% if messages %}
-	{% for message in messages %}
-	<div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-          {{ message }}
-          <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
-	</div>
+  <div id="container">
+    <div class="span-24 last">
+      <div id="langs">
+	{% csrf_token %}
+	{% for lang in LANGUAGES %}
+	<a href="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
 	{% endfor %}
-	{% endif %}
-      </div><!-- messages -->      
-      <div class="content_area">
-	<div id="ads2-container">
-	  <div id="ads2-left">
-	    <ul>
-	      <li style="display:block"><img src="{{ MEDIA_URL }}images/ads/5.jpg" alt="img1"/></li>
-	      <li><img src="{{ MEDIA_URL }}images/ads/5_1.jpg" alt="img2"/></li>
-	      <li><img src="{{ MEDIA_URL }}images/ads/5_2.jpg" alt="img3"/></li>
-	      <li><img src="{{ MEDIA_URL }}images/ads/5_3.jpg" alt="img4"/></li>
-	      <li><img src="{{ MEDIA_URL }}images/ads/5_4.jpg" alt="img4"/></li>
-	    </ul>
-	    
-	    <img class="flag-platinum" src="{{ MEDIA_URL }}images/template/icons/platinum_flag.png" alt="platinum"/>
-	    
-	    <div class="ads-controls">
-	      <div class="prev"></div>
-	      <div class="next"></div>
-	    </div>
-	  </div>
-	  
-	  <div id="ads2-right">
-	    <ul>
-	      <li style="display:block"><img src="{{ MEDIA_URL }}images/ads/6.jpg" alt="add"/></li>
-	    </ul>
-	    
-	    <img class="flag-gold" src="{{ MEDIA_URL }}images/template/icons/gold_flag.png" alt="gold"/>
-	    
-	    <div class="ads-controls">
-	      <div class="prev"></div>
-	      <div class="next"></div>
-	    </div>
-	  </div>
-	  <div class="clear"></div>
-	</div> <!-- ads -->
-      </div> <!-- content_area -->
-      <div class="clear"></div>
-      {% block content%}
-      {% endblock %}
-      <div class="clear"></div>
+      </div>
+      {% include 'header.html'%}
+      <div id="menu_top">
+	<ul id="menu-list">
+	  <li><a href="{% url restaurant:index %}" title="{% trans 'Home page' %}" target="_self">{% trans 'Home' %}</a></li>
+	  <li><a href="/flat/help/{{LANGUAGE_CODE}}/" title="{% trans 'How do I order' %}" target="_self">{% trans 'How do I order' %}</a></li>
+	  <li><a href="{% url menu:daily_menus %}" title="{% trans "Today's menu" %}" target="_self">{% trans "Today's menu" %}</a></li>
+	  <li><a <a href="{% url wheel:fortune %}" title="{% trans 'Wheel of fortune' %}" target="_self">{% trans 'Wheel of fortune' %}</a></li>
+	  <li><a href="{% url order:list %}" title="{% trans 'My orders' %}" target="_self">{% trans 'My orders' %}</a></li>
+	  {% if user.get_profile.administred_units.exists %}
+	  <li><a href="{% url restaurant:administrator %}" title="{% trans 'Unit administration' %}" target="_self">{% trans 'Unit administration' %}</a></li>
+	  {% endif %}
+	</ul>
+      </div>
     </div>
-    <div class="clear"></div>
-  </div><!-- wrapper -->
-  {% include 'footer.html' %}
+    <div class="span-4 ">      
+      {% if user.is_authenticated %}
+      {% include 'sidebar.html' %}
+      {% else %}
+      <div id="sidebar">
+	<div class="menu_title">
+	  <div class="house_icon"></div>
+	  <div class="text">{% trans 'Please login' %}</div>
+	</div>
+	<div class="reg_content">
+	  <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
+	    <div class="label">{% trans 'User/email' %}: </div>
+	    <input id="id_username1" name="username" maxlength="30" type="text"/><br/>
+	    
+	    <div class="label">{% trans 'Password' %}: </div>
+	    <input name="password" id="id_password1" type="password"/>
+	    <input class="pad" type="submit" value="{% trans 'Login' %}"/>
+	    <input type="reset" value="Reset"/>
+	    <input type="hidden" name="next" value="{{ next }}"/>
+	  </form>
+	</div> <!-- reg_content -->
+      </div>
+      {% endif %}
+    </div><!-- span4 -->
+    <div class="span-16">
+      <div id="body_page">
+	<div id="messages">
+	  {% if messages %}
+	  {% for message in messages %}
+	  <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+            <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
+	  </div>
+	  {% endfor %}
+	  {% endif %}
+	</div><!-- messages -->      
+	{% block content%}
+	{% endblock %}
+      </div>
+    </div>
+  </div>
+  <div class="span-4 last">
+    Right sidebar
+  </div>	
+  <div class="span-24 last">
+    {% include 'footer.html' %}
+  </div>
+</div>
 </body>
 <!--script type="text/javascript">
 
