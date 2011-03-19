@@ -31,11 +31,8 @@
 	    <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
 	      <div class="label">{% trans 'User/email' %}: </div>
 	      <input id="id_username" name="username" maxlength="30" type="text"/><br/>
-	      <div class="clear"></div>
-
 	      <div class="label">{% trans 'Password' %}: </div>
 	      <input name="password" id="id_password" type="password"/>
-	      <div class="clear"></div>
 	      <input class="pad" type="submit" value="{% trans 'Login' %}" />
 	      <input type="reset" value="Reset"/>
 	      <input type="hidden" name="next" value="{{ next }}" />
