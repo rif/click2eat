@@ -9,14 +9,14 @@
   <div class="clear"></div>
   {% with user.order_set.all|slice:":20" as object_list %}
   <ul>
-  {% autopaginate object_list 5 %}
+    {% autopaginate object_list 5 %}
     {% for order in object_list %}
     <li>
-        {% if order.status == 'CR' %}
-        <a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>13 Nov 2010</span></a>
-        {% else %}
-        <a href="{% url order:detail order.id %}">{{order}}<br><span>13 Nov 2010</span></a>
-        {% endif %}
+      {% if order.status == 'CR' %}
+      <a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>13 Nov 2010</span></a>
+      {% else %}
+      <a href="{% url order:detail order.id %}">{{order}}<br><span>13 Nov 2010</span></a>
+      {% endif %}
       <div class="right">
 	<a href="#" target="_self">Clone</a>
       </div>
@@ -25,10 +25,10 @@
     {% empty %}
     <li>No orders yet? Bon apetit ;)</li>
     {% endfor %}
-  <li class="navigation">
+    <li class="navigation">
     {% paginate %}
-  </li> 
-  {% endwith %}
+    </li> 
+    {% endwith %}
   </ul>
   
   <div class="menu_title">
