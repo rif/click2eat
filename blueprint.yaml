@@ -1,0 +1,8 @@
+# refer to http://www.yaml.org/spec/1.1/ for clarification on YAML collections
+click2eat:
+  path: /home/rif/Documents/webframeworks/bucatar/media/css/blueprint
+  custom_layout:
+    column_count: 24
+    column_width: 20
+    gutter_width: 15
+
