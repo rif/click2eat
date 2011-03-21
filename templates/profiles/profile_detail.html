@@ -48,25 +48,112 @@ $(function(){
       <p>{% trans 'This profile is not public' %}</p>
    </div>
   {% else %}
-<div class="content_area">
-  <div class="title"><h1 class="light_green">{% trans 'My account' %}</h1></div>
+<div class="content_area720">
   <div id="account_details">
+  	<span class="titlu">Bine ai venit John Lennon</span> 
+    <br/><br/>
+  	<span class="subtitlu">
+    Program Fidelitate Click2Eat
+    </span>
+    <br/>
+  	<span class="textmare">John, pana acum ai adunat <span class="special">24</span> puncte, pe care le poti folosi pentru <span class="special">1</span> comenzi gratuite meniul zilei.</span><br/>
+La urmatoarea comanda de Meniul Zilei, nu va mai trebui sa platesti.<br/>
+	<div class="boxverde">
+    	<strong>Castiga puncte prin :</strong><br/>
+		<strong>3 zile consecutive de comenzi</strong> pe www.click2eat.ro ( 6 puncte). Pana acum ai <span class="special2">2</span> zile consecutive.
+        <br/><br/><br/>
+
+		<strong>Recomandari prieteni</strong> ( 2 puncte/prieten care comanda cel putin o data de pe click2eat.ro). <br/>
+Recomanda aici unui prieten.  Adauga adresa lui de email 
+	<form action="ceva.hh" target="_self">
+	<input type="text" class="inputprieten" /> 
+    <a href="#" class="btnverde">Trimite!</a>
+    </form>
+    </div>
+    <br/>
+    <div class="separatie">
+    </div>
+    
+    <span class="subtitlu">
+    Preferintele mele
+    </span>
+    
+    <div class="boxporto">
+    	<div class="meniuleft">
+    	<strong>Meniu preferat 1</strong><br/>
+		Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,<br/>
+		Restaurant Papi
+        </div>
+        <a href="#" title="" class="meniuright">
+        	Comanda acest meniu
+        </a>
+    </div>
+    <div class="boxporto">
+    	<div class="meniuleft">
+    	<strong>Meniu preferat 1</strong><br/>
+		Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,<br/>
+		Restaurant Papi
+        </div>
+        <a href="#" title="" class="meniuright">
+        	Comanda acest meniu
+        </a>
+    </div>
+    <br/>
+    <div class="separatie">
+    </div>
+   
+    <span class="subtitlu">
+    Comenzile mele
+    </span>
+    
+    <div class="boxroz">
+    	<span class="data">22.03.2011</span><strong><span class="pret">24 lei</span></strong><span class="detalii">Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,</span><span class="restaurant">Restaurant COCO</span>							
+        <a href="#" class="right">Comanda din nou</a>
+    </div>
+    <div class="boxroz">
+    	<span class="data">22.03.2011</span><strong><span class="pret">24 lei</span></strong><span class="detalii">Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,</span><span class="restaurant">Restaurant COCO</span>	       
+         <a href="#" class="right">Comanda din nou</a>
+    </div>  
+    
+    <div class="boxroz">
+    	<span class="data">22.03.2011</span><strong><span class="pret">24 lei</span></strong><span class="detalii">Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,</span><span class="restaurant">Restaurant COCO</span>	   
+         <a href="#" class="right">Comanda din nou</a>
+    </div>
+    <br/><br/><br/>
+    
+    <div class="separatie">
+    </div>
+   
+    <span class="subtitlu">
+    Datele contului meu
+    </span>
+    <div class="datecont">
+        <strong>John Lennon</strong><br/>
+        Tel: 0567 567898<br/>
+        John@rockstar.ro<br/>
+        Acasa: Str. Florilor, nr, 42, Timisoara<br/>
+        La birou: Handsome srl, str. Geo Bogza, nr. 23<br/>
+        <a href="#" title="modifica datele contului">Modifica datele contului</a>
+    </div>
+    <br/><br/><br/>
+    
+    <div class="clear"></div>
     <div class="avatar">
       {% avatar profile.user 155 %}
-      <br>
+      <br/>
       {% if user == profile.user %}
       <a href="{% url avatar_change %}">{% trans 'Change' %}</a> | <a href="{% url avatar_delete %}">{% trans 'Delete' %}</a>
       {% endif %}
     </div> <!-- avatar -->
     <div class="details">
-      <strong>{% trans 'Name' %}:</strong> {{ profile.user.get_full_name }}<br>
-      <strong>{% trans 'Email' %}:</strong> <a target="_self" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a><br><br>
-      <strong>{% trans 'Birth date' %}:</strong> {{ profile.birth_date }}<br>
-      <strong>{% trans 'Phone' %}:</strong> {{ profile.phone }}<br>
-      <strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}<br>
-      <strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}<br>
-      <strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}<br>
-      <strong>{% trans 'Bonus points' %}:</strong>{{ profile.get_bonus_points }} <a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a><br>
+      <strong>{% trans 'Name' %}:</strong> {{ profile.user.get_full_name }}<br/>
+      <strong>{% trans 'Email' %}:</strong> <a target="_self" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a><br/><br/>
+      <strong>{% trans 'Birth date' %}:</strong> {{ profile.birth_date }}<br/>
+      <strong>{% trans 'Phone' %}:</strong> {{ profile.phone }}<br/>
+      <strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}<br/>
+      <strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}<br/>
+      <strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}<br/>
+      <strong>{% trans 'Bonus points' %}:</strong>{{ profile.get_bonus_points }} <a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a><br/>
       {% if user == profile.user %}
       <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> | <a href="{% url order:list %}">{% trans 'Order History' %}</a>
       {% endif %}
