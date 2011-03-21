@@ -27,9 +27,69 @@ $(function(){
 {% endblock %}
 
 {% block content %}
+<div id="paginaregister">
+	<div class="titlu">
+    	CONT NOU
+    </div>
+    <div class="datep">
+    	Date personale
+    </div>
+    <form method="POST" action="{% url registration_register %}">
+    	<label class="width3">Apelativ</label>
+        <input type="text" size="10"/><div class="end"></div>
+        <div class="clear"></div>
+        <label class="width3">Nume</label>
+        <input type="text" size="25"/><div class="end"></div>
+        <label>Prenume</label>
+        <input type="text" size="25"/><div class="end"></div>
+        <div class="clear"></div>
+        <label>Data Nasterii</label>
+        <input type="text" size="21"/><div class="end"></div>        
+        <label>Telefon mobil</label>
+        <input type="text" size="25"/><div class="end"></div>    
+        <div class="clear"></div>    
+        <label class="width1">Adresa 1 Timisoara ( livrare acasa )</label>
+        <input type="text" size="50"/><div class="end"></div>   
+        <div class="clear"></div>          
+        <label  class="width1">Adresa 2 Timisoara ( livrare la birou )</label>
+        <input type="text" size="50"/><div class="end"></div>               
+	<div class="bordersep"></div>
+    <div class="datep">
+    	Autentificare
+    </div>
+     <form method="POST" action="{% url registration_register %}">
+    	<label class="width2">Adresa de email</label>
+        <input type="text" size="45"/><div class="end"></div>
+        <div class="clear"></div>
+        <label class="width2">Parola</label>
+        <input type="text" size="45"/><div class="end"></div>
+        <div class="clear"></div>
+        <label class="width2">Verificare parola</label>
+        <input type="text" size="45"/><div class="end"></div>
+        <div class="clear"></div>
+        <label class="width2">Cod de verificare</label>
+        <input type="text" size="10"/><div class="end"></div> 
+        <div class="clear"></div>
+        <br/><br/>
+        <div class="textmic">
+     <input type="checkbox" /> Sunt de acord sa primesc newsletter <br/>
+     <input type="checkbox" /> Sunt de acord sa primesc SMS in fiecare zi la ora 10:30 pentru masa de pranz<br/>
+     <input type="checkbox" /> Sunt de acord cu termenii si conditii click2eat
+     </div>
+    </form>
+    
+    
+    <div class"clear"></div>
+    
+    <a href="#" title="" class="btnreg">Creeaza cont</a>
+    <div class="serv"></div>
+    <!--
+       
 <form method="POST" action="{% url registration_register %}" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
     <input id="submit" class="form_button" type="submit" value="{% trans 'Register' %}" disabled="true">
    <input id="terms" type="checkbox" name="terms" value="agree" /> <a href="/flat/terms/{{ LANGUAGE_CODE }}/">{% trans 'I agree with the terms and conditions.' %}</a>
 </form>
+-->
+</div>
 {% endblock %}

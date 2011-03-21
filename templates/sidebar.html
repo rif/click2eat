@@ -2,6 +2,22 @@
 {% load pagination_tags %}
 
 <div id="sidebar">
+	<div id="boxmeniusidebar">
+        <div class="text_specialitate">
+        Astazi, 24.01.2011
+        <br/>Specialitatea Casei Click2eat este:
+        </div>
+        <div class="meniu_special">
+        Pui milanez<br/> cu legume Verdeza
+        </div>
+        <div class="meniu_restaurant">
+        Restaurant ALBERTO
+        </div>
+        <div class="linkcomanda">
+        <a href="#" title="" >Comanda acest meniu</a>
+        </div>
+    </div>
+<!--
   <div class="menu_title">
     <div class="house_icon"></div>
     <div class="text">{% trans 'Latest orders' %}</div>
@@ -74,4 +90,52 @@
       </div>
     </li>
   </ul>
+  -->
 </div><!-- sidebar -->
+
+<div id="sidebar2">
+	<div id="sidebar2wrapper">
+    	<span class="comanda">COMANDA MEA</span>
+        <br/><br/>
+        <span class="user">JOHN LENNON</span>
+        <br/>
+        <div class="item">
+        	<div class="buc">1 x </div>
+            <div class="tip">Supa de pui</div>
+            <div class="pret">20 Lei</div>         
+            <a href="#" title="" class="sub"></a>
+            <a href="#" title="" class="add"></a>
+        </div>
+        <div class="item">
+        	<div class="buc">2 x </div>
+            <div class="tip">Pizza mozzarella</div>
+            <div class="pret">46 Lei</div>            
+            <a href="#" title="" class="sub"></a>
+            <a href="#" title="" class="add"></a>
+        </div>
+        <div class="item">
+        	<div class="buc">1 x </div>
+            <div class="tip">Desert apple strudel</div>
+            <div class="pret">5 Lei</div>
+            <a href="#" title="" class="sub"></a>
+            <a href="#" title="" class="add"></a>
+        </div>       
+        <div class="clear"></div>
+        <div class="nota">
+        _________________________<br/>
+        	<div class="textnota">NOTA DE PLATA</div>
+            <div class="totalnota">100 Lei</div>
+            <br/>
+            <div class="livrarea">
+                <label>LIVRARE:</label>
+                    <select id="sidebarcomanda">
+                      <option value="1">acasa( adresa 1 profil )</option>
+                      <option value="2">birou( adresa 2 profil )</option>
+                    </select>
+            </div>
+            <a href="#" title="" class="btncomanda">
+                <span class="textbtn">TRIMITE COMANDA</span>
+            </a>
+       </div> 
+    </div>
+</div>
