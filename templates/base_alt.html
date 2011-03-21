@@ -77,7 +77,7 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
       <div id="menu_top">
 	<ul id="menu-list">
 	  <li><a href="{% url restaurant:index %}" title="{% trans 'Home page' %}" target="_self">{% trans 'Home' %}</a></li>
-	  <li><a href="/flat/help/{{LANGUAGE_CODE}}/" title="{% trans 'How do I order' %}" target="_self">{% trans 'How do I order' %}</a></li>
+	  
 	  <li><a href="{% url menu:daily_menus %}" title="{% trans "Today's menu" %}" target="_self">{% trans "Today's menu" %}</a></li>
 	  <li><a <a href="{% url wheel:fortune %}" title="{% trans 'Wheel of fortune' %}" target="_self">{% trans 'Wheel of fortune' %}</a></li>
 	  <li><a href="{% url order:list %}" title="{% trans 'My orders' %}" target="_self">{% trans 'My orders' %}</a></li>
@@ -88,77 +88,78 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
       </div>
   </div-->
   {% include 'header.html'%}
-<div id="topcontent" class="span-24">
-	<div id="baraalba">
-    	<div class="titlu">
-        	Alege de unde vrei sa mananci azi ?
-        </div>
-        <div class="vezitoate">
-        	<a href="#" title="">Vezi toate restaurantele</a>
-        </div>
-        <a href="#" title="" class="stanga"></a>
-        <a href="#" title="" class="dreapta"></a>
-        <div id="slider">
-            	<div class="slide primulslide">
-                    <div class="titluslide">
-                    	<a href="#" title="slide">
-                        <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
-                        </a>
-                    </div>
-                    <div class="descriererestaurant">
-                    	<a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
-                    </div>
-                    <div class="logorestaurant">
-                    	<img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
-                    </div>
-                    <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide1.png" alt="" /></a>
-            	</div>
-            	<div class="slide">
-                   <div class="titluslide">
-                    	<a href="#" title="slide">
-                        <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
-                        </a>
-                    </div>
-                    <div class="descriererestaurant">
-                    	<a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
-                    </div>
-                    <div class="logorestaurant">
-                    	<img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
-                    </div>
-                	<a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide2.png" alt="" /></a>
-                </div>        	
-            	<div class="slide">
-                	<div class="titluslide">
-                    	<a href="#" title="slide">
-                        <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
-                        </a>
-                    </div>
-                    <div class="descriererestaurant">
-                    	<a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
-                    </div>
-                    <div class="logorestaurant">
-                    	<img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
-                    </div>
-                	<a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide3.png" alt="" /></a>
-            	</div>
-            	<div class="slide">
-                	<div class="titluslide">
-                    	<a href="#" title="slide">
-                        <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
-                        </a>
-                    </div>
-                    <div class="descriererestaurant">
-                    	<a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
-                    </div>
-                    <div class="logorestaurant">
-                    	<img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
-                    </div>
-                	<a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide4.png" alt="" /></a>
-            	</div>
-        </div>
-    </div>
-</div>
 <div class="container">
+      <div id="topcontent" class="span-24">
+	      <div id="baraalba">
+	      <div class="titlu">
+		      Alege de unde vrei sa mananci azi ?
+	      </div>
+	      <div class="vezitoate">
+		      <a href="#" title="">Vezi toate restaurantele</a>
+	      </div>
+	      <a href="#" title="" class="stanga"></a>
+	      <a href="#" title="" class="dreapta"></a>
+	      <div id="slider">
+		      <div class="slide primulslide">
+			  <div class="titluslide">
+			      <a href="#" title="slide">
+			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
+			      </a>
+			  </div>
+			  <div class="descriererestaurant">
+			      <a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
+			  </div>
+			  <div class="logorestaurant">
+			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
+			  </div>
+			  <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide1.png" alt="" /></a>
+		      </div>
+		      <div class="slide">
+			<div class="titluslide">
+			      <a href="#" title="slide">
+			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
+			      </a>
+			  </div>
+			  <div class="descriererestaurant">
+			      <a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
+			  </div>
+			  <div class="logorestaurant">
+			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
+			  </div>
+			      <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide2.png" alt="" /></a>
+		      </div>        	
+		      <div class="slide">
+			      <div class="titluslide">
+			      <a href="#" title="slide">
+			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
+			      </a>
+			  </div>
+			  <div class="descriererestaurant">
+			      <a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
+			  </div>
+			  <div class="logorestaurant">
+			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
+			  </div>
+			      <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide3.png" alt="" /></a>
+		      </div>
+		      <div class="slide">
+			      <div class="titluslide">
+			      <a href="#" title="slide">
+			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
+			      </a>
+			  </div>
+			  <div class="descriererestaurant">
+			      <a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
+			  </div>
+			  <div class="logorestaurant">
+			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
+			  </div>
+			      <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide4.png" alt="" /></a>
+		      </div>
+	      </div>
+	  </div>
+      </div>
+      {% block main_area %}
       <div id="content" class="span-16">
       <div id="messages">
 	{% if messages %}
@@ -177,6 +178,7 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
   		{% include 'sidebar.html' %}
     </div>	
   </div>
+  {% endblock %}
   {% include 'footer.html' %}
 </body>
 <!--script type="text/javascript">

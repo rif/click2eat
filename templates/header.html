@@ -3,12 +3,12 @@
 <div id="header">
     <div id="header_content">
       <a id="logo" href="/"></a>
-      <a id="btn_cumcomanzi" href="#">
+      <a id="btn_cumcomanzi" title="{% trans 'How do I order' %}" href="/flat/help/{{LANGUAGE_CODE}}/">
       	-------CUM-------<br/>
       	<span class="textmare">COMAND ?</span>
       </a>
       <div class="separatorl"></div>
-      <a id="btn_contulmeu" href="#">
+      <a id="btn_contulmeu" title="{% trans 'My profile' %}" href="{% url profiles_profile_detail user %}">
       	<span class="textmare2">CONTUL</span><br/>
       	-----MEU-----
       </a>      
@@ -48,7 +48,7 @@
           {% endif %}
           </div> <!-- top_register -->
       </div>
-      <a id="btn_estirestaurant" href="#">
+      <a id="btn_estirestaurant" href="{% url restaurant:administrator %}">
       	----------ESTI----------<br/>
       	<span class="textmare">RESTAURANT?</span>
       </a>        <div id="top_search">
