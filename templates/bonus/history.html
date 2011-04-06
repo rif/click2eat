@@ -5,9 +5,12 @@
 {% block description %}{% trans 'Here you can check your bonus history, how you received and how you used your bnus points.' %}{% endblock %}
 
 {% block content %}
-<div class="content_area">
-  <div class="title"><h1 class="light_green">{% trans 'Bonus history' %}</h1></div><br>
-<div id="establishment_list">
+<div class="content_area720">
+<div id="paginaregister">
+	<div class="titlu">
+    	{% trans 'Bonus history' %}
+    </div>
+	<div id="establishment_list">
     <table id="daily_table">
       <tbody>
 	<tr class="platinum">
@@ -33,5 +36,6 @@
   </div> <!-- establishment_list -->
   
   <div class="clear"></div>
+</div>
 </div>
 {% endblock %}

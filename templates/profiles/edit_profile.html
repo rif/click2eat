@@ -22,15 +22,28 @@
        yearRange: '-80:-7'
      });
   });
+$(document).ready(function() {
+	$('.textinput').after('<div class="end"></div>');
+	$('.passwordinput').after('<div class="end"></div>');	 
+	$('.dateinput').after('<div class="end"></div>');
+});
 </script>
 {% endblock %}
 
 {% block title %}{% trans 'Edit your profile' %}{% endblock %}
 
 {% block content %}
+<div id="paginaregister">
+	<div class="titlu">
+    	EDIT PROFILE
+    </div>
 <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
+    <br/><br/>
     <input class="form_button" type="submit" value="{% trans 'Update profile' %}">
 </form>
+<br/><br/><br/>
+</div>
+
 {% endblock %}
 

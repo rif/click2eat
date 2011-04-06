@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css" type="text/css" media="print"/>	
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Radley" type="text/css" />
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Indie+Flower:regular" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/skin.css" />
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Tinos:regular,italic,bold,bolditalic" type="text/css" />
 	<!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
         <link rel="alternate" type="application/rss+xml" href="{% url menu:daily_feed %}" title="RSS feed for clic2eat.ro"/>
@@ -62,6 +63,18 @@
               });
 	  });
 	</script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript">
+
+	jQuery(document).ready(function() {
+		jQuery('#slider').jcarousel({
+			wrap: "circular",
+			scroll: 1,
+		});
+	});
+	
+	</script>
+
 	{% block scripts %}{% endblock %}
 	{% endcompress %}
 </head>
@@ -97,10 +110,8 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
 	      <div class="vezitoate">
 		      <a href="#" title="">Vezi toate restaurantele</a>
 	      </div>
-	      <a href="#" title="" class="stanga"></a>
-	      <a href="#" title="" class="dreapta"></a>
-	      <div id="slider">
-		      <div class="slide primulslide">
+	      <ul id="slider" class="jcarousel-skin-tango">
+		      <li class="slide primulslide">
 			  <div class="titluslide">
 			      <a href="#" title="slide">
 			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
@@ -113,8 +124,8 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
 			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
 			  </div>
 			  <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide1.png" alt="" /></a>
-		      </div>
-		      <div class="slide">
+		      </li>
+		      <li class="slide">
 			<div class="titluslide">
 			      <a href="#" title="slide">
 			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
@@ -127,8 +138,8 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
 			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
 			  </div>
 			      <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide2.png" alt="" /></a>
-		      </div>        	
-		      <div class="slide">
+		      </li>        	
+		      <li class="slide">
 			      <div class="titluslide">
 			      <a href="#" title="slide">
 			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
@@ -141,8 +152,8 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
 			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
 			  </div>
 			      <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide3.png" alt="" /></a>
-		      </div>
-		      <div class="slide">
+		      </li>
+		      <li class="slide">
 			      <div class="titluslide">
 			      <a href="#" title="slide">
 			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
@@ -155,8 +166,36 @@ ef="." class="{{ lang.0 }}"><img src="{{ MEDIA_URL }}images/flags/{{ lang.0 }}.p
 			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
 			  </div>
 			      <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide4.png" alt="" /></a>
-		      </div>
-	      </div>
+		      </li>
+		      <li class="slide">
+			  <div class="titluslide">
+			      <a href="#" title="slide">
+			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
+			      </a>
+			  </div>
+			  <div class="descriererestaurant">
+			      <a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
+			  </div>
+			  <div class="logorestaurant">
+			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
+			  </div>
+			  <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide1.png" alt="" /></a>
+		      </li>
+		      <li class="slide">
+			<div class="titluslide">
+			      <a href="#" title="slide">
+			      <span class="textmic">RESTAURANT</span><br/><span class="textmare">PRESIDENT</span>
+			      </a>
+			  </div>
+			  <div class="descriererestaurant">
+			      <a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span><br/><span class="textmic">tel: 0256 567 567</span><br/><span class="textmic">rezervari@president.ro</span></a>
+			  </div>
+			  <div class="logorestaurant">
+			      <img src="{{ MEDIA_URL }}images/template/rest1.png" alt="" />
+			  </div>
+			      <a href="#" title="slide"><img src="{{ MEDIA_URL }}images/template/slide2.png" alt="" /></a>
+		      </li>        
+	      </ul>
 	  </div>
       </div>
       {% block main_area %}

@@ -514,7 +514,8 @@ body {
 	font-size: 12px;
 	margin: 5px 10px 0px 0px;
 	color: #fff;
-    font-size: 14px;
+    font-size: 15px;
+	font-weight: bold;
 }
 
 #paginarestaurant .category h3{
@@ -527,44 +528,182 @@ body {
 	border: 1px solid #693933;
 }
 
-#paginarestaurant ul {
+#paginarestaurant ul,
+#paginarestaurant .lista {
 	list-style-type: none;
 	margin: 10px 0px 0px 0px;
 	padding:0px;
 }
 
-#paginarestaurant ul li.pozrel {
+#paginarestaurant ul li.pozrel,
+#paginarestaurant .pozrel {
     border-bottom: 1px dashed #a18e1e;
     margin: 15px 30px 0 0;
     position: relative;
 }
 
-#paginarestaurant ul li .name a {
+#paginarestaurant ul li .name a,
+#paginarestaurant .name a {
 	font-size: 20px;
 	color: #7e1c0a;
 	font-style: italic;
+	font-weight:bold;
 	text-decoration: none;
  	line-height: 16px;
 }
 
-#paginarestaurant ul li .description {
-	font-size: 14px;
+#paginarestaurant ul li .description{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
 	color: #000;
 	float: left;
  	width: 450px;
 }
 
-#paginarestaurant ul li .price {
+#paginarestaurant .description2 {
+	margin-top: 2px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+	float: left;
+ 	width: 450px;
+	line-height: 14px;
+    margin-bottom: 10px;
+}
+#paginarestaurant .click2eat {
+	float: right;
+	background: url("../images/template/btnc2e.png") no-repeat;
+	width: 275px;
+	height: 42px;
+    position: absolute;
+    right: 0;
+    top: -13px;
+	color:#fff;
+	padding: 16px 0 0 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#paginarestaurant .click2eat .recom {
+	padding-left: 5px;
+}
+
+#paginarestaurant .click2eat .restaurante {
+    color: #562019;
+    float: right;
+    font-family: "Times New Roman",Times,serif;
+    font-size: 15px;
+    line-height: 16px;
+    margin-right: 73px;
+    margin-top: 5px;
+}
+#paginarestaurant .restaurante {
+	float:right;
+	margin-right: 40px;
+}
+
+#paginarestaurant .bgrest1 {
+	background: url("../images/template/bglista2.png") no-repeat;
+	width: 690px;
+	height: 35px;
+	padding: 4px 0 0 8px;
+	border: 0 none;
+	margin: 0px 0px 5px 0px;
+	position: relative;
+}
+#paginarestaurant .bgrest2 {
+	background: url("../images/template/bglista1.png") no-repeat;
+	width: 690px;
+	height: 35px;
+	padding: 4px 0 0 8px;
+	border: 0 none;
+	margin: 0px 0px 5px 0px;
+	position: relative;
+}
+#paginarestaurant .name2 {
+	position: relative;
+}
+#paginarestaurant .name2 a{
+	font-size: 20px;
+	color: #000;
+	font-style: italic;
+	font-weight:bold;
+	text-decoration: none;
+ 	line-height: 16px;
+}
+
+#paginarestaurant .description3 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+	float: left;
+ 	width: 500px;;
+	line-height: 12px;
+    margin-bottom: 0px;
+}
+
+#paginarestaurant .special {
+	background: url("../images/template/c2esmall.png") no-repeat;
+	height: 90px;
+	width: 140px;
+	position: absolute;
+    left: 277px;
+    top: -47px;
+	z-index: 100;
+}
+
+#paginarestaurant .bgrest3 {
+    width: 690px;
+	height: 35px;
+}
+
+#paginarestaurant .stele {
+	background: url("../images/template/stelemici.png") no-repeat;
+	height: 8px;
+	float: left;
+	width: 40px;
+}
+
+#paginarestaurant .btnviziteaza1 {
+	font-weight: normal;
+	display: block;
+	float: right;
+	background: url("../images/template/btncmd.png") no-repeat;
+	width: 130px;
+	height: 25px;
+	padding: 3px 0 0 6px;
+	color: #fff;
+	font-size: 12px;
+	font-style: normal;
+	margin: -12px 10px 0 4px;	
+	font-family: Arial, Helvetica, sans-serif;
+}
+#paginarestaurant .btnviziteaza2 {
+	font-weight: normal;
+	display: block;
+	float: right;
+	background: url("../images/template/btngri.png") no-repeat;
+	width: 130px;
+	height: 25px;
+	padding: 3px 0 0 6px;
+	color: #fff;
+	font-size: 12px;
+	font-style: normal;
+	margin: -12px 0px 0 4px;	
+	font-family: Arial, Helvetica, sans-serif;
+}
+#paginarestaurant ul li .price,
+#paginarestaurant .price {
 	float: right;
 	font-size: 18px;
 	font-style: italic;
 	color: #7e1c0a;
 	position:absolute;
 	right: 0px; 
-	top: 10px;
+	top: 8px;
 	font-weight: bold;
 }
-#paginarestaurant ul li .btncomanda {
+#paginarestaurant ul li .btncomanda,
+#paginarestaurant .btncomanda{
 	font-weight: normal;
 	display: block;
 	float: right;
@@ -578,7 +717,25 @@ body {
 	margin: 0px 0px 0px 5px;	
 }
 
+#paginarestaurant .book {
+	width: 90px;
+	height: 90px;
+	float: left;
+	position: relative;
+	margin-top:-8px;
+	margin-bottom: 5px;
+}
 
+#paginarestaurant .heading {
+	position: absolute;
+	top: 10px;
+    text-align: center;
+    width: 90px;}
+
+#paginarestaurant .book a{
+	color: #fff;
+	text-decoration: none;
+}
 /*                            Pagina de inregistrare                                     				  */ 
 
 #paginaregister {
@@ -597,10 +754,11 @@ body {
 	float: left;
 	font-size: 14px;
 	font-weight: normal;
-	margin: 19px 5px 0px 0px;
+	margin: 22px 5px 0px 0px;
 }
 
-#paginaregister input[type=text] {
+#paginaregister input[type=text],
+#paginaregister input[type=password]{
 	float: left;
 	background: url("../images/template/inputst.png") no-repeat;
 	height: 27px;
@@ -669,6 +827,30 @@ body {
 	height: 160px;
 	margin:-10px 0px 0px -20px;
 }
+
+#paginaregister .registerright {
+	margin: 15px 0px 0px 30px;
+}
+
+#paginaregister .select {
+	margin: 18px 0px 0px 10px;
+}
+#paginaregister .checkboxinput {
+	margin: 22px 0px 0px 5px;
+}
+
+#paginaregister .formHint {
+	 margin: 20px 0 0;
+}
+
+#paginaregister .form_button {
+	margin-top: 16px;
+}
+
+#paginaregister input[type=file] {
+	margin-top: 19px;
+}
+
 /*                            Cum comand                                     				  */ 
 
 .cumcomand {
@@ -695,29 +877,39 @@ body {
 .cumcomand .text a{
 	color: #2c2c2c;
 }
-
+.cumcomand .first,
+.cumcomand .second,
+.cumcomand .third,
+.cumcomand .fourth,
+.cumcomand .fifth,
+.cumcomand .last {
+	width: 100px;
+	display:block;
+	float:left;
+}
 .cumcomand .first {
 	margin-left: 15px;
 }
 
 .cumcomand .second {
-	margin-left: 50px;
+	margin-left: 40px;
 }
 
 .cumcomand .third {
-	margin-left: 85px;
+	margin-left: 25px;
 }
 
 .cumcomand .fourth {
-	margin-left: 70px;
+	margin-left: 7px;
 }
 
 .cumcomand .fifth {
-	margin-left: 64px;
+	margin-left: 15px;
 }
 
 .cumcomand .last {
-	margin-left: 60px;
+	margin-left: 25px;
+	width: 50px;
 }
 
 .cumcomand a.linkcat {
