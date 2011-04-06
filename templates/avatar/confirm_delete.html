@@ -2,6 +2,10 @@
 {% load i18n %}
 
 {% block content %}
+<div id="paginaregister">
+	<div class="titlu">
+    	STERGERE AVATAR
+    </div>
     <p>{% trans "Please select the avatars that you would like to delete." %}</p>
     {% if not avatars %}
         {% url avatar_change as avatar_change_url %}
@@ -14,4 +18,6 @@
             <p>{% csrf_token %}<input class="form_button" type="submit" value="{% trans "Delete These" %}" /></p>
         </form>
     {% endif %}
+<br/><br/>
+</div>
 {% endblock %}

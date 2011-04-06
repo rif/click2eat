@@ -5,8 +5,13 @@
 
 {% block content %}
 {% include 'order/order_list_div.html' %}
-<div class="general_button">
-  <a href="{% url profiles_profile_detail user %}">{% trans 'Back' %}</a>
+<div id="paginaregister">
+	<div class="titlu">
+    	COMENZI
+    </div>
+    <div class="general_button">
+      <a href="{% url profiles_profile_detail user %}">{% trans 'Back' %}</a>
+    </div>
 </div>
 {% endblock %}
 
