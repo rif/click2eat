@@ -201,24 +201,26 @@
             {% block main_area %}
             <div id="content" class="span-16">
                 <div id="messages">
-	{% if messages %}
-	{% for message in messages %}
-                    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                        {{ message }}
-                        <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
-                    </div>
-  	{% endfor %}
-	{% endif %}
+		  {% if messages %}
+		  {% for message in messages %}
+                  <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                    <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
+                  </div>
+  		  {% endfor %}
+		  {% endif %}
                 </div><!-- messages -->
-                {% block content%}
+                {% block content %}
                 {% endblock %}
             </div>
             {% endblock %}
-            <div class="span-10 last">
+            <div class="span-8 last">
             {% include 'sidebar.html' %}
             </div>
+	    {% block home_content %}
+	    {% endblock %}
         </div>
-        {% include 'footer.html' %}
+	{% include 'footer.html' %}
     </body>
     <!--script type="text/javascript">
 

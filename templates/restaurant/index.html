@@ -39,7 +39,6 @@
 {% endblock %}
 
 {% block main_area %}
-<div id="content" class="span-16">
   <div id="messages">
     {% if messages %}
     {% for message in messages %}
@@ -50,7 +49,7 @@
     {% endfor %}
     {% endif %}
   </div><!-- messages -->      
-  <div id="primapagina">
+  <div id="primapagina" class="span-16 last">
     <div class="titlu">
       sau alege ce ai vrea sa mananci azi ?
     </div>
@@ -69,6 +68,8 @@
       sau alege ofertele zilei
     </div>
   </div><!-- primapagina -->
+{% endblock %}
+{% block home_content %}
   <div id="tabla" class="span-7">
     <div class="meniulzilei">
       Meniul Zilei
@@ -110,7 +111,7 @@
     </div>
     <div class="recomandat"></div>
   </div><!-- tabla -->
-  <div id="roata" class="span-9">
+  <div id="roata" class="span-9 last">
     <div class="rtitlu">
       sau ... te simti norocos ?  
     </div>
@@ -130,16 +131,14 @@
         ?
       </div>
       <div class="rezpret">
-        	<span class="rezultatpret">?</span> Lei
-        </div>
-        <div class="comandam">
-            <a href="#" title="">Comanda acest meniu</a>
-        </div>
+        <span class="rezultatpret">?</span> Lei
+      </div>
+      <div class="comandam">
+        <a href="#" title="">Comanda acest meniu</a>
+      </div>
     </div>
-  </div>
-</div>
+  </div><!-- roata -->
 {% endblock %}
-
 <!--
 <div class="content_area">
 
