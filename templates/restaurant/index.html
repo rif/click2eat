@@ -4,7 +4,7 @@
 
 {% block style %}
 <!--link href="{{ MEDIA_URL }}css/stars/jquery.ui.stars.min.css" rel="stylesheet" type="text/css" media="screen"-->
-<style>
+<style type="text/css">
 .rating_bar {
   width: 55px;
   background: url("{{ MEDIA_URL }}css/stars/star_x_grey.gif") 0 0 repeat-x;
@@ -23,141 +23,123 @@
 
 {% block scripts %}
 <script type="text/javascript">
-    $(function(){
-        /*$("body").everyTime(1000*60,function(i) {
-            console.log('tick');
-        });*/
-        $("#notrated-link").click(function(e){
-           $("#notrated-orders").slideToggle();
-           e.preventDefault();
-        });
-        $(".time-stars").stars({
-            inputType: "select"
-        });
-    });
+  $(function(){
+  /*$("body").everyTime(1000*60,function(i) {
+  console.log('tick');
+  });*/
+  $("#notrated-link").click(function(e){
+  $("#notrated-orders").slideToggle();
+  e.preventDefault();
+  });
+  $(".time-stars").stars({
+  inputType: "select"
+  });
+  });
 </script>
 {% endblock %}
 
 {% block main_area %}
-      <div id="content" class="span-16">
-      <div id="messages">
-	{% if messages %}
-	{% for message in messages %}
-	<div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-          {{ message }}
-          <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
-        </div>
-  	{% endfor %}
-	{% endif %}
-      </div><!-- messages -->      
-<div id="primapagina">
+<div id="content" class="span-16">
+  <div id="messages">
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+      {{ message }}
+      <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ MEDIA_URL }}images/template/close_btn.png" alt=""/></a>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div><!-- messages -->      
+  <div id="primapagina">
     <div class="titlu">
-        sau alege ce ai vrea sa mananci azi ?
+      sau alege ce ai vrea sa mananci azi ?
     </div>
     <div class="vezitoate">
-        <a href="#" title="">Vezi toate meniurile</a> 
+      <a href="#" title="">Vezi toate meniurile</a> 
     </div>
     <div id="meniu">
-       <div class="itemmeniu">
-            <div class="titlemeniu"><a href="#" title="">SUPE</a></div>
-            <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/supa.png" alt="" /></a>
-       </div>
-        <div class="itemmeniu">
-            <div class="titlemeniu"><a href="#" title="">PIZZA</a></div>
-            <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/pizza.png" alt="" /></a>
-        </div>
-        <div class="itemmeniu">
-            <div class="titlemeniu"><a href="#" title="">PASTE</a></div>
-            <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/paste.png" alt="" /></a>
-        </div>
-        <div class="itemmeniu">
-            <div class="titlemeniu"><a href="#" title="">SALATA</a></div>
-            <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/salata.png" alt="" /></a>
-        </div>
-        <div class="itemmeniu">
-            <div class="titlemeniu"><a href="#" title="">PRINCIPAL</a></div>
-            <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/principal.png" alt="" /></a>
-        </div>
-        <div class="itemmeniu">
-            <div class="titlemeniu"><a href="#" title="">DESERT</a></div>
-                <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/desert.png" alt="" /></a>
-        </div>
+      {% for item in menu_items %}
+      <div class="itemmeniu">
+	<div class="titlemeniu"><a href="#" title="{{ item|upper }}">{{ item|upper }}</a></div>
+        <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/{{ item }}.png" alt="" /></a>
+      </div>
+      {% endfor %}
     </div>
     <div id="titletabla">
-    	sau alege ofertele zilei
+      sau alege ofertele zilei
     </div>
-</div>
-<div id="tabla">
+  </div><!-- primapagina -->
+  <div id="tabla" class="span-7">
     <div class="meniulzilei">
-        Meniul Zilei
+      Meniul Zilei
     </div>
     <div id="continutmeniu">
-        Carne cu legume<br/>
-        Supa de pui
-        <br/>
-        <span class="restaurant">Restaurant ALBERTO</span>
+      Carne cu legume<br/>
+      Supa de pui
+      <br/>
+      <span class="restaurant">Restaurant ALBERTO</span>
     </div>
     <div id="pret">
-        24 Lei
+      24 Lei
     </div>
     <div id="comanda">
-        <a href="#" title="">Comanda acest meniu</a>
+      <a href="#" title="">Comanda acest meniu</a>
     </div>
     <div id="variantemeniu">
-        Variante meniul zilei<br/>
-        <span class="nrmeniu">
-            <a href="#" title="">1</a>
-            <a href="#" title="">2</a>
-            <a href="#" class="meniuselectat" title="">3</a>
-            <a href="#" title="">4</a>
-            <a href="#" title="">5</a>
-            <a href="#" title="">6</a>
-            <a href="#" title="">7</a> 
-            <a href="#" title="">8</a>
-            <a href="#" title="">9</a>
-            <a href="#" title="">10</a>
-        </span>          
+      Variante meniul zilei<br/>
+      <span class="nrmeniu">
+        <a href="#" title="">1</a>
+        <a href="#" title="">2</a>
+        <a href="#" class="meniuselectat" title="">3</a>
+        <a href="#" title="">4</a>
+        <a href="#" title="">5</a>
+        <a href="#" title="">6</a>
+        <a href="#" title="">7</a> 
+        <a href="#" title="">8</a>
+        <a href="#" title="">9</a>
+        <a href="#" title="">10</a>
+      </span>          
     </div>
     <div id="newsletter">
-        INSCRIETE-TE AICI<br/>
-        <span class="textmic">PENTRU NEWSLETTER MENIUL ZILEI</span><br/>
-        <form target="_self" action="">
-            <input type="text" id="email" name="email"  />
-            <input type="image" id="newslettersubmit"  src="{{ MEDIA_URL }}images/template/gonews.png"/>
-        </form>
-     </div>
-     <div class="recomandat"></div>
-</div>
-<br/><br/>
-<div class="clear"></div>
-<div id="roata">
-	<div class="rtitlu">
-    	sau ... te simti norocos ?  
+      INSCRIETE-TE AICI<br/>
+      <span class="textmic">PENTRU NEWSLETTER MENIUL ZILEI</span><br/>
+      <form target="_self" action="">
+        <input type="text" id="email" name="email"  />
+        <input type="image" id="newslettersubmit"  src="{{ MEDIA_URL }}images/template/gonews.png"/>
+      </form>
+    </div>
+    <div class="recomandat"></div>
+  </div><!-- tabla -->
+  <div id="roata" class="span-9">
+    <div class="rtitlu">
+      sau ... te simti norocos ?  
     </div>
     <br/>
     <div class="text">
-    	Nu stii ce vrei sa mananci azi? <br/>
-    	<span class="textmic">Bine ai venit la Roata Norocului ! Click pe butonul START</span>
+      Nu stii ce vrei sa mananci azi? <br/>
+      <span class="textmic">Bine ai venit la Roata Norocului ! Click pe butonul START</span>
     </div>
     <div class="start">
-    	<a href="#" class="startroata" title=""></a>
+      <a href="#" class="startroata" title=""></a>
     </div>
     <div class="rezultat">
-    	<div class="rez1">
+      <div class="rez1">
         ?
-        </div>
-        <div class="rez2">
+      </div>
+      <div class="rez2">
         ?
-        </div>
-        <div class="rezpret">
+      </div>
+      <div class="rezpret">
         	<span class="rezultatpret">?</span> Lei
         </div>
         <div class="comandam">
             <a href="#" title="">Comanda acest meniu</a>
         </div>
     </div>
-
+  </div>
 </div>
+{% endblock %}
+
 <!--
 <div class="content_area">
 
@@ -206,11 +188,3 @@
   <!--</div>--> <!-- establishment_list -->
   
 <!--</div>--> <!-- content_area -->
-
-    </div>
-    <div class="span-10 last">
-  		{% include 'sidebar.html' %}
-    </div>	
-  </div>
-{% endblock %}
-

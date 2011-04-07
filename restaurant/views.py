@@ -42,11 +42,13 @@ def index(request):
     user = request.user
     has_profile = __user_has_profile(user)
     if has_profile != None: return has_profile
+    menu_items = ('supe', 'pizza', 'paste', 'salate', 'principal', 'desert')
     if not user.is_authenticated() or user.get_profile().is_filled():
         return render_to_response('restaurant/index.html', {
                                   'units': units,
                                   'gold': units.filter(name='GL'),
                                   'platinum': units.filter(name='PL'),
+                                  'menu_items': menu_items,
                                   }, context_instance=RequestContext(request))
     else:
         return redirect('profiles_create_profile')
