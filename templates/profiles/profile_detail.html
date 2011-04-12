@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load pagination_tags %}
 {% load avatar_tags %}
 
 {% block title %}{% trans 'Profile' %}{% endblock %}
@@ -11,209 +12,205 @@
 
 {% block scripts %}
 <script type="text/javascript">
-function handleinviteform(){
-$("#invite-form").submit(function(){
-$.post("{% url userprofiles:invite_friend %}",
-    { csrfmiddlewaretoken:  $("input:first").val(),
-      email:                   $("#id_email").val(),
-      message:                   $("#id_message").val()
-    },
-    function(data){
-      if(data == 'ok'){
-        window.location.reload();
-      } else {
-        $("#invite-placeholder").html(data);
-        handleinviteform();
-      }
-    }
-  );
-    return false;
-   });
-}
-
-$(function(){
-   $("#invite-link").click(function(e){
-        $("#invite-placeholder").load($(this).attr("href"), function(){
-            handleinviteform();
+    function handleinviteform(){
+        $("#invite-form").submit(function(){
+            $.post("{% url userprofiles:invite_friend %}",
+            { csrfmiddlewaretoken:  $("input:first").val(),
+                email:                   $("#id_email").val(),
+                message:                   $("#id_message").val()
+            },
+            function(data){
+                if(data == 'ok'){
+                    window.location.reload();
+                } else {
+                    $("#invite-placeholder").html(data);
+                    handleinviteform();
+                }
+            }
+        );
+            return false;
         });
-        e.preventDefault();
-   });
-});
+    }
+
+    $(function(){
+        $("#invite-link").click(function(e){
+            $("#invite-placeholder").load($(this).attr("href"), function(){
+                handleinviteform();
+            });
+            e.preventDefault();
+        });
+    });
 </script>
 {% endblock %}
 
 {% block content %}
-  {% if not profile %}
-   <div class="error">
-      <p>{% trans 'This profile is not public' %}</p>
-   </div>
-  {% else %}
-<div class="content_area720">
-  <div id="account_details">
-  	<span class="titlu">Bine ai venit John Lennon</span> 
-    <br/><br/>
-  	<span class="subtitlu">
-    Program Fidelitate Click2Eat
-    </span>
-    <br/>
-  	<span class="textmare">John, pana acum ai adunat <span class="special">24</span> puncte, pe care le poti folosi pentru <span class="special">1</span> comenzi gratuite meniul zilei.</span><br/>
-La urmatoarea comanda de Meniul Zilei, nu va mai trebui sa platesti.<br/>
-	<div class="boxverde">
-    	<strong>Castiga puncte prin :</strong><br/>
-		<strong>3 zile consecutive de comenzi</strong> pe www.click2eat.ro ( 6 puncte). Pana acum ai <span class="special2">2</span> zile consecutive.
+{% if not profile %}
+<div class="error">
+    <p>{% trans 'This profile is not public' %}</p>
+</div>
+{% else %}
+<div class="content_area">
+    <div id="account_details">
+        <span class="titlu">Bine ai venit {{ profile.user.get_full_name }}</span>
+        <br/><br/>
+        <span class="subtitlu">
+            {% trans 'Program Fidelitate Click2Eat' %}
+        </span>
+        <br/>
+        <span class="textmare">John, pana acum ai adunat <span class="special">{{ user.userprofile.get_bonus_points }}</span> puncte, pe care le poti folosi pentru <span class="special">1</span> comenzi gratuite meniul zilei.</span><br/>
+        La urmatoarea comanda de Meniul Zilei, nu va mai trebui sa platesti.<br/>
+	<a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a>
+        <div class="boxverde">
+            <strong>Castiga puncte prin :</strong><br/>
+            <strong>3 zile consecutive de comenzi</strong> pe www.click2eat.ro ( 6 puncte). Pana acum ai <span class="special2">2</span> zile consecutive.
+            <br/><br/><br/>
+
+            <strong>Recomandari prieteni</strong> ( 2 puncte/prieten care comanda cel putin o data de pe click2eat.ro). <br/>
+            Recomanda aici unui prieten.  Adauga adresa lui de email
+            <form action="ceva.hh" target="_self">
+                <input type="text" class="inputprieten" />
+                <a href="#" class="btnverde">Trimite!</a>
+            </form>
+        </div>
+        <br/>
+        <div class="separatie">
+        </div>
+<!--
+        <span class="subtitlu">
+            {% trans 'Preferintele mele' %}
+        </span>
+
+        <div class="boxporto">
+            <div class="meniuleft">
+                <strong>Meniu preferat 1</strong><br/>
+		Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,<br/>
+		Restaurant Papi
+            </div>
+            <a href="#" title="" class="meniuright">
+        	Comanda acest meniu
+            </a>
+        </div>
+        <div class="boxporto">
+            <div class="meniuleft">
+                <strong>Meniu preferat 1</strong><br/>
+		Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,<br/>
+		Restaurant Papi
+            </div>
+            <a href="#" title="" class="meniuright">
+        	Comanda acest meniu
+            </a>
+        </div>
+        <br/>
+        <div class="separatie">
+        </div>
+-->
+        <span class="subtitlu">
+            {% trans 'Comenzile mele' %}
+        </span>
+	{% with user.order_set.all|slice:":20" as object_list %}
+        {% autopaginate object_list 5 %}
+        {% for order in object_list %}
+	<div class="boxroz">
+            <span class="data">{{ order.date }}</span><strong><span class="pret">24 lei</span></strong><span class="detalii">
+	        {% if order.status == 'CR' %}
+          <a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>13 Nov 2010</span></a>
+          {% else %}
+          <a href="{% url order:detail order.id %}">{{order}}<br><span>13 Nov 2010</span></a>
+          {% endif %}
+	    </span><span class="restaurant">Restaurant COCO</span>
+            <a href="#" class="right">Comanda din nou</a>
+        </div>
+        {% empty %}
+        <li>No orders yet? Bon apetit ;)</li>
+        {% endfor %}
+        <li class="navigation">
+        {% paginate %}
+        </li>
+        {% endwith %}
         <br/><br/><br/>
 
-		<strong>Recomandari prieteni</strong> ( 2 puncte/prieten care comanda cel putin o data de pe click2eat.ro). <br/>
-Recomanda aici unui prieten.  Adauga adresa lui de email 
-	<form action="ceva.hh" target="_self">
-	<input type="text" class="inputprieten" /> 
-    <a href="#" class="btnverde">Trimite!</a>
-    </form>
-    </div>
-    <br/>
-    <div class="separatie">
-    </div>
-    
-    <span class="subtitlu">
-    Preferintele mele
-    </span>
-    
-    <div class="boxporto">
-    	<div class="meniuleft">
-    	<strong>Meniu preferat 1</strong><br/>
-		Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,<br/>
-		Restaurant Papi
+        <div class="separatie">
         </div>
-        <a href="#" title="" class="meniuright">
-        	Comanda acest meniu
-        </a>
-    </div>
-    <div class="boxporto">
-    	<div class="meniuleft">
-    	<strong>Meniu preferat 1</strong><br/>
-		Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,<br/>
-		Restaurant Papi
-        </div>
-        <a href="#" title="" class="meniuright">
-        	Comanda acest meniu
-        </a>
-    </div>
-    <br/>
-    <div class="separatie">
-    </div>
-   
-    <span class="subtitlu">
-    Comenzile mele
-    </span>
-    
-    <div class="boxroz">
-    	<span class="data">22.03.2011</span><strong><span class="pret">24 lei</span></strong><span class="detalii">Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,</span><span class="restaurant">Restaurant COCO</span>							
-        <a href="#" class="right">Comanda din nou</a>
-    </div>
-    <div class="boxroz">
-    	<span class="data">22.03.2011</span><strong><span class="pret">24 lei</span></strong><span class="detalii">Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,</span><span class="restaurant">Restaurant COCO</span>	       
-         <a href="#" class="right">Comanda din nou</a>
-    </div>  
-    
-    <div class="boxroz">
-    	<span class="data">22.03.2011</span><strong><span class="pret">24 lei</span></strong><span class="detalii">Salata de cartofi, Piept de pui cu ciuperci, Clatite cu gem,</span><span class="restaurant">Restaurant COCO</span>	   
-         <a href="#" class="right">Comanda din nou</a>
-    </div>
-    <br/><br/><br/>
-    
-    <div class="separatie">
-    </div>
-   
-    <span class="subtitlu">
-    Datele contului meu
-    </span>
-    <div class="datecont">
-        <strong>John Lennon</strong><br/>
-        Tel: 0567 567898<br/>
-        John@rockstar.ro<br/>
-        Acasa: Str. Florilor, nr, 42, Timisoara<br/>
-        La birou: Handsome srl, str. Geo Bogza, nr. 23<br/>
-        <a href="#" title="modifica datele contului">Modifica datele contului</a>
-    </div>
-    <br/><br/><br/>
-    
-    <div class="clear"></div>
-    <div class="avatar">
-      {% avatar profile.user 155 %}
-      <br/>
-      {% if user == profile.user %}
-      <a href="{% url avatar_change %}">{% trans 'Change' %}</a> | <a href="{% url avatar_delete %}">{% trans 'Delete' %}</a>
-      {% endif %}
-    </div> <!-- avatar -->
-    <div class="details">
-      <strong>{% trans 'Name' %}:</strong> {{ profile.user.get_full_name }}<br/>
-      <strong>{% trans 'Email' %}:</strong> <a target="_self" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a><br/><br/>
-      <strong>{% trans 'Birth date' %}:</strong> {{ profile.birth_date }}<br/>
-      <strong>{% trans 'Phone' %}:</strong> {{ profile.phone }}<br/>
-      <strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}<br/>
-      <strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}<br/>
-      <strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}<br/>
-      <strong>{% trans 'Bonus points' %}:</strong>{{ profile.get_bonus_points }} <a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a><br/>
-      {% if user == profile.user %}
-      <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> | <a href="{% url order:list %}">{% trans 'Order History' %}</a>
-      {% endif %}
-    </div> <!-- details -->
-    <div class="clear"></div>
-  </div> <!-- account_details -->
-</div><!-- content_area -->
 
-<div class="content_area">
-  <div class="title"><h1 class="light_orange">{% trans 'Friends' %}</h1></div>
-  <ul>
-  {% for friendship in user.get_profile.get_friends_iterator %}
-    <li>
-      <a href="{% url profiles_profile_detail friendship.friend %}">{{ friendship.friend }}</a>
-    </li>
-    {% empty %}
-    <li>{% trans 'Sorry, no friends here :(' %}</li>
-   {% endfor %}
-  </ul>
-  {% if user == profile.user %}
-  <p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
-  <div id="invite-placeholder"></div>
-  {% else %}
-  {% if False and not profile.user in user.get_profile.get_friends_list %}
-  <div class="general_button">
-    <p><a id="" href="#">{% trans 'Become friend with' %} {{ profile.user }}</a></p>
-  </div>
-  {% endif %}
-  {% endif %}
-</div><!-- content_area -->
-{% if user == profile.user %}
-<div class="content_area">
-  <div class="title"><h1 class="light_green">{% trans 'Delivery addresses' %}</h1></div>
-  <div id="delivery_addresses">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>{% trans 'Address' %}</th>
-          <th>{% trans 'Primary' %}</th>
-          <th>{% trans 'Operation' %}</th>
-	</tr>
-      </thead>
-      <tbody>
-        {% for addr in profile.user.deliveryaddress_set.iterator %}
-        <tr>
-          <td>{{ forloop.counter }}</td>
-          <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
-          <td>{{ addr.primary }}</td>
-          <td><a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a> <a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a></td>
-        </tr>
-        {% empty %}
-        <tr><td>{% trans 'You have not defined any delivery address.' %} <a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a></td></tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  <br/>
-  <a href="{% url userprofiles:create_address %}">Add delivery address</a>
-</div><!-- content_area -->
-{% endif %} <!-- user own profile -->
-{% endif %} <!-- profile is public -->
+        <span class="subtitlu">
+            {% trans 'Datele contului meu' %}
+        </span>
+        <div id="avatar">
+            {% avatar profile.user 155 %}
+            <br/>
+            {% if user == profile.user %}
+            <a href="{% url avatar_change %}">{% trans 'Change' %}</a> | <a href="{% url avatar_delete %}">{% trans 'Delete' %}</a>
+            {% endif %}
+        </div> <!-- avatar -->
+
+        <div class="datecont">
+            <strong>{{ profile.user.get_full_name }}</strong><br/>
+            {% trans 'Tel'%}: {{ profile.phone }} <br/>
+            <a target="_self" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a><br/>
+            <strong>{% trans 'Birth date' %}:</strong> {{ profile.birth_date }}<br/>
+            <strong>{% trans 'Phone' %}:</strong> <br/>
+            <strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}<br/>
+            <strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}<br/>
+            <strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}<br/>
+            <strong>{% trans 'Bonus points' %}:</strong>{{ profile.get_bonus_points }} <a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a><br/>
+            {% if user == profile.user %}
+            <a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> | <a href="{% url order:list %}">{% trans 'Order History' %}</a>
+            {% endif %}
+        </div><!-- datecont-->
+        <br/><br/>
+        <span class="subtitlu">
+            {% trans 'Delivery addresses' %}
+        </span>
+        <div id="delivery_addresses">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{% trans 'Address' %}</th>
+                        <th>{% trans 'Primary' %}</th>
+                        <th>{% trans 'Operation' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for addr in profile.user.deliveryaddress_set.iterator %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a></td>
+                        <td>{{ addr.primary }}</td>
+                        <td><a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a> <a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr><td>{% trans 'You have not defined any delivery address.' %} <a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a></td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{% url userprofiles:create_address %}">Add delivery address</a>
+        <span class="subtitlu">
+	  {% trans 'Friends' %}
+        </span>
+        <ul>
+	  {% for friendship in user.get_profile.get_friends_iterator %}
+            <li>
+                <a href="{% url profiles_profile_detail friendship.friend %}">{{ friendship.friend }}</a>
+            </li>
+	  {% empty %}
+            <li>{% trans 'Sorry, no friends here :(' %}</li>
+	  {% endfor %}
+        </ul>
+	{% if user == profile.user %}
+        <p><a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a></p>
+        <div id="invite-placeholder"></div>
+	{% else %}
+	{% if False and not profile.user in user.get_profile.get_friends_list %}
+        <div class="general_button">
+            <p><a id="" href="#">{% <tr>
+
+                </tr>ans 'Become friend with' %} {{ profile.user }}</a></p>
+        </div>
+	{% endif %}
+	{% endif %}
+    </div><!-- account_details-->
+</div><!--content_area-->
+{% endif %}
 {% endblock %}
