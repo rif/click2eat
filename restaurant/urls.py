@@ -5,6 +5,7 @@ from restaurant.models import Unit
 
 urlpatterns = patterns('',
                        url(r'^$', views.index, name='index'),
+                       url(r'^unitlist/$', views.unit_list, name='list'),
                        url(r'^unit/(?P<unit_id>\d+)/$', views.unit_detail, name='detail'),
                        url(r'^comments/(?P<unit_id>\d+)/$', views.unit_comments, name='comments'),
                        #url(r'^history/(?P<unit_id>\d+)/$', views.package_history, name='package_history'),

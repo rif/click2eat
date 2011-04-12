@@ -45,16 +45,21 @@ def index(request):
     menu_items = ('supe', 'pizza', 'paste', 'salate', 'principal', 'desert')
     if not user.is_authenticated() or user.get_profile().is_filled():
         return render_to_response('restaurant/index.html', {
-                                  'units': units,
-                                  'gold': units.filter(name='GL'),
-                                  'platinum': units.filter(name='PL'),
                                   'menu_items': menu_items,
                                   }, context_instance=RequestContext(request))
     else:
         return redirect('profiles_create_profile')
 
 @login_required
-@render_to('restaurant/unit_detail.html')
+@render_to('restaurant/unit_list.html')
+def unit_list(request):
+    units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
+        annotate(avg_speed=Avg('order__rating__delivery_time')).\
+        annotate(comment_count=Count('order__rating__feedback')).\
+        order_by('?')
+    return {'units': units, 'gold': units.filter(name='GL'), 'platinum': units.filter(name='PL')}
+
+@render_to('restaurant/unit_list.html')
 def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = views.__get_current_order(request, unit)
@@ -63,6 +68,7 @@ def unit_detail(request, unit_id):
     if motd.exists(): motd = motd[0]
     else: motd = None
     return {'object': unit, 'order': current_order, 'carts': carts, 'motd': motd}
+
 
 @login_required
 @render_to('restaurant/comments.html')
