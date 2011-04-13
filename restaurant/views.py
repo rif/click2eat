@@ -59,7 +59,7 @@ def unit_list(request):
         order_by('?')
     return {'units': units, 'gold': units.filter(name='GL'), 'platinum': units.filter(name='PL')}
 
-@render_to('restaurant/unit_list.html')
+@render_to('restaurant/unit_detail.html')
 def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = views.__get_current_order(request, unit)

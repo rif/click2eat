@@ -100,13 +100,83 @@
 
 {% block content %}
     {% if motd %}
-        <div class="content_area720">
+        <div class="content_area">
             <div class="title"><h1 class="light_orange">{% trans 'Menu of the day' %}</h1></div>
             <h2><a id="{{ motd.id }}" class="add-motd" href="#">{{ motd.name }}</a></h2>
             {{ motd.description|safe }}
         </div><!-- content_area -->
     {% endif %}
-    <div class="content_area720">
+	<!-- lista de restaurante dintr-un oras --> 
+<div class="content_area"> 
+	<div id="paginarestaurant">  
+	<div class="title"><h1 class="light_orange">{% trans 'LISTA RESTAURANTE TIMISOARA' %}</h1></div>
+    <br/>
+    <div class="lista">
+        <div class="item pozrel platinum">
+            <div class="name2">
+            	<a class="" href="#" >RESTAURANT PRESIDENT</a>
+                <span class="special"></span>
+                </div>
+            
+            <div class="description3">Specific italian, 200 locuri, specialitati</div>
+
+            <div class="stele"></div>
+            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
+            <div class="clear"></div>
+        </div>      
+        <div class="item pozrel platinum">
+            <div class="name2">
+            	<a class="" href="#" >RESTAURANT COCO JAMBO</a>
+            </div>
+            
+            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
+
+            <div class="stele"></div>
+            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
+            <div class="clear"></div>
+        </div>      
+        <div class="item pozrel gold">
+            <div class="name2">
+            	<a class="" href="#" >RESTAURANT PROVINCIAL</a>
+            	<span class="special"></span> 
+            </div>
+            <div class="description3">Specific suedez</div>
+
+            <div class="stele"></div>
+            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
+            <div class="clear"></div>
+        </div>    
+        <div class="item pozrel gold">
+            <div class="name2"><a class="" href="#" >RESTAURANT PICOLLO</a></div>
+            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
+            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
+            <div class="clear"></div>
+        </div>        
+    <br/><br/>
+    
+       <div class="item pozrel silver">
+            <div class="name2"><a class="" href="#" >RESTAURANT PRESIDENT</a></div>
+            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
+            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
+            <div class="clear"></div>
+        </div>    
+        <div class="item pozrel silver">
+            <div class="name2"><a class="" href="#" >RESTAURANT RATATATATATA</a></div>
+            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
+            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
+            <div class="clear"></div>
+        </div>    
+       <div class="item pozrel silver">
+            <div class="name2"><a class="" href="#" >RESTAURANT MIRO</a></div>
+            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
+            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
+            <div class="clear"></div>
+        </div>            
+	</div>
+	</div>  
+    <br/><br/>
+</div>  
+    <div class="content_area">
     <div id="paginarestaurant">
         <div class="title"><h1 class="light_orange">{% trans 'LISTA MENIU FARELLIS' %}</h1></div>
         <div class="establishment-menu">
@@ -176,7 +246,7 @@
     <!-- pagina de meniu lista generala, headerul cu platourile il gasesti in pagina "cum comand" e acelasi, doar la imagini schimbi dimensiunea -->
     <div class="clear"></div>
     <br/><br/>
-<div class="content_area720"> 
+<div class="content_area"> 
 	<div id="paginarestaurant">  
 	<div class="title"><h1 class="light_orange">{% trans 'LISTA GENERALA MENIURI CLICK2EAT' %}</h1></div>
     <div class="lista">
@@ -293,77 +363,7 @@
     <br/><br/>
 </div>
  
-<!-- lista de restaurante dintr-un oras --> 
-    <br/><br/>
-<div class="content_area720"> 
-	<div id="paginarestaurant">  
-	<div class="title"><h1 class="light_orange">{% trans 'LISTA RESTAURANTE TIMISOARA' %}</h1></div>
-    <br/>
-    <div class="lista">
-        <div class="item pozrel bgrest1">
-            <div class="name2">
-            	<a class="" href="#" >RESTAURANT PRESIDENT</a>
-                <span class="special"></span>
-                </div>
-            
-            <div class="description3">Specific italian, 200 locuri, specialitati</div>
 
-            <div class="stele"></div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>      
-        <div class="item pozrel bgrest1">
-            <div class="name2">
-            	<a class="" href="#" >RESTAURANT COCO JAMBO</a>
-            </div>
-            
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-
-            <div class="stele"></div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>      
-        <div class="item pozrel bgrest2">
-            <div class="name2">
-            	<a class="" href="#" >RESTAURANT PROVINCIAL</a>
-            	<span class="special"></span> 
-            </div>
-            <div class="description3">Specific suedez</div>
-
-            <div class="stele"></div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>    
-        <div class="item pozrel bgrest2">
-            <div class="name2"><a class="" href="#" >RESTAURANT PICOLLO</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>        
-    <br/><br/>
-    
-       <div class="item pozrel bgrest3">
-            <div class="name2"><a class="" href="#" >RESTAURANT PRESIDENT</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>    
-        <div class="item pozrel bgrest3">
-            <div class="name2"><a class="" href="#" >RESTAURANT RATATATATATA</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>    
-       <div class="item pozrel bgrest3">
-            <div class="name2"><a class="" href="#" >RESTAURANT MIRO</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>            
-	</div>
-	</div>  
-    <br/><br/>
-</div>  
            
    <div class="content_area720">
         <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
