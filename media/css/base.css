@@ -605,280 +605,280 @@ body {
 }
 
 #paginarestaurant .platinum {
-	background: url("../images/template/bglista2.png") no-repeat;
-	width: 690px;
-	height: 35px;
-	padding: 4px 0 0 8px;
-	border: 0 none;
-	margin: 0px 0px 5px 0px;
-	position: relative;
+    background: url("../images/template/bglista2.png") no-repeat;
+    width: 690px;
+    height: 35px;
+    padding: 4px 0 0 8px;
+    border: 0 none;
+    margin: 0px 0px 5px 0px;
+    position: relative;
 }
 #paginarestaurant .gold {
-	background: url("../images/template/bglista1.png") no-repeat;
-	width: 690px;
-	height: 35px;
-	padding: 4px 0 0 8px;
-	border: 0 none;
-	margin: 0px 0px 5px 0px;
-	position: relative;
+    background: url("../images/template/bglista1.png") no-repeat;
+    width: 690px;
+    height: 35px;
+    padding: 4px 0 0 8px;
+    border: 0 none;
+    margin: 0px 0px 5px 0px;
+    position: relative;
 }
 #paginarestaurant .name2 {
-	position: relative;
+    position: relative;
 }
 #paginarestaurant .name2 a{
-	font-size: 20px;
-	color: #000;
-	font-style: italic;
-	font-weight:bold;
-	text-decoration: none;
- 	line-height: 16px;
+    font-size: 20px;
+    color: #000;
+    font-style: italic;
+    font-weight:bold;
+    text-decoration: none;
+    line-height: 16px;
 }
 
 #paginarestaurant .description3 {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #000;
-	float: left;
- 	width: 500px;;
-	line-height: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+    float: left;
+    width: 500px;;
+    line-height: 12px;
     margin-bottom: 0px;
 }
 
 #paginarestaurant .special {
-	background: url("../images/template/c2esmall.png") no-repeat;
-	height: 90px;
-	width: 140px;
-	position: absolute;
+    background: url("../images/template/c2esmall.png") no-repeat;
+    height: 90px;
+    width: 140px;
+    position: absolute;
     left: 277px;
     top: -47px;
-	z-index: 100;
+    z-index: 100;
 }
 
 #paginarestaurant .silver {
     width: 690px;
-	height: 35px;
+    height: 35px;
 }
 
 #paginarestaurant .stele {
-	background: url("../images/template/stelemici.png") no-repeat;
-	height: 8px;
-	float: left;
-	width: 40px;
+    background: url("../images/template/stelemici.png") no-repeat;
+    height: 8px;
+    float: left;
+    width: 40px;
 }
 
-#paginarestaurant .btnviziteaza1 {
-	font-weight: normal;
-	display: block;
-	float: right;
-	background: url("../images/template/btncmd.png") no-repeat;
-	width: 130px;
-	height: 25px;
-	padding: 3px 0 0 6px;
-	color: #fff;
-	font-size: 12px;
-	font-style: normal;
-	margin: -12px 10px 0 4px;	
-	font-family: Arial, Helvetica, sans-serif;
+#paginarestaurant .btnviziteaza_platinum, #paginarestaurant .btnviziteaza_gold {
+    font-weight: normal;
+    display: block;
+    float: right;
+    background: url("../images/template/btncmd.png") no-repeat;
+    width: 130px;
+    height: 25px;
+    padding: 3px 0 0 6px;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    margin: -12px 10px 0 4px;	
+    font-family: Arial, Helvetica, sans-serif;
 }
-#paginarestaurant .btnviziteaza2 {
-	font-weight: normal;
-	display: block;
-	float: right;
-	background: url("../images/template/btngri.png") no-repeat;
-	width: 130px;
-	height: 25px;
-	padding: 3px 0 0 6px;
-	color: #fff;
-	font-size: 12px;
-	font-style: normal;
-	margin: -12px 0px 0 4px;	
-	font-family: Arial, Helvetica, sans-serif;
+#paginarestaurant .btnviziteaza_silver, #paginarestaurant .btnviziteaza_ {
+    font-weight: normal;
+    display: block;
+    float: right;
+    background: url("../images/template/btngri.png") no-repeat;
+    width: 130px;
+    height: 25px;
+    padding: 3px 0 0 6px;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    margin: -12px 0px 0 4px;	
+    font-family: Arial, Helvetica, sans-serif;
 }
 #paginarestaurant ul li .price,
 #paginarestaurant .price {
-	float: right;
-	font-size: 18px;
-	font-style: italic;
-	color: #7e1c0a;
-	position:absolute;
-	right: 0px; 
-	top: 8px;
-	font-weight: bold;
+    float: right;
+    font-size: 18px;
+    font-style: italic;
+    color: #7e1c0a;
+    position:absolute;
+    right: 0px; 
+    top: 8px;
+    font-weight: bold;
 }
 #paginarestaurant ul li .btncomanda,
 #paginarestaurant .btncomanda{
-	font-weight: normal;
-	display: block;
-	float: right;
-	background: url("../images/template/btncmd.png") no-repeat;
-	width: 120px;
-	height: 25px;
-	padding: 3px 0px 0px 10px;
-	color: #fff;
-	font-size: 13px;
-	font-style: normal;
-	margin: 0px 0px 0px 5px;	
+    font-weight: normal;
+    display: block;
+    float: right;
+    background: url("../images/template/btncmd.png") no-repeat;
+    width: 120px;
+    height: 25px;
+    padding: 3px 0px 0px 10px;
+    color: #fff;
+    font-size: 13px;
+    font-style: normal;
+    margin: 0px 0px 0px 5px;	
 }
 
 #paginarestaurant .book {
-	width: 90px;
-	height: 90px;
-	float: left;
-	position: relative;
-	margin-top:-8px;
-	margin-bottom: 5px;
+    width: 90px;
+    height: 90px;
+    float: left;
+    position: relative;
+    margin-top:-8px;
+    margin-bottom: 5px;
 }
 
 #paginarestaurant .heading {
-	position: absolute;
-	top: 10px;
+    position: absolute;
+    top: 10px;
     text-align: center;
     width: 90px;}
 
 #paginarestaurant .book a{
-	color: #fff;
-	text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 /*                            Pagina de inregistrare                                     				  */ 
 
 #paginaregister {
-	background: #fff;
-	width: 720px;
-	padding: 10px 0px 0px 20px;
+    background: #fff;
+    width: 720px;
+    padding: 10px 0px 0px 20px;
     font-family: times New Roman;
 }
 
 #paginaregister .titlu {
-	font-size: 25px;
-	color: #562019;
-	
+    font-size: 25px;
+    color: #562019;
+    
 }
 #paginaregister label {
-	float: left;
-	font-size: 14px;
-	font-weight: normal;
-	margin: 22px 5px 0px 0px;
+    float: left;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 22px 5px 0px 0px;
 }
 
 #paginaregister input[type=text],
 #paginaregister input[type=password]{
-	float: left;
-	background: url("../images/template/inputst.png") no-repeat;
-	height: 27px;
-	border: 0px;
-	padding: 1px 0px 0px 5px;
-	margin: 15px 0px 0px 0px;
- 	font-size: 12px;
-	line-height: 24px;
+    float: left;
+    background: url("../images/template/inputst.png") no-repeat;
+    height: 27px;
+    border: 0px;
+    padding: 1px 0px 0px 5px;
+    margin: 15px 0px 0px 0px;
+    font-size: 12px;
+    line-height: 24px;
 }
 #paginaregister .textmic {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 #paginaregister .end {
-	float: left;
-	background: url("../images/template/inputdr.png") no-repeat;
-	width: 10px;
-	height: 27px;
-	margin: 15px 2px 0px 0px;
+    float: left;
+    background: url("../images/template/inputdr.png") no-repeat;
+    width: 10px;
+    height: 27px;
+    margin: 15px 2px 0px 0px;
 }
 #paginaregister .bordersep {
-	clear: both;
-	width: 720px;
+    clear: both;
+    width: 720px;
     height: 20px;
-	margin: 15px 0px 15px 0px;
+    margin: 15px 0px 15px 0px;
     border-bottom: 1px dashed #a18e1e;
 }
 
 #paginaregister .datep {
-	color: #562019;	
-	font-size: 16px;
-	font-style: italic;
-	font-weight: bold;
+    color: #562019;	
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
 }
 #paginaregister .width1 {
-	width: 240px;
+    width: 240px;
 }
 
 #paginaregister .width2 {
-	width: 100px;
+    width: 100px;
 }
 
 #paginaregister .width3 {
-	width: 55px;
+    width: 55px;
 }
 #paginaregister .btnreg {
-	font-weight: normal;
-	display: block;
-	background: url("../images/template/btncmd.png") no-repeat;
-	width: 120px;
-	height: 25px;
-	padding: 0px 0px 0px 18px;
-	color: #fff;
-	font-weight: bold;
-	font-style: italic;
-	font-size: 17px;
-	margin:41px 0 10px 65px;
+    font-weight: normal;
+    display: block;
+    background: url("../images/template/btncmd.png") no-repeat;
+    width: 120px;
+    height: 25px;
+    padding: 0px 0px 0px 18px;
+    color: #fff;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 17px;
+    margin:41px 0 10px 65px;
 }
 #paginaregister a.btnreg {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 #paginaregister .serv {
-	background: url("../images/template/serv.png") no-repeat;
-	width:230px;
-	height: 160px;
-	margin:-10px 0px 0px -20px;
+    background: url("../images/template/serv.png") no-repeat;
+    width:230px;
+    height: 160px;
+    margin:-10px 0px 0px -20px;
 }
 
 #paginaregister .registerright {
-	margin: 15px 0px 0px 30px;
+    margin: 15px 0px 0px 30px;
 }
 
 #paginaregister .select {
-	margin: 18px 0px 0px 10px;
+    margin: 18px 0px 0px 10px;
 }
 #paginaregister .checkboxinput {
-	margin: 22px 0px 0px 5px;
+    margin: 22px 0px 0px 5px;
 }
 
 #paginaregister .formHint {
-	 margin: 20px 0 0;
+    margin: 20px 0 0;
 }
 
 #paginaregister .form_button {
-	margin-top: 16px;
+    margin-top: 16px;
 }
 
 #paginaregister input[type=file] {
-	margin-top: 19px;
+    margin-top: 19px;
 }
 
 /*                            Cum comand                                     				  */ 
 
 .cumcomand {
-	padding: 10px 0px 0px 20px;
+    padding: 10px 0px 0px 20px;
 }
 
 .cumcomand .titlu {
-	font-size: 25px;
-	color: #562019;
+    font-size: 25px;
+    color: #562019;
 }
 
 .cumcomand .subtitlu {
-	font-size: 16px;
-	font-style: italic;
-	color: #793327;
-	font-weight:bold;
+    font-size: 16px;
+    font-style: italic;
+    color: #793327;
+    font-weight:bold;
 }
 
 .cumcomand .text {
-	font-size: 14px;
-	line-height: 16px;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 .cumcomand .text a{
-	color: #2c2c2c;
+    color: #2c2c2c;
 }
 .cumcomand .first,
 .cumcomand .second,
@@ -886,110 +886,110 @@ body {
 .cumcomand .fourth,
 .cumcomand .fifth,
 .cumcomand .last {
-	width: 100px;
-	display:block;
-	float:left;
+    width: 100px;
+    display:block;
+    float:left;
 }
 .cumcomand .first {
-	margin-left: 15px;
+    margin-left: 15px;
 }
 
 .cumcomand .second {
-	margin-left: 40px;
+    margin-left: 40px;
 }
 
 .cumcomand .third {
-	margin-left: 25px;
+    margin-left: 25px;
 }
 
 .cumcomand .fourth {
-	margin-left: 7px;
+    margin-left: 7px;
 }
 
 .cumcomand .fifth {
-	margin-left: 15px;
+    margin-left: 15px;
 }
 
 .cumcomand .last {
-	margin-left: 25px;
-	width: 50px;
+    margin-left: 25px;
+    width: 50px;
 }
 
 .cumcomand a.linkcat {
-	text-decoration: none;
-	color:#9c1d19;
+    text-decoration: none;
+    color:#9c1d19;
 }
 
 .cumcomand  a.linkcat:hover{
-	font-weight: bold;
+    font-weight: bold;
 }
 /*                            CONTUL MEU                                     				  */ 
 #account_details {
-	padding: 15px 0px 0px 20px;
-	font-size: 13px;
-	font-family: Arial, Helvetica, sans-serif;
+    padding: 15px 0px 0px 20px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #account_details .titlu{
-	font-family: "Times New Roman", Times, serif;
-	font-size: 25px;
-	color: #562019;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    color: #562019;
 }
 #account_details .subtitlu {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 16px;
-	font-style: italic;
-	color: #793327;
-	font-weight:bold;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #793327;
+    font-weight:bold;
 }
 #account_details .special {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 40px;
-	color: #5d6236;
-	line-height: 30px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 40px;
+    color: #5d6236;
+    line-height: 30px;
 }
 
 #account_details .textmare {
-	font-size: 14px;
+    font-size: 14px;
 }
 #account_details .boxverde {
-	color: #fff;
-	font-size: 12px;
-	background: #5d6236;
-	width: 650px;
-	padding: 7px 10px 7px 10px;
-	line-height: 12px;
+    color: #fff;
+    font-size: 12px;
+    background: #5d6236;
+    width: 650px;
+    padding: 7px 10px 7px 10px;
+    line-height: 12px;
 }
 #account_details .boxverde .special2 {
-	font-family: "Times New Roman", Times, serif;
-	color: #ecde00;
-	font-size: 30px;
-	line-height:30px;
+    font-family: "Times New Roman", Times, serif;
+    color: #ecde00;
+    font-size: 30px;
+    line-height:30px;
 }
 #account_details form {
-	display: inline;
-	margin:0;
-	padding: 0;
+    display: inline;
+    margin:0;
+    padding: 0;
 }
 #account_details .boxverde input[type=text]{
-	background: #a7a991;;
-	color:#fff;
-	padding: 1px;
-	width: 180px;
-	border: 1px solid #454a22;
-	margin: 3px 10px 0px 10px;
+    background: #a7a991;;
+    color:#fff;
+    padding: 1px;
+    width: 180px;
+    border: 1px solid #454a22;
+    margin: 3px 10px 0px 10px;
 }
 
 #account_details .boxverde .btnverde {
-	background: url("../images/template/btnverde.png") no-repeat;
-	width: 85px;
-	height: 28px;
-	padding: 6px 29px 13px 22px;
-	color:#d2dd76;
+    background: url("../images/template/btnverde.png") no-repeat;
+    width: 85px;
+    height: 28px;
+    padding: 6px 29px 13px 22px;
+    color:#d2dd76;
 }
 
 #account_details .boxverde a.btnverde {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 #account_details .separatie {
@@ -997,49 +997,49 @@ body {
     margin: 15px 0 5px 0;
 }
 #account_details .boxporto {
-	color: #000;
-	font-size: 12px;
-	background: #e8590d;
-	width: 660px;
-	padding: 3px 5px 3px 5px;
-	line-height: 16px;
-	position:relative;
-	margin-bottom: 5px;
+    color: #000;
+    font-size: 12px;
+    background: #e8590d;
+    width: 660px;
+    padding: 3px 5px 3px 5px;
+    line-height: 16px;
+    position:relative;
+    margin-bottom: 5px;
 }
 #account_details .meniuright {
-	background: url("../images/template/sidebartrimite.png") no-repeat;
-	width: 150px;
-	height: 28px;
-	padding: 5px 0 0 13px;
-	color: #e8590d;
-	position: absolute;
-	bottom: 0px;
-	right: 10px;
+    background: url("../images/template/sidebartrimite.png") no-repeat;
+    width: 150px;
+    height: 28px;
+    padding: 5px 0 0 13px;
+    color: #e8590d;
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
 }
 #account_details a.meniuright {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 
 #account_details .boxroz {
-	color: #000;
-	font-size: 12px;
-	background: #f29d7a;
-	width: 660px;
-	padding: 8px 5px 8px 5px;
-	position:relative;
-	margin-bottom: 5px;
+    color: #000;
+    font-size: 12px;
+    background: #f29d7a;
+    width: 660px;
+    padding: 8px 5px 8px 5px;
+    position:relative;
+    margin-bottom: 5px;
 }
 #account_details .boxroz .pret {
-	margin: 0px 8px 0px 8px;
+    margin: 0px 8px 0px 8px;
 }
 
 #account_details .boxroz .right {
-	color: #000;
+    color: #000;
 }
 
 #account_details .datecont a {
-	color: #57211a;
+    color: #57211a;
 }
 
 #avatar {
@@ -1051,45 +1051,45 @@ body {
 
 
 #sidebar {
-	font-family:'Cardo', serif;
-	background: url("../images/template/sidebarmeniu.png") no-repeat;
-	height: 450px;
-	width: 365px;
-	margin-left: -30px;
+    font-family:'Cardo', serif;
+    background: url("../images/template/sidebarmeniu.png") no-repeat;
+    height: 450px;
+    width: 365px;
+    margin-left: -30px;
 }
 
 #sidebar #boxmeniusidebar {
-	padding: 234px 0 0 82px;
+    padding: 234px 0 0 82px;
 }
 
 #sidebar .text_specialitate {
-	line-height: 16px;
-	font-size: 17px;
-	color: #60251c;
+    line-height: 16px;
+    font-size: 17px;
+    color: #60251c;
 }
 
 #sidebar .meniu_special {
-	color: #ae1d2e;
-	font-size: 27px;
-	line-height: 24px;
+    color: #ae1d2e;
+    font-size: 27px;
+    line-height: 24px;
     margin: 18px 20px 10px 0px;
 }
 
 #sidebar .meniu_restaurant {
-	color: #000;
-	font-size: 20px;
-	line-height: 8px;
+    color: #000;
+    font-size: 20px;
+    line-height: 8px;
 }
 
 #sidebar .linkcomanda {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 #sidebar .linkcomanda a{
-	line-height: 16px;
-	font-size: 17px;
-	color: #60251c;	
-	text-decoration: underline;
+    line-height: 16px;
+    font-size: 17px;
+    color: #60251c;	
+    text-decoration: underline;
 }
 
 
@@ -1098,16 +1098,16 @@ body {
 
 #sidebar2 {
     font-family: 'Tinos';
-	background: url("../images/template/sidebar2.png") no-repeat;
-	height: 440px;
-	width: 330px;
-	margin-left: 30px;
-	color: #7f392a;
-	position: relative;
+    background: url("../images/template/sidebar2.png") no-repeat;
+    height: 440px;
+    width: 330px;
+    margin-left: 30px;
+    color: #7f392a;
+    position: relative;
 }
 
 #sidebar2 #sidebar2wrapper {
-	padding: 50px 0 0 55px;
+    padding: 50px 0 0 55px;
 }
 
 #sidebar2 .comanda {
@@ -1117,91 +1117,91 @@ body {
 }
 
 #sidebar2 .user {
-	font-size: 12px;
-	font-weight: bold;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #sidebar2 .item {
-	font-size: 12px;
-	clear: both;
-	width:220px;
-	position: relative;
+    font-size: 12px;
+    clear: both;
+    width:220px;
+    position: relative;
 }
 
 #sidebar2 .item .buc,
 #sidebar2 .item .tip {
-	float: left;
+    float: left;
 }
 
 #sidebar2 .item .tip {
-	margin-left: 4px;
+    margin-left: 4px;
 }
 
 #sidebar2 .item .pret {
-	float: right;
+    float: right;
 }
 
 #sidebar2 .item .add {
-	position: absolute;
-	right: 40px;
-  	top: 1px;
+    position: absolute;
+    right: 40px;
+    top: 1px;
 }
 
 #sidebar2 .item .sub {
-	position: absolute;
-	right: 52px;
-  	top: 1px;
+    position: absolute;
+    right: 52px;
+    top: 1px;
 }
 
 #sidebar2 .item .sub {
-	background: url("../images/template/sub.png") no-repeat;
-	width: 12px;
-	height: 12px;
+    background: url("../images/template/sub.png") no-repeat;
+    width: 12px;
+    height: 12px;
 }
 
 #sidebar2 .item .add {
-	background: url("../images/template/add.png") no-repeat;
-	width: 12px;
-	height: 12px;
+    background: url("../images/template/add.png") no-repeat;
+    width: 12px;
+    height: 12px;
 }
 
 #sidebar2 .nota {
-	position: absolute;
-	bottom: 15px;
+    position: absolute;
+    bottom: 15px;
 }
 
 #sidebar2 .nota .textnota {
-	float: left;
+    float: left;
 }
 
 #sidebar2 .nota .totalnota {
-	float: right;
-	margin-right: 35px;
+    float: right;
+    margin-right: 35px;
 }
 
 #sidebar2 .nota .livrarea #sidebarcomanda {
-	background: #e8e8e8;
-	color: #69291d;
-	border: 1px solid #858585;
-	padding: 1px;
+    background: #e8e8e8;
+    color: #69291d;
+    border: 1px solid #858585;
+    padding: 1px;
 }
 
 #sidebar2 .nota .btncomanda {
-	background: url("../images/template/sidebartrimite.png") no-repeat;
-	width: 150px;
-	height: 28px;
-	margin-top: 20px;
-	display: block;
+    background: url("../images/template/sidebartrimite.png") no-repeat;
+    width: 150px;
+    height: 28px;
+    margin-top: 20px;
+    display: block;
 }
 
 #sidebar2 .nota a.btncomanda {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 #sidebar2 .nota .btncomanda .textbtn {
-	padding: 5px 0px 0px 10px;
-	color: #fff;
-	display: block;
+    padding: 5px 0px 0px 10px;
+    color: #fff;
+    display: block;
 }
 
 
@@ -1209,52 +1209,52 @@ body {
 
 
 #footer {
-	font-family:'Cardo', serif;
-	background: url("../images/template/footerbg.png") repeat-x!important;
-	height: 125px;
+    font-family:'Cardo', serif;
+    background: url("../images/template/footerbg.png") repeat-x!important;
+    height: 125px;
 }
 
 #footerwrapper {
-	width: 1050px;
-	margin:0 auto;
+    width: 1050px;
+    margin:0 auto;
 }
 
 #footer ul {
-	padding-top: 30px;
+    padding-top: 30px;
 }
 
 #footer ul li{
-	display:inline;
-	float: left;
+    display:inline;
+    float: left;
     margin-left: 25px;
 }
 
 #footer ul .primul {
-	margin-left: 0px!important;
+    margin-left: 0px!important;
 }
 
 #footer ul li a{
-	color: #fff;
-	text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 #footer .footertextmare {
-	font-size: 20px;
- 	line-height: 15px;	
+    font-size: 20px;
+    line-height: 15px;	
 }
 
 #footer .footertextmic {
-	font-size: 12px;
- 	line-height: 14px;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 #footer ul li.listdreapta {
-	margin-left: 160px;
+    margin-left: 160px;
 }
 
 #footer p.footertext {
-	margin: 20px 0px 0px 15px;
-	font-family:'Cardo', serif;
-	font-size: 13px;
-	color: #a3a089;
-	line-height: 15px;
+    margin: 20px 0px 0px 15px;
+    font-family:'Cardo', serif;
+    font-size: 13px;
+    color: #a3a089;
+    line-height: 15px;
 }

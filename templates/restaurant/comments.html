@@ -4,13 +4,13 @@
 {% block title %}Comments{% endblock %}
 
 {% block content %}
-<ul>
-    <div class="content_area">
-        {% for rating in ratings %}
-        <li><a href="{% url profiles_profile_detail rating.user %}">{{ rating.user}}</a>: {{ rating.feedback }}</li>
-        {% empty %}
-        <li>{% trans 'Sorry no feedback for this restaurant' %}.</li>
-        {% endfor %}
-    </div>
-</ul>
+<div class="content_area">
+  <ul>
+    {% for rating in ratings %}
+    <li><a href="{% url profiles_profile_detail rating.user %}">{{ rating.user}}</a>: {{ rating.feedback }}</li>
+    {% empty %}
+    <li>{% trans 'Sorry no feedback for this restaurant' %}.</li>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock %}
