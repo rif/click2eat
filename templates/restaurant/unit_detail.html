@@ -106,77 +106,32 @@
             {{ motd.description|safe }}
         </div><!-- content_area -->
     {% endif %}
-	<!-- lista de restaurante dintr-un oras --> 
-<div class="content_area"> 
-	<div id="paginarestaurant">  
-	<div class="title"><h1 class="light_orange">{% trans 'LISTA RESTAURANTE TIMISOARA' %}</h1></div>
-    <br/>
-    <div class="lista">
-        <div class="item pozrel platinum">
-            <div class="name2">
-            	<a class="" href="#" >RESTAURANT PRESIDENT</a>
-                <span class="special"></span>
-                </div>
-            
-            <div class="description3">Specific italian, 200 locuri, specialitati</div>
-
-            <div class="stele"></div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>      
-        <div class="item pozrel platinum">
-            <div class="name2">
-            	<a class="" href="#" >RESTAURANT COCO JAMBO</a>
+	
+<div class="content_area">
+        <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
+        <br/>
+        <div id="establishment_details">
+            <strong>{% trans 'Name' %}:</strong> {{ object.name }}<br/>
+            <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
+            <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br/>
+            <strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br/>
+            <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open' %}: {{ object.schedule.is_open|yesno }}
+        <br/>
+            {% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe }}<br/>{% endif %}
+        </div>
+        {% if object.logo_path %}
+            <div id="establishment_picture">
+                <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
             </div>
-            
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
+        {% endif %}
+        <div class="clear"></div>
+        <div class="general_button">
+            <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
+        </div>
+        <div class="clear"></div>
+        <div id="last-orders" style="display:none"></div>
+        <div class="clear"></div>
 
-            <div class="stele"></div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>      
-        <div class="item pozrel gold">
-            <div class="name2">
-            	<a class="" href="#" >RESTAURANT PROVINCIAL</a>
-            	<span class="special"></span> 
-            </div>
-            <div class="description3">Specific suedez</div>
-
-            <div class="stele"></div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>    
-        <div class="item pozrel gold">
-            <div class="name2"><a class="" href="#" >RESTAURANT PICOLLO</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza1">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>        
-    <br/><br/>
-    
-       <div class="item pozrel silver">
-            <div class="name2"><a class="" href="#" >RESTAURANT PRESIDENT</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>    
-        <div class="item pozrel silver">
-            <div class="name2"><a class="" href="#" >RESTAURANT RATATATATATA</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>    
-       <div class="item pozrel silver">
-            <div class="name2"><a class="" href="#" >RESTAURANT MIRO</a></div>
-            <div class="description3">Specific italian, 200 locuri, specialitati, meniul zilei 14 lei</div>
-            <a href="#" class="btnviziteaza2">Viziteaza restaurantul</a>
-            <div class="clear"></div>
-        </div>            
-	</div>
-	</div>  
-    <br/><br/>
-</div>  
-    <div class="content_area">
     <div id="paginarestaurant">
         <div class="title"><h1 class="light_orange">{% trans 'LISTA MENIU FARELLIS' %}</h1></div>
         <div class="establishment-menu">
@@ -239,183 +194,8 @@
             {% endif %}
         </div> <!-- estabilshment-menu -->
     </div>
-    </div><!-- content_area -->
-    
-    
-    
-    <!-- pagina de meniu lista generala, headerul cu platourile il gasesti in pagina "cum comand" e acelasi, doar la imagini schimbi dimensiunea -->
-    <div class="clear"></div>
     <br/><br/>
-<div class="content_area"> 
-	<div id="paginarestaurant">  
-	<div class="title"><h1 class="light_orange">{% trans 'LISTA GENERALA MENIURI CLICK2EAT' %}</h1></div>
-    <div class="lista">
-        <div class="item pozrel">
-        	<div class="book">
-            	<a href="#" title="">
-                	<span class="heading">SUPE</span>
-                	<img src="{{ MEDIA_URL }}images/template/booksoup.png" />
-                </a>
-            </div>
-            <div class="name"><a class="add-item" href="#" id="7">Meniuri supe si ciorbe</a></div>
-            <div class="description2">Supe crema<br/>Supe vegetariene<br/>Supe cu carne</div>
-          	<div class="click2eat">
-            	<span class="recom">Recomandari supe si ciorbe</span>
-            <div class="restaurante">
-            	RESTAURANT <strong>PRESIDENT</strong><br/>
-                RESTAURANT <strong>ALEXANDRE</strong>
-            </div>
-            </div>
-            <div class="clear"></div>
-        </div>      
-        <div class="item pozrel">
-        	<div class="book">
-            	<a href="#" title="">
-                	<span class="heading">PIZZA</span>
-                	<img src="{{ MEDIA_URL }}images/template/bookpizza.png" />
-                </a>
-            </div>
-            <div class="name"><a class="add-item" href="#" id="8">Meniuri Pizza</a></div>
-            <div class="description2">Pizza vegetariana<br/>Pizza normala<br/>Pizza picanta</div>
-          	<div class="click2eat">
-            	<span class="recom">Recomandari pizza</span>
-            <div class="restaurante">
-            	RESTAURANT <strong>PRESIDENT</strong><br/>
-                RESTAURANT <strong>ALEXANDRE</strong>
-            </div>
-            </div>
-           <div class="clear"></div>
-        </div>
-        <div class="item pozrel">
-        	<div class="book">
-            	<a href="#" title="">
-                	<span class="heading">PASTE</span>
-                	<img src="{{ MEDIA_URL }}images/template/bookpasta.png" />
-                </a>
-            </div>
-            <div class="name"><a class="add-item" href="#" id="7">Meniuri paste</a></div>
-            <div class="description2">Spaghetti<br/> Penne Tortellini<br/> Lasagna <br/>Paste speciale</div>
-          	<div class="click2eat">
-            	<span class="recom">Recomandari supe si ciorbe</span>
-            <div class="restaurante">
-            	RESTAURANT <strong>PRESIDENT</strong><br/>
-                RESTAURANT <strong>ALEXANDRE</strong>
-            </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div class="item pozrel">
-        	<div class="book">
-            	<a href="#" title="">
-                	<span class="heading">SALATE</span>
-                	<img src="{{ MEDIA_URL }}images/template/booksalad.png" />
-                </a>
-            </div>
-            <div class="name"><a class="add-item" href="#" id="7">Meniuri salate</a></div>
-            <div class="description2">Supe crema<br/>Supe vegetariene<br/>Supe cu carne</div>
-          	<div class="click2eat">
-            	<span class="recom">Recomandari supe si ciorbe</span>
-            <div class="restaurante">
-            	RESTAURANT <strong>PRESIDENT</strong><br/>
-                RESTAURANT <strong>ALEXANDRE</strong>
-            </div>
-            </div>
-            <div class="clear"></div>
-        </div>      
-        <div class="item pozrel">
-        	<div class="book">
-            	<a href="#" title="">
-                	<span class="heading">PRINCIPAL</span>
-                	<img src="{{ MEDIA_URL }}images/template/bookmain.png" />
-                </a>
-            </div>
-            <div class="name"><a class="add-item" href="#" id="7">Meniuri principal</a></div>
-            <div class="description2">Supe crema<br/>Supe vegetariene<br/>Supe cu carne</div>
-          	<div class="click2eat">
-            	<span class="recom">Recomandari supe si ciorbe</span>
-            <div class="restaurante">
-            	RESTAURANT <strong>PRESIDENT</strong><br/>
-                RESTAURANT <strong>ALEXANDRE</strong>
-            </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div class="item pozrel">
-        	<div class="book">
-            	<a href="#" title="">
-                	<span class="heading">DESERT</span>
-                	<img src="{{ MEDIA_URL }}images/template/bookdesert.png" />
-                </a>
-            </div>
-            <div class="name"><a class="add-item" href="#" id="7">Desert</a></div>
-            <div class="description2">Fel principal pe baza de legume ( fara carne)<br/>Preparate cu pui<br/>Preparate cu carne de peste<br/>Peparate cu carne de vita<br/>Preparate cu carne de porc<br/>Preparate cu carne vanat<br/>Specialiati culinare</div>
-          	<div class="click2eat">
-            	<span class="recom">Recomandari supe si ciorbe</span>
-            <div class="restaurante">
-            	RESTAURANT <strong>PRESIDENT</strong><br/>
-                RESTAURANT <strong>ALEXANDRE</strong>
-            </div>
-            </div>
-            <div class="clear"></div>
-        </div>          
-    </div>
-	</div>
-    <br/><br/>
-</div>
- 
-
-           
-   <div class="content_area720">
-        <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
-        <br/>
-        <div id="establishment_details">
-            <strong>{% trans 'Name' %}:</strong> {{ object.name }}<br/>
-            <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
-            <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br/>
-            <strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br/>
-            <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open' %}: {{ object.schedule.is_open|yesno }}
-        <br/>
-            {% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe }}<br/>{% endif %}
-        </div>
-        {% if object.logo_path %}
-            <div id="establishment_picture">
-                <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
-            </div>
-        {% endif %}
-        <div class="clear"></div>
-        <div class="general_button">
-            <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
-        </div>
-        <div class="clear"></div>
-        <div id="last-orders" style="display:none"></div>
-        <div class="clear"></div>
     </div><!-- content_area -->
 
-    <div class="content_area720">
-        <div class="title"><h1 class="light_green">{% trans 'Current Order' %}</h1></div>
-        <br/>
-        <div id="carts">
-            <ul class="css-tabs">
-                {% for cartname in carts %}
-                    <li><a id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
-                    </li>
-                {% empty %}
-                    <li><a id="cart-{{ user.username }}"
-                           href="{% url order:get_cart order.id user.username %}">{{ user.username }} </a></li>
-                {% endfor %}
-            </ul>
-            <div class="css-panes">
-                <div style="display:block"></div>
-            </div>
-            <div class="dual_button">
-                <div class="left {{ object.schedule.is_open|yesno:',closed'}}">
-                    <a href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
-                </div>
-                <div class="right">
-                    <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
-                </div>
-            </div>
-        </div><!-- carts -->
-    </div><!-- content_area -->
 {% endblock %}
 
