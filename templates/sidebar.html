@@ -1,28 +1,12 @@
 {% load i18n %}
 
-<div id="sidebar">
-    <div id="boxmeniusidebar">
-        <div class="text_specialitate">
-            Astazi, 24.01.2011
-            <br/>Specialitatea Casei Click2eat este:
-        </div>
-        <div class="meniu_special">
-            Pui milanez<br/> cu legume Verdeza
-        </div>
-        <div class="meniu_restaurant">
-            Restaurant ALBERTO
-        </div>
-        <div class="linkcomanda">
-            <a href="#" title="" >Comanda acest meniu</a>
-        </div>
-    </div>
-</div><!-- sidebar -->
-
-<div id="sidebar2" style="display:none">
+{% if order %}
+<div id="sidebar2">
     <div id="sidebar2wrapper">
-        <span class="comanda">COMANDA MEA</span>
+        <span class="comanda">{% trans 'COMANDA MEA' %}</span>
         <br/><br/>
-        <span class="user">JOHN LENNON</span>
+	 {% for cartname in carts %}
+	 <span id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}" class="user">{{ cartname }}</span>
         <br/>
         <div class="item">
             <div class="buc">1 x </div>
@@ -31,6 +15,19 @@
             <a href="#" title="" class="sub"></a>
             <a href="#" title="" class="add"></a>
         </div>
+        {% empty %}
+	 <span id="cart-{{ user.username }}"
+               href="{% url order:get_cart order.id user.username %}" class="user">{{ user.username }}</span>
+        <br/>
+        <div class="item">
+            <div class="buc">1 x </div>
+            <div class="tip">Supa de pui</div>
+            <div class="pret">20 Lei</div>         
+            <a href="#" title="" class="sub"></a>
+            <a href="#" title="" class="add"></a>
+        </div>
+        {% endfor %}
+       
         <div class="item">
             <div class="buc">2 x </div>
             <div class="tip">Pizza mozzarella</div>
@@ -62,5 +59,32 @@
                 <span class="textbtn">TRIMITE COMANDA</span>
             </a>
         </div>
+	    <div class="{{ object.schedule.is_open|yesno:',closed'}}">
+      <a href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
+    </div>
+    <div>
+      <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+    </div>
+
     </div>
 </div>
+{% else %}
+<div id="sidebar">
+    <div id="boxmeniusidebar">
+        <div class="text_specialitate">
+            Astazi, 24.01.2011
+            <br/>Specialitatea Casei Click2eat este:
+        </div>
+        <div class="meniu_special">
+            Pui milanez<br/> cu legume Verdeza
+        </div>
+        <div class="meniu_restaurant">
+            Restaurant ALBERTO
+        </div>
+        <div class="linkcomanda">
+            <a href="#" title="" >Comanda acest meniu</a>
+        </div>
+    </div>
+</div><!-- sidebar -->
+
+{% endif %}
