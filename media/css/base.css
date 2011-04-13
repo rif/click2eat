@@ -239,6 +239,7 @@ body {
   	margin: 0 0 0 24px;
 	clear: left;
 	float:left;
+	z-index: 10;
 }
 
 #primapagina #meniu {
@@ -253,7 +254,8 @@ body {
 	color:#74514e;
 	text-decoration: underline;
  	font-size: 18px;
-    line-height: 22px;
+	line-height: 22px;
+	z-index: 10;
 }
 
 #primapagina #meniu .titlemeniu {
@@ -602,7 +604,7 @@ body {
 	margin-right: 40px;
 }
 
-#paginarestaurant .bgrest1 {
+#paginarestaurant .platinum {
 	background: url("../images/template/bglista2.png") no-repeat;
 	width: 690px;
 	height: 35px;
@@ -611,7 +613,7 @@ body {
 	margin: 0px 0px 5px 0px;
 	position: relative;
 }
-#paginarestaurant .bgrest2 {
+#paginarestaurant .gold {
 	background: url("../images/template/bglista1.png") no-repeat;
 	width: 690px;
 	height: 35px;
@@ -652,7 +654,7 @@ body {
 	z-index: 100;
 }
 
-#paginarestaurant .bgrest3 {
+#paginarestaurant .silver {
     width: 690px;
 	height: 35px;
 }
