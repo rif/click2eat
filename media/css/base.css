@@ -545,8 +545,8 @@ body {
     position: relative;
 }
 
-#paginarestaurant ul li .name a,
-#paginarestaurant .name a {
+#paginarestaurant ul li .name,
+#paginarestaurant .name {
 	font-size: 20px;
 	color: #7e1c0a;
 	font-style: italic;
@@ -1116,9 +1116,15 @@ body {
     letter-spacing: -1px;
 }
 
-#sidebar2 .user {
+#sidebar2 .cart {
     font-size: 12px;
     font-weight: bold;
+}
+
+#sidebar2 .selected-cart .cart_name {
+    font-size: 12px;
+    font-weight: bold;
+    color: indianred;
 }
 
 #sidebar2 .item {
