@@ -3,7 +3,7 @@
 <script type="text/javascript">
 
     $(function() {
-        $(".add-orderitem").click(function(e) {
+        $(".add").click(function(e) {
             var selected_cart = "{{ cartname }}";
             $.get($(this).attr("href"), function(response) {
                 $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
@@ -11,7 +11,7 @@
             });
             e.preventDefault();
         });
-        $(".remove-orderitem").click(function(e) {
+        $(".sub").click(function(e) {
             var row = $(this).parents("tr");
             $.get($(this).attr("href"), function(resp) {
                 if (resp == "nook") {
@@ -34,65 +34,44 @@
         });
     });
 </script>
-<div id="current_order">
-    <table id="cart-{{ cartname }}-table">
-        <tr class="header">
-            <th class="item">{% trans 'Item' %}</th>
-            <th class="count">{% trans 'Count' %}</th>
-            <th class="price">{% trans 'Price' %}</th>
-        </tr>
-        {% for oi in oil %}
-            {% if not oi.master %}
-	        {% if oi.item %}
-                <tr class="{% cycle 'odd' 'even' %} master" group="item-{{ oi.id }}">
-                    <td class="item">{{ oi.item.name_def }}</td>
-                    <td class="count">{{ oi.count }}</td>
-                    <td class="price">{{ oi.old_price }}</td>
-                    <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">
-                        <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
-                    </a></td>
-                    <td class="plus"><a class="plus add-orderitem" href="{% url order:add_item oi.item.id cartname %}">
-                        <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
-                    </a></td>
-                </tr>
-                {% if oi.orderitem_set.exists %}
-                        {% for slave_oi in oi.orderitem_set.iterator %}
-                         <tr class="topping-row" group="item-{{ oi.id }}">
-                            <td class="item">*{{ slave_oi.item.name_def }}</td>
-                            <td class="count">{{ slave_oi.count }}</td>
-                            <td class="price">{{ slave_oi.old_price }}</td>
-                            <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item slave_oi.id %}">
-                                <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
-                            </a></td>
-                            <td class="plus"><a class="plus add-orderitem"
-                                                href="{% url order:add_topping oi.item.id slave_oi.item.id cartname %}">
-                                <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
-                            </a></td>
-                        </tr>
-                        {% endfor %}
-		{% endif %}
-		{% endif %} <!-- oi.item -->
-		{% if oi.menu_of_the_day %}
-	            <tr class="{% cycle 'odd' 'even' %} master" group="item-{{ oi.id }}">
-                      <td class="item">{{ oi.menu_of_the_day.name }}</td>
-                      <td class="count">{{ oi.count }}</td>
-                      <td class="price">{{ oi.old_price }}</td>
-                      <td class="minus"><a class="remove-orderitem" href="{% url order:remove_item oi.id %}">
-                          <img alt="-" src="{{ MEDIA_URL }}images/template/plate_minus_btn.png">
-                      </a></td>
-                      <td class="plus"><a class="plus add-orderitem" href="{% url order:add_motd oi.menu_of_the_day.id cartname %}">
-                          <img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png">
-                      </a></td>
-                    </tr>
-	    {% endif %}
-            {% endif %}
-        {% empty %}
-            <tr>
-                <td class="placeholder">{% trans 'Click menu items to fill the cart' %}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div> <!-- current_order -->
+
+{% for oi in oil %}
+{% if not oi.master %}
+{% if oi.item %}
+<div class="item master" group="item-{{ oi.id }}">
+  <div class="buc">{{ oi.count }} x </div>
+  <div class="tip">{{ oi.item.name_def }}</div>
+  <div class="pret">{{ oi.old_price }} {% trans 'Lei' %}</div>            
+  <a href="{% url order:remove_item oi.id %}" title="" class="sub"></a>
+  <a href="{% url order:add_item oi.item.id cartname %}" title="" class="add"></a>
+</div>
+{% if oi.orderitem_set.exists %}
+{% for slave_oi in oi.orderitem_set.iterator %}
+<div class="item topping-row" group="item-{{ oi.id }}">
+  <div class="buc">{{ slave_oi.item.count }} x </div>
+  <div class="tip">{{ slave_oi.item.item.name_def }}</div>
+  <div class="pret">{{ slave_oi.item.old_price }} {% trans 'Lei' %}</div>            
+  <a href="{% url order:remove_item slave_oi.id %}" title="" class="sub"></a>
+  <a href="{% url order:add_topping oi.item.id slave_oi.item.id cartname %}" title="" class="add"></a>
+</div>
+{% endfor %}
+{% endif %}
+{% endif %} <!-- oi.item -->
+{% if oi.menu_of_the_day %}
+<div class="item master" group="item-{{ oi.id }}">
+  <div class="buc">{{ oi.count }} x </div>
+  <div class="tip">{{ oi.menu_of_the_day.name }}</div>
+  <div class="pret">{{ oi.old_price }} {% trans 'Lei' %}</div>            
+  <a href="{% url order:remove_item oi.id %}" title="" class="sub"></a>
+  <a href="{% url order:add_motd oi.menu_of_the_day.id cartname %}" title="" class="add"></a>
+</div>
+{% endif %}
+{% endif %}
+{% empty %}
+<tr>
+  <td class="placeholder">{% trans 'Click menu items to fill the cart' %}</td>
+</tr>
+{% endfor %}
 
 {% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal"
                               href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}</span>

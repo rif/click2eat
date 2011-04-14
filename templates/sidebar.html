@@ -3,48 +3,24 @@
 {% if order %}
 <div id="sidebar2">
     <div id="sidebar2wrapper">
-        <span class="comanda">{% trans 'COMANDA MEA' %}</span>
-        <br/><br/>
-	 {% for cartname in carts %}
-	 <span id="cart-{{ cartname }}" href="{% url order:get_cart order.id cartname %}" class="user">{{ cartname }}</span>
+      <span class="comanda">{% trans 'COMANDA MEA' %}</span>
+      <br/><br/>
+      {% for cartname in carts %}
+      <span id="cart-{{ cartname }}" class="cart selected-cart">
+	<a class="cart_name" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
         <br/>
-        <div class="item">
-            <div class="buc">1 x </div>
-            <div class="tip">Supa de pui</div>
-            <div class="pret">20 Lei</div>         
-            <a href="#" title="" class="sub"></a>
-            <a href="#" title="" class="add"></a>
-        </div>
+	<span class="cart-content">
+	</span>
         {% empty %}
-	 <span id="cart-{{ user.username }}"
-               href="{% url order:get_cart order.id user.username %}" class="user">{{ user.username }}</span>
-        <br/>
-        <div class="item">
-            <div class="buc">1 x </div>
-            <div class="tip">Supa de pui</div>
-            <div class="pret">20 Lei</div>         
-            <a href="#" title="" class="sub"></a>
-            <a href="#" title="" class="add"></a>
-        </div>
-        {% endfor %}
-       
-        <div class="item">
-            <div class="buc">2 x </div>
-            <div class="tip">Pizza mozzarella</div>
-            <div class="pret">46 Lei</div>            
-            <a href="#" title="" class="sub"></a>
-            <a href="#" title="" class="add"></a>
-        </div>
-        <div class="item">
-            <div class="buc">1 x </div>
-            <div class="tip">Desert apple strudel</div>
-            <div class="pret">5 Lei</div>
-            <a href="#" title="" class="sub"></a>
-            <a href="#" title="" class="add"></a>
-        </div>       
-        <div class="clear"></div>
-        <div class="nota">
-            _________________________<br/>
+	<span id="cart-{{ user.username }}" class="cart selected-cart">
+	  <span href="{% url order:get_cart order.id user.username %}" class="cart_name">{{ user.username }}</span>
+          <br/>	
+          {% endfor %}
+	</span>
+	 </span>
+         <div class="clear"></div>
+         <div class="nota">
+           _________________________<br/>
             <div class="textnota">NOTA DE PLATA</div>
             <div class="totalnota">100 Lei</div>
             <br/>
