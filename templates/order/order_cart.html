@@ -5,28 +5,31 @@
     $(function() {
         $(".add").click(function(e) {
             var selected_cart = "{{ cartname }}";
+	    var item = $(this);
             $.get($(this).attr("href"), function(response) {
-                $(".css-panes>div").load("/order/get_cart/{{ order.id }}/" + selected_cart);
+                item.parents(".cart-content").load("/order/get_cart/{{ order.id }}/" + selected_cart);
                 getAvailableToppings();
             });
             e.preventDefault();
         });
         $(".sub").click(function(e) {
-            var row = $(this).parents("tr");
+            var row = $(this).parents(".item");
+	    var item = $(this);
             $.get($(this).attr("href"), function(resp) {
                 if (resp == "nook") {
                     if(row.hasClass('master')) {
-                         group = row.attr('group');
-                         $("tr[group|=" + group + "]").fadeOut();
+                        group = row.attr('group');
+                        $("div[group|=" + group + "]").fadeOut();
                     } else {
-                         row.fadeOut();
+                        row.fadeOut();
+			console.log(row);
                     }
                     if (typeof getAvailableToppings == 'function') {
                         /* check if function is defined in this context*/
                         getAvailableToppings();
                     }
                 } else {
-                    $(".count", row).text(resp);
+                    $(".buc", row).text(resp);
                 }
                 $("#{{cartname}}_subtotal").load($("#{{cartname}}_subtotal").attr("href"));
             });
@@ -39,7 +42,7 @@
 {% if not oi.master %}
 {% if oi.item %}
 <div class="item master" group="item-{{ oi.id }}">
-  <div class="buc">{{ oi.count }} x </div>
+  <div class="buc">{{ oi.count }}</div> x
   <div class="tip">{{ oi.item.name_def }}</div>
   <div class="pret">{{ oi.old_price }} {% trans 'Lei' %}</div>            
   <a href="{% url order:remove_item oi.id %}" title="" class="sub"></a>
@@ -48,7 +51,7 @@
 {% if oi.orderitem_set.exists %}
 {% for slave_oi in oi.orderitem_set.iterator %}
 <div class="item topping-row" group="item-{{ oi.id }}">
-  <div class="buc">{{ slave_oi.item.count }} x </div>
+  <div class="buc">{{ slave_oi.item.count }}</div> x
   <div class="tip">{{ slave_oi.item.item.name_def }}</div>
   <div class="pret">{{ slave_oi.item.old_price }} {% trans 'Lei' %}</div>            
   <a href="{% url order:remove_item slave_oi.id %}" title="" class="sub"></a>
@@ -59,7 +62,7 @@
 {% endif %} <!-- oi.item -->
 {% if oi.menu_of_the_day %}
 <div class="item master" group="item-{{ oi.id }}">
-  <div class="buc">{{ oi.count }} x </div>
+  <div class="buc">{{ oi.count }}</div> x
   <div class="tip">{{ oi.menu_of_the_day.name }}</div>
   <div class="pret">{{ oi.old_price }} {% trans 'Lei' %}</div>            
   <a href="{% url order:remove_item oi.id %}" title="" class="sub"></a>
@@ -72,8 +75,9 @@
   <td class="placeholder">{% trans 'Click menu items to fill the cart' %}</td>
 </tr>
 {% endfor %}
-
+<br/>
+<div class="subtotal">
 {% trans 'Subtotal' %}: <span id="{{cartname}}_subtotal"
                               href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}</span>
-
+</div>
 

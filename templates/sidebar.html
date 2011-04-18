@@ -2,65 +2,64 @@
 
 {% if order %}
 <div id="sidebar2">
-    <div id="sidebar2wrapper">
-      <span class="comanda">{% trans 'COMANDA MEA' %}</span>
-      <br/><br/>
-      {% for cartname in carts %}
-      <span id="cart-{{ cartname }}" class="cart selected-cart">
-	<a class="cart_name" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
-        <br/>
-	<span class="cart-content">
-	</span>
-        {% empty %}
-	<span id="cart-{{ user.username }}" class="cart selected-cart">
-	  <span href="{% url order:get_cart order.id user.username %}" class="cart_name">{{ user.username }}</span>
-          <br/>	
-          {% endfor %}
-	</span>
-	 </span>
-         <div class="clear"></div>
-         <div class="nota">
-           _________________________<br/>
-            <div class="textnota">NOTA DE PLATA</div>
-            <div class="totalnota">100 Lei</div>
-            <br/>
-            <div class="livrarea">
-                <label>LIVRARE:</label>
-                <select id="sidebarcomanda">
-                    <option value="1">acasa( adresa 1 profil )</option>
-                    <option value="2">birou( adresa 2 profil )</option>
-                </select>
-            </div>
-            <a href="#" title="" class="btncomanda">
-                <span class="textbtn">TRIMITE COMANDA</span>
-            </a>
-        </div>
-	    <div class="{{ object.schedule.is_open|yesno:',closed'}}">
-      <a href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
-    </div>
-    <div>
-      <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
-    </div>
-
-    </div>
+  <div id="sidebar2wrapper">
+    <span class="comanda">{% trans 'COMANDA MEA' %}</span>
+    <br/><br/>
+    {% for cartname in carts %}
+    <span id="cart-{{ cartname }}" class="cart selected-cart">
+      <a class="cart-name" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
+      <br/>
+      <span class="cart-content">
+      </span>
+    </span>
+    {% empty %}
+    <span id="cart-{{ user.username }}" class="cart selected-cart">
+      <span href="{% url order:get_cart order.id user.username %}" class="cart_name">{{ user.username }}</span>
+      <br/>	
+      {% endfor %}
+    </span>
+<div class="clear"></div>
+<div class="nota">
+  _________________________<br/>
+  <div class="textnota">NOTA DE PLATA</div>
+  <div class="totalnota">100 Lei</div>
+  <br/>
+  <div class="livrarea">
+    <label>LIVRARE:</label>
+    <select id="sidebarcomanda">
+      <option value="1">acasa( adresa 1 profil )</option>
+      <option value="2">birou( adresa 2 profil )</option>
+    </select>
+  </div>
+  <a href="#" title="" class="btncomanda">
+    <span class="textbtn">TRIMITE COMANDA</span>
+  </a>
 </div>
+<div class="{{ object.schedule.is_open|yesno:',closed'}}">
+  <a href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
+</div>
+<div>
+  <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
+</div>
+</div><!-- sidebar2wrapper -->
+</div><!-- sidebar2 -->
 {% else %}
 <div id="sidebar">
-    <div id="boxmeniusidebar">
-        <div class="text_specialitate">
-            Astazi, 24.01.2011
-            <br/>Specialitatea Casei Click2eat este:
-        </div>
-        <div class="meniu_special">
-            Pui milanez<br/> cu legume Verdeza
-        </div>
-        <div class="meniu_restaurant">
-            Restaurant ALBERTO
-        </div>
-        <div class="linkcomanda">
-            <a href="#" title="" >Comanda acest meniu</a>
-        </div>
+  <div id="boxmeniusidebar">
+    <div class="text_specialitate">
+      Astazi, 24.01.2011
+      <br/>Specialitatea Casei Click2eat este:
     </div>
+    <div class="meniu_special">
+      Pui milanez<br/> cu legume Verdeza
+    </div>
+    <div class="meniu_restaurant">
+      Restaurant ALBERTO
+    </div>
+    <div class="linkcomanda">
+      <a href="#" title="" >Comanda acest meniu</a>
+    </div>
+  </div>
 </div><!-- sidebar -->
 
 {% endif %}

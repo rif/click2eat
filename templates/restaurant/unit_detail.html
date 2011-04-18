@@ -56,7 +56,14 @@
             $("#last-orders").toggle();
             e.preventDefault();
         })
+	load_order();
     });
+function load_order(){
+    $(".cart-content").each(function(){
+	$(this).load("/order/get_cart/" + {{ order.id }} + "/" + $(this).prevAll("a.cart-name").text());
+    });
+}
+
 function pageLinks() {
     $(".page, .next, .prev").click(function(e) {
         $.get("{% url order:list_unit object.id %}" + $(this).attr("href"), function(data) {
