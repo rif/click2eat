@@ -37,9 +37,8 @@
         $("#add-cart").click(function(e) {
             if ($("#id_name").length == 0) { // we don't have one already
                 $.get("{% url order:add_cart order.id %}", function(data) {
-                    /*$("#carts>ul").append(data);
-                    $("#id_name").focus();*/
-		    console.log(data);
+                    $("#carts").append(data);
+                    $("#id_name").focus();
                 });
             }
             e.preventDefault();
@@ -92,12 +91,7 @@ function addCartName() {
                { csrfmiddlewaretoken:  $("input[name='csrfmiddlewaretoken']").val(),
                  name:                   $("#id_name").val(),
                }, function(data) {
-                   var tabs_obj = $("#carts>ul.css-tabs");
                    $("#new-cart").replaceWith(data);
-                   tabs_obj.tabs("div.css-panes > div", {effect: 'ajax'});
-                   var api = tabs_obj.data("tabs");
-                   var tabs_nb = $("li", tabs_obj).size() - 1;
-                   api.click(tabs_nb);
                });
         return false;
     });
