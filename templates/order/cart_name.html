@@ -6,7 +6,7 @@ $(function(){
 </script>
 <div class="cart" id="new-cart">
   <form id="cart-name-form" method="post" action="{% url order:add_cart order_id %}">{% csrf_token %}
-    {{ form.as_ul }}
+    {{ form.as_p }}
     <input type="submit" value="{% trans 'Add' %}" />
   </form>
 </div>

@@ -5,19 +5,21 @@
   <div id="sidebar2wrapper">
     <span class="comanda">{% trans 'COMANDA MEA' %}</span>
     <br/><br/>
-    {% for cartname in carts %}
-    <span id="cart-{{ cartname }}" class="cart selected-cart">
-      <a class="cart-name" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
-      <br/>
-      <span class="cart-content">
+    <div id="carts">
+      {% for cartname in carts %}
+      <span id="cart-{{ cartname }}" class="cart selected-cart">
+	<a class="cart-name" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
+	<br/>
+	<span class="cart-content">
+	</span>
       </span>
-    </span>
-    {% empty %}
-    <span id="cart-{{ user.username }}" class="cart selected-cart">
-      <span href="{% url order:get_cart order.id user.username %}" class="cart_name">{{ user.username }}</span>
-      <br/>	
-      {% endfor %}
-    </span>
+      {% empty %}
+      <span id="cart-{{ user.username }}" class="cart selected-cart">
+	<span href="{% url order:get_cart order.id user.username %}" class="cart_name">{{ user.username }}</span>
+	<br/>	
+	{% endfor %}
+      </span>
+    </div>
 <div class="clear"></div>
 <div class="nota">
   _________________________<br/>
