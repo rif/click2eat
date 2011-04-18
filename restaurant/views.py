@@ -50,7 +50,6 @@ def index(request):
     else:
         return redirect('profiles_create_profile')
 
-@login_required
 @render_to('restaurant/unit_list.html')
 def unit_list(request):
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
@@ -59,6 +58,7 @@ def unit_list(request):
         order_by('?')
     return {'units': units, 'gold': units.filter(name='GL'), 'platinum': units.filter(name='PL')}
 
+@login_required
 @render_to('restaurant/unit_detail.html')
 def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
