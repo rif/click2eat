@@ -1,5 +1,5 @@
-Django==1.2.3
-South==0.7.2
+Django==1.2.5
+South
 django-profiles==0.2
 http://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz
 django-uni-form
