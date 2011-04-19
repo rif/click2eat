@@ -10,7 +10,7 @@
 {% block scripts %}
     <script type="text/javascript">
     $(function() {
-	$(".btncomanda").click(function(e) {
+	$(".comanda").click(function(e) {
 	    var selected_cart = $("#sidebar2 .selected-cart");
 	     $.get("/order/add_item/" + $(this).attr("id") + "/" + selected_cart.attr("id"), function(response) {
 		 $(".cart-content", selected_cart).load("/order/get_cart/{{ order.id }}/" + selected_cart.attr("id"));
@@ -56,12 +56,18 @@
             e.preventDefault();
         })
 	load_order();
-	$(".cart-name").click(function(e){
-	    $(".cart").removeClass("selected-cart");
-	    $(this).parent().addClass("selected-cart");
-	    e.preventDefault();
-	});
+	cartSelection();
     });
+function cartSelection(){
+    $(".cart-name").unbind("click");
+    $(".cart-name").click(function(e){
+	console.log("click");
+	$(".cart").removeClass("selected-cart");
+	$(this).parent().addClass("selected-cart");
+	e.preventDefault();
+    });
+}
+
 function load_order(){
     $(".cart-content").each(function(){
 	$(this).load("/order/get_cart/" + {{ order.id }} + "/" + $(this).prevAll("a.cart-name").text());
@@ -98,6 +104,7 @@ function addCartName() {
                }, function(data) {
 		   $(".cart").removeClass("selected-cart");
                    $("#new-cart").replaceWith(data);
+		   cartSelection();
                });
         return false;
     });
@@ -161,7 +168,7 @@ function addCartName() {
                 <div class="description">{{ item.description_def }}</div>
                 <div class="price">
                   {{ item.get_price }} {% trans 'lei' %}
-                  <a href="#" id="{{ item.id }}" title="" class="btncomanda">{% trans 'Adauga la comanda'%}</a>
+                  <a href="#" id="{{ item.id }}" title="" class="btncomanda comanda">{% trans 'Adauga la comanda'%}</a>
                 </div>
                 <div class="clear"></div>
               </li>

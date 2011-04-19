@@ -202,12 +202,12 @@ def add_cart(request, order_id):
           next_cart = request.POST['name']
           response_text = """
 <span id="cart-%(cartname)s" class="cart selected-cart">
-  <a class="cart-name" href="%(url)s">%(cartname)s</a>
+  <a class="cart-name" href="#">%(cartname)s</a>
   <br/>
   <span class="cart-content"></span>
 </span>
 """
-          return HttpResponse(response_text % {"cartname":next_cart, "url":reverse('order:get_cart', args=[order_id, next_cart])})
+          return HttpResponse(response_text % {"cartname":next_cart})
   else:
       form = CartNameForm() # An unbound form
   return render_to_response('order/cart_name.html', {
