@@ -111,21 +111,21 @@
         {% autopaginate object_list 5 %}
         {% for order in object_list %}
 	<div class="boxroz">
-            <span class="data">{{ order.date }}</span><strong><span class="pret">24 lei</span></strong><span class="detalii">
-	        {% if order.status == 'CR' %}
-          <a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>13 Nov 2010</span></a>
-          {% else %}
-          <a href="{% url order:detail order.id %}">{{order}}<br><span>13 Nov 2010</span></a>
-          {% endif %}
-	    </span><span class="restaurant">Restaurant COCO</span>
-            <a href="#" class="right">Comanda din nou</a>
-        </div>
+	  <span class="data">{{ order.date }}</span><strong><span class="pret">24 lei</span></strong><span class="detalii">
+	    {% if order.status == 'CR' %}
+	    <a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>{{ order.creation_date }}</span></a>
+	    {% else %}
+	    <a href="{% url order:detail order.id %}">{{order}}<br><span>{{ order.creation_date }}</span></a>
+	    {% endif %}
+	  </span>
+	  <span class="restaurant">{{ order.unit }}</span>
+	  
+	  <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Comanda din nou' %}</a><nbsp/><a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
+	</div>
         {% empty %}
-        <li>No orders yet? Bon apetit ;)</li>
+        <li>{% trans 'No orders yet? Bon apetit ;)' %}</li>
         {% endfor %}
-        <li class="navigation">
         {% paginate %}
-        </li>
         {% endwith %}
         <br/><br/><br/>
 
