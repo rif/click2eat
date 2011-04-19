@@ -18,13 +18,13 @@
 
 <div class="content_area">
   {% if object_list and object_list.exists %}
-  {% autopaginate object_list 10 %}
-    <span class="subtitlu">
-    {% trans 'Comenzile mele' %}
-</span>
- 
+  {% autopaginate object_list 10 %}     
   <br>
   <div id="account_details">
+    <div class="separatie"></div>
+    <span class="subtitlu">
+    {% trans 'Comenzile mele' %}
+    </span>
     {% for order in object_list %}
     <div class="boxroz">
       <span class="data">{{ order.date }}</span><strong><span class="pret">24 lei</span></strong><span class="detalii">
@@ -36,12 +36,13 @@
       </span>
       <span class="restaurant">{{ order.unit }}</span>
       
-      <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Comanda din nou' %}</a><nbsp/><a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
+      <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Comanda din nou' %}</a>&nbsp;<a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
     </div>
     {% empty %}
     <div class="boxroz">{% trans 'No orders yet? Bon apetit ;)' %}</div>	    
     {% endfor %}
+      {% paginate %}
+    <div class="separatie"></div>
   </div>
-  {% paginate %}
   {% endif %}
 </div>

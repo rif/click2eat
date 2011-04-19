@@ -63,7 +63,7 @@
         <div class="boxverde">
             <strong>Castiga puncte prin :</strong><br/>
             <strong>3 zile consecutive de comenzi</strong> pe www.click2eat.ro ( 6 puncte). Pana acum ai <span class="special2">2</span> zile consecutive.
-            <br/><br/><br/>
+            <br/><br/><br/
 
             <strong>Recomandari prieteni</strong> ( 2 puncte/prieten care comanda cel putin o data de pe click2eat.ro). <br/>
             Recomanda aici unui prieten.  Adauga adresa lui de email
@@ -120,14 +120,14 @@
 	  </span>
 	  <span class="restaurant">{{ order.unit }}</span>
 	  
-	  <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Comanda din nou' %}</a><nbsp/><a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
+	  <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Comanda din nou' %}</a>&nbsp;<a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
 	</div>
         {% empty %}
         <li>{% trans 'No orders yet? Bon apetit ;)' %}</li>
         {% endfor %}
         {% paginate %}
         {% endwith %}
-        <br/><br/><br/>
+        <br/>
 
         <div class="separatie">
         </div>

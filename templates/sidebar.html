@@ -7,15 +7,15 @@
     <br/><br/>
     <div id="carts">
       {% for cartname in carts %}
-      <span id="cart-{{ cartname }}" class="cart selected-cart">
-	<a class="cart-name" href="{% url order:get_cart order.id cartname %}">{{ cartname }}</a>
+      <span id="cart-{{ cartname }}" class="cart {%if forloop.first %}selected-cart{% endif %}">
+	<a class="cart-name" href="#">{{ cartname }}</a>
 	<br/>
 	<span class="cart-content">
 	</span>
       </span>
       {% empty %}
       <span id="cart-{{ user.username }}" class="cart selected-cart">
-	<span href="{% url order:get_cart order.id user.username %}" class="cart_name">{{ user.username }}</span>
+	<span class="cart-name" href="#">{{ user.username }}</span>
 	<br/>	
 	{% endfor %}
       </span>
@@ -33,12 +33,9 @@
       <option value="2">birou( adresa 2 profil )</option>
     </select>
   </div>
-  <a href="#" title="" class="btncomanda">
-    <span class="textbtn">TRIMITE COMANDA</span>
+  <a href="{% url order:send object.id %}" title="" class="btncomanda">
+    <span class="textbtn">{% trans 'CONFIRMA COMANDA' %}</span>
   </a>
-</div>
-<div class="{{ object.schedule.is_open|yesno:',closed'}}">
-  <a href="{% url order:send object.id %}">{% trans 'Preview order' %}</a>
 </div>
 <div>
   <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
