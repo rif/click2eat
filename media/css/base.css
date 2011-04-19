@@ -1121,10 +1121,16 @@ body {
     font-weight: bold;
 }
 
-#sidebar2 .selected-cart .cart_name {
+#sidebar2 .selected-cart .cart-name {
     font-size: 12px;
     font-weight: bold;
     color: indianred;
+}
+
+#sidebar2 #carts {
+    height: 170px;
+    width: 239px;
+    overflow: auto;
 }
 
 #sidebar2 .item {

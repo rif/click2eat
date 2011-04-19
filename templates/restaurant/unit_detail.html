@@ -56,6 +56,11 @@
             e.preventDefault();
         })
 	load_order();
+	$(".cart-name").click(function(e){
+	    $(".cart").removeClass("selected-cart");
+	    $(this).parent().addClass("selected-cart");
+	    e.preventDefault();
+	});
     });
 function load_order(){
     $(".cart-content").each(function(){
@@ -91,6 +96,7 @@ function addCartName() {
                { csrfmiddlewaretoken:  $("input[name='csrfmiddlewaretoken']").val(),
                  name:                   $("#id_name").val(),
                }, function(data) {
+		   $(".cart").removeClass("selected-cart");
                    $("#new-cart").replaceWith(data);
                });
         return false;
