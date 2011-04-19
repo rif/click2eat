@@ -10,15 +10,15 @@
       <span id="cart-{{ cartname }}" class="cart {%if forloop.first %}selected-cart{% endif %}">
 	<a class="cart-name" href="#">{{ cartname }}</a>
 	<br/>
-	<span class="cart-content">
-	</span>
+	<span class="cart-content"></span>
       </span>
       {% empty %}
       <span id="cart-{{ user.username }}" class="cart selected-cart">
 	<span class="cart-name" href="#">{{ user.username }}</span>
 	<br/>	
-	{% endfor %}
+	<span class="cart-content"></span>
       </span>
+	{% endfor %}
     </div>
 <div class="clear"></div>
 <div class="nota">
@@ -33,7 +33,7 @@
       <option value="2">birou( adresa 2 profil )</option>
     </select>
   </div>
-  <a href="{% url order:send object.id %}" title="" class="btncomanda">
+  <a href="{% url order:send order.unit.id %}" title="" class="btncomanda">
     <span class="textbtn">{% trans 'CONFIRMA COMANDA' %}</span>
   </a>
 </div>
