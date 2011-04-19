@@ -2,43 +2,45 @@
 {% load pagination_tags %}
 
 <script type="text/javascript">
-  $(function(){
-  $(".hide-link").click(function(e){
-  row = $(this).parents("tr");
-  $.get($(this).attr("href"), function(data) {
-  if(data.order_id != -1) {
-  row.fadeOut();
-  }
-  });
-  e.preventDefault();
-  });
-  });
+    $(function(){
+	$(".hide-link").click(function(e){
+	    row = $(this).parents("tr");
+	    $.get($(this).attr("href"), function(data) {
+		if(data.order_id != -1) {
+		    row.fadeOut();
+		}
+	    });
+	    e.preventDefault();
+	});
+    });
 </script>
-
+    
 
 <div class="content_area">
-  {% if obobject_list and object_list.exists %}
+  {% if object_list and object_list.exists %}
   {% autopaginate object_list 10 %}
-  <div class="title"><h1 class="light_green">{% trans 'Order history' %}</h1></div>
+    <span class="subtitlu">
+    {% trans 'Comenzile mele' %}
+</span>
+ 
   <br>
-  <div id="order_history">
-    <table>
-      <tbody>
-	    {% for order in object_list %}
-	    <tr class="{% cycle 'odd' 'even' %}">
-                {% if order.status == 'CR' %}
-                <td class="item"><a target="_self" href="{% url restaurant:detail order.unit.id %}">{{order}}</a></td>
-                {% else %}
-                <td class="item"><a target="_self" href="{% url order:detail order.id %}">{{order}}</a></td>
-                {% endif %}
-	      <td><a target="_self" href="{% url order:clone order.id %}">{% trans 'Clone' %}</a></td>
-	      <td><a class="hide-link" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a></td>
-	    </tr>
-	    {% empty %}
-	    <tr><td>No orders yet? Bon apetit ;)</td></tr>
-	    {% endfor %}
-      </tbody>
-    </table>
+  <div id="account_details">
+    {% for order in object_list %}
+    <div class="boxroz">
+      <span class="data">{{ order.date }}</span><strong><span class="pret">24 lei</span></strong><span class="detalii">
+	{% if order.status == 'CR' %}
+	<a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>{{ order.creation_date }}</span></a>
+	{% else %}
+	<a href="{% url order:detail order.id %}">{{order}}<br><span>{{ order.creation_date }}</span></a>
+	{% endif %}
+      </span>
+      <span class="restaurant">{{ order.unit }}</span>
+      
+      <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Comanda din nou' %}</a><nbsp/><a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
+    </div>
+    {% empty %}
+    <div class="boxroz">{% trans 'No orders yet? Bon apetit ;)' %}</div>	    
+    {% endfor %}
   </div>
   {% paginate %}
   {% endif %}
