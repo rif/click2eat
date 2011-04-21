@@ -1,6 +1,6 @@
 {% load i18n %}
 
-{% if carts %}
+{% if order %}
 <div id="sidebar2">
   <div id="sidebar2wrapper">
     <span class="comanda">{% trans 'COMANDA MEA' %}</span>
@@ -24,7 +24,7 @@
 <div class="nota">
   _________________________<br/>
   <div class="textnota">NOTA DE PLATA</div>
-  <div class="totalnota">100 Lei</div>
+  <div class="totalnota"><span id="order-total-amount"></span> {% trans 'Lei' %}</div>
   <br/>
   <div class="livrarea">
     <label>LIVRARE:</label>
