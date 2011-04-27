@@ -76,7 +76,7 @@
     <div id="meniu">
       {% for item in menu_items %}
       <div class="itemmeniu">
-	<div class="titlemeniu"><a href="#" title="{{ item|upper }}">{{ item|upper }}</a></div>
+	<div class="titlemeniu"><a href="{% url menu:item_tag_list item %}" title="{{ item|upper }}">{{ item|upper }}</a></div>
         <a href="{% url menu:item_tag_list item %}" title=""><img src="{{ MEDIA_URL }}images/template/{{ item }}.png" alt="" /></a>
       </div>
       {% endfor %}
