@@ -16,8 +16,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=109;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/settings_dev.py;0
-FILE_NAME_1=621;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/urls.py;0
-FILE_NAME_2=578;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/order/views.py;0
-FILE_NAME_3=2141;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/restaurant/views.py;0
+current_page=9
+FILE_NAME_0=109;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/settings_dev.py;0;4
+FILE_NAME_1=621;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/urls.py;0;4
+FILE_NAME_2=7891;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/order/views.py;0;4
+FILE_NAME_3=3284;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/restaurant/views.py;0;4
+FILE_NAME_4=0;HTML;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html;0;4
+FILE_NAME_5=84;HTML;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/templates/sidebar.html;0;4
+FILE_NAME_6=126;HTML;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/templates/order/order_detail.html;0;4
+FILE_NAME_7=0;HTML;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/templates/order/order_div.html;0;4
+FILE_NAME_8=0;Python;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/order/urls.py;0;4
+FILE_NAME_9=1589;HTML;0;16;0;1;0;/home/rif/Documents/webframeworks/bucatar/templates/order/send_confirmation.html;0;4

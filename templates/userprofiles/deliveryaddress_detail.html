@@ -75,8 +75,9 @@ $(function(){
 {% endblock %}
 
 {% block content %}
-<h1>{{ object }}</h1>
-<ul>
+<div class="content_area">
+  <h1>{{ object }}</h1>
+  <ul>
     <li>{% trans 'Primary' %}: {{ object.primary|yesno }}</li>
     <li>{% trans 'City' %}: {{ object.city }}</li>
     <li>{% trans 'Street' %}: {{ object.street }}</li>
@@ -85,18 +86,19 @@ $(function(){
       {% if object.block %}{{ object.block }}{% endif %}
       {% if object.entrance %}{% trans 'ent.' %} {{ object.entrance }} {% endif %}
       {% if object.floor %}{% trans 'fl.' %} {{ object.floor }}{% endif %}
-    {% if object.ap_number %}{% trans 'apt.' %} {{ object.ap_number }}{% endif %}</li>
+      {% if object.ap_number %}{% trans 'apt.' %} {{ object.ap_number }}{% endif %}</li>
     {% if object.additional_info %}<li>{% trans 'Additional information' %}: {{ object.additional_info }}</li>{% endif %}
-</ul>
-<a href="{% url profiles_profile_detail user %}">Back</a> <a href="{% url userprofiles:update_address object.id %}">Edit</a>
+  </ul>
+  <a href="{% url profiles_profile_detail user %}">Back</a> <a href="{% url userprofiles:update_address object.id %}">Edit</a>
 
-<h2>{% trans 'Did we pinpoint your address?' %}</h2>
-<p>{% trans 'If not, please let us know by clicking' %} <a href="{% url userprofiles:geolocation_error object.id %}">{% trans 'here' %}</a>.</p>
-<form action="#" onsubmit="showAddress(this.address.value); return false">
-  <p>
-    <input type="text" size="60" name="address">
-    <input class="form_button" type="submit" value="Go!">
-  </p>
-  <div id="map_canvas" style="width: 500px; height: 300px"></div>
-</form>
+  <h2>{% trans 'Did we pinpoint your address?' %}</h2>
+  <p>{% trans 'If not, please let us know by clicking' %} <a href="{% url userprofiles:geolocation_error object.id %}">{% trans 'here' %}</a>.</p>
+  <form action="#" onsubmit="showAddress(this.address.value); return false">
+    <p>
+      <input type="text" size="60" name="address">
+      <input class="form_button" type="submit" value="Go!">
+    </p>
+    <div id="map_canvas" style="width: 500px; height: 300px"></div>
+  </form>
+</div>
 {% endblock %}

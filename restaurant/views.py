@@ -69,7 +69,6 @@ def unit_detail(request, unit_id):
     else: motd = None
     return {'object': unit, 'order': current_order, 'carts': carts, 'motd': motd}
 
-
 @login_required
 @render_to('restaurant/comments.html')
 def unit_comments(request, unit_id):

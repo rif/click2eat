@@ -1,6 +1,6 @@
 {% load i18n %}
 
-{% if order %}
+{% if order  and object %} {# we are in unit_detail main content #}
 <div id="sidebar2">
   <div id="sidebar2wrapper">
     <span class="comanda">{% trans 'COMANDA MEA' %}</span>
@@ -23,16 +23,16 @@
 <div class="clear"></div>
 <div class="nota">
   _________________________<br/>
-  <div class="textnota">NOTA DE PLATA</div>
+  <div class="textnota">{% trans 'NOTA DE PLATA' %}:</div>&nbsp;
   <div class="totalnota"><span id="order-total-amount"></span> {% trans 'Lei' %}</div>
   <br/>
-  <div class="livrarea">
+  <!--div class="livrarea">
     <label>LIVRARE:</label>
     <select id="sidebarcomanda">
       <option value="1">acasa( adresa 1 profil )</option>
       <option value="2">birou( adresa 2 profil )</option>
     </select>
-  </div>
+  </div-->
   <a href="{% url order:send order.unit.id %}" title="" class="btncomanda">
     <span class="textbtn">{% trans 'CONFIRMA COMANDA' %}</span>
   </a>

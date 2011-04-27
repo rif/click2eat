@@ -4,75 +4,8 @@
 {% block title %}{{ flatpage.title }}{% endblock %}
 
 {% block content %}
-<div class="content_area720 cumcomand">
-	<div class="titlu">
-    	E simplu !
-    </div>
-    <div class="subtitlu">
-    	Cum alegi ce vrei sa mananci azi ?
-    </div>
-    <br/>
-    <span class="text">
-    <strong>Poti sa alegi meniul de azi prin urmatoarele 5 variante.</strong><br/>
-    1. Faci click pe un restaurant pe prima pagina sau <a href="#" title="">intri in lista de restaurante</a><br/>
-    2. Faci click pe o farfurie de pe prima pagina sau <a href="#" title="">intri in lista completa de meniuri</a><br/>
-    3. Alegi una din variantele Meniul Zilei de pe prima pagina<br/>
-    4. Cauti un fel de mancare prin casuta de cautare din partea de sus a oricarei pagini<br/>
-    5. Folosesti Roata Norocului pe prima pagina    <br/>
-    </span>
-    <br/><br/>
-    <div class="variante">
-        <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/supa.png" alt="" width="115" /></a>
-        <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/pizza.png" alt="" width="115" /></a>
-        <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/paste.png" alt="" width="115" /></a>
-        <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/salata.png" alt="" width="115" /></a>
-        <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/principal.png" alt="" width="115" /></a>
-        <a href="#" title=""><img src="{{ MEDIA_URL }}images/template/desert.png" alt="" width="115" /></a>
-		
-        <a href="#" title="" class="linkcat first">SUPE SI CIORBE</a>
-        <a href="#" title="" class="linkcat second">PIZZA</a>
-        <a href="#" title="" class="linkcat third">PASTE</a>
-        <a href="#" title="" class="linkcat fourth">SALATE</a>
-        <a href="#" title="" class="linkcat fifth">PRINCIPAL</a>
-        <a href="#" title="" class="linkcat last">DESERT</a>
-    </div>
-    <br/><br/>
-    <span class="subtitlu">
-    Cum fac comanda ?
-    </span>
-    <br/>
-    <span class="text">
-	Dupa alegerea meniului, vei vedea tot timpul in dreapta paginii ceea ce ai comandat si poti oricand sa modifici.<br/>
-	Dupa ce te-ai hotarat la comanda finala, alegi adresa de livrare si click pe TRIMITE COMANDA    
-    </span>
-    <br/><br/>
-    <span class="subtitlu">
-    Cum ajunge mancarea la mine  ?
-    </span>
-    <br/>
-    <span class="text">
-    Sistemul click2eat trimite comanda ta la restaurantul care va pregati meniul tau si tu vei primi un email de confirmare.<br/>
-	Unul din operatorii de home delivery vor ajunge la tine, intre 30 si 75 de minute.<br/>
-	Pentru comenzile de meniul zilei, care se livreaza intre anumite ore si pentru comenzi speciale, este posibil sa nu se
-respecte termenul de mai sus.
-    </span>
-    <br/><br/>
-    <span class="subtitlu">
-    Cum platesc  ?
-    </span>
-    <br/>
-    <span class="text">
-	Plata se face la operatorii care vor livra meniul. Click2eat nu percepe nici un fel de comision restaurantelor, astfel incat tu vei plati la fel ca si la restaurant. Doar ca fara bacsis.<br/>
-	In ceea ce priveste tariful de transport, acesta este in functie de fiecare restaurant. Pentru comenzile mai mari de 50 lei transportul este gratuit.
-    </span>
-    <br/><br/><br/><br/><br/><br/><br/>
-    <!--
-    <div class="content_area">
-      <div class="title"><h1 class="light_green">{{ flatpage.title }}</h1></div><br>
-    {{ flatpage.content|safe }}-->
-    <!--</div>--> <!-- content_area -->
-</div>
-
-    
-
+<div class="content_area  cumcomand">
+  	<div class="titlu">{{ flatpage.title }}</div>
+{{ flatpage.content|safe }}
+</div> <!-- content_area -->
 {% endblock %}
