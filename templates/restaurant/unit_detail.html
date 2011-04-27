@@ -147,7 +147,7 @@ function addCartName() {
     <div class="clear"></div>
 
     <div id="paginarestaurant">
-    <div class="title"><h1 class="light_orange">{% trans 'LISTA MENIU' %} {{object.name|upper}}</h1></div>
+    <div class="title"><h1>{% trans 'LISTA MENIU' %} {{object.name|upper}}</h1></div>
           <div class="establishment-menu">
             {% for itemgroup in object.itemgroup_set.iterator %}
             {% if itemgroup.active %}
@@ -164,7 +164,7 @@ function addCartName() {
             <ul>
               {% for item in itemgroup.item_set.iterator %}
               {% if item.active %}
-              <li class="{% cycle 'even' 'odd' %} item {% if item.is_new %}new-item{% endif %} pozrel">
+              <li class=" item {% if item.is_new %}new-item{% endif %} pozrel">
                 <div class="name">{{ item.name_def }}</div>
                 <div class="description">{{ item.description_def }}</div>
                 <div class="price">

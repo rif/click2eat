@@ -27,3 +27,12 @@ def daily_menus(request):
 def daily_menu(request, menu_id):    
     obj = get_object_or_404(MenuOfTheDay, pk=menu_id)
     return {'object': obj}
+
+@render_to('menu/item_list.html')
+def item_tag_list(request, tag):
+    query = request.GET.get('q', '')
+    results = Item.objects.filter(tags__name=tag)
+    if query:
+        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(unit__name__icontains=query))
+    f = ItemFilter(request.GET, queryset=results)
+    return {'query': query, 'filter': f}
