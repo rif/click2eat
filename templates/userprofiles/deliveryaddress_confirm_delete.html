@@ -3,6 +3,7 @@
 {% block title %}{% trans 'Confirm address deletion' %}{% endblock %}
 
 {% block content %}
+<div class="content_area">
 <h1>{% trans 'Are you sure?' %}</h1>
 
 {% blocktrans %} Are you sure you want to delete the selected Delivery Address objects? All of the following objects and their related items will be deleted: {% endblocktrans %}
@@ -16,4 +17,5 @@
     </form>
 
 <a href="{% url profiles_profile_detail user %}">Back</a>
+</div>
 {% endblock %}

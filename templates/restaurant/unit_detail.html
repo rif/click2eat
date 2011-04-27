@@ -72,7 +72,6 @@ function load_order(){
     $(".cart-content").each(function(){
 	$(this).load("/order/get_cart/" + {{ order.id }} + "/" + $(this).prevAll("a.cart-name").text());
     });
-    $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
 }
 
 function pageLinks() {
@@ -95,6 +94,7 @@ function getAvailableToppings() {
             }
         });
     });
+    $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
 }
 function addCartName() {
     $("#cart-name-form").submit(function() {
