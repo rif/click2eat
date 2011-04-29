@@ -24,16 +24,17 @@
 {% block scripts %}
 <script type="text/javascript">
   $(function(){
-  /*$("body").everyTime(1000*60,function(i) {
-  console.log('tick');
-  });*/
-  $("#notrated-link").click(function(e){
-  $("#notrated-orders").slideToggle();
-  e.preventDefault();
-  });
-  $(".time-stars").stars({
-  inputType: "select"
-  });
+      /*$("body").everyTime(1000*60,function(i) {
+	console.log('tick');
+	});*/
+      $("#notrated-link").click(function(e){
+	  $("#notrated-orders").slideToggle();
+	  e.preventDefault();
+      });
+      $(".time-stars").stars({
+	  inputType: "select"
+      });
+      $("#tabla").load("{% url menu:random_motd %}");
   });
 </script>
 {% endblock %}
@@ -87,47 +88,7 @@
   </div><!-- primapagina -->
 {% endblock %}
 {% block home_content %}
-  <div id="tabla" class="span-7">
-    <div class="meniulzilei">
-      Meniul Zilei
-    </div>
-    <div id="continutmeniu">
-      Carne cu legume<br/>
-      Supa de pui
-      <br/>
-      <span class="restaurant">Restaurant ALBERTO</span>
-    </div>
-    <div id="pret">
-      24 Lei
-    </div>
-    <div id="comanda">
-      <a href="#" title="">Comanda acest meniu</a>
-    </div>
-    <div id="variantemeniu">
-      Variante meniul zilei<br/>
-      <span class="nrmeniu">
-        <a href="#" title="">1</a>
-        <a href="#" title="">2</a>
-        <a href="#" class="meniuselectat" title="">3</a>
-        <a href="#" title="">4</a>
-        <a href="#" title="">5</a>
-        <a href="#" title="">6</a>
-        <a href="#" title="">7</a> 
-        <a href="#" title="">8</a>
-        <a href="#" title="">9</a>
-        <a href="#" title="">10</a>
-      </span>          
-    </div>
-    <div id="newsletter">
-      INSCRIETE-TE AICI<br/>
-      <span class="textmic">PENTRU NEWSLETTER MENIUL ZILEI</span><br/>
-      <form target="_self" action="">
-        <input type="text" id="email" name="email"  />
-        <input type="image" id="newslettersubmit"  src="{{ MEDIA_URL }}images/template/gonews.png"/>
-      </form>
-    </div>
-    <div class="recomandat"></div>
-  </div><!-- tabla -->
+  <div id="tabla" class="span-7"></div><!-- tabla -->
   <div id="roata" class="span-9 last">
     <div class="rtitlu">
       sau ... te simti norocos ?  

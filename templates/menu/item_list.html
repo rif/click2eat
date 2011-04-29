@@ -47,7 +47,7 @@
     <div class="price">
       {{ obj.get_price }} {% trans 'lei' %}
         {% if user.is_authenticated %}
-      <a  redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ obj.unit.get_package.get_class|default:"silver" }}" href="{% url order:add_item obj.id user.username %}" id="{{ obj.id }}" title="" class="btncomanda comanda">{% trans 'Adauga la comanda'%}</a>
+      <a redir="{% url restaurant:detail obj.unit_id %}" class="item-add-link {{ obj.unit.get_package.get_class|default:"silver" }}" href="{% url order:add_item obj.id user.username %}" id="{{ obj.id }}" title="" class="btncomanda comanda">{% trans 'Adauga la comanda'%}</a>
       {% endif %}
     </div>
     <div class="clear"></div>
