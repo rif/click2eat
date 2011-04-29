@@ -1,12 +1,49 @@
-{% extends 'base.html' %}
-{% load i18n %}
+<div class="meniulzilei">
+  {{motd.name}}
+</div>
+<div id="continutmeniu">
+  {#{motd.description|safe}#}
+  <br/>
+  <span class="restaurant">{{motd.unit}}</span>
+</div>
+<div id="pret">
+  {{motd.price}} Lei
+</div>
+{% if user.is_authenticated %}
+<div id="comanda">
+  <a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="{% url order:add_motd motd.id user.username %}" title="">Comanda acest meniu</a>
+</div>
+{% endif %}
+<div id="variantemeniu">
+  Variante meniul zilei<br/>
+  <span class="nrmeniu">
+    {% for m in motds %}
+    <a class="motdlinks {% if m.id == motd.id %}meniuselectat{% endif %}" href="{% url menu:daily_menu m.id %}" title="">{{ forloop.counter }}</a>
+    {% endfor %}
+  </span>          
+</div>
+<div id="newsletter">
+  INSCRIETE-TE AICI<br/>
+  <span class="textmic">PENTRU NEWSLETTER MENIUL ZILEI</span><br/>
+  <form target="_self" action="">
+    <input type="text" id="email" name="email"  />
+    <input type="image" id="newslettersubmit"  src="{{ MEDIA_URL }}images/template/gonews.png"/>
+  </form>
+</div>
+<div class="recomandat"></div>
 
-{% block title %}{% trans "Today's menu" %}{% endblock %}
-{% block description %}{% trans 'Describes a menu of the day from a specifica restaurant.' %}{% endblock %}
-{% block content %}
-<div class="content_area">
-  <div class="title"><h1 class="light_green">{{ object.name }}</h1></div><br>
-<div>{{ object.description|safe }}</div>
-  <div class="clear"></div>
-</div><!-- content_area -->
-{% endblock %}
+<script type="text/javascript">
+  $(function(){
+      $(".motdlinks").click(function(e){
+	  $("#tabla").load($(this).attr("href"));
+	  e.preventDefault();
+      });
+      $("#motd-add-link").click(function(e){
+	  var redir =  $(this).attr("redir");
+	  $.get($(this).attr("href"), function(){
+              window.location = redir;
+	  });
+	  e.preventDefault();
+      });
+  });
+</script>

@@ -23,12 +23,6 @@ def daily_menus(request):
     menus = MenuOfTheDay.objects.filter(day = date.today());
     return {'daily_menus': menus}
 
-@login_required
-@render_to('menu/daily_menu.html')
-def daily_menu(request, menu_id):    
-    obj = get_object_or_404(MenuOfTheDay, pk=menu_id)
-    return {'object': obj}
-
 @render_to('menu/item_list.html')
 def item_tag_list(request, tag):
     query = request.GET.get('q', '')
@@ -43,3 +37,15 @@ def item_tag_list(request, tag):
 def menu_list(request):
     tags = Tag.objects.all()
     return {'tags': tags}
+
+@render_to('menu/daily_menu.html')
+def random_motd(request):    
+    motds = MenuOfTheDay.objects.all()#.order_by('?')
+    motd = motds[0]
+    return locals()
+
+@render_to('menu/daily_menu.html')
+def daily_menu(request, menu_id):    
+    motds = MenuOfTheDay.objects.all()#.order_by('?')
+    motd = motds.get(pk=menu_id)
+    return locals()
