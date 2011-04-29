@@ -34,12 +34,12 @@
           </span>
           {% else %}
           <div class="reg_content">
-            <form method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
+            <form id="login" method="post" action="{% url auth_login %}" class="uniForm">{% csrf_token %}
               <div class="label">{% trans 'USER' %}</div>
               <input id="id_username" name="username" maxlength="25" type="text"/>
               <div class="label">{% trans 'Password' %}</div>
               <input name="password" id="id_password" type="password"/>
-              <div class="label"><a class="submitlink" href="javascript:submitform('login');">INTRA</a></div>
+              <div class="label"><a class="submitlink" href="#">INTRA</a></div>
               <!--<input class="pad" type="submit" value="{% trans 'Login' %}" />          -->
               <!--<input type="reset" value="Reset"/> -->
               <input type="hidden" name="next" value="{{ next }}" />
@@ -64,3 +64,11 @@
 </div> <!-- header -->
 <div class="clear"></div>
 
+<script type="text/javascript">
+  $(function(){
+      $(".submitlink").click(function(e){
+	  $("#login").submit();
+	  e.preventDefault();
+      });
+  });
+</script>
