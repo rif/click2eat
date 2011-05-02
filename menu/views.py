@@ -35,7 +35,7 @@ def item_tag_list(request, tag):
 
 @render_to('menu/menu_list.html')
 def menu_list(request):
-    tags = Tag.objects.all()
+    tags = Item.tags.all()
     return {'tags': tags}
 
 @render_to('menu/daily_menu.html')
