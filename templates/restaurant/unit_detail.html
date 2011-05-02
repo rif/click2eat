@@ -151,16 +151,6 @@ function addCartName() {
           <div class="establishment-menu">
             {% for itemgroup in object.itemgroup_set.iterator %}
             {% if itemgroup.active %}
-            <div class="category">
-              <h3><i><a href="#">{{ itemgroup }}</a></i></h3>   
-            </div> <!-- category -->
-            {% endif %}
-            {% endfor %}
-          </div> <!-- estabilshment-menu -->
-          <div class="clear"></div>
-          <div class="establishment-menu">
-            {% for itemgroup in object.itemgroup_set.iterator %}
-            {% if itemgroup.active %}
             <ul>
               {% for item in itemgroup.item_set.iterator %}
               {% if item.active %}
@@ -195,8 +185,6 @@ function addCartName() {
                 {% endif %}
               </span>
               {% endif %}
-              {% empty %}
-              <li>{% trans 'No items in this group' %}</li>
               {% endfor %}
             </ul>
             {% endif %}
