@@ -29,10 +29,12 @@
 {% block title %}{% trans 'Create your profile' %}{% endblock %}
 
 {% block content %}
+<div class="content_area">
 <h1>{% trans 'Please fill up your profile' %}</h1>
 <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
     <input class="form_button" type="submit" value="{% trans 'Create profile' %}">
 </form>
+</div>
 {% endblock %}
 

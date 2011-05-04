@@ -666,6 +666,11 @@ body {
     width: 40px;
 }
 
+#paginarestaurant .establishment-menu {
+    height: 400px;
+    overflow: auto;
+}
+
 #paginarestaurant .btnviziteaza_platinum, #paginarestaurant .btnviziteaza_gold {
     font-weight: normal;
     display: block;
