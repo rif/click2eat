@@ -63,7 +63,7 @@ class ItemAdmin(admin.ModelAdmin):
     actions = ['clone_objects']
     fieldsets = (
         (None, {
-            'fields': ('internal_name', 'index', ('name_def', 'description_def'), 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), 'item_group', 'toppings')
+            'fields': ('internal_name', 'index', ('name_def', 'description_def'), 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
         }),
         ('Extra options', {
             'fields': ('tags', 'active')
@@ -116,6 +116,9 @@ class MenuOfTheDayAdmin(admin.ModelAdmin):
    list_filter = ['unit', 'day']
    search_fields = ['items__name_def']
 
+class MerchandiseCategoryGroupAdmin(admin.ModelAdmin):
+   search_fields = ['name']
+
 
 admin.site.register(models.Language)
 admin.site.register(models.Item, ItemAdmin)
@@ -125,3 +128,4 @@ admin.site.register(models.Topping, ToppingAdmin)
 admin.site.register(models.ToppingGroup, ToppingGroupAdmin)
 admin.site.register(models.Promotion, PromotionAdmin)
 admin.site.register(models.MenuOfTheDay, MenuOfTheDayAdmin)
+admin.site.register(models.MerchandiseCategoryGroup, MerchandiseCategoryGroupAdmin)
