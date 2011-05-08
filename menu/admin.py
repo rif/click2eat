@@ -3,6 +3,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from menu import models
 from menu.forms import MenuOfTheDayForm
+import csv
 
 class ItemGroupInline(admin.TabularInline):
    model = models.ItemGroupTranslation
@@ -119,6 +120,15 @@ class MenuOfTheDayAdmin(admin.ModelAdmin):
 class MerchandiseCategoryGroupAdmin(admin.ModelAdmin):
    search_fields = ['name']
 
+class ImportAdmin(admin.ModelAdmin):
+   def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        obj.save()
+
+        menu_file = csv.reader(open(obj.csv_file.path), delimiter=',', quotechar='"')
+        for elem in menu_file:
+            print "|".join(elem)
+
 
 admin.site.register(models.Language)
 admin.site.register(models.Item, ItemAdmin)
@@ -129,3 +139,4 @@ admin.site.register(models.ToppingGroup, ToppingGroupAdmin)
 admin.site.register(models.Promotion, PromotionAdmin)
 admin.site.register(models.MenuOfTheDay, MenuOfTheDayAdmin)
 admin.site.register(models.MerchandiseCategoryGroup, MerchandiseCategoryGroupAdmin)
+admin.site.register(models.Import, ImportAdmin)

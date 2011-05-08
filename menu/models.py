@@ -3,6 +3,7 @@ from multiling import MultilingualModel
 from datetime import datetime, date
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
+from django.contrib.auth.models import User
 
 class Language(models.Model):
     code = models.CharField(_('code'), max_length=5)
@@ -199,3 +200,16 @@ class MenuOfTheDay(models.Model):
         ordering = ['-day']
         verbose_name = _('Menu of the day')
         verbose_name_plural = _('Menu of the day')
+
+class Import(models.Model):
+    user = models.ForeignKey(User, verbose_name=_('user'), editable=False, null=True, blank=True)
+    import_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
+    csv_file = models.FileField(upload_to='imports')
+    
+    def __unicode__(self):
+        return 'Imported by %s at %s' % (self.user.get_full_name() or 'Admin', self.import_date.strftime('%d%B%Y %H:%M'))
+
+    class Meta:
+        ordering = ['-import_date']
+        verbose_name = _('Import')
+        verbose_name_plural = _('Imports')

@@ -150,7 +150,7 @@ class Schedule(models.Model):
       verbose_name_plural = _('Schedules')
 
 class Unit(models.Model):
-    name = models.CharField(_('name'), max_length=50)
+    name = models.CharField(_('name'), unique=True, max_length=50)
     address = models.CharField(_('address'), max_length=200)
     email = models.EmailField(_('email'))
     phone = models.CharField(_('phone'), max_length=15)
