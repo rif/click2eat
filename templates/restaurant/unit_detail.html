@@ -130,7 +130,7 @@ function addCartName() {
       <div id="paginarestaurant">
         <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
         <a id="toggle-info" href="#">{% trans 'Mai multe informatii' %}</a>
-        <div style="display:none;" id="establishment_details">
+        <div id="establishment_details">
 	  <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
 	  <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br/>
 	  <strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br/>

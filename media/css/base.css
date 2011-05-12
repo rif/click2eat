@@ -671,6 +671,14 @@ body {
     overflow: auto;
 }
 
+#paginarestaurant .establishment_details {
+    display: none;
+}
+
+#paginarestaurant .establishment_picture {
+    float: right;
+}
+
 #paginarestaurant .btnviziteaza_platinum, #paginarestaurant .btnviziteaza_gold {
     font-weight: normal;
     display: block;
