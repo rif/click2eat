@@ -52,11 +52,15 @@
         });
         getAvailableToppings();
         $("#show-previous-link").click(function(e) {
-            $("#last-orders").toggle();
+            $("#last-orders").slideToggle();
             e.preventDefault();
         })
 	load_order();
 	cartSelection();
+	$("#toggle-info").click(function(e){
+	    $("#establishment_details").slideToggle();
+	    e.preventDefault();
+	});
     });
 function cartSelection(){
     $(".cart-name").unbind("click");
@@ -125,26 +129,25 @@ function addCartName() {
     <div class="content_area">
       <div id="paginarestaurant">
         <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
-        <br/>
-        <div id="establishment_details">
-          <strong>{% trans 'Name' %}:</strong> {{ object.name }}<br/>
-    <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
-    <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br/>
-    <strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br/>
-    <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open' %}: {{ object.schedule.is_open|yesno }}
-    <br/>
-    {% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe }}<br/>{% endif %}
-</div>
-    {% if object.logo_path %}
-    <div id="establishment_picture">
-    <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
-    </div>
-    {% endif %}
-    <div class="clear"></div>
-    <a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
-    <div class="clear"></div>
-    <div id="last-orders" style="display:none"></div>
-    <div class="clear"></div>
+        <a id="toggle-info" href="#">{% trans 'Mai multe informatii' %}</a>
+        <div style="display:none;" id="establishment_details">
+	  <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
+	  <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br/>
+	  <strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br/>
+	  <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open' %}: {{ object.schedule.is_open|yesno }}
+	  <br/>
+	  {% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe }}<br/>{% endif %}
+	</div>
+	{% if object.logo_path %}
+	<div id="establishment_picture">
+	  <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
+	</div>
+	{% endif %}
+	<div class="clear"></div>
+	<a id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
+	<div class="clear"></div>
+	<div id="last-orders" style="display:none"></div>
+	<div class="clear"></div>
 
     <div id="paginarestaurant">
     <div class="title"><h1>{% trans 'LISTA MENIU' %} {{object.name|upper}}</h1></div>
