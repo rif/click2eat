@@ -671,11 +671,11 @@ body {
     overflow: auto;
 }
 
-#paginarestaurant .establishment_details {
+#establishment_details {
     display: none;
 }
 
-#paginarestaurant .establishment_picture {
+#establishment_picture {
     float: right;
 }
 

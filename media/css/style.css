@@ -903,6 +903,7 @@ input, select { outline: none; }
 	font-size: 11px;
 
 	float: left;
+	display: none;
 }
 
 #establishment_picture
@@ -912,7 +913,7 @@ input, select { outline: none; }
 
 	padding: 8px;
 
-	float: left;
+	float: right;
 }
 
 #establishment_picture img
