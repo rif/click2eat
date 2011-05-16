@@ -3,6 +3,9 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from menu import models
 from menu.forms import MenuOfTheDayForm
+from annoying.functions import get_object_or_None
+from restaurant.models import Unit
+from django.contrib import messages
 import csv
 
 class ItemGroupInline(admin.TabularInline):
@@ -126,9 +129,26 @@ class ImportAdmin(admin.ModelAdmin):
         obj.save()
 
         menu_file = csv.reader(open(obj.csv_file.path), delimiter=',', quotechar='"')
-        for elem in menu_file:
-            print "|".join(elem)
-
+        last_group = None
+        index = 0
+        header_row = True
+        for row in menu_file:
+           if header_row:
+              header_row = False
+              continue
+           unit_name = row[4]
+           unit = get_object_or_None(Unit, name=unit_name)
+           if not unit:
+              messages.add_message(request, messages.ERROR, _('There is no unit with name %s defined') % unit_name)
+              return
+           if index == 0 and unit.itemgroup_set.count():
+              messages.add_message(request, messages.ERROR, _('This unit allready has menu items'))
+              return
+           group_name = row[8]
+           if not last_group or last_group.name_def != group_name:
+              index += 1
+              last_group = models.ItemGroup.objects.get_or_create(internal_name=group_name, index=str(index), name_def=group_name, unit=unit)[0]
+           models.Item.objects.create(internal_name=row[0], index=row[1], name_def=row[2], description_def=row[3], unit=unit, item_group=last_group, price=row[5], quantity=row[6], measurement_unit=row[7], vat_id=1) #the VAT is hardcoded to first one :(
 
 admin.site.register(models.Language)
 admin.site.register(models.Item, ItemAdmin)
