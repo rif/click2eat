@@ -161,7 +161,7 @@ class Unit(models.Model):
     latitude = models.FloatField(_('latitude'))
     longitude = models.FloatField(_('longitude'))
     delivery_range = models.FloatField(_('range'), help_text=_('Delivery range in km'))
-    delivery_time = models.IntegerField(_('delivery time'))
+    delivery_time = models.IntegerField(_('delivery time'), help_text=_('In minutes'))
     communication = models.ManyToManyField(Communication, verbose_name=_('communication'))
     minimum_ord_val = models.IntegerField(_('minimum order value'))
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
