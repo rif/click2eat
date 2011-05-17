@@ -1,3 +1,4 @@
+{% if motd %}
 <div class="meniulzilei">
   {{motd.name}}
 </div>
@@ -12,6 +13,11 @@
 {% if user.is_authenticated %}
 <div id="comanda">
   <a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="{% url order:add_motd motd.id user.username %}" title="">Comanda acest meniu</a>
+</div>
+{% endif %}
+{% else %}
+<div class="meniulzilei">
+  {% trans 'No menu of the day defined' %}!
 </div>
 {% endif %}
 <div id="variantemeniu">
