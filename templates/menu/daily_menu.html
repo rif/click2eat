@@ -1,3 +1,4 @@
+{% load i18n %}
 {% if motd %}
 <div class="meniulzilei">
   {{motd.name}}
@@ -12,7 +13,7 @@
 </div>
 {% if user.is_authenticated %}
 <div id="comanda">
-  <a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="{% url order:add_motd motd.id user.username %}" title="">Comanda acest meniu</a>
+  <a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="{% url order:add_motd motd.id user.username %}" title="">{% trans 'Comanda acest meniu' %}</a>
 </div>
 {% endif %}
 {% else %}
@@ -29,8 +30,8 @@
   </span>          
 </div>
 <div id="newsletter">
-  INSCRIETE-TE AICI<br/>
-  <span class="textmic">PENTRU NEWSLETTER MENIUL ZILEI</span><br/>
+  {% trans 'INSCRIETE-TE AICI' %}<br/>
+  <span class="textmic">{% trans 'PENTRU NEWSLETTER MENIUL ZILEI' %}</span><br/>
   <form target="_self" action="">
     <input type="text" id="email" name="email"  />
     <input type="image" id="newslettersubmit"  src="{{ MEDIA_URL }}images/template/gonews.png"/>
