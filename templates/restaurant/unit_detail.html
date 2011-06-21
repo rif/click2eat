@@ -154,6 +154,7 @@ function addCartName() {
           <div class="establishment-menu">
             {% for itemgroup in object.itemgroup_set.iterator %}
             {% if itemgroup.active %}
+            <h2>{{ itemgroup.name_def }}</h2>
             <ul>
               {% for item in itemgroup.item_set.iterator %}
               {% if item.active %}
