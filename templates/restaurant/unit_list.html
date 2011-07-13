@@ -28,7 +28,7 @@
                   <div class="rating_bar"><div style="width:{{ unit.get_avg_quality }}%"></div></div>
 		<div class="rating_bar"><div style="width:{{ unit.get_avg_speed }}%"></div></div>
 	      </div>
-              <a href="{% url restaurant:detail unit.id %}" class="btnviziteaza_{{ unit.get_package.get_class }}">Viziteaza restaurantul</a>
+              <div class="btnv_margin"><a href="{% url restaurant:detail unit.id %}" class="btnviziteaza_{{ unit.get_package.get_class }}">Viziteaza restaurantul</a></div>
               <div class="clear"></div>
 	    </div>      
 	    {% endfor %}

@@ -5,6 +5,8 @@
 #header {
 	background: url("../images/template/baratop.jpg") repeat-x;
 	height:50px;
+	position: absolute;
+	z-index: 100;
 }
 
 #header_content {
@@ -146,7 +148,7 @@ body {
 	background: url("../images/template/baraalba.png") no-repeat;
 	width: 1060px;
 	height: 220px;
-	margin:30px auto 0;
+	margin:111px auto 0;
 	position: relative;
 }
 
@@ -246,7 +248,7 @@ body {
 	clear:both;
 	position: relative;
 	margin: 0px 0px 0px 25px;
-	height: 420px;
+	height: 419px;
 }
 
 #topcontent #baraalba .vezitoate a,
@@ -279,6 +281,7 @@ body {
 #primapagina {
 	background: url("../images/template/meniubg.png") no-repeat;
 	width: 625px;
+	margin-top: 12px;
 }
 
 
@@ -290,7 +293,7 @@ body {
 	background: url("../images/template/tabla.png") no-repeat;
 	height: 275px;
 	width: 510px;
-	margin-top: 23px;
+	margin-top: 4px;
 	position: relative;
 }
 #tabla .meniulzilei {
@@ -301,33 +304,34 @@ body {
 }
 
 #tabla #continutmeniu {
-	font-size: 25px;
+	font-size: 18px;
 	color:#fff;
-	line-height:24px;
-	margin: 10px 0px 0px 30px;
+	line-height:18px;
+	margin: -27px 0px 0px 30px;
 	width: 250px;
+	height: 140px;
 	float: left;
 }
 
 #tabla #continutmeniu .restaurant {
-	font-size: 23px;
+	font-size: 22px;
 	line-height: 30px;
 	color: #e2c727;
 }
 
 #tabla #pret {
 	font-size: 59px;
-	color:#fff;
-	float: right;
-	margin: 0px 60px 0px 5px;
-	line-height: 70px;
+	color:#E2C727;
+    float: left;
+    font-size: 59px;
+    line-height: 39px;
+    margin: 5px 0px 0 0;
 }
 
 #tabla #comanda {
-	clear: both;
-	float: right;
-	margin: -33px 68px 0px 5px;
-	font-size: 18px;	
+    float: left;
+    font-size: 18px;
+    margin: 0 0 0 5px;
 }
 #tabla #comanda a {
 	color:#fff;
@@ -338,7 +342,7 @@ body {
 	bottom: 24px;
 	left: 30px;
 	color:#fff;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 20px;
 }
 
@@ -403,7 +407,7 @@ body {
 	background: url("../images/template/bgroata.png") no-repeat;
 	height: 300px;
 	width: 460px;
-	margin-top: 23px;
+	margin-top: -17px;
 	position: relative;
 	margin-bottom: 10px;
 	float: right;
@@ -420,12 +424,12 @@ body {
 }
 #roata .text {
 	color: #252d0c;
-    line-height: 24px;
-    margin: 10px 0 0 20px;
-	font-size: 30px;
+    line-height: 22px;
+    margin: 10px 0 2px 20px;
+	font-size: 24px;
 }
 #roata .textmic {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 #roata .startroata {
@@ -477,6 +481,14 @@ body {
 	margin:0px 10px 0px 0px;
 }
 
+#roata .descmeniu {
+	color: #000;
+    display: block;
+    float: left;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 66px 0 0 8px;
+}
 
 /*                            CONTENT AREA generic                                       */ 
 
@@ -484,6 +496,8 @@ body {
 #content .content_area {
 	width: 720px;
 	background: #fff;
+	margin-bottom: 40px;
+    padding-bottom: 15px;
 }
 
 
@@ -494,6 +508,7 @@ body {
 #paginarestaurant {
   	font-family: times New Roman;
 	padding: 10px 0px 0px 15px;	
+	margin-right: 10px;
 }
 
 #paginarestaurant .title {
@@ -553,6 +568,7 @@ body {
 	font-weight:bold;
 	text-decoration: none;
  	line-height: 16px;
+	float: left;
 }
 
 #paginarestaurant ul li .description{
@@ -560,8 +576,17 @@ body {
 	font-size: 12px;
 	color: #000;
 	float: left;
- 	width: 450px;
+ 	width: 420px;
 }
+
+#paginarestaurant #searchbox {
+	font-family: Arial,Helvetica,sans-serif;
+}
+
+#paginarestaurant #searchbox p{
+	margin: 0px 0px 0px 10px;
+}
+
 
 #paginarestaurant .description2 {
 	margin-top: 2px;
@@ -569,7 +594,7 @@ body {
 	font-size: 12px;
 	color: #000;
 	float: left;
- 	width: 450px;
+ 	width: 500px;
 	line-height: 14px;
     margin-bottom: 10px;
 }
@@ -624,6 +649,7 @@ body {
 }
 #paginarestaurant .name2 {
     position: relative;
+	width: 500px;
 }
 #paginarestaurant .name2 a{
     font-size: 20px;
@@ -682,7 +708,6 @@ body {
 #paginarestaurant .btnviziteaza_platinum, #paginarestaurant .btnviziteaza_gold {
     font-weight: normal;
     display: block;
-    float: right;
     background: url("../images/template/btncmd.png") no-repeat;
     width: 130px;
     height: 25px;
@@ -690,13 +715,19 @@ body {
     color: #fff;
     font-size: 12px;
     font-style: normal;
-    margin: -12px 10px 0 4px;	
+    margin: 0px 10px 0 4px;	
     font-family: Arial, Helvetica, sans-serif;
 }
+
+#paginarestaurant .btnv_margin {
+    float: right;
+	margin-top:-12px;
+}
+
+
 #paginarestaurant .btnviziteaza_silver, #paginarestaurant .btnviziteaza_ {
     font-weight: normal;
     display: block;
-    float: right;
     background: url("../images/template/btngri.png") no-repeat;
     width: 130px;
     height: 25px;
@@ -704,7 +735,7 @@ body {
     color: #fff;
     font-size: 12px;
     font-style: normal;
-    margin: -12px 0px 0 4px;	
+    margin: 0px 0px 0 4px;	
     font-family: Arial, Helvetica, sans-serif;
 }
 #paginarestaurant ul li .price,
@@ -713,9 +744,6 @@ body {
     font-size: 18px;
     font-style: italic;
     color: #7e1c0a;
-    position:absolute;
-    right: 0px; 
-    top: 8px;
     font-weight: bold;
 }
 #paginarestaurant ul li .btncomanda,
@@ -1068,7 +1096,7 @@ body {
     background: url("../images/template/sidebarmeniu.png") no-repeat;
     height: 450px;
     width: 365px;
-    margin-left: -30px;
+    margin-left: 50px;
 }
 
 #sidebar #boxmeniusidebar {
@@ -1114,7 +1142,7 @@ body {
     background: url("../images/template/sidebar2.png") no-repeat;
     height: 440px;
     width: 330px;
-    margin-left: -30px;
+    margin-left: 15px;
     color: #7f392a;
     position: relative;
 }
