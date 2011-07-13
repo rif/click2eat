@@ -2,11 +2,11 @@
 {% load i18n %}
 
 {% block style %}
-<link rel="stylesheet" href="{{ MEDIA_URL }}css/jquery.countdown.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.countdown.css" type="text/css" />
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.countdown.pack.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.countdown.pack.js"></script>
 <script type="text/javascript">
     var delivery = new Date();
     delivery.setMinutes(delivery.getMinutes() + {{ order.unit.delivery_time }});

@@ -15,9 +15,9 @@
 		{% if unit.get_package.get_class == "platinum" %}
 		<span class="special"></span>
 		{% endif %}
-			  {% if not unit.schedule.is_open %}<img src="{{ MEDIA_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}"/>{% endif %}
-		  {% if unit.is_new %}<img src="{{ MEDIA_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}"/>{% endif %}
-		  {% if unit.has_promotion %}<img src="{{ MEDIA_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}"/>{% endif %}
+			  {% if not unit.schedule.is_open %}<img src="{{ STATIC_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}"/>{% endif %}
+		  {% if unit.is_new %}<img src="{{ STATIC_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}"/>{% endif %}
+		  {% if unit.has_promotion %}<img src="{{ STATIC_URL }}images/template/icons/money_icon.png" alt="{% trans 'Has discount' %}" title="{% trans 'Has discount' %}"/>{% endif %}
               </div>
               
               <div class="description3">Specific italian, 200 locuri, specialitati
