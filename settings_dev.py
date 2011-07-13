@@ -62,8 +62,7 @@ MEDIA_ROOT = rel('upload')
 MEDIA_URL =  '/upload/'
 STATIC_ROOT = rel('static')
 STATIC_URL = '/static/'
-
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 STATICFILES_DIRS = (
     rel('media'),
