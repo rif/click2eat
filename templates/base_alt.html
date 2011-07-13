@@ -1,5 +1,4 @@
 {% load i18n %}
-{% load compress %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,12 +9,10 @@
         <meta name="author" content="Radu Fericean"/>
         <meta name="keywords" content="restaurante,timisoara,mancare,pizza,comanda online,comanda mancare,restaurante timisoara,tm, ghid,domiciliu,livrare,rapid,bonus,gratis"/>
         <meta name="google-site-verification" content="z9oHbAPMh7r-yPPEB_Mw3fGuCFb9sGEdBKoeFpu86UA"/>
-	{% compress css %}
 	{% block style %}{% endblock %}
         <!--/ CSS Files /-->
         <link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css" media="screen"/>
         <link href="{{ STATIC_URL }}css/ui-lightness/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen"/>
-	{% endcompress %}
         <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection"/>
         <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/print.css" type="text/css" media="print"/>
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Radley" type="text/css" />
@@ -38,7 +35,6 @@
  <script type="text/javascript" src="scripts/js/ieCheck.js"></script>
 	    <![endif]-->
 	{% block script-links %}{% endblock %}
-	{% compress js %}
         <script type="text/javascript">
             $(function(){
                 $.ajaxSetup({
@@ -76,7 +72,6 @@
         </script>
 
 	{% block scripts %}{% endblock %}
-	{% endcompress %}
     </head>
     <body>
         <!--div id="langs_and_links">
