@@ -58,8 +58,6 @@ CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.n
 
 DJANGO_MEMCACHED_REQUIRE_STAFF = True
 
-
-
 MEDIA_ROOT = rel('upload')
 MEDIA_URL =  '/upload/'
 STATIC_ROOT = rel('static')
@@ -106,6 +104,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
+    "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
     )

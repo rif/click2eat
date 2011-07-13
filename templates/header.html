@@ -53,7 +53,7 @@
       	<span class="textmare">RESTAURANT?</span>
       </a>        <div id="top_search">
 	<form class="search" action="{% url menu:item_list %}" method="get">
-      <input class="imgsearch" type="image" src="{{ MEDIA_URL }}images/template/btnsearch.png" /> 
+      <input class="imgsearch" type="image" src="{{ STATIC_URL }}images/template/btnsearch.png" /> 
 	  <input class="clearme" type="text" name="q" id="id_q" value="{% if query %}{{ query }}{% else %}{% trans 'Search' %}{% endif %}" />
       <div class="label">{% trans 'CAUTA ORICE AICI' %}</div>
 	  <!--<input type="submit" value=""/> -->

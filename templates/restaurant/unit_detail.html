@@ -4,7 +4,7 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/tabs_style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/tabs_style.css"/>
 {% endblock %}
 
 {% block scripts %}
@@ -140,7 +140,7 @@ function addCartName() {
 	</div>
 	{% if object.logo_path %}
 	<div id="establishment_picture">
-	  <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
+	  <img height="100" src="{{ STATIC_URL }}{{ object.logo_path }}" alt="logo"/>
 	</div>
 	{% endif %}
 	<div class="clear"></div>
@@ -173,7 +173,7 @@ function addCartName() {
               <span id="top{{ item.id }}" class="top-span" style="display:none">
                 {% if item.toppings %}
                 <a class="toggle-toppings" href="#"
-                   title="{% trans 'Toggle toppings' %}"><img alt="+" src="{{ MEDIA_URL }}images/template/plate_plus_btn.png" /></a>
+                   title="{% trans 'Toggle toppings' %}"><img alt="+" src="{{ STATIC_URL }}images/template/plate_plus_btn.png" /></a>
                 <span class="topping-span" style="display:none">
                   {% trans 'Toppings' %}:
                   <ul>
