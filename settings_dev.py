@@ -58,9 +58,25 @@ CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.n
 
 DJANGO_MEMCACHED_REQUIRE_STAFF = True
 
-MEDIA_ROOT = rel('media')
-MEDIA_URL =  '/media/'
+
+
+MEDIA_ROOT = rel('upload')
+MEDIA_URL =  '/upload/'
+STATIC_ROOT = rel('static')
+STATIC_URL = '/static/'
+
 ADMIN_MEDIA_PREFIX = '/media/admin/'
+
+STATICFILES_DIRS = (
+    rel('media'),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 SECRET_KEY = '-4+i0ac6q-$7e@!sy55hlbmb*4)2+a5oc!ah2@5rn9gqlurk-#'
 
@@ -114,6 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
