@@ -21,8 +21,9 @@
 
 {% block content %}
 <div class="content_area">
+  <div id="paginarestaurant">
   <div class="title"><h1 class="light_green">{% trans 'Search' %}</h1></div>
-  <form action="" method="get">
+  <form action="" method="get" id="searchbox">
     <p><label for="id_q">Search:</label> <input type="text" name="q" id="id_q" value="{{ query }}" />
     <br>
     <a id="show-advanced" href="#">{% trans 'Show/Hide advanced search' %}</a>
@@ -37,12 +38,12 @@
 
 
   
-  <div id="paginarestaurant">
            <ul>   
 
 	{% for obj in filter %}
   <li class=" item pozrel">
     <div class="name">{{ obj.name_def }}</div>
+    <br/>
     <div class="description">{{ obj.description_def }}</div>
     <div class="price">
       {{ obj.get_price }} {% trans 'lei' %}

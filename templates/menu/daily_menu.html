@@ -1,15 +1,16 @@
 {% load i18n %}
 {% if motd %}
 <div class="meniulzilei">
-  {{motd.name}}
+	{% trans 'Meniul Zilei' %}
 </div>
 <div id="continutmeniu">
   {#{motd.description|safe}#}
-  <br/>
   <span class="restaurant">{{motd.unit}}</span>
+  <br/>
+ {{motd.name}}
 </div>
 <div id="pret">
-  {{motd.price}} Lei
+  {{motd.price}} lei
 </div>
 {% if user.is_authenticated %}
 <div id="comanda">
