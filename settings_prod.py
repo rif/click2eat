@@ -3,7 +3,7 @@ from settings_dev import *
 DEBUG = TEMPLATE_DEBUG = False
 DATABASES = {
     'default': {
-        'ENGINE': 'sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': '/bucatar_data/bucatar.db',
     }
 }
