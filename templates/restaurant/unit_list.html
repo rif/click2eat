@@ -5,7 +5,7 @@
 {% block content %}
 <div class="content_area"> 
 	<div id="paginarestaurant">  
-	  <div class="title"><h1 class="light_orange">{% trans 'LISTA RESTAURANTE TIMISOARA' %}</h1></div>
+	  <div class="title"><h1 class="light_orange">{% trans 'Restaurant list' %}|upper</h1></div>
 	  <br/>
 	  <div class="lista">
 	    {% for unit in units %}
@@ -28,7 +28,7 @@
                   <div class="rating_bar"><div style="width:{{ unit.get_avg_quality }}%"></div></div>
 		<div class="rating_bar"><div style="width:{{ unit.get_avg_speed }}%"></div></div>
 	      </div>
-              <div class="btnv_margin"><a href="{% url restaurant:detail unit.id %}" class="btnviziteaza_{{ unit.get_package.get_class }}">Viziteaza restaurantul</a></div>
+              <div class="btnv_margin"><a href="{% url restaurant:detail unit.id %}" class="btnviziteaza_{{ unit.get_package.get_class }}">{% trans 'Visit the restaurant' %}</a></div>
               <div class="clear"></div>
 	    </div>      
 	    {% endfor %}

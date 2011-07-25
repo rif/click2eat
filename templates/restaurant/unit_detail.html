@@ -129,7 +129,7 @@ function addCartName() {
     <div class="content_area">
       <div id="paginarestaurant">
         <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
-        <a id="toggle-info" href="#">{% trans 'Mai multe informatii' %}</a>
+        <a id="toggle-info" href="#">{% trans 'More info' %}</a>
         <div id="establishment_details">
 	  <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
 	  <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br/>
@@ -150,7 +150,7 @@ function addCartName() {
 	<div class="clear"></div>
 
     <div id="paginarestaurant">
-    <div class="title"><h1>{% trans 'LISTA MENIU' %} {{object.name|upper}}</h1></div>
+    <div class="title"><h1>{% trans 'Menu list' %}}|upper {{object.name|upper}}</h1></div>
           <div class="establishment-menu">
             {% for itemgroup in object.itemgroup_set.iterator %}
             {% if itemgroup.active %}
@@ -163,8 +163,8 @@ function addCartName() {
                 <br/>
                 <div class="description">{{ item.description_def }}</div>
                 <div class="price">
-                  {{ item.get_price }} {% trans 'lei' %}
-                  <a href="#" id="{{ item.id }}" title="" class="btncomanda comanda">{% trans 'Adauga la comanda'%}</a>
+                  {{ item.get_price }} {% trans 'USD' %}
+                  <a href="#" id="{{ item.id }}" title="" class="btncomanda comanda">{% trans 'Add to order'%}</a>
                 </div>
                 <div class="clear"></div>
               </li>

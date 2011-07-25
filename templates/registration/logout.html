@@ -1,12 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div id="paginaregister">
-	<div class="titlu">
-    	LOGGED OUT
-    </div>
-<h2>Thank you for using our site.</h2>
-<a href="/">Home</a> or <a href="{% url auth_login %}">Log in</a>
+	<div class="titlu">{% trans 'LOGGED OUT' %}</div>
+<h2>{% trans 'Thank you for using our site' %}.</h2>
+<a href="/">{% trans 'Home' %}</a> or <a href="{% url auth_login %}">{% trans 'Log in' %}</a>
 <br/><br/>
 </div>
 {% endblock %}
