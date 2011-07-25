@@ -1,19 +1,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-26 01:19+0300\n"
-"PO-Revision-Date: 2011-07-26 01:15\n"
+"POT-Creation-Date: 2011-07-26 02:14+0300\n"
+"PO-Revision-Date: 2011-07-26 02:18\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 "X-Translated-Using: django-rosetta 0.6.2\n"
@@ -74,7 +74,8 @@ msgstr "Bonus"
 #: menu/admin.py:56
 msgid "Item's unit differs form item's group unit."
 msgstr ""
-"Elementele restaurantului difera de elementele din gupul restaurantului"
+"Elementele restaurantului difera de elementele din gupul "
+"restaurantului"
 
 #: menu/admin.py:82
 msgid "1 item was"
@@ -333,8 +334,8 @@ msgid ""
 "As the restaurant is closed please set a desired delivery time in the "
 "restaurant open hours range."
 msgstr ""
-"Având în vedere că restaurantul e închis vă rugăm să specificați ziua și ora "
-"de livrare."
+"Având în vedere că restaurantul e închis vă rugăm să specificați ziua "
+"și ora de livrare."
 
 #: order/models.py:8
 msgid "Abandoned"
@@ -496,11 +497,11 @@ msgstr "Comanda curentă este deja trimisă."
 
 #: order/views.py:159
 msgid ""
-"This restaurant is now closed! Please check the open hours and set desired "
-"delivery time accordingly."
+"This restaurant is now closed! Please check the open hours and set "
+"desired delivery time accordingly."
 msgstr ""
-"Acest restaurant este momentan închis! Vă rugam săconsultați orarul și să "
-"specificați ziua și ora de livrare în consecință."
+"Acest restaurant este momentan închis! Vă rugam săconsultați orarul și"
+" să specificați ziua și ora de livrare în consecință."
 
 #: order/views.py:161
 #, python-format
@@ -723,8 +724,8 @@ msgstr "utilizatori administratori"
 #: restaurant/models.py:171
 msgid "the users that can access front-end administration pages for this unit."
 msgstr ""
-"utilizatorii care pot accesa paginile de administrare din interfata pentru "
-"această unitate."
+"utilizatorii care pot accesa paginile de administrare din interfata "
+"pentru această unitate."
 
 #: restaurant/models.py:173
 msgid "info"
@@ -752,31 +753,31 @@ msgstr "Hopa"
 msgid "Sorry, but the requested page could not be found"
 msgstr "Ne pare rau dar pagina pe care ați cerut-o nu a fost gasită"
 
-#: templates/base.html:90 templates/base_alt.html:90
+#: templates/base.html:83 templates/base_alt.html:83
 msgid "Chose where you want to eat today ?"
 msgstr "Alege unde vrei sa mănânci astazi"
 
-#: templates/base.html:93 templates/base_alt.html:93
+#: templates/base.html:86 templates/base_alt.html:86
 msgid "See all restaurants"
 msgstr "Toate restaurantele"
 
-#: templates/footer.html:23 templates/registration/logout.html:8
+#: templates/footer.html:31 templates/registration/logout.html:8
 msgid "Home"
 msgstr "Acasă"
 
-#: templates/footer.html:24
+#: templates/footer.html:32
 msgid "Restaurant"
 msgstr "Restaurant"
 
-#: templates/footer.html:25
+#: templates/footer.html:33
 msgid "How to order"
 msgstr "Cum comand"
 
-#: templates/footer.html:26
+#: templates/footer.html:34
 msgid "Privacy statement"
 msgstr "Declarație de proprietate"
 
-#: templates/footer.html:27
+#: templates/footer.html:35
 msgid "Contact"
 msgstr "Contact"
 
@@ -784,7 +785,7 @@ msgstr "Contact"
 msgid "How do I order"
 msgstr "Cum comand"
 
-#: templates/header.html:7
+#: templates/header.html:6
 msgid "HOW DO I"
 msgstr "CUM"
 
@@ -792,69 +793,73 @@ msgstr "CUM"
 msgid "ORDER ?"
 msgstr "COMAND ?"
 
-#: templates/header.html:11
+#: templates/header.html:10
 msgid "My profile"
 msgstr "Profilul meu"
 
-#: templates/header.html:12
+#: templates/header.html:10
 msgid "MY"
 msgstr "CONTUL"
 
-#: templates/header.html:13
+#: templates/header.html:12
 msgid "ACCOUNT"
 msgstr "MEU"
 
-#: templates/header.html:19 templates/registration/login.html:37
+#: templates/header.html:16 templates/registration/login.html:37
 msgid "Forgot password?"
 msgstr "Ați uitat parola?"
 
-#: templates/header.html:19 templates/registration/login.html:37
+#: templates/header.html:16 templates/registration/login.html:37
 msgid "Reset it"
 msgstr "Resetează"
 
-#: templates/header.html:20 templates/registration/login.html:39
+#: templates/header.html:17 templates/registration/login.html:39
 msgid "Not member?"
 msgstr "Nu sunteti membru?"
 
-#: templates/header.html:20 templates/registration/login.html:39
+#: templates/header.html:17 templates/registration/login.html:39
 #: templates/registration/registration_form.html:39
 msgid "Register"
 msgstr "Înregistrare"
 
-#: templates/header.html:29 templates/header.html.py:31
+#: templates/header.html:24 templates/header.html.py:26
 #: templates/profiles/profile_detail.html:55
 msgid "Welcome"
 msgstr "Bine ai venit"
 
-#: templates/header.html:33
+#: templates/header.html:27
 msgid "Logout"
 msgstr "Deautentificare"
 
-#: templates/header.html:38
+#: templates/header.html:33
 msgid "USER"
-msgstr "UTILIZATOR"
+msgstr "Utilizator"
 
-#: templates/header.html:40
+#: templates/header.html:37
 msgid "Password"
 msgstr "Parola"
+
+#: templates/header.html:41
+msgid "Enter"
+msgstr "Intră"
 
 #: templates/header.html:43 templates/registration/login.html:4
 msgid "Login"
 msgstr "Login"
 
-#: templates/header.html:52
+#: templates/header.html:53
 msgid "ARE YOU"
 msgstr "EȘTI"
 
-#: templates/header.html:53
+#: templates/header.html:55
 msgid "RESTAURANT"
 msgstr "Restaurant"
 
-#: templates/header.html:57 templates/menu/item_list.html:25
+#: templates/header.html:59 templates/menu/item_list.html:25
 msgid "Search"
 msgstr "Caută"
 
-#: templates/header.html:58
+#: templates/header.html:61
 msgid "SEARCH EVERYTHING HERE"
 msgstr "CAUTĂ ORICE AICI"
 
@@ -926,11 +931,11 @@ msgstr "Vă rugăm să selectați avatarul pe care doriți să îl stergeți."
 #: templates/avatar/confirm_delete.html:12
 #, python-format
 msgid ""
-"You have no avatars to delete. Please <a href=\"%(avatar_change_url)s"
-"\">upload one</a> now."
+"You have no avatars to delete. Please <a "
+"href=\"%(avatar_change_url)s\">upload one</a> now."
 msgstr ""
-"Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s"
-"\">încărcați unul</a> acum."
+"Nu aveți nici un avatar de șters. Vă rugăm să <a "
+"href=\"%(avatar_change_url)s\">încărcați unul</a> acum."
 
 #: templates/avatar/confirm_delete.html:18
 msgid "Delete These"
@@ -944,11 +949,11 @@ msgstr "Istoricul bonusurilor"
 
 #: templates/bonus/history.html:5
 msgid ""
-"Here you can check your bonus history, how you received and how you used "
-"your bnus points."
+"Here you can check your bonus history, how you received and how you "
+"used your bnus points."
 msgstr ""
-"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum ați "
-"folosit punctele bonus."
+"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum "
+"ați folosit punctele bonus."
 
 #: templates/bonus/history.html:17
 msgid "Received date"
@@ -998,12 +1003,13 @@ msgstr "Roata norocului"
 #: templates/menu/daily_menu_list.html:5 templates/wheel/fortune.html:5
 #: templates/wheel/fortune.html.py:42
 msgid ""
-"If you are undecided about what to eat today, here you can let the fate "
-"decide. Just spin the wheel an find out what the it was meant for you today."
+"If you are undecided about what to eat today, here you can let the fate"
+" decide. Just spin the wheel an find out what the it was meant for you "
+"today."
 msgstr ""
-"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa soarta "
-"să decidă pentru dumneavoastră. Doar învartiti roata ca să vedeți ce vi-a "
-"fost scris pentru astăzi."
+"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa "
+"soarta să decidă pentru dumneavoastră. Doar învartiti roata ca să "
+"vedeți ce vi-a fost scris pentru astăzi."
 
 #: templates/menu/daily_menu_list.html:34
 msgid "Today's menu"
@@ -1481,7 +1487,8 @@ msgstr "Nu Stii ce vrei să mănânci astăzi"
 #: templates/restaurant/index.html:99
 msgid "Welcome to the weel of fortune ! Click on the dish to START."
 msgstr ""
-"Bine ați venit la roata norocului! Dați click pe farfurie pentru START."
+"Bine ați venit la roata norocului! Dați click pe farfurie pentru "
+"START."
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"
@@ -1574,8 +1581,8 @@ msgstr "Sunteți sigur?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:9
 msgid ""
-" Are you sure you want to delete the selected Delivery Address objects? All "
-"of the following objects and their related items will be deleted: "
+" Are you sure you want to delete the selected Delivery Address objects?"
+" All of the following objects and their related items will be deleted: "
 msgstr "Sunteți sigur/ă că vreți să ștergeți următoarea adresă de livrare?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:11
@@ -1655,11 +1662,11 @@ msgstr "Invită prieten"
 
 #: templates/userprofiles/invite_friend.html:5
 msgid ""
-"Here you can invite your friendts to join the site. You'll get bonus points "
-"for free meal if they join :)"
+"Here you can invite your friendts to join the site. You'll get bonus "
+"points for free meal if they join :)"
 msgstr ""
-"Aici vă puteți invita prietenii să devină membrii ai acestui site. Veți "
-"primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
+"Aici vă puteți invita prietenii să devină membrii ai acestui site. "
+"Veți primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
 
 #: templates/wheel/fortune.html:43
 msgid "Press the button once, let is spinn, press it again and set the table!"
@@ -1872,8 +1879,8 @@ msgstr "Nu există meniuri ale zilei pentru astăzi!"
 #~ "As the restaurant is closed please set a desired delivery time in the "
 #~ "restaurant open hour range."
 #~ msgstr ""
-#~ "Având în vedere că restaurantul e închis vă rugăm să specificați ziua și "
-#~ "ora de livrare."
+#~ "Având în vedere că restaurantul e închis vă rugăm să specificați ziua "
+#~ "și ora de livrare."
 
 #~ msgid "Username"
 #~ msgstr "Utilizator"
