@@ -75,27 +75,6 @@
 	{% block scripts %}{% endblock %}
     </head>
     <body>
-        <!--div id="langs_and_links">
-          <div id="langs">
-            {% csrf_token %}
-            {% for lang in LANGUAGES %}
-	<a <hr />
-      ef="." class="{{ lang.0 }}"><img src="{{ STATIC_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
-	{% endfor %}
-          </div>
-            <div id="menu_top">
-	<ul id="menu-list">
-	  <li><a href="{% url restaurant:index %}" title="{% trans 'Home page' %}" target="_self">{% trans 'Home' %}</a></li>
-
-	  <li><a href="{% url menu:daily_menus %}" title="{% trans "Today's menu" %}" target="_self">{% trans "Today's menu" %}</a></li>
-	  <li><a <a href="{% url wheel:fortune %}" title="{% trans 'Wheel of fortune' %}" target="_self">{% trans 'Wheel of fortune' %}</a></li>
-	  <li><a href="{% url order:list %}" title="{% trans 'My orders' %}" target="_self">{% trans 'My orders' %}</a></li>
-	  {% if user.get_profile.administred_units.exists %}
-	  <li><a href="{% url restaurant:administrator %}" title="{% trans 'Unit administration' %}" target="_self">{% trans 'Unit administration' %}</a></li>
-	  {% endif %}
-	</ul>
-            </div>
-        </div-->
         {% include 'header.html'%}
         <div class="container">
             <div id="topcontent" class="span-24">
