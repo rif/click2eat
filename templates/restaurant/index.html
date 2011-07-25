@@ -69,10 +69,10 @@
   </div> <!-- orderrating -->
   <div id="primapagina" class="span-16 last">
     <div class="titlu">
-      sau alege ce ai vrea sa mananci azi ?
+      {% trans 'or chose what you want to eat today ?' %}
     </div>
     <div class="vezitoate">
-      <a href="{% url menu:menu_list %}" title="{% trans 'Vezi toate meniurile'%}">{% trans 'Vezi toate meniurile'%}</a> 
+      <a href="{% url menu:menu_list %}" title="{% trans 'See all menues'%}">{% trans 'See all menues'%}</a> 
     </div>
     <div id="meniu">
       {% for item in menu_items %}
@@ -83,7 +83,7 @@
       {% endfor %}
     </div>
     <div id="titletabla">
-      sau alege ofertele zilei
+      {% trans 'or chose menu of the day' %}
     </div>
   </div><!-- primapagina -->
 {% endblock %}
@@ -91,12 +91,12 @@
   <div id="tabla" class="span-7"></div><!-- tabla -->
   <div id="roata" class="span-9 last">
     <div class="rtitlu">
-      sau ... te simti norocos ?  
+      {% trans 'or ... do you feel lucky ?' %}  
     </div>
     <br/>
     <div class="text">
-      Nu stii ce vrei sa mananci azi? <br/>
-      <span class="textmic">Bine ai venit la Roata Norocului ! Click pe farfurie pentru START.</span>
+      {% trans "You don't know what you want to eat today?" %} <br/>
+      <span class="textmic">{% trans 'Welcome to the weel of fortune ! Click on the dish to START.' %}</span>
     </div>
     <div class="start">
       <a href="{% url wheel:fortune %}" class="startroata" title=""></a>
@@ -113,10 +113,10 @@
         &nbsp;
       </div>
       <div class="rezpret">
-        <span class="rezultatpret">?</span> Lei
+        <span class="rezultatpret">?</span> {% trans 'USD' %}
       </div>
       <div class="comandam">
-        <a href="#" title="">Comanda acest meniu</a>
+        <a href="#" title="">{% trans 'Order this menu' %}</a>
       </div>
     </div>
   </div><!-- roata -->

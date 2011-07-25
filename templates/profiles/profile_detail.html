@@ -52,22 +52,22 @@
 {% else %}
 <div class="content_area">
 	<div id="account_details">
-		<span class="titlu">Bine ai venit {{ profile.user.get_full_name }}</span>
+		<span class="titlu">{% trans 'Welcome' %} {{ profile.user.get_full_name }}</span>
 		<br/>
 		<br/>
-		<span class="subtitlu"> {% trans 'Program Fidelitate Click2Eat' %}</span>
+		<span class="subtitlu"> {% trans 'Click2Eat fidelity program' %}</span>
 		<br/>
 		<span class="textmare">
-			John, pana acum ai adunat
-			<span class="special">{{ user.userprofile.get_bonus_points }}</span> puncte, pe care le poti folosi pentru
-			<span class="special">1</span> comenzi gratuite meniul zilei.
+			{{ profile.user.get_full_name }}, {% trans 'you obtained' %}
+			<span class="special">{{ user.userprofile.get_bonus_points }}</span> {% trans 'points, which you can use for' %}
+			<span class="special">1</span> {% trans 'order free menu of the day' %}.
 		</span>
 		<br/>
-		La urmatoarea comanda de Meniul Zilei, nu va mai trebui sa platesti.
+		{% trans "You don't have to pay the next menu of the day order :)" %}.
 		<br/>
 		<a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a>
 		<div class="boxverde">
-			<strong>Castiga puncte prin :</strong>
+			<strong>{% trans 'Earn bonus points' %} :</strong>
 			<br/>
 			<strong>3 zile consecutive de comenzi</strong> pe www.click2eat.ro ( 6 puncte). Pana acum ai
 			<span class="special2">2</span> zile consecutive.
@@ -75,12 +75,12 @@
 			<br/>
 			<br/>
 
-			<strong>Recomandari prieteni</strong> ( 2 puncte/prieten care comanda cel putin o data de pe click2eat.ro).
+			<strong>{% trans 'Friends recomandation' %}</strong> ( 2 puncte/prieten care comanda cel putin o data de pe click2eat.ro).
 			<br/>
-			Recomanda aici unui prieten.  Adauga adresa lui de email
+			{% trans 'Invite a friend now. Add his/her email address' %}
 			<form action="ceva.hh" target="_self">
 				<input type="text" class="inputprieten" />
-				<a href="#" class="btnverde">Trimite!</a>
+				<a href="#" class="btnverde">Send!</a>
 			</form>
 		</div>
 		<br/>
@@ -88,7 +88,7 @@
 		</div>
 		<!--
 		<span class="subtitlu">
-		{% trans 'Preferintele mele' %}
+		{% trans 'My preferences' %}
 		</span>
 
 		<div class="boxporto">
@@ -115,7 +115,7 @@
 		<div class="separatie">
 		</div>
 		-->
-		<span class="subtitlu"> {% trans 'Comenzile mele' %}</span>
+		<span class="subtitlu"> {% trans 'My orders' %}</span>
 		{% with user.order_set.all|slice:":20" as object_list %}
 		{% autopaginate object_list 5 %}
 		{% for order in object_list %}
@@ -123,7 +123,7 @@
 		<div class="boxroz">
 			<span class="data">{{ order.date }}</span>
 			<strong>
-			<span class="pret">24 lei</span>
+			<span class="pret">24 % trans 'USD' %}</span>
 			</strong>
 			<span class="detalii">
 				{% if order.status == 'CR' %}
@@ -141,7 +141,7 @@
 				{% endif %}
 			</span>
 			<span class="restaurant">{{ order.unit }}</span>
-			<a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Comanda din nou' %}</a>&nbsp;
+			<a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>&nbsp;
 			<a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
 			{% endif %}
 		</div>
@@ -157,7 +157,7 @@
 		<div class="separatie">
 		</div>
 
-		<span class="subtitlu"> {% trans 'Datele contului meu' %}</span>
+		<span class="subtitlu"> {% trans 'My account details' %}</span>
 		<div id="avatar">
 			{% avatar profile.user 155 %}
 			<br/>

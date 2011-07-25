@@ -44,7 +44,7 @@
 <div class="item master" group="item-{{ oi.id }}">
   <div class="buc">{{ oi.count }} x </div>
   <div class="tip">{{ oi.item.name_def }}</div>
-  <div class="pret">{{ oi.old_price }} {% trans 'Lei' %}</div>            
+  <div class="pret">{{ oi.old_price }} {% trans 'USD' %}</div>            
   <a href="{% url order:remove_item oi.id %}" title="" class="sub"></a>
   <a href="{% url order:add_item oi.item.id cartname %}" title="" class="add"></a>
 </div>
@@ -53,7 +53,7 @@
 <div class="item topping-row" group="item-{{ oi.id }}">
   <div class="buc">{{ slave_oi.count }} x </div>
   <div class="tip">{{ slave_oi.item.name_def }}</div>
-  <div class="pret">{{ slave_oi.old_price }} {% trans 'Lei' %}</div>            
+  <div class="pret">{{ slave_oi.old_price }} {% trans 'USD' %}</div>            
   <a href="{% url order:remove_item slave_oi.id %}" title="" class="sub"></a>
   <a href="{% url order:add_topping oi.item.id slave_oi.item.id cartname %}" title="" class="add"></a>
 </div>
@@ -64,7 +64,7 @@
 <div class="item master" group="item-{{ oi.id }}">
   <div class="buc">{{ oi.count }} x </div>
   <div class="tip">{{ oi.menu_of_the_day.name }}</div>
-  <div class="pret">{{ oi.old_price }} {% trans 'Lei' %}</div>            
+  <div class="pret">{{ oi.old_price }} {% trans 'USD' %}</div>            
   <a href="{% url order:remove_item oi.id %}" title="" class="sub"></a>
   <a href="{% url order:add_motd oi.menu_of_the_day.id cartname %}" title="" class="add"></a>
 </div>

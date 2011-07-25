@@ -1,7 +1,7 @@
 {% load i18n %}
 {% if motd %}
 <div class="meniulzilei">
-	{% trans 'Meniul Zilei' %}
+	{% trans 'Menu of the day' %}
 </div>
 <div id="continutmeniu">
   {#{motd.description|safe}#}
@@ -10,11 +10,11 @@
  {{motd.name}}
 </div>
 <div id="pret">
-  {{motd.price}} lei
+  {{motd.price}} (% trans 'USD' %}
 </div>
 {% if user.is_authenticated %}
 <div id="comanda">
-  <a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="{% url order:add_motd motd.id user.username %}" title="">{% trans 'Comanda acest meniu' %}</a>
+  <a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="{% url order:add_motd motd.id user.username %}" title="">{% trans 'Order this menu' %}</a>
 </div>
 {% endif %}
 {% else %}
@@ -23,7 +23,7 @@
 </div>
 {% endif %}
 <div id="variantemeniu">
-  Variante meniul zilei<br/>
+  {% trans 'Menu of the day alternatives' %}<br/>
   <span class="nrmeniu">
     {% for m in motds %}
     <a class="motdlinks {% if m.id == motd.id %}meniuselectat{% endif %}" href="{% url menu:daily_menu m.id %}" title="">{{ forloop.counter }}</a>
@@ -31,8 +31,8 @@
   </span>          
 </div>
 <div id="newsletter">
-  {% trans 'INSCRIETE-TE AICI' %}<br/>
-  <span class="textmic">{% trans 'PENTRU NEWSLETTER MENIUL ZILEI' %}</span><br/>
+  {% trans 'SUBSCRIBE HERE' %}<br/>
+  <span class="textmic">{% trans 'FOR THE MENU OF THE DAY NEWSLETTER' %}</span><br/>
   <form target="_self" action="">
     <input type="text" id="email" name="email"  />
     <input type="image" id="newslettersubmit"  src="{{ STATIC_URL }}images/template/gonews.png"/>
