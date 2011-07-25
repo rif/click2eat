@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-26 00:18+0300\n"
-"PO-Revision-Date: 2011-07-26 00:18\n"
+"POT-Creation-Date: 2011-07-26 01:19+0300\n"
+"PO-Revision-Date: 2011-07-26 01:15\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -740,43 +740,29 @@ msgstr "Unitate"
 msgid "Units"
 msgstr "Unități"
 
-#: templates/base.html:87 templates/base_alt.html:87
-msgid "Home page"
-msgstr "Acasă"
+#: templates/404.html:4 templates/404.html.py:11
+msgid "Page not found"
+msgstr "Pagina nu a fost gasită"
 
-#: templates/base.html:87 templates/base_alt.html:87 templates/footer.html:23
-#: templates/registration/logout.html:8
-msgid "Home"
-msgstr "Acasă"
+#: templates/404.html:9
+msgid "Ups"
+msgstr "Hopa"
 
-#: templates/base.html:89 templates/base_alt.html:89
-#: templates/menu/daily_menu_list.html:34
-msgid "Today's menu"
-msgstr "Meniul zilei"
+#: templates/404.html:13
+msgid "Sorry, but the requested page could not be found"
+msgstr "Ne pare rau dar pagina pe care ați cerut-o nu a fost gasită"
 
 #: templates/base.html:90 templates/base_alt.html:90
-#: templates/menu/daily_menu_list.html:4 templates/wheel/fortune.html:4
-#: templates/wheel/fortune.html.py:39
-msgid "Wheel of fortune"
-msgstr "Roata norocului"
-
-#: templates/base.html:91 templates/base_alt.html:91
-#: templates/order/order_list_div.html:26
-#: templates/profiles/profile_detail.html:118
-msgid "My orders"
-msgstr "Comenzile mele"
-
-#: templates/base.html:93 templates/base_alt.html:93
-msgid "Unit administration"
-msgstr "Administrare restaurant"
-
-#: templates/base.html:103 templates/base_alt.html:103
 msgid "Chose where you want to eat today ?"
 msgstr "Alege unde vrei sa mănânci astazi"
 
-#: templates/base.html:106 templates/base_alt.html:106
+#: templates/base.html:93 templates/base_alt.html:93
 msgid "See all restaurants"
 msgstr "Toate restaurantele"
+
+#: templates/footer.html:23 templates/registration/logout.html:8
+msgid "Home"
+msgstr "Acasă"
 
 #: templates/footer.html:24
 msgid "Restaurant"
@@ -880,10 +866,10 @@ msgstr "COMANDA MEA"
 msgid "PAY CHECK"
 msgstr "NOTA DE PLATĂ"
 
-#: templates/sidebar.html:27 templates/menu/item_list.html:49
-#: templates/order/order_cart.html:47 templates/order/order_cart.html.py:56
-#: templates/order/order_cart.html:67 templates/order/order_list_div.html:30
-#: templates/restaurant/index.html:116
+#: templates/sidebar.html:27 templates/menu/daily_menu.html:13
+#: templates/menu/item_list.html:49 templates/order/order_cart.html:47
+#: templates/order/order_cart.html.py:56 templates/order/order_cart.html:67
+#: templates/order/order_list_div.html:30 templates/restaurant/index.html:116
 #: templates/restaurant/unit_detail.html:166
 msgid "USD"
 msgstr "RON"
@@ -1004,6 +990,11 @@ msgstr "ABONEAZĂ-TE AICI"
 msgid "FOR THE MENU OF THE DAY NEWSLETTER"
 msgstr "PENTRU NEWSLATER-UL CU MENIUL ZILEI"
 
+#: templates/menu/daily_menu_list.html:4 templates/wheel/fortune.html:4
+#: templates/wheel/fortune.html.py:39
+msgid "Wheel of fortune"
+msgstr "Roata norocului"
+
 #: templates/menu/daily_menu_list.html:5 templates/wheel/fortune.html:5
 #: templates/wheel/fortune.html.py:42
 msgid ""
@@ -1013,6 +1004,10 @@ msgstr ""
 "Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa soarta "
 "să decidă pentru dumneavoastră. Doar învartiti roata ca să vedeți ce vi-a "
 "fost scris pentru astăzi."
+
+#: templates/menu/daily_menu_list.html:34
+msgid "Today's menu"
+msgstr "Meniul zilei"
 
 #: templates/menu/daily_menu_list.html:41
 msgid "Description"
@@ -1213,6 +1208,11 @@ msgstr "Suma totală"
 #: templates/order/order_list.html:4 templates/profiles/profile_list.html:4
 msgid "List profile all"
 msgstr "Listează toate profilele"
+
+#: templates/order/order_list_div.html:26
+#: templates/profiles/profile_detail.html:118
+msgid "My orders"
+msgstr "Comenzile mele"
 
 #: templates/order/order_list_div.html:39
 #: templates/profiles/profile_detail.html:144
@@ -1810,6 +1810,12 @@ msgstr "Vă rugăm să vă autentificati!"
 #: wheel/views.py:19
 msgid "No menu of the day defined!"
 msgstr "Nu există meniuri ale zilei pentru astăzi!"
+
+#~ msgid "Home page"
+#~ msgstr "Acasă"
+
+#~ msgid "Unit administration"
+#~ msgstr "Administrare restaurant"
 
 #~ msgid "Vezi toate restaurantele"
 #~ msgstr "Dați un calificativ acestui restaurant"
