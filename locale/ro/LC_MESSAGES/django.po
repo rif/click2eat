@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-26 02:14+0300\n"
-"PO-Revision-Date: 2011-07-26 02:18\n"
+"POT-Creation-Date: 2011-07-26 14:30+0300\n"
+"PO-Revision-Date: 2011-07-26 14:31\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,30 @@ msgstr "Germană"
 #: settings_dev.py:30
 msgid "French"
 msgstr "Franceză"
+
+#: settings_dev.py:176
+msgid "Choose"
+msgstr "Alege-ți"
+
+#: settings_dev.py:177
+msgid "A general question regarding the website"
+msgstr "Întrebare generală legată de site"
+
+#: settings_dev.py:178
+msgid "Suggestion"
+msgstr "Sugestie"
+
+#: settings_dev.py:179
+msgid "Unsatisfactory service"
+msgstr "Serviciu nesatisfăcător"
+
+#: settings_dev.py:180
+msgid "Site functionality problem"
+msgstr "Problemă de funcționalitate a site-ului"
+
+#: settings_dev.py:181
+msgid "Other"
+msgstr "Alta"
 
 #: bonus/models.py:7
 msgid "You rated an order"
@@ -753,11 +777,11 @@ msgstr "Hopa"
 msgid "Sorry, but the requested page could not be found"
 msgstr "Ne pare rau dar pagina pe care ați cerut-o nu a fost gasită"
 
-#: templates/base.html:83 templates/base_alt.html:83
+#: templates/base.html:83 templates/base_alt.html:83 templates/layout.html:83
 msgid "Chose where you want to eat today ?"
 msgstr "Alege unde vrei sa mănânci astazi"
 
-#: templates/base.html:86 templates/base_alt.html:86
+#: templates/base.html:86 templates/base_alt.html:86 templates/layout.html:86
 msgid "See all restaurants"
 msgstr "Toate restaurantele"
 
@@ -777,7 +801,7 @@ msgstr "Cum comand"
 msgid "Privacy statement"
 msgstr "Declarație de proprietate"
 
-#: templates/footer.html:35
+#: templates/footer.html:35 templates/envelope/contact.html:15
 msgid "Contact"
 msgstr "Contact"
 
@@ -831,8 +855,9 @@ msgstr "Bine ai venit"
 msgid "Logout"
 msgstr "Deautentificare"
 
-#: templates/header.html:33
-msgid "USER"
+#: templates/header.html:33 templates/order/mail_order_detail.html:7
+#: templates/order/restaurant_order_detail.html:27
+msgid "User"
 msgstr "Utilizator"
 
 #: templates/header.html:37
@@ -979,6 +1004,10 @@ msgstr "Data folosirii"
 msgid "Sorry no bonuses yet."
 msgstr "Ne pare rău, nu aveți puncte bonus, încă."
 
+#: templates/envelope/contact.html:22
+msgid "Send"
+msgstr "Trimite"
+
 #: templates/menu/daily_menu.html:22
 msgid "No menu of the day defined"
 msgstr "Nu există meniuri ale zilei pentru astăzi"
@@ -1096,11 +1125,6 @@ msgstr "Trimite feedback"
 #: templates/order/restaurant_order_detail.html:24
 msgid "Order details"
 msgstr "Detalii comandă"
-
-#: templates/order/mail_order_detail.html:7
-#: templates/order/restaurant_order_detail.html:27
-msgid "User"
-msgstr "Utilizator"
 
 #: templates/order/mail_order_detail.html:8
 #: templates/order/restaurant_order_detail.html:28
@@ -1817,181 +1841,3 @@ msgstr "Vă rugăm să vă autentificati!"
 #: wheel/views.py:19
 msgid "No menu of the day defined!"
 msgstr "Nu există meniuri ale zilei pentru astăzi!"
-
-#~ msgid "Home page"
-#~ msgstr "Acasă"
-
-#~ msgid "Unit administration"
-#~ msgstr "Administrare restaurant"
-
-#~ msgid "Vezi toate restaurantele"
-#~ msgstr "Dați un calificativ acestui restaurant"
-
-#~ msgid "Please login"
-#~ msgstr "Vă rugăm să vă autentificati"
-
-#~ msgid "User/email"
-#~ msgstr "Nume/e-mail"
-
-#~ msgid "Latest orders"
-#~ msgstr "Ultimele comenzi"
-
-#~ msgid "bonus"
-#~ msgstr "bonus"
-
-#~ msgid "free meal pending"
-#~ msgstr "uremează masă gratis"
-
-#~ msgid "Last seen"
-#~ msgstr "Văzut acum"
-
-#~ msgid "Describes a menu of the day from a specifica restaurant."
-#~ msgstr "Descrie meniul zilei de la un anumit restaurant."
-
-#~ msgid "Name"
-#~ msgstr "Nume"
-
-#~ msgid "Order history"
-#~ msgstr "Istoricul comenzilor"
-
-#~ msgid "Become friend with"
-#~ msgstr "Deveniți prieten cu"
-
-#~ msgid "Quality"
-#~ msgstr "Calitate"
-
-#~ msgid "Delivery time"
-#~ msgstr "Timp de livrare"
-
-#~ msgid "RON"
-#~ msgstr "RON"
-
-#~ msgid "No items in this group"
-#~ msgstr "Nu sunt articole în acest grup"
-
-#~ msgid "Current Order"
-#~ msgstr "Comanda curentă"
-
-#~ msgid "Preview order"
-#~ msgstr "Verificați comanda curentă"
-
-#~ msgid ""
-#~ "As the restaurant is closed please set a desired delivery time in the "
-#~ "restaurant open hour range."
-#~ msgstr ""
-#~ "Având în vedere că restaurantul e închis vă rugăm să specificați ziua "
-#~ "și ora de livrare."
-
-#~ msgid "Username"
-#~ msgstr "Utilizator"
-
-#~ msgid "STOP"
-#~ msgstr "STOP"
-
-#~ msgid "slug"
-#~ msgstr "prescurtare"
-
-#~ msgid "The css class for this package"
-#~ msgstr "Clasa css pentru acest pachet"
-
-#~ msgid "Rating for speed"
-#~ msgstr "Apreciere pentru timpul de livrare"
-
-#~ msgid "Value must be in the range [0,5]"
-#~ msgstr "Valoarea trebuie sa fie in intervalul [0,5]"
-
-#~ msgid "0 worst quality, 5 highest quality"
-#~ msgstr "0 cea mai slabă calitate, 5 ce mai înaltă calitate"
-
-#~ msgid "0 worst delivery time, 5 best delivery time"
-#~ msgstr "0 cel mai prost timp de livrare, 5 cel mai bun timp de livrare"
-
-#~ msgid "N/A"
-#~ msgstr "N/A"
-
-#~ msgid "(1:bad - 5:good)"
-#~ msgstr "(1:rău - 5:bun)"
-
-#~ msgid "You currently don't have any friends :("
-#~ msgstr "Nu ai încă nici un prieten în acest site :("
-
-#~ msgid "First name"
-#~ msgstr "Prenume"
-
-#~ msgid "Unit Price"
-#~ msgstr "Preț per unitate"
-
-#~ msgid "Order items for"
-#~ msgstr "Articolele din comandă pentru"
-
-#~ msgid "Remove"
-#~ msgstr "Șterge"
-
-#~ msgid "Cart subtotal"
-#~ msgstr "Subtotal pentru coș"
-
-#~ msgid "Are you ready to send the order?"
-#~ msgstr "Sunteți gata să trimiteți comanda?"
-
-#~ msgid "Send"
-#~ msgstr "Trimite"
-
-#~ msgid "Search for products"
-#~ msgstr "Caută articole"
-
-#~ msgid "new item end date"
-#~ msgstr "data incheiere articol nou"
-
-#~ msgid "previous"
-#~ msgstr "înapoi"
-
-#~ msgid "Page"
-#~ msgstr "Pagina"
-
-#~ msgid "of"
-#~ msgstr "din"
-
-#~ msgid "next"
-#~ msgstr "înainte"
-
-#~ msgid "Deliver Areas"
-#~ msgstr "Zone de livrare"
-
-#~ msgid "unit delivery"
-#~ msgstr "Modeul de livrare al unității"
-
-#~ msgid "Street number"
-#~ msgstr "Numărul străzii"
-
-#~ msgid "Floor"
-#~ msgstr "Etaj"
-
-#~ msgid "Apartment number"
-#~ msgstr "Numărul apartamentului"
-
-#~ msgid "house number"
-#~ msgstr "numărul casei"
-
-#~ msgid "street number"
-#~ msgstr "numărul străzii"
-
-#~ msgid "Subcategory"
-#~ msgstr "Subcategorie"
-
-#~ msgid "Subcategories"
-#~ msgstr "Subcategorii"
-
-#~ msgid "discount time start"
-#~ msgstr "data de start al reducerii"
-
-#~ msgid "discount time end"
-#~ msgstr "data de încheiere a reducerii"
-
-#~ msgid "sub category"
-#~ msgstr "subcategoria"
-
-#~ msgid "special"
-#~ msgstr "special"
-
-#~ msgid "Total ammount"
-#~ msgstr "Suma totală"

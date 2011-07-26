@@ -27,6 +27,7 @@ urlpatterns = patterns('',
                        (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
                        (r'^flat/', include('django.contrib.flatpages.urls')),
                        (r'^robots.txt$', include('robots.urls')),
+                       (r'^contact/',    include('envelope.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',
