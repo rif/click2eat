@@ -509,6 +509,8 @@ body {
   	font-family: times New Roman;
 	padding: 10px 0px 0px 15px;	
 	margin-right: 10px;
+	color: #000;
+	background: url("../images/template/meniubgstrip.png") repeat-y;
 }
 
 #paginarestaurant .title {
