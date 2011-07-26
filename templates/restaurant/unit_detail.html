@@ -128,7 +128,7 @@ function addCartName() {
     
     <div class="content_area">
       <div id="paginarestaurant">
-        <div class="title"><h1 class="light_green">{{ object.name }}{% trans ' details' %}</h1></div>
+        <div class="title"><h1 class="light_green">{{object.name|upper}} {% trans 'details'|upper %}</h1></div>
         <a id="toggle-info" href="#">{% trans 'More info' %}</a>
         <div id="establishment_details">
 	  <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
@@ -150,7 +150,7 @@ function addCartName() {
 	<div class="clear"></div>
 
     <div id="paginarestaurant">
-    <div class="title"><h1>{% trans 'Menu list' %}}|upper {{object.name|upper}}</h1></div>
+    <div class="title"><h1>{% trans 'Menu list'|upper %}</h1></div>
           <div class="establishment-menu">
             {% for itemgroup in object.itemgroup_set.iterator %}
             {% if itemgroup.active %}

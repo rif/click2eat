@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-26 14:30+0300\n"
-"PO-Revision-Date: 2011-07-26 15:11\n"
-"Last-Translator: Admin Admin <fericean@gmail.com>\n"
+"POT-Creation-Date: 2011-07-26 16:03+0300\n"
+"PO-Revision-Date: 2011-07-26 16:04\n"
+"Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -582,6 +582,7 @@ msgid "The percentage taken from every order"
 msgstr "Procentajul perceput pentru fiecare comandă"
 
 #: restaurant/models.py:27 restaurant/models.py:45
+#: templates/restaurant/unit_detail.html:131
 msgid "details"
 msgstr "detalii"
 
@@ -765,23 +766,19 @@ msgstr "Unitate"
 msgid "Units"
 msgstr "Unități"
 
-#: templates/404.html:4 templates/404.html.py:11
+#: templates/404.html:4 templates/404.html.py:9
 msgid "Page not found"
 msgstr "Pagina nu a fost gasită"
 
-#: templates/404.html:9
-msgid "Ups"
-msgstr "Hopa"
-
-#: templates/404.html:13
+#: templates/404.html:12
 msgid "Sorry, but the requested page could not be found"
 msgstr "Ne pare rau dar pagina pe care ați cerut-o nu a fost gasită"
 
-#: templates/base.html:83 templates/base_alt.html:83 templates/layout.html:83
+#: templates/base.html:83 templates/base_alt.html:83
 msgid "Chose where you want to eat today ?"
 msgstr "Alege unde vrei sa mănânci astazi"
 
-#: templates/base.html:86 templates/base_alt.html:86 templates/layout.html:86
+#: templates/base.html:86 templates/base_alt.html:86
 msgid "See all restaurants"
 msgstr "Toate restaurantele"
 
@@ -899,7 +896,9 @@ msgstr "NOTA DE PLATĂ"
 #: templates/sidebar.html:27 templates/menu/daily_menu.html:13
 #: templates/menu/item_list.html:49 templates/order/order_cart.html:47
 #: templates/order/order_cart.html.py:56 templates/order/order_cart.html:67
-#: templates/order/order_list_div.html:30 templates/restaurant/index.html:116
+#: templates/order/order_list_div.html:30
+#: templates/profiles/profile_detail.html:126
+#: templates/restaurant/index.html:116
 #: templates/restaurant/unit_detail.html:166
 msgid "USD"
 msgstr "RON"
@@ -933,15 +932,15 @@ msgstr "click2eat.ro administrare site"
 msgid "click2eat.ro administration"
 msgstr "Administrare click2eat.ro"
 
-#: templates/avatar/add.html:5 templates/avatar/change.html:9
+#: templates/avatar/add.html:6 templates/avatar/change.html:9
 msgid "Your current avatar: "
 msgstr "Avatarul curent:"
 
-#: templates/avatar/add.html:8 templates/avatar/change.html:12
+#: templates/avatar/add.html:9 templates/avatar/change.html:12
 msgid "You haven't uploaded an avatar yet. Please upload one now."
 msgstr "Nu ați încărcat un avatar încă. Vă rugăm să încărcați unul acum."
 
-#: templates/avatar/add.html:12 templates/avatar/change.html:23
+#: templates/avatar/add.html:13 templates/avatar/change.html:23
 msgid "Upload New Image"
 msgstr "Încărcați o noua imagine"
 
@@ -1105,19 +1104,19 @@ msgstr "Adaugă"
 msgid "Feedback"
 msgstr "Feedback"
 
-#: templates/order/feedback.html:34
-msgid "Please provide your feedback on "
-msgstr "Vă rugăm să dați un feedback pentru "
-
 #: templates/order/feedback.html:35
+msgid "Please provide your feedback on order"
+msgstr "Vă rugăm să dați un feedback pentru comanda"
+
+#: templates/order/feedback.html:37
 msgid "Rating for quality"
 msgstr "Apreciere pentru calitate"
 
-#: templates/order/feedback.html:36
+#: templates/order/feedback.html:40
 msgid "Rating for delivery time"
 msgstr "Apreciere pentru timpul de livrare"
 
-#: templates/order/feedback.html:39
+#: templates/order/feedback.html:45
 msgid "Submit feedback"
 msgstr "Trimite feedback"
 
@@ -1299,6 +1298,14 @@ msgstr "Da, trimite comanda"
 #: templates/order/send_confirmation.html:48
 msgid "Return to menu selection"
 msgstr "Întoarceti-vă la selecția din meniu"
+
+#: templates/order/timer.html:15
+msgid "To delivery deadline."
+msgstr "Până la livrare"
+
+#: templates/order/timer.html:19
+msgid "Since delivery deadline."
+msgstr "De când trebuia să ajungă"
 
 #: templates/order/timer.html:24 templates/order/timer.html.py:28
 msgid "Order countdown"
@@ -1554,10 +1561,6 @@ msgstr "Activ"
 #: templates/restaurant/package_history.html:29
 msgid "Sorry no partner package information."
 msgstr "Ne pare rău, nu sunt infomații despre clasele de partener."
-
-#: templates/restaurant/unit_detail.html:131
-msgid " details"
-msgstr "detalii"
 
 #: templates/restaurant/unit_detail.html:132
 msgid "More info"
@@ -1841,3 +1844,9 @@ msgstr "Vă rugăm să vă autentificati!"
 #: wheel/views.py:19
 msgid "No menu of the day defined!"
 msgstr "Nu există meniuri ale zilei pentru astăzi!"
+
+#~ msgid "Ups"
+#~ msgstr "Hopa"
+
+#~ msgid " details"
+#~ msgstr "detalii"
