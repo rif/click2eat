@@ -12,11 +12,11 @@
     delivery.setMinutes(delivery.getMinutes() + {{ order.unit.delivery_time }});
     $(function(){
         
-       $('#countdown').countdown({until: delivery, onExpiry: countUp, description: 'To delivery deadline.'}); 
+       $('#countdown').countdown({until: delivery, onExpiry: countUp, description: {% trans 'To delivery deadline.'%}}); 
     })
 
 function countUp() {
-  $('#countup').countdown({since: delivery, format: 'MS', description: 'Since delivery deadline.'});
+  $('#countup').countdown({since: delivery, format: 'MS', description: {% trans 'Since delivery deadline.' %}});
 }
 </script>
 {% endblock %}

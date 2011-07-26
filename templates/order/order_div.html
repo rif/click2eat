@@ -69,14 +69,14 @@
                             {% if order.status == 'CR' %}
                                 <a class="remove-orderitem" href="{% url order:remove_item oi.id %}" title=""
                                    target="_self">
-                                    <img alt="-" src="{{ MEDIA_URL}}images/template/cart_minus_btn.png">
+                                    <img alt="-" src="{{ STATIC_URL }}images/template/cart_minus_btn.png">
                                 </a>
                             {% endif %}
                         </td>
                         <td class="plus">
                             {% if order.status == 'CR' %}
                                 <a class="add-item" href="{% url order:add_item oi.item.id cartname %}">
-                                    <img alt="+" src="{{ MEDIA_URL}}images/template/cart_plus_btn.png">
+                                    <img alt="+" src="{{ STATIC_URL }}images/template/cart_plus_btn.png">
                                 </a>
                             {% endif %}
                         </td>
