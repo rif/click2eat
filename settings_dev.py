@@ -150,6 +150,8 @@ INSTALLED_APPS = (
     'avatar',
     'rosetta',
     'robots',
+    'honeypot',
+    'envelope',
     # my apps
     'restaurant',
     'menu',
@@ -167,3 +169,15 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'HIDE_DJANGO_SQL': True,
 }
+
+ENVELOPE_EMAIL_RECIPIENTS=('r.fericean@filemaker-solutions.ro',)
+
+DEFAULT_CONTACT_CHOICES = (
+    ('',    ugettext("Choose")),
+    (10,    ugettext("A general question regarding the website")),
+    (20,    ugettext("Suggestion")),
+    (30,    ugettext("Unsatisfactory service")),
+    (40,    ugettext("Site functionality problem")),
+    (None,  ugettext("Other")),
+)
+HONEYPOT_FIELD_NAME = 'information'

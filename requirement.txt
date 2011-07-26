@@ -24,6 +24,8 @@ BeautifulSoup
 git+http://github.com/ericflo/django-avatar.git
 svn+http://django-rosetta.googlecode.com/svn/trunk/#egg=django-rosetta
 django-robots
+django-honeypot
+django-envelope
 # gunicorn staff
 setproctitle
 greenlet
