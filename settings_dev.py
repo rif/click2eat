@@ -180,4 +180,7 @@ DEFAULT_CONTACT_CHOICES = (
     (40,    ugettext("Site functionality problem")),
     (None,  ugettext("Other")),
 )
+
 HONEYPOT_FIELD_NAME = 'information'
+
+TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
