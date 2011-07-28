@@ -119,7 +119,6 @@
 		{% with user.order_set.all|slice:":20" as object_list %}
 		{% autopaginate object_list 5 %}
 		{% for order in object_list %}
-		{% if order %}
 		<div class="boxroz">
 			<span class="data">{{ order.date }}</span>
 			<strong>
@@ -141,7 +140,9 @@
 				{% endif %}
 			</span>
 			<span class="restaurant">{{ order.unit }}</span>
-			<a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>&nbsp;
+			{% if order.id %}
+			<a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>
+			&nbsp;
 			<a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
 			{% endif %}
 		</div>
