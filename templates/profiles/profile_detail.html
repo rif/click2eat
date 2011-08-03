@@ -80,7 +80,7 @@
 			{% trans 'Invite a friend now. Add his/her email address' %}
 			<form action="ceva.hh" target="_self">
 				<input type="text" class="inputprieten" />
-				<a href="#" class="btnverde">Send!</a>
+				<a href="#" class="btnverde">{% trans 'Send' %}!</a>
 			</form>
 		</div>
 		<br/>
@@ -213,7 +213,7 @@
 						<td>
 						<a href="{% url userprofiles:address_detail addr.id %}">{{ addr }}</a>
 						</td>
-						<td>{{ addr.primary }}</td>
+						<td>{{ addr.primary|yesno }}</td>
 						<td>
 						<a href="{% url userprofiles:delete_address addr.id %}">{% trans 'Delete' %}</a>
 						<a href="{% url userprofiles:update_address addr.id %}">{% trans 'Edit' %}</a>
@@ -230,7 +230,7 @@
 				</tbody>
 			</table>
 		</div>
-		<a href="{% url userprofiles:create_address %}">Add delivery address</a>
+		<a href="{% url userprofiles:create_address %}">{% trans 'Add delivery address' %}</a>
 		<br/>
 		<span class="subtitlu"> {% trans 'Friends' %}</span>
 		<ul>
