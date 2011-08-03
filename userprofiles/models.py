@@ -94,7 +94,7 @@ class UserProfile(models.Model):
      
     def get_bonus_points(self):
 	result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('points'))
-	return result['points__sum']
+	return result['points__sum'] or 0
 
     @models.permalink
     def get_absolute_url(self):
