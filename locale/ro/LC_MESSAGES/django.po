@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-26 16:03+0300\n"
-"PO-Revision-Date: 2011-07-26 16:04\n"
+"POT-Creation-Date: 2011-08-03 16:53+0300\n"
+"PO-Revision-Date: 2011-08-03 16:55\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -553,7 +553,7 @@ msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
 #: restaurant/models.py:14 restaurant/models.py:15
-#: templates/profiles/profile_detail.html:185
+#: templates/profiles/profile_detail.html:186
 msgid "Communication"
 msgstr "Comunicare"
 
@@ -897,7 +897,7 @@ msgstr "NOTA DE PLATĂ"
 #: templates/menu/item_list.html:49 templates/order/order_cart.html:47
 #: templates/order/order_cart.html.py:56 templates/order/order_cart.html:67
 #: templates/order/order_list_div.html:30
-#: templates/profiles/profile_detail.html:126
+#: templates/profiles/profile_detail.html:125
 #: templates/restaurant/index.html:116
 #: templates/restaurant/unit_detail.html:166
 msgid "USD"
@@ -967,7 +967,7 @@ msgstr "Șterge"
 
 #: templates/bonus/history.html:4 templates/bonus/history.html.py:11
 #: templates/profiles/profile_detail.html:68
-#: templates/profiles/profile_detail.html:188
+#: templates/profiles/profile_detail.html:189
 msgid "Bonus history"
 msgstr "Istoricul bonusurilor"
 
@@ -1004,6 +1004,7 @@ msgid "Sorry no bonuses yet."
 msgstr "Ne pare rău, nu aveți puncte bonus, încă."
 
 #: templates/envelope/contact.html:22
+#: templates/profiles/profile_detail.html:83
 msgid "Send"
 msgstr "Trimite"
 
@@ -1127,16 +1128,16 @@ msgstr "Detalii comandă"
 
 #: templates/order/mail_order_detail.html:8
 #: templates/order/restaurant_order_detail.html:28
-#: templates/profiles/profile_detail.html:179
+#: templates/profiles/profile_detail.html:180
 #: templates/restaurant/unit_detail.html:136
 msgid "Phone"
 msgstr "Telefon"
 
 #: templates/order/mail_order_detail.html:9
 #: templates/order/restaurant_order_detail.html:31
-#: templates/profiles/profile_detail.html:203
+#: templates/profiles/profile_detail.html:204
 #: templates/restaurant/unit_detail.html:134
-#: templates/userprofiles/deliveryaddress_detail.html:68
+#: templates/userprofiles/deliveryaddress_detail.html:52
 msgid "Address"
 msgstr "Adresa"
 
@@ -1202,11 +1203,12 @@ msgstr "Subtotal"
 msgid "Order: "
 msgstr "Comanda: "
 
-#: templates/order/order_detail.html:8
-msgid "Clone"
-msgstr "Clonă"
+#: templates/order/order_detail.html:9 templates/order/order_list_div.html:39
+#: templates/profiles/profile_detail.html:144
+msgid "Order again"
+msgstr "Comandă din nou"
 
-#: templates/order/order_detail.html:8 templates/order/order_list.html:13
+#: templates/order/order_detail.html:10 templates/order/order_list.html:13
 msgid "Back"
 msgstr "Înapoi"
 
@@ -1244,17 +1246,12 @@ msgid "My orders"
 msgstr "Comenzile mele"
 
 #: templates/order/order_list_div.html:39
-#: templates/profiles/profile_detail.html:144
-msgid "Order again"
-msgstr "Comandă din nou"
-
-#: templates/order/order_list_div.html:39
-#: templates/profiles/profile_detail.html:145
+#: templates/profiles/profile_detail.html:146
 msgid "Hide"
 msgstr "Ascunde"
 
 #: templates/order/order_list_div.html:42
-#: templates/profiles/profile_detail.html:150
+#: templates/profiles/profile_detail.html:151
 msgid "No orders yet? Bon apetit ;)"
 msgstr "Nu ați comandat nimic încă? Poftă bună ;)"
 
@@ -1287,7 +1284,7 @@ msgid "If you don't have a delivery address"
 msgstr "Dacă nu ați definit o adresă de livrare"
 
 #: templates/order/send_confirmation.html:44
-#: templates/profiles/profile_detail.html:225
+#: templates/profiles/profile_detail.html:226
 msgid "Add one now"
 msgstr "Adăugați una acum"
 
@@ -1380,74 +1377,78 @@ msgstr "Invita un prieten acum. Adauga adresa de email"
 msgid "My preferences"
 msgstr "Preferințele mele"
 
-#: templates/profiles/profile_detail.html:160
+#: templates/profiles/profile_detail.html:161
 msgid "My account details"
 msgstr "Contul meu"
 
-#: templates/profiles/profile_detail.html:165
+#: templates/profiles/profile_detail.html:166
 msgid "Change"
 msgstr "Schimbă"
 
-#: templates/profiles/profile_detail.html:166
-#: templates/profiles/profile_detail.html:217
+#: templates/profiles/profile_detail.html:167
+#: templates/profiles/profile_detail.html:218
 msgid "Delete"
 msgstr "Șterge"
 
-#: templates/profiles/profile_detail.html:173
+#: templates/profiles/profile_detail.html:174
 msgid "Tel"
 msgstr "Tel"
 
-#: templates/profiles/profile_detail.html:177
+#: templates/profiles/profile_detail.html:178
 msgid "Birth date"
 msgstr "Data nașterii"
 
-#: templates/profiles/profile_detail.html:181
+#: templates/profiles/profile_detail.html:182
 msgid "Sex"
 msgstr "Sexul"
 
-#: templates/profiles/profile_detail.html:183
+#: templates/profiles/profile_detail.html:184
 msgid "Newsletter"
 msgstr "Scrisoare cu știri"
 
-#: templates/profiles/profile_detail.html:187
+#: templates/profiles/profile_detail.html:188
 msgid "Bonus points"
 msgstr "Puncte bonus"
 
-#: templates/profiles/profile_detail.html:191
-#: templates/profiles/profile_detail.html:218
+#: templates/profiles/profile_detail.html:192
+#: templates/profiles/profile_detail.html:219
 msgid "Edit"
 msgstr "Editați"
 
-#: templates/profiles/profile_detail.html:192
+#: templates/profiles/profile_detail.html:193
 msgid "Order History"
 msgstr "Istoricul comenzilor"
 
-#: templates/profiles/profile_detail.html:197
+#: templates/profiles/profile_detail.html:198
 msgid "Delivery addresses"
 msgstr "Adresele de livrare"
 
-#: templates/profiles/profile_detail.html:204
-#: templates/userprofiles/deliveryaddress_detail.html:81
+#: templates/profiles/profile_detail.html:205
+#: templates/userprofiles/deliveryaddress_detail.html:84
 msgid "Primary"
 msgstr "Primară"
 
-#: templates/profiles/profile_detail.html:205
+#: templates/profiles/profile_detail.html:206
 msgid "Operation"
 msgstr "Operație"
 
-#: templates/profiles/profile_detail.html:224
+#: templates/profiles/profile_detail.html:225
 msgid "You have not defined any delivery address."
 msgstr "Nu ați introdus nici o adresa de livrare."
 
-#: templates/profiles/profile_detail.html:234
+#: templates/profiles/profile_detail.html:233
+msgid "Add delivery address"
+msgstr "Adăugați adresă de livrare"
+
+#: templates/profiles/profile_detail.html:235
 msgid "Friends"
 msgstr "Prieteni"
 
-#: templates/profiles/profile_detail.html:242
+#: templates/profiles/profile_detail.html:243
 msgid "Sorry, no friends here :("
 msgstr "Ne pare rău, nu v-ați făcut prieteni aici :("
 
-#: templates/profiles/profile_detail.html:248
+#: templates/profiles/profile_detail.html:249
 msgid "Invite a friend now"
 msgstr "Invită un prieten"
 
@@ -1625,53 +1626,57 @@ msgstr "Da, sunt sigur"
 msgid "Address detail"
 msgstr "Detalii adresă"
 
-#: templates/userprofiles/deliveryaddress_detail.html:67
+#: templates/userprofiles/deliveryaddress_detail.html:51
 msgid "Coordinates"
 msgstr "Coordonate"
 
-#: templates/userprofiles/deliveryaddress_detail.html:82
+#: templates/userprofiles/deliveryaddress_detail.html:85
 msgid "City"
 msgstr "Oraș"
 
-#: templates/userprofiles/deliveryaddress_detail.html:83
+#: templates/userprofiles/deliveryaddress_detail.html:86
 msgid "Street"
 msgstr "Strada"
 
-#: templates/userprofiles/deliveryaddress_detail.html:84
+#: templates/userprofiles/deliveryaddress_detail.html:87
 msgid "Number"
 msgstr "Număr"
 
-#: templates/userprofiles/deliveryaddress_detail.html:85
+#: templates/userprofiles/deliveryaddress_detail.html:88
 msgid "Block info"
 msgstr "Informații bloc"
 
-#: templates/userprofiles/deliveryaddress_detail.html:87
+#: templates/userprofiles/deliveryaddress_detail.html:90
 msgid "ent."
 msgstr "sc."
 
-#: templates/userprofiles/deliveryaddress_detail.html:88
+#: templates/userprofiles/deliveryaddress_detail.html:91
 msgid "fl."
 msgstr "et."
 
-#: templates/userprofiles/deliveryaddress_detail.html:89
+#: templates/userprofiles/deliveryaddress_detail.html:92
 msgid "apt."
 msgstr "ap."
 
-#: templates/userprofiles/deliveryaddress_detail.html:90
+#: templates/userprofiles/deliveryaddress_detail.html:93
 msgid "Additional information"
 msgstr "Informații suplimentare"
 
-#: templates/userprofiles/deliveryaddress_detail.html:94
+#: templates/userprofiles/deliveryaddress_detail.html:97
 msgid "Did we pinpoint your address?"
 msgstr "Am reușit să vă localizăm adresa?"
 
-#: templates/userprofiles/deliveryaddress_detail.html:95
+#: templates/userprofiles/deliveryaddress_detail.html:98
 msgid "If not, please let us know by clicking"
 msgstr "Dacă nu, vă rugăm să ne anunțați apăsând"
 
-#: templates/userprofiles/deliveryaddress_detail.html:95
+#: templates/userprofiles/deliveryaddress_detail.html:98
 msgid "here"
 msgstr "aici"
+
+#: templates/userprofiles/deliveryaddress_detail.html:102
+msgid "Go"
+msgstr "Trimite"
 
 #: templates/userprofiles/deliveryaddress_form.html:14
 msgid "Add a delivery address"
@@ -1844,6 +1849,9 @@ msgstr "Vă rugăm să vă autentificati!"
 #: wheel/views.py:19
 msgid "No menu of the day defined!"
 msgstr "Nu există meniuri ale zilei pentru astăzi!"
+
+#~ msgid "Clone"
+#~ msgstr "Clonă"
 
 #~ msgid "Ups"
 #~ msgstr "Hopa"
