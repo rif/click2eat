@@ -3,8 +3,11 @@ from settings_dev import *
 DEBUG = TEMPLATE_DEBUG = False
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/bucatar_data/bucatar.db',
+        'ENGINE':	'django.db.backends.mysql',
+	'HOST':		'localhost',
+        'NAME': 	'click2eat',
+	'USER':		'django_login',
+	'PASSWORD':	'testus_cumulus'
     }
 }
 EMAIL_HOST = 'smtp.gmail.com'
