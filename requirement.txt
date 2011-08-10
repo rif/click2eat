@@ -1,4 +1,4 @@
-Django==1.2.5
+Django==1.3
 South
 django-profiles==0.2
 http://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz
@@ -26,6 +26,8 @@ svn+http://django-rosetta.googlecode.com/svn/trunk/#egg=django-rosetta
 django-robots
 django-honeypot
 django-envelope
+MySQL-python
+
 # gunicorn staff
 setproctitle
 greenlet
