@@ -1,5 +1,5 @@
 #!/bin/bash
-data=`date +%y-%m-%d_%I-%M`
+data=`date +%d_%I-%M`
 mysqldump --user=django_login --password="testus_cumulus" click2eat | xz > /home/rif/click2eat_backup/backup-$data.sql.xz
 
 ## Putting the backup on a ftp
