@@ -20,7 +20,7 @@ For running sudo on remote machine:
     comment out: #Default requiretty
 """
 @task
-@hosts('rif@click2eat.ro')
+@hosts('rif@click2eat.ro:22011')
 def deploy():
     'Deploy the app to the target environment'
     print(green('deploying...'))
@@ -29,7 +29,7 @@ def deploy():
         run('hg pul -uv')
 
 @task
-@hosts('rif@84.1.105.44')
+@hosts('rif@click2eat.ro:22011')
 def reload():
     print(green('reloading...'))
     'fires an uwsgi graceful reload'
