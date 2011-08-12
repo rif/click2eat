@@ -1,3 +1,6 @@
+/* maxvoltar.com/archive/-webkit-font-smoothing */
+html { -webkit-font-smoothing: antialiased; }
+
 #header, #footer {
     width: 100%;
 }

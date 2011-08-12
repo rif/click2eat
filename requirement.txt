@@ -26,8 +26,9 @@ svn+http://django-rosetta.googlecode.com/svn/trunk/#egg=django-rosetta
 django-robots
 django-honeypot
 django-envelope
+django-grappelli
+fabric
 MySQL-python
-
 # gunicorn staff
 setproctitle
 greenlet

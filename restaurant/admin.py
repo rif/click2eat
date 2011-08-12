@@ -4,7 +4,6 @@ from menu.models import Item, ItemGroup, Topping
 from restaurant.forms import UnitForm, FlatPageForm
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
-from tinymce.widgets import TinyMCE
 
 class TinyMCEFlatPageAdmin(admin.ModelAdmin):
     form = FlatPageForm

@@ -15,6 +15,7 @@ urlpatterns = patterns('',
                        (r'^userprofiles/', include('userprofiles.urls', namespace='userprofiles')),
                        (r'^wheel/', include('wheel.urls', namespace='wheel')),
                        (r'^bonus/', include('bonus.urls', namespace='bonus')),
+                       (r'^grappelli/', include('grappelli.urls')),
                        (r'^admin/', include(admin.site.urls)),
                        url(r'^accounts/register/$', 'registration.views.register',
                            {'form_class': BucatarRegistrationForm, 'backend': 'userprofiles.forms.BucatarRegistrationBackend'},
@@ -45,6 +46,4 @@ urlpatterns += patterns('',
 
 from django.conf import settings
 if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('',
-        url(r'^rosetta/', include('rosetta.urls')),
-    )
+    urlpatterns += patterns('', url(r'^rosetta/', include('rosetta.urls')),)
