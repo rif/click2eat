@@ -47,5 +47,5 @@ def random_motd(request):
 @render_to('menu/daily_menu.html')
 def daily_menu(request, menu_id):    
     motds = MenuOfTheDay.objects.all()#.order_by('?')
-    motd = motds.get(pk=menu_id)
+    motd = motds.get(pk=menu_id) if len(motds) else None
     return locals()
