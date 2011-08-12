@@ -62,7 +62,8 @@ MEDIA_ROOT = rel('upload')
 MEDIA_URL =  '/upload/'
 STATIC_ROOT = rel('static')
 STATIC_URL = '/static/'
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+#ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
 
 STATICFILES_DIRS = (
     rel('media'),
@@ -127,6 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
