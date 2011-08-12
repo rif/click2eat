@@ -20,17 +20,17 @@ For running sudo on remote machine:
     comment out: #Default requiretty
 """
 @task
-@hosts('rif@84.1.105.44')
+@hosts('rif@click2eat.ro')
 def deploy():
     'Deploy the app to the target environment'
     print(green('deploying...'))
     push()
-    with cd('/Users/rif/bucatar'):
-        run('hg up')
+    with cd('/home/www-data/bucatar'):
+        run('hg pul -uv')
 
 @task
 @hosts('rif@84.1.105.44')
 def reload():
     print(green('reloading...'))
-    'fires an apache graceful reload'
-    sudo('apachectl graceful')
+    'fires an uwsgi graceful reload'
+    sudo('service uwsgi-python reload')
