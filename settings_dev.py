@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli.dashboard',
     'grappelli',
     'django.contrib.admin',
     'django.contrib.sitemaps',
@@ -186,3 +187,4 @@ DEFAULT_CONTACT_CHOICES = (
 HONEYPOT_FIELD_NAME = 'information'
 
 TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
+GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
