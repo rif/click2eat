@@ -62,7 +62,7 @@ class CustomIndexDashboard(Dashboard):
         ))
         
         # append another link list module for "support".
-        """
+        
         self.children.append(modules.LinkList(
             _('Media Management'),
             column=2,
@@ -74,7 +74,7 @@ class CustomIndexDashboard(Dashboard):
                 },
             ]
         ))
-        """
+        
         # append another link list module for "support".
         self.children.append(modules.LinkList(
             _('Support'),

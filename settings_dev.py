@@ -58,12 +58,14 @@ CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.n
 
 DJANGO_MEMCACHED_REQUIRE_STAFF = True
 
-MEDIA_ROOT = rel('upload')
-MEDIA_URL =  '/upload/'
 STATIC_ROOT = rel('static')
 STATIC_URL = '/static/'
+MEDIA_ROOT = rel('upload')
+MEDIA_URL =  '/upload/'
+
 #ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
+FILEBROWSER_DIRECTORY=''
 
 STATICFILES_DIRS = (
     rel('media'),
@@ -130,6 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli.dashboard',
     'grappelli',
+    'filebrowser',
     'django.contrib.admin',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
