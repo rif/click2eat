@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}
 registration_complete.html | {{ block.super }}
@@ -6,10 +7,7 @@ registration_complete.html | {{ block.super }}
 
 {% block content %}
 <div id="paginaregister">
-	<div class="titlu">
-    	CONT NOU
-    </div>
-<h2>Thank you for signing up. An email with the activation code has been send to your inbox.</h2>
-<br/><br/>
+	<div class="titlu">{% trans 'New account' %}</div>
+<h2>{% trans 'Thank you for signing up. An email with the activation code has been send to your inbox' %}.</h2>
 </div>
 {% endblock %}
