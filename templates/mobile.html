@@ -11,20 +11,7 @@
 </head> 
 <body> 
 
-<div data-role="page">
-
-	<div data-role="header">
-		<h1>{% block pagetitle %}{% endblock %}</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">	
-		{% block content %}<p>Page content goes here.</p>{% endblock %}
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		{% block footer %}<h4>click2eat.ro</h4>{% endblock %}		
-	</div><!-- /footer -->
-</div><!-- /page -->
+{% block page %}{% endblock %}
 
 </body>
 </html>
