@@ -1,0 +1,27 @@
+{% load i18n %}
+
+{% block page %}
+<div data-role="page" id="{% block pageid %}{% endblock %}" data-title="{% block title %}{% endblock %}" {% if request %} data-url="{{request.path}}" {% endif %}>
+
+	<div data-role="header" >
+		<h1>{% block pagetitle %}{% endblock %}</h1>
+		
+		<a data-icon="home" class="ui-btn-right" data-iconpos="notext" href="/#home"></a>
+		{% include "mobile/messages.html" %}
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		{% block content %}<p>Page content goes here.</p>{% endblock %}
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		{% block footer %}
+		{% endblock %}	
+		{% if user.is_authenticated %}
+            <a href="{% url mobile:logout %}" rel="external" class="ui-btn-right logout-button" data-icon="minus" title="Log Out of Your Account for Security"><span class="logout-wide">Logout: </span>{{ user.username }}</a>
+        {% else %}
+        <a href="{% url mobile:login %}" class="ui-btn-right logout-button" data-icon="plus" title="Log In to Your Account"><span class="logout-wide">Login</span></a>
+    	{% endif %}
+	</div><!-- /footer -->
+</div><!-- /page -->
+{% endblock %}

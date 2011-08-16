@@ -1,0 +1,24 @@
+{% extends 'page.html' %}
+{% load i18n %}
+
+{% block title %}{{ unit.name }}{% endblock %}
+{% block pagetitle %}{{ unit.name }}{% endblock %}
+{% block description %}{% trans 'Menu for a specific restaurant' %}{% endblock %}
+{% block pageid %}menu{% endblock %}
+
+{% block content %}
+<ul data-role="listview" data-inset="true" data-count-theme="b">
+{% for itemgroup in unit.itemgroup_set.iterator %}
+            {% if itemgroup.active %}
+            <h2>{{ itemgroup.name_def }}</h2>
+            <ul data-role="listview" data-inset="true">
+              {% for item in itemgroup.item_set.iterator %}
+              {% if item.active %}
+              <li><a href="">{{ item.name_def }}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+            {% endif %}
+{% endfor %}
+</ul>
+{% endblock %}

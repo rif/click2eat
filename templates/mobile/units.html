@@ -1,0 +1,15 @@
+{% extends 'page.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Units' %}{% endblock %}
+{% block pagetitle %}{% trans 'Units' %}{% endblock %}
+{% block description %}{% trans 'List of restaurants' %}{% endblock %}
+{% block pageid %}units{% endblock %}
+
+{% block content %}
+<ul data-role="listview" data-inset="true">
+{% for unit in units %}
+<li><a href="{% url mobile:menu unit.id %}">{{ unit.name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
