@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-03 16:53+0300\n"
-"PO-Revision-Date: 2011-08-03 16:55\n"
+"POT-Creation-Date: 2011-08-16 19:44+0300\n"
+"PO-Revision-Date: 2011-08-16 19:46\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,58 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 "X-Translated-Using: django-rosetta 0.6.2\n"
+
+#: dashboard.py:26
+msgid "Group: Administration & Applications"
+msgstr "Grup: Administrare și Aplicații"
+
+#: dashboard.py:32
+msgid "Administration"
+msgstr "Administrare click2eat.ro"
+
+#: dashboard.py:38
+msgid "Applications"
+msgstr "Aplicații"
+
+#: dashboard.py:48
+msgid "AppList: Applications"
+msgstr "Lista: Applicații"
+
+#: dashboard.py:57
+msgid "ModelList: Administration"
+msgstr "Administrare click2eat.ro"
+
+#: dashboard.py:67
+msgid "Media Management"
+msgstr "Adminstrare fișiere media"
+
+#: dashboard.py:71
+msgid "FileBrowser"
+msgstr "Navigator de fișiere"
+
+#: dashboard.py:80
+msgid "Support"
+msgstr "Ajutor"
+
+#: dashboard.py:84
+msgid "Django Documentation"
+msgstr "Documentație django"
+
+#: dashboard.py:89
+msgid "Grappelli Documentation"
+msgstr "Documentație grapelli"
+
+#: dashboard.py:94
+msgid "Grappelli Google-Code"
+msgstr "Google code grapelli"
+
+#: dashboard.py:103
+msgid "Latest Django News"
+msgstr "Ultimele știri django"
+
+#: dashboard.py:111
+msgid "Recent Actions"
+msgstr "Acțiuni recente"
 
 #: settings_dev.py:27
 msgid "Romanian"
@@ -34,27 +86,27 @@ msgstr "Germană"
 msgid "French"
 msgstr "Franceză"
 
-#: settings_dev.py:176
+#: settings_dev.py:182
 msgid "Choose"
 msgstr "Alege-ți"
 
-#: settings_dev.py:177
+#: settings_dev.py:183
 msgid "A general question regarding the website"
 msgstr "Întrebare generală legată de site"
 
-#: settings_dev.py:178
+#: settings_dev.py:184
 msgid "Suggestion"
 msgstr "Sugestie"
 
-#: settings_dev.py:179
+#: settings_dev.py:185
 msgid "Unsatisfactory service"
 msgstr "Serviciu nesatisfăcător"
 
-#: settings_dev.py:180
+#: settings_dev.py:186
 msgid "Site functionality problem"
 msgstr "Problemă de funcționalitate a site-ului"
 
-#: settings_dev.py:181
+#: settings_dev.py:187
 msgid "Other"
 msgstr "Alta"
 
@@ -762,7 +814,8 @@ msgstr "informații"
 msgid "Unit"
 msgstr "Unitate"
 
-#: restaurant/models.py:227
+#: restaurant/models.py:227 templates/mobile/units.html:4
+#: templates/mobile/units.html.py:5
 msgid "Units"
 msgstr "Unități"
 
@@ -774,11 +827,12 @@ msgstr "Pagina nu a fost gasită"
 msgid "Sorry, but the requested page could not be found"
 msgstr "Ne pare rau dar pagina pe care ați cerut-o nu a fost gasită"
 
-#: templates/base.html:83 templates/base_alt.html:83
+#: templates/base.html:84 templates/base_alt.html:84
 msgid "Chose where you want to eat today ?"
 msgstr "Alege unde vrei sa mănânci astazi"
 
-#: templates/base.html:86 templates/base_alt.html:86
+#: templates/base.html:87 templates/base_alt.html:87
+#: templates/mobile/home.html:18
 msgid "See all restaurants"
 msgstr "Toate restaurantele"
 
@@ -1096,6 +1150,34 @@ msgstr "Lista generala de meniuri click2eat"
 #: templates/menu/menu_list.html:19
 msgid "Menu"
 msgstr "Meniu"
+
+#: templates/mobile/home.html:7
+msgid "Welcome to click2eat.ro"
+msgstr "Bine ați venit la click2eat.ro"
+
+#: templates/mobile/home.html:16
+#: templates/registration/activation_complete.html:8
+#: templates/registration/login.html:24 templates/registration/login.html:33
+#: templates/registration/logout.html:8
+#: templates/registration/password_reset_complete.html:10
+msgid "Log in"
+msgstr "Log in"
+
+#: templates/mobile/login.html:3 templates/mobile/login.html.py:7
+msgid "Log In"
+msgstr "Log in"
+
+#: templates/mobile/logout.html:3
+msgid "Logged Out"
+msgstr "Deautentificat"
+
+#: templates/mobile/menu.html:6
+msgid "Menu for a specific restaurant"
+msgstr "Meniul pentru un restaurant anume"
+
+#: templates/mobile/units.html:6
+msgid "List of restaurants"
+msgstr "Lista restaurantelor"
 
 #: templates/order/cart_name.html:10
 msgid "Add"
@@ -1452,9 +1534,19 @@ msgstr "Ne pare rău, nu v-ați făcut prieteni aici :("
 msgid "Invite a friend now"
 msgstr "Invită un prieten"
 
-#: templates/registration/login.html:33 templates/registration/logout.html:8
-msgid "Log in"
-msgstr "Log in"
+#: templates/registration/activate.html:6
+msgid ""
+"Account failed to be activated! Please try again or contact the "
+"adminstrator"
+msgstr "Contul NU a fost activat! Vă rugăm să contactați administratorii"
+
+#: templates/registration/activation_complete.html:6
+msgid "Account successfully activated"
+msgstr "Contul activat cu success"
+
+#: templates/registration/login.html:27
+msgid "Your username/email and password didn't match. Please try again"
+msgstr "Numele si parola nu se potrivesc. Vă rugăm să mai încercați."
 
 #: templates/registration/logout.html:6
 msgid "LOGGED OUT"
@@ -1464,17 +1556,63 @@ msgstr "DEAUTENTIFICAT"
 msgid "Thank you for using our site"
 msgstr "Vă mulțumim că ați folosit site-ul nostru"
 
+#: templates/registration/password_change_done.html:7
+#: templates/registration/password_change_form.html:23
+#: templates/registration/password_reset_complete.html:6
+#: templates/registration/password_reset_confirm.html:23
+#: templates/registration/password_reset_done.html:6
+#: templates/registration/password_reset_form.html:23
+msgid "Password reset"
+msgstr "Resetarea parolei"
+
+#: templates/registration/password_change_done.html:9
+msgid "Password changed"
+msgstr "Parola schimbata"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "Password reset successfully"
+msgstr "Resetarea parolei a reușit"
+
 #: templates/registration/password_reset_confirm.html:31
 msgid "Password reset failed"
 msgstr "Resetarea parolei a eșuat"
+
+#: templates/registration/password_reset_done.html:8
+msgid "Email with password reset instructions has been sent"
+msgstr "A fost trimis un email cu instrucțiuni pentru resetarea parolei."
+
+#: templates/registration/password_reset_email.html:2
+msgid "Reset password at"
+msgstr "Resetează parola pentru"
+
+#: templates/registration/registration_complete.html:10
+#: templates/registration/registration_form.html:32
+msgid "New account"
+msgstr "Cont nou"
+
+#: templates/registration/registration_complete.html:11
+msgid ""
+"Thank you for signing up. An email with the activation code has been "
+"send to your inbox"
+msgstr ""
+"Multumim că v-ați înregistrat. A fost trimis un email cu codul de "
+"activare spre căsuța dvs de email"
 
 #: templates/registration/registration_form.html:4
 msgid "Sign Up"
 msgstr "înregistrați-vă"
 
+#: templates/registration/registration_form.html:35
+msgid "Personal data"
+msgstr "Date personale"
+
 #: templates/registration/registration_form.html:40
 msgid "I agree with the terms and conditions."
 msgstr "Sunt de acord cu termenii și condițiile"
+
+#: templates/registration/registration_form.html:44
+msgid "Create account"
+msgstr "Crează cont"
 
 #: templates/restaurant/administrator.html:8
 msgid "Your units"
