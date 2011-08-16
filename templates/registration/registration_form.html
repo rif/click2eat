@@ -29,10 +29,10 @@ $(function(){
 {% block content %}
 <div id="paginaregister">
 	<div class="titlu">
-    	CONT NOU
+    	{% trans 'New account' %}
     </div>
     <div class="datep">
-    	Date personale
+    	{% trans 'Personal data' %}
        
 <form method="POST" action="{% url registration_register %}" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
@@ -41,7 +41,7 @@ $(function(){
 </form>
     </div>
   
-    <a href="#" title="" class="btnreg">Creeaza cont</a>
+    <a href="#" title="" class="btnreg">{% trans 'Create account' %}</a>
     <div class="serv"></div>
 
 </div>
