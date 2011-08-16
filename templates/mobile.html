@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>{% block title %}click2eat.ro{% endblock %}</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>{% block pagetitle %}{% endblock %}</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		{% block content %}<p>Page content goes here.</p>{% endblock %}
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		{% block footer %}<h4>click2eat.ro</h4>{% endblock %}		
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>
