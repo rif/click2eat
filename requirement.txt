@@ -22,7 +22,8 @@ django-tinymce
 django-compressor
 BeautifulSoup
 git+http://github.com/ericflo/django-avatar.git
-svn+http://django-rosetta.googlecode.com/svn/trunk/#egg=django-rosetta
+django-rosetta-grappelli
+django-rosetta
 django-robots
 django-honeypot
 django-envelope

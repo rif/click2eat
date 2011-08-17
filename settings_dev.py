@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'django_filters',
     'tinymce',
     'avatar',
+    'rosetta-grappelli',
     'rosetta',
     'robots',
     'honeypot',
