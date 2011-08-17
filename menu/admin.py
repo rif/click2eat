@@ -48,7 +48,10 @@ class ItemForm(forms.ModelForm):
       model = models.Item
 
     def clean(self):
-      unit = self.cleaned_data['unit']
+      if self.cleaned_data.has_key('item_group'):
+        unit = self.cleaned_data['unit']
+      else:
+        return self.cleaned_data
       group = None
       if self.cleaned_data.has_key('item_group'):
         group = self.cleaned_data['item_group']
