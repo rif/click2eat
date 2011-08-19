@@ -19,14 +19,14 @@
     </center>
   </div><!-- /content -->
 
-  <div data-role="footer">
-    {% block footer %}
+  <div data-role="footer" class="ui-bar" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
     {% if user.is_authenticated %}
             <a href="{% url mobile:logout %}" class="ui-btn-right logout-button" data-icon="minus" title="Log Out of Your Account for Security"><span class="logout-wide">Logout: </span>{{ user.username }}</a>
     {% else %}
         <a href="{% url mobile:login %}" class="ui-btn-right logout-button" data-icon="plus" title="Log In to Your Account"><span class="logout-wide">Login</span></a>
     {% endif %}
-    {% endblock %}
+    </div> <!-- controlgroup -->
   </div><!-- /footer -->
 </div><!-- /page -->
 {% endblock %}
