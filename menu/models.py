@@ -70,6 +70,7 @@ class Item(MultilingualModel):
   MU_CHOICES = (
       ('GR', 'g'),
       ('ML', 'ml'),
+      ('PC', _('pieces')),
       )
   internal_name = models.CharField(_('internal name'), max_length=50)
   index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
