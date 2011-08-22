@@ -32,6 +32,7 @@ html { -webkit-font-smoothing: antialiased; }
 	font-size: 12px;
 	margin: 5px 0 0 25px;
 	float: left;
+	text-align: center;
 }
 
 #header_content #btn_estirestaurant {
@@ -93,7 +94,7 @@ html { -webkit-font-smoothing: antialiased; }
 #header_content .reg_content .submitlink {
 	color:#000;
 	text-decoration: none;
-	margin-left: 40px;
+	/*margin-left: 40px;*/
 }
 
 #header_content input{
@@ -1306,7 +1307,7 @@ body {
 }
 
 #footer ul li.listdreapta {
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 #footer p.footertext {
