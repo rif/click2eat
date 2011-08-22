@@ -29,8 +29,7 @@ def __get_current_order(request, unit):
         return None
     try:
         co = Order.objects.filter(user=request.user).filter(status='CR').get(unit__id=unit.id)
-        if co.is_abandoned():
-            raise
+        if co.delete_abandoned(): raise
     except:
         unit = Unit.objects.get(pk=unit.id)
         co = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id)

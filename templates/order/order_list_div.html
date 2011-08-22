@@ -29,9 +29,9 @@
     <div class="boxroz">
       <span class="data">{{ order.date }}</span><strong><span class="pret">24 {% trans 'RON' %}</span></strong><span class="detalii">
 	{% if order.status == 'CR' %}
-	<a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>{{ order.creation_date }}</span></a>
+	<a href="{% url restaurant:detail order.unit.id %}">{{order}} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</a>
 	{% else %}
-	<a href="{% url order:detail order.id %}">{{order}}<br><span>{{ order.creation_date }}</span></a>
+	<a href="{% url order:detail order.id %}">{{order}} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</a>
 	{% endif %}
       </span>
       <span class="restaurant">{{ order.unit }}</span>
