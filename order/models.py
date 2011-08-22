@@ -5,7 +5,6 @@ from datetime import datetime
 
 class Order(models.Model):
     STATUS_CHOICES = (
-      ('AB', _('Abandoned')),
       ('CR', _('Created')),
       ('ST', _('Sent')),
       ('RV', _('Received')),
@@ -37,21 +36,14 @@ class Order(models.Model):
         subtotal += oi.count * oi.old_price
       return subtotal
 
-    def is_abandoned(self):
-        if self.status in ('ST', 'RV', 'DL', 'CN'):
-            return False
-        if self.status == 'AB':
-            return True
-        # if status is CR 
+    def delete_abandoned(self):
+        if self.status != 'CR': return False
+        # status is CR 
         delta = datetime.now() - self.creation_date        
-        if delta.days > 0:
-            if self.total_amount > 0:
-              self.status = 'AB'
-              self.save()
-            else:
-              self.delete()
-            return True
-        return False
+        if delta.days > 0: self.delete()
+        return True
+            
+
 
     def get_carts(self):
         carts_dict = {}
@@ -74,13 +66,8 @@ class Order(models.Model):
         else: return "green"
 
     def __unicode__(self):
-        self.is_abandoned()
-        weekday = self.creation_date.strftime('%A')
-        day = self.creation_date.strftime('%d')
-        month = self.creation_date.strftime('%b')
-        year = self.creation_date.strftime('%Y')
-        return _('%(weekday)s %(day)s%(month)s%(year)s - %(status)s') %\
-            {'weekday': weekday, 'day': day, 'month': month, 'year': year, 'status': self.get_status_display()}
+        self.delete_abandoned()
+        return self.get_status_display()
 
     @models.permalink
     def get_absolute_url(self):
