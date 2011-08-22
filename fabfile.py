@@ -30,6 +30,12 @@ def deploy():
 
 @task
 @hosts('rif@click2eat.ro:22011')
+def collectstatic():
+    with cd('/home/www-data/bucatar'):
+        run('source /usr/local/bin/virtualenvwrapper.sh; workon bucatar; python manage.py collectstatic --noinput')
+
+@task
+@hosts('rif@click2eat.ro:22011')
 def reload():
     print(green('reloading...'))
     'fires an uwsgi graceful reload'

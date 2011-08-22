@@ -60,8 +60,8 @@ DJANGO_MEMCACHED_REQUIRE_STAFF = True
 
 STATIC_ROOT = rel('static')
 STATIC_URL = '/static/'
-MEDIA_ROOT = rel('upload')
-MEDIA_URL =  '/upload/'
+MEDIA_ROOT = rel('static/upload')
+MEDIA_URL =  '/static/upload/'
 
 #ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
