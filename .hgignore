@@ -3,13 +3,10 @@ syntax: glob
 
 *.pyc
 nbproject
-.DS_Store
 .idea
-media/restaurant_logos
-media/avatars
-media/CACHE
 static
-upload
 
 bucatar.sublime-project
 .settings
+.project
+.pydevproject
