@@ -3,7 +3,7 @@
 <div id="header">
 	<div id="header_content">
 		<a id="logo" href="/"></a>
-		<a id="btn_cumcomanzi" title="{% trans 'How do I order' %}" href="/flat/{{LANGUAGE_CODE}}/howorder/"> -------{% trans 'HOW DO I'|upper %}-------
+		<a id="btn_cumcomanzi" title="{% trans 'How do I order' %}" href="/flat/{{LANGUAGE_CODE}}/howorder/"> --{% trans 'HOW DO I'|upper %}--
 		<br/>
 		<span class="textmare">{% trans 'ORDER ?'|upper %}</span> </a>
 		<div class="separatorl"></div>
@@ -50,7 +50,7 @@
 			</div>
 			<!-- top_register -->
 		</div>
-		<a id="btn_estirestaurant" href="{% url restaurant:administrator %}"> ----------{% trans 'ARE YOU'|upper %}----------
+		<a id="btn_estirestaurant" href="{% url restaurant:administrator %}"> -----{% trans 'ARE YOU'|upper %}-----
 		<br/>
 		<span class="textmare">{% trans 'RESTAURANT'|upper %}?</span> </a>
 		<div id="top_search">
@@ -58,7 +58,7 @@
 				<input class="imgsearch" type="image" src="{{ STATIC_URL }}images/template/btnsearch.png" />
 				<input class="clearme" type="text" name="q" id="id_q" value="{% if query %}{{ query }}{% else %}{% trans 'Search' %}{% endif %}" />
 				<div class="label">
-					{% trans 'SEARCH EVERYTHING HERE'|upper %}
+					{% trans 'SEARCH FOOD HERE'|upper %}
 				</div>
 				<!--<input type="submit" value=""/> -->
 			</form>

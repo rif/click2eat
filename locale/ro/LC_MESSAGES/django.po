@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-22 14:44+0300\n"
-"PO-Revision-Date: 2011-08-22 14:50\n"
+"POT-Creation-Date: 2011-08-22 15:07+0300\n"
+"PO-Revision-Date: 2011-08-22 15:08\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -897,26 +897,6 @@ msgstr ""
 "materialele prezente pe acest website sunt protejate prin legea "
 "copywrite-ului"
 
-#: templates/footer.html:31 templates/registration/logout.html:8
-msgid "Home"
-msgstr "Acasă"
-
-#: templates/footer.html:32
-msgid "Restaurant"
-msgstr "Restaurant"
-
-#: templates/footer.html:33
-msgid "How to order"
-msgstr "Cum comand"
-
-#: templates/footer.html:34
-msgid "Privacy statement"
-msgstr "Declarație de proprietate"
-
-#: templates/footer.html:35 templates/envelope/contact.html:15
-msgid "Contact"
-msgstr "Contact"
-
 #: templates/header.html:6
 msgid "How do I order"
 msgstr "Cum comand"
@@ -997,7 +977,7 @@ msgid "Search"
 msgstr "Caută"
 
 #: templates/header.html:61
-msgid "SEARCH EVERYTHING HERE"
+msgid "SEARCH FOOD HERE"
 msgstr "CAUTĂ ORICE AICI"
 
 #: templates/sidebar.html:6
@@ -1117,6 +1097,10 @@ msgstr "Data folosirii"
 #: templates/bonus/history.html:32
 msgid "Sorry no bonuses yet."
 msgstr "Ne pare rău, nu aveți puncte bonus, încă."
+
+#: templates/envelope/contact.html:15
+msgid "Contact"
+msgstr "Contact"
 
 #: templates/envelope/contact.html:22
 #: templates/profiles/profile_detail.html:83
@@ -1616,6 +1600,10 @@ msgstr "DEAUTENTIFICAT"
 #: templates/registration/logout.html:7
 msgid "Thank you for using our site"
 msgstr "Vă mulțumim că ați folosit site-ul nostru"
+
+#: templates/registration/logout.html:8
+msgid "Home"
+msgstr "Acasă"
 
 #: templates/registration/password_change_done.html:7
 #: templates/registration/password_change_form.html:23
