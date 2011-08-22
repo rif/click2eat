@@ -27,7 +27,7 @@
     </span>
     {% for order in object_list %}
     <div class="boxroz">
-      <span class="data">{{ order.date }}</span><strong><span class="pret">24 {% trans 'USD' %}</span></strong><span class="detalii">
+      <span class="data">{{ order.date }}</span><strong><span class="pret">24 {% trans 'RON' %}</span></strong><span class="detalii">
 	{% if order.status == 'CR' %}
 	<a href="{% url restaurant:detail order.unit.id %}">{{order}}<br><span>{{ order.creation_date }}</span></a>
 	{% else %}
