@@ -37,7 +37,7 @@ class ItemGroup(MultilingualModel):
   active = models.BooleanField(_('active'), default=True)
   
   def __unicode__(self):
-      return self.internal_name
+      return self.internal_name + ' ' + self.unit.name
 
   class Meta:
       translation = ItemGroupTranslation
@@ -48,9 +48,10 @@ class ItemGroup(MultilingualModel):
 
 class ToppingGroup(models.Model):
   internal_name = models.CharField(_('internal name'), max_length=50)
+  unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   
   def __unicode__(self):
-      return self.internal_name
+      return self.internal_name + ' ' + self.unit.name
 
   class Meta:
       verbose_name = _('ToppingGroup')
@@ -76,13 +77,12 @@ class Item(MultilingualModel):
   index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
   name_def = models.CharField(_('name'), max_length=50, help_text=_('The default name for this item'))
   description_def = models.CharField(_('description'), max_length=200, help_text=_('The default description for this item'))
-  unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   price = models.FloatField(_('price'))
   promotion = models.ForeignKey('Promotion', verbose_name=_('promotion'), null=True, blank=True)
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   quantity = models.IntegerField(_('quantity'))
   measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR', help_text=_('Measurement unit.')) 
-  item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'), null=True, blank=True)
+  item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'))
   added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
@@ -131,15 +131,30 @@ class Item(MultilingualModel):
       verbose_name = _('Item')
       verbose_name_plural = _('Items')
 
-class Topping(Item):
-    topping_groups = models.ManyToManyField(ToppingGroup)
+class ToppingTranslation(models.Model):
+  language = models.ForeignKey('Language')
+  name = models.CharField(_('name'), max_length=100)
+  description = models.TextField(_('description'))
+  model = models.ForeignKey('Topping')
+  
+class Topping(MultilingualModel):
+  internal_name = models.CharField(_('internal name'), max_length=50)
+  name_def = models.CharField(_('name'), max_length=50, help_text=_('The default name for this item'))
+  description_def = models.CharField(_('description'), max_length=200, help_text=_('The default description for this item'))
+  price = models.FloatField(_('price'))
+  vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
+  quantity = models.IntegerField(_('quantity'))
+  measurement_unit = models.CharField(_('MU'), max_length=2, choices=Item.MU_CHOICES, default='GR', help_text=_('Measurement unit.')) 
+  topping_group = models.ForeignKey(ToppingGroup, verbose_name=_('topping group'))
+  added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
+  mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
+  active = models.BooleanField(_('active'), default=True)
     
-    class Meta:
-      ordering = ['index']
-      translation = ItemTranslation
-      multilingual = ['name', 'description']
-      verbose_name = _('Topping')
-      verbose_name_plural = _('Toppings')
+  class Meta:
+    translation = ToppingTranslation
+    multilingual = ['name', 'description']
+    verbose_name = _('Topping')
+    verbose_name_plural = _('Toppings')
       
 class Promotion(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))

@@ -18,6 +18,11 @@ class ItemTranslationInline(admin.TabularInline):
    extra = 0
    min_num = 1
 
+class ToppingTranslationInline(admin.TabularInline):
+   model = models.ToppingTranslation
+   extra = 0
+   min_num = 1
+
 class ItemInline(admin.TabularInline):
    model = models.Item
    extra = 0
@@ -43,34 +48,17 @@ class ToppingGroupAdmin(admin.ModelAdmin):
     search_fields = ['internal_name']
     inlines = [ToppingInline]
 
-class ItemForm(forms.ModelForm):
-    class Meta:
-      model = models.Item
-
-    def clean(self):
-      if self.cleaned_data.has_key('unit'):
-        unit = self.cleaned_data['unit']
-      else:
-        return self.cleaned_data
-      group = None
-      if self.cleaned_data.has_key('item_group'):
-        group = self.cleaned_data['item_group']
-      if group and (unit != group.unit):
-        raise forms.ValidationError(_("Item's unit differs form item's group unit."))
-      return self.cleaned_data
-
 class ItemAdmin(admin.ModelAdmin):
-    form = ItemForm
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index','name_def', 'description_def', 'unit', 'get_price', 'promotion', 'quantity_with_mu', 'vat', 'item_group', 'toppings', 'active')
+    list_display = ('internal_name', 'index','name_def', 'description_def', 'get_price', 'promotion', 'quantity_with_mu', 'vat', 'item_group', 'toppings', 'active')
     search_fields = ['internal_name', 'name_def', 'description_def']
     list_editable = ['promotion']
-    list_filter = ['unit']
+    list_filter = ['item_group']
     inlines = [ItemTranslationInline]
     actions = ['clone_objects']
     fieldsets = (
         (None, {
-            'fields': ('internal_name', 'index', ('name_def', 'description_def'), 'unit', ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
+            'fields': ('internal_name', 'index', ('name_def', 'description_def'), ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
         }),
         ('Extra options', {
             'fields': ('tags', 'active')
@@ -90,17 +78,16 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class ToppingAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index', 'unit', 'get_price', 'quantity', 'measurement_unit', 'vat', 'active')
+    list_display = ('internal_name', 'price', 'quantity', 'measurement_unit', 'vat', 'active')
     search_fields = ['internal_name']
-    list_filter = ['unit']
-    inlines = [ItemTranslationInline]
+    list_filter = ['topping_group']
+    inlines = [ToppingTranslationInline]
     fieldsets = (
         (None, {
-            'fields': ('internal_name', 'index', 'unit', ('price', 'promotion', 'vat'), ('quantity', 'measurement_unit'), 'topping_groups')
+            'fields': ('internal_name', ('price', 'vat'), ('quantity', 'measurement_unit'), 'topping_group')
         }),
         ('Extra options', {
-            'fields': ('tags', 'active')
+            'fields': ('active',)
         }),
     )
 
