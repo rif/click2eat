@@ -37,7 +37,7 @@ class ItemGroup(MultilingualModel):
   active = models.BooleanField(_('active'), default=True)
   
   def __unicode__(self):
-      return self.name_def
+      return self.internal_name
 
   class Meta:
       translation = ItemGroupTranslation
