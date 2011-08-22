@@ -116,9 +116,8 @@
 		</div>
 		-->
 		<span class="subtitlu"> {% trans 'My orders' %}</span>
-		{% with user.order_set.all|slice:":20" as object_list %}
-		{% autopaginate object_list 5 %}
-		{% for order in object_list %}
+		{% autopaginate orders 5 %}
+		{% for order in orders %}
 		<div class="boxroz">
 			<span class="data">{{ order.date }}</span>
 			<strong>
@@ -152,7 +151,6 @@
 		</li>
 		{% endfor %}
 		{% paginate %}
-		{% endwith %}
 		<br/>
 
 		<div class="separatie">

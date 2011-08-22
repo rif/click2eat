@@ -20,7 +20,9 @@ from friends.models import JoinInvitation
 
 @login_required
 def profile_detail(request, username):
-    dict = {'username': username}
+    orders = request.user.order_set.exclude(hidden=True).exclude(status='CR')[:20]
+    extra_context = {'orders': orders}
+    dict = {'username': username, 'extra_context': extra_context}
     if username != request.user.username:
         dict['public_profile_field'] = 'public'
     return views.profile_detail(request, **dict)
