@@ -12,7 +12,7 @@ def item_list(request):
     query = request.GET.get('q', '')
     results = Item.objects.all()
     if query:
-        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(unit__name__icontains=query))
+        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query))
     f = ItemFilter(request.GET, queryset=results)
     return {'query': query, 'filter': f}
 
@@ -28,7 +28,7 @@ def item_tag_list(request, tag):
     query = request.GET.get('q', '')
     results = Item.objects.filter(tags__name=tag)
     if query:
-        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(unit__name__icontains=query))
+        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query))
     f = ItemFilter(request.GET, queryset=results)
     return {'query': query, 'filter': f}
 

@@ -21,7 +21,7 @@ class OrderTest(TestCase):
     old.save()
     self.assertEqual(count + 1, Order.objects.count())
     self.assertEqual(0.0, old.total_amount)
-    old.is_abandoned()
+    old.delete_abandoned()
     self.assertEqual(count, Order.objects.count())
 
   def test_abandoned_nonempty_status(self):
@@ -32,9 +32,8 @@ class OrderTest(TestCase):
     self.assertEqual(count + 1, Order.objects.count())
     OrderItem.objects.create(order=old, item=Item.objects.get(pk=1))
     self.assertEqual(9.0, old.total_amount)
-    old.is_abandoned()
-    self.assertEqual(count + 1, Order.objects.count())
-    self.assertEqual('AB', old.status)
+    old.delete_abandoned()
+    self.assertEqual(count, Order.objects.count())
 
   def test_total_amount(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)

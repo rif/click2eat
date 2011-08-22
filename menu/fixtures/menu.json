@@ -28,7 +28,7 @@
         "model": "menu.vat", 
         "fields": {
             "name": "RO_half", 
-            "value": 1.8999999999999999
+            "value": 1.9
         }
     }, 
     {
@@ -53,17 +53,43 @@
         "pk": 1, 
         "model": "menu.itemgroup", 
         "fields": {
-            "active": true, 
             "index": "1", 
-            "unit": 1, 
-            "internal_name": "Menu1", 
-            "exclusive": false
+            "exclusive": false, 
+            "name_def": "Ciorbe", 
+            "internal_name": "ciorbute", 
+            "active": true, 
+            "unit": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "menu.itemgroup", 
+        "fields": {
+            "index": "1", 
+            "exclusive": false, 
+            "name_def": "Parinti", 
+            "internal_name": "Parinti", 
+            "active": true, 
+            "unit": 7
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.itemgroup", 
+        "fields": {
+            "index": "itemg-din-r2", 
+            "exclusive": false, 
+            "name_def": "ItemG din R2", 
+            "internal_name": "ItemG din R2", 
+            "active": true, 
+            "unit": 2
         }
     }, 
     {
         "pk": 1, 
         "model": "menu.toppinggroup", 
         "fields": {
+            "unit": 1, 
             "internal_name": "PizzaTopping"
         }
     }, 
@@ -168,40 +194,22 @@
         }
     }, 
     {
-        "pk": 11, 
-        "model": "menu.itemtranslation", 
-        "fields": {
-            "model": 6, 
-            "name": "branzica", 
-            "language": 2, 
-            "description": "branzica toipta"
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "menu.itemtranslation", 
-        "fields": {
-            "model": 6, 
-            "name": "cheese", 
-            "language": 1, 
-            "description": "melted cheese"
-        }
-    }, 
-    {
         "pk": 1, 
         "model": "menu.item", 
         "fields": {
             "index": "1", 
             "added_date": "2010-10-13", 
+            "mcg": null, 
             "price": 10.0, 
             "item_group": 1, 
+            "name_def": "Tocanita de puioc", 
             "toppings": 1, 
-            "vat": 1, 
+            "description_def": "Ceva descriere", 
             "internal_name": "tocanita de puisor", 
             "active": true, 
             "measurement_unit": "GR", 
             "promotion": 1, 
-            "unit": 1, 
+            "vat": 1, 
             "quantity": 0
         }
     }, 
@@ -211,15 +219,17 @@
         "fields": {
             "index": "1", 
             "added_date": "2010-10-13", 
+            "mcg": null, 
             "price": 10.0, 
             "item_group": 1, 
+            "name_def": "Supa de rosii", 
             "toppings": null, 
-            "vat": 1, 
+            "description_def": "Supa care contine bulion", 
             "internal_name": "supa de rosii", 
             "active": true, 
             "measurement_unit": "GR", 
             "promotion": null, 
-            "unit": 1, 
+            "vat": 1, 
             "quantity": 0
         }
     }, 
@@ -229,15 +239,17 @@
         "fields": {
             "index": "1", 
             "added_date": "2010-10-13", 
+            "mcg": null, 
             "price": 1.0, 
             "item_group": 1, 
+            "name_def": "Mustar", 
             "toppings": null, 
-            "vat": 1, 
+            "description_def": "Ceva desc", 
             "internal_name": "Mustar", 
             "active": true, 
             "measurement_unit": "GR", 
             "promotion": null, 
-            "unit": 1, 
+            "vat": 1, 
             "quantity": 0
         }
     }, 
@@ -247,15 +259,17 @@
         "fields": {
             "index": "1", 
             "added_date": "2010-10-13", 
+            "mcg": null, 
             "price": 1.0, 
             "item_group": 1, 
+            "name_def": "Catchup", 
             "toppings": null, 
-            "vat": 1, 
+            "description_def": "c", 
             "internal_name": "Ceciup", 
             "active": true, 
             "measurement_unit": "GR", 
             "promotion": null, 
-            "unit": 1, 
+            "vat": 1, 
             "quantity": 0
         }
     }, 
@@ -265,43 +279,78 @@
         "fields": {
             "index": "1", 
             "added_date": "2010-10-13", 
+            "mcg": null, 
             "price": 1.0, 
             "item_group": 1, 
+            "name_def": "chestiuune", 
             "toppings": null, 
-            "vat": 1, 
+            "description_def": "ew", 
             "internal_name": "ceva chestie", 
             "active": true, 
             "measurement_unit": "GR", 
             "promotion": null, 
-            "unit": 2, 
+            "vat": 1, 
             "quantity": 0
         }
     }, 
     {
-        "pk": 6, 
+        "pk": 8, 
         "model": "menu.item", 
         "fields": {
             "index": "1", 
-            "added_date": "2010-10-13", 
-            "price": 1.0, 
-            "item_group": null, 
+            "added_date": "2011-05-16", 
+            "mcg": null, 
+            "price": 10.0, 
+            "item_group": 3, 
+            "name_def": "Mama", 
             "toppings": null, 
-            "vat": 1, 
-            "internal_name": "mozzarela", 
+            "description_def": "Un meniu de import", 
+            "internal_name": "mama", 
             "active": true, 
-            "measurement_unit": "GR", 
+            "measurement_unit": "g", 
             "promotion": null, 
-            "unit": 1, 
-            "quantity": 25
+            "vat": 1, 
+            "quantity": 11
         }
     }, 
     {
-        "pk": 6, 
-        "model": "menu.topping", 
+        "pk": 9, 
+        "model": "menu.item", 
         "fields": {
-            "topping_groups": [
-                1
-            ]
+            "index": "2", 
+            "added_date": "2011-05-16", 
+            "mcg": null, 
+            "price": 12.0, 
+            "item_group": 3, 
+            "name_def": "Tata", 
+            "toppings": null, 
+            "description_def": "Un meniu de import 2", 
+            "internal_name": "tata", 
+            "active": true, 
+            "measurement_unit": "g", 
+            "promotion": null, 
+            "vat": 1, 
+            "quantity": 13
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "menu.item", 
+        "fields": {
+            "index": "test", 
+            "added_date": "2010-10-27", 
+            "mcg": null, 
+            "price": 6.0, 
+            "item_group": 2, 
+            "name_def": "Test", 
+            "toppings": 1, 
+            "description_def": "Mancare de test ", 
+            "internal_name": "test", 
+            "active": true, 
+            "measurement_unit": "GR", 
+            "promotion": null, 
+            "vat": 1, 
+            "quantity": 200
         }
     }, 
     {
@@ -316,6 +365,37 @@
             "value": 10, 
             "start_date": "2010-10-05 11:52:50", 
             "unit": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.menuoftheday", 
+        "fields": {
+            "price": 10.0, 
+            "description": "<p>CORNURI umplute cu branza Mozzarella si salam peperoni, asezonate cu chimen si parmezan, servite alaturi de unul din sosurile nostre.</p>\r\n<p>PIZZA normala cu branza Mozzarella si sos tomate si un incredient la alegere</p>\r\n<p>BAUTURA racoritoare la pahar din gama Pepsi</p>", 
+            "day": "2011-04-29", 
+            "unit": 1, 
+            "name": "Meniu complet cu 10 lei"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "menu.menuoftheday", 
+        "fields": {
+            "price": 14.99, 
+            "description": "<p>Alt restaurant</p>\r\n<p>Alta oferta</p>\r\n<ul>\r\n<li>Chestia 1</li>\r\n<li>Alt rand ceva mai lung cu descriere</li>\r\n<li>Chestia 2</li>\r\n<li>Chestia 3</li>\r\n</ul>", 
+            "day": "2011-04-29", 
+            "unit": 2, 
+            "name": "Alt meniu al zilei"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "menu.import", 
+        "fields": {
+            "csv_file": "imports/TabelMeniu.csv", 
+            "user": 1, 
+            "import_date": "2011-05-16 16:51:14"
         }
     }
 ]

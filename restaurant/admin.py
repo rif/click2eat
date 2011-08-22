@@ -1,6 +1,6 @@
 from django.contrib import admin
 from restaurant import models
-from menu.models import Item, ItemGroup, Topping
+from menu.models import ItemGroup, ToppingGroup
 from restaurant.forms import UnitForm, FlatPageForm
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
@@ -30,19 +30,15 @@ class DeliveryTypeAdmin(admin.ModelAdmin):
 class CurrencyAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ['name']
-
-class ItemInline(admin.TabularInline):
-   model = Item
-   extra = 0
-   min_num = 1
+1
    
 class ItemGroupInline(admin.TabularInline):
    model = ItemGroup
    extra = 0
    min_num = 1
 
-class ToppingInline(admin.TabularInline):
-   model = Topping
+class ToppingGroupInline(admin.TabularInline):
+   model = ToppingGroup
    extra = 0
    min_num = 1
 
@@ -67,7 +63,7 @@ class UnitAdmin(admin.ModelAdmin):
     form = UnitForm
     list_display = ('name', 'address', 'email', 'phone')
     search_fields = ['name', 'address']
-    inlines = [ItemGroupInline, ItemInline, ToppingInline]
+    inlines = [ItemGroupInline, ToppingGroupInline]
     fieldsets = (
         (None, {
             'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path')
