@@ -7,6 +7,7 @@ from annoying.functions import get_object_or_None
 from userprofiles.models import DeliveryAddress
 from friends.models import JoinInvitation
 from bonus.models import Bonus
+from envelope.forms import ContactForm
 
 class DeliveryAddressForm(forms.ModelForm):
     class Meta:
@@ -40,3 +41,19 @@ class BucatarRegistrationBackend(DefaultBackend):
      def activate(self, request, activation_key):
          activate = super(BucatarRegistrationBackend, self).activate(request, activation_key)
          return activated
+
+class DummyForm(ContactForm):
+    email2 = forms.EmailField(label=_('email2'))
+    def __init__(self, *args, **kwargs):
+        u"""
+        This does the trick with placing category choice above the subject.
+        """
+        super(DummyForm, self).__init__(*args, **kwargs)
+        self.fields.keyOrder = [
+            'sender',
+            'email',
+            'category',
+            'subject',
+            'message',
+            'email2'
+        ]

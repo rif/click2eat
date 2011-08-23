@@ -19,7 +19,7 @@
 	<form method="POST" action="{% url envelope-contact %}" class="uniForm">
 		{% csrf_token %}{% render_honeypot_field %}
 		{{ form|as_uni_form }}
-		<input class="form_button" type="submit" value="{% trans 'Send' %}!" />
+		<button class="button" type="submit">{% trans 'Send' %}!</button>
 		</td>
 	</form>
 </div>
