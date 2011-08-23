@@ -1,0 +1,34 @@
+{% load i18n %}
+<div id="topcontent" class="span-24">
+	<div id="baraalba">
+		<div class="titlu">
+			{% trans 'Chose where you want to eat today ?' %}
+		</div>
+		<div class="vezitoate">
+			<a href="{% url restaurant:list %}" title="{% trans 'See all restaurants'%}">{% trans 'See all restaurants'%}</a>
+		</div>
+		<div style="clear:both"></div>
+		<ul id="slider" class="jcarousel-skin-tango">
+			{% for i in '123412' %}
+			<li class="slide primulslide">
+				<div class="titluslide">
+					<a href="#" title="slide"> <span class="textmic">RESTAURANT</span>
+					<br/>
+					<span class="textmare">PRESIDENT</span> </a>
+				</div>
+				<div class="descriererestaurant">
+					<a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span>
+					<br/>
+					<span class="textmic">tel: 0256 567 567</span>
+					<br/>
+					<span class="textmic">rezervari@president.ro</span></a>
+				</div>
+				<div class="logorestaurant">
+					<img src="{{ STATIC_URL }}images/template/rest1.png" alt="" />
+				</div>
+				<a href="#" title="slide"><img src="{{ STATIC_URL }}images/template/slide{{ i }}.png" alt="" /></a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>

@@ -398,11 +398,21 @@ body
 
 /*                            CONTENT AREA generic */
 
-#content .content_area
+#content_area_top
+  background: url("../images/template/content-top.png") no-repeat
+  height: 20px
   width: 720px
-  background: #fff
-  margin-bottom: 40px
+  
+#content_area
+  width: 720px
+  background: url("../images/template/content-bg.png") repeat-y
   padding-bottom: 15px
+
+#content_area_bottom
+  background: url("../images/template/content-bottom.png") no-repeat
+  height: 18px
+  width: 720px
+  margin-bottom: 40px
 
 /*                            CONTENT AREA detalii  restaurant */
 
@@ -411,7 +421,7 @@ body
   padding: 10px 0px 0px 15px
   margin-right: 10px
   color: #000
-  background: url("../images/template/meniubgstrip.png") repeat-y
+  
   .title h1
     color: #562019
     font-size: 23px
@@ -841,7 +851,7 @@ body
   background: url("../images/template/sidebarmeniu.png") no-repeat
   height: 450px
   width: 365px
-  margin-left: 50px
+  margin-left: -10px
   #boxmeniusidebar
     padding: 234px 0 0 82px
   .text_specialitate
