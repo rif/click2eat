@@ -2,7 +2,6 @@
 {% load i18n avatar_tags %}
 
 {% block content %}
-<div class="content_area">
     <p>{% trans "Your current avatar: " %}</p>
     {% avatar user %}
     {% if not avatars %}
@@ -12,5 +11,5 @@
         {{ upload_avatar_form.as_p }}
         <p>{% csrf_token %}<input class="form_button" type="submit" value="{% trans "Upload New Image" %}" /></p>
     </form>
-   </div>
+    <a class="button" href="{% url avatar_change %}"><span class="leftarrow icon"></span>{% trans 'Back' %}</a>
 {% endblock %}
