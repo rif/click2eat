@@ -191,12 +191,12 @@ DEFAULT_CONTACT_CHOICES = (
 HONEYPOT_FIELD_NAME = 'information'
 
 TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT = STATIC_ROOT + 'js/tiny_mce'
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme_advanced_buttons1' : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
     'theme': "advanced",
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
 }
-TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
 GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
