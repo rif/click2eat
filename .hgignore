@@ -10,3 +10,4 @@ bucatar.sublime-project
 .settings
 .project
 .pydevproject
+.sass-cache
