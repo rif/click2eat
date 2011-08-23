@@ -1,6 +1,7 @@
 @import blueprint/reset
 @import partials/base
 @import blueprint
+@import "compass/css3/text-shadow"
 
 +blueprint
 +blueprint-utilities
@@ -398,27 +399,27 @@ body
 
 /*                            CONTENT AREA generic */
 
+#content_area_top, #content_area_bottom
+  width: 740px
+  height: 20px
+  
 #content_area_top
   background: url("../images/template/content-top.png") no-repeat
-  height: 20px
-  width: 720px
   
 #content_area
   width: 720px
   background: url("../images/template/content-bg.png") repeat-y
+  padding: 10px 10px 0px 15px
   padding-bottom: 15px
 
 #content_area_bottom
   background: url("../images/template/content-bottom.png") no-repeat
-  height: 18px
-  width: 720px
   margin-bottom: 40px
 
 /*                            CONTENT AREA detalii  restaurant */
 
 #paginarestaurant
   font-family: times New Roman
-  padding: 10px 0px 0px 15px
   margin-right: 10px
   color: #000
   
@@ -565,33 +566,28 @@ body
   float: right
 
 #paginarestaurant
-  .btnviziteaza_platinum, .btnviziteaza_gold
+  a
+    text-align: center
+    +text-shadow
+  .btnviziteaza_platinum, .btnviziteaza_gold, .btnviziteaza_silver, .btnviziteaza_
     font-weight: normal
     display: block
-    background: url("../images/template/btncmd.png") no-repeat
     width: 130px
     height: 25px
-    padding: 3px 0 0 6px
+    padding: 3px 0 0 0px
     color: #fff
     font-size: 12px
     font-style: normal
     margin: 0px 10px 0 4px
     font-family: Arial, Helvetica, sans-serif
+  .btnviziteaza_platinum, .btnviziteaza_gold
+    background: url("../images/template/btncmd.png") no-repeat
+   
   .btnv_margin
     float: right
     margin-top: -12px
   .btnviziteaza_silver, .btnviziteaza_
-    font-weight: normal
-    display: block
     background: url("../images/template/btngri.png") no-repeat
-    width: 130px
-    height: 25px
-    padding: 3px 0 0 6px
-    color: #fff
-    font-size: 12px
-    font-style: normal
-    margin: 0px 0px 0 4px
-    font-family: Arial, Helvetica, sans-serif
   ul li .price, .price
     float: right
     font-size: 18px
@@ -851,7 +847,7 @@ body
   background: url("../images/template/sidebarmeniu.png") no-repeat
   height: 450px
   width: 365px
-  margin-left: -10px
+  margin-left: 10px
   #boxmeniusidebar
     padding: 234px 0 0 82px
   .text_specialitate
