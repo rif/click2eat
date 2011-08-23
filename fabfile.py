@@ -5,8 +5,8 @@ from fabric.colors import green
 @task
 def ci():
     """Commit localy using mercurial"""
-    local('compass compile -e production --force media')
     comment = prompt('Commit comment: ', default='another commit from fabric')
+    local('compass compile -e production --force media')
     local('hg ci -m "%s"' % comment)
     push()
 
