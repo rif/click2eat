@@ -1,1 +1,1 @@
-./manage.py graph_models menu restaurant userprofiles order | dot -Tpng -o restaurant.png
+./manage.py graph_models menu restaurant userprofiles order bonus | dot -Tpng -o click2eat_models.png
