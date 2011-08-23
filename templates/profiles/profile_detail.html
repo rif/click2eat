@@ -65,7 +65,7 @@
 		<br/>
 		{% trans "You don't have to pay the next menu of the day order :)" %}.
 		<br/>
-		<a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a>
+		<a class="button" href="{% url bonus:history %}"><span class="calendar icon"></span>{% trans 'Bonus history' %}</a>
 		<div class="boxverde">
 			<strong>{% trans 'Earn bonus points' %} :</strong>
 			<br/>
@@ -149,8 +149,8 @@
 			{% avatar profile.user 155 %}
 			<br/>
 			{% if user == profile.user %}
-			<a href="{% url avatar_change %}">{% trans 'Change' %}</a> |
-			<a href="{% url avatar_delete %}">{% trans 'Delete' %}</a>
+			<a class="button lefta" href="{% url avatar_change %}"><span class="pen icon"></span>{% trans 'Change' %}</a>
+			<a class="button righta" href="{% url avatar_delete %}"><span class="trash icon"></span>{% trans 'Delete' %}</a>
 			{% endif %}
 		</div> <!-- avatar -->
 
@@ -172,11 +172,11 @@
 			<strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}
 			<br/>
 			<strong>{% trans 'Bonus points' %}:</strong>{{ profile.get_bonus_points }}
-			<a href="{% url bonus:history %}">{% trans 'Bonus history' %}</a>
+			<a class="button" href="{% url bonus:history %}"><span class="calendar icon"></span>{% trans 'Bonus history' %}</a>
 			<br/>
 			{% if user == profile.user %}
-			<a href="{% url profiles_edit_profile %}">{% trans 'Edit' %}</a> |
-			<a href="{% url order:list %}">{% trans 'Order History' %}</a>
+			<a class="button lefta" href="{% url profiles_edit_profile %}"><span class="pen icon"></span>{% trans 'Edit' %}</a>
+			<a class="button righta" href="{% url order:list %}"><span class="calendar icon"></span>{% trans 'Order History' %}</a>
 			{% endif %}
 		</div><!-- datecont-->
 		<br/>
@@ -209,14 +209,14 @@
 					<tr>
 						<td>
 						{% trans 'You have not defined any delivery address.' %}
-						<a href="{% url userprofiles:create_address %}">{% trans 'Add one now' %}</a>
+						<a class="button" href="{% url userprofiles:create_address %}"><span class="plus icon"></span>{% trans 'Add one now' %}</a>
 						</td>
 					</tr>
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
-		<a href="{% url userprofiles:create_address %}">{% trans 'Add delivery address' %}</a>
+		<a class="button" href="{% url userprofiles:create_address %}"><span class="plus icon"></span>{% trans 'Add delivery address' %}</a>
 		<br/>
 		<span class="subtitlu"> {% trans 'Friends' %}</span>
 		<ul>
@@ -232,7 +232,7 @@
 		</ul>
 		{% if user == profile.user %}
 		<p>
-			<a id="invite-link" href="{% url userprofiles:invite_friend %}">{% trans 'Invite a friend now' %}</a>
+			<a class="button" id="invite-link" href="{% url userprofiles:invite_friend %}"><span class="mail icon"></span>{% trans 'Invite a friend now' %}</a>
 		</p>
 		<div id="invite-placeholder">
 		</div>

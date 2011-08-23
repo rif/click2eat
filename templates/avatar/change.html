@@ -1,27 +1,43 @@
 {% extends 'base.html' %}
 {% load i18n avatar_tags %}
+{% load uni_form_tags %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css" />
+{% endblock %}
 
 {% block content %}
 <div id="paginaregister">
 	<div class="titlu">
-    	AVATAR
-    </div>
-    <p>{% trans "Your current avatar: " %}</p>
-    {% avatar user %}
-    {% if not avatars %}
-        <p>{% trans "You haven't uploaded an avatar yet. Please upload one now." %}</p>
-    {% else %}
-        <form method="POST" action="{% url avatar_change %}">
-            <ul>
-                {{ primary_avatar_form.as_ul }}
-            </ul>
-            <p>{% csrf_token %}<input class="form_button" type="submit" value="{% trans "Choose new Default" %}" /></p>
-        </form>
-    {% endif %}
-    <form enctype="multipart/form-data" method="POST" action="{% url avatar_add %}">
-        {{ upload_avatar_form.as_p }}
-        <p>{% csrf_token %}<input class="form_button" type="submit" value="{% trans "Upload New Image" %}" /></p>
-    </form>
-<br/><br/>
+		{%trans 'avatar'|upper %}
+	</div>
+	<p>
+		{% trans "Your current avatar: " %}
+	</p>
+	{% avatar user %}
+	{% if not avatars %}
+	<p>
+		{% trans "You haven't uploaded an avatar yet. Please upload one now." %}
+	</p>
+	{% else %}
+	<form method="POST" action="{% url avatar_change %}">
+		<ul>
+			{{ primary_avatar_form|as_uni_form }}
+		</ul>
+		<p>
+			{% csrf_token %}
+			<input class="form_button" type="submit" value="{% trans "Choose new Default" %}" />
+		</p>
+	</form>
+	{% endif %}
+	<form enctype="multipart/form-data" method="POST" action="{% url avatar_add %}">
+		{{ upload_avatar_form|as_uni_form }}
+		<p>
+			{% csrf_token %}
+			<input class="form_button" type="submit" value="{% trans "Upload New Image" %}" />
+		</p>
+	</form>
+	<a class="button" href="{% url profiles_profile_detail user %}"><span class="leftarrow icon"></span>{% trans 'Back' %}</a>
 </div>
-{% endblock %}
+{% endblock %} 
