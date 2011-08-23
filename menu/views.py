@@ -12,7 +12,7 @@ def item_list(request):
     query = request.GET.get('q', '')
     results = Item.objects.all()
     if query:
-        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query))
+        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query)).distinct()
     f = ItemFilter(request.GET, queryset=results)
     return {'query': query, 'filter': f}
 
@@ -25,12 +25,11 @@ def daily_menus(request):
 
 @render_to('menu/item_list.html')
 def item_tag_list(request, tag):
-    query = request.GET.get('q', '')
-    results = Item.objects.filter(tags__name=tag)
-    if query:
-        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query))
+    print tag
+    results = Item.objects.filter(Q(tags__slug__icontains=tag)).distinct()
+    print results
     f = ItemFilter(request.GET, queryset=results)
-    return {'query': query, 'filter': f}
+    return {'tag': tag, 'filter': f}
 
 
 @render_to('menu/menu_list.html')

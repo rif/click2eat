@@ -1,19 +1,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-23 13:29+0300\n"
-"PO-Revision-Date: 2011-08-23 13:30\n"
+"POT-Creation-Date: 2011-08-23 17:27+0300\n"
+"PO-Revision-Date: 2011-08-23 16:22\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 "X-Translated-Using: django-rosetta 0.6.2\n"
@@ -70,43 +70,43 @@ msgstr "Ultimele știri django"
 msgid "Recent Actions"
 msgstr "Acțiuni recente"
 
-#: settings_dev.py:27
+#: settings_dev.py:28
 msgid "Romanian"
 msgstr "Românește"
 
-#: settings_dev.py:28
+#: settings_dev.py:29
 msgid "English"
 msgstr "Engleză"
 
-#: settings_dev.py:29
+#: settings_dev.py:30
 msgid "German"
 msgstr "Germană"
 
-#: settings_dev.py:30
+#: settings_dev.py:31
 msgid "French"
 msgstr "Franceză"
 
-#: settings_dev.py:183
+#: settings_dev.py:184
 msgid "Choose"
 msgstr "Alege-ți"
 
-#: settings_dev.py:184
+#: settings_dev.py:185
 msgid "A general question regarding the website"
 msgstr "Întrebare generală legată de site"
 
-#: settings_dev.py:185
+#: settings_dev.py:186
 msgid "Suggestion"
 msgstr "Sugestie"
 
-#: settings_dev.py:186
+#: settings_dev.py:187
 msgid "Unsatisfactory service"
 msgstr "Serviciu nesatisfăcător"
 
-#: settings_dev.py:187
+#: settings_dev.py:188
 msgid "Site functionality problem"
 msgstr "Problemă de funcționalitate a site-ului"
 
-#: settings_dev.py:188
+#: settings_dev.py:189
 msgid "Other"
 msgstr "Alta"
 
@@ -410,8 +410,8 @@ msgid ""
 "As the restaurant is closed please set a desired delivery time in the "
 "restaurant open hours range."
 msgstr ""
-"Având în vedere că restaurantul e închis vă rugăm să specificați ziua "
-"și ora de livrare."
+"Având în vedere că restaurantul e închis vă rugăm să specificați ziua și ora "
+"de livrare."
 
 #: order/models.py:8
 msgid "Created"
@@ -564,11 +564,11 @@ msgstr "Comanda curentă este deja trimisă."
 
 #: order/views.py:158
 msgid ""
-"This restaurant is now closed! Please check the open hours and set "
-"desired delivery time accordingly."
+"This restaurant is now closed! Please check the open hours and set desired "
+"delivery time accordingly."
 msgstr ""
-"Acest restaurant este momentan închis! Vă rugam săconsultați orarul și"
-" să specificați ziua și ora de livrare în consecință."
+"Acest restaurant este momentan închis! Vă rugam săconsultați orarul și să "
+"specificați ziua și ora de livrare în consecință."
 
 #: order/views.py:160
 #, python-format
@@ -792,8 +792,8 @@ msgstr "utilizatori administratori"
 #: restaurant/models.py:171
 msgid "the users that can access front-end administration pages for this unit."
 msgstr ""
-"utilizatorii care pot accesa paginile de administrare din interfata "
-"pentru această unitate."
+"utilizatorii care pot accesa paginile de administrare din interfata pentru "
+"această unitate."
 
 #: restaurant/models.py:173
 msgid "info"
@@ -866,14 +866,14 @@ msgstr "contactează"
 msgid "an click2eat agent"
 msgstr "un agent click2eat"
 
-#: templates/footer.html:18
+#: templates/footer.html:15
 msgid ""
-"Click2Eat is a registered trademark. All rights reserved. All materials"
-" presented on this site are protected by copyright law."
+"Click2Eat is a registered trademark. All rights reserved. All materials "
+"presented on this site are protected by copyright law."
 msgstr ""
 "Click2Eat este marca inregistrata. Toate drepturile rezervate. Toate "
-"materialele prezente pe acest website sunt protejate prin legea "
-"copywrite-ului"
+"materialele prezente pe acest website sunt protejate prin legea copywrite-"
+"ului"
 
 #: templates/header.html:6
 msgid "How do I order"
@@ -1013,36 +1013,50 @@ msgstr "click2eat.ro administrare site"
 msgid "click2eat.ro administration"
 msgstr "Administrare click2eat.ro"
 
-#: templates/avatar/add.html:6 templates/avatar/change.html:9
+#: templates/avatar/add.html:5 templates/avatar/change.html:10
 msgid "Your current avatar: "
 msgstr "Avatarul curent:"
 
-#: templates/avatar/add.html:9 templates/avatar/change.html:12
+#: templates/avatar/add.html:8 templates/avatar/change.html:15
 msgid "You haven't uploaded an avatar yet. Please upload one now."
 msgstr "Nu ați încărcat un avatar încă. Vă rugăm să încărcați unul acum."
 
-#: templates/avatar/add.html:13 templates/avatar/change.html:23
+#: templates/avatar/add.html:12 templates/avatar/change.html:30
 msgid "Upload New Image"
 msgstr "Încărcați o noua imagine"
 
-#: templates/avatar/change.html:18
+#: templates/avatar/add.html:14 templates/avatar/change.html:33
+#: templates/avatar/confirm_delete.html:26
+#: templates/order/order_detail.html:10 templates/order/order_list.html:13
+msgid "Back"
+msgstr "Înapoi"
+
+#: templates/avatar/change.html:7
+msgid "avatar"
+msgstr "Avatar"
+
+#: templates/avatar/change.html:22
 msgid "Choose new Default"
 msgstr "Alegeți pe cea implicită"
 
-#: templates/avatar/confirm_delete.html:9
+#: templates/avatar/confirm_delete.html:7
+msgid "delete avatar"
+msgstr "șterge avatar"
+
+#: templates/avatar/confirm_delete.html:10
 msgid "Please select the avatars that you would like to delete."
 msgstr "Vă rugăm să selectați avatarul pe care doriți să îl stergeți."
 
-#: templates/avatar/confirm_delete.html:12
+#: templates/avatar/confirm_delete.html:15
 #, python-format
 msgid ""
-"You have no avatars to delete. Please <a "
-"href=\"%(avatar_change_url)s\">upload one</a> now."
+"You have no avatars to delete. Please <a href=\"%(avatar_change_url)s"
+"\">upload one</a> now."
 msgstr ""
-"Nu aveți nici un avatar de șters. Vă rugăm să <a "
-"href=\"%(avatar_change_url)s\">încărcați unul</a> acum."
+"Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s"
+"\">încărcați unul</a> acum."
 
-#: templates/avatar/confirm_delete.html:18
+#: templates/avatar/confirm_delete.html:22
 msgid "Delete These"
 msgstr "Șterge"
 
@@ -1054,11 +1068,11 @@ msgstr "Istoricul bonusurilor"
 
 #: templates/bonus/history.html:5
 msgid ""
-"Here you can check your bonus history, how you received and how you "
-"used your bnus points."
+"Here you can check your bonus history, how you received and how you used "
+"your bnus points."
 msgstr ""
-"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum "
-"ați folosit punctele bonus."
+"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum ați "
+"folosit punctele bonus."
 
 #: templates/bonus/history.html:17
 msgid "Received date"
@@ -1117,13 +1131,12 @@ msgstr "Roata norocului"
 #: templates/menu/daily_menu_list.html:5 templates/wheel/fortune.html:5
 #: templates/wheel/fortune.html.py:42
 msgid ""
-"If you are undecided about what to eat today, here you can let the fate"
-" decide. Just spin the wheel an find out what the it was meant for you "
-"today."
+"If you are undecided about what to eat today, here you can let the fate "
+"decide. Just spin the wheel an find out what the it was meant for you today."
 msgstr ""
-"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa "
-"soarta să decidă pentru dumneavoastră. Doar învartiti roata ca să "
-"vedeți ce vi-a fost scris pentru astăzi."
+"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa soarta "
+"să decidă pentru dumneavoastră. Doar învartiti roata ca să vedeți ce vi-a "
+"fost scris pentru astăzi."
 
 #: templates/menu/daily_menu_list.html:34
 msgid "Today's menu"
@@ -1320,10 +1333,6 @@ msgstr "Comanda: "
 #: templates/profiles/profile_detail.html:131
 msgid "Order again"
 msgstr "Comandă din nou"
-
-#: templates/order/order_detail.html:10 templates/order/order_list.html:13
-msgid "Back"
-msgstr "Înapoi"
 
 #: templates/order/order_div.html:42 templates/restaurant/unit_detail.html:137
 msgid "Open hours"
@@ -1567,8 +1576,7 @@ msgstr "Invită un prieten"
 
 #: templates/registration/activate.html:6
 msgid ""
-"Account failed to be activated! Please try again or contact the "
-"adminstrator"
+"Account failed to be activated! Please try again or contact the adminstrator"
 msgstr "Contul NU a fost activat! Vă rugăm să contactați administratorii"
 
 #: templates/registration/activation_complete.html:6
@@ -1627,11 +1635,11 @@ msgstr "Cont nou"
 
 #: templates/registration/registration_complete.html:11
 msgid ""
-"Thank you for signing up. An email with the activation code has been "
-"send to your inbox"
+"Thank you for signing up. An email with the activation code has been send to "
+"your inbox"
 msgstr ""
-"Multumim că v-ați înregistrat. A fost trimis un email cu codul de "
-"activare spre căsuța dvs de email"
+"Multumim că v-ați înregistrat. A fost trimis un email cu codul de activare "
+"spre căsuța dvs de email"
 
 #: templates/registration/registration_form.html:4
 msgid "Sign Up"
@@ -1644,10 +1652,6 @@ msgstr "Date personale"
 #: templates/registration/registration_form.html:40
 msgid "I agree with the terms and conditions."
 msgstr "Sunt de acord cu termenii și condițiile"
-
-#: templates/registration/registration_form.html:44
-msgid "Create account"
-msgstr "Crează cont"
 
 #: templates/restaurant/administrator.html:8
 msgid "Your units"
@@ -1692,8 +1696,7 @@ msgstr "Nu Stii ce vrei să mănânci astăzi"
 #: templates/restaurant/index.html:99
 msgid "Welcome to the weel of fortune ! Click on the dish to START."
 msgstr ""
-"Bine ați venit la roata norocului! Dați click pe farfurie pentru "
-"START."
+"Bine ați venit la roata norocului! Dați click pe farfurie pentru START."
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"
@@ -1782,8 +1785,8 @@ msgstr "Sunteți sigur?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:9
 msgid ""
-" Are you sure you want to delete the selected Delivery Address objects?"
-" All of the following objects and their related items will be deleted: "
+" Are you sure you want to delete the selected Delivery Address objects? All "
+"of the following objects and their related items will be deleted: "
 msgstr "Sunteți sigur/ă că vreți să ștergeți următoarea adresă de livrare?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:11
@@ -1867,11 +1870,11 @@ msgstr "Invită prieten"
 
 #: templates/userprofiles/invite_friend.html:5
 msgid ""
-"Here you can invite your friendts to join the site. You'll get bonus "
-"points for free meal if they join :)"
+"Here you can invite your friendts to join the site. You'll get bonus points "
+"for free meal if they join :)"
 msgstr ""
-"Aici vă puteți invita prietenii să devină membrii ai acestui site. "
-"Veți primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
+"Aici vă puteți invita prietenii să devină membrii ai acestui site. Veți "
+"primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
 
 #: templates/wheel/fortune.html:43
 msgid "Press the button once, let is spinn, press it again and set the table!"
@@ -1881,13 +1884,18 @@ msgstr "Apăsați butonul o dată, lăsați să se învartă și puneți masa!"
 msgid "START"
 msgstr "START"
 
-#: userprofiles/forms.py:18
+#: userprofiles/forms.py:19
 msgid "message"
 msgstr "mesaj"
 
-#: userprofiles/forms.py:18 userprofiles/views.py:64
+#: userprofiles/forms.py:19 userprofiles/views.py:64
 msgid "Join me for lunch!"
 msgstr "Hai cu mine la masă!"
+
+#: userprofiles/forms.py:46
+#, fuzzy
+msgid "email2"
+msgstr "e-mail"
 
 #: userprofiles/models.py:17
 msgid "primary"

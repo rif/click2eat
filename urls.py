@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from userprofiles import views
-from userprofiles.forms import BucatarRegistrationForm
+from userprofiles.forms import BucatarRegistrationForm, DummyForm
 from restaurant.sitemaps import UnitSitemap
 
 sitemaps = {'units': UnitSitemap}
@@ -30,7 +30,7 @@ urlpatterns = patterns('',
                        (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
                        (r'^flat/', include('django.contrib.flatpages.urls')),
                        (r'^robots.txt$', include('robots.urls')),
-                       (r'^contact/',    include('envelope.urls')),
+                       url(r'^contact/','envelope.views.contact',{'form_class': DummyForm},name='envelope-contact'),
                        )
 
 urlpatterns += patterns('profiles.views',

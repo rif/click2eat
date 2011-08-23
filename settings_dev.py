@@ -1,4 +1,5 @@
 import os
+from django.utils.translation import ugettext_lazy as _
             
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
@@ -179,13 +180,13 @@ DEBUG_TOOLBAR_CONFIG = {
 
 ENVELOPE_EMAIL_RECIPIENTS=('r.fericean@filemaker-solutions.ro',)
 
-DEFAULT_CONTACT_CHOICES = (
-    ('',    ugettext("Choose")),
-    (10,    ugettext("A general question regarding the website")),
-    (20,    ugettext("Suggestion")),
-    (30,    ugettext("Unsatisfactory service")),
-    (40,    ugettext("Site functionality problem")),
-    (None,  ugettext("Other")),
+ENVELOPE_CONTACT_CHOICES = (
+    ('',    _("Choose")),
+    (10,    _("A general question regarding the website")),
+    (20,    _("Suggestion")),
+    (30,    _("Unsatisfactory service")),
+    (40,    _("Site functionality problem")),
+    (None,  _("Other")),
 )
 
 HONEYPOT_FIELD_NAME = 'information'
