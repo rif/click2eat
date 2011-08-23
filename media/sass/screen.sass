@@ -1,0 +1,1031 @@
+@import blueprint/reset
+@import partials/base
+@import blueprint
+
++blueprint
++blueprint-utilities
++blueprint-interaction
+
+/* maxvoltar.com/archive/-webkit-font-smoothing */
+html
+  -webkit-font-smoothing: antialiased
+
+#header, #footer
+  width: 100%
+
+#header
+  background: url("../images/template/baratop.jpg") repeat-x
+  height: 50px
+  position: absolute
+  z-index: 100
+
+#header_content
+  font-family: 'Radley', serif
+  width: 1050px
+  margin: 0 auto
+  #logo
+    background: url("../images/template/logo.png") no-repeat
+    width: 192px
+    height: 85px
+    margin: 10px 0 0 20px
+    float: left
+  #btn_cumcomanzi, #btn_contulmeu
+    font-size: 12px
+    margin: 5px 0 0 25px
+    float: left
+    text-align: center
+  #btn_estirestaurant
+    font-size: 12px
+    margin: 5px 0 0 25px
+    float: left
+    text-align: center
+    margin: 5px 0px 0px 30px
+  .separatorl
+    background: url("../images/template/separatorl.png") no-repeat
+    float: left
+    height: 30px
+    width: 3px
+    margin: 8px 0 0 20px
+  #btn_contulmeu
+    margin-top: 9px
+  .textmare
+    font-size: 19px
+  .textmare2
+    font-size: 20px
+  a
+    text-decoration: none
+    color: #fff
+    line-height: 15px
+  #logintop
+    font-family: serif
+    font-size: 13px
+    font-weight: bold
+    text-decoration: none
+    background: url("../images/template/logintop.png") no-repeat
+    width: 395px
+    height: 30px
+    margin: 0px 0 0 20px
+    float: left
+    .loggedin
+      display: block
+      float: left
+      margin: 0px 0px 0px 15px
+      a
+        color: #fff
+        font-size: 18px
+      color: #fff
+      font-size: 18px
+  .label
+    float: left
+    margin: 5px 4px 0px 5px
+    color: #fff
+  .reg_content .submitlink
+    color: #000
+    text-decoration: none
+    /*margin-left: 40px;*/
+  input
+    float: left
+    width: 90px
+    margin: 4px 0px 0px 0px
+    height: 16px
+  #top_search
+    float: right
+    background: url("../images/template/searchtop.png") no-repeat
+    width: 395px
+    height: 30px
+    margin: 15px 53px 0px 0px
+    font-family: serif
+    input
+      float: right
+      width: 130px
+      margin: 3px 0px 0px 3px
+    .label
+      font-size: 16px
+      margin: 2px 5px 0px 0px
+      float: right
+    .imgsearch
+      width: 25px
+      height: 23px
+      margin: 2px 10px 0px 5px
+      float: right
+
+body
+  font-family: 'Cardo', serif!important
+  background: url("../images/template/background.png") repeat !important
+  
+  
+#content
+  margin-top: 20px
+  
+#topcontent
+  width: 100%
+  #baraalba
+    background: url("../images/template/baraalba.png") no-repeat
+    width: 1060px
+    height: 220px
+    margin: 111px auto 0
+    position: relative
+    .stanga
+      display: block
+      background: url("../images/template/btnstanga.png") no-repeat
+      width: 25px
+      height: 25px
+      position: absolute
+      left: 0px
+      top: 100px
+    .dreapta
+      display: block
+      background: url("../images/template/btndreapta.png") no-repeat
+      width: 25px
+      height: 25px
+      position: absolute
+      right: 0px
+      top: 100px
+    #slider
+      padding: 44px 0px 0px 20px
+      .slide
+        width: 250px
+        height: 148px
+        float: left
+        margin-left: 2px
+        position: relative
+      .primulslide
+        margin-left: 7px
+      .titluslide
+        position: absolute
+        top: 15px
+        left: 10px
+      .descriererestaurant
+        position: absolute
+        bottom: 15px
+        left: 10px
+      .logorestaurant
+        position: absolute
+        bottom: 54px
+        right: 10px
+      a
+        color: #726d47
+        text-decoration: none
+      .textmic
+        font-size: 11px
+        background: #fff
+        padding: 2px 5px 2px 3px
+      .textmare
+        font-size: 20px
+        line-height: 20px
+        background: #fff
+        padding: 2px 5px 2px 3px
+    .titlu
+      float: left
+      color: #fff
+      background: #562019
+      padding: 2px 10px 2px 5px
+      font-size: 35px
+      line-height: 36px
+      margin: -23px 0px 0px 25px
+
+#primapagina
+  .titlu, #titletabla
+    float: left
+    color: #fff
+    background: #562019
+    padding: 2px 10px 2px 5px
+    font-size: 35px
+    line-height: 36px
+    margin: -23px 0px 0px 25px
+
+#topcontent #baraalba .vezitoate
+  background: #fff
+  padding: 1px 15px 3px 10px
+  margin: 0 0 0 24px
+  clear: left
+  float: left
+  z-index: 10
+
+#primapagina
+  .vezitoate
+    background: #fff
+    padding: 1px 15px 3px 10px
+    margin: 0 0 0 24px
+    clear: left
+    float: left
+    z-index: 10
+  #meniu
+    clear: both
+    position: relative
+    margin: 0px 0px 0px 25px
+    height: 419px
+
+#topcontent #baraalba .vezitoate a
+  color: #74514e
+  text-decoration: underline
+  font-size: 18px
+  line-height: 22px
+  z-index: 10
+
+#primapagina
+  .vezitoate a
+    color: #74514e
+    text-decoration: underline
+    font-size: 18px
+    line-height: 22px
+    z-index: 10
+  #meniu
+    .titlemeniu
+      position: absolute
+      left: 74px
+      position: absolute
+      top: 9px
+      a
+        color: #9c1d19
+        font-size: 13px
+        text-decoration: none
+    .itemmeniu
+      float: left
+      position: relative
+  background: url("../images/template/meniubg.png") no-repeat
+  width: 625px
+  margin-top: 12px
+
+/*                            TABLA prima pagina */
+
+#tabla
+  background: url("../images/template/tabla.png") no-repeat
+  height: 275px
+  width: 510px
+  margin-top: 4px
+  position: relative
+  .meniulzilei
+    font-family: 'Indie Flower', serif
+    font-size: 50px
+    color: #e2c727
+    padding: 15px 0px 0px 30px
+  #continutmeniu
+    font-size: 18px
+    color: #fff
+    line-height: 18px
+    margin: -27px 0px 0px 30px
+    width: 250px
+    height: 140px
+    float: left
+    .restaurant
+      font-size: 22px
+      line-height: 30px
+      color: #e2c727
+  #pret
+    font-size: 59px
+    color: #E2C727
+    float: left
+    font-size: 59px
+    line-height: 39px
+    margin: 5px 0px 0 0
+  #comanda
+    float: left
+    font-size: 18px
+    margin: 0 0 0 5px
+    a
+      color: #fff
+  #variantemeniu
+    position: absolute
+    bottom: 24px
+    left: 30px
+    color: #fff
+    font-size: 18px
+    line-height: 20px
+    .nrmeniu
+      letter-spacing: -2px
+    a
+      color: #fff
+      font-size: 15px
+      text-decoration: none
+      font-weight: bold
+      padding: 0 7px 0 4px
+    .meniuselectat, a:hover
+      background: #cc1e00
+      padding: 0 7px 0 4px
+      color: #fff
+  #newsletter
+    position: absolute
+    bottom: 20px
+    right: 20px
+    color: #fff
+    line-height: 13px
+    font-size: 18px
+    color: #cbb329
+    .textmic
+      font-size: 11px
+    #email
+      float: left
+      width: 150px
+    #newslettersubmit
+      margin: 5px 0px 0px 0px
+      float: left
+      margin: 5px 0 0 5px
+  .recomandat
+    background: url("../images/template/recomandat.png") no-repeat
+    height: 90px
+    width: 140px
+    position: absolute
+    right: -79px
+    top: -29px
+
+/*                            ROATA prima pagina */
+
+#roata
+  background: url("../images/template/bgroata.png") no-repeat
+  height: 300px
+  width: 460px
+  margin-top: -17px
+  position: relative
+  margin-bottom: 10px
+  float: right
+  .rtitlu
+    float: left
+    color: #fff
+    background: #3f3709
+    padding: 2px 10px 2px 5px
+    font-size: 35px
+    line-height: 36px
+    margin: -23px 0px 0px 20px
+  .text
+    color: #252d0c
+    line-height: 22px
+    margin: 10px 0 2px 20px
+    font-size: 24px
+  .textmic
+    font-size: 16px
+  .startroata
+    background: url("../images/template/farfurieroata.png") no-repeat
+    display: block
+    width: 190px
+    height: 190px
+    margin: 5px 0 0 25px
+    float: left
+  .rezultat
+    background: url("../images/template/roatabgm.png") no-repeat
+    width: 219px
+    height: 58px
+    position: absolute
+    bottom: 50px
+    right: 20px
+  .comandam
+    clear: both
+    font-size: 16px
+    a
+      color: #000
+      text-decoration: underline
+  .rezultat
+    color: #fff
+    .rez1
+      float: left
+      margin: 5px 0px 5px 10px
+    .rez2
+      clear: both
+      float: left
+      margin: 5px 0px 5px 10px
+    .rezpret
+      font-size: 40px
+      float: right
+      line-height: 5px
+      margin: 0px 10px 0px 0px
+  .descmeniu
+    color: #000
+    display: block
+    float: left
+    font-size: 18px
+    line-height: 20px
+    margin: 66px 0 0 8px
+
+/*                            CONTENT AREA generic */
+
+#content .content_area
+  width: 720px
+  background: #fff
+  margin-bottom: 40px
+  padding-bottom: 15px
+
+/*                            CONTENT AREA detalii  restaurant */
+
+#paginarestaurant
+  font-family: times New Roman
+  padding: 10px 0px 0px 15px
+  margin-right: 10px
+  color: #000
+  background: url("../images/template/meniubgstrip.png") repeat-y
+  .title h1
+    color: #562019
+    font-size: 23px
+    letter-spacing: -0.5px
+  a
+    text-decoration: none
+  .category
+    a
+      float: left
+      background: #5d5216
+      padding: 1px 5px 1px 5px
+      border: 1px solid #706632
+      font-size: 12px
+      margin: 5px 10px 0px 0px
+      color: #fff
+      font-size: 15px
+      font-weight: bold
+    h3
+      margin-bottom: 0px
+    a:hover
+      background: #562019
+      padding: 1px 5px 1px 5px
+      border: 1px solid #693933
+  ul, .lista
+    list-style-type: none
+    margin: 10px 0px 0px 0px
+    padding: 0px
+  ul li.pozrel, .pozrel
+    border-bottom: 1px dashed #a18e1e
+    margin: 15px 30px 0 0
+    position: relative
+  ul li .name, .name
+    font-size: 20px
+    color: #7e1c0a
+    font-style: italic
+    font-weight: bold
+    text-decoration: none
+    line-height: 16px
+    float: left
+  ul li .description
+    font-family: Arial, Helvetica, sans-serif
+    font-size: 12px
+    color: #000
+    float: left
+    width: 420px
+  #searchbox
+    font-family: Arial,Helvetica,sans-serif
+    p
+      margin: 0px 0px 0px 10px
+  .description2
+    margin-top: 2px
+    font-family: Arial, Helvetica, sans-serif
+    font-size: 12px
+    color: #000
+    float: left
+    width: 500px
+    line-height: 14px
+    margin-bottom: 10px
+  .click2eat
+    float: right
+    background: url("../images/template/btnc2e.png") no-repeat
+    width: 275px
+    height: 42px
+    position: absolute
+    right: 0
+    top: -13px
+    color: #fff
+    padding: 16px 0 0 0px
+    font-family: Arial, Helvetica, sans-serif
+    .recom
+      padding-left: 5px
+    .restaurante
+      color: #562019
+      float: right
+      font-family: "Times New Roman",Times,serif
+      font-size: 15px
+      line-height: 16px
+      margin-right: 73px
+      margin-top: 5px
+  .restaurante
+    float: right
+    margin-right: 40px
+  .platinum
+    background: url("../images/template/bglista2.png") no-repeat
+    width: 690px
+    height: 35px
+    padding: 4px 0 0 8px
+    border: 0 none
+    margin: 0px 0px 5px 0px
+    position: relative
+  .gold
+    background: url("../images/template/bglista1.png") no-repeat
+    width: 690px
+    height: 35px
+    padding: 4px 0 0 8px
+    border: 0 none
+    margin: 0px 0px 5px 0px
+    position: relative
+  .name2
+    position: relative
+    width: 500px
+    a
+      font-size: 20px
+      color: #000
+      font-style: italic
+      font-weight: bold
+      text-decoration: none
+      line-height: 16px
+  .description3
+    font-family: Arial, Helvetica, sans-serif
+    font-size: 12px
+    color: #000
+    float: left
+    width: 500px
+    line-height: 12px
+    margin-bottom: 0px
+  .special
+    background: url("../images/template/c2esmall.png") no-repeat
+    height: 90px
+    width: 140px
+    position: absolute
+    left: 277px
+    top: -47px
+    z-index: 100
+  .silver
+    width: 690px
+    height: 35px
+  .stele
+    background: url("../images/template/stelemici.png") no-repeat
+    height: 8px
+    float: left
+    width: 40px
+  .establishment-menu
+    height: 400px
+    overflow: auto
+
+#establishment_details
+  display: none
+
+#establishment_picture
+  float: right
+
+#paginarestaurant
+  .btnviziteaza_platinum, .btnviziteaza_gold
+    font-weight: normal
+    display: block
+    background: url("../images/template/btncmd.png") no-repeat
+    width: 130px
+    height: 25px
+    padding: 3px 0 0 6px
+    color: #fff
+    font-size: 12px
+    font-style: normal
+    margin: 0px 10px 0 4px
+    font-family: Arial, Helvetica, sans-serif
+  .btnv_margin
+    float: right
+    margin-top: -12px
+  .btnviziteaza_silver, .btnviziteaza_
+    font-weight: normal
+    display: block
+    background: url("../images/template/btngri.png") no-repeat
+    width: 130px
+    height: 25px
+    padding: 3px 0 0 6px
+    color: #fff
+    font-size: 12px
+    font-style: normal
+    margin: 0px 0px 0 4px
+    font-family: Arial, Helvetica, sans-serif
+  ul li .price, .price
+    float: right
+    font-size: 18px
+    font-style: italic
+    color: #7e1c0a
+    font-weight: bold
+  ul li .btncomanda, .btncomanda
+    font-weight: normal
+    display: block
+    float: right
+    background: url("../images/template/btncmd.png") no-repeat
+    width: 120px
+    height: 25px
+    padding: 3px 0px 0px 10px
+    color: #fff
+    font-size: 13px
+    font-style: normal
+    margin: 0px 0px 0px 5px
+  .book
+    width: 90px
+    height: 90px
+    float: left
+    position: relative
+    margin-top: -8px
+    margin-bottom: 5px
+  .heading
+    position: absolute
+    top: 10px
+    text-align: center
+    width: 90px
+  .book a
+    color: #fff
+    text-decoration: none
+
+/*                            Pagina de inregistrare */
+
+#paginaregister
+  background: #fff
+  width: 720px
+  padding: 10px 0px 0px 20px
+  font-family: times New Roman
+  .titlu
+    font-size: 25px
+    color: #562019
+  label
+    float: left
+    font-size: 14px
+    font-weight: normal
+    margin: 22px 5px 0px 0px
+  input
+    &[type=text], &[type=password]
+      float: left
+      background: url("../images/template/inputst.png") no-repeat
+      height: 27px
+      border: 0px
+      padding: 1px 0px 0px 5px
+      margin: 15px 0px 0px 0px
+      font-size: 12px
+      line-height: 24px
+  .textmic
+    font-size: 13px
+  .end
+    float: left
+    background: url("../images/template/inputdr.png") no-repeat
+    width: 10px
+    height: 27px
+    margin: 15px 2px 0px 0px
+  .bordersep
+    clear: both
+    width: 720px
+    height: 20px
+    margin: 15px 0px 15px 0px
+    border-bottom: 1px dashed #a18e1e
+  .datep
+    color: #562019
+    font-size: 16px
+    font-style: italic
+    font-weight: bold
+  .width1
+    width: 240px
+  .width2
+    width: 100px
+  .width3
+    width: 55px
+  .btnreg
+    font-weight: normal
+    display: block
+    background: url("../images/template/btncmd.png") no-repeat
+    width: 120px
+    height: 25px
+    padding: 0px 0px 0px 18px
+    color: #fff
+    font-weight: bold
+    font-style: italic
+    font-size: 17px
+    margin: 41px 0 10px 65px
+  a.btnreg
+    text-decoration: none
+  .serv
+    background: url("../images/template/serv.png") no-repeat
+    width: 230px
+    height: 160px
+    margin: -10px 0px 0px -20px
+  .registerright
+    margin: 15px 0px 0px 30px
+  .select
+    margin: 18px 0px 0px 10px
+  .checkboxinput
+    margin: 22px 0px 0px 5px
+  .formHint
+    margin: 20px 0 0
+  .form_button
+    margin-top: 16px
+  input[type=file]
+    margin-top: 19px
+
+/*                            Cum comand */
+
+.cumcomand
+  padding: 10px 0px 0px 20px
+  .titlu
+    font-size: 25px
+    color: #562019
+  .subtitlu
+    font-size: 16px
+    font-style: italic
+    color: #793327
+    font-weight: bold
+  .text
+    font-size: 14px
+    line-height: 16px
+    a
+      color: #2c2c2c
+  .first, .second, .third, .fourth, .fifth, .last
+    width: 100px
+    display: block
+    float: left
+  .first
+    margin-left: 15px
+  .second
+    margin-left: 40px
+  .third
+    margin-left: 25px
+  .fourth
+    margin-left: 7px
+  .fifth
+    margin-left: 15px
+  .last
+    margin-left: 25px
+    width: 50px
+  a.linkcat
+    text-decoration: none
+    color: #9c1d19
+  a.linkcat:hover
+    font-weight: bold
+
+/*                            CONTUL MEU */
+
+#account_details
+  padding: 15px 0px 0px 20px
+  font-size: 13px
+  font-family: Arial, Helvetica, sans-serif
+  .titlu
+    font-family: "Times New Roman", Times, serif
+    font-size: 25px
+    color: #562019
+  .subtitlu
+    font-family: "Times New Roman", Times, serif
+    font-size: 16px
+    font-style: italic
+    color: #793327
+    font-weight: bold
+  .special
+    font-family: "Times New Roman", Times, serif
+    font-size: 40px
+    color: #5d6236
+    line-height: 30px
+  .textmare
+    font-size: 14px
+  .boxverde
+    color: #fff
+    font-size: 12px
+    background: #5d6236
+    width: 650px
+    padding: 7px 10px 7px 10px
+    line-height: 12px
+    .special2
+      font-family: "Times New Roman", Times, serif
+      color: #ecde00
+      font-size: 30px
+      line-height: 30px
+  form
+    display: inline
+    margin: 0
+    padding: 0
+  .boxverde
+    input[type=text]
+      background: #a7a991
+      color: #fff
+      padding: 1px
+      width: 180px
+      border: 1px solid #454a22
+      margin: 3px 10px 0px 10px
+    .btnverde
+      background: url("../images/template/btnverde.png") no-repeat
+      width: 85px
+      height: 28px
+      padding: 6px 29px 13px 22px
+      color: #d2dd76
+    a.btnverde
+      text-decoration: none
+  .separatie
+    border-bottom: 1px dashed #a18e1e
+    margin: 15px 0 5px 0
+  .boxporto
+    color: #000
+    font-size: 12px
+    background: #e8590d
+    width: 660px
+    padding: 3px 5px 3px 5px
+    line-height: 16px
+    position: relative
+    margin-bottom: 5px
+  .meniuright
+    background: url("../images/template/sidebartrimite.png") no-repeat
+    width: 150px
+    height: 28px
+    padding: 5px 0 0 13px
+    color: #e8590d
+    position: absolute
+    bottom: 0px
+    right: 10px
+  a.meniuright
+    text-decoration: none
+  .boxroz
+    color: #000
+    font-size: 12px
+    background: #f29d7a
+    width: 660px
+    padding: 8px 5px 8px 5px
+    position: relative
+    margin-bottom: 5px
+    .pret
+      margin: 0px 8px 0px 8px
+    .right
+      color: #000
+  .datecont a
+    color: #57211a
+
+#avatar
+  float: right
+
+/*                            SIDEBAR */
+
+#sidebar
+  font-family: 'Cardo', serif
+  background: url("../images/template/sidebarmeniu.png") no-repeat
+  height: 450px
+  width: 365px
+  margin-left: 50px
+  #boxmeniusidebar
+    padding: 234px 0 0 82px
+  .text_specialitate
+    line-height: 16px
+    font-size: 17px
+    color: #60251c
+  .meniu_special
+    color: #ae1d2e
+    font-size: 27px
+    line-height: 24px
+    margin: 18px 20px 10px 0px
+  .meniu_restaurant
+    color: #000
+    font-size: 20px
+    line-height: 8px
+  .linkcomanda
+    margin-top: 30px
+    a
+      line-height: 16px
+      font-size: 17px
+      color: #60251c
+      text-decoration: underline
+
+/*                            SIDEBAR2 */
+
+#sidebar2
+  font-family: 'Tinos'
+  background: url("../images/template/sidebar2.png") no-repeat
+  height: 440px
+  width: 330px
+  margin-left: 15px
+  color: #7f392a
+  position: relative
+  #sidebar2wrapper
+    padding: 50px 0 0 55px
+  .comanda
+    font-size: 25px
+    font-weight: normal
+    letter-spacing: -1px
+  .cart
+    font-size: 12px
+    font-weight: bold
+  .selected-cart .cart-name
+    font-size: 12px
+    font-weight: bold
+    color: indianred
+  #carts
+    height: 170px
+    width: 239px
+    overflow: auto
+  .item
+    font-size: 12px
+    clear: both
+    width: 220px
+    position: relative
+    .buc
+      float: left
+    .tip
+      float: left
+      margin-left: 4px
+    .pret
+      float: right
+    .add
+      position: absolute
+      right: 40px
+      top: 1px
+    .sub
+      position: absolute
+      right: 52px
+      top: 1px
+      background: url("../images/template/sub.png") no-repeat
+      width: 12px
+      height: 12px
+    .add
+      background: url("../images/template/add.png") no-repeat
+      width: 12px
+      height: 12px
+  .nota
+    position: absolute
+    bottom: 15px
+    .textnota
+      float: left
+    .totalnota
+      float: right
+      margin-right: 35px
+    .livrarea #sidebarcomanda
+      background: #e8e8e8
+      color: #69291d
+      border: 1px solid #858585
+      padding: 1px
+    .btncomanda
+      background: url("../images/template/sidebartrimite.png") no-repeat
+      width: 150px
+      height: 28px
+      margin-top: 20px
+      display: block
+    a.btncomanda
+      text-decoration: none
+    .btncomanda .textbtn
+      padding: 5px 0px 0px 10px
+      color: #fff
+      display: block
+
+/*                            FOOTER */
+
+#footer
+  font-family: 'Cardo', serif
+  background: url("../images/template/footerbg.png") repeat-x !important
+  height: 125px
+
+#footerwrapper
+  width: 1050px
+  margin: 0 auto
+
+#footer
+  ul
+    padding-top: 30px
+    li
+      display: inline
+      float: left
+      margin-left: 25px
+    .primul
+      margin-left: 0px!important
+    li a
+      color: #fff
+      text-decoration: none
+  .footertextmare
+    font-size: 20px
+    line-height: 15px
+  .footertextmic
+    font-size: 12px
+    line-height: 14px
+  ul li.listdreapta
+    margin-left: 30px
+  p.footertext
+    margin: 20px 0px 0px 15px
+    font-family: 'Cardo', serif
+    font-size: 13px
+    color: #a3a089
+    line-height: 15px
+
+/*    LUCKY PLATE */
+ 
+#lucky_plate_text
+  float: left
+  width: 300px
+  padding: 50px 0 0 0
+
+#lucky_plate
+  float: right
+  #plate
+    width: 345px
+    height: 347px
+    &.start
+      background: url("../images/template/lucky_plate_start.png")
+    &.processing
+      background: url("../images/template/lucky_plate_processing.gif")
+    &.generic
+      background: url("../images/template/lucky_plate_generic.png")
+  #control
+    position: relative
+    width: 362px
+    height: 171px
+    background: url("../images/template/lucky_plate_controls.png")
+    margin: -178px 0 0 -25px
+    #event
+      position: absolute
+      left: 125px
+      bottom: 0
+      width: 100px
+      height: 22px
+      text-align: center
+      color: #ffffff
+      font-weight: bold
+      background: url("../images/template/lucky_plate_event_gradient.png")
+      cursor: pointer
+  #selected_plate
+    width: 180px
+    padding: 5px
+    margin: -180px 0 0 76px
+    background-color: #99cc00
+    text-align: center
+    color: #ffffff
+    font-weight: bold
+    border-radius: 1em
+    -moz-border-radius: 1em
+    -webkit-border-radius: 1em
