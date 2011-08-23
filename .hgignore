@@ -5,6 +5,7 @@ syntax: glob
 nbproject
 .idea
 static
+upload
 
 bucatar.sublime-project
 .settings
