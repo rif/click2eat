@@ -25,9 +25,7 @@ def daily_menus(request):
 
 @render_to('menu/item_list.html')
 def item_tag_list(request, tag):
-    print tag
     results = Item.objects.filter(Q(tags__slug__icontains=tag)).distinct()
-    print results
     f = ItemFilter(request.GET, queryset=results)
     return {'tag': tag, 'filter': f}
 
