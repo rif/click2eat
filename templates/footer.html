@@ -10,17 +10,14 @@
         <li class="listdreapta"><a target="_self" href="#"><span class="footertextmare">{% trans 'join as'|upper %}</span><br/><span class="footertextmic">{% trans 'restaurant'|upper %}</span></a></li>
         <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/contact/"><span class="footertextmare">{% trans 'contact'|upper %}</span><br/><span class="footertextmic">{% trans 'an click2eat agent'|upper %}</span></a></li>
       </ul> 
-     	
-
       <br/>
-      
       <p class="footertext">
       {% trans 'Click2Eat is a registered trademark. All rights reserved. All materials presented on this site are protected by copyright law.' %}.
       </p>
-      <div class="right" id="langs">
+         <span class="right" id="langs">
 			{% csrf_token %}
 			{% for lang in LANGUAGES %} <a <href="" class="{{ lang.0 }}"><img src="{{ STATIC_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
 			{% endfor %}
-		</div>
+		</span>
     </div> <!-- footerwrapper -->
 </div>
