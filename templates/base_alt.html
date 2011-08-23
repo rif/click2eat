@@ -54,6 +54,18 @@
 					});
 					e.preventDefault();
 				});
+				$(function() {
+					$(".submitlink").click(function(e) {
+						$("#login").submit();
+						e.preventDefault();
+					});
+					$("#id_password, #id_username").keypress(function(e) {
+						var code = (e.keyCode ? e.keyCode : e.which);
+						if(code == 13) {//Enter keycode
+							$("#login").submit();
+						}
+					});
+				});
 			});
 
 		</script>
@@ -85,7 +97,9 @@
 					{% endif %}
 				</div><!-- messages -->
 				<div id="content_area_top"></div>
-				<div id="content_area">{% block content %}{% endblock %}</div>
+				<div id="content_area">
+					{% block content %}{% endblock %}
+				</div>
 				<div id="content_area_bottom"></div>
 			</div>
 			{% endblock %}
@@ -97,5 +111,12 @@
 		</div>
 		{% include 'footer.html' %}
 	</body>
-	<script>var _gaq=[['_setAccount','UA-10073547-4'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+	<script>
+		var _gaq = [['_setAccount', 'UA-10073547-4'], ['_trackPageview']];
+		( function(d, t) {
+			var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+			g.src = '//www.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g, s)
+		}(document, 'script'))
+	</script>
 </html>

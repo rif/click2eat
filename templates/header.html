@@ -62,25 +62,11 @@
 				</div>
 				<!--<input type="submit" value=""/> -->
 			</form>
-		</div>
+		</div>		
 	</div>
 	<!-- header_content -->
 	<div class="clear"></div>
 </div>
 <!-- header -->
 <div class="clear"></div>
-<script type="text/javascript">
-	$(function() {
-		$(".submitlink").click(function(e) {
-			$("#login").submit();
-			e.preventDefault();
-		});
-		$("#id_password, #id_username").keypress(function(e) {
-			var code = (e.keyCode ? e.keyCode : e.which);
-			if(code == 13) { //Enter keycode
-				$("#login").submit();
-			}
-		});
-	});
 
-</script>
