@@ -153,7 +153,6 @@ INSTALLED_APPS = (
     'captcha',
     'taggit',
     'pagination',
-    'memcache_status',
     'django_filters',
     'tinymce',
     'avatar',
