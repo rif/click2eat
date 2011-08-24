@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 #from django.core.urlresolvers import reverse
+from django.views.decorators.vary import vary_on_cookie
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
@@ -53,6 +54,7 @@ def index(request):
         return redirect('profiles_create_profile')
 
 @cache_page(60 * 15)
+@vary_on_cookie
 @render_to('restaurant/unit_list.html')
 def unit_list(request):
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
