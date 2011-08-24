@@ -9,8 +9,6 @@ PIL
 Werkzeug
 #coverage
 django-annoying
-pylibmc
-django-memcache-status
 geopy
 django-sentry
 django-simple-captcha
@@ -30,7 +28,8 @@ django-envelope
 django-grappelli
 django-filebrowser
 feedparser
-fabric
+django-redis-cache
+#fabric
 MySQL-python
 # gunicorn staff
 #setproctitle
