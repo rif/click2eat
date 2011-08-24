@@ -52,6 +52,7 @@ def index(request):
     else:
         return redirect('profiles_create_profile')
 
+@cache_page(60 * 15)
 @render_to('restaurant/unit_list.html')
 def unit_list(request):
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\

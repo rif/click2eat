@@ -7,7 +7,6 @@ django-debug-toolbar
 django-extensions
 PIL
 Werkzeug
-python-memcached
 coverage
 django-annoying
 geopy
@@ -16,10 +15,9 @@ django-simple-captcha
 django-friends
 django-taggit
 django-pagination
-django-memcache-status
 django-filter
 django-tinymce
-django-compressor
+#django-compressor
 BeautifulSoup
 git+http://github.com/ericflo/django-avatar.git
 django-rosetta-grappelli
@@ -31,10 +29,11 @@ django-grappelli
 django-filebrowser
 feedparser
 fabric
+django-redis-cache
 MySQL-python
 # gunicorn staff
-setproctitle
-greenlet
-gevent
-gunicorn
+#setproctitle
+#greenlet
+#gevent
+#gunicorn
 #gunicorn-console
