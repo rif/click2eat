@@ -53,11 +53,28 @@ DEFAULT_FROM_EMAIL = 'default@mailinator.com'
 ACCOUNT_ACTIVATION_DAYS = 7
 PAGINATION_DEFAULT_WINDOW = 3
 
-CACHE_BACKEND = 'locmem://'
+"""
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+"""
+# When using TCP connections
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379',
+        'OPTIONS': {
+            'DB': 1,
+            #'PASSWORD': 'yadayada',
+            #'PARSER_CLASS': 'redis.connection.HiredisParser'
+        },
+    },
+}
 
 CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.noise_arcs','captcha.helpers.noise_dots',)
-
-DJANGO_MEMCACHED_REQUIRE_STAFF = True
 
 STATIC_ROOT = rel('static')
 STATIC_URL = '/static/'
@@ -200,3 +217,21 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}

@@ -200,7 +200,7 @@ class Unit(models.Model):
         return unicode(self.avg_speed * 100/5)
 
     def get_package(self):
-	return self.partnerpackage_set.get(current=True)
+        return self.partnerpackage_set.get(current=True)
 
     def get_motd(self):
         return self.menuoftheday_set.filter(day=date.today()) 
