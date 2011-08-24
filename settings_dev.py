@@ -53,25 +53,10 @@ DEFAULT_FROM_EMAIL = 'default@mailinator.com'
 ACCOUNT_ACTIVATION_DAYS = 7
 PAGINATION_DEFAULT_WINDOW = 3
 
-"""
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
-        'LOCATION': '127.0.0.1:11211',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
-}
-"""
-# When using TCP connections
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379',
-        'OPTIONS': {
-            'DB': 1,
-            #'PASSWORD': 'yadayada',
-            #'PARSER_CLASS': 'redis.connection.HiredisParser'
-        },
-    },
 }
 
 CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.noise_arcs','captcha.helpers.noise_dots',)

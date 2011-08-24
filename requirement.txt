@@ -7,8 +7,10 @@ django-debug-toolbar
 django-extensions
 PIL
 Werkzeug
-coverage
+#coverage
 django-annoying
+pylibmc
+django-memcache-status
 geopy
 django-sentry
 django-simple-captcha
@@ -29,7 +31,6 @@ django-grappelli
 django-filebrowser
 feedparser
 fabric
-django-redis-cache
 MySQL-python
 # gunicorn staff
 #setproctitle
