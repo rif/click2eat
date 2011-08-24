@@ -28,7 +28,7 @@ def deploy():
     push()
     with cd('/home/www-data/bucatar'):
         run('hg pul -uv')
-        run('source /usr/local/bin/virtualenvwrapper.sh; workon bucatar; python manage.py collectstatic --noinput')
+        run('workon bucatar; python manage.py collectstatic --noinput')
 
 @task
 @hosts('rif@click2eat.ro:22011')
