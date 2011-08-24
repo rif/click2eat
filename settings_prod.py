@@ -12,9 +12,14 @@ DATABASES = {
 }
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379',
+        'OPTIONS': {
+            'DB': 1,
+            #'PASSWORD': 'yadayada',
+            #'PARSER_CLASS': 'redis.connection.HiredisParser'
+        },
+    },
 }
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ustest@gmail.com'
