@@ -204,8 +204,8 @@ class Promotion(models.Model):
 class MenuOfTheDay(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
     day = models.DateField(_('day'))
-    name = models.CharField(_('name'), max_length=50)
-    description = models.TextField(_('description'))
+    name = models.CharField(_('name'), max_length=30)
+    description = models.TextField(_('description'), max_length=50)
     price = models.FloatField(_('price'))
     
     @models.permalink

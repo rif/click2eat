@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-24 14:08+0300\n"
-"PO-Revision-Date: 2011-08-24 15:02\n"
+"PO-Revision-Date: 2011-08-25 18:18\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1299,7 +1299,7 @@ msgstr "Marchează ca livrat"
 
 #: templates/order/order_cart.html:75
 msgid "Click menu items to fill the cart"
-msgstr "Dați click pe articole din meniu pentru a umple coșul"
+msgstr "Click pe articole din meniu pentru a umple coșul"
 
 #: templates/order/order_cart.html:80 templates/order/order_div.html:89
 msgid "Subtotal"
@@ -1697,9 +1697,7 @@ msgstr "Nu Stii ce vrei să mănânci astăzi"
 
 #: templates/restaurant/index.html:99
 msgid "Welcome to the weel of fortune ! Click on the dish to START."
-msgstr ""
-"Bine ați venit la roata norocului! Dați click pe farfurie pentru "
-"START."
+msgstr "Bine ați venit la roata norocului! Click pe farfurie pentru START."
 
 #: templates/restaurant/invoice.html:22
 msgid "Sorry, no orders for this restaurant"

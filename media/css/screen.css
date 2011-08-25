@@ -2776,11 +2776,14 @@ body {
   color: black;
   display: block;
   float: left;
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 12px;
+}
+/* line 991, ../sass/screen.sass */
+#roata .descmeniu p {
+  display: inline;
 }
 
-/* line 995, ../sass/screen.sass */
+/* line 996, ../sass/screen.sass */
 #avatarstuff ul {
   list-style: none;
 }
@@ -2790,7 +2793,7 @@ body {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 997, ../sass/screen.sass */
+/* line 998, ../sass/screen.sass */
 #avatarstuff li {
   height: 70px;
 }
