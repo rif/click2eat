@@ -4,6 +4,7 @@
 @import "compass/css3/text-shadow"
 @import "compass/css3/border-radius"
 @import "compass/typography/lists"
+@import "compass/typography/links"
 
 +blueprint
 +blueprint-utilities
@@ -331,73 +332,6 @@ body
     position: absolute
     right: -79px
     top: -29px
-
-/*                            ROATA prima pagina */
-
-#roata
-  background: url("../images/template/bgroata.png") no-repeat
-  height: 300px
-  width: 460px
-  margin-top: -17px
-  position: relative
-  margin-bottom: 10px
-  float: right
-  .rtitlu
-    float: left
-    color: #fff
-    background: #3f3709
-    padding: 2px 10px 2px 5px
-    font-size: 35px
-    line-height: 36px
-    margin: -23px 0px 0px 20px
-  .text
-    color: #252d0c
-    line-height: 22px
-    margin: 10px 0 2px 20px
-    font-size: 24px
-  .textmic
-    font-size: 16px
-  .startroata
-    background: url("../images/template/farfurieroata.png") no-repeat
-    display: block
-    width: 190px
-    height: 190px
-    margin: 5px 0 0 25px
-    float: left
-  .rezultat
-    background: url("../images/template/roatabgm.png") no-repeat
-    width: 219px
-    height: 58px
-    position: absolute
-    bottom: 50px
-    right: 20px
-  .comandam
-    clear: both
-    font-size: 16px
-    a
-      color: #000
-      text-decoration: underline
-  .rezultat
-    color: #fff
-    .rez1
-      float: left
-      margin: 5px 0px 5px 10px
-    .rez2
-      clear: both
-      float: left
-      margin: 5px 0px 5px 10px
-    .rezpret
-      font-size: 40px
-      float: right
-      line-height: 5px
-      margin: 0px 10px 0px 0px
-  .descmeniu
-    color: #000
-    display: block
-    float: left
-    font-size: 18px
-    line-height: 20px
-    margin: 66px 0 0 8px
 
 /*                            CONTENT AREA generic */
 
@@ -992,52 +926,71 @@ body
     color: #a3a089
     line-height: 15px
 
-/*    LUCKY PLATE */
- 
-#lucky_plate_text
-  float: left
-  width: 300px
-  padding: 50px 0 0 0
+/*                            ROATA prima pagina */
 
-#lucky_plate
+#roata
+  background: url("../images/template/bgroata.png") no-repeat
+  height: 300px
+  width: 460px
+  margin-top: -17px
+  position: relative
+  margin-bottom: 10px
   float: right
+  .rtitlu
+    float: left
+    color: #fff
+    background: #3f3709
+    padding: 2px 10px 2px 5px
+    font-size: 34px
+    line-height: 36px
+    margin: -23px 0px 0px 20px
+  .text
+    color: #252d0c
+    line-height: 22px
+    margin: 10px 0 2px 20px
+    font-size: 24px
+  .textmic
+    font-size: 16px
   #plate
-    width: 345px
-    height: 347px
     &.start
-      background: url("../images/template/lucky_plate_start.png")
+      background: url("../images/template/farfurieroata.png") no-repeat
     &.processing
-      background: url("../images/template/lucky_plate_processing.gif")
-    &.generic
-      background: url("../images/template/lucky_plate_generic.png")
-  #control
-    position: relative
-    width: 362px
-    height: 171px
-    background: url("../images/template/lucky_plate_controls.png")
-    margin: -178px 0 0 -25px
-    #event
-      position: absolute
-      left: 125px
-      bottom: 0
-      width: 100px
-      height: 22px
-      text-align: center
-      color: #ffffff
+      background: url("../images/template/farfurieroata_invartita.gif") no-repeat
+    display: block
+    width: 190px
+    height: 190px
+    margin: 5px 0 0 25px
+    float: left
+  .rezultat
+    background: url("../images/template/roatabgm.png") no-repeat
+    width: 219px
+    height: 58px
+    position: absolute
+    bottom: 50px
+    right: 20px
+  .comandam
+    clear: both
+    font-size: 17px
+    a
       font-weight: bold
-      background: url("../images/template/lucky_plate_event_gradient.png")
-      cursor: pointer
-  #selected_plate
-    width: 180px
-    padding: 5px
-    margin: -180px 0 0 76px
-    background-color: #99cc00
-    text-align: center
-    color: #ffffff
-    font-weight: bold
-    border-radius: 1em
-    -moz-border-radius: 1em
-    -webkit-border-radius: 1em
+      +unstyled-link
+      +link-colors(#562019, #6c6c6c, red, #562019,  #6c6c6c)
+      +hover-link
+      flush: right
+  .rezultat
+    color: #fff
+    .rezpret
+      font-size: 40px
+      float: right
+      margin: 0px 10px 0px 0px
+  .descmeniu
+    color: #000
+    display: block
+    float: left
+    font-size: 18px
+    line-height: 20px
+
+
 #avatarstuff
   ul
     +no-bullets

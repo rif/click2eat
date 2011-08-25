@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<div class="descmeniu">
+{{ motd.name }}
+</div>
+<div class="rezultat">
+  <div class="rezpret">
+    <span class="rezultatpret">{{motd.price}}</span> {% trans 'RON' %}
+  </div>
+  <div class="comandam">
+  	{{command_link|safe}}
+  </div>
+</div>
