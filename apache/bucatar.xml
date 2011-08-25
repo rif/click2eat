@@ -1,0 +1,10 @@
+<uwsgi>
+    <socket>127.0.0.1:9001</socket>
+    <pythonpath>/home/rif/.virtualenvs/bucatar/lib/python2.7/site-packages/</pythonpath>
+    <pythonpath>/home/www-data/bucatar/</pythonpath>
+    <pythonpath>/home/www-data/</pythonpath>
+    <env>DJANGO_SETTINGS_MODULE=bucatar.settings</env>
+    <app mountpoint="/">
+        <script>wsgihandler</script>
+    </app>
+</uwsgi>
