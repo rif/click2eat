@@ -31,7 +31,7 @@
                     $(".buc", row).text(resp + " x ");
                 }
                 $("#{{cartname}}_subtotal").load($("#{{cartname}}_subtotal").attr("href"));
-		$("#order-total-amount").load("{% url order:get_total_amount order.id %}");
+		            $("#order-total-amount").load("{% url order:get_total_amount order.id %}");
             });
             e.preventDefault();
         });
