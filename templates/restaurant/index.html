@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load cache %}
 {% load i18n %}
 
 {% block style %}
@@ -40,16 +40,7 @@
 {% endblock %}
 
 {% block main_area %}
-  <div id="messages">
-    {% if messages %}
-    {% for message in messages %}
-    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-      {{ message }}
-      <a href="#" class="messages-close-link" target="_self"><img class="close_btn" src="{{ STATIC_URL }}images/template/close_btn.png" alt=""/></a>
-    </div>
-    {% endfor %}
-    {% endif %}
-  </div><!-- messages -->  
+  {% include 'messages.html'%}
   <div id="orderrating">
     {% with user.get_profile.get_not_rated as order_list %}
     {% if order_list.exists %}
@@ -88,6 +79,7 @@
   </div><!-- primapagina -->
 {% endblock %}
 {% block home_content %}
+  {% cache 300 home %}
   <div id="tabla" class="span-7"></div><!-- tabla -->
   <div id="roata" class="span-9 last">
     <div class="rtitlu">
@@ -120,4 +112,5 @@
       </div>
     </div>
   </div><!-- roata -->
+  {% endcache %}
 {% endblock %}

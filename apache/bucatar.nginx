@@ -24,8 +24,8 @@ server {
                 uwsgi_param     UWSGI_SCHEME $scheme;
                 uwsgi_param     SERVER_SOFTWARE    nginx/$nginx_version;
         }
-       error_page 500 502 503 504 /500.html;
-      location = /500.html {
-           root /home/www-data/bucatar/templates;
-      }
+       	error_page 500 502 503 504 /500.html;
+      	location = /500.html {
+           root /home/www-data/bucatar/templates/;
+      	}
 }
