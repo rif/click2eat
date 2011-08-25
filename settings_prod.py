@@ -21,6 +21,7 @@ CACHES = {
         },
     },
 }
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ustest@gmail.com'
 EMAIL_HOST_PASSWORD = 'greta.1'
