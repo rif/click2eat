@@ -24,6 +24,7 @@ from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import Bonus
 
+
 def __get_current_order(request, unit):
     if not request.user.is_authenticated():
         return None
@@ -71,9 +72,9 @@ def list_unit(request, unit_id):
 def add_item(request, item_id, cart_name):
     if cart_name.startswith("cart-"):
         cart_name = cart_name.split("cart-")[1]
-    item = get_object_or_404(Item, pk=item_id)
     try:
-        current_order = __get_current_order(request, item.unit)
+        item = Item.objects.select_related('item_group').get(pk=item_id)
+        current_order = __get_current_order(request, item.item_group.unit)
         if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
         if cart_name == '': cart_name = request.user.username
         order_item = OrderItem.objects.filter(order=current_order).filter(item=item).filter(cart=cart_name)
@@ -91,9 +92,9 @@ def add_item(request, item_id, cart_name):
 def add_topping(request, master_id, item_id, cart_name):
     if cart_name.startswith("cart-"):
         cart_name = cart_name.split("cart-")[1]
-    item = get_object_or_404(Item, pk=item_id)
     try:
-        current_order = __get_current_order(request, item.unit)
+        item = Topping.objects.select_related('topping_group').get(pk=item_id)
+        current_order = __get_current_order(request, item.topping_group.unit)
         if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
         if cart_name == '': cart_name = request.user.username
         master_item = OrderItem.objects.filter(order=current_order).filter(item__id=master_id).filter(cart=cart_name)

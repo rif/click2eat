@@ -65,7 +65,6 @@
 function cartSelection(){
     $(".cart-name").unbind("click");
     $(".cart-name").click(function(e){
-	console.log("click");
 	$(".cart").removeClass("selected-cart");
 	$(this).parent().addClass("selected-cart");
 	e.preventDefault();
@@ -74,7 +73,7 @@ function cartSelection(){
 
 function load_order(){
     $(".cart-content").each(function(){
-	$(this).load("/order/get_cart/" + {{ order.id }} + "/" + $(this).prevAll("a.cart-name").text());
+      $(this).load("/order/get_cart/" + {{ order.id }} + "/" + $(this).prevAll(".cart-name").text());
     });
 }
 
