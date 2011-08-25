@@ -1,6 +1,7 @@
 {% load i18n %}
+{% load cache %}
 
-{% if order  and object %} {# we are in unit_detail main content #}
+{% if order and object %} {# we are in unit_detail main content #}
 <div id="sidebar2">
   <div id="sidebar2wrapper">
     <span class="comanda">{% trans 'MY ORDER' %}</span>
@@ -43,6 +44,7 @@
 </div><!-- sidebar2wrapper -->
 </div><!-- sidebar2 -->
 {% else %}
+{% cache 3600 sidebar %}
 <div id="sidebar">
   <div id="boxmeniusidebar">
     <div class="text_specialitate">
@@ -60,5 +62,5 @@
     </div>
   </div>
 </div><!-- sidebar -->
-
+{% endcache %}
 {% endif %}
