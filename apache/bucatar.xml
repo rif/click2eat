@@ -1,5 +1,5 @@
 <uwsgi>
-    <socket>127.0.0.1:9001</socket>
+    <socket>/tmp/bucatar_uwsgi.sock</socket>
     <pythonpath>/home/rif/.virtualenvs/bucatar/lib/python2.7/site-packages/</pythonpath>
     <pythonpath>/home/www-data/bucatar/</pythonpath>
     <pythonpath>/home/www-data/</pythonpath>
@@ -7,4 +7,5 @@
     <app mountpoint="/">
         <script>wsgihandler</script>
     </app>
+    <vacuum>True</vacuum>
 </uwsgi>
