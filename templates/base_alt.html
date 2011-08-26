@@ -84,9 +84,7 @@
 		{% block scripts %}{% endblock %}
 	</head>
 	<body>
-		{% cache 3600 header request.user.username %}
 		{% include 'header.html'%}
-		{% endcache %}
 		<div class="container">
 			{% cache 300 reclame %}
 			{% include 'reclame.html' %}
@@ -106,9 +104,7 @@
 			</div>
 			{% block home_content %}{% endblock %}
 		</div>
-		{% cache 86400 footer %}
 		{% include 'footer.html' %}
-		{% endcache %}
 	</body>
 	<script>var _gaq=[['_setAccount','UA-10073547-4'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </html>

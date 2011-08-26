@@ -1,6 +1,7 @@
 {% load i18n %}
 <div id="footer">
     <div id="footerwrapper">
+      {% cache 86400 footer LANGUAGE_CODE %}
       <ul>
         <li class="primul"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/whatis/"><span class="footertextmare">{% trans 'what is'|upper %}</span><br/><span class="footertextmic">CLICK 2 EAT</span></a></li>
         <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/howorder/"><span class="footertextmare">{% trans 'how do I'|upper %}</span><br/><span class="footertextmic">{% trans 'order'|upper %}</span></a></li>
@@ -14,6 +15,7 @@
       <p class="footertext">
       {% trans 'Click2Eat is a registered trademark. All rights reserved. All materials presented on this site are protected by copyright law.' %}.
       </p>
+      {% endcache %}
          <span class="right" id="langs">
 			{% csrf_token %}
 			{% for lang in LANGUAGES %} <a <href="" class="{{ lang.0 }}"><img src="{{ STATIC_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
