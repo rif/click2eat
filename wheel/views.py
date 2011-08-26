@@ -9,8 +9,6 @@ from menu.models import MenuOfTheDay
 
 @render_to('wheel/random_daily_menu.html')
 def fortune_ajax(request):
-    if not request.user.is_authenticated():
-        return HttpResponse(_('Please login!'))
     motd = MenuOfTheDay.objects.filter(day = date.today()).order_by('?')
     if motd.exists():
         motd = motd[0]
