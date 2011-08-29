@@ -15,12 +15,12 @@ class Bonus(models.Model):
     reason = models.CharField(_('reason'), max_length=2, choices=REASON_CHOICES)
     
     def set_rating_bonus(self):
-	self.reason = 'RT'
-	self.points = 1
+      self.reason = 'RT'
+      self.points = 1
 
     def set_friend_bonus(self):
-	self.reason = 'FR'
-	self.points = 1
+      self.reason = 'FR'
+      self.points = 1
 
     class Meta:
       verbose_name = _('Bonus')

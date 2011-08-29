@@ -58,24 +58,17 @@
 		<span class="subtitlu"> {% trans 'Click2Eat fidelity program' %}</span>
 		<br/>
 		<span class="textmare">
-			{{ profile.user.get_full_name }}, {% trans 'you obtained' %}
-			<span class="special">{{ user.userprofile.get_bonus_points }}</span> {% trans 'points, which you can use for' %}
-			<span class="special">1</span> {% trans 'order free menu of the day' %}.
+			{% trans 'Till now you invited' %}
+			<span class="special">{{ user.userprofile.get_bonus_points }}</span> {% trans 'friends and gathered' %}
+			<span class="special">1</span> {% trans 'RON from the orders made by your friends' %}.
 		</span>
-		<br/>
-		{% trans "You don't have to pay the next menu of the day order :)" %}.
 		<br/>
 		<a class="button" href="{% url bonus:history %}"><span class="calendar icon"></span>{% trans 'Bonus history' %}</a>
 		<div class="boxverde">
 			<strong>{% trans 'Earn bonus points' %} :</strong>
-			<br/>
-			<strong>3 zile consecutive de comenzi</strong> pe www.click2eat.ro ( 6 puncte). Pana acum ai
-			<span class="special2">2</span> zile consecutive.
-			<br/>
-			<br/>
-			<br/>
-
-			<strong>{% trans 'Friends recomandation' %}</strong> ( 2 puncte/prieten care comanda cel putin o data de pe click2eat.ro).
+			<br />
+			<strong>{% trans 'Invite your friends'%} !</strong> {% trans 'You receive' %} <span class="special2">0,5%</span> {%trans 'from every order made by a friend invited by you.' %} 
+			{% trans 'The amount added from your friends orders can be used anytime to order products from our partners.' %}
 			<br/>
 			{% trans 'Invite a friend now. Add his/her email address' %}
 			<form action="ceva.hh" target="_self">
