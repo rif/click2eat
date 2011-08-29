@@ -4,18 +4,15 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from annoying.decorators import render_to
 from datetime import date
-from menu.models import MenuOfTheDay
+from menu.models import Item
 
 
-@render_to('wheel/random_daily_menu.html')
+@render_to('wheel/random_item.html')
 def fortune_ajax(request):
-    motd = MenuOfTheDay.objects.filter(day = date.today()).order_by('?')
-    if motd.exists():
-        motd = motd[0]
-        command_link = '<a onclick="addMotd(\'%(href)s\', \'%(redir)s\'); return false;" href="#">%(order_now)s</a>' % \
-            {'redir': reverse("restaurant:detail", args=[motd.unit.id]),
-             'href': reverse("order:add_motd", args=[motd.id, request.user.username]),
-             'order_now': _('Order this menu')}
-    else:
-        motd = _('No menu of the day defined!')
+    item = Item.objects.select_related('item_group').order_by('?')[0]
+    command_link = '<a onclick="addMotd(\'%(href)s\', \'%(redir)s\'); return false;" href="#">%(order_now)s</a>' % \
+            {'redir': reverse("restaurant:detail", args=[item.item_group.unit_id]),
+             'href': reverse("order:add_item", args=[item.id, request.user.username]),
+             'order_now': _('Order this Item')}
+    if not item: item = _('No item yet defined!')
     return locals()

@@ -39,14 +39,14 @@
         $("#plate").attr("class", "processing");
         $("#event").attr("disabled", true);
         $(this).oneTime(1000, function() {
-            $("#random-motd").load("{% url wheel:fortune_ajax %}");
+            $("#random-item").load("{% url wheel:fortune_ajax %}");
             $("#plate").attr("class", "start");
             $("#event").attr("disabled", false);
          });
       });
-      $("#random-motd").load("{% url wheel:fortune_ajax %}");
+      $("#random-item").load("{% url wheel:fortune_ajax %}");
   });
-  function addMotd(href, redir) {
+  function addItem(href, redir) {
        $.get(href, function(){
           window.location = redir;
        });
@@ -112,6 +112,6 @@
         <div id="plate" class="start"></div>
       </div>
     </div>
-    <div id="random-motd"></div>
+    <div id="random-item"></div>
   </div><!-- roata -->
 {% endblock %}
