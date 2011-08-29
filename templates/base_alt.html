@@ -86,7 +86,7 @@
 	<body>
 		{% include 'header.html'%}
 		<div class="container">
-			{% cache 300 reclame %}
+			{% cache 300 reclame LANGUAGE_CODE %}
 			{% include 'reclame.html' %}
 			{% endcache %}
 			{% block main_area %}
