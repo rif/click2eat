@@ -209,13 +209,13 @@ class Unit(models.Model):
         try:
             return self.schedule.is_open_at(checked_time)
         except:
-            return false
+            return False
 
     def is_open(self):
         try:
             return self.schedule.is_open()
         except:
-            return false
+            return False
 
 
     @models.permalink
