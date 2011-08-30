@@ -179,7 +179,7 @@ def send(request, unit_id):
             #give bonus to the friend
             initial_friend = order.user.get_profile().get_initial_friend()
             if initial_friend:
-                b = Bonus.objects.create(user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
+                b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
             messages.warning(request, _('Your order has been sent to the restaurant!'))
             send_mail('New Order',
                        render_to_string('order/mail_order_detail.html', {'order': order}, context_instance=RequestContext(request)),
