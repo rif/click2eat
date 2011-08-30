@@ -16,15 +16,15 @@
 	<tr class="platinum">
           <th>{% trans 'Received date' %}</th>
           <th>{% trans 'Points' %}</th>
-	  <th>{% trans 'Reason' %}</th>
+	  <th>{% trans 'From friend' %}</th>
 	  <th>{% trans 'Used' %}</th>
           <th>{% trans 'Used date' %}</th>
 	</tr>
 	{% for bonus in object_list %}
         <tr>
         <td class="align-center">{{ bonus.received_date }}</td>
-        <td class="align-center">{{ bonus.points }}</td>
-        <td class="align-center">{{ bonus.get_reason_display }}</td>
+        <td class="align-center">{{ bonus.money }}</td>
+        <td class="align-center">{{ bonus.from_user.get_full_name }}</td>
         <td class="align-center">{{ bonus.used|yesno }}</td>
         <td class="align-center">{% if bonus.used %}{{ bonus.used_date }}{% else %}-{% endif %}</td>        
         </tr>

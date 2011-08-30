@@ -148,7 +148,6 @@ function addCartName() {
 	<div id="last-orders" style="display:none"></div>
 	<div class="clear"></div>
 
-    <div id="paginarestaurant">
     <div class="title"><h1>{% trans 'Menu list'|upper %}</h1></div>
           <div class="establishment-menu">
             {% for itemgroup in object.itemgroup_set.iterator %}
@@ -198,7 +197,6 @@ function addCartName() {
 				    <div class="clear"></div>
 				    {% endif %}
           </div> <!-- estabilshment-menu -->
-	</div>
 	<br/><br/>
 </div><!-- paginarestaurant -->
 </div><!-- content_area -->

@@ -22,7 +22,7 @@ from restaurant.models import Unit, DeliveryType
 from menu.models import Item, MenuOfTheDay
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
-from bonus.models import Bonus
+from bonus.models import Bonus, BONUS_PERCENTAGE
 
 
 def __get_current_order(request, unit):
@@ -176,6 +176,10 @@ def send(request, unit_id):
                 order.desired_delivery_time = datetime.now()
             order.status = 'ST'
             order.save()
+            #give bonus to the friend
+            initial_friend = order.user.get_profile().get_initial_friend()
+            if initial_friend:
+                b = Bonus.objects.create(user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
             messages.warning(request, _('Your order has been sent to the restaurant!'))
             send_mail('New Order',
                        render_to_string('order/mail_order_detail.html', {'order': order}, context_instance=RequestContext(request)),
@@ -331,10 +335,6 @@ def feedback(request, order_id):
             new_rating.user = order.user
             new_rating.order = order
             new_rating.save()
-            # create bonus
-            b  = Bonus(user = order.user)
-            b.set_rating_bonus()
-            b.save()
             messages.add_message(request, messages.INFO, _('Thank you! Your feedback is very appreciated!'))
             return redirect('restaurant:index')
     else:

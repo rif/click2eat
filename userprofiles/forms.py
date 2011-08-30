@@ -31,11 +31,7 @@ class BucatarRegistrationBackend(DefaultBackend):
          if 'confirmation_key' in request.session.keys():
              confirmation_key = request.session['confirmation_key']
              ji = get_object_or_None(JoinInvitation, confirmation_key=confirmation_key)
-             if ji != None:
-                 ji.accept(new_user)
-                 b = Bonus(user = ji.from_user)
-                 b.set_friend_bonus()
-                 b.save()
+             if ji != None: ji.accept(new_user)
          return new_user
              
      def activate(self, request, activation_key):
