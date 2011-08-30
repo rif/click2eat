@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Sum
 from order.models import Order
-from friends.models import Friendship
+from friends.models import Friendship, JoinInvitation, Contact
 from bonus.models import Bonus
 from restaurant.models import Unit
 from django.core.validators import RegexValidator
@@ -91,10 +91,15 @@ class UserProfile(models.Model):
 
     def get_friends_list(self):
         return [f['friend'] for f in self.get_friends_iterator()]
+    
+    def get_initial_friend(self):
+        join_invitation = JoinInvitation.objects.filter(status=5).filter(contact__email=self.user.email)
+        if join_invitation.exists(): return join_invitation[0].from_user
+        return None
      
-    def get_bonus_points(self):
-	result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('points'))
-	return result['points__sum'] or 0
+    def get_bonus_money(self):
+        result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('money'))
+        return result['money__sum'] or 0
 
     @models.permalink
     def get_absolute_url(self):
