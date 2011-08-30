@@ -11,8 +11,8 @@ from menu.models import Item
 def fortune_ajax(request):
     item = Item.objects.select_related('item_group').order_by('?')[0]
     command_link = ''
-    if request.user.is_authenticated:
-    	command_link = '<a onclick="addItem(\'%(href)s\', \'%(redir)s\'); return false;" href="#">%(order_now)s</a>' % \
+    if request.user.is_authenticated():
+        command_link = '<a onclick="addItem(\'%(href)s\', \'%(redir)s\'); return false;" href="#">%(order_now)s</a>' % \
             {'redir': reverse("restaurant:detail", args=[item.item_group.unit_id]),
              'href': reverse("order:add_item", args=[item.id, request.user.username]),
              'order_now': _('Order this Item')}
