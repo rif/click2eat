@@ -79,7 +79,7 @@ $(function(){
 
 {% block content %}
 <div class="content_area">
-  <h1>{{ object }}</h1>
+  <h2>{{ object }}</h2>
   <ul>
     <li>{% trans 'Primary' %}: {{ object.primary|yesno }}</li>
     <li>{% trans 'City' %}: {{ object.city }}</li>
@@ -92,7 +92,8 @@ $(function(){
       {% if object.ap_number %}{% trans 'apt.' %} {{ object.ap_number }}{% endif %}</li>
     {% if object.additional_info %}<li>{% trans 'Additional information' %}: {{ object.additional_info }}</li>{% endif %}
   </ul>
-  <a href="{% url profiles_profile_detail user %}">Back</a> <a href="{% url userprofiles:update_address object.id %}">Edit</a>
+  <a class="button" href="{% url profiles_profile_detail user %}"><span class="leftarrow icon"></span>{% trans 'Back' %}</a>
+  <a class="button" href="{% url userprofiles:update_address object.id %}"><span class="pen icon"></span>{% trans 'Edit' %}</a>
 
   <h2>{% trans 'Did we pinpoint your address?' %}</h2>
   <p>{% trans 'If not, please let us know by clicking' %} <a href="{% url userprofiles:geolocation_error object.id %}">{% trans 'here' %}</a>.</p>
