@@ -45,7 +45,7 @@ class DeliveryAddress(models.Model):
             if da.count() > 0:
               da.update(primary=False)
         if(self.perform_geolocation):
-            y = geocoders.Yahoo('a8K3iUXV34FvKG81x7uh1Kd1EpcZoopG8cgSlVJpAxIj.fEzzfs23tqewvQ-')
+            y = geocoders.Yahoo('dj0yJmk9RUttbDF4S3BmbFo3JmQ9WVdrOVJXSjRaVkpPTm1VbWNHbzlNVEl5TWpJMU9EZzJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1hZA--')
             nb = re.findall(r'(\d+)', self.number)
             if len(nb) > 0: nb = nb[0] 
             else: nb = self.number
@@ -96,6 +96,9 @@ class UserProfile(models.Model):
         join_invitation = JoinInvitation.objects.filter(status=5).filter(contact__email=self.user.email)
         if join_invitation.exists(): return join_invitation[0].from_user
         return None
+    
+    def get_invited_friends(self):
+        return JoinInvitation.objects.filter(status=5).filter(from_user=self.user).count()
      
     def get_bonus_money(self):
         result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('money'))
