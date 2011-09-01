@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load uni_form_tags %}
 
 {% block title %}{% trans 'Invite friend' %}{% endblock %}
 {% block description %}{% trans "Here you can invite your friendts to join the site. You'll get bonus points for free meal if they join :)" %}{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css" />
+{% endblock %}
 
 {% block content %}
 <div class="content_area">
   <div class="title"><h1 class="light_green">{% trans 'Invite friend' %}</h1></div><br>
-  {% include 'userprofiles/invite_friend_form.html' %}  
-  <div class="clear"></div>
+  	<form class="uniForm" id="invite-form" method="POST" action="{% url userprofiles:invite_friend %}">{% csrf_token %}
+    	{{ form|as_uni_form }}
+    	<button class="button" type="submit">{% trans 'Invite friend' %}</button>
+	</form>
+  <br />
+  <a class="button" href="{% url profiles_profile_detail user.username %}"><span class="leftarrow icon"></span>{% trans 'Back' %}</a>
 </div>
 {% endblock %}

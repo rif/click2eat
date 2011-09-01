@@ -96,10 +96,11 @@ $(function(){
 
   <h2>{% trans 'Did we pinpoint your address?' %}</h2>
   <p>{% trans 'If not, please let us know by clicking' %} <a href="{% url userprofiles:geolocation_error object.id %}">{% trans 'here' %}</a>.</p>
+  <h3>{% trans 'You can try to find addresses here' %}</h3>
   <form action="#" onsubmit="showAddress(this.address.value); return false">
     <p>
       <input type="text" size="60" name="address">
-      <input class="form_button" type="submit" value="{% trans 'Go' %}!">
+      <button class="button" type="submit">{% trans 'Go' %}</button>
     </p>
     <div id="map_canvas" style="width: 500px; height: 300px"></div>
   </form>

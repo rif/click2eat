@@ -10,34 +10,6 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css" />
 {% endblock %}
 
-{% block scripts %}
-<script type="text/javascript">
-	function handleinviteform() {
-		$("#invite-form").submit( function() {
-			$.post("{% url userprofiles:invite_friend %}", $(this).serialize(), function(data) {
-				if(data == 'ok') {
-					window.location.reload();
-				} else {
-					$("#invite-placeholder").html(data);
-					handleinviteform();
-				}
-			}
-			);
-			return false;
-		});
-	}
-
-	$( function() {
-		$("#invite-link").click( function(e) {
-			$("#invite-placeholder").load($(this).attr("href"), function() {
-				handleinviteform();
-			});
-			e.preventDefault();
-		});
-	});
-</script>
-{% endblock %}
-
 {% block content %}
 {% if not profile %}
 <div class="error">
