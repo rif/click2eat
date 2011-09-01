@@ -42,7 +42,7 @@ class ItemGroup(MultilingualModel):
   class Meta:
       translation = ItemGroupTranslation
       multilingual = ['name']
-      ordering = ['index']
+      ordering = ['unit__id','index']
       verbose_name = _('Item Group')
       verbose_name_plural = _('Item Groups')
 
