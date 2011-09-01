@@ -1,7 +1,0 @@
-{% load i18n %}
-{% load uni_form_tags %}
-
-<form class="uniForm" id="invite-form" method="POST" action="{% url userprofiles:invite_friend %}">{% csrf_token %}
-    {{ form|as_uni_form }}
-    <input class="form_button" type="submit" value="{% trans 'Invite friend' %}">
-</form>

@@ -17,6 +17,7 @@ from annoying.utils import HttpResponseReload
 from userprofiles.forms import InviteFriendForm
 from profiles import views
 from friends.models import JoinInvitation
+from annoying.decorators import render_to
 
 @login_required
 def profile_detail(request, username):
@@ -54,13 +55,13 @@ def mark_geolocation_error(request, object_id):
     return HttpResponseReload(request)
 
 @login_required
+@render_to('userprofiles/invite_friend.html')
 def invite_friend(request):
     if request.method == 'POST':
         form = InviteFriendForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            print email, message
             if message.strip() == "":
                 message = _('Join me for lunch!')
             # validations:
@@ -74,25 +75,12 @@ def invite_friend(request):
                 messages.error(request, _('There is already a register user with this email!'))
                 return redirect('profiles_profile_detail', username=request.user.username)
             # end validations
-            print 'end validation'
             JoinInvitation.objects.send_invitation(request.user, email, message)
-            print 'show messages'
             messages.info(request, _('The invitation email was send to %s.') % email)
-            print 'is ajaz', request.is_ajax()
-            if request.is_ajax():
-                return HttpResponse('ok')
-            else:
-                return redirect('profiles_profile_detail', username=request.user.username)
+            return redirect('profiles_profile_detail', username=request.user.username)
     else:
         form = InviteFriendForm()
-    if request.is_ajax():
-        return render_to_response('userprofiles/invite_friend_form.html', {
-            'form': form,
-        }, context_instance=RequestContext(request))
-    else:
-        return render_to_response('userprofiles/invite_friend.html', {
-            'form': form,
-        }, context_instance=RequestContext(request))
+    return {'form': form}
 
 
 def invite_accept(request, confirmation_key):
