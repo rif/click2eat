@@ -58,8 +58,15 @@ class ToppingGroup(models.Model):
       verbose_name_plural = _('ToppingGroup')
 
 class MerchandiseCategoryGroup(models.Model):
-    index = models.IntegerField(_('index'))
-    name = models.CharField(_('name'), max_length=50)
+  index = models.IntegerField(_('index'))
+  name = models.CharField(_('name'), max_length=50)
+
+  def __unicode__(self):
+    return self.name
+
+  class Meta:
+    verbose_name = _('Merchandise Category Group')
+    verbose_name_plural = _('Merchandise Category Groups')
 
 class ItemTranslation(models.Model):
   language = models.ForeignKey('Language')

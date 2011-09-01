@@ -18,6 +18,7 @@ from userprofiles.forms import InviteFriendForm
 from profiles import views
 from friends.models import JoinInvitation
 from annoying.decorators import render_to
+from django.core.urlresolvers import reverse
 
 @login_required
 def profile_detail(request, username):
@@ -104,7 +105,7 @@ def limited_delete_object(*args, **kwargs):
     addr = get_object_or_404(model, pk=object_id)
     if addr.user_id != request.user.id:
         raise PermissionDenied()
-    return delete_object(*args, **kwargs)
+    return delete_object(*args, post_delete_redirect=reverse('profiles_profile_detail', kwargs={'username':request.user.username}), **kwargs)
 
 @login_required
 def limited_object_detail(*args, **kwargs):
