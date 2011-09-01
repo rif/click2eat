@@ -102,10 +102,7 @@ function getAvailableToppings() {
 function addCartName() {
     $("#cart-name-form").submit(function() {
         var $action = $("#cart-name-form").attr("action");
-        $.post($action,
-               { csrfmiddlewaretoken:  $("input[name='csrfmiddlewaretoken']").val(),
-                 name:                   $("#id_name").val(),
-               }, function(data) {
+        $.post($action, $(this).serialize(), function(data) {
 		   $(".cart").removeClass("selected-cart");
                    $("#new-cart").replaceWith(data);
 		   cartSelection();

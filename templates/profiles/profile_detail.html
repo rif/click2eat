@@ -14,11 +14,7 @@
 <script type="text/javascript">
 	function handleinviteform() {
 		$("#invite-form").submit( function() {
-			$.post("{% url userprofiles:invite_friend %}", {
-				csrfmiddlewaretoken:  $("input:first").val(),
-				email:                   $("#id_email").val(),
-				message:                   $("#id_message").val()
-			}, function(data) {
+			$.post("{% url userprofiles:invite_friend %}", $(this).serialize(), function(data) {
 				if(data == 'ok') {
 					window.location.reload();
 				} else {
@@ -59,10 +55,10 @@
 		<br/>
 		<span class="textmare">
 			{% trans 'Till now you invited' %}
-			<span class="special">{{ user.userprofile.get_bonus_money }}</span> {% trans 'friends and gathered' %}
-			<span class="special">1</span> {% trans 'RON from the orders made by your friends' %}.
+			<span class="special">{{ user.userprofile.get_invited_friends }}</span> {% trans 'friends and gathered' %}
+			<span class="special">{{ user.userprofile.get_bonus_money }} {% trans 'RON' %}</span> {% trans 'from the orders made by your friends' %}.
 		</span>
-		<br/>
+		<br/></br/>
 		<a class="button" href="{% url bonus:history %}"><span class="calendar icon"></span>{% trans 'Bonus history' %}</a>
 		<div class="boxverde">
 			<strong>{% trans 'Earn bonus points' %} :</strong>
@@ -163,9 +159,6 @@
 			<strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}
 			<br/>
 			<strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}
-			<br/>
-			<strong>{% trans 'Bonus points' %}:</strong>{{ profile.get_bonus_points }}
-			<a class="button" href="{% url bonus:history %}"><span class="calendar icon"></span>{% trans 'Bonus history' %}</a>
 			<br/>
 			{% if user == profile.user %}
 			<a class="button lefta" href="{% url profiles_edit_profile %}"><span class="pen icon"></span>{% trans 'Edit' %}</a>
