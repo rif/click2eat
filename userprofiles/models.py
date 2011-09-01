@@ -23,7 +23,7 @@ class DeliveryAddress(models.Model):
     floor = models.SmallIntegerField(_('floor'), null=True, blank=True)
     ap_number = models.SmallIntegerField(_('apartment number'), null=True, blank=True)
     additional_info = models.TextField(_('additional info'), null=True, blank=True)
-    geolocated_address = models.CharField(_('geolocated address'), max_length=200, editable=False)
+    geolocated_address = models.CharField(_('geolocated address'), max_length=200, editable=False, null=True, blank=True)
     latitude = models.FloatField(_('latitude'), default=0)
     longitude = models.FloatField(_('longitude'), default=0)
     geolocation_error = models.BooleanField(_('geolocation error'), editable=False)
