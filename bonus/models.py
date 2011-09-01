@@ -6,7 +6,7 @@ BONUS_PERCENTAGE = 0.5
 
 class Bonus(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'))
-    from_user = models.ForeignKey(User, verbose_name=_('from_user'), related_name='bonus_given_set')
+    from_user = models.ForeignKey(User, verbose_name=_('from user'), related_name='bonus_given_set')
     received_date = models.DateTimeField(_('received date'), auto_now_add=True, editable=False)
     used_date = models.DateTimeField(_('used date'), editable=False, null=True)
     used = models.BooleanField(_('used'))

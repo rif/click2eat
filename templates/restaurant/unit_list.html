@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block content %}
-{% cache 300 unitlist %}
+{% cache 300 unitlist LANGUAGE_CODE %}
 <div id="paginarestaurant">
 	<div class="title">
 		<h1 class="light_orange">{% trans 'Restaurant list'|upper %}</h1>
