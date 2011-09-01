@@ -56,6 +56,8 @@ class ItemAdmin(admin.ModelAdmin):
     list_filter = ['item_group']
     inlines = [ItemTranslationInline]
     actions = ['clone_objects']
+    #raw_id_fields = ('item_group',)
+    #related_lookup_fields = {'fk': ['related_fk'],}
     fieldsets = (
         (None, {
             'fields': ('internal_name', 'index', ('name_def', 'description_def'), ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
