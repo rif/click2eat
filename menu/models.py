@@ -54,6 +54,7 @@ class ToppingGroup(models.Model):
       return self.internal_name + ' ' + self.unit.name
 
   class Meta:
+      ordering = ['unit__id']
       verbose_name = _('ToppingGroup')
       verbose_name_plural = _('ToppingGroup')
 
