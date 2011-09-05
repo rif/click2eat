@@ -42,6 +42,14 @@
 				"buffer_size": 9467,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
+			"settings":
+			{
+				"buffer_size": 3325,
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -244,7 +252,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -327,6 +335,33 @@
 						},
 						"translation.x": 0,
 						"translation.y": 153,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
+					"settings":
+					{
+						"buffer_size": 3325,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1911,
+								1911
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0,
+						"translation.y": 660,
 						"zoom_level": 1
 					},
 					"type": "text"

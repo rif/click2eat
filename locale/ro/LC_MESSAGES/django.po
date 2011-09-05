@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-01 16:40+0300\n"
-"PO-Revision-Date: 2011-09-01 16:40\n"
+"PO-Revision-Date: 2011-09-05 16:11\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1554,7 +1554,7 @@ msgstr "Prieteni"
 
 #: templates/profiles/profile_detail.html:187
 msgid "Sorry, no friends here :("
-msgstr "Ne pare rău, nu v-ați făcut prieteni aici :("
+msgstr "Ne pare rău, nu v-ați făcut încă prieteni aici :("
 
 #: templates/profiles/profile_detail.html:193
 msgid "Invite a friend now"
