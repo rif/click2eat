@@ -186,6 +186,7 @@ body
       font-size: 35px
       line-height: 36px
       margin: -23px 0px 0px 25px
+      text-transform:uppercase
 
 #primapagina
   .titlu, #titletabla
@@ -347,6 +348,8 @@ body
   padding-bottom: 15px
   font-family: times New Roman
   font-size: 18px
+  a
+    +text-shadow
 
 #content_area_bottom
   background: url("../images/template/content-bottom.png") no-repeat
@@ -363,6 +366,7 @@ body
     color: #562019
     font-size: 23px
     letter-spacing: -0.5px
+    text-transform:uppercase
   a
     text-decoration: none
   .category
@@ -567,6 +571,7 @@ body
   .titlu
     font-size: 25px
     color: #562019
+    text-transform: uppercase
   label
     float: left
     font-weight: normal
@@ -637,46 +642,12 @@ body
     margin-top: 16px
   input[type=file]
     margin-top: 19px
-
-/*                            Cum comand */
-
-.cumcomand
-  padding: 10px 0px 0px 20px
-  .titlu
-    font-size: 25px
-    color: #562019
-  .subtitlu
-    font-size: 16px
-    font-style: italic
-    color: #793327
-    font-weight: bold
-  .text
-    font-size: 14px
-    line-height: 16px
+  a
     a
-      color: #2c2c2c
-  .first, .second, .third, .fourth, .fifth, .last
-    width: 100px
-    display: block
-    float: left
-  .first
-    margin-left: 15px
-  .second
-    margin-left: 40px
-  .third
-    margin-left: 25px
-  .fourth
-    margin-left: 7px
-  .fifth
-    margin-left: 15px
-  .last
-    margin-left: 25px
-    width: 50px
-  a.linkcat
-    text-decoration: none
-    color: #9c1d19
-  a.linkcat:hover
-    font-weight: bold
+    font-size: 1.1em
+    +unstyled-link
+    +link-colors(#0066CC, #0099ff, indianred, #0066CC, #0099ff)
+    +hover-link
 
 /*                            CONTUL MEU */
 
@@ -688,6 +659,7 @@ body
     font-family: "Times New Roman", Times, serif
     font-size: 25px
     color: #562019
+    text-transform: uppercase
   .subtitlu
     font-family: "Times New Roman", Times, serif
     font-size: 16px
@@ -769,8 +741,6 @@ body
       margin: 0px 8px 0px 8px
     .right
       color: #000
-  .datecont a
-    color: #57211a
 
 #avatar
   float: right
@@ -875,18 +845,6 @@ body
       color: #69291d
       border: 1px solid #858585
       padding: 1px
-    .btncomanda
-      background: url("../images/template/sidebartrimite.png") no-repeat
-      width: 150px
-      height: 28px
-      margin-top: 20px
-      display: block
-    a.btncomanda
-      text-decoration: none
-    .btncomanda .textbtn
-      padding: 5px 0px 0px 10px
-      color: #fff
-      display: block
 
 /*                            FOOTER */
 

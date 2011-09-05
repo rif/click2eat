@@ -45,7 +45,7 @@
 
   <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
-    <input class="form_button" type="submit" value="{% trans 'Yes, send the order' %}" /> <a href="{% url restaurant:detail order.unit.id %}">{% trans 'Return to menu selection' %}</a>
+    <button class="big" type="submit">{% trans 'Yes, send the order' %}</button> <a href="{% url restaurant:detail order.unit.id %}">{% trans 'Return to menu selection' %}</a>
   </form>
 </div>
 {% endblock %}

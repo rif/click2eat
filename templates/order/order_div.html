@@ -46,9 +46,8 @@
 </div> <!-- content_area -->
 
 <div class="content_area">
-    <div class="title"><h1 class="light_orange">{% trans 'Order Items' %}</h1></div>
+    <div class="title"><h2> {% trans 'Cart items' %}</h2></div>
     <div id="cart">
-        <h1>{% trans 'Cart items' %}</h1>
         {% for cartname, oil in order.get_carts.items %}
             <table>
                 <tr>
