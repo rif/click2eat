@@ -18,7 +18,7 @@ def menu(request, unit_id):
 
 @render_to('mobile/search.html')
 def search(request):
-        items = Item.objects.select_related('tags')
+        items = Item.objects.select_related('tags', 'item_group', 'item_group__unit')
         return locals()
 
 @render_to('mobile/item_detail.html')
