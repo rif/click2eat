@@ -11,4 +11,5 @@ urlpatterns = patterns('',
                        url(r'^menu/(?P<unit_id>\d+)/$', views.menu, name='menu'),
                        url(r'^search/$', views.search, name='search'),
                        url(r'^itemdetail/(?P<item_id>\d+)/$', views.item_detail, name='item-detail'),
+                       url(r'^motd/$', views.motd, name='motd'),
                        )

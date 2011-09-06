@@ -1,0 +1,20 @@
+{% extends 'page.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Menu of the Day' %}{% endblock %}
+{% block pagetitle %}{% trans 'Menu of the Day' %}{% endblock %}
+{% block description %}{% trans 'List of all special menus for today' %}{% endblock %}
+{% block pageid %}motd{% endblock %}
+
+{% block content %}
+<ul data-role="listview" data-inset="true" {% if motds.exists %}data-filter="true"{% endif %}>
+{% for motd in motds %}
+<li><a href="{% url mobile:item-detail motd.id %}">
+<h1>{{ motd.name }}</h1>
+<p><b>{{ motd.unit.name }}</b>: {{ motd.description|safe }}</p>
+</a></li>
+{% empty %}
+<li>{% trans 'Sorry no special menus for today.' %}</li>
+{% endfor %}
+</ul>
+{% endblock %}
