@@ -23,7 +23,7 @@
 			"file": "/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 21148,
+				"buffer_size": 20366,
 				"line_ending": "Unix"
 			}
 		},
@@ -47,7 +47,7 @@
 			"file": "/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
 			"settings":
 			{
-				"buffer_size": 3325,
+				"buffer_size": 3276,
 				"line_ending": "Windows"
 			}
 		}
@@ -260,15 +260,15 @@
 					"file": "/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 21148,
+						"buffer_size": 20366,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1928,
-								1928
+								0,
+								0
 							]
 						],
 						"settings":
@@ -344,15 +344,15 @@
 					"file": "/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
 					"settings":
 					{
-						"buffer_size": 3325,
+						"buffer_size": 3276,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1911,
-								1911
+								0,
+								0
 							]
 						],
 						"settings":
