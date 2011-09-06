@@ -1,0 +1,19 @@
+{% extends 'page.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Search' %}{% endblock %}
+{% block pagetitle %}{% trans 'Search' %}{% endblock %}
+{% block description %}{% trans 'List of all menu items' %}{% endblock %}
+{% block pageid %}search{% endblock %}
+
+{% block content %}
+<ul data-role="listview" data-inset="true"  data-filter="true">
+{% for item in items %}
+<li><a href="{% url mobile:item-detail item.id %}">
+<h1>{{ item.name_def }}</h1>
+<p>{{ item.description_def }}</p>
+<p style="display: none;">{{ item.tags.all.values_list|first }}</p>
+</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
