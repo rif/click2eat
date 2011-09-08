@@ -5,7 +5,7 @@ server {
            root /home/www-data/bucatar/;
         }
          location / {
-                uwsgi_pass      unix:///tmp/bucatar_uwsgi.sock;
+                uwsgi_pass      unix:///var/run/uwsgi/bucatar/socket;
                 include         uwsgi_params;
                 uwsgi_param     UWSGI_SCHEME $scheme;
                 uwsgi_param     SERVER_SOFTWARE    nginx/$nginx_version;
