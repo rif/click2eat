@@ -1,0 +1,5 @@
+/* line 1, ../sass/mobile.sass */
+#cart-link .ui-icon-cart {
+  background-image: url(../images/icons/80-shopping-cart.png);
+  background-size: 18px 13px;
+}

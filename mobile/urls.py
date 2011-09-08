@@ -12,4 +12,6 @@ urlpatterns = patterns('',
                        url(r'^search/$', views.search, name='search'),
                        url(r'^itemdetail/(?P<item_id>\d+)/$', views.item_detail, name='item-detail'),
                        url(r'^motd/$', views.motd, name='motd'),
+                       url(r'^shop/(?P<item_id>\d+)/$', views.shop, name='shop'),
+                       url(r'^shoppingcart/(?P<unit_id>\d+)/$', views.shopping_cart, name='shopping-cart'),
                        )

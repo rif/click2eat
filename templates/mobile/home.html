@@ -12,23 +12,18 @@
     <img src="{{ STATIC_URL }}images/template/logo.png">
 
     <p>Hello from mobile click2eat.ro!</p>
-    {% if not user.is_authenticated %}
-    <a href="{% url mobile:login %}" data-role="button">{% trans 'Log in' %}</a>
-    {% endif %}
     <a href="{% url mobile:units %}" data-role="button">{% trans 'See all restaurants' %}</a>
     <a href="{% url mobile:search %}" data-role="button">{% trans 'Search' %}</a>
   <a href="{% url mobile:motd %}" data-role="button">{% trans 'Menu of the day' %}</a>
     </center>
   </div><!-- /content -->
 
-  <div data-role="footer" class="ui-bar" data-position="fixed">
-    <div data-role="controlgroup" data-type="horizontal">
+  <div data-role="footer" class="ui-bar" data-position="inline" data-position="fixed">
     {% if user.is_authenticated %}
-            <a href="{% url mobile:logout %}" class="ui-btn-right logout-button" data-icon="minus" title="Log Out of Your Account for Security"><span class="logout-wide">Logout: </span>{{ user.username }}</a>
+    <a href="{% url mobile:logout %}" class="ui-btn-right logout-button" data-icon="minus" title="Log Out of Your Account for Security"><span class="logout-wide">{% trans 'Logout' %}: </span>{{ user.username }}</a>
     {% else %}
-        <a href="{% url mobile:login %}" class="ui-btn-right logout-button" data-icon="plus" title="Log In to Your Account"><span class="logout-wide">Login</span></a>
-    {% endif %}
-    </div> <!-- controlgroup -->
+    <a href="{% url mobile:login %}?next={% url mobile:home %}" class="ui-btn-right" data-icon="plus" title="Log In to Your Account">{% trans 'Login' %}</a>
+    {% endif %}    
   </div><!-- /footer -->
 </div><!-- /page -->
 {% endblock %}

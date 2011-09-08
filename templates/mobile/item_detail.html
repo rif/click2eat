@@ -7,5 +7,17 @@
 {% block pageid %}search{% endblock %}
 
 {% block content %}
-{{ item }}
+<h1>{{ item.name_def }}</h1>
+<h2>{{ item.description_def }} {{ item.quantity }}{{ item.get_measurement_unit_display }}</h2>
+<h3>{{ item.price}}{% trans 'RON' %}</h3>
+{% if item.promotion %}
+<h4>{{ item.promotion }}</h4>
+{% endif %}
+{% if item.toppings %}
+<h4>{{ item.toppings }}</h4>
+{% endif %}
+<a href="{% url mobile:shop item.id %}" data-role="button">{% trans 'Add to shopping cart' %}</a>
+{% endblock %}
+{% block footer %}
+<a id="cart-link" style="float: right; margin-right:27px;" href="{% url mobile:shopping-cart item.item_group.unit_id %}" title="See your shoping cart">{% trans 'Cart items' %}: <span id="cart-count">0</span></a>
 {% endblock %}

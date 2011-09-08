@@ -22,3 +22,6 @@
 {% endfor %}
 </ul>
 {% endblock %}
+{% block footer %}
+<a id="cart-link" style="float: right; margin-right:27px;" href="{% url mobile:shopping-cart unit.id %}" title="See your shoping cart">{% trans 'Cart items' %}: <span id="cart-count">0</span></a>
+{% endblock %}

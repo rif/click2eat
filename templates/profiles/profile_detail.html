@@ -37,12 +37,9 @@
 			<br />
 			<strong>{% trans 'Invite your friends'%} !</strong> {% trans 'You receive' %} <span class="special2">0,5%</span> {%trans 'from every order made by a friend invited by you.' %} 
 			{% trans 'The amount added from your friends orders can be used anytime to order products from our partners.' %}
-			<br/>
-			{% trans 'Invite a friend now. Add his/her email address' %}
-			<form action="ceva.hh" target="_self">
-				<input type="text" class="inputprieten" />
-				<a href="#" class="btnverde">{% trans 'Send' %}!</a>
-			</form>
+			<br/><br/>
+			{% trans 'Invite a friend now.' %}
+			<a href="{% url userprofiles:invite_friend %}" class="btnverde">{% trans 'Invite' %}!</a>
 		</div>
 		<br/>
 		<div class="separatie">
@@ -190,7 +187,7 @@
 		</ul>
 		{% if user == profile.user %}
 		<p>
-			<a class="button" id="invite-link" href="{% url userprofiles:invite_friend %}"><span class="mail icon"></span>{% trans 'Invite a friend now' %}</a>
+			<a class="button" href="{% url userprofiles:invite_friend %}"><span class="mail icon"></span>{% trans 'Invite a friend now' %}</a>
 		</p>
 		<div id="invite-placeholder">
 		</div>
