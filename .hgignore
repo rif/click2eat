@@ -12,3 +12,4 @@ bucatar.sublime-project
 .project
 .pydevproject
 .sass-cache
+.directory

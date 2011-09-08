@@ -7,6 +7,9 @@
 {% block pageid %}search{% endblock %}
 
 {% block content %}
-<h1>{% trans 'Shopping cart' %}</h1>
-{{ shopping cart }}
+<ul>
+{% for item, count in order_items %}
+<li>{{item}}: {{count}}</li>
+{% endfor %}
+</ul>
 {% endblock %}
