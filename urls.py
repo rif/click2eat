@@ -24,13 +24,14 @@ urlpatterns = patterns('',
                            name='registration_register'),
                        (r'^accounts/', include('registration.backends.default.urls')),
                        (r'^i18n/', include('django.conf.urls.i18n')),
-                       (r'^sentry/', include('sentry.urls')),
+                       (r'^sentry/', include('sentry.web.urls')),
                        (r'^tinymce/', include('tinymce.urls')),
                        (r'^avatar/', include('avatar.urls')),
                        (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
                        (r'^flat/', include('django.contrib.flatpages.urls')),
                        (r'^robots.txt$', include('robots.urls')),
                        (r'^contact/',    include('envelope.urls')),
+                       url(r'^rosetta/', include('rosetta.urls'))
                        )
 
 urlpatterns += patterns('profiles.views',
@@ -45,7 +46,3 @@ urlpatterns += patterns('',
                         url(r'^captcha/', include('captcha.urls')),
                         url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
                         )
-
-from django.conf import settings
-if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('', url(r'^rosetta/', include('rosetta.urls')),)
