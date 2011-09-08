@@ -10,14 +10,12 @@
 <script type="text/javascript">
     var delivery = new Date();
     delivery.setMinutes(delivery.getMinutes() + {{ order.unit.delivery_time }});
-    $(function(){
-        
-       $('#countdown').countdown({until: delivery, onExpiry: countUp, description: {% trans 'To delivery deadline.'%}}); 
-    })
-
-function countUp() {
-  $('#countup').countdown({since: delivery, format: 'MS', description: {% trans 'Since delivery deadline.' %}});
-}
+    function countUp() {
+      $('#countup').countdown({since: delivery, format: 'MS', description: "{% trans 'Since delivery deadline.' %}"});
+    }
+    $(function(){        
+       $('#countdown').countdown({until: delivery, onExpiry: countUp, description: "{% trans 'To delivery deadline.'%}"}); 
+    });
 </script>
 {% endblock %}
 
@@ -25,16 +23,14 @@ function countUp() {
 
 {% block content %}
 <div class="content_area">
-  <div class="title"><h1 class="light_green">{% trans 'Order countdown' %}</h1></div>
-  <br>
+  <div class="title"><h2>{% trans 'Order countdown' %}</h2></div>
+  <br />
   <div id="countdown">
   </div>
   <div id="countup">
   </div>
-  <br>
-  <div class="general_button">
-    <a href="{% url order:feedback order.id %}">{% trans 'Has arrived!' %}</a>
-  </div>
+  <br />
+  <a class="big button" href="{% url order:feedback order.id %}">{% trans 'Has arrived!' %}</a>
 </div> <!-- content_area -->
 {% endblock %}
 
