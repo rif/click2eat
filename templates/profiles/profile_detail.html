@@ -9,7 +9,17 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" type="text/css" />
 <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css" />
 {% endblock %}
-
+{% block scripts %}
+    <script type="text/javascript">
+      $(function(){
+        $(".hide-link").click(function(e){
+          $.get($(this).attr("href"));
+          $(this).parents("div.boxroz").fadeOut();
+          e.preventDefault();
+        });
+      });
+    </script>
+{% endblock %}
 {% block content %}
 {% if not profile %}
 <div class="error">
