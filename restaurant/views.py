@@ -17,7 +17,7 @@ from order import views
 from menu.models import MenuOfTheDay
 
 def __user_has_profile(user):
-    if not user.is_authenticated(): return None
+    if not user.is_authenticated() or user.is_anonymous() : return None
     try:
         user.get_profile()
         return None
