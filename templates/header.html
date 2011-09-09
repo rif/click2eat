@@ -7,7 +7,7 @@
 		<br/>
 		<span class="textmare">{% trans 'ORDER ?'|upper %}</span> </a>
 		<div class="separatorl"></div>
-		<a id="btn_contulmeu" title="{% trans 'My profile' %}" href="{% url profiles_profile_detail user %}"> <span class="textmare2">{% trans 'MY'|upper %}</span>
+		<a id="btn_contulmeu" title="{% trans 'My profile' %}" href="{% if user.is_anonymous %}{% url auth_login %}{% else %}{% url profiles_profile_detail user %}{% endif %}"> <span class="textmare2">{% trans 'MY'|upper %}</span>
 		<br/>
 		{% trans 'ACCOUNT'|upper %} </a>
 		<div id="logintop">
