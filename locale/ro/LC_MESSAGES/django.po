@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-05 16:49+0300\n"
-"PO-Revision-Date: 2011-09-05 16:51\n"
+"POT-Creation-Date: 2011-09-09 14:17+0300\n"
+"PO-Revision-Date: 2011-09-09 14:19\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -381,7 +381,7 @@ msgid "day"
 msgstr "data"
 
 #: menu/models.py:225 menu/models.py:226 templates/menu/daily_menu.html:4
-#: templates/restaurant/unit_detail.html:119
+#: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:119
 msgid "Menu of the day"
 msgstr "Meniul zilei"
 
@@ -596,7 +596,7 @@ msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
 #: restaurant/models.py:14 restaurant/models.py:15
-#: templates/profiles/profile_detail.html:133
+#: templates/profiles/profile_detail.html:140
 msgid "Communication"
 msgstr "Comunicare"
 
@@ -854,7 +854,7 @@ msgstr "confidențialitate"
 msgid "join as"
 msgstr "inscriere"
 
-#: templates/footer.html:11
+#: templates/footer.html:11 templates/header.html:53
 msgid "restaurant"
 msgstr "restaurant"
 
@@ -900,11 +900,12 @@ msgid "ACCOUNT"
 msgstr "MEU"
 
 #: templates/header.html:24 templates/header.html.py:26
-#: templates/profiles/profile_detail.html:23
+#: templates/profiles/profile_detail.html:33
 msgid "Welcome"
 msgstr "Bine ai venit"
 
-#: templates/header.html:27
+#: templates/header.html:27 templates/page.html:19
+#: templates/mobile/home.html:23
 msgid "Logout"
 msgstr "Iesire"
 
@@ -922,14 +923,14 @@ msgid "Enter"
 msgstr "Intră"
 
 #: templates/header.html:51
-msgid "ARE YOU"
-msgstr "EȘTI"
-
-#: templates/header.html:53
-msgid "RESTAURANT"
-msgstr "Restaurant"
+msgid "area for"
+msgstr "zona"
 
 #: templates/header.html:57 templates/menu/item_list.html:32
+#: templates/mobile/home.html:16 templates/mobile/item_detail.html:4
+#: templates/mobile/item_detail.html:5 templates/mobile/search.html:4
+#: templates/mobile/search.html.py:5 templates/mobile/shopping_cart.html:4
+#: templates/mobile/shopping_cart.html:5
 msgid "Search"
 msgstr "Caută"
 
@@ -937,11 +938,16 @@ msgstr "Caută"
 msgid "SEARCH FOOD HERE"
 msgstr "CAUTĂ ORICE AICI"
 
+#: templates/page.html:21 templates/mobile/home.html:25
+#: templates/registration/login.html:4 templates/registration/login.html:33
+msgid "Login"
+msgstr "Login"
+
 #: templates/reclame.html:5
 msgid "Chose where you want to eat today ?"
 msgstr "Alege unde vrei sa mănânci astazi"
 
-#: templates/reclame.html:8 templates/mobile/home.html:18
+#: templates/reclame.html:8 templates/mobile/home.html:15
 msgid "See all restaurants"
 msgstr "Toate restaurantele"
 
@@ -954,11 +960,11 @@ msgid "PAY CHECK"
 msgstr "NOTA DE PLATĂ"
 
 #: templates/sidebar.html:28 templates/menu/daily_menu.html:13
-#: templates/menu/item_list.html:62 templates/order/order_cart.html:47
-#: templates/order/order_cart.html.py:56 templates/order/order_cart.html:67
-#: templates/order/order_list_div.html:30
-#: templates/profiles/profile_detail.html:31
-#: templates/profiles/profile_detail.html:85
+#: templates/menu/item_list.html:62 templates/mobile/item_detail.html:12
+#: templates/order/order_cart.html:47 templates/order/order_cart.html.py:56
+#: templates/order/order_cart.html:67 templates/order/order_list_div.html:30
+#: templates/profiles/profile_detail.html:41
+#: templates/profiles/profile_detail.html:92
 #: templates/restaurant/unit_detail.html:161
 #: templates/wheel/random_item.html:8
 msgid "RON"
@@ -1043,7 +1049,7 @@ msgid "Delete These"
 msgstr "Șterge"
 
 #: templates/bonus/history.html:4 templates/bonus/history.html.py:11
-#: templates/profiles/profile_detail.html:34
+#: templates/profiles/profile_detail.html:44
 msgid "Bonus history"
 msgstr "Istoricul bonusurilor"
 
@@ -1084,7 +1090,6 @@ msgid "Contact"
 msgstr "Contact"
 
 #: templates/envelope/contact.html:22
-#: templates/profiles/profile_detail.html:44
 msgid "Send"
 msgstr "Trimite"
 
@@ -1140,7 +1145,7 @@ msgstr "Închis"
 msgid "New"
 msgstr "Nou"
 
-#: templates/menu/daily_menu_list.html:55
+#: templates/menu/daily_menu_list.html:55 templates/mobile/motd.html:17
 msgid "Sorry no special menus for today."
 msgstr "Ne pare rău, nu sunt meniuri speciale astăzi."
 
@@ -1179,12 +1184,19 @@ msgstr "Meniu"
 msgid "Welcome to click2eat.ro"
 msgstr "Bine ați venit la click2eat.ro"
 
-#: templates/mobile/home.html:16
-#: templates/registration/activation_complete.html:8
-#: templates/registration/login.html:24 templates/registration/logout.html:8
-#: templates/registration/password_reset_complete.html:10
-msgid "Log in"
-msgstr "Log in"
+#: templates/mobile/item_detail.html:6 templates/mobile/search.html:6
+#: templates/mobile/shopping_cart.html:6
+msgid "List of all menu items"
+msgstr "Toate meniurile"
+
+#: templates/mobile/item_detail.html:19
+msgid "Add to shopping cart"
+msgstr "Adaugă la coșul de cumpărături"
+
+#: templates/mobile/item_detail.html:36 templates/mobile/menu.html:26
+#: templates/order/order_div.html:49
+msgid "Cart items"
+msgstr "Articolele din coș"
 
 #: templates/mobile/login.html:3 templates/mobile/login.html.py:7
 msgid "Log In"
@@ -1194,9 +1206,21 @@ msgstr "Log in"
 msgid "Logged Out"
 msgstr "Deautentificat"
 
+#: templates/mobile/logout.html:6
+msgid "Log in again"
+msgstr "Autentificare din nou"
+
 #: templates/mobile/menu.html:6
 msgid "Menu for a specific restaurant"
 msgstr "Meniul pentru un restaurant anume"
+
+#: templates/mobile/motd.html:4 templates/mobile/motd.html.py:5
+msgid "Menu of the Day"
+msgstr "Meniul zilei"
+
+#: templates/mobile/motd.html:6
+msgid "List of all special menus for today"
+msgstr "Lista meniurilor zilei"
 
 #: templates/mobile/units.html:6
 msgid "List of restaurants"
@@ -1237,14 +1261,14 @@ msgstr "Detalii comandă"
 
 #: templates/order/mail_order_detail.html:8
 #: templates/order/restaurant_order_detail.html:28
-#: templates/profiles/profile_detail.html:127
+#: templates/profiles/profile_detail.html:134
 #: templates/restaurant/unit_detail.html:132
 msgid "Phone"
 msgstr "Telefon"
 
 #: templates/order/mail_order_detail.html:9
 #: templates/order/restaurant_order_detail.html:31
-#: templates/profiles/profile_detail.html:148
+#: templates/profiles/profile_detail.html:155
 #: templates/restaurant/unit_detail.html:130
 #: templates/userprofiles/deliveryaddress_detail.html:52
 msgid "Address"
@@ -1313,7 +1337,7 @@ msgid "Order: "
 msgstr "Comanda: "
 
 #: templates/order/order_detail.html:9 templates/order/order_list_div.html:39
-#: templates/profiles/profile_detail.html:92
+#: templates/profiles/profile_detail.html:99
 msgid "Order again"
 msgstr "Comandă din nou"
 
@@ -1324,10 +1348,6 @@ msgstr "Program de lucru"
 #: templates/order/order_div.html:42 templates/restaurant/unit_detail.html:133
 msgid "Open"
 msgstr "Deschis"
-
-#: templates/order/order_div.html:49
-msgid "Cart items"
-msgstr "Articolele din coș"
 
 #: templates/order/order_div.html:59
 msgid "Delete cart"
@@ -1346,17 +1366,17 @@ msgid "List profile all"
 msgstr "Listează toate profilele"
 
 #: templates/order/order_list_div.html:26
-#: templates/profiles/profile_detail.html:79
+#: templates/profiles/profile_detail.html:86
 msgid "My orders"
 msgstr "Comenzile mele"
 
 #: templates/order/order_list_div.html:39
-#: templates/profiles/profile_detail.html:94
+#: templates/profiles/profile_detail.html:101
 msgid "Hide"
 msgstr "Ascunde"
 
 #: templates/order/order_list_div.html:42
-#: templates/profiles/profile_detail.html:99
+#: templates/profiles/profile_detail.html:106
 msgid "No orders yet? Bon apetit ;)"
 msgstr "Nu ați comandat nimic încă? Poftă bună ;)"
 
@@ -1389,7 +1409,7 @@ msgid "If you don't have a delivery address"
 msgstr "Dacă nu ați definit o adresă de livrare"
 
 #: templates/order/send_confirmation.html:44
-#: templates/profiles/profile_detail.html:170
+#: templates/profiles/profile_detail.html:177
 msgid "Add one now"
 msgstr "Adăugați una acum"
 
@@ -1401,19 +1421,19 @@ msgstr "Da, trimite comanda"
 msgid "Return to menu selection"
 msgstr "Întoarceti-vă la selecția din meniu"
 
-#: templates/order/timer.html:15
-msgid "To delivery deadline."
-msgstr "Până la livrare"
-
-#: templates/order/timer.html:19
+#: templates/order/timer.html:14
 msgid "Since delivery deadline."
 msgstr "De când trebuia să ajungă"
 
-#: templates/order/timer.html:24 templates/order/timer.html.py:28
+#: templates/order/timer.html:17
+msgid "To delivery deadline."
+msgstr "Până la livrare"
+
+#: templates/order/timer.html:22 templates/order/timer.html.py:26
 msgid "Order countdown"
 msgstr "Numărătoare inversă pentru comandă"
 
-#: templates/order/timer.html:36
+#: templates/order/timer.html:33
 msgid "Has arrived!"
 msgstr "A ajuns!"
 
@@ -1442,43 +1462,43 @@ msgstr "Actualizați profilul"
 msgid "Profile"
 msgstr "Profil utilizator"
 
-#: templates/profiles/profile_detail.html:17
+#: templates/profiles/profile_detail.html:27
 msgid "This profile is not public"
 msgstr "Acest profil nu este public"
 
-#: templates/profiles/profile_detail.html:26
+#: templates/profiles/profile_detail.html:36
 msgid "Click2Eat fidelity program"
 msgstr "Program de fidelizare Click2eat.ro"
 
-#: templates/profiles/profile_detail.html:29
+#: templates/profiles/profile_detail.html:39
 msgid "Untill now you invited"
 msgstr "Pană acum ați invitat"
 
-#: templates/profiles/profile_detail.html:30
+#: templates/profiles/profile_detail.html:40
 msgid "friends and gathered"
 msgstr "prieteni și ați acumulat"
 
-#: templates/profiles/profile_detail.html:31
+#: templates/profiles/profile_detail.html:41
 msgid "from the orders made by your friends"
 msgstr "din valoarea comenzilor efectuate de prietenii tai"
 
-#: templates/profiles/profile_detail.html:36
+#: templates/profiles/profile_detail.html:46
 msgid "Earn bonus points"
 msgstr "Câștigă puncte bonus"
 
-#: templates/profiles/profile_detail.html:38
+#: templates/profiles/profile_detail.html:48
 msgid "Invite your friends"
 msgstr "Recomanda la prieteni"
 
-#: templates/profiles/profile_detail.html:38
+#: templates/profiles/profile_detail.html:48
 msgid "You receive"
 msgstr "Primești"
 
-#: templates/profiles/profile_detail.html:38
+#: templates/profiles/profile_detail.html:48
 msgid "from every order made by a friend invited by you."
 msgstr "din valoarea fiecarei comenzi efectuate de prietenul invitat de tine."
 
-#: templates/profiles/profile_detail.html:39
+#: templates/profiles/profile_detail.html:49
 msgid ""
 "The amount added from your friends orders can be used anytime to order "
 "products from our partners."
@@ -1487,83 +1507,87 @@ msgstr ""
 "poți folosi oricând pentru ați comanda produse furnizate de partenerii"
 " noștrii."
 
-#: templates/profiles/profile_detail.html:41
-msgid "Invite a friend now. Add his/her email address"
-msgstr "Invita un prieten acum. Adauga adresa de email"
+#: templates/profiles/profile_detail.html:51
+msgid "Invite a friend now."
+msgstr "Invită un prieten acum"
 
 #: templates/profiles/profile_detail.html:52
+msgid "Invite"
+msgstr "Invită"
+
+#: templates/profiles/profile_detail.html:59
 msgid "My preferences"
 msgstr "Preferințele mele"
 
-#: templates/profiles/profile_detail.html:108
+#: templates/profiles/profile_detail.html:115
 msgid "My account details"
 msgstr "Contul meu"
 
-#: templates/profiles/profile_detail.html:113
+#: templates/profiles/profile_detail.html:120
 msgid "Change"
 msgstr "Schimbă"
 
-#: templates/profiles/profile_detail.html:114
-#: templates/profiles/profile_detail.html:162
+#: templates/profiles/profile_detail.html:121
+#: templates/profiles/profile_detail.html:169
 msgid "Delete"
 msgstr "Șterge"
 
-#: templates/profiles/profile_detail.html:121
+#: templates/profiles/profile_detail.html:128
 msgid "Tel"
 msgstr "Tel"
 
-#: templates/profiles/profile_detail.html:125
+#: templates/profiles/profile_detail.html:132
 msgid "Birth date"
 msgstr "Data nașterii"
 
-#: templates/profiles/profile_detail.html:129
+#: templates/profiles/profile_detail.html:136
 msgid "Sex"
 msgstr "Sexul"
 
-#: templates/profiles/profile_detail.html:131
+#: templates/profiles/profile_detail.html:138
 msgid "Newsletter"
 msgstr "Scrisoare cu știri"
 
-#: templates/profiles/profile_detail.html:136
-#: templates/profiles/profile_detail.html:163
+#: templates/profiles/profile_detail.html:143
+#: templates/profiles/profile_detail.html:170
 #: templates/userprofiles/deliveryaddress_detail.html:96
 msgid "Edit"
 msgstr "Editați"
 
-#: templates/profiles/profile_detail.html:137
+#: templates/profiles/profile_detail.html:144
 msgid "Order History"
 msgstr "Istoricul comenzilor"
 
-#: templates/profiles/profile_detail.html:142
+#: templates/profiles/profile_detail.html:149
 msgid "Delivery addresses"
 msgstr "Adresele de livrare"
 
-#: templates/profiles/profile_detail.html:149
+#: templates/profiles/profile_detail.html:156
 #: templates/userprofiles/deliveryaddress_detail.html:84
 msgid "Primary"
 msgstr "Primară"
 
-#: templates/profiles/profile_detail.html:150
+#: templates/profiles/profile_detail.html:157
 msgid "Operation"
 msgstr "Operație"
 
-#: templates/profiles/profile_detail.html:169
+#: templates/profiles/profile_detail.html:176
 msgid "You have not defined any delivery address."
 msgstr "Nu ați introdus nici o adresa de livrare."
 
-#: templates/profiles/profile_detail.html:177
+#: templates/profiles/profile_detail.html:184
 msgid "Add delivery address"
 msgstr "Adăugați adresă de livrare"
 
-#: templates/profiles/profile_detail.html:179
+#: templates/profiles/profile_detail.html:186
 msgid "Friends"
 msgstr "Prieteni"
 
-#: templates/profiles/profile_detail.html:187
+#: templates/profiles/profile_detail.html:194
 msgid "Sorry, no friends here :("
 msgstr "Ne pare rău, nu v-ați făcut încă prieteni aici :("
 
-#: templates/profiles/profile_detail.html:193
+#: templates/profiles/profile_detail.html:200
 msgid "Invite a friend now"
 msgstr "Invită un prieten"
 
@@ -1577,9 +1601,11 @@ msgstr "Contul NU a fost activat! Vă rugăm să contactați administratorii"
 msgid "Account successfully activated"
 msgstr "Contul activat cu success"
 
-#: templates/registration/login.html:4 templates/registration/login.html:33
-msgid "Login"
-msgstr "Login"
+#: templates/registration/activation_complete.html:8
+#: templates/registration/login.html:24 templates/registration/logout.html:8
+#: templates/registration/password_reset_complete.html:10
+msgid "Log in"
+msgstr "Log in"
 
 #: templates/registration/login.html:27
 msgid "Your username/email and password didn't match. Please try again"
