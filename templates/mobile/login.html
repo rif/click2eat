@@ -1,12 +1,10 @@
 {% extends 'page.html' %}
 {% load i18n %}
-
-{% block title %}{% trans 'Search' %}{% endblock %}
-{% block pagetitle %}{% trans 'Search' %}{% endblock %}
-{% block description %}{% trans 'List of all menu items' %}{% endblock %}
-{% block pageid %}search{% endblock %}
-
+{% block title %}{% trans 'Log In' %}{% endblock %}
 {% block content %}
-<h1>{% trans 'Shopping cart' %}</h1>
-{{ shopping cart }}
+<form action="{% url mobile:login %}" data-ajax="false" method="POST">
+    {% include "mobile/formfields.html" %}
+    <input type="submit" value="{% trans 'Log In' %}" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
 {% endblock %}

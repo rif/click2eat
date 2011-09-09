@@ -35,4 +35,4 @@ def deploy():
 def reload():
     print(green('reloading...'))
     'fires an uwsgi graceful reload'
-    sudo('service uwsgi-python reload')
+    sudo('service uwsgi reload')
