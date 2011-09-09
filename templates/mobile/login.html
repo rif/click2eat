@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans 'Log In' %}{% endblock %}
 {% block content %}
-<form action="{% url mobile:login %}" data-ajax="false" method="POST">
+<form action="{% url mobile:login %}" method="POST">
     {% include "mobile/formfields.html" %}
     <input type="submit" value="{% trans 'Log In' %}" />
     <input type="hidden" name="next" value="{{ next }}" />
