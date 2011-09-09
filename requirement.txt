@@ -29,6 +29,7 @@ django-grappelli
 django-filebrowser
 feedparser
 django-redis-cache
+hiredis
 #fabric
 MySQL-python
 # gunicorn staff
