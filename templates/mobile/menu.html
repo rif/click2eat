@@ -14,7 +14,11 @@
             <ul data-role="listview" data-inset="true">
               {% for item in itemgroup.item_set.iterator %}
               {% if item.active %}
-              <li><a href="">{{ item.name_def }}</a></li>
+              <li><a href="{% url mobile:item-detail item.id %}">
+              <h1>{{ item.name_def }} <span style="float:right">{{ item.price }}{% trans 'RON' %}</span></h1>
+              <p><b>{{ item.item_group.unit.name }}</b>: {{ item.description_def }}</p>
+              <p style="display: none;">{{ item.tags.all.values_list|first }}</p>
+              </li></a>
               {% endif %}
               {% endfor %}
             </ul>
