@@ -23,7 +23,7 @@
 			"file": "/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 20366,
+				"buffer_size": 20337,
 				"line_ending": "Unix"
 			}
 		},
@@ -260,7 +260,7 @@
 					"file": "/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 20366,
+						"buffer_size": 20337,
 						"regions":
 						{
 						},
@@ -361,7 +361,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 660,
+						"translation.y": 420,
 						"zoom_level": 1
 					},
 					"type": "text"

@@ -25,6 +25,8 @@ def search(request):
 @render_to('mobile/item_detail.html')
 def item_detail(request, item_id):
         item = get_object_or_404(Item, pk=item_id)
+        cart_name = item.item_group.unit.name + 'cart'
+        count = __count_cart_items(request.session[cart_name])
         return locals()
 
 @render_to('mobile/motd.html')
@@ -43,7 +45,7 @@ def shop(request, item_id):
         else:
           request.session[cart_name][item.id][0] += 1
         request.session.modified = True
-        return request.session[cart_name]
+        return {'count': __count_cart_items(request.session[cart_name])}
 
 
 @render_to('mobile/shopping_cart.html')
@@ -57,4 +59,9 @@ def shopping_cart(request, unit_id):
           for item in items.iterator():
             order_items.append((item, cart[item.id][0]))
         return {'order_items': order_items}
-        
+
+def __count_cart_items(cart):
+        count = 0;
+        for k,v in cart.iteritems():
+          count += v[0];
+        return count

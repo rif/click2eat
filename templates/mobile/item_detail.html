@@ -21,11 +21,7 @@
 $(function(){
   $("#shop-link").click(function(e){
     $.get($(this).attr("href"), function(data){
-      var count = 0;
-      for(var i in data){
-        count += data[i][0];
-      }
-      $("#cart-count").text(count);
+      $("#cart-count").text(data['count']);
     });
     e.preventDefault();
   });
@@ -33,5 +29,5 @@ $(function(){
 </script>
 {% endblock %}
 {% block footer %}
-<a id="cart-link" style="float: right; margin-right:27px;" href="{% url mobile:shopping-cart item.item_group.unit_id %}" title="See your shoping cart">{% trans 'Cart items' %}: <span id="cart-count">0</span></a>
+<a id="cart-link" style="float: right; margin-right:27px;" href="{% url mobile:shopping-cart item.item_group.unit_id %}" title="See your shoping cart">{% trans 'Cart items' %}: <span id="cart-count">{{ count }}</span></a>
 {% endblock %}
