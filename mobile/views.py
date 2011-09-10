@@ -26,7 +26,9 @@ def search(request):
 def item_detail(request, item_id):
         item = get_object_or_404(Item, pk=item_id)
         cart_name = item.item_group.unit.name + 'cart'
-        count = __count_cart_items(request.session[cart_name])
+        count = 0
+        if cart_name in request.session:
+          count = __count_cart_items(request.session[cart_name])
         return locals()
 
 @render_to('mobile/motd.html')
@@ -57,11 +59,8 @@ def shopping_cart(request, unit_id):
           cart = request.session[cart_name]
           items = Item.objects.filter(id__in=cart.keys())
           for item in items.iterator():
-            order_items.append((item, cart[item.id][0]))
+            order_items.append((item, cart[item.id][0], item.price*cart[item.id][0]))
         return {'order_items': order_items}
 
 def __count_cart_items(cart):
-        count = 0;
-        for k,v in cart.iteritems():
-          count += v[0];
-        return count
+        return sum([v[0] for v in cart.itervalues()])
