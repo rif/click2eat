@@ -13,8 +13,8 @@
     function countUp() {
       $('#countup').countdown({since: delivery, format: 'MS', description: "{% trans 'Since delivery deadline.' %}"});
     }
-    $(function(){        
-       $('#countdown').countdown({until: delivery, onExpiry: countUp, description: "{% trans 'To delivery deadline.'%}"}); 
+    $(function(){
+       $('#countdown').countdown({until: delivery, onExpiry: countUp, description: "{% trans 'To delivery deadline.'%}"});
     });
 </script>
 {% endblock %}

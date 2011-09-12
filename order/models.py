@@ -38,13 +38,13 @@ class Order(models.Model):
 
     def delete_abandoned(self):
         if self.status != 'CR': return False
-        # status is CR 
-        delta = datetime.now() - self.creation_date        
+        # status is CR
+        delta = datetime.now() - self.creation_date
         if delta.days > 0:
             self.delete()
             return True
         return False
-            
+
     def get_carts(self):
         carts_dict = {}
         ois = OrderItem.objects.select_related().filter(order__id=self.id)

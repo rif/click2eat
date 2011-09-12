@@ -8,21 +8,21 @@ from django.contrib.auth.models import User
 class Language(models.Model):
     code = models.CharField(_('code'), max_length=5)
     name = models.CharField(_('name'), max_length=16)
-    
+
     def __unicode__(self):
         return self.name
 
 class VAT(models.Model):
   name = models.CharField(_('name'), max_length=20)
   value = models.FloatField(_('value'))
-  
+
   def __unicode__(self):
       return self.name
-  
+
   class Meta:
       verbose_name = _('VAT')
       verbose_name_plural = _('VAT')
-      
+
 class ItemGroupTranslation(models.Model):
   language = models.ForeignKey('Language')
   name = models.CharField(_('name'), max_length=100)
@@ -35,7 +35,7 @@ class ItemGroup(MultilingualModel):
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   exclusive = models.BooleanField(_('exclusive'))
   active = models.BooleanField(_('active'), default=True)
-  
+
   def __unicode__(self):
       return self.internal_name + ' ' + self.unit.name
 
@@ -49,7 +49,7 @@ class ItemGroup(MultilingualModel):
 class ToppingGroup(models.Model):
   internal_name = models.CharField(_('internal name'), max_length=50)
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
-  
+
   def __unicode__(self):
       return self.internal_name + ' ' + self.unit.name
 
@@ -89,7 +89,7 @@ class Item(MultilingualModel):
   promotion = models.ForeignKey('Promotion', verbose_name=_('promotion'), null=True, blank=True)
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   quantity = models.IntegerField(_('quantity'))
-  measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR', help_text=_('Measurement unit.')) 
+  measurement_unit = models.CharField(_('MU'), max_length=2, choices=MU_CHOICES, default='GR', help_text=_('Measurement unit.'))
   item_group = models.ForeignKey(ItemGroup, verbose_name=_('item group'))
   added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
@@ -97,7 +97,7 @@ class Item(MultilingualModel):
   active = models.BooleanField(_('active'), default=True)
 
   tags = TaggableManager()
-  
+
   def is_new(self):
         delta = date.today() - self.added_date
         return delta.days < 7
@@ -131,7 +131,7 @@ class Item(MultilingualModel):
       return u'%d%s' % (self.quantity, self.get_measurement_unit_display())
   quantity_with_mu.short_description = _('Quantity')
   quantity_with_mu.admin_order_field = 'quantity'
-  
+
   class Meta:
       ordering = ['index']
       translation = ItemTranslation
@@ -144,7 +144,7 @@ class ToppingTranslation(models.Model):
   name = models.CharField(_('name'), max_length=100)
   description = models.TextField(_('description'))
   model = models.ForeignKey('Topping')
-  
+
 class Topping(MultilingualModel):
   internal_name = models.CharField(_('internal name'), max_length=50)
   name_def = models.CharField(_('name'), max_length=50, help_text=_('The default name for this item'))
@@ -152,18 +152,18 @@ class Topping(MultilingualModel):
   price = models.FloatField(_('price'))
   vat = models.ForeignKey(VAT, verbose_name=_('VAT'))
   quantity = models.IntegerField(_('quantity'))
-  measurement_unit = models.CharField(_('MU'), max_length=2, choices=Item.MU_CHOICES, default='GR', help_text=_('Measurement unit.')) 
+  measurement_unit = models.CharField(_('MU'), max_length=2, choices=Item.MU_CHOICES, default='GR', help_text=_('Measurement unit.'))
   topping_group = models.ForeignKey(ToppingGroup, verbose_name=_('topping group'))
   added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
-    
+
   class Meta:
     translation = ToppingTranslation
     multilingual = ['name', 'description']
     verbose_name = _('Topping')
     verbose_name_plural = _('Toppings')
-      
+
 class Promotion(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
     name = models.CharField(_('name'), max_length=50)
@@ -173,14 +173,14 @@ class Promotion(models.Model):
     start_hour = models.CharField(_('start hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 10:30'))
     end_hour = models.CharField(_('end hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 15:00'))
     value = models.IntegerField(_('value'), default=0, help_text=_('Percentage'))
-    
+
     def __unicode__(self):
         return self.name
-    
+
     def is_active(self):
         return self._is_active(datetime.now())
     is_active.boolean = True
-    
+
     def _is_active(self, check_date):
         now = check_date
         weekday = now.isoweekday()
@@ -199,11 +199,11 @@ class Promotion(models.Model):
             if now > endh:
                 return False
         return True
-    
+
     def get_new_price(self, old_price):
         return (old_price * (100-self.value))/100
-        
-    
+
+
     class Meta:
         ordering = ['-start_date']
         verbose_name = _('Promotion')
@@ -215,11 +215,11 @@ class MenuOfTheDay(models.Model):
     name = models.CharField(_('name'), max_length=30)
     description = models.TextField(_('description'), max_length=50)
     price = models.FloatField(_('price'))
-    
+
     @models.permalink
     def get_absolute_url(self):
 	return ('menu:daily_menu', [str(self.id)])
-    
+
     class Meta:
         ordering = ['-day']
         verbose_name = _('Menu of the day')
@@ -229,7 +229,7 @@ class Import(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False, null=True, blank=True)
     import_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     csv_file = models.FileField(upload_to='imports')
-    
+
     def __unicode__(self):
         return 'Imported by %s at %s' % (self.user.get_full_name() or 'Admin', self.import_date.strftime('%d%B%Y %H:%M'))
 
