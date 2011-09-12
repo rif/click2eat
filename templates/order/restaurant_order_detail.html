@@ -21,7 +21,7 @@
 </script>
 
 <div class="content_area">
-    <div class="title"><h1 class="light_orange">{% trans 'Order details' %} id: {{ order.id }}</h1></div>
+    <div class="title"><h1>{% trans 'Order details' %} id: {{ order.id }}</h1></div>
     <br>
     <div class="details">
       <strong>{% trans 'User' %}:</strong> {{ order.user.get_full_name }}<br>
@@ -40,7 +40,7 @@
     </div>
     <br>
     <div id="current_order">
-        <table id="cart-{{ cartname }}-table" style="max-width:30%;">
+        <table id="cart-{{ cartname }}-table">
             <tr class="header">
                 <th class="item">{% trans 'Item' %}</th>
                 <th class="count">{% trans 'Count' %}</th>
@@ -77,16 +77,9 @@
     </div>
     <br>
     {% if order.status == 'RV' %}
-        <div class="dual_button">
-            <div class="left">
-                <a id="confirm-link" class="historylink"
-                   href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a>
-            </div>
-            <div class="right">
-                <a id="deliver-link" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div id="action-response" class="success" style="display:none"></div>
+     <a id="confirm-link" class="button" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a><br />
+     <a id="deliver-link" class="button" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
+     <div class="clear"></div>
+     <div id="action-response" class="success" style="display:none"></div>
     {% endif %}
 </div><!-- content_area -->
