@@ -51,7 +51,7 @@
         {% for cartname, oil in order.get_carts.items %}
             <table>
                 <tr>
-                    <th>{{ cartname }}</th>
+                    <th>{{ cartname|slugify }}</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -61,7 +61,7 @@
                 </tr>
                 {% for oi in oil %}
                     <tr>
-                        <td class="item">{{ oi.item.name_def }}</td>
+                        <td class="item">{{ oi.get_payload.name_def }}</td>
                         <td class="count">{{ oi.count }}</td>
                         <td class="price">{{ oi.old_price }} RON</td>
                         <td class="minus">
@@ -74,20 +74,20 @@
                         </td>
                         <td class="plus">
                             {% if order.status == 'CR' %}
-                                <a class="add-item" href="{% url order:add_item oi.item.id cartname %}">
+                                <a class="add-item" href="{% url order:add_item oi.get_payload.id cartname|slugify %}">
                                     <img alt="+" src="{{ STATIC_URL }}images/template/cart_plus_btn.png">
                                 </a>
                             {% endif %}
                         </td>
                     </tr>
                 {% empty %}
-                    <tr>{% trans 'There are no order items for' %} {{ cartname }}</tr>
+                    <tr>{% trans 'There are no order items for' %} {{ cartname|slugify }}</tr>
                 {% endfor %}
                 <tr class="total">
                     <td></td>
                     <td>{% trans 'Subtotal' %}</td>
                     <td><span class="cart-subtotal"
-                              href="{% url order:get_subtotal order.unit.id cartname %}">{% get_cart_subtotal %}<span> RON
+                              href="{% url order:get_subtotal order.unit.id cartname|slugify %}">{% get_cart_subtotal %}<span> RON
                     </td>
                     <td></td>
                     <td></td>

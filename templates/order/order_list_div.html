@@ -14,11 +14,11 @@
 	});
     });
 </script>
-    
+
 
 <div class="content_area">
   {% if object_list and object_list.exists %}
-  {% autopaginate object_list 10 %}     
+  {% autopaginate object_list 10 %}
   <br>
   <div id="account_details">
     <div class="separatie"></div>
@@ -35,11 +35,11 @@
 	{% endif %}
       </span>
       <span class="restaurant">{{ order.unit }}</span>
-      
+
       <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>&nbsp;<a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
     </div>
     {% empty %}
-    <div class="boxroz">{% trans 'No orders yet? Bon apetit ;)' %}</div>	    
+    <div class="boxroz">{% trans 'No orders yet? Bon apetit ;)' %}</div>
     {% endfor %}
       {% paginate %}
     <div class="separatie"></div>

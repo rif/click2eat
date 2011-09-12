@@ -14,12 +14,13 @@ from django.contrib.sites.models import Site
 from django import forms
 from django.views.generic import list_detail
 from annoying.decorators import render_to, ajax_request
+from django.template.defaultfilters import slugify
 import csv
 from datetime import datetime
 from geopy import distance
 from order.models import Order, OrderItem
 from restaurant.models import Unit, DeliveryType
-from menu.models import Item, MenuOfTheDay
+from menu.models import Item, Topping, MenuOfTheDay
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import Bonus, BONUS_PERCENTAGE
@@ -89,27 +90,28 @@ def add_item(request, item_id, cart_name):
         raise Http404()
 
 @login_required
-def add_topping(request, master_id, item_id, cart_name):
+def add_topping(request, master_id, topping_id, cart_name):
     if cart_name.startswith("cart-"):
         cart_name = cart_name.split("cart-")[1]
     try:
-        item = Topping.objects.select_related('topping_group').get(pk=item_id)
-        current_order = __get_current_order(request, item.topping_group.unit)
-        if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
-        if cart_name == '': cart_name = request.user.username
-        master_item = OrderItem.objects.filter(order=current_order).filter(item__id=master_id).filter(cart=cart_name)
-        if master_item.exists():
-            master_item = master_item[0]
-        order_item = OrderItem.objects.filter(order=current_order).filter(master=master_item).filter(item=item).filter(cart=cart_name)
-        if order_item.exists():
-            order_item = order_item[0]
-            order_item.count += 1
-            order_item.save()
-        else:
-            order_item = OrderItem.objects.create(order=current_order, item=item, cart=cart_name, master=master_item)
-        return HttpResponse(str(order_item.id))
+      topping = Topping.objects.select_related('topping_group').get(pk=topping_id)
+      current_order = __get_current_order(request, topping.topping_group.unit)
+      if current_order.status != 'CR': HttpResponseForbidden(_('Please focus on something productive!'))
+      if cart_name == '': cart_name = request.user.username
+      master_item = OrderItem.objects.filter(order=current_order).filter(item__id=master_id).filter(cart=cart_name)
+      if master_item.exists():
+          master_item = master_item[0]
+      order_item = OrderItem.objects.filter(order=current_order).filter(master=master_item).filter(topping=topping).filter(cart=cart_name)
+      if order_item.exists():
+          order_item = order_item[0]
+          order_item.count += 1
+          order_item.save()
+      else:
+          order_item = OrderItem.objects.create(order=current_order, topping=topping, cart=cart_name, master=master_item)
+      return HttpResponse(str(order_item.id))
     except:
-        raise Http404()
+      raise Http404()
+
 
 def add_menu_of_the_day(request, item_id, cart_name):
     if cart_name.startswith("cart-"):
@@ -181,7 +183,7 @@ def send(request, unit_id):
             if initial_friend:
                 b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
             messages.warning(request, _('Your order has been sent to the restaurant!'))
-            send_mail('New Order',
+            send_mail(_('New Order'),
                        render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request)),
                        'office@filemaker-solutions.ro',
                        [unit.email],
@@ -203,7 +205,7 @@ def add_cart(request, order_id):
   if request.method == 'POST':
       form = CartNameForm(request.POST)
       if form.is_valid(): # All validation rules pass
-          next_cart = request.POST['name']
+          next_cart = slugify(request.POST['name'])
           response_text = """
 <span id="cart-%(cartname)s" class="cart selected-cart">
   <a class="cart-name" href="#">%(cartname)s</a>
