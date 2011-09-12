@@ -1,10 +1,11 @@
 {% load i18n %}
 
-Hello {{ order.user.get_full_name }},
+{% trans 'Hello' %} {{ order.user.get_full_name }},
 
+{% blocktrans %}
 Your order with id {{ order.id}} was received and will be processed as soon as possible. The usual waiting time is {{ order.unit.delivery_time }} minutes.
+{% endblocktrans %}
 
-Thank you for your order!
+{% trans 'Thank you for your order' %}!
 {{ order.unit.name}}
-
 P.S. {% trans 'You can send a rating for our services'  %} <a href="http://{{ site_name }}{% url order:feedback order.id %}">{% trans 'here' %}</a>.
