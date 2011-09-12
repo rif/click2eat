@@ -40,7 +40,7 @@
     </div>
     <br>
     <div id="current_order">
-        <table id="cart-{{ cartname }}-table">
+        <table id="cart-{{ cartname|slugify }}-table">
             <tr class="header">
                 <th class="item">{% trans 'Item' %}</th>
                 <th class="count">{% trans 'Count' %}</th>
@@ -49,14 +49,14 @@
             {% for oi in order.orderitem_set.iterator %}
                 {% if not oi.master %}
                     <tr class="{% cycle 'odd' 'even' %}">
-                        <td class="item">{{ oi.item.name_def }}</td>
+                        <td class="item">{{ oi.get_payload.name_def }}</td>
                         <td class="count">{{ oi.count }}</td>
                         <td class="price">{{ oi.old_price }}</td>
                     </tr>
                     {% if oi.orderitem_set.exists %}
                         <tr class="topping-row">
                             {% for slave_oi in oi.orderitem_set.iterator %}
-                                <td class="item">*{{ slave_oi.item.name_def }}</td>
+                                <td class="item">*{{ slave_oi.get_payload.name_def }}</td>
                                 <td class="count">{{ slave_oi.count }}</td>
                                 <td class="price">{{ slave_oi.old_price }}</td>
                             {% endfor %}

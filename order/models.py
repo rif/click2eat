@@ -82,6 +82,7 @@ class OrderItem(models.Model):
     master = models.ForeignKey('self', verbose_name=_('master'), null=True, blank=True)
     order = models.ForeignKey(Order, verbose_name=_('order'))
     item = models.ForeignKey('menu.Item', verbose_name=_('item'), null=True)
+    topping = models.ForeignKey('menu.Topping', verbose_name=_('topping'), null=True)
     menu_of_the_day = models.ForeignKey('menu.MenuOfTheDay', verbose_name=_('menu of the day'), null=True)
     count = models.IntegerField(_('count'), default=1)
     old_price = models.FloatField(_('price'), default=0)
@@ -94,10 +95,15 @@ class OrderItem(models.Model):
         if not self.id:
             if self.item :
                 self.old_price = self.item.get_price()
+            if self.topping :
+                self.old_price = self.topping.price
             if self.menu_of_the_day:
                 self.old_price = self.menu_of_the_day.price
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_amount()
+
+    def get_payload(self):
+      return self.item or self.topping or self.menu_of_the_day
 
     def delete(self, *args, **kwargs):
         ex_order = self.order

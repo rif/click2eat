@@ -14,17 +14,20 @@
 
 {% block scripts %}
 <script type="text/javascript">
-	$(function() {
-		$("#div_id_quality").stars({
-			inputType : "select",
-			captionEl : $("#stars-cap-sp")
-		});
-		$("#div_id_delivery_time").stars({
-			inputType : "select",
-			captionEl : $("#stars-cap-dt")
-		});
-	});
-
+$(function() {
+  $("#div_id_quality").stars({
+          inputType : "select",
+          captionEl : $("#stars-cap-sp")
+  });
+  $("#div_id_delivery_time").stars({
+          inputType : "select",
+          captionEl : $("#stars-cap-dt")
+  });
+  $("form").submit(function(){
+    $("input:disabled", $(this)).removeAttr("disabled");
+    return true;
+  });
+});
 </script>
 {% endblock %}
 
@@ -32,7 +35,7 @@
 
 {% block content %}
 <div class="content_area">
-	<h1>{% trans 'Please provide your feedback on order' %}: {{ order }}</h1>
+	<h2>{% trans 'Please provide your feedback on order sent to' %}:{{ order.unit }} ({{ order.creation_date|timesince }})</h2>
 	<p>
 		{% trans 'Rating for quality' %}: <span id="stars-cap-sp"></span>
 	</p>
@@ -42,7 +45,7 @@
 	<form method="POST" action="" class="uniForm">
 		{% csrf_token %}
 		{{ form|as_uni_form }}
-		<input class="form_button" type="submit" value="{% trans 'Submit feedback' %}">
+		<button class="big" type="submit">{% trans 'Submit feedback' %}</button>
 	</form>
 </div>
 {% endblock %}

@@ -26,15 +26,6 @@ def __user_has_profile(user):
 
 
 def index(request):
-    try:
-        if request.user.is_authenticated():
-            administred_units = request.user.get_profile().administred_units()
-            if administred_units.count() > 1:
-                return redirect('restaurant:administrator')
-            elif administred_units.count() == 1:
-                unit = administred_units[0]
-                return redirect('order:restaurant_list', unit_id = unit.id)
-    except:pass
     if 'django_language' not in request.session:
          request.session['django_language'] = 'ro'
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
