@@ -1,6 +1,7 @@
 #!/bin/bash
 data=`date +%d_%H%M`
-mysqldump --user=django_login --password="testus_cumulus" click2eat | xz > /home/rif/click2eat_backup/backup-$data.sql.xz
+mysqldump --user=django_login --password="testus_cumulus" click2eat | xz > /mnt/local-backup/backup-$data.sql.xz
+rsync -var /mnt/local-backup/ /mnt/remote-backup/
 
 ## Putting the backup on a ftp
 #cd db
