@@ -77,8 +77,8 @@
     </div>
     <br>
     {% if order.status == 'RV' %}
-     <a id="confirm-link" class="button" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a><br />
-     <a id="deliver-link" class="button" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
+      <a id="confirm-link" class="button big lefta" href="{% url order:restaurant_confirm order.id %}">{% trans 'Send confirmation email' %}</a>
+      <a id="deliver-link" class="button big righta" href="{% url order:restaurant_deliver order.id %}">{% trans 'Mark delivered' %}</a>
      <div class="clear"></div>
      <div id="action-response" class="success" style="display:none"></div>
     {% endif %}

@@ -4,17 +4,14 @@
 {% block title %}{% trans 'List current orders' %}{% endblock %}
 
 {% block extrastyle %}
+<link href="{{ STATIC_URL }}css/css3buttons.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <style type="text/css">
-  body {font-size: 14px;}
-  tr>td {font-size: 1.4em;}
+  body {font-size: 16px;}
+  tr>td {font-size: 1.2em;}
   tr.red>td>a {color: indian;}
   tr.yellow>td>a {color: #F2D61A;}
   tr.green>td>a {color: #008000;}
 </style>
-{% endblock %}
-
-{% block script-links %}
-
 {% endblock %}
 
 {% block extrahead %}
@@ -43,9 +40,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="general_button">
-  <a href="{% url order:restaurant_list_csv unit_id %}">{% trans 'Download all orders (CSV)' %}</a>
-</div>
+<a href="{% url order:restaurant_list_csv unit_id %}">{% trans 'Download all orders (CSV)' %}</a>
 <div class="clear"></div>
 <div id="order-info"></div>
 <div id="order-list">
