@@ -28,7 +28,7 @@ def profile_detail(request, username):
     if username != request.user.username:
         dict['public_profile_field'] = 'public'
     return views.profile_detail(request, **dict)
-    
+
 @login_required
 def create(request):
     if request.method == 'POST':
@@ -87,7 +87,7 @@ def invite_friend(request):
 def invite_accept(request, confirmation_key):
     request.session['confirmation_key'] = confirmation_key
     return redirect('registration_register')
-            
+
 @login_required
 def limited_update_object(*args, **kwargs):
     request = args[0]

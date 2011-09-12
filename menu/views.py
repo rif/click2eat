@@ -16,10 +16,10 @@ def item_list(request):
     f = ItemFilter(request.GET, queryset=results)
     return {'query': query, 'filter': f}
 
-    
+
 @login_required
 @render_to('menu/daily_menu_list.html')
-def daily_menus(request):    
+def daily_menus(request):
     menus = MenuOfTheDay.objects.filter(day = date.today());
     return {'daily_menus': menus}
 
@@ -36,13 +36,13 @@ def menu_list(request):
     return {'tags': tags}
 
 @render_to('menu/daily_menu.html')
-def random_motd(request):    
+def random_motd(request):
     motds = MenuOfTheDay.objects.all()#.order_by('?')
     motd = motds[0] if len(motds) else None
     return locals()
 
 @render_to('menu/daily_menu.html')
-def daily_menu(request, menu_id):    
+def daily_menu(request, menu_id):
     motds = MenuOfTheDay.objects.all()#.order_by('?')
     motd = motds.get(pk=menu_id) if len(motds) else None
     return locals()

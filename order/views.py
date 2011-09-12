@@ -110,7 +110,7 @@ def add_topping(request, master_id, item_id, cart_name):
         return HttpResponse(str(order_item.id))
     except:
         raise Http404()
-    
+
 def add_menu_of_the_day(request, item_id, cart_name):
     if cart_name.startswith("cart-"):
         cart_name = cart_name.split("cart-")[1]
@@ -129,7 +129,7 @@ def add_menu_of_the_day(request, item_id, cart_name):
         return HttpResponse(str(order_item.id))
     except:
         raise Http404()
-    
+
 @login_required
 def remove_item(request, item_id):
     oi = get_object_or_404(OrderItem, pk=item_id)
@@ -153,13 +153,13 @@ def send(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     current_order = __get_current_order(request, unit)
     if current_order.status != 'CR':
-        messages.warning(request, _('Current order already sent.'))        
+        messages.warning(request, _('Current order already sent.'))
         return redirect('order:timer', order_id=current_order.id)
     if not unit.is_open():
         messages.warning(request, _('This restaurant is now closed! Please check the open hours and set desired delivery time accordingly.'))
     if unit.minimum_ord_val > current_order.total_amount:
         messages.error(request, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
-        return redirect('restaurant:detail', unit_id=unit.id)    
+        return redirect('restaurant:detail', unit_id=unit.id)
     if current_order.address and not current_order.address.geolocation_error:
         src = (unit.latitude, unit.longitude)
         dest = (current_order.address.latitude, current_order.address.longitude)
@@ -182,11 +182,11 @@ def send(request, unit_id):
                 b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
             messages.warning(request, _('Your order has been sent to the restaurant!'))
             send_mail('New Order',
-                       render_to_string('order/mail_order_detail.html', {'order': order}, context_instance=RequestContext(request)),
-                       'bucatar@filemaker-solutions.ro',
+                       render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request)),
+                       'office@filemaker-solutions.ro',
                        [unit.email],
                        fail_silently=False)
-            if not unit.is_open(): 
+            if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=current_order.id)
     else:

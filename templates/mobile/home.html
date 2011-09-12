@@ -7,7 +7,7 @@
     <h1>{% trans 'Welcome to click2eat.ro' %}</h1>
   </div><!-- /header -->
 
-  <div data-role="content"> 
+  <div data-role="content">
     <center>
     <img src="{{ STATIC_URL }}images/template/logo.png">
 
@@ -23,7 +23,7 @@
     <a href="{% url mobile:logout %}" class="ui-btn-right logout-button" data-icon="minus" title="Log Out of Your Account for Security"><span class="logout-wide">{% trans 'Logout' %}: </span>{{ user.username }}</a>
     {% else %}
     <a href="{% url mobile:login %}?next={% url mobile:home %}" class="ui-btn-right" data-icon="plus" title="Log In to Your Account">{% trans 'Login' %}</a>
-    {% endif %}    
+    {% endif %}
   </div><!-- /footer -->
 </div><!-- /page -->
 {% endblock %}

@@ -1,6 +1,6 @@
 import os
 from django.utils.translation import ugettext_lazy as _
-            
+
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
