@@ -1,24 +1,54 @@
 {% extends 'page.html' %}
-{% load i18n %}
+{% load i18n l10n %}
 
-{% block title %}{% trans 'Search' %}{% endblock %}
-{% block pagetitle %}{% trans 'Search' %}{% endblock %}
-{% block description %}{% trans 'List of all menu items' %}{% endblock %}
-{% block pageid %}search{% endblock %}
+{% block title %}{% trans 'Shopping cart' %}{% endblock %}
+{% block pagetitle %}{% trans 'Shopping cart' %}{% endblock %}
+{% block description %}{% trans 'List of all menu items in your shopping cart' %}{% endblock %}
+{% block pageid %}cart{% endblock %}
 
 {% block content %}
 <ul data-role="listview">
 {% for item, count, total in order_items %}
 <li>
-<h1>{{item}}: {{ count }} x {{ item.get_price }}{% trans 'RON' %}</h1>
-<span class="ui-li-aside">{{ total }}{% trans 'RON' %}</span>
+<h1>{{item}}: <span class="item-count">{{ count }}</span> x <span class="item-price">{{ item.get_price|unlocalize }}</span>{% trans 'RON' %}</h1>
+<span class="ui-li-aside">
+ <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url mobile:decr-item item.id %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
+ <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url mobile:incr-item item.id %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
+ <span class="item-total">{{ total }}</span>{% trans 'RON' %}
+</span>
 </li>
 {% endfor %}
 <li>
 <h1>{% trans 'Total' %}:</h1>
-<span class="ui-li-aside">{{ total_sum }}{% trans 'RON' %}</span>
+<span class="ui-li-aside"><span id="cart-total">{{ total_sum }}</span>{% trans 'RON' %}</span>
 </li>
 </ul>
 <br/>
 <a href="{% url mobile:order unit.id %}" data-role="button">{% trans 'CONFIRM ORDER' %}</a>
+<script type="text/javascript">
+$(function(){
+  $(".decr-link, .incr-link").click(function(e){
+    var isMinus = $(this).hasClass("decr-link");
+    console.log(isMinus);
+    var parent = $(this).parents("li:first");
+    $.get($(this).attr("href"), function(data){
+       $("#cart-total").text(data['count']);
+       var count = $("span.item-count", parent);
+       var price = $("span.item-price", parent);
+       var total = $("span.item-total", parent);
+       if(isMinus) {
+        if(parseInt(count.text()) > 1){
+          count.text(parseInt(count.text()) - 1);
+        } else {
+          parent.fadeOut("slow");
+        }
+       } else {
+        count.text(parseInt(count.text()) + 1);
+       }
+       total.text(parseInt(count.text())*parseFloat(price.text())+0.0);
+    });
+    e.preventDefault();
+  });
+});
+</script>
 {% endblock %}
