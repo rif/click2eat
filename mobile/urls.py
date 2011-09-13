@@ -13,6 +13,8 @@ urlpatterns = patterns('',
                        url(r'^itemdetail/(?P<item_id>\d+)/$', views.item_detail, name='item-detail'),
                        url(r'^motd/$', views.motd, name='motd'),
                        url(r'^shop/(?P<item_id>\d+)/$', views.shop, name='shop'),
+                       url(r'^decritem/(?P<item_id>\d+)/$', views.decr_item, name='decr-item'),
+                       url(r'^incritem/(?P<item_id>\d+)/$', views.incr_item, name='incr-item'),
                        url(r'^shoppingcart/(?P<unit_id>\d+)/$', views.shopping_cart, name='shopping-cart'),
                        url(r'^order/(?P<unit_id>\d+)/$', views.order, name='order'),
                        )

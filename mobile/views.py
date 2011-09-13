@@ -57,6 +57,29 @@ def shop(request, item_id):
         request.session.modified = True
         return {'count': __count_cart_sum(request.session[cart_name])}
 
+@login_required(login_url='/mobile/accounts/login/')
+@ajax_request
+def decr_item(request, item_id):
+        item = get_object_or_404(Item, pk=item_id)
+        cart_name = item.item_group.unit.name + 'cart'
+        if cart_name in request.session:
+          if request.session[cart_name][item.id][0] > 1:
+            request.session[cart_name][item.id][0] -= 1
+          else:
+            del request.session[cart_name][item.id]
+        request.session.modified = True
+        return {'count': __count_cart_sum(request.session[cart_name])}
+
+
+@login_required(login_url='/mobile/accounts/login/')
+@ajax_request
+def incr_item(request, item_id):
+        item = get_object_or_404(Item, pk=item_id)
+        cart_name = item.item_group.unit.name + 'cart'
+        if cart_name in request.session:
+            request.session[cart_name][item.id][0] += 1
+        request.session.modified = True
+        return {'count': __count_cart_sum(request.session[cart_name])}
 
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/shopping_cart.html')
