@@ -71,14 +71,14 @@ class OrderTest(TestCase):
     self.assertEqual('CR', ord2.status)
     self.assertEqual(3, ord2.orderitem_set.count())
     self.assertEqual(20.0, ord2.total_amount)
-  
-  def test_mark_delivered(self):
+
+  def test_mark_delivered_weird(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
       self.client.login(username='rif', password='test')
       r = self.client.get(reverse('order:restaurant_detail', args=[ord.id]))
       self.assertEqual(200, r.status_code)
-      #self.assertEqual(u'RV', ord.status)
-  
+
+
   def test_mark_delivered(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
       self.client.login(username='bobo', password='test')
@@ -86,7 +86,7 @@ class OrderTest(TestCase):
       self.assertEqual(200, r.status_code)
       self.assertEqual('Livrat', r.content)
       #self.assertEqual(u'DL', ord.status)
-  
+
   def test_restricted_views(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
       self.client.login(username='bobo', password='test')

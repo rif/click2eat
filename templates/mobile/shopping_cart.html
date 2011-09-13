@@ -10,15 +10,15 @@
 <ul data-role="listview">
 {% for item, count, total in order_items %}
 <li>
-<h1>{{item}}: {{ count }} x {{ item.price }}{% trans 'RON' %}</h1>
+<h1>{{item}}: {{ count }} x {{ item.get_price }}{% trans 'RON' %}</h1>
 <span class="ui-li-aside">{{ total }}{% trans 'RON' %}</span>
 </li>
 {% endfor %}
 <li>
 <h1>{% trans 'Total' %}:</h1>
-<span class="ui-li-aside">102{% trans 'RON' %}</span>
+<span class="ui-li-aside">{{ total_sum }}{% trans 'RON' %}</span>
 </li>
 </ul>
 <br/>
-<a href="#" data-role="button">{% trans 'CONFIRM ORDER' %}</a>
+<a href="{% url mobile:order unit.id %}" data-role="button">{% trans 'CONFIRM ORDER' %}</a>
 {% endblock %}

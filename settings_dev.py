@@ -36,15 +36,12 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
-# email settings
-#EMAIL_HOST = 'mail.filemkaer-solutions.ro'
-#EMAIL_PORT = '25'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ustest@gmail.com'
-EMAIL_HOST_PASSWORD = 'greta.1'
+EMAIL_HOST_USER = 'click2eat.ro@gmail.com'
+EMAIL_HOST_PASSWORD = 'testus_cumulus'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_SUBJECT_PREFIX = ' [bucatar] '
+EMAIL_SUBJECT_PREFIX = ' [Click2eat.ro] '
 
 SITE_NAME = 'bucatar'
 CONTACT_EMAIL = 'contact@mailinator.com'
@@ -156,8 +153,6 @@ INSTALLED_APPS = (
     'django_filters',
     'tinymce',
     'avatar',
-    'rosetta-grappelli',
-    'rosetta',
     'robots',
     'honeypot',
     'envelope',
@@ -168,10 +163,11 @@ INSTALLED_APPS = (
     'order',
     'wheel',
     'bonus',
+    'mobile',
 )
 
 if DEBUG:
-    INSTALLED_APPS += ('debug_toolbar',)
+    INSTALLED_APPS += ('debug_toolbar','rosetta-grappelli','rosetta',)
 
 INTERNAL_IPS = ('127.0.0.1',)
 DEBUG_TOOLBAR_CONFIG = {

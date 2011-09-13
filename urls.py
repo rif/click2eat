@@ -3,6 +3,7 @@ from django.contrib import admin
 from userprofiles import views
 from userprofiles.forms import BucatarRegistrationForm
 from restaurant.sitemaps import UnitSitemap
+from django.conf import settings
 
 sitemaps = {'units': UnitSitemap}
 
@@ -31,7 +32,6 @@ urlpatterns = patterns('',
                        (r'^flat/', include('django.contrib.flatpages.urls')),
                        (r'^robots.txt$', include('robots.urls')),
                        (r'^contact/',    include('envelope.urls')),
-                       url(r'^rosetta/', include('rosetta.urls'))
                        )
 
 urlpatterns += patterns('profiles.views',
@@ -46,3 +46,8 @@ urlpatterns += patterns('',
                         url(r'^captcha/', include('captcha.urls')),
                         url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
                         )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^rosetta/', include('rosetta.urls')),
+   )
