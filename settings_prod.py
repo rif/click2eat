@@ -22,11 +22,5 @@ CACHES = {
     },
 }
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ustest@gmail.com'
-EMAIL_HOST_PASSWORD = 'greta.1'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_SUBJECT_PREFIX = ' [click2eat] '
 
 ENVELOPE_EMAIL_RECIPIENTS = ('c.precup@filemaker-solutions.ro', 'm.patroescu@filemaker-solutions.ro', 'r.fericean@filemaker-solutions.ro')

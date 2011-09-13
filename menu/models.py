@@ -106,7 +106,7 @@ class Item(MultilingualModel):
       return self.name_def
 
   def get_price(self):
-      if self.promotion:
+      if self.promotion and self.promotion.is_active():
           return self.promotion.get_new_price(self.price)
       return self.price
 
