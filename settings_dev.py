@@ -7,9 +7,9 @@ def rel(*x):
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-#ADMINS = (
+ADMINS = (
 #    ('Radu Ioan Fericean', 'fericean@gmail.com'),
-#)
+)
 
 MANAGERS = ADMINS
 
