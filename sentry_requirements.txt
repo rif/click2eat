@@ -1,0 +1,12 @@
+Django
+Whoosh
+git+http://github.com/disqus/django-haystack
+django-indexer
+django-paging
+django-sentry
+django-templatetag-sugar
+eventlet
+greenlet
+lockfile
+python-daemon
+South
