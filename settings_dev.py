@@ -7,9 +7,9 @@ def rel(*x):
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    ('Radu Ioan Fericean', 'r.fericean@filemaker-solutions.ro'),
-)
+#ADMINS = (
+#    ('Radu Ioan Fericean', 'fericean@gmail.com'),
+#)
 
 MANAGERS = ADMINS
 
@@ -193,29 +193,3 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'handlers': {
-        'sentry': {
-            'level': 'DEBUG',
-            'class': 'sentry.client.handlers.SentryHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        }
-    },
-    'loggers': {
-        '()': {
-            'level': 'WARNING',
-            'handlers': ['sentry'],
-        },
-        'sentry.errors': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
-    },
-}
