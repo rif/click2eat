@@ -8,7 +8,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-#    ('Radu Ioan Fericean', 'fericean@gmail.com'),
+    ('Radu Ioan Fericean', 'fericean@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -123,7 +123,7 @@ TEMPLATE_DIRS = (
     rel('templates'),
 )
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
 #    'django.contrib.sessions', # session in database
@@ -137,6 +137,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
     # external apps
+    'sentry.client',
     'profiles',
     'registration',
     'django_extensions',
@@ -160,10 +161,14 @@ INSTALLED_APPS = [
     'wheel',
     'bonus',
     'mobile',
-]
+)
 
 if DEBUG:
-    INSTALLED_APPS += ['debug_toolbar','rosetta-grappelli','rosetta']
+    INSTALLED_APPS += ('debug_toolbar','rosetta-grappelli','rosetta')
+
+SENTRY_REMOTE_URL = 'http://click2eat.ro:9000/store/'
+SENTRY_CLIENT = 'sentry.client.async.AsyncSentryClient'
+SENTRY_KEY = 'mamaaremere'
 
 INTERNAL_IPS = ('127.0.0.1',)
 DEBUG_TOOLBAR_CONFIG = {
@@ -193,3 +198,29 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'handlers': {
+        'sentry': {
+            'level': 'DEBUG',
+            'class': 'sentry.client.handlers.SentryHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        '()': {
+            'level': 'WARNING',
+            'handlers': ['sentry'],
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
+}
