@@ -201,7 +201,6 @@ LOGGING = {
         'sentry': {
             'level': 'DEBUG',
             'class': 'sentry.client.handlers.SentryHandler',
-            'formatter': 'verbose'
         },
         'console': {
             'level': 'DEBUG',
