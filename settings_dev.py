@@ -123,7 +123,7 @@ TEMPLATE_DIRS = (
     rel('templates'),
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
 #    'django.contrib.sessions', # session in database
@@ -142,10 +142,6 @@ INSTALLED_APPS = (
     'django_extensions',
     'south',
     'uni_form',
-    'indexer',
-    'paging',
-    'sentry',
-    'sentry.client',
     'friends',
     'captcha',
     'taggit',
@@ -164,10 +160,10 @@ INSTALLED_APPS = (
     'wheel',
     'bonus',
     'mobile',
-)
+]
 
 if DEBUG:
-    INSTALLED_APPS += ('debug_toolbar','rosetta-grappelli','rosetta',)
+    INSTALLED_APPS += ['debug_toolbar','rosetta-grappelli','rosetta']
 
 INTERNAL_IPS = ('127.0.0.1',)
 DEBUG_TOOLBAR_CONFIG = {
@@ -200,18 +196,28 @@ GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
+        'sentry': {
+            'level': 'DEBUG',
+            'class': 'sentry.client.handlers.SentryHandler',
+            'formatter': 'verbose'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
         }
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
+        '()': {
+            'level': 'WARNING',
+            'handlers': ['sentry'],
         },
-    }
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
 }

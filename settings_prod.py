@@ -23,4 +23,11 @@ CACHES = {
 }
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
+INSTALLED_APPS += [
+  'sentry.client',
+]
+
+SENTRY_REMOTE_URL = 'http://localhost:9000/sentry/store/'
+SENTRY_KEY = 'mamaaremere'
+
 ENVELOPE_EMAIL_RECIPIENTS = ('c.precup@filemaker-solutions.ro', 'm.patroescu@filemaker-solutions.ro', 'r.fericean@filemaker-solutions.ro')
