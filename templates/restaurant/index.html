@@ -25,10 +25,6 @@
 <script type="text/javascript">
   $(function(){
       /*$("body").everyTime(1000*60,function(i) {console.log('tick');});*/
-      $("#notrated-link").click(function(e){
-	  $("#notrated-orders").slideToggle();
-	  e.preventDefault();
-      });
       $(".time-stars").stars({
 	  inputType: "select"
       });
@@ -56,23 +52,6 @@
 
 {% block main_area %}
   {% include 'messages.html'%}
-  <div id="orderrating">
-    {% with user.get_profile.get_not_rated as order_list %}
-    {% if order_list.exists %}
-    <div class="general_button">
-      <a id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
-    </div>
-    <div class="clear"></div>
-    <div id="notrated-orders" style="display:none">
-      <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
-      <ul>
-	{% for order in order_list %}
-      <li><a href="{% url order:feedback order.id %}">{{ order }}</a></li>
-      {% endfor %}
-      </ul>
-    </div>{% endif %}
-    {% endwith %}
-  </div> <!-- orderrating -->
   <div id="primapagina" class="span-16 last">
     {% cache 300 home LANGUAGE_CODE %}
     <div class="titlu">
