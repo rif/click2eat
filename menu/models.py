@@ -105,10 +105,22 @@ class Item(MultilingualModel):
   def __unicode__(self):
       return self.name_def
 
+  def get_name(self):
+    return self.name_def
+
+  def get_description(self):
+    return self.description_def
+
+  def get_id(self):
+    return self.id
+
   def get_price(self):
       if self.promotion and self.promotion.is_active():
           return self.promotion.get_new_price(self.price)
       return self.price
+
+  def has_promotion(self):
+    return self.promotion and self.promotion.is_active()
 
   def clone(self):
       ci = Item()
@@ -157,6 +169,18 @@ class Topping(MultilingualModel):
   added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
+
+  def get_name(self):
+    return self.name_def
+
+  def get_description(self):
+    return self.description_def
+
+  def get_id(self):
+    return self.id
+
+  def get_price(self):
+      return self.price
 
   class Meta:
     translation = ToppingTranslation
@@ -219,6 +243,18 @@ class MenuOfTheDay(models.Model):
     @models.permalink
     def get_absolute_url(self):
 	return ('menu:daily_menu', [str(self.id)])
+
+    def get_name(self):
+      return self.name
+
+    def get_description(self):
+      return self.description
+
+    def get_id(self):
+      return 'm%d' % self.id
+
+    def get_price(self):
+      return self.price
 
     class Meta:
         ordering = ['-day']

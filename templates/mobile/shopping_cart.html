@@ -8,14 +8,14 @@
 
 {% block content %}
 <ul data-role="listview">
-{% for item, count, total in order_items %}
+{% for item, values in cart.iteritems %}
 <li>
-<h1>{{item}}: <span class="item-count">{{ count }}</span> x <span class="item-price">{{ item.get_price|unlocalize }}</span>{% trans 'RON' %}</h1>
+<h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1 }}</span>{% trans 'RON' %}</h1>
 <span class="ui-li-aside">
- <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url mobile:decr-item item.id %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
- <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url mobile:incr-item item.id %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
+ <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url mobile:decr-item unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
+ <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url mobile:incr-item unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
  <span class="item-total">{{ total }}</span>{% trans 'RON' %}
-</span>
+ </span>
 </li>
 {% endfor %}
 <li>
@@ -24,7 +24,7 @@
 </li>
 </ul>
 <br/>
-<a href="{% url mobile:order unit.id %}" data-role="button">{% trans 'CONFIRM ORDER' %}</a>
+<a href="{% url mobile:order unit_id %}" data-role="button">{% trans 'CONFIRM ORDER' %}</a>
 <script type="text/javascript">
 $(function(){
   $(".decr-link, .incr-link").click(function(e){

@@ -14,11 +14,10 @@ def units(request):
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/menu.html')
 def menu(request, unit_id):
-	unit = get_object_or_404(Unit, pk=unit_id)
-	cart_name = unit.name + 'cart'
+        unit = get_object_or_404(Unit, pk=unit_id)
 	count = 0
-	if cart_name in request.session:
-          count = __count_cart_sum(request.session[cart_name])
+	if unit_id in request.session:
+          count = __count_cart_sum(request.session[unit_id])
 	return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -27,24 +26,16 @@ def search(request):
         items = Item.objects.select_related('tags', 'item_group', 'item_group__unit')
         return locals()
 
+def motd_detail(request, motd_id):
+        return item_detail(request, 'm'+motd_id)
+
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/item_detail.html')
 def item_detail(request, item_id):
-        item = get_object_or_404(Item, pk=item_id)
-        cart_name = item.item_group.unit.name + 'cart'
+        item, unit_id = __get_payload(item_id)
         count = 0
-        if cart_name in request.session:
-          count = __count_cart_sum(request.session[cart_name])
-        return locals()
-
-@login_required(login_url='/mobile/accounts/login/')
-@render_to('mobile/motd_detail.html')
-def motd_detail(request, motd_id):
-        motd = get_object_or_404(MenuOfTheDay, pk=motd_id)
-        cart_name = motd.unit.name + 'cart'
-        count = 0
-        if cart_name in request.session:
-          count = __count_cart_sum(request.session[cart_name])
+        if unit_id in request.session:
+          count = __count_cart_sum(request.session[unit_id])
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -56,64 +47,65 @@ def motd(request):
 @login_required(login_url='/mobile/accounts/login/')
 @ajax_request
 def shop(request, item_id):
-        item = get_object_or_404(Item, pk=item_id)
-        cart_name = item.item_group.unit.name + 'cart'
-        if not cart_name in request.session:
-          request.session[cart_name] = {}
-        if not item.id in request.session[cart_name]:
-          request.session[cart_name][item.id] = [1, item.get_price()]
+        item, unit_id = __get_payload(item_id)
+        if not unit_id in request.session:
+          request.session[unit_id] = {}
+        if not item_id in request.session[unit_id]:
+          request.session[unit_id][item_id] = [1, item.get_price(), item.get_name()]
         else:
-          request.session[cart_name][item.id][0] += 1
+          request.session[unit_id][item_id][0] += 1
         request.session.modified = True
-        return {'count': __count_cart_sum(request.session[cart_name])}
+        return {'count': __count_cart_sum(request.session[unit_id])}
 
 @login_required(login_url='/mobile/accounts/login/')
 @ajax_request
-def decr_item(request, item_id):
-        item = get_object_or_404(Item, pk=item_id)
-        cart_name = item.item_group.unit.name + 'cart'
-        if cart_name in request.session:
-          if request.session[cart_name][item.id][0] > 1:
-            request.session[cart_name][item.id][0] -= 1
+def decr_item(request, unit_id, item_id):
+        if unit_id in request.session:
+          if request.session[unit_id][item_id][0] > 1:
+            request.session[unit_id][item_id][0] -= 1
           else:
-            del request.session[cart_name][item.id]
+            del request.session[unit_id][item_id]
         request.session.modified = True
-        return {'count': __count_cart_sum(request.session[cart_name])}
+        return {'count': __count_cart_sum(request.session[unit_id])}
 
 
 @login_required(login_url='/mobile/accounts/login/')
 @ajax_request
-def incr_item(request, item_id):
-        item = get_object_or_404(Item, pk=item_id)
-        cart_name = item.item_group.unit.name + 'cart'
-        if cart_name in request.session:
-            request.session[cart_name][item.id][0] += 1
+def incr_item(request, unit_id, item_id):
+        if unit_id in request.session:
+            request.session[unit_id][item_id][0] += 1
         request.session.modified = True
-        return {'count': __count_cart_sum(request.session[cart_name])}
+        return {'count': __count_cart_sum(request.session[unit_id])}
 
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/shopping_cart.html')
 def shopping_cart(request, unit_id):
-        unit = get_object_or_404(Unit, pk=unit_id)
-        cart_name = unit.name+'cart'
         order_items = []
-        count = 0
-        if cart_name in request.session:
-          count = __count_cart_sum(request.session[cart_name])
-          cart = request.session[cart_name]
-          items = Item.objects.filter(id__in=cart.keys())
-          for item in items.iterator():
-            order_items.append((item, cart[item.id][0], cart[item.id][1]*cart[item.id][0]))
-        return {'order_items': order_items, 'total_sum': count, 'unit': unit}
+        total_sum = 0
+        if unit_id in request.session:
+          total_sum = __count_cart_sum(request.session[unit_id])
+          cart = request.session[unit_id]
+        return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/order.html')
 def order(request, unit_id):
-   unit = get_object_or_404(Unit, pk=unit_id)
-   cart_name = unit.name+'cart'
-   if cart_name in request.session:
-      del request.session[cart_name]
+   if unit_id in request.session:
+      del request.session[unit_id]
    return locals()
 
 def __count_cart_sum(cart):
         return sum([v[0]*v[1] for v in cart.itervalues()])
+
+def __get_payload(item_id):
+  item, unit_id = None,None
+  if item_id.startswith('m'):
+    item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
+    unit_id = item.unit_id
+  elif '_' in item_id:
+    item = get_object_or_404(Topping, pk=item_id[item_id.find('_'):])
+    unit_id = item.topping_group.unit_id
+  else:
+    item = get_object_or_404(Item, pk=item_id)
+    unit_id = item.item_group.unit_id
+  return item, str(unit_id)
