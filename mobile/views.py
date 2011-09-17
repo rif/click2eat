@@ -38,6 +38,16 @@ def item_detail(request, item_id):
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
+@render_to('mobile/motd_detail.html')
+def motd_detail(request, motd_id):
+        motd = get_object_or_404(MenuOfTheDay, pk=motd_id)
+        cart_name = motd.unit.name + 'cart'
+        count = 0
+        if cart_name in request.session:
+          count = __count_cart_sum(request.session[cart_name])
+        return locals()
+
+@login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/motd.html')
 def motd(request):
         motds = MenuOfTheDay.objects.filter(day = date.today());

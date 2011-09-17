@@ -9,9 +9,9 @@
 {% block content %}
 <ul data-role="listview" data-inset="true" {% if motds.exists %}data-filter="true"{% endif %}>
 {% for motd in motds %}
-<li><a href="{% url mobile:item-detail motd.id %}">
+<li><a href="{% url mobile:motd-detail motd.id %}">
 <h1>{{ motd.name }}</h1>
-<p><b>{{ motd.unit.name }}</b>: {{ motd.description|safe }}</p>
+<p><b>{{ motd.unit.name }}</b></p>
 </a></li>
 {% empty %}
 <li>{% trans 'Sorry no special menus for today.' %}</li>
