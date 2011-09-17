@@ -12,6 +12,10 @@
 {% block scripts %}
     <script type="text/javascript">
       $(function(){
+        $("#notrated-link").click(function(e){
+          $("#notrated-orders").slideToggle();
+          e.preventDefault();
+        });
         $(".hide-link").click(function(e){
           $.get($(this).attr("href"));
           $(this).parents("div.boxroz").fadeOut();
@@ -83,6 +87,19 @@
 		<div class="separatie">
 		</div>
 		-->
+                  <div id="orderrating">
+                  {% with user.get_profile.get_not_rated as order_list %}
+                  {% if order_list.exists %}
+                  <a class="button" id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
+                  <div class="clear"></div>
+                  <div id="notrated-orders" style="display:none">
+                    <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
+                    {% for order in order_list %}
+                    <div class="boxroz"><a href="{% url order:feedback order.id %}">{{ order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{order.creation_date|timesince}} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</a></div>
+                    {% endfor %}
+                  </div>{% endif %}
+                  {% endwith %}
+                </div> <!-- orderrating -->
 		<span class="subtitlu"> {% trans 'My orders' %}</span>
 		{% autopaginate orders 5 %}
 		{% for order in orders %}
