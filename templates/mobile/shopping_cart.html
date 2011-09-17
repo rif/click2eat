@@ -7,15 +7,15 @@
 {% block pageid %}cart{% endblock %}
 
 {% block content %}
-<ul data-role="listview">
+<ul id="items" data-role="listview">
 {% for item, values in cart.iteritems %}
-<li>
-<h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1 }}</span>{% trans 'RON' %}</h1>
-<span class="ui-li-aside">
- <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url mobile:decr-item unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
- <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url mobile:incr-item unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
- <span class="item-total">{{ total }}</span>{% trans 'RON' %}
- </span>
+<li itemid="{{ item }}">
+  <h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1 }}</span>{% trans 'RON' %}</h1>
+  <span class="ui-li-aside">
+  <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url mobile:decr-item unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
+  <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url mobile:incr-item unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
+  <span class="item-total"></span>{% trans 'RON' %}
+  </span>
 </li>
 {% endfor %}
 <li>
@@ -27,10 +27,16 @@
 <a href="{% url mobile:order unit_id %}" data-role="button">{% trans 'CONFIRM ORDER' %}</a>
 <script type="text/javascript">
 $(function(){
+  $("#items>li").each(function(){
+    var parent = $(this);
+    var count = parseInt($("span.item-count", parent).text());
+    var price = parseFloat($("span.item-price", parent).text());
+    $("span.item-total", parent).text(count*price);
+  });
   $(".decr-link, .incr-link").click(function(e){
     var isMinus = $(this).hasClass("decr-link");
-    console.log(isMinus);
     var parent = $(this).parents("li:first");
+    var iid = parent.attr("itemid");
     $.get($(this).attr("href"), function(data){
        $("#cart-total").text(data['count']);
        var count = $("span.item-count", parent);
@@ -41,6 +47,8 @@ $(function(){
           count.text(parseInt(count.text()) - 1);
         } else {
           parent.fadeOut("slow");
+          console.log("test:", $("#items>li[itemid^="+iid+"]"));
+          $("#items>li[itemid^="+iid+"]").fadeOut();
         }
        } else {
         count.text(parseInt(count.text()) + 1);

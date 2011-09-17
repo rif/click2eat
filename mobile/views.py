@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to, ajax_request
 from restaurant.models import Unit
-from menu.models import Item, MenuOfTheDay
+from menu.models import Item, Topping, MenuOfTheDay
 from django.shortcuts import get_object_or_404
 from datetime import date
 
@@ -34,8 +34,9 @@ def motd_detail(request, motd_id):
 def item_detail(request, item_id):
         item, unit_id = __get_payload(item_id)
         count = 0
+        cart = request.session[unit_id]
         if unit_id in request.session:
-          count = __count_cart_sum(request.session[unit_id])
+          count = __count_cart_sum(cart)
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -65,6 +66,8 @@ def decr_item(request, unit_id, item_id):
             request.session[unit_id][item_id][0] -= 1
           else:
             del request.session[unit_id][item_id]
+            for top in [k for k in request.session[unit_id].keys() if item_id + '_' in k]:
+              del request.session[unit_id][top]
         request.session.modified = True
         return {'count': __count_cart_sum(request.session[unit_id])}
 
@@ -103,7 +106,7 @@ def __get_payload(item_id):
     item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
     unit_id = item.unit_id
   elif '_' in item_id:
-    item = get_object_or_404(Topping, pk=item_id[item_id.find('_'):])
+    item = get_object_or_404(Topping, pk=item_id[item_id.find('_')+1:])
     unit_id = item.topping_group.unit_id
   else:
     item = get_object_or_404(Item, pk=item_id)
