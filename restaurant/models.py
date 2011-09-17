@@ -28,7 +28,7 @@ class PartnerPackage(models.Model):
     start_date = models.DateField(_('start date'), auto_now_add=True)
     end_date = models.DateField(_('end date'), null=True, blank=True)
     current = models.BooleanField(_('current'))
-    
+
     def get_class(self):
 	return self.get_name_display().lower()
 
@@ -116,7 +116,7 @@ class Interval(models.Model):
             endh = datetime.strptime(now.strftime("%d-%m-%Y ") + self.end_hour.strftime("%H:%M"), "%d-%m-%Y %H:%M")
             # correct after midnight end hour
             if starth and starth > endh:
-                endh = datetime(endh.year, endh.month, endh.day + 1, endh.hour, endh.minute) 
+                endh = datetime(endh.year, endh.month, endh.day + 1, endh.hour, endh.minute)
             if now > endh:
                 return False
         return True
@@ -203,7 +203,7 @@ class Unit(models.Model):
         return self.partnerpackage_set.get(current=True)
 
     def get_motd(self):
-        return self.menuoftheday_set.filter(day=date.today()) 
+        return self.menuoftheday_set.filter(day=date.today())
 
     def is_open_at(self, checked_time):
         try:
