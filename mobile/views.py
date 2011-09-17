@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to, ajax_request
 from restaurant.models import Unit
 from menu.models import Item, Topping, MenuOfTheDay
+from order.models import Order, OrderItem
 from django.shortcuts import get_object_or_404
 from datetime import date
 
@@ -93,9 +94,23 @@ def shopping_cart(request, unit_id):
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/order.html')
 def order(request, unit_id):
-   if unit_id in request.session:
-      del request.session[unit_id]
-   return locals()
+        cart = request.session[unit_id]
+        unit = get_object_or_404(Unit, pk=unit_id)
+        current_order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id)
+        for item_id, values in cart.iteritems():
+          if item_id.startswith('m'):
+            motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
+            OrderItem.objects.create(order=current_order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
+          elif '_' in item_id:
+            top = get_object_or_404(Topping, pk=item_id[item_id.find('_')+1:])
+            master = current_order.orderitem_set.get(item=item_id[:item_id.find('_')])
+            OrderItem.objects.create(master=master, order=current_order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
+          else:
+            item = get_object_or_404(Item, pk=item_id)
+            OrderItem.objects.create(order=current_order, item=item, count=values[0], old_price=item.get_price(), cart=unit_id)
+        if unit_id in request.session:
+          del request.session[unit_id]
+        return locals()
 
 def __count_cart_sum(cart):
         return sum([v[0]*v[1] for v in cart.itervalues()])
