@@ -182,6 +182,9 @@ class Topping(MultilingualModel):
   def get_price(self):
       return self.price
 
+  def __unicode__(self):
+      return self.name_def
+
   class Meta:
     translation = ToppingTranslation
     multilingual = ['name', 'description']
