@@ -11,17 +11,17 @@ from datetime import date
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/units.html')
 def units(request):
-	units = Unit.objects.all()
-	return locals()
+        units = Unit.objects.all()
+        return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/menu.html')
 def menu(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
-	count = 0
-	if unit_id in request.session:
+        count = 0
+        if unit_id in request.session:
           count = __count_cart_sum(request.session[unit_id])
-	return locals()
+        return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/search.html')

@@ -28,14 +28,14 @@ class Order(models.Model):
         total = 0
         for oi in self.orderitem_set.iterator():
             total += oi.count * oi.old_price
-        self.total_amount = total
+        self.total_amount = round(total,2)
         self.save()
 
     def get_cart_subtotal(self, cart):
       subtotal = 0
       for oi in self.orderitem_set.filter(cart=cart).iterator():
         subtotal += oi.count * oi.old_price
-      return subtotal
+      return round(subtotal,2)
 
     def delete_abandoned(self):
         if self.status != 'CR': return False

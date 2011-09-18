@@ -7,7 +7,6 @@ class UnitTest(TestCase):
     fixtures = ['restaurant.json']
 
     def setUp(self):
-        self.user = User.objects.create_user('rif', 'test@test.te', 'test')
         self.unit = Unit.objects.get(pk=1)
 
     def test_schedule(self):
