@@ -16,5 +16,5 @@ urlpatterns = patterns('',
                        url(r'^decritem/(?P<unit_id>\d+)/(?P<item_id>m?\d+_?\d*)/$', views.decr_item, name='decr-item'),
                        url(r'^incritem/(?P<unit_id>\d+)/(?P<item_id>m?\d+_?\d*)/$', views.incr_item, name='incr-item'),
                        url(r'^shoppingcart/(?P<unit_id>\d+)/$', views.shopping_cart, name='shopping-cart'),
-                       url(r'^order/(?P<unit_id>\d+)/$', views.order, name='order'),
+                       url(r'^sendorder/(?P<unit_id>\d+)/$', views.send_order, name='send-order'),
                        )
