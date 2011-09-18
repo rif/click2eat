@@ -54,7 +54,11 @@ def motd(request):
 @ajax_request
 def shop(request, item_id):
         item, unit_id = __get_payload(item_id)
-        if not unit_id in request.session:
+        if unit_id not in request.session and '_' in item_id: #first added item is a topping
+            return {'error': '2e62'} # kriptic errors for hackers delight :)
+        if unit_id in request.session and '_' in item_id and item_id[:item_id.find('_')] not in request.session[unit_id]: # added topping without item
+            return {'error': '2e6z'}
+        if unit_id not in request.session:
           request.session[unit_id] = {}
         if not item_id in request.session[unit_id]:
           request.session[unit_id][item_id] = [1, item.get_price(), item.get_name()]
@@ -99,8 +103,11 @@ def shopping_cart(request, unit_id):
 @login_required(login_url='/mobile/accounts/login/')
 @ajax_request
 def send_order(request, unit_id):
+        if not unit_id in request.session: return {'error': '2e45'} # kriptic errors for hackers delight :)
         cart = request.session[unit_id]
-        unit = get_object_or_404(Unit, pk=unit_id)
+        unit = get_object_or_404(Unit, pk=unit_id)        
+        if not unit.is_open(): return {'error': '2e61'}
+        if unit.minimum_ord_val > __count_cart_sum(cart): return {'error': '2e65'}
         address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
         delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
         order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type, status='ST')
@@ -116,7 +123,7 @@ def send_order(request, unit_id):
             item = get_object_or_404(Item, pk=item_id)
             OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=unit_id)
         #give bonus to the friend
-        initial_friend = order.user.get_profile().get_initial_friend()
+        initial_friend = order.user.get_profile().get_initial_friend()                
         if initial_friend:
           b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
         if unit_id in request.session:
@@ -126,7 +133,8 @@ def send_order(request, unit_id):
 
 
 def __count_cart_sum(cart):
-        return sum([v[0]*v[1] for v in cart.itervalues()])
+        s = sum([v[0]*v[1] for v in cart.itervalues()])
+        return round(s,2)
 
 def __get_payload(item_id):
   item, unit_id = None,None
