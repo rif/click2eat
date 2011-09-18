@@ -32,13 +32,13 @@ class DeliveryAddress(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('userprofiles:address_detail', (), {'object_id': self.id})
-    
+
     def __unicode__(self):
         return self.get_full_address()
-    
+
     def get_full_address(self):
         return _('%(street)s %(number)s, %(city)s') % {'street': self.street, 'number': self.number, 'city': self.city}
-    
+
     def save(self, *args, **kwargs):
         if self.primary == True:
             da = DeliveryAddress.objects.filter(user__id=self.user_id).filter(primary=True)
@@ -47,7 +47,7 @@ class DeliveryAddress(models.Model):
         if(self.perform_geolocation):
             y = geocoders.Yahoo('dj0yJmk9RUttbDF4S3BmbFo3JmQ9WVdrOVJXSjRaVkpPTm1VbWNHbzlNVEl5TWpJMU9EZzJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1hZA--')
             nb = re.findall(r'(\d+)', self.number)
-            if len(nb) > 0: nb = nb[0] 
+            if len(nb) > 0: nb = nb[0]
             else: nb = self.number
             try:
                 self.geolocated_address, (self.latitude, self.longitude) = y.geocode("%s %s, %s, Romania" % (nb, self.street, self.city))
@@ -56,7 +56,7 @@ class DeliveryAddress(models.Model):
                 self.geolocation_error = True
         self.perform_geolocation = True
         super(DeliveryAddress, self).save(*args, **kwargs) # Call the "real" save() method.
-  
+
     class Meta:
         ordering = ['-primary']
         verbose_name = _('Delivery Address')
@@ -76,13 +76,13 @@ class UserProfile(models.Model):
     newsletter = models.BooleanField(_('newsletter'), help_text=_("Do you want to receive our newsletter?"))
     public = models.BooleanField(_('public'), help_text=_("Do you want your profile to be public?"))
     communication = models.ManyToManyField('restaurant.Communication', verbose_name=_('communication'))
-  
+
     def __unicode__(self):
         return self.first_name + " " + self.last_name
 
     def is_filled(self):
         return self.first_name != '' or self.last_name != '' or self.phone != '' or self.sex != '' or self.birthday != ''
-    
+
     def get_not_rated(self):
         return Order.objects.filter(user=self.user).filter(status__in=['ST', 'RV', 'DL']).filter(rating__isnull=True)
 
@@ -91,15 +91,15 @@ class UserProfile(models.Model):
 
     def get_friends_list(self):
         return [f['friend'] for f in self.get_friends_iterator()]
-    
+
     def get_initial_friend(self):
         join_invitation = JoinInvitation.objects.filter(status=5).filter(contact__email=self.user.email)
         if join_invitation.exists(): return join_invitation[0].from_user
         return None
-    
+
     def get_invited_friends(self):
         return JoinInvitation.objects.filter(status=5).filter(from_user=self.user).count()
-     
+
     def get_bonus_money(self):
         result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('money'))
         return result['money__sum'] or 0

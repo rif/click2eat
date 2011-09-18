@@ -10,7 +10,7 @@
   <div data-role="content">
     <center>
     <img src="{{ STATIC_URL }}images/template/logo.png">
-
+    {% include "mobile/messages.html" %}
     <p>Hello from mobile click2eat.ro!</p>
     <a href="{% url mobile:units %}" data-role="button">{% trans 'See all restaurants' %}</a>
     <a href="{% url mobile:search %}" data-role="button">{% trans 'Search' %}</a>
