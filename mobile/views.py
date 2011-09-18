@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to, ajax_request
-from restaurant.models import Unit
+from restaurant.models import Unit, DeliveryType
 from menu.models import Item, Topping, MenuOfTheDay
 from order.models import Order, OrderItem
+from userprofiles.models import DeliveryAddress
 from django.shortcuts import get_object_or_404
 from datetime import date
 
@@ -35,7 +36,9 @@ def motd_detail(request, motd_id):
 def item_detail(request, item_id):
         item, unit_id = __get_payload(item_id)
         count = 0
-        cart = request.session[unit_id]
+        cart = None
+        if unit_id in request.session:
+          cart = request.session[unit_id]
         if unit_id in request.session:
           count = __count_cart_sum(cart)
         return locals()
@@ -85,6 +88,7 @@ def incr_item(request, unit_id, item_id):
 @render_to('mobile/shopping_cart.html')
 def shopping_cart(request, unit_id):
         order_items = []
+        unit = get_object_or_404(Unit, pk=unit_id)
         total_sum = 0
         if unit_id in request.session:
           total_sum = __count_cart_sum(request.session[unit_id])
@@ -92,11 +96,13 @@ def shopping_cart(request, unit_id):
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
-@render_to('mobile/order.html')
+@ajax_request
 def order(request, unit_id):
         cart = request.session[unit_id]
         unit = get_object_or_404(Unit, pk=unit_id)
-        current_order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id)
+        address = get_object_or_404(DeliveryAddress, pk=request.POST['da'])
+        delivery_type = get_object_or_404(DeliveryType, pk=request.POST['dt'])
+        current_order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type, status='ST')
         for item_id, values in cart.iteritems():
           if item_id.startswith('m'):
             motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
@@ -110,7 +116,9 @@ def order(request, unit_id):
             OrderItem.objects.create(order=current_order, item=item, count=values[0], old_price=item.get_price(), cart=unit_id)
         if unit_id in request.session:
           del request.session[unit_id]
-        return locals()
+        return {}
+
+
 
 def __count_cart_sum(cart):
         return sum([v[0]*v[1] for v in cart.itervalues()])

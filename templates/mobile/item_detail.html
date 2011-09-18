@@ -14,7 +14,7 @@
 <h4>{{ item.promotion }}</h4>
 {% endif %}
 
-<div id="toppings" style="{% if item_id not in cart.keys %}display:none{% endif %}">
+<div id="toppings" style="{% if cart and item_id not in cart.keys %}display:none{% endif %}">
 {% if item.toppings %}
 {% for topping in item.toppings.topping_set.iterator %}
 <a class="top-shop-link" rel="external" topid="{{ topping.id }}" href="#" >{% trans 'Add extra' %} {{ topping.get_name }} {{topping.price }} {% trans 'RON' %}</a>

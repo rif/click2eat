@@ -7,10 +7,10 @@
 		<h1>{% block pagetitle %}{% endblock %}</h1>
 
 		<a data-icon="home" class="ui-btn-right" data-iconpos="notext" href="/#home"></a>
-		{% include "mobile/messages.html" %}
 	</div><!-- /header -->
 
 	<div data-role="content">
+                {% include "mobile/messages.html" %}
 		{% block content %}<p>Page content goes here.</p>{% endblock %}
 	</div><!-- /content -->
 
