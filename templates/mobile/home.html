@@ -18,7 +18,7 @@
     </center>
   </div><!-- /content -->
 
-  <div data-role="footer" class="ui-bar" data-position="inline" data-position="fixed">
+  <div data-role="footer" class="ui-bar" data-position="fixed">
     {% if user.is_authenticated %}
     <a href="{% url mobile:logout %}" class="ui-btn-right logout-button" data-icon="minus" title="Log Out of Your Account for Security"><span class="logout-wide">{% trans 'Logout' %}: </span>{{ user.username }}</a>
     {% else %}
