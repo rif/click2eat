@@ -7,7 +7,6 @@ from menu.models import Promotion
 class PromotionTest(TestCase):
     fixtures = ['restaurant.json', 'menu.json', 'order.json']
     def setUp(self):
-        self.user = User.objects.create_user('rif', 'test@test.te', 'test')
         self.unit = Unit.objects.get(pk=1)
 
     def test_is_active_dates(self):

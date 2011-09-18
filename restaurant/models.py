@@ -16,9 +16,8 @@ class Communication(models.Model):
 
 class PartnerPackage(models.Model):
     PACKAGE_CHOICES = (
-      ('SV', _('Silver')),
-      ('GL', _('Gold')),
-      ('PL', _('Platinum'))
+      ('RE', _('Regular')),
+      ('PR', _('Premium'))
     )
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
     name = models.CharField(_('name'), max_length=2, choices=PACKAGE_CHOICES, default='SV')

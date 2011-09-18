@@ -125,8 +125,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'django.contrib.auth',
-    'django.contrib.contenttypes',
-#    'django.contrib.sessions', # session in database
+    'django.contrib.contenttypes',    
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -164,7 +163,11 @@ INSTALLED_APPS = (
 )
 
 if DEBUG:
-    INSTALLED_APPS += ('debug_toolbar','rosetta-grappelli','rosetta')
+    INSTALLED_APPS += ('debug_toolbar',
+                       'rosetta-grappelli',
+                       'rosetta',
+                       'django.contrib.sessions', # session in database
+                       )
 
 SENTRY_REMOTE_URL = 'http://click2eat.ro:9000/store/'
 SENTRY_CLIENT = 'sentry.client.async.AsyncSentryClient'

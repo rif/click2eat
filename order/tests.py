@@ -13,6 +13,8 @@ class OrderTest(TestCase):
     self.user = User.objects.create_user('rif1', 'rif1@test.te', 'test')
     self.user = User.objects.create_user('bobo', 'bobo@test.te', 'test')
     self.unit = Unit.objects.get(pk=1)
+    self.unit.admin_users='rif,bobo'
+    self.unit.save()
 
   def test_abandoned_empty_removal(self):
     count = Order.objects.count()
@@ -31,7 +33,7 @@ class OrderTest(TestCase):
     old.save()
     self.assertEqual(count + 1, Order.objects.count())
     OrderItem.objects.create(order=old, item=Item.objects.get(pk=1))
-    self.assertEqual(9.0, old.total_amount)
+    self.assertEqual(10.0, old.total_amount)
     old.delete_abandoned()
     self.assertEqual(count, Order.objects.count())
 
@@ -39,16 +41,16 @@ class OrderTest(TestCase):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1))
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=2))
-    self.assertEqual(19.0, ord.total_amount)
+    self.assertEqual(20.99, ord.total_amount)
 
   def test_cart_subtotal(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1), cart="1")
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=2), cart="1")
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=2), cart="2")
-    self.assertEqual(29.0, ord.total_amount)
-    self.assertEqual(19.0, ord.get_cart_subtotal("1"))
-    self.assertEqual(10, ord.get_cart_subtotal("2"))
+    self.assertEqual(31.98, ord.total_amount)
+    self.assertEqual(20.99, ord.get_cart_subtotal("1"))
+    self.assertEqual(10.99, ord.get_cart_subtotal("2"))
 
   def test_get_carts(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
@@ -70,7 +72,7 @@ class OrderTest(TestCase):
     self.assertEqual(ord1.employee, ord2.employee)
     self.assertEqual('CR', ord2.status)
     self.assertEqual(3, ord2.orderitem_set.count())
-    self.assertEqual(20.0, ord2.total_amount)
+    self.assertEqual(21.99, ord2.total_amount)
 
   def test_mark_delivered_weird(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
@@ -80,12 +82,12 @@ class OrderTest(TestCase):
 
 
   def test_mark_delivered(self):
+      self.assertTrue('bobo' in self.unit.admin_users)
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
       self.client.login(username='bobo', password='test')
       r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
       self.assertEqual(200, r.status_code)
       self.assertEqual('Livrat', r.content)
-      #self.assertEqual(u'DL', ord.status)
 
   def test_restricted_views(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
@@ -110,16 +112,16 @@ class OrderTest(TestCase):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1))
     OrderItem.objects.create(order=ord, count=5, item=Item.objects.get(pk=2))
-    self.assertEqual(59.0, ord.total_amount)
+    self.assertEqual(64.95, ord.total_amount)
 
   def test_count_add(self):
      ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
      oi = OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1), cart="rif")
      self.assertEqual(1, oi.count)
      self.client.login(username='rif', password='test')
-     r = self.client.get(reverse('order:add_item', args=[oi.id, "rif"]))
-#     self.assertEqual(200, r.status_code)
-#     self.assertEqual(2, oi.count)
+     r = self.client.get(reverse('order:add_item', args=[1, "rif"]))
+     self.assertEqual(200, r.status_code)
+     self.assertEqual(str(oi.id+1), r.content) # total aiurea nu testez ce trebuie    
 
   def test_count_remove(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
