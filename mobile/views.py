@@ -3,6 +3,7 @@ from annoying.decorators import render_to, ajax_request
 from restaurant.models import Unit, DeliveryType
 from menu.models import Item, Topping, MenuOfTheDay
 from order.models import Order, OrderItem
+from bonus.models import Bonus, BONUS_PERCENTAGE
 from userprofiles.models import DeliveryAddress
 from django.shortcuts import get_object_or_404
 from datetime import date
@@ -97,23 +98,27 @@ def shopping_cart(request, unit_id):
 
 @login_required(login_url='/mobile/accounts/login/')
 @ajax_request
-def order(request, unit_id):
+def send_order(request, unit_id):
         cart = request.session[unit_id]
         unit = get_object_or_404(Unit, pk=unit_id)
-        address = get_object_or_404(DeliveryAddress, pk=request.POST['da'])
-        delivery_type = get_object_or_404(DeliveryType, pk=request.POST['dt'])
-        current_order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type, status='ST')
+        address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
+        delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
+        order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type, status='ST')
         for item_id, values in cart.iteritems():
           if item_id.startswith('m'):
             motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
-            OrderItem.objects.create(order=current_order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
+            OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
           elif '_' in item_id:
             top = get_object_or_404(Topping, pk=item_id[item_id.find('_')+1:])
-            master = current_order.orderitem_set.get(item=item_id[:item_id.find('_')])
-            OrderItem.objects.create(master=master, order=current_order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
+            master = order.orderitem_set.get(item=item_id[:item_id.find('_')])
+            OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
           else:
             item = get_object_or_404(Item, pk=item_id)
-            OrderItem.objects.create(order=current_order, item=item, count=values[0], old_price=item.get_price(), cart=unit_id)
+            OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=unit_id)
+        #give bonus to the friend
+        initial_friend = order.user.get_profile().get_initial_friend()
+        if initial_friend:
+          b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
         if unit_id in request.session:
           del request.session[unit_id]
         return {}
