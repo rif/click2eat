@@ -50,7 +50,7 @@ class ToppingGroupAdmin(admin.ModelAdmin):
 
 class ItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
-    list_display = ('internal_name', 'index','name_def', 'description_def', 'get_price', 'promotion', 'quantity_with_mu', 'vat', 'item_group', 'toppings', 'active')
+    list_display = ('internal_name', 'index','name_def', 'description_def', 'get_price', 'promotion', 'quantity_with_mu', 'vat', 'item_group', 'toppings', 'active', 'speciality', 'fortune')
     search_fields = ['internal_name', 'name_def', 'description_def']
     list_editable = ['promotion']
     list_filter = ['item_group']
@@ -63,7 +63,7 @@ class ItemAdmin(admin.ModelAdmin):
             'fields': ('internal_name', 'index', ('name_def', 'description_def'), ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
         }),
         ('Extra options', {
-            'fields': ('tags', 'active')
+            'fields': ('tags', 'active', 'speciality', 'fortune')
         }),
     )
 
