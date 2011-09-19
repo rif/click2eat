@@ -11,6 +11,9 @@
     <li><a href="{% url order:restaurant_list unit.id %}">{{ unit }}</a></li>
     {% empty %}
     <li>{% trans "Sorry, you don't administer any units." %}</li>
+    <li>
+      {% trans 'If you are an restaurant administrator and you want to find out how you can benefit from the services offered by our portal' %} <a href="/flat/{{LANGUAGE_CODE}}/contact/">{% trans 'Contact a Click2eat Agent' %}</a>.
+    </li>
     {% endfor %}
   </ul>
 </div><!-- content_area -->
