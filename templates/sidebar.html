@@ -1,5 +1,4 @@
-{% load i18n %}
-{% load cache %}
+{% load i18n cache speciality%}
 
 {% if order and object %} {# we are in unit_detail main content #}
 <div id="sidebar2">
@@ -44,21 +43,30 @@
 </div><!-- sidebar2wrapper -->
 </div><!-- sidebar2 -->
 {% else %}
+{% random_special %}
 <div id="sidebar">
   <div id="boxmeniusidebar">
     <div class="text_specialitate">
-      {% trans 'Today' %}, {{ datetime.date.today|date:"D d M Y" }}
+      {% trans 'Today' %}, {{ today|date:"d F Y" }}
       <br/>{% trans 'Click2eat special is' %}:
     </div>
     <div class="meniu_special">
-      Pui milanez<br/> cu legume Verdeza
+      {{ special_item.get_name }}
     </div>
     <div class="meniu_restaurant">
-      Restaurant ALBERTO
+      {{ special_item.item_group.unit.name }}
     </div>
     <div class="linkcomanda">
-      <a href="#" title="" >{% trans 'Order this menu' %}</a>
+      <a onclick="addItem('{% url order:add_item special_item.id, request.user.username %}', '{% url restaurant:detail special_item.item_group.unit_id%}'); return false;" href="#" id="">{% trans 'Order this Item' %}</a>
+      <a href="#" title="" ></a>
     </div>
   </div>
 </div><!-- sidebar -->
+<script type="text/javascript">
+  function addItem(href, redir) {
+       $.get(href, function(){
+          window.location = redir;
+       });
+  }
+</script>
 {% endif %}
