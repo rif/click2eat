@@ -57,8 +57,9 @@
       {{ special_item.item_group.unit.name }}
     </div>
     <div class="linkcomanda">
-      <a onclick="addItem('{% url order:add_item special_item.id, request.user.username %}', '{% url restaurant:detail special_item.item_group.unit_id%}'); return false;" href="#" id="">{% trans 'Order this Item' %}</a>
-      <a href="#" title="" ></a>
+      {% if user.is_authenticated  and user.username %}
+      <a onclick="addItem('{% url order:add_item special_item.id, user.username %}', '{% url restaurant:detail special_item.item_group.unit_id%}'); return false;" href="#" id="">{% trans 'Order this Item' %}</a>
+      {% endif %}
     </div>
   </div>
 </div><!-- sidebar -->
