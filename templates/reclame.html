@@ -1,6 +1,6 @@
-{% load i18n %}
+{% load i18n units %}
 <div id="topcontent" class="span-24">
-	<div id="baraalba">
+	<div id="baraalba">{% random_units %}
 		<div class="titlu">
 			{% trans 'Chose where you want to eat today ?' %}
 		</div>
@@ -9,24 +9,17 @@
 		</div>
 		<div style="clear:both"></div>
 		<ul id="slider" class="jcarousel-skin-tango">
-			{% for i in '123412' %}
+			{% for unit in random_units %}
 			<li class="slide primulslide">
 				<div class="titluslide">
 					<a href="#" title="slide"> <span class="textmic">RESTAURANT</span>
 					<br/>
-					<span class="textmare">PRESIDENT</span> </a>
-				</div>
-				<div class="descriererestaurant">
-					<a href="#" title="slide"><span class="textmic">Str. Timisorii nr. 2</span>
-					<br/>
-					<span class="textmic">tel: 0256 567 567</span>
-					<br/>
-					<span class="textmic">rezervari@president.ro</span></a>
+					<span class="textmare">{{ unit.name|upper }}</span> </a>
 				</div>
 				<div class="logorestaurant">
-					<img src="{{ STATIC_URL }}images/template/rest1.png" alt="" />
+					<img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="{{ unit.name }}-logo"/>
 				</div>
-				<a href="#" title="slide"><img src="{{ STATIC_URL }}images/template/slide{{ i }}.png" alt="" /></a>
+				<a href="#" title="slide"><img src="{{ STATIC_URL }}images/template/slide1.png" alt="" /></a>
 			</li>
 			{% endfor %}
 		</ul>
