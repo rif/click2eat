@@ -44,11 +44,10 @@
 </div><!-- sidebar2wrapper -->
 </div><!-- sidebar2 -->
 {% else %}
-{% cache 3600 sidebar %}
 <div id="sidebar">
   <div id="boxmeniusidebar">
     <div class="text_specialitate">
-      {% trans 'Today' %}, 24.01.2011
+      {% trans 'Today' %}, {{ datetime.date.today|date:"D d M Y" }}
       <br/>{% trans 'Click2eat special is' %}:
     </div>
     <div class="meniu_special">
@@ -62,5 +61,4 @@
     </div>
   </div>
 </div><!-- sidebar -->
-{% endcache %}
 {% endif %}
