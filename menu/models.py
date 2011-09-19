@@ -95,6 +95,8 @@ class Item(MultilingualModel):
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
+  speciality = models.BooleanField(_('speciality of the house'), default=True)
+  fortune = models.BooleanField(_('display in the weel of fortune'), default=True)
 
   tags = TaggableManager()
 

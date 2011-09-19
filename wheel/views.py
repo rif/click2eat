@@ -9,7 +9,7 @@ from menu.models import Item
 
 @render_to('wheel/random_item.html')
 def fortune_ajax(request):
-    item = Item.objects.select_related('item_group').order_by('?')[0]
+    item = Item.objects.filter(fortune=True).select_related('item_group').order_by('?')[0]
     command_link = ''
     if request.user.is_authenticated():
         command_link = '<a onclick="addItem(\'%(href)s\', \'%(redir)s\'); return false;" href="#">%(order_now)s</a>' % \
