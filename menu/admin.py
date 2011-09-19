@@ -80,7 +80,7 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class ToppingAdmin(admin.ModelAdmin):
-    list_display = ('internal_name', 'name_def', 'description_def','price', 'quantity', 'measurement_unit', 'vat', 'active')
+    list_display = ('internal_name', 'name_def', 'description_def', 'topping_group', 'price', 'quantity', 'measurement_unit', 'vat', 'active')
     search_fields = ['internal_name']
     list_filter = ['topping_group']
     inlines = [ToppingTranslationInline]
