@@ -1,5 +1,5 @@
 {% load i18n cache %}
-{% cache 300 reclame motd.id LANGUAGE_CODE %}
+
 {% if motd %}
 <div class="meniulzilei">
 	{% trans 'Menu of the day' %}
@@ -29,7 +29,7 @@
     {% for m in motds %}
     <a class="motdlinks {% if m.id == motd.id %}meniuselectat{% endif %}" href="{% url menu:daily_menu m.id %}" title="">{{ forloop.counter }}</a>
     {% endfor %}
-  </span>          
+  </span>
 </div>
 <div id="newsletter">
   {% trans 'SUBSCRIBE HERE' %}<br/>
@@ -56,4 +56,3 @@
       });
   });
 </script>
-{% endcache %}

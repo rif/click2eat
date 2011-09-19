@@ -107,7 +107,7 @@ def shopping_cart(request, unit_id):
 def send_order(request, unit_id):
         if not unit_id in request.session: return {'error': '2e45'} # kriptic errors for hackers delight :)
         cart = request.session[unit_id]
-        unit = get_object_or_404(Unit, pk=unit_id)        
+        unit = get_object_or_404(Unit, pk=unit_id)
         if not unit.is_open(): return {'error': '2e61'}
         if unit.minimum_ord_val > __count_cart_sum(cart): return {'error': '2e65'}
         address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
@@ -125,7 +125,7 @@ def send_order(request, unit_id):
             item = get_object_or_404(Item, pk=item_id)
             OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=unit_id)
         #give bonus to the friend
-        initial_friend = order.user.get_profile().get_initial_friend()                
+        initial_friend = order.user.get_profile().get_initial_friend()
         if initial_friend:
           b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
         if unit_id in request.session:
