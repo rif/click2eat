@@ -16,7 +16,7 @@ class Communication(models.Model):
 
 class PartnerPackage(models.Model):
     PACKAGE_CHOICES = (
-      ('RE', _('Regular')),
+      ('ST', _('Standard')),
       ('PR', _('Premium'))
     )
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
