@@ -6,6 +6,7 @@ from order.models import Order, OrderItem
 from bonus.models import Bonus, BONUS_PERCENTAGE
 from userprofiles.models import DeliveryAddress
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
 from datetime import date
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -128,6 +129,11 @@ def send_order(request, unit_id):
           b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
         if unit_id in request.session:
           del request.session[unit_id]
+        send_mail(_('New Order'),
+                       render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request)),
+                       'office@filemaker-solutions.ro',
+                       [unit.email],
+                       fail_silently=False)
         return {}
 
 
