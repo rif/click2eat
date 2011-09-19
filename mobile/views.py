@@ -7,6 +7,7 @@ from bonus.models import Bonus, BONUS_PERCENTAGE
 from userprofiles.models import DeliveryAddress
 from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
+from django.utils.translation import ugettext_lazy as _
 from datetime import date
 
 @login_required(login_url='/mobile/accounts/login/')
