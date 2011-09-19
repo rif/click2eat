@@ -119,7 +119,7 @@ class Item(MultilingualModel):
   def get_price(self):
       if self.promotion and self.promotion.is_active():
           return self.promotion.get_new_price(self.price)
-      return self.price
+      return round(self.price,2)
 
   def has_promotion(self):
     return self.promotion and self.promotion.is_active()
@@ -259,7 +259,7 @@ class MenuOfTheDay(models.Model):
       return 'm%d' % self.id
 
     def get_price(self):
-      return self.price
+      return round(self.price,2)
 
     class Meta:
         ordering = ['-day']
