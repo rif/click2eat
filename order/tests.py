@@ -121,7 +121,7 @@ class OrderTest(TestCase):
      self.client.login(username='rif', password='test')
      r = self.client.get(reverse('order:add_item', args=[1, "rif"]))
      self.assertEqual(200, r.status_code)
-     self.assertEqual(str(oi.id+1), r.content) # total aiurea nu testez ce trebuie    
+     self.assertEqual(str(oi.id+1), r.content) # total aiurea nu testez ce trebuie
 
   def test_count_remove(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
