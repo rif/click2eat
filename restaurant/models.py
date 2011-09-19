@@ -29,7 +29,7 @@ class PartnerPackage(models.Model):
     current = models.BooleanField(_('current'))
 
     def get_class(self):
-	return self.get_name_display().lower()
+    	return self.get_name_display().lower()
 
     def __unicode__(self):
         return self.name

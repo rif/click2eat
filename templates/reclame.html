@@ -14,7 +14,7 @@
 				<div class="titluslide">
 					<a href="#" title="slide"> <span class="textmic">RESTAURANT</span>
 					<br/>
-					<span class="textmare">{{ unit.name|upper }}</span> </a>
+					<span class="textmare">{{ unit.name|upper }}</span></a>
 				</div>
 				<div class="logorestaurant">
 					{% if unit.logo_path %}
@@ -23,7 +23,11 @@
 					<img src="{{ STATIC_URL }}images/template/generic_logo.png" alt="" />
 					{% endif %}
 				</div>
+				{% if unit.get_package.name == 'PR' %}
 				<a href="#" title="slide"><img src="{{ STATIC_URL }}images/template/slide1.png" alt="" /></a>
+				{% else %}
+				<a href="#" title="slide"><img src="{{ STATIC_URL }}images/template/slide3.png" alt="" /></a>
+				{% endif %}
 			</li>
 			{% endfor %}
 		</ul>
