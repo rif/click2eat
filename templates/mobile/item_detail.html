@@ -14,7 +14,7 @@
 <h4>{{ item.promotion }}</h4>
 {% endif %}
 
-<div id="toppings" style="{% if cart and item_id not in cart.keys %}display:none{% endif %}">
+<div id="toppings" style="{% if not show_toppings %}display:none{% endif %}">
 {% if item.toppings %}
 {% for topping in item.toppings.topping_set.iterator %}
 <a class="top-shop-link" rel="external" topid="{{ topping.id }}" href="#" >{% trans 'Add extra' %} {{ topping.get_name }} {{topping.price }} {% trans 'RON' %}</a>
@@ -23,7 +23,7 @@
 </div>
 <br />
 <br />
-<a id="shop-link" rel="external" href="{% url mobile:shop item.get_id %}" data-role="button">{% trans 'Add to shopping cart' %}</a>
+<a id="shop-link" rel="external" href="{% url mobile:shop user.username item.get_id %}" data-role="button">{% trans 'Add to shopping cart' %}</a>
 <script type="text/javascript">
 $(function(){
   $("#shop-link").click(function(e){
@@ -34,7 +34,7 @@ $(function(){
     e.preventDefault();
   });
   $(".top-shop-link").click(function(e){
-    $.get("/mobile/shop/{{ item.id }}_" + $(this).attr("topid"), function(data){
+    $.get("/mobile/shop/{{ user.username }}/{{ item.id }}_" + $(this).attr("topid"), function(data){
       $("#cart-count").text(data['count']);
     });
     e.preventDefault();

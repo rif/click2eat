@@ -11,7 +11,7 @@
  {{motd.name}}
 </div>
 <div id="pret">
-  {{motd.get_price}}{% trans 'RON' %}
+  {{motd.price|floatformat:2}}{% trans 'RON' %}
 </div>
 {% if user.is_authenticated %}
 <div id="comanda">
