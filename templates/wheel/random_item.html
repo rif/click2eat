@@ -5,7 +5,7 @@
 </div>
 <div class="rezultat">
   <div class="rezpret">
-    <span class="rezultatpret">{{item.get_price}}</span> {% trans 'RON' %}
+    <span class="rezultatpret">{{item.price|floatformat:2}}</span> {% trans 'RON' %}
   </div>
   <div class="comandam">
   	{{command_link|safe}}

@@ -31,6 +31,7 @@ urlpatterns = patterns('',
                        (r'^flat/', include('django.contrib.flatpages.urls')),
                        (r'^robots.txt$', include('robots.urls')),
                        (r'^contact/',    include('envelope.urls')),
+                       (r'^newsletter/', include('newsletter.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',

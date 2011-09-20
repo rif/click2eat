@@ -259,7 +259,7 @@ class MenuOfTheDay(models.Model):
       return 'm%d' % self.id
 
     def get_price(self):
-      return round(self.price,2)
+      return self.price
 
     class Meta:
         ordering = ['-day']

@@ -8,25 +8,28 @@
 
 {% block content %}
 <ul id="items" data-role="listview">
+{% for cn, cart in carts %}
+  <li><h1>{{cn}}</h1></li>
 {% for item, values in cart.iteritems %}
-<li itemid="{{ item }}">
-  <h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1 }}</span>{% trans 'RON' %}</h1>
+  <li itemid="{{ item }}">
+    <h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1 }}</span>{% trans 'RON' %}</h1>
+    <span class="ui-li-aside">
+    <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url mobile:decr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
+    <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url mobile:incr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
+    <span class="item-total"></span>{% trans 'RON' %}
+    </span>
+  </li>
+  {% endfor %}
+  <li>
+  <h1>{% trans 'Total' %}:</h1>
   <span class="ui-li-aside">
-  <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url mobile:decr-item unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
-  <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url mobile:incr-item unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
-  <span class="item-total"></span>{% trans 'RON' %}
+    <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
+    <span id="cart-total">{{ total_sum }}</span>{% trans 'RON' %}
   </span>
-</li>
-
+  </li>
 {% endfor %}
-<li>
-<h1>{% trans 'Total' %}:</h1>
-<span class="ui-li-aside">
-  <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
-  <span id="cart-total">{{ total_sum }}</span>{% trans 'RON' %}
-</span>
-</li>
 </ul>
+
 <br/>
 
 <div id="dt">
@@ -53,7 +56,7 @@
 </div>
 </div>
 <br/>
-<a id="confirm" href="{% url mobile:send-order unit_id %}" rel="external" data-role="button">{% if not unit.is_open %}<span id="unit-closed">{% trans 'The restaurant is now closed'|upper %}!</span>{% else %}{% trans 'CONFIRM ORDER' %} {% endif %}</a>
+<a id="confirm" href="{% url mobile:send-order unit_id %}" rel="external" data-role="button">{% if not unit.is_open %}<span id="unit-closed">{% trans 'The restaurant is now closed'|upper %}!</span>{% else %}{% trans 'Send the order' %} {% endif %}</a>
 <script type="text/javascript">
 function showHideMinOrder(){
     var ct = parseFloat($("#cart-total").text());
