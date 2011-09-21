@@ -55,12 +55,10 @@ def unit_list(request):
 @render_to('restaurant/unit_detail.html')
 def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    current_order = views.__get_current_order(request, unit)
-    carts = OrderItem.objects.select_related().filter(order__id=current_order.id).values_list('cart', flat=True).distinct()
     motd = unit.get_motd()
     if motd.exists(): motd = motd[0]
     else: motd = None
-    return {'object': unit, 'order': current_order, 'carts': carts, 'motd': motd}
+    return {'object': unit, 'motd': motd, 'we_are_in_unit_detail': True}
 
 @login_required
 @render_to('restaurant/comments.html')
@@ -88,4 +86,3 @@ def invoice(request, unit_id):
     else:
         grand_total = unit.get_package().monthly_fee
     return {'unit': unit, 'orders': last_month_orders, 'total_sum': total_amount_sum, 'grand_total': grand_total}
-

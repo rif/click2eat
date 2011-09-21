@@ -115,19 +115,44 @@ class OrderTest(TestCase):
     self.assertEqual(64.95, ord.total_amount)
 
   def test_count_add(self):
-     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-     oi = OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1), cart="rif")
-     self.assertEqual(1, oi.count)
      self.client.login(username='rif', password='test')
-     r = self.client.get(reverse('order:add_item', args=[1, "rif"]))
+     r = self.client.get(reverse('order:shop', args=["rif", 1]))
      self.assertEqual(200, r.status_code)
-     self.assertEqual(str(oi.id+1), r.content) # total aiurea nu testez ce trebuie
+     self.assertEqual('{"count": 10.0}', r.content)
 
   def test_count_remove(self):
-    ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-    oi = OrderItem.objects.create(order=ord, count=2, item=Item.objects.get(pk=1), cart="rif")
-    self.assertEqual(2, oi.count)
     self.client.login(username='rif', password='test')
-    r = self.client.get(reverse('order:remove_item', args=[oi.id]))
+    self.client.get(reverse('order:shop', args=["rif", 1]))
+    r = self.client.get(reverse('order:decr-item', args=['rif', 1, 1]))
     self.assertEqual(200, r.status_code)
-    self.assertEqual("1", r.content)
+    self.assertEqual('{"count": 0.0}', r.content)
+
+  def test_subtotal_cart(self):
+     self.client.login(username='rif', password='test')
+     self.client.get(reverse('order:shop', args=["rif", 1]))
+     self.client.get(reverse('order:shop', args=["rif", 2]))
+     self.client.get(reverse('order:shop', args=["rif", 2]))
+     r = self.client.get(reverse('order:shopping-cart', args=[1]))
+     self.assertEqual(200, r.status_code)
+     self.assertTrue('<span class="cart-subtotal">31.98</span>' in r.content)
+
+  def test_total_cart(self):
+     self.client.login(username='rif', password='test')
+     self.client.get(reverse('order:shop', args=["rif", 1]))
+     self.client.get(reverse('order:shop', args=["rif", 2]))
+     self.client.get(reverse('order:shop', args=["rif", 2]))
+     self.client.get(reverse('order:shop', args=["mama", 1]))
+     self.client.get(reverse('order:shop', args=["mama", 1]))
+     r = self.client.get(reverse('order:shopping-cart', args=[1]))
+     self.assertEqual(200, r.status_code)
+     self.assertTrue('<span class="cart-subtotal">31.98</span>' in r.content)
+     self.assertTrue('<span class="cart-subtotal">20.0</span>' in r.content)
+     self.assertTrue('<span id="order-total">51.98</span>' in r.content)
+
+  def test_total(self):
+     self.client.login(username='rif', password='test')
+     self.client.get(reverse('order:shop', args=["rif", 1]))
+     self.client.get(reverse('order:shop', args=["rif", 2]))
+     r = self.client.get(reverse('order:shop', args=["rif", 2]))
+     self.assertEqual(200, r.status_code)
+     self.assertEqual('{"count": 31.98}', r.content)

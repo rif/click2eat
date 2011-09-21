@@ -792,46 +792,53 @@ body
     font-size: 25px
     font-weight: normal
     letter-spacing: -1px
-  .cart
-    font-size: 12px
-    font-weight: bold
-  .selected-cart .cart-name
-    font-size: 12px
-    font-weight: bold
-    color: indianred
   #carts
-    height: 170px
-    width: 239px
+    height: 290px
+    width: 255px
     overflow: auto
-  .item
-    font-size: 12px
-    clear: both
-    width: 230px
-    position: relative
-    .buc
-      float: left
-    .tip
-      float: left
-      margin-left: 2px
-      width: 135px
-    .pret
-      float: right
-    .add
-      position: absolute
-      right: 52px
-      top: 1px
-    .sub
-      position: absolute
-      right: 63px
-      top: 1px
-      background: url("../images/template/sub.png") no-repeat
-      width: 12px
-      height: 12px
-    .add
-      background: url("../images/template/add.png") no-repeat
-      width: 12px
-      height: 12px
+    a.selected-cart,
+      font-size: 12px
+      font-weight: bold
+      color: indianred
+    ul
+      +no-bullets
+      margin: 0
+      padding: 0
+    li.item
+      font-size: 12px
+      clear: both
+      width: 230px
+      position: relative
+      .item-price
+        display: none
+      .item-count
+        float: left
+      .item-title
+        float: left
+        margin-left: 2px
+        width: 135px
+      .item-total
+        float: right
+      .item-currency
+        float: right
+      .decr-link
+        position: absolute
+        right: 63px
+        top: 1px
+        background: url("../images/template/sub.png") no-repeat
+        width: 12px
+        height: 12px
+      .incr-link
+        position: absolute
+        right: 52px
+        top: 1px
+        background: url("../images/template/add.png") no-repeat
+        width: 12px
+        height: 12px
   .nota
+    a
+      +link-colors(#562019, #6c6c6c, red, #562019,  #6c6c6c)
+      +hover-link
     position: absolute
     bottom: 15px
     .textnota

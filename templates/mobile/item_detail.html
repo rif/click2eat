@@ -23,7 +23,7 @@
 </div>
 <br />
 <br />
-<a id="shop-link" rel="external" href="{% url mobile:shop user.username item.get_id %}" data-role="button">{% trans 'Add to shopping cart' %}</a>
+<a id="shop-link" rel="external" href="{% url order:shop user.username item.get_id %}" data-role="button">{% trans 'Add to shopping cart' %}</a>
 <script type="text/javascript">
 $(function(){
   $("#shop-link").click(function(e){
@@ -34,7 +34,7 @@ $(function(){
     e.preventDefault();
   });
   $(".top-shop-link").click(function(e){
-    $.get("/mobile/shop/{{ user.username }}/{{ item.id }}_" + $(this).attr("topid"), function(data){
+    $.get("/order/shop/{{ user.username }}/{{ item.id }}_" + $(this).attr("topid"), function(data){
       $("#cart-count").text(data['count']);
     });
     e.preventDefault();
