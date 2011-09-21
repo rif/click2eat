@@ -43,6 +43,8 @@
         {% for dt in unit.delivery_type.iterator %}
            <input type="radio" name="dt-1" id="dt-{{ dt.id }}" value="{{ dt.id }}" {% if forloop.counter == 1 %}checked="checked"{% endif %} />
            <label for="dt-{{ dt.id }}">{{ dt }}</label>
+        {% empty %}
+        <h1>{% trans 'You have no delivery addreses defined' %}!<h1>
         {% endfor %}
     </fieldset>
 </div>
@@ -110,8 +112,7 @@ $(function(){
         if(parseInt(count.text()) > 1){
           count.text(parseInt(count.text()) - 1);
         } else {
-          parent.fadeOut("slow");
-          console.log("test:", $("#items>li[itemid^="+iid+"]"));
+          parent.fadeOut("slow").remove();
           $("#items>li[itemid^="+iid+"]").fadeOut();
         }
        } else {

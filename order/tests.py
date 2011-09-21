@@ -118,7 +118,7 @@ class OrderTest(TestCase):
      self.client.login(username='rif', password='test')
      r = self.client.get(reverse('order:shop', args=["rif", 1]))
      self.assertEqual(200, r.status_code)
-     self.assertEqual('{"count": 10.0}', r.content)
+     self.assertEqual('{"count": 10.0, "price": 10.0, "id": "1", "name": "Tocanita de puioc"}', r.content)
 
   def test_count_remove(self):
     self.client.login(username='rif', password='test')
@@ -155,4 +155,16 @@ class OrderTest(TestCase):
      self.client.get(reverse('order:shop', args=["rif", 2]))
      r = self.client.get(reverse('order:shop', args=["rif", 2]))
      self.assertEqual(200, r.status_code)
-     self.assertEqual('{"count": 31.98}', r.content)
+     self.assertEqual('{"count": 31.98, "price": 10.99, "id": "2", "name": "Supa de rosii"}', r.content)
+
+  def test_no_exception_incr_decr(self):
+     self.client.login(username='rif', password='test')
+     r = self.client.get(reverse('order:incr-item', args=['tata', 1, 1]))
+     self.assertEqual('{"error": "29a"}', r.content)
+     r = self.client.get(reverse('order:decr-item', args=['rif', 1, 1]))
+     self.assertEqual('{"error": "29a"}', r.content)
+     self.client.get(reverse('order:shop', args=["rif", 1]))
+     r = self.client.get(reverse('order:incr-item', args=['rif', 1, 2]))
+     self.assertEqual('{"error": "29a"}', r.content)
+     r = self.client.get(reverse('order:decr-item', args=['rif', 1, 2]))
+     self.assertEqual('{"error": "29a"}', r.content)

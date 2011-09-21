@@ -20,27 +20,46 @@
 	    e.preventDefault();
 	});
         $(".shop-link").click(function(e){
-          $.get("/order/shop/" + $("a.selected-cart").text() + "/" + $(this).attr("itemid"), function(data){
-            $("#toppings").fadeIn();
-          });
-          '<li itemid="1" class="item">\
-          <span class="item-count">10</span>\
-          <span class="item-price">10,0</span>\
-          <span class="item-title">x Tocanita de puioc</span>\
-          <a href="/mobile/decritem/rif/1/1/" class="decr-link"></a>\
-          <a href="/mobile/incritem/rif/1/1/" class="incr-link"></a>\
-          <span class="item-currency">Lei</span>\
-          <span class="item-total">100</span>\
-          </li>'
+          var id = $(this).attr("itemid");
+          shop(id);
+          $(this).parents("li.item:first").next(".top-span").fadeIn();
           e.preventDefault();
         });
         $(".shop-top-link").click(function(e){
-          $.get("/order/shop/" + $("a.selected-cart").text() + "/" + $(this).attr("itemid") + "_" + $(this).attr("topid"), function(data){
-            $("#toppings").fadeIn();
-          });
+          var id = $(this).attr("itemid") + "_" + $(this).attr("topid");
+          shop(id);
           e.preventDefault();
         });
     });
+
+function shop(id){
+  var selCart = $("a.selected-cart");
+  var parentUL = selCart.next("ul");
+  var menuItem = parentUL.children("li[itemid='" + id + "']");
+  if(menuItem.length >0){
+    $("a.incr-link", menuItem).click();
+  } else {
+    $.get("/order/shop/" + selCart.text() + "/" + id + "/", function(data){
+      parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
+      parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['count']);
+      incrDecrBinding();
+      calculateOrderTotal();
+    });
+  }
+}
+
+function itemTemplate(id, price, title){
+  return '<li itemid="'+ id +'" class="cart-item">\
+          <span class="item-count">1</span>\
+          <span class="item-price">' + price + '</span>\
+          <span class="item-title">x ' + title + '</span>\
+          <a href="#" class="decr-link"></a>\
+          <a href="#" class="incr-link"></a>\
+          <span class="item-currency">{% trans "RON" %}</span>\
+          <span class="item-total">' + price + '</span>\
+          </li>';
+}
+
 function pageLinks() {
     $(".page, .next, .prev").click(function(e) {
         $.get("{% url order:list_unit object.id %}" + $(this).attr("href"), function(data) {
@@ -76,7 +95,7 @@ function pageLinks() {
         <div class="clear"></div>
         <div class="content_area">
           <div class="title"><h3>{% trans 'Menu of the day' %}</h3></div>
-          <h4><a class="shop-link" href="{% url order:shop user.username motd.get_id %}">{{ motd.name }}</a></h4>
+          <h4><a class="shop-link" itemid="{{ motd.get_id }}" href="#">{{ motd.name }}</a></h4>
           {{ motd.description|safe }}
         </div><!-- content_area -->
         {% endif %}
@@ -94,7 +113,7 @@ function pageLinks() {
             <ul>
               {% for item in itemgroup.item_set.iterator %}
               {% if item.active %}
-              <li class=" item {% if item.is_new %}new-item{% endif %} pozrel">
+              <li class="item {% if item.is_new %}new-item{% endif %} pozrel">
                 <div class="name">{{ item.name_def }}</div>
                 <br/>
                 <div class="description">{{ item.description_def }}</div>
@@ -104,15 +123,9 @@ function pageLinks() {
                 </div>
                 <div class="clear"></div>
               </li>
-              <div class="clear"></div>
-
-              <span id="top{{ item.id }}" class="top-span" style="display:none">
+              <div id="top{{ item.id }}" class="top-span" style="display:none">
                 {% if item.toppings %}
-                <a class="toggle-toppings" href="#" title="{% trans 'Toggle toppings' %}">
-                  <img alt="+" src="{{ STATIC_URL }}images/template/plate_plus_btn.png" />
-                </a>
-                <span class="topping-span" style="display:none">
-                  {% trans 'Toppings' %}:
+                <span class="topping-span">
                   <ul>
                     {% for top in item.toppings.topping_set.iterator %}
                     <li>
@@ -124,7 +137,8 @@ function pageLinks() {
                   </ul>
                 </span>
                 {% endif %}
-              </span>
+              </div>
+              <div class="clear"></div>
               {% endif %}
               {% endfor %}
             </ul>

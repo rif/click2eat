@@ -6,20 +6,20 @@
   <a href="#" class="{% if cn == user.username %}selected-cart{% endif %} cart-name">{{ cn }}</a>
 <ul class="items">
 {% for item, values in cart.iteritems %}
-  <li class="item" itemid="{{ item }}">
+  <li class="cart-item" itemid="{{ item }}">
     <span class="item-count">{{ values.0 }}</span>
     <span class="item-price">{{ values.1|unlocalize }}</span>
     <span class="item-title">x {{ values.2 }}</span>
-    <a class="decr-link" href="{% url order:decr-item user.username unit_id item %}"></a>
-    <a class="incr-link" href="{% url order:incr-item user.username unit_id item %}"></a>
+    <a class="decr-link" href="#"></a>
+    <a class="incr-link" href="#"></a>
     <span class="item-currency">{% trans 'RON' %}</span>
     <span class="item-total"></span>
   </li>
   {% endfor %}
-  <li class="item">
-    {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ subtotal|unlocalize }}</span>{% trans 'RON' %}
-  </li>
 </ul>
+<div class="subtotal-div">
+  {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ subtotal|unlocalize }}</span>{% trans 'RON' %}
+</div>
 {% endfor %}
 </div>
 <div class="nota">
@@ -79,31 +79,7 @@ $(function(){
     var price = parseFloat($("span.item-price", parent).text());
     $("span.item-total", parent).text(count*price);
   });
-  $(".decr-link, .incr-link").click(function(e){
-    var isMinus = $(this).hasClass("decr-link");
-    var parent = $(this).parents("li:first");
-    var iid = parent.attr("itemid");
-    $.get($(this).attr("href"), function(data){
-       $("span.cart-subtotal", parent).text(data['count']);
-       var count = $("span.item-count", parent);
-       var price = $("span.item-price", parent);
-       var total = $("span.item-total", parent);
-       if(isMinus) {
-        if(parseInt(count.text()) > 1){
-          count.text(parseInt(count.text()) - 1);
-        } else {
-          parent.fadeOut("slow");
-          console.log("test:", $("#items>li[itemid^="+iid+"]"));
-          $("#items>li[itemid^="+iid+"]").fadeOut();
-        }
-       } else {
-        count.text(parseInt(count.text()) + 1);
-       }
-       total.text(parseInt(count.text())*parseFloat(price.text()).toFixed(2));
-       showHideMinOrder();
-    });
-    e.preventDefault();
-  });
+
   $("#add-cart").click(function(e) {
     if ($("#id_name").length == 0) { // we don't have one already
         $("#new-cart-placeholder").html('<form action="" method="post" id="cart-name-form">\
@@ -131,13 +107,51 @@ $(function(){
     e.preventDefault();
   });
   cartSelectionBinding();
+   incrDecrBinding();
 });
+
 function cartSelectionBinding() {
   $(".cart-name").unbind("click");
   $(".cart-name").click(function(e){
         $(".cart-name").removeClass("selected-cart");
         $(this).addClass("selected-cart");
         e.preventDefault();
+  });
+}
+
+function incrDecrBinding(){
+   $(".decr-link, .incr-link").unbind("click");
+   $(".decr-link, .incr-link").click(function(e){
+    var isMinus = $(this).hasClass("decr-link");
+    var parent = $(this).parents("li:first");
+    var iid = parent.attr("itemid");
+    var parentUL = parent.parent("ul.items");
+    var parentCart = parentUL.prev("a.cart-name:first");
+    parentCart.click(); // select cart
+    if (isMinus){
+      var href = "/order/decritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
+    } else {
+      var href = "/order/incritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
+    }
+    $.get(href, function(data){
+       parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['count']);
+       var count = $("span.item-count", parent);
+       var price = $("span.item-price", parent);
+       var total = $("span.item-total", parent);
+       if(isMinus) {
+        if(parseInt(count.text()) > 1){
+          count.text(parseInt(count.text()) - 1);
+        } else {
+          parent.fadeOut("slow").remove();
+          $("#items>li[itemid^="+iid+"]").fadeOut();
+        }
+       } else {
+        count.text(parseInt(count.text()) + 1);
+       }
+       total.text(parseInt(count.text())*parseFloat(price.text()).toFixed(2));
+       calculateOrderTotal();
+    });
+    e.preventDefault();
   });
 }
 </script>
