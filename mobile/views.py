@@ -55,5 +55,5 @@ def shopping_cart(request, unit_id):
           total_sum = views.__count_cart_sum(request,unit_id)
           carts = []
           for cn in views.__get_cart_names(request,unit_id):
-            carts.append((cn.split(':',1)[1],request.session[cn]))
+            carts.append((cn.split(':',1)[1], request.session[cn], views.__count_cart_sum(request, cn)))
         return locals()

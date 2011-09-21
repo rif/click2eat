@@ -7,12 +7,12 @@
 {% block pageid %}cart{% endblock %}
 
 {% block content %}
-{% for cn, cart in carts %}
+{% for cn, cart, subtotal in carts %}
   <h2>{% trans 'Cart' %}: {{ cn }}</h2>
 <ul id="items" data-role="listview" data-inset="true" data-count-theme="b">
 {% for item, values in cart.iteritems %}
   <li itemid="{{ item }}">
-    <h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1 }}</span>{% trans 'RON' %}</h1>
+    <h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1|unlocalize }}</span>{% trans 'RON' %}</h1>
     <span class="ui-li-aside">
     <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url order:decr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
     <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url order:incr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
@@ -23,7 +23,7 @@
   <li>
   <h1>{% trans 'Subtotal' %}:</h1>
   <span class="ui-li-aside">
-    <span class="cart-subtotal">{{ total_sum }}</span>{% trans 'RON' %}
+    <span class="cart-subtotal">{{ subtotal }}</span>{% trans 'RON' %}
   </span>
   </li>
   </ul>
