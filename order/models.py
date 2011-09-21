@@ -6,7 +6,6 @@ from datetime import datetime
 
 class Order(models.Model):
     STATUS_CHOICES = (
-      ('CR', _('Created')),
       ('ST', _('Sent')),
       ('RV', _('Received')),
       ('DL', _('Delivered')),

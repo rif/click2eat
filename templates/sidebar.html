@@ -1,45 +1,9 @@
 {% load i18n cache speciality%}
 
-{% if order and object %} {# we are in unit_detail main content #}
+{% if we_are_in_unit_detail %}
 <div id="sidebar2">
   <div id="sidebar2wrapper">
-    <span class="comanda">{% trans 'MY ORDER' %}</span>
-    <br/><br/>
-    <div id="carts">
-      {% for cartname in carts %}
-      <span id="cart-{{ cartname }}" class="cart {%if forloop.first %}selected-cart{% endif %}">
-	<a class="cart-name" href="#">{{ cartname }}</a>
-	<br/>
-	<span class="cart-content"></span>
-      </span>
-      {% empty %}
-      <span id="cart-{{ user.username }}" class="cart selected-cart">
-	<span class="cart-name" href="#">{{ user.username }}</span>
-	<br/>
-	<span class="cart-content"></span>
-      </span>
-	{% endfor %}
-    </div>
-<div class="clear"></div>
-<div class="nota">
-  _________________________<br/>
-  <div class="textnota">{% trans 'PAY CHECK' %}:</div>&nbsp;
-  <div class="totalnota"><span id="order-total-amount"></span> {% trans 'RON' %}</div>
-  <br/>
-  <!--div class="livrarea">
-    <label>LIVRARE:</label>
-    <select id="sidebarcomanda">
-      <option value="1">acasa( adresa 1 profil )</option>
-      <option value="2">birou( adresa 2 profil )</option>
-    </select>
-  </div-->
-  <a href="{% url order:send order.unit.id %}" title="" class="button">
-    <span class="textbtn">{% trans 'CONFIRM ORDER' %}</span>
-  </a>
-</div>
-<div>
-  <a id="add-cart" href="#">{% trans 'Add cart' %}</a>
-</div>
+  <div id="shopping-cart"></div>
 </div><!-- sidebar2wrapper -->
 </div><!-- sidebar2 -->
 {% else %}
@@ -58,7 +22,7 @@
     </div>
     <div class="linkcomanda">
       {% if user.is_authenticated %}
-      <a onclick="addItem('{% url order:add_item special_item.id, user.username %}', '{% url restaurant:detail special_item.item_group.unit_id%}'); return false;" href="#" id="">{% trans 'Order this Item' %}</a>
+      <a onclick="addItem('{% url order:shop user.username special_item.id %}', '{% url restaurant:detail special_item.item_group.unit_id%}'); return false;" href="#" id="">{% trans 'Order this Item' %}</a>
       {% endif %}
     </div>
   </div>

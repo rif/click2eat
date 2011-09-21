@@ -1,17 +1,16 @@
 {% load i18n %}
 <script type="text/javascript">
 $(function(){
-  addCartName();
-  $("#new-cart-cancel").click(function(e){
-  	$("#new-cart").remove();
-  	e.preventDefault();
+ $("#new-cart-cancel", "#new-cart-ok").click(function(e){
+        $("#new-cart").remove();
+        e.preventDefault();
   });
 });
 </script>
 <div class="cart" id="new-cart">
-  <form id="cart-name-form" method="post" action="{% url order:add_cart order_id %}">{% csrf_token %}
+  <form id="cart-name-form" method="post" action="">
     {{ form.as_p }}
-    <button class="button" type="submit">{% trans 'Add' %}</button>
-    <a id="new-cart-cancel" class="button negative" href="#">{% trans 'Cancel' %}</a>
+    <a id="new-cart-ok" class="button" href="#">{% trans 'Submit' %}</a>
+    <a id="new-cart-cancel" class="button" href="#">{% trans 'Cancel' %}</a>
   </form>
 </div>

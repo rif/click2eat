@@ -7,7 +7,6 @@
 {% block pageid %}menu{% endblock %}
 
 {% block content %}
-<ul data-role="listview" data-inset="true" data-count-theme="b">
 {% for itemgroup in unit.itemgroup_set.iterator %}
             {% if itemgroup.active %}
             <h2>{{ itemgroup.name_def }}</h2>
@@ -25,7 +24,6 @@
             </ul>
             {% endif %}
 {% endfor %}
-</ul>
 {% endblock %}
 {% block footer %}
 <a id="cart-link" style="float: right; margin-right:27px;" href="{% url mobile:shopping-cart unit_id %}" title="See your shoping cart">{% trans 'Cart total' %}: <span id="cart-count">{{ count }}</span>{% trans 'RON' %}</a>
