@@ -30,7 +30,7 @@
   <div class="textnota">NOTA DE PLATĂ:</div>&nbsp;
   <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
   <div class="totalnota"><span id="order-total">{{ total_sum|unlocalize }}</span> Lei</div>
-  <a class="button" title="" href="/order/send/4/">
+  <a class="button" href="{% url order:send-order unit.id %}">
     <span class="textbtn">CONFIRMA COMANDA</span>
   </a>
 </div>
@@ -97,7 +97,8 @@ $(function(){
     $("#cart-name-form").submit(function(){
       var newCart = $("#id_name").val().replace(/ <>&/g, '-');
       if($('#carts>#'+newCart).length == 0){
-        $("#carts").append('<a id="'+ newCart +'" class="cart-name" href="#">' + newCart + '</a><ul class="items"></ul>');
+        $("#carts").append('<a id="'+ newCart +'" class="cart-name" href="#">' + newCart + '</a><ul class="items"></ul><div class="subtotal-div">\
+  {% trans "Subtotal" %}: <span class="cart-subtotal">0</span>{% trans "RON" %}</div>');
         cartSelectionBinding();
         $('#carts>#'+newCart).click();
       }
