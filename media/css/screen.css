@@ -2503,36 +2503,41 @@ body {
   margin-left: 0px;
 }
 /* line 807, ../sass/screen.sass */
-#sidebar2 #carts li.item {
+#sidebar2 #carts .subtotal-div {
+  clear: both;
+  display: block;
+}
+/* line 810, ../sass/screen.sass */
+#sidebar2 #carts .cart-item {
   font-size: 12px;
   clear: both;
   width: 230px;
   position: relative;
 }
-/* line 812, ../sass/screen.sass */
-#sidebar2 #carts li.item .item-price {
+/* line 815, ../sass/screen.sass */
+#sidebar2 #carts .cart-item .item-price {
   display: none;
 }
-/* line 814, ../sass/screen.sass */
-#sidebar2 #carts li.item .item-count {
+/* line 817, ../sass/screen.sass */
+#sidebar2 #carts .cart-item .item-count {
   float: left;
 }
-/* line 816, ../sass/screen.sass */
-#sidebar2 #carts li.item .item-title {
+/* line 819, ../sass/screen.sass */
+#sidebar2 #carts .cart-item .item-title {
   float: left;
   margin-left: 2px;
   width: 135px;
 }
-/* line 820, ../sass/screen.sass */
-#sidebar2 #carts li.item .item-total {
+/* line 823, ../sass/screen.sass */
+#sidebar2 #carts .cart-item .item-total {
   float: right;
 }
-/* line 822, ../sass/screen.sass */
-#sidebar2 #carts li.item .item-currency {
+/* line 825, ../sass/screen.sass */
+#sidebar2 #carts .cart-item .item-currency {
   float: right;
 }
-/* line 824, ../sass/screen.sass */
-#sidebar2 #carts li.item .decr-link {
+/* line 827, ../sass/screen.sass */
+#sidebar2 #carts .cart-item .decr-link {
   position: absolute;
   right: 63px;
   top: 1px;
@@ -2540,8 +2545,8 @@ body {
   width: 12px;
   height: 12px;
 }
-/* line 831, ../sass/screen.sass */
-#sidebar2 #carts li.item .incr-link {
+/* line 834, ../sass/screen.sass */
+#sidebar2 #carts .cart-item .incr-link {
   position: absolute;
   right: 52px;
   top: 1px;
@@ -2549,12 +2554,12 @@ body {
   width: 12px;
   height: 12px;
 }
-/* line 838, ../sass/screen.sass */
+/* line 841, ../sass/screen.sass */
 #sidebar2 .nota {
   position: absolute;
   bottom: 15px;
 }
-/* line 839, ../sass/screen.sass */
+/* line 842, ../sass/screen.sass */
 #sidebar2 .nota a {
   color: #562019;
   text-decoration: none;
@@ -2579,16 +2584,16 @@ body {
 #sidebar2 .nota a:hover {
   text-decoration: underline;
 }
-/* line 844, ../sass/screen.sass */
+/* line 847, ../sass/screen.sass */
 #sidebar2 .nota .textnota {
   float: left;
 }
-/* line 846, ../sass/screen.sass */
+/* line 849, ../sass/screen.sass */
 #sidebar2 .nota .totalnota {
   float: right;
   margin-right: 35px;
 }
-/* line 849, ../sass/screen.sass */
+/* line 852, ../sass/screen.sass */
 #sidebar2 .nota .livrarea #sidebarcomanda {
   background: #e8e8e8;
   color: #69291d;
@@ -2597,53 +2602,53 @@ body {
 }
 
 /*                            FOOTER */
-/* line 857, ../sass/screen.sass */
+/* line 860, ../sass/screen.sass */
 #footer {
   font-family: "Cardo", serif;
   background: url("../images/template/footerbg.png") repeat-x !important;
   height: 125px;
 }
 
-/* line 862, ../sass/screen.sass */
+/* line 865, ../sass/screen.sass */
 #footerwrapper {
   width: 1050px;
   margin: 0 auto;
 }
 
-/* line 867, ../sass/screen.sass */
+/* line 870, ../sass/screen.sass */
 #footer ul {
   padding-top: 30px;
 }
-/* line 869, ../sass/screen.sass */
+/* line 872, ../sass/screen.sass */
 #footer ul li {
   display: inline;
   float: left;
   margin-left: 25px;
 }
-/* line 873, ../sass/screen.sass */
+/* line 876, ../sass/screen.sass */
 #footer ul .primul {
   margin-left: 0px !important;
 }
-/* line 875, ../sass/screen.sass */
+/* line 878, ../sass/screen.sass */
 #footer ul li a {
   color: white;
   text-decoration: none;
 }
-/* line 878, ../sass/screen.sass */
+/* line 881, ../sass/screen.sass */
 #footer .footertextmare {
   font-size: 20px;
   line-height: 15px;
 }
-/* line 881, ../sass/screen.sass */
+/* line 884, ../sass/screen.sass */
 #footer .footertextmic {
   font-size: 12px;
   line-height: 14px;
 }
-/* line 884, ../sass/screen.sass */
+/* line 887, ../sass/screen.sass */
 #footer ul li.listdreapta {
   margin-left: 180px;
 }
-/* line 886, ../sass/screen.sass */
+/* line 889, ../sass/screen.sass */
 #footer p.footertext {
   margin: 20px 0px 0px 15px;
   font-family: "Cardo", serif;
@@ -2653,7 +2658,7 @@ body {
 }
 
 /*                            ROATA prima pagina */
-/* line 895, ../sass/screen.sass */
+/* line 898, ../sass/screen.sass */
 #roata {
   background: url("../images/template/bgroata.png") no-repeat;
   height: 300px;
@@ -2663,7 +2668,7 @@ body {
   margin-bottom: 10px;
   float: right;
 }
-/* line 903, ../sass/screen.sass */
+/* line 906, ../sass/screen.sass */
 #roata .rtitlu {
   float: left;
   color: white;
@@ -2673,18 +2678,18 @@ body {
   line-height: 36px;
   margin: -23px 0px 0px 20px;
 }
-/* line 911, ../sass/screen.sass */
+/* line 914, ../sass/screen.sass */
 #roata .text {
   color: #252d0c;
   line-height: 22px;
   margin: 10px 0 2px 20px;
   font-size: 24px;
 }
-/* line 916, ../sass/screen.sass */
+/* line 919, ../sass/screen.sass */
 #roata .textmic {
   font-size: 16px;
 }
-/* line 918, ../sass/screen.sass */
+/* line 921, ../sass/screen.sass */
 #roata #plate {
   display: block;
   width: 190px;
@@ -2692,15 +2697,15 @@ body {
   margin: 5px 0 0 25px;
   float: left;
 }
-/* line 919, ../sass/screen.sass */
+/* line 922, ../sass/screen.sass */
 #roata #plate.start {
   background: url("../images/template/farfurieroata.png") no-repeat;
 }
-/* line 921, ../sass/screen.sass */
+/* line 924, ../sass/screen.sass */
 #roata #plate.processing {
   background: url("../images/template/farfurieroata_invartita.gif") no-repeat;
 }
-/* line 928, ../sass/screen.sass */
+/* line 931, ../sass/screen.sass */
 #roata .rezultat {
   background: url("../images/template/roatabgm.png") no-repeat;
   width: 219px;
@@ -2709,12 +2714,12 @@ body {
   bottom: 50px;
   right: 20px;
 }
-/* line 935, ../sass/screen.sass */
+/* line 938, ../sass/screen.sass */
 #roata .comandam {
   clear: both;
   font-size: 16px;
 }
-/* line 938, ../sass/screen.sass */
+/* line 941, ../sass/screen.sass */
 #roata .comandam a {
   font-weight: bold;
   color: #562019;
@@ -2741,17 +2746,17 @@ body {
 #roata .comandam a:hover {
   text-decoration: underline;
 }
-/* line 943, ../sass/screen.sass */
+/* line 946, ../sass/screen.sass */
 #roata .rezultat {
   color: white;
 }
-/* line 945, ../sass/screen.sass */
+/* line 948, ../sass/screen.sass */
 #roata .rezultat .rezpret {
   font-size: 40px;
   float: right;
   margin: 0px 10px 0px 0px;
 }
-/* line 949, ../sass/screen.sass */
+/* line 952, ../sass/screen.sass */
 #roata .descmeniu {
   color: black;
   display: block;
@@ -2759,12 +2764,12 @@ body {
   font-size: 12px;
   width: 230px;
 }
-/* line 955, ../sass/screen.sass */
+/* line 958, ../sass/screen.sass */
 #roata .descmeniu p {
   display: inline;
 }
 
-/* line 959, ../sass/screen.sass */
+/* line 962, ../sass/screen.sass */
 #avatarstuff ul {
   list-style: none;
 }
@@ -2774,7 +2779,7 @@ body {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 961, ../sass/screen.sass */
+/* line 964, ../sass/screen.sass */
 #avatarstuff li {
   height: 70px;
 }

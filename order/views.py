@@ -73,31 +73,33 @@ def shop(request, cart_name, item_id):
         else:
           request.session[cn][item_id][0] += 1
         request.session.modified = True
-        return {'count': __count_cart_sum(request, cn)}
+        return {'count': __count_cart_sum(request, cn),'id':item_id, 'price':item.get_price(), 'name':item.get_name()}
 
 @login_required
 @ajax_request
 def decr_item(request, cart_name, unit_id, item_id):
         cn = '%s:%s' % (unit_id, cart_name)
-        if cn in request.session:
+        if cn in request.session and item_id in request.session[cn]:
           if request.session[cn][item_id][0] > 1:
             request.session[cn][item_id][0] -= 1
           else:
             del request.session[cn][item_id]
             for top in [k for k in request.session[cn].keys() if item_id + '_' in k]:
               del request.session[cn][top]
-        request.session.modified = True
-        return {'count': __count_cart_sum(request,cn)}
+          request.session.modified = True
+          return {'count': __count_cart_sum(request,cn)}
+        return {'error': '29a'}
 
 
 @login_required
 @ajax_request
 def incr_item(request, cart_name, unit_id, item_id):
         cn = '%s:%s' % (unit_id, cart_name)
-        if cn in request.session:
+        if cn in request.session and item_id in request.session[cn]:
             request.session[cn][item_id][0] += 1
             request.session.modified = True
-        return {'count': __count_cart_sum(request,cn)}
+            return {'count': __count_cart_sum(request,cn)}
+        return {'error': '29a'}
 
 @login_required
 @render_to('order/shopping_cart.html')
