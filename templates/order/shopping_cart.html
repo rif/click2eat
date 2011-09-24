@@ -24,15 +24,13 @@
 </div>
 <div class="nota">
   <div id="new-cart-placeholder"></div>
-  <a href="{% url order:add-cart %}" id="add-cart">{% trans 'Add shopping cart' %}</a><br/>
+  <a href="#" id="add-cart">{% trans 'Add shopping cart' %}</a><br/>
   _________________________
   <br/>
   <div class="textnota">NOTA DE PLATĂ:</div>&nbsp;
   <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
   <div class="totalnota"><span id="order-total">{{ total_sum|unlocalize }}</span> Lei</div>
-  <a class="button" href="{% url order:send-order unit.id %}">
-    <span class="textbtn">CONFIRMA COMANDA</span>
-  </a>
+  <button class="button" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</button>
 </div>
 
 <script type="text/javascript">
@@ -45,16 +43,8 @@ function showHideMinOrder(){
       $("#min-span").show();
     }
 }
-function calculateOrderTotal(){
-  var total = 0;
-  $("span.cart-subtotal").each(function(){
-    total += parseFloat($(this).text());
-  });
-  $("#order-total").text(total.toFixed(2));
-  showHideMinOrder();
-}
-$(function(){
-  calculateOrderTotal();
+
+$(function(){  
   $("#confirm").click(function(e){
     var send_error = false;
     if ($("#unit-closed").length > 0){
@@ -108,7 +98,7 @@ $(function(){
     e.preventDefault();
   });
   cartSelectionBinding();
-   incrDecrBinding();
+  incrDecrBinding();
 });
 
 function cartSelectionBinding() {
@@ -135,22 +125,16 @@ function incrDecrBinding(){
       var href = "/order/incritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
     }
     $.get(href, function(data){
-       parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['count']);
-       var count = $("span.item-count", parent);
-       var price = $("span.item-price", parent);
-       var total = $("span.item-total", parent);
-       if(isMinus) {
-        if(parseInt(count.text()) > 1){
-          count.text(parseInt(count.text()) - 1);
-        } else {
-          parent.fadeOut("slow").remove();
-          $("#items>li[itemid^="+iid+"]").fadeOut();
-        }
+       parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
+       $("#order-total").text(data['total']);     
+       if(data['count'] > 0) {
+        $("span.item-count", parent).text(data['count']);
+        $("span.item-total", parent).text(data['itemtotal']);
        } else {
-        count.text(parseInt(count.text()) + 1);
-       }
-       total.text(parseInt(count.text())*parseFloat(price.text()).toFixed(2));
-       calculateOrderTotal();
+        parent.remove();
+        $("#items>li[itemid^="+iid+"]").fadeOut();        
+       }       
+       showHideMinOrder();
     });
     e.preventDefault();
   });

@@ -15,13 +15,13 @@ class Order(models.Model):
     address = models.ForeignKey('userprofiles.DeliveryAddress', verbose_name=_('address'), null=True, blank=True)
     delivery_type = models.ForeignKey('restaurant.DeliveryType', verbose_name=_('delivery type'), null=True, blank=True)
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
-    status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, default='CR')
+    status = models.CharField(_('status'), max_length=2, choices=STATUS_CHOICES, default='ST')
     total_amount = models.FloatField(_('total amount'), default=0)
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'), editable=False)
     additional_info = models.TextField(_('additional info'), null=True, blank=True, help_text=_('Add here any relevant information.'))
     employee = models.ForeignKey('restaurant.Employee', verbose_name=_('employee'), help_text=_('The internal employee responsible for this order.'))
     hidden = models.BooleanField(_('hidden'))
-    desired_delivery_time = models.DateTimeField(_('desired delivery time'), null=True, blank=True, help_text=_('Request this to order for a later time (yyyy-mm-dd hh:mm).'))
+    desired_delivery_time = models.DateTimeField(_('desired delivery time'), null=True, blank=True, default=datetime.now(), help_text=_('Request this to order for a later time (yyyy-mm-dd hh:mm).'))
 
     def update_total_amount(self):
         total = 0
@@ -35,15 +35,6 @@ class Order(models.Model):
       for oi in self.orderitem_set.filter(cart=cart).iterator():
         subtotal += oi.count * oi.old_price
       return round(subtotal,2)
-
-    def delete_abandoned(self):
-        if self.status != 'CR': return False
-        # status is CR
-        delta = datetime.now() - self.creation_date
-        if delta.days > 0:
-            self.delete()
-            return True
-        return False
 
     def get_carts(self):
         carts_dict = {}
@@ -66,7 +57,6 @@ class Order(models.Model):
         else: return "green"
 
     def __unicode__(self):
-        self.delete_abandoned()
         return self.get_status_display()
 
     @models.permalink
