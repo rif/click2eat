@@ -41,9 +41,10 @@ function shop(id){
   } else {
     $.get("/order/shop/" + selCart.text() + "/" + id + "/", function(data){
       parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
-      parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['count']);
+      parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
+      $("#order-total").text(data['total']);
       incrDecrBinding();
-      calculateOrderTotal();
+      showHideMinOrder();
     });
   }
 }

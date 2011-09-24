@@ -16,27 +16,6 @@ class OrderTest(TestCase):
     self.unit.admin_users='rif,bobo'
     self.unit.save()
 
-  def test_abandoned_empty_removal(self):
-    count = Order.objects.count()
-    old = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-    old.creation_date = datetime(2010, 9, 24)
-    old.save()
-    self.assertEqual(count + 1, Order.objects.count())
-    self.assertEqual(0.0, old.total_amount)
-    old.delete_abandoned()
-    self.assertEqual(count, Order.objects.count())
-
-  def test_abandoned_nonempty_status(self):
-    count = Order.objects.count()
-    old = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-    old.creation_date = datetime(2010, 9, 24)
-    old.save()
-    self.assertEqual(count + 1, Order.objects.count())
-    OrderItem.objects.create(order=old, item=Item.objects.get(pk=1))
-    self.assertEqual(10.0, old.total_amount)
-    old.delete_abandoned()
-    self.assertEqual(count, Order.objects.count())
-
   def test_total_amount(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1))
@@ -108,6 +87,11 @@ class OrderTest(TestCase):
       r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
       self.assertEqual(403, r.status_code)
 
+  def test_default_desired_delivery_time(self):
+    ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
+    delta = datetime.now() - ord.desired_delivery_time    
+    self.assertTrue(delta.seconds < 15)
+
   def test_count_amount(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
     OrderItem.objects.create(order=ord, item=Item.objects.get(pk=1))
@@ -118,14 +102,14 @@ class OrderTest(TestCase):
      self.client.login(username='rif', password='test')
      r = self.client.get(reverse('order:shop', args=["rif", 1]))
      self.assertEqual(200, r.status_code)
-     self.assertEqual('{"count": 10.0, "price": 10.0, "id": "1", "name": "Tocanita de puioc"}', r.content)
+     self.assertEqual('{"price": 10.0, "total": 10.0, "subtotal": 10.0, "id": "1", "name": "Tocanita de puioc"}', r.content)
 
   def test_count_remove(self):
     self.client.login(username='rif', password='test')
     self.client.get(reverse('order:shop', args=["rif", 1]))
     r = self.client.get(reverse('order:decr-item', args=['rif', 1, 1]))
     self.assertEqual(200, r.status_code)
-    self.assertEqual('{"count": 0.0}', r.content)
+    self.assertEqual('{"count": 0, "itemtotal": 0, "total": 0.0, "subtotal": 0.0}', r.content)
 
   def test_subtotal_cart(self):
      self.client.login(username='rif', password='test')
@@ -155,7 +139,7 @@ class OrderTest(TestCase):
      self.client.get(reverse('order:shop', args=["rif", 2]))
      r = self.client.get(reverse('order:shop', args=["rif", 2]))
      self.assertEqual(200, r.status_code)
-     self.assertEqual('{"count": 31.98, "price": 10.99, "id": "2", "name": "Supa de rosii"}', r.content)
+     self.assertEqual('{"price": 10.99, "total": 31.98, "subtotal": 31.98, "id": "2", "name": "Supa de rosii"}', r.content)
 
   def test_no_exception_incr_decr(self):
      self.client.login(username='rif', password='test')

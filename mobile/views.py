@@ -15,9 +15,10 @@ def units(request):
 @render_to('mobile/menu.html')
 def menu(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
-        count = 0
-        if views.__have_unit_cart(request, unit_id):
-          count = views.__count_cart_sum(request, unit_id)
+        cn = '%s:%s' % (unit_id,  request.user.username)
+        total = 0
+        if cn in request.session:
+          total = views.__count_cart_sum(request, cn)
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -30,14 +31,13 @@ def search(request):
 @render_to('mobile/item_detail.html')
 def item_detail(request, item_id):
         item, unit_id = views.__get_payload(item_id)
-        count = 0
-        show_toppings = False
-        for cn in views.__get_cart_names(request, unit_id):
-          if item_id in request.session[cn]:
-            show_toppings = True
-            break
-        if views.__have_unit_cart(request, unit_id):
-          count = views.__count_cart_sum(request, unit_id)
+        cn = '%s:%s' % (unit_id,  request.user.username)
+        total = 0        
+        show_toppings = False        
+        if cn in request.session:
+            total = views.__count_cart_sum(request, cn)
+            if item_id in request.session[cn]:
+                show_toppings = True                    
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -50,10 +50,9 @@ def motd(request):
 @render_to('mobile/shopping_cart.html')
 def shopping_cart(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
-        total_sum = 0
-        if views.__have_unit_cart(request, unit_id):
-          total_sum = views.__count_cart_sum(request,unit_id)
-          carts = []
-          for cn in views.__get_cart_names(request,unit_id):
-            carts.append((cn.split(':',1)[1], request.session[cn], views.__count_cart_sum(request, cn)))
+        total = 0
+        cn = '%s:%s' % (unit_id,  request.user.username)
+        if cn in request.session:
+          total = views.__count_cart_sum(request,cn)
+          cart = request.session[cn]
         return locals()

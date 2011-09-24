@@ -28,14 +28,14 @@
 $(function(){
   $("#shop-link").click(function(e){
     $.get($(this).attr("href"), function(data){
-      $("#cart-count").text(data['count']);
+      $("#cart-count").text(data['total']);
       $("#toppings").fadeIn();
     });
     e.preventDefault();
   });
   $(".top-shop-link").click(function(e){
     $.get("/order/shop/{{ user.username }}/{{ item.id }}_" + $(this).attr("topid"), function(data){
-      $("#cart-count").text(data['count']);
+      $("#cart-count").text(data['total']);
     });
     e.preventDefault();
   });
@@ -43,5 +43,5 @@ $(function(){
 </script>
 {% endblock %}
 {% block footer %}
-<a id="cart-link" style="float: right; margin-right:27px;" href="{% url mobile:shopping-cart unit_id %}" title="See your shoping cart">{% trans 'Cart total' %}: <span id="cart-count">{{ count }}</span>{% trans 'RON' %}</a>
+<a id="cart-link" style="float: right; margin-right:27px;" href="{% url mobile:shopping-cart unit_id %}" title="See your shoping cart">{% trans 'Cart total' %}: <span id="cart-count">{{ total }}</span>{% trans 'RON' %}</a>
 {% endblock %}

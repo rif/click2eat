@@ -30,7 +30,7 @@ feedparser
 django-redis-cache
 hiredis
 #fabric
-MySQL-python
+#MySQL-python
 # gunicorn staff
 #setproctitle
 #greenlet

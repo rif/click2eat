@@ -11,7 +11,7 @@ class MobileTest(TestCase):
         self.assertTrue(login_successful)
         r = self.client.get(reverse('order:shop', args=['rif', '1']))
         self.assertEqual(200, r.status_code)
-        self.assertEquals('{"count": 10.0, "price": 10.0, "id": "1", "name": "Tocanita de puioc"}', r.content)
+        self.assertEquals('{"price": 10.0, "total": 10.0, "subtotal": 10.0, "id": "1", "name": "Tocanita de puioc"}', r.content)
 
     def test_session_item(self):
         self.client.login(username='rif', password='test')

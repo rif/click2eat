@@ -7,8 +7,6 @@
 {% block pageid %}cart{% endblock %}
 
 {% block content %}
-{% for cn, cart, subtotal in carts %}
-  <h2>{% trans 'Cart' %}: {{ cn }}</h2>
 <ul id="items" data-role="listview" data-inset="true" data-count-theme="b">
 {% for item, values in cart.iteritems %}
   <li itemid="{{ item }}">
@@ -20,22 +18,12 @@
     </span>
   </li>
   {% endfor %}
-  <li>
-  <h1>{% trans 'Subtotal' %}:</h1>
-  <span class="ui-li-aside">
-    <span class="cart-subtotal">{{ subtotal }}</span>{% trans 'RON' %}
-  </span>
-  </li>
-  </ul>
-{% endfor %}
-  <h1>{% trans 'Paycheck' %}:
-  <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
-  <span id="order-total">{{ total_sum }}</span>{% trans 'RON' %}
-  </h1>
-
-
+</ul>
+<h1>{% trans 'Paycheck' %}:
+<span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
+<span id="order-total">{{ total }}</span>{% trans 'RON' %}
+</h1>
 <br/>
-
 <div id="dt">
 <div data-role="fieldcontain">
     <fieldset data-role="controlgroup">
@@ -108,17 +96,14 @@ $(function(){
        var count = $("span.item-count", parent);
        var price = $("span.item-price", parent);
        var total = $("span.item-total", parent);
-       if(isMinus) {
-        if(parseInt(count.text()) > 1){
-          count.text(parseInt(count.text()) - 1);
-        } else {
-          parent.fadeOut("slow").remove();
-          $("#items>li[itemid^="+iid+"]").fadeOut();
-        }
+       $("#order-total").text(data['total']);     
+       if(data['count'] > 0) {
+        $("span.item-count", parent).text(data['count']);
+        $("span.item-total", parent).text(data['itemtotal']);
        } else {
-        count.text(parseInt(count.text()) + 1);
-       }
-       total.text(parseInt(count.text())*parseFloat(price.text())+0.0);
+        parent.remove();
+        $("#items>li[itemid^="+iid+"]").remove();        
+       }              
        showHideMinOrder();
     });
     e.preventDefault();
