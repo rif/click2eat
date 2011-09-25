@@ -23,14 +23,19 @@
 {% endfor %}
 </div>
 <div class="nota">
+{% if show_confirm_order %}
   <div id="new-cart-placeholder"></div>
   <a href="#" id="add-cart">{% trans 'Add shopping cart' %}</a><br/>
+{% endif %}
   _________________________
   <br/>
-  <div class="textnota">NOTA DE PLATĂ:</div>&nbsp;
-  <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
-  <div class="totalnota"><span id="order-total">{{ total_sum|unlocalize }}</span> Lei</div>
-  <button class="button" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</button>
+  <div class="textnota">NOTA DE PLATĂ:</div>
+  <span class="totalnota">
+    <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
+    <span id="order-total">{{ total_sum|unlocalize }}</span> {% trans 'RON' %}
+  </span>
+{% if show_confirm_order %}<a class="button" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</a>
+{% endif %}
 </div>
 
 <script type="text/javascript">
@@ -45,6 +50,7 @@ function showHideMinOrder(){
 }
 
 $(function(){  
+  showHideMinOrder();
   $("#confirm").click(function(e){
     var send_error = false;
     if ($("#unit-closed").length > 0){
