@@ -29,9 +29,12 @@ django-filebrowser
 feedparser
 django-redis-cache
 hiredis
+django-newsletter
+django-celelry
+MySQL-python
 #fabric
-#MySQL-python
-# gunicorn staff
+
+# gunicorn stuff
 #setproctitle
 #greenlet
 #gevent

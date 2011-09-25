@@ -1,4 +1,8 @@
 from settings_dev import *
+import djcelery
+
+djcelery.setup_loader()
+
 
 DEBUG = TEMPLATE_DEBUG = False
 DATABASES = {
@@ -22,7 +26,7 @@ CACHES = {
     },
 }
 
-INSTALLED_APPS += ('sentry.client',)
+INSTALLED_APPS += ('sentry.client','djcelery')
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 ENVELOPE_EMAIL_RECIPIENTS = ('c.precup@filemaker-solutions.ro', 'm.patroescu@filemaker-solutions.ro', 'r.fericean@filemaker-solutions.ro')
@@ -30,6 +34,19 @@ ENVELOPE_EMAIL_RECIPIENTS = ('c.precup@filemaker-solutions.ro', 'm.patroescu@fil
 SENTRY_REMOTE_URL = 'http://click2eat.ro:9000/store/'
 SENTRY_CLIENT = 'sentry.client.async.AsyncSentryClient'
 SENTRY_KEY = 'mamaaremere'
+
+BROKER_TRANSPORT = "redis"
+
+BROKER_HOST = "localhost"  # Maps to redis host.
+BROKER_PORT = 6379         # Maps to redis port.
+BROKER_VHOST = "2"         # Maps to database number.
+
+# CELERY_RESULT_BACKEND = "redis"
+# CELERY_REDIS_HOST = "localhost"
+# CELERY_REDIS_PORT = 6379
+# CELERY_REDIS_DB = 2
+
+CELERY_IGNORE_RESULT = True
 
 LOGGING = {
     'version': 1,
