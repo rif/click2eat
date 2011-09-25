@@ -199,10 +199,11 @@ def confirm_order(request, unit_id):
         form = OrderForm(request.POST)
         form.unit = unit
         if form.is_valid():
-            order = form.save()
+            order = form.save(commit=False)
             order.user = request.user
             order.employee_id=unit.employee_id
             order.unit = unit
+            order.save()
             __construct_order(request, unit_id, order) 
             order.save()
             #give bonus to the friend
