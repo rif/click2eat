@@ -197,3 +197,4 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
+
