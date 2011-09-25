@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"req",
+				"request"
+			],
+			[
+				"endi",
+				"endif"
+			],
+			[
 				"use",
 				"username"
 			],
@@ -23,15 +31,7 @@
 			"file": "/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 20337,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
-			"settings":
-			{
-				"buffer_size": 5797,
+				"buffer_size": 20615,
 				"line_ending": "Unix"
 			}
 		},
@@ -39,7 +39,7 @@
 			"file": "/home/rif/Documents/webframeworks/bucatar/menu/models.py",
 			"settings":
 			{
-				"buffer_size": 9467,
+				"buffer_size": 10291,
 				"line_ending": "Unix"
 			}
 		},
@@ -47,8 +47,64 @@
 			"file": "/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
 			"settings":
 			{
-				"buffer_size": 3276,
+				"buffer_size": 3274,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
+			"settings":
+			{
+				"buffer_size": 5350,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/templates/order/send_confirmation.html",
+			"settings":
+			{
+				"buffer_size": 1614,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/order/views.py",
+			"settings":
+			{
+				"buffer_size": 16317,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/templates/mobile/item_detail.html",
+			"settings":
+			{
+				"buffer_size": 2077,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/order/models.py",
+			"settings":
+			{
+				"buffer_size": 5275,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/order/forms.py",
+			"settings":
+			{
+				"buffer_size": 1796,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rif/Documents/webframeworks/bucatar/mobile/views.py",
+			"settings":
+			{
+				"buffer_size": 2097,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -96,6 +152,7 @@
 	},
 	"file_history":
 	[
+		"/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/sidebar.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
@@ -197,6 +254,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"totalno",
 			"comanda",
 			"cart",
 			"*",
@@ -252,7 +310,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -260,7 +318,7 @@
 					"file": "/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 20337,
+						"buffer_size": 20615,
 						"regions":
 						{
 						},
@@ -278,53 +336,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0,
-						"translation.y": 1260,
+						"translation.y": 0,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
-					"settings":
-					{
-						"buffer_size": 5797,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1911,
-								1822
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0,
-						"translation.y": 51,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "/home/rif/Documents/webframeworks/bucatar/menu/models.py",
 					"settings":
 					{
-						"buffer_size": 9467,
+						"buffer_size": 10291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1934,
-								1934
+								0,
+								0
 							]
 						],
 						"settings":
@@ -340,11 +370,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
 					"settings":
 					{
-						"buffer_size": 3276,
+						"buffer_size": 3274,
 						"regions":
 						{
 						},
@@ -361,7 +391,203 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 420,
+						"translation.y": 36,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
+					"settings":
+					{
+						"buffer_size": 5350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1435,
+								1435
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/rif/Documents/webframeworks/bucatar/templates/order/send_confirmation.html",
+					"settings":
+					{
+						"buffer_size": 1614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/rif/Documents/webframeworks/bucatar/order/views.py",
+					"settings":
+					{
+						"buffer_size": 16317,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9245,
+								9245
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 2803,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/rif/Documents/webframeworks/bucatar/templates/mobile/item_detail.html",
+					"settings":
+					{
+						"buffer_size": 2077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1043,
+								1047
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/rif/Documents/webframeworks/bucatar/order/models.py",
+					"settings":
+					{
+						"buffer_size": 5275,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1427,
+								1427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 192,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/rif/Documents/webframeworks/bucatar/order/forms.py",
+					"settings":
+					{
+						"buffer_size": 1796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1227,
+								1227
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/rif/Documents/webframeworks/bucatar/mobile/views.py",
+					"settings":
+					{
+						"buffer_size": 2097,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 8,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 432,
 						"zoom_level": 1
 					},
 					"type": "text"
@@ -433,6 +659,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 211,
+	"side_bar_width": 248,
 	"status_bar_visible": true
 }

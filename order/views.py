@@ -84,20 +84,21 @@ def decr_item(request, cart_name, unit_id, item_id):
           if request.session[cn][item_id][0] > 1:
             request.session[cn][item_id][0] -= 1
             count = request.session[cn][item_id][0]
-            unit_price = request.session[cn][item_id][1]
+            unit_price = request.session[cn][item_id][1]            
+            subtotal = __count_cart_sum(request,cn)
           else:
             count = 0
             unit_price = 0
             del request.session[cn][item_id]
             """ Delete assocaited toppings """
             for top in [k for k in request.session[cn].keys() if item_id + '_' in k]:
-              del request.session[cn][top]  
-            total = __count_cart_sum(request,unit_id)
+              del request.session[cn][top]              
             subtotal = __count_cart_sum(request,cn)
             """ Delete the cart if all the items are removed """
             if len(request.session[cn]) == 0: 
               del request.session[cn]          
           request.session.modified = True
+          total = __count_cart_sum(request,unit_id)
           return {'total': total,
                 'subtotal': subtotal,
                 'count': count,
