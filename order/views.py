@@ -89,11 +89,17 @@ def decr_item(request, cart_name, unit_id, item_id):
             count = 0
             unit_price = 0
             del request.session[cn][item_id]
+            """ Delete assocaited toppings """
             for top in [k for k in request.session[cn].keys() if item_id + '_' in k]:
-              del request.session[cn][top]
+              del request.session[cn][top]  
+            total = __count_cart_sum(request,unit_id)
+            subtotal = __count_cart_sum(request,cn)
+            """ Delete the cart if all the items are removed """
+            if len(request.session[cn]) == 0: 
+              del request.session[cn]          
           request.session.modified = True
-          return {'total': __count_cart_sum(request,unit_id),
-                'subtotal': __count_cart_sum(request,cn),
+          return {'total': total,
+                'subtotal': subtotal,
                 'count': count,
                 'itemtotal': count * unit_price}
         return {'error': '29a'}
@@ -122,6 +128,7 @@ def shopping_cart(request, unit_id):
 			cn = '%s:%s' % (unit_id, request.user.username)
 			request.session[cn] = {}
         total_sum = __count_cart_sum(request,unit_id)
+        show_confirm_order = True
         carts = []
         for cn in __get_cart_names(request,unit_id):
         	carts.append((cn.split(':',1)[1], request.session[cn], __count_cart_sum(request, cn)))
@@ -137,13 +144,12 @@ def send_order(request, unit_id):
         if unit.minimum_ord_val > __count_cart_sum(request, unit_id): return {'error': '2e65'}
         address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
         delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
-        order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type, status='ST', comment=comment)
+        order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type)
         __construct(request, unit_id, address, delivery_type, '')        
         #give bonus to the friend
         initial_friend = order.user.get_profile().get_initial_friend()
         if initial_friend:
-            b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
-        del request.session[cn]
+            b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))        
         send_mail(_('New Order'),
                        render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request)),
                        'office@filemaker-solutions.ro',
@@ -154,31 +160,34 @@ def send_order(request, unit_id):
 def __construct_order(request, unit_id, order):    
     for cn in __get_cart_names(request, unit_id):
       cart = request.session[cn]
-      for item_id, values in cart.iteritems():
+      for item_id in sorted(cart.keys()): # sorting to get the items before the toppings
+        values = cart[item_id]
         if item_id.startswith('m'):
           motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
           OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
         elif '_' in item_id:
-          top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
-          master = order.orderitem_set.get(item=item_idsplit('_',1)[0])
+          top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])         
+          master = order.orderitem_set.get(item__id=item_id.split('_',1)[0])
           OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
         else:
           item = get_object_or_404(Item, pk=item_id)
           OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])
+    del request.session[cn]
 
 @login_required
 @render_to('order/send_confirmation.html')
 def confirm_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
+    total_sum = __count_cart_sum(request,unit_id)
     carts = []
     for cn in __get_cart_names(request,unit_id):
         carts.append((cn.split(':',1)[1], request.session[cn], __count_cart_sum(request, cn)))    
     if not unit.is_open():
         messages.warning(request, _('This restaurant is now closed! Please check the open hours and set desired delivery time accordingly.'))
-    """"if unit.minimum_ord_val > current_order.total_amount:
+    if unit.minimum_ord_val > total_sum:
         messages.error(request, _('This restaurant has a minimum order value of %(min)d') % {'min': unit.minimum_ord_val})
         return redirect('restaurant:detail', unit_id=unit.id)
-    if current_order.address and not current_order.address.geolocation_error:
+    """if current_order.address and not current_order.address.geolocation_error:
         src = (unit.latitude, unit.longitude)
         dest = (current_order.address.latitude, current_order.address.longitude)
         dist = distance.distance(src, dest)
@@ -187,8 +196,12 @@ def confirm_order(request, unit_id):
             return redirect('restaurant:detail', unit_id=unit.id)"""
     if request.method == 'POST':
         form = OrderForm(request.POST)
+        form.unit = unit
         if form.is_valid():
-            order = form.save(commit=False)
+            order = form.save()
+            order.user = request.user
+            order.employee_id=unit.employee_id
+            order.unit = unit
             __construct_order(request, unit_id, order) 
             order.save()
             #give bonus to the friend
@@ -203,7 +216,7 @@ def confirm_order(request, unit_id):
                        fail_silently=False)
             if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
-            return redirect('order:timer', order_id=current_order.id)
+            return redirect('order:timer', order_id=order.id)
     else:
         form = OrderForm()
     form.fields['delivery_type'] = forms.ModelChoiceField(unit.delivery_type.all(), required=True, initial={'primary': True})

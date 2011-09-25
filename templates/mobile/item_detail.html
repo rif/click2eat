@@ -9,16 +9,26 @@
 {% block content %}
 <h1>{{ item.get_name }}</h1>
 <h2>{{ item.get_description|safe }} {{ item.quantity }}{{ item.get_measurement_unit_display }}</h2>
-<h3>{{ item.get_price}}{% trans 'RON' %}</h3>
+<h3>{% trans 'Price' %}: {{ item.get_price}}{% trans 'RON' %}</h3>
 {% if item.has_promotion %}
 <h4>{{ item.promotion }}</h4>
 {% endif %}
 
 <div id="toppings" style="{% if not show_toppings %}display:none{% endif %}">
 {% if item.toppings %}
+<ul data-role="listview"  data-inset="true">
+<h2>{% trans 'Toppings' %}</h2>
 {% for topping in item.toppings.topping_set.iterator %}
-<a class="top-shop-link" rel="external" topid="{{ topping.id }}" href="#" >{% trans 'Add extra' %} {{ topping.get_name }} {{topping.price }} {% trans 'RON' %}</a>
+<li>
+    {{ topping.get_name }} ({{ item.quantity }}{{ item.get_measurement_unit_display }}) - {{topping.price }} {% trans 'RON' %}
+    <span class="ui-li-aside">
+    <a class="top-shop-link" rel="external" topid="{{ topping.id }}" href="#" >
+        <img height="16px" src="{{ STATIC_URL }}images/plus.png" alt="plus"/>
+    </a>
+    </span>
+</li>
 {% endfor %}
+</ul>
 {% endif %}
 </div>
 <br />

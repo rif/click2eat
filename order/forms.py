@@ -27,11 +27,11 @@ class OrderForm(forms.ModelForm):
 
         if desired_delivery_time and desired_delivery_time < datetime.now():
             raise forms.ValidationError(_('Please set a future desired time'))
-
-        unit = self.instance.unit
+        
+        unit = self.unit # injected from view
         if not unit.is_open() and (not desired_delivery_time or not unit.is_open_at(desired_delivery_time)):
             raise forms.ValidationError(_('As the restaurant is closed please set a desired delivery time in the restaurant open hours range.'))
-
+    
 
     class Meta:
         model = Order
