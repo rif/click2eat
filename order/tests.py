@@ -59,7 +59,6 @@ class OrderTest(TestCase):
       r = self.client.get(reverse('order:restaurant_detail', args=[ord.id]))
       self.assertEqual(200, r.status_code)
 
-
   def test_mark_delivered(self):
       self.assertTrue('bobo' in self.unit.admin_users)
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
@@ -86,11 +85,6 @@ class OrderTest(TestCase):
       self.assertEqual(403, r.status_code)
       r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
       self.assertEqual(403, r.status_code)
-
-  def test_default_desired_delivery_time(self):
-    ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-    delta = datetime.now() - ord.desired_delivery_time    
-    self.assertTrue(delta.seconds < 15)
 
   def test_count_amount(self):
     ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)

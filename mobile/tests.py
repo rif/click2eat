@@ -64,7 +64,7 @@ class MobileTest(TestCase):
         self.client.get(reverse('order:shop', args=['rif', '1_1']))
         r = self.client.get(reverse('order:decr-item', args=['rif', '1', '1']))
         self.assertEqual(200, r.status_code)
-        self.assertEquals({}, self.client.session['1:rif'])
+        self.assertTrue('1:rif' not in self.client.session)
 
     def test_incr_decr(self):
         u = Unit.objects.get(id=1)
