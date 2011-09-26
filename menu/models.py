@@ -37,7 +37,7 @@ class ItemGroup(MultilingualModel):
   active = models.BooleanField(_('active'), default=True)
 
   def __unicode__(self):
-      return self.internal_name + ' ' + self.unit.name
+      return self.internal_name
 
   class Meta:
       translation = ItemGroupTranslation
@@ -51,7 +51,7 @@ class ToppingGroup(models.Model):
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
 
   def __unicode__(self):
-      return self.internal_name + ' ' + self.unit.name
+      return self.internal_name
 
   class Meta:
       ordering = ['unit__id']
