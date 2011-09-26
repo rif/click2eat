@@ -36,7 +36,5 @@ MySQL-python
 
 # gunicorn stuff
 #setproctitle
-#greenlet
-#gevent
 #gunicorn
 #gunicorn-console

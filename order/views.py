@@ -5,7 +5,6 @@ from django.shortcuts import get_object_or_404, redirect
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
-from django.core.mail import send_mail
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.contrib.sites.models import Site
@@ -21,7 +20,7 @@ from menu.models import Item, Topping, MenuOfTheDay
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import Bonus, BONUS_PERCENTAGE
-
+from order.tasks import send_order_mail_to_restaurant
 
 def __is_restaurant_administrator(request, unit):
     if not unit.admin_users: raise PermissionDenied()
@@ -136,7 +135,6 @@ def shopping_cart(request, unit_id):
         return locals()
 
 @login_required
-@render_to('order/shopping_cart.html')
 @ajax_request
 def send_order(request, unit_id):
         if not __have_unit_cart(request, unit_id): return {'error': '2e45'} # kriptic errors for hackers delight :)
@@ -146,16 +144,7 @@ def send_order(request, unit_id):
         address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
         delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
         order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type)
-        __construct(request, unit_id, address, delivery_type, '')        
-        #give bonus to the friend
-        initial_friend = order.user.get_profile().get_initial_friend()
-        if initial_friend:
-            b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))        
-        send_mail(_('New Order'),
-                       render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request)),
-                       'office@filemaker-solutions.ro',
-                       [unit.email],
-                       fail_silently=False)
+        __construct_order(request, unit_id, order)                        
         return {}
 
 def __construct_order(request, unit_id, order):    
@@ -174,7 +163,17 @@ def __construct_order(request, unit_id, order):
           item = get_object_or_404(Item, pk=item_id)
           OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])
     del request.session[cn]
-
+    #give bonus to the friend
+    initial_friend = order.user.get_profile().get_initial_friend()
+    if initial_friend:
+        b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
+    subject = _('New Order')
+    body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
+    send_from = 'office@click2eat.ro'
+    send_to = (order.unit.email,)   
+    send_order_mail_to_restaurant.delay(subject, body, send_from, send_to)
+    
+    
 @login_required
 @render_to('order/send_confirmation.html')
 def confirm_order(request, unit_id):
@@ -206,16 +205,6 @@ def confirm_order(request, unit_id):
             order.save()
             __construct_order(request, unit_id, order) 
             order.save()
-            #give bonus to the friend
-            initial_friend = order.user.get_profile().get_initial_friend()
-            if initial_friend:
-                b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
-            messages.warning(request, _('Your order has been sent to the restaurant!'))
-            send_mail(_('New Order'),
-                       render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request)),
-                       'office@filemaker-solutions.ro',
-                       [unit.email],
-                       fail_silently=False)
             if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=order.id)
@@ -321,13 +310,11 @@ def mark_delivered(request, order_id):
 def send_confiramtion_email(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     __is_restaurant_administrator(request, order.unit)
-    send_mail('Order received',
-                       render_to_string('order/confirmation_email.txt',
-                                          {'order': order, 'site_name': Site.objects.get_current().domain},
-                                          context_instance=RequestContext(request)),
-                       order.unit.email,
-                       [order.user.email],
-                       fail_silently=False)
+    subject = _('Click2eat: Order received')
+    body = render_to_string('order/confirmation_email.txt', {'order': order, 'site_name': Site.objects.get_current().domain}, context_instance=RequestContext(request)),
+    send_from = order.unit.email
+    send_to = (order.user.email,)   
+    send_order_mail_to_restaurant.delay(subject, body, send_from, send_to)
     return HttpResponse('Sent!')
 
 @login_required
