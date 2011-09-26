@@ -1,5 +1,8 @@
 import os
 from django.utils.translation import ugettext_lazy as _
+import djcelery
+
+djcelery.setup_loader()
 
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
@@ -52,9 +55,17 @@ PAGINATION_DEFAULT_WINDOW = 3
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    }
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379',
+        'OPTIONS': {
+            'DB': 1,
+            #'PASSWORD': 'yadayada',
+            #'PARSER_CLASS': 'redis.connection.HiredisParser'
+        },
+    },
 }
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.noise_arcs','captcha.helpers.noise_dots',)
 
@@ -152,6 +163,7 @@ INSTALLED_APPS = (
     'honeypot',
     'envelope',
     'newsletter',
+    'djcelery',
     # my apps
     'restaurant',
     'menu',
@@ -198,3 +210,15 @@ TINYMCE_DEFAULT_CONFIG = {
 
 GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
 
+BROKER_TRANSPORT = "redis"
+
+BROKER_HOST = "localhost"  # Maps to redis host.
+BROKER_PORT = 6379         # Maps to redis port.
+BROKER_VHOST = "2"         # Maps to database number.
+
+# CELERY_RESULT_BACKEND = "redis"
+# CELERY_REDIS_HOST = "localhost"
+# CELERY_REDIS_PORT = 6379
+# CELERY_REDIS_DB = 2
+
+CELERY_IGNORE_RESULT = True

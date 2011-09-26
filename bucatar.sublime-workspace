@@ -71,7 +71,7 @@
 			"file": "/home/rif/Documents/webframeworks/bucatar/order/views.py",
 			"settings":
 			{
-				"buffer_size": 16317,
+				"buffer_size": 15799,
 				"line_ending": "Unix"
 			}
 		},
@@ -457,15 +457,15 @@
 					"file": "/home/rif/Documents/webframeworks/bucatar/order/views.py",
 					"settings":
 					{
-						"buffer_size": 16317,
+						"buffer_size": 15799,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9245,
-								9245
+								8041,
+								8041
 							]
 						],
 						"settings":
@@ -475,7 +475,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0,
-						"translation.y": 2803,
+						"translation.y": 2275,
 						"zoom_level": 1
 					},
 					"type": "text"

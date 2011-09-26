@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to, ajax_request
 from django.shortcuts import get_object_or_404
 from restaurant.models import Unit
+from menu.models import Item
 from order import views
 from datetime import date
 
