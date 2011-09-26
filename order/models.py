@@ -79,7 +79,7 @@ class OrderItem(models.Model):
     cart = models.CharField(_('cart'), max_length=15, null=True, blank=True)
 
     def __unicode__(self):
-        return str(self.item or self.menu_of_the_day)
+        return str(self.count) + ' x item from ' + str(self.cart)
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -92,8 +92,13 @@ class OrderItem(models.Model):
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_amount()
 
-    def get_payload(self):
-      return self.item or self.topping or self.menu_of_the_day
+    def get_payload(self):        
+        if self.item_id:
+            return self.item
+        if self.topping_id:
+            return self.topping
+        if self.menu_of_the_day_id:          
+            return self.menu_of_the_day
 
     def delete(self, *args, **kwargs):
         ex_order = self.order

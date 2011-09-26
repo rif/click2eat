@@ -20,7 +20,7 @@ from menu.models import Item, Topping, MenuOfTheDay
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import Bonus, BONUS_PERCENTAGE
-from order.tasks import send_order_mail_to_restaurant
+from order.tasks import send_email_task
 
 def __is_restaurant_administrator(request, unit):
     if not unit.admin_users: raise PermissionDenied()
@@ -143,26 +143,33 @@ def send_order(request, unit_id):
         if unit.minimum_ord_val > __count_cart_sum(request, unit_id): return {'error': '2e65'}
         address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
         delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
-        order = Order.objects.create(user=request.user, unit=unit, employee_id=unit.employee_id, address=address, delivery_type=delivery_type)
-        __construct_order(request, unit_id, order)                        
+        order = Order(address=address, delivery_type=delivery_type)
+        __construct_order(request, unit, order)                        
         return {}
 
-def __construct_order(request, unit_id, order):    
-    for cn in __get_cart_names(request, unit_id):
-      cart = request.session[cn]
-      for item_id in sorted(cart.keys()): # sorting to get the items before the toppings
-        values = cart[item_id]
-        if item_id.startswith('m'):
-          motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
-          OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
-        elif '_' in item_id:
-          top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])         
-          master = order.orderitem_set.get(item__id=item_id.split('_',1)[0])
-          OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
-        else:
-          item = get_object_or_404(Item, pk=item_id)
-          OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])
-    del request.session[cn]
+def __construct_order(request, unit, order):    
+    order.user = request.user
+    order.employee_id=unit.employee_id
+    order.unit = unit
+    if not order.desired_delivery_time:
+        order.desired_delivery_time = datetime.now()
+    order.save() # save it to be able to bind OrderItems
+    unit_id = str(unit.id)
+    for cn in __get_cart_names(request, unit_id):        
+        cart = request.session[cn]
+        for item_id in sorted(cart.keys()): # sorting to get the items before the toppings
+            values = cart[item_id]            
+            if item_id.startswith('m'):
+              motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
+              OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
+            elif '_' in item_id:
+              top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])         
+              master = order.orderitem_set.get(item__id=item_id.split('_',1)[0])
+              OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
+            else:
+              item = get_object_or_404(Item, pk=item_id)
+              OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])
+        del request.session[cn]
     #give bonus to the friend
     initial_friend = order.user.get_profile().get_initial_friend()
     if initial_friend:
@@ -171,7 +178,7 @@ def __construct_order(request, unit_id, order):
     body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
     send_from = 'office@click2eat.ro'
     send_to = (order.unit.email,)   
-    send_order_mail_to_restaurant.delay(subject, body, send_from, send_to)
+    send_email_task.delay(subject, body, send_from, send_to)
     
     
 @login_required
@@ -199,12 +206,7 @@ def confirm_order(request, unit_id):
         form.unit = unit
         if form.is_valid():
             order = form.save(commit=False)
-            order.user = request.user
-            order.employee_id=unit.employee_id
-            order.unit = unit
-            order.save()
-            __construct_order(request, unit_id, order) 
-            order.save()
+            __construct_order(request, unit, order) 
             if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=order.id)
@@ -314,7 +316,7 @@ def send_confiramtion_email(request, order_id):
     body = render_to_string('order/confirmation_email.txt', {'order': order, 'site_name': Site.objects.get_current().domain}, context_instance=RequestContext(request)),
     send_from = order.unit.email
     send_to = (order.user.email,)   
-    send_order_mail_to_restaurant.delay(subject, body, send_from, send_to)
+    send_email_task.delay(subject, body, send_from, send_to)
     return HttpResponse('Sent!')
 
 @login_required
