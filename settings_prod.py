@@ -11,7 +11,7 @@ DATABASES = {
     }
 }
 
-INSTALLED_APPS += ('sentry.client')
+INSTALLED_APPS += ('sentry.client',)
 
 ENVELOPE_EMAIL_RECIPIENTS = ('office@click2eat.ro')
 
