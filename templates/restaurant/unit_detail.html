@@ -43,7 +43,6 @@ function shop(id){
       parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
       parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
       $("#order-total").text(data['total']);
-      incrDecrBinding();
       showHideMinOrder();
     });
   }

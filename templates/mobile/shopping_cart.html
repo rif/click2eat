@@ -63,7 +63,7 @@ function showHideMinOrder(){
 }
 $(function(){
   showHideMinOrder();
-  $("#confirm").click(function(e){
+  $("#confirm").click(function(){
     var send_error = false;
     if ($("#unit-closed").length > 0){
       alert("{% trans 'The restaurant is now closed' %}!");
@@ -79,7 +79,7 @@ $(function(){
       });
       $.mobile.changePage("{% url mobile:home %}");
     }
-    e.preventDefault();
+    return false;
   });
   $("#items>li").each(function(){
     var parent = $(this);
@@ -87,7 +87,7 @@ $(function(){
     var price = parseFloat($("span.item-price", parent).text());
     $("span.item-total", parent).text(count*price);
   });
-  $(".decr-link, .incr-link").click(function(e){
+  $(".decr-link, .incr-link").click(function(){
     var isMinus = $(this).hasClass("decr-link");
     var parent = $(this).parents("li:first");
     var iid = parent.attr("itemid");
@@ -106,7 +106,7 @@ $(function(){
        }              
        showHideMinOrder();
     });
-    e.preventDefault();
+    return false;
   });
 });
 </script>
