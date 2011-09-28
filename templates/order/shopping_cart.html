@@ -2,25 +2,25 @@
 
 
 <div id="carts">
-{% for cn, cart, subtotal in carts %}
+  {% for cn, cart, subtotal in carts %}
   <a href="#" class="{% if cn == user.username %}selected-cart{% endif %} cart-name">{{ cn }}</a>
-<ul class="items">
-{% for item, values in cart.iteritems %}
-  <li class="cart-item" itemid="{{ item }}">
-    <span class="item-count">{{ values.0 }}</span>
-    <span class="item-price">{{ values.1|unlocalize }}</span>
-    <span class="item-title">x {{ values.2 }}</span>
-    <a class="decr-link" href="#"></a>
-    <a class="incr-link" href="#"></a>
-    <span class="item-currency">{% trans 'RON' %}</span>
-    <span class="item-total"></span>
-  </li>
+  <ul class="items">
+  {% for item, values in cart.iteritems %}
+    <li class="cart-item" itemid="{{ item }}">
+      <span class="item-count">{{ values.0 }}</span>
+      <span class="item-price">{{ values.1|unlocalize }}</span>
+      <span class="item-title">x {{ values.2 }}</span>
+      <a class="decr-link" href="#"></a>
+      <a class="incr-link" href="#"></a>
+      <span class="item-currency">{% trans 'RON' %}</span>
+      <span class="item-total"></span>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="subtotal-div">
+    {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ subtotal|unlocalize }}</span>{% trans 'RON' %}
+  </div>
   {% endfor %}
-</ul>
-<div class="subtotal-div">
-  {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ subtotal|unlocalize }}</span>{% trans 'RON' %}
-</div>
-{% endfor %}
 </div>
 <div class="nota">
 {% if show_confirm_order %}
@@ -51,7 +51,7 @@ function showHideMinOrder(){
 
 $(function(){  
   showHideMinOrder();
-  $("#confirm").click(function(e){
+  $("#confirm").click(function(){
     var send_error = false;
     if ($("#unit-closed").length > 0){
       alert("{% trans 'The restaurant is now closed' %}!");
@@ -67,7 +67,7 @@ $(function(){
       });
       $.mobile.changePage("{% url mobile:home %}");
     }
-    e.preventDefault();
+    return false;
   });
   $(".items>li").each(function(){
     var parent = $(this);
@@ -76,7 +76,7 @@ $(function(){
     $("span.item-total", parent).text(count*price);
   });
 
-  $("#add-cart").click(function(e) {
+  $("#add-cart").click(function() {
     if ($("#id_name").length == 0) { // we don't have one already
         $("#new-cart-placeholder").html('<form action="" method="post" id="cart-name-form">\
             <label for="id_name">Name:</label>\
@@ -86,39 +86,28 @@ $(function(){
             </form>');
     }
     $("#id_name").focus();
-    $("#new-cart-cancel").click(function(e){
+    $("#new-cart-cancel").click(function(){
         $("#cart-name-form").remove();
-        e.preventDefault();
+        return false;
     });
     $("#cart-name-form").submit(function(){
       var newCart = $("#id_name").val().replace(/ <>&/g, '-');
       if($('#carts>#'+newCart).length == 0){
         $("#carts").append('<a id="'+ newCart +'" class="cart-name" href="#">' + newCart + '</a><ul class="items"></ul><div class="subtotal-div">\
   {% trans "Subtotal" %}: <span class="cart-subtotal">0</span>{% trans "RON" %}</div>');
-        cartSelectionBinding();
         $('#carts>#'+newCart).click();
       }
       $("#cart-name-form").remove();
       return false;
     });
-    e.preventDefault();
+    return false;
   });
-  cartSelectionBinding();
-  incrDecrBinding();
-});
-
-function cartSelectionBinding() {
-  $(".cart-name").unbind("click");
-  $(".cart-name").click(function(e){
+  $("#carts").delegate(".cart-name", "click",function(){
         $(".cart-name").removeClass("selected-cart");
         $(this).addClass("selected-cart");
-        e.preventDefault();
+        return false;
   });
-}
-
-function incrDecrBinding(){
-   $(".decr-link, .incr-link").unbind("click");
-   $(".decr-link, .incr-link").click(function(e){
+  $("#carts").delegate(".decr-link, .incr-link","click",function(){
     var isMinus = $(this).hasClass("decr-link");
     var parent = $(this).parents("li:first");
     var iid = parent.attr("itemid");
@@ -142,7 +131,7 @@ function incrDecrBinding(){
        }       
        showHideMinOrder();
     });
-    e.preventDefault();
+    return false;
   });
-}
+});
 </script>
