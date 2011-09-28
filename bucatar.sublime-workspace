@@ -67,7 +67,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 5161,
+				"buffer_size": 5283,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 15691,
+				"buffer_size": 15700,
 				"line_ending": "Unix"
 			}
 		},
@@ -172,6 +172,14 @@
 			"settings":
 			{
 				"buffer_size": 6049,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bonus/models.py",
+			"settings":
+			{
+				"buffer_size": 725,
 				"line_ending": "Unix"
 			}
 		}
@@ -322,6 +330,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Bonus",
 			"tool",
 			"click",
 			"print",
@@ -381,7 +390,7 @@
 	"groups":
 	[
 		{
-			"selected": 14,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -472,15 +481,15 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 5161,
+						"buffer_size": 5283,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3953,
-								3953
+								5254,
+								5254
 							]
 						],
 						"settings":
@@ -490,7 +499,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1587.0,
+						"translation.y": 1779.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -528,15 +537,15 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 15691,
+						"buffer_size": 15700,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7029,
-								7032
+								7897,
+								7897
 							]
 						],
 						"settings":
@@ -545,7 +554,7 @@
 							"tab_size": 4.0,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
+						"translation.x": 258.0,
 						"translation.y": 2266.0,
 						"zoom_level": 1.0
 					},
@@ -591,8 +600,8 @@
 						"selection":
 						[
 							[
-								3811,
-								3811
+								4673,
+								4675
 							]
 						],
 						"settings":
@@ -602,7 +611,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1066.0,
+						"translation.y": 1418.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -729,8 +738,8 @@
 						"selection":
 						[
 							[
-								2910,
-								2915
+								2941,
+								2946
 							]
 						],
 						"settings":
@@ -740,7 +749,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 850.0,
+						"translation.y": 914.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -848,7 +857,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1104.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "bonus/models.py",
+					"settings":
+					{
+						"buffer_size": 725,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
