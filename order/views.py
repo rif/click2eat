@@ -173,7 +173,7 @@ def __construct_order(request, unit, order):
     #give bonus to the friend
     initial_friend = order.user.get_profile().get_initial_friend()
     if initial_friend:
-        b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=(order.total_amount * BONUS_PERCENTAGE / 100))
+        b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
     subject = _('New Order')
     body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
     send_from = 'office@click2eat.ro'
