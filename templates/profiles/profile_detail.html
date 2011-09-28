@@ -86,20 +86,7 @@
 		<br/>
 		<div class="separatie">
 		</div>
-		-->
-                  <div id="orderrating">
-                  {% with user.get_profile.get_not_rated as order_list %}
-                  {% if order_list.exists %}
-                  <a class="button" id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
-                  <div class="clear"></div>
-                  <div id="notrated-orders" style="display:none">
-                    <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
-                    {% for order in order_list %}
-                    <div class="boxroz"><a href="{% url order:feedback order.id %}">{{ order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{order.creation_date|timesince}} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</a></div>
-                    {% endfor %}
-                  </div>{% endif %}
-                  {% endwith %}
-                </div> <!-- orderrating -->
+		-->                  
 		<span class="subtitlu"> {% trans 'My orders' %}</span>
 		{% autopaginate orders 5 %}
 		{% for order in orders %}
@@ -125,9 +112,20 @@
 		{% endfor %}
 		{% paginate %}
 		<br/>
-
-		<div class="separatie">
-		</div>
+		<div id="orderrating">
+          {% with user.get_profile.get_not_rated as order_list %}
+          {% if order_list.exists %}
+          <a class="button" id="notrated-link" href="#">{% trans 'You have not rated orders' %}</a>
+          <div class="clear"></div>
+          <div id="notrated-orders" style="display:none">
+            <p><b>{% trans 'Orders that still need your feedback' %}</b></p>
+            {% for order in order_list %}
+            <div class="boxroz"><a href="{% url order:feedback order.id %}">{{ order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{order.creation_date|timesince}} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</a></div>
+            {% endfor %}
+          </div>{% endif %}
+          {% endwith %}
+        </div> <!-- orderrating -->
+		<div class="separatie"></div>
 
 		<span class="subtitlu"> {% trans 'My account details' %}</span>
 		<div id="avatar">
@@ -158,7 +156,7 @@
 			<br/>
 			{% if user == profile.user %}
 			<a class="button lefta" href="{% url profiles_edit_profile %}"><span class="pen icon"></span>{% trans 'Edit' %}</a>
-			<a class="button righta" href="{% url order:list %}"><span class="calendar icon"></span>{% trans 'Order History' %}</a>
+			{#<a class="button righta" href="{% url order:list %}"><span class="calendar icon"></span>{% trans 'Order History' %}</a> #}
 			{% endif %}
 		</div><!-- datecont-->
 		<br/>
