@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Menu",
+				"MenuOfTheDay"
+			],
+			[
 				"menu",
 				"menu_of_the_day"
 			],
@@ -40,30 +44,6 @@
 	"buffers":
 	[
 		{
-			"file": "media/sass/screen.sass",
-			"settings":
-			{
-				"buffer_size": 20615,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "menu/models.py",
-			"settings":
-			{
-				"buffer_size": 10245,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/menu/item_list.html",
-			"settings":
-			{
-				"buffer_size": 3274,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
@@ -72,114 +52,10 @@
 			}
 		},
 		{
-			"file": "templates/order/send_confirmation.html",
-			"settings":
-			{
-				"buffer_size": 1614,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "order/views.py",
-			"settings":
-			{
-				"buffer_size": 15700,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/mobile/item_detail.html",
-			"settings":
-			{
-				"buffer_size": 2077,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "order/models.py",
-			"settings":
-			{
-				"buffer_size": 5432,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "order/forms.py",
-			"settings":
-			{
-				"buffer_size": 1796,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "mobile/views.py",
 			"settings":
 			{
-				"buffer_size": 2126,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "order/tasks.py",
-			"settings":
-			{
-				"buffer_size": 207,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/restaurant/unit_detail.html",
-			"settings":
-			{
-				"buffer_size": 5955,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/mobile/shopping_cart.html",
-			"settings":
-			{
-				"buffer_size": 4672,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "media/dependencies.txt",
-			"settings":
-			{
-				"buffer_size": 322,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/base_alt.html",
-			"settings":
-			{
-				"buffer_size": 5405,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/profiles/profile_detail.html",
-			"settings":
-			{
-				"buffer_size": 8158,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "userprofiles/models.py",
-			"settings":
-			{
-				"buffer_size": 6049,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "bonus/models.py",
-			"settings":
-			{
-				"buffer_size": 725,
+				"buffer_size": 2140,
 				"line_ending": "Unix"
 			}
 		}
@@ -228,29 +104,38 @@
 	},
 	"file_history":
 	[
+		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
+		"/home/rif/Documents/webframeworks/bucatar/menu/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/order/send_confirmation.html",
+		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/item_detail.html",
+		"/home/rif/Documents/webframeworks/bucatar/order/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/order/forms.py",
+		"/home/rif/Documents/webframeworks/bucatar/mobile/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/order/tasks.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/shopping_cart.html",
+		"/home/rif/Documents/webframeworks/bucatar/media/dependencies.txt",
+		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/profiles/profile_detail.html",
+		"/home/rif/Documents/webframeworks/bucatar/userprofiles/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/bonus/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/sidebar.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/profiles/profile_detail.html",
-		"/home/rif/Documents/webframeworks/bucatar/menu/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/order_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/urls.py",
-		"/home/rif/Documents/webframeworks/bucatar/bonus/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/bonus/views.py",
-		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
-		"/home/rif/Documents/webframeworks/bucatar/userprofiles/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/bonus/history.html",
-		"/home/rif/Documents/webframeworks/bucatar/order/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/order/tests.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/invite_friend.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_confirm_delete.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/invite_friend_form.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/500.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
 		"/home/rif/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
 		"/home/rif/.config/sublime-text-2/Packages/User/Global.sublime-settings",
 		"/home/rif/.config/sublime-text-2/Packages/Default/Global.sublime-settings",
@@ -274,7 +159,6 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/registration/registration_form.html",
 		"/home/rif/Documents/webframeworks/bucatar/mobile/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/login.html",
-		"/home/rif/Documents/webframeworks/bucatar/mobile/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/page.html",
@@ -330,6 +214,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_(",
 			"Bonus",
 			"tool",
 			"click",
@@ -390,94 +275,11 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "media/sass/screen.sass",
-					"settings":
-					{
-						"buffer_size": 20615,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/Ruby Haml.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "menu/models.py",
-					"settings":
-					{
-						"buffer_size": 10245,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4301,
-								4306
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1242.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "templates/menu/item_list.html",
-					"settings":
-					{
-						"buffer_size": 3274,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 36.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
@@ -505,383 +307,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "templates/order/send_confirmation.html",
-					"settings":
-					{
-						"buffer_size": 1614,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "order/views.py",
-					"settings":
-					{
-						"buffer_size": 15700,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7897,
-								7897
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 258.0,
-						"translation.y": 2266.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "templates/mobile/item_detail.html",
-					"settings":
-					{
-						"buffer_size": 2077,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1043,
-								1047
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "order/models.py",
-					"settings":
-					{
-						"buffer_size": 5432,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4673,
-								4675
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1418.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "order/forms.py",
-					"settings":
-					{
-						"buffer_size": 1796,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1227,
-								1227
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
+					"buffer": 1,
 					"file": "mobile/views.py",
 					"settings":
 					{
-						"buffer_size": 2126,
+						"buffer_size": 2140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1202,
+								1202
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 8.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 432.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "order/tasks.py",
-					"settings":
-					{
-						"buffer_size": 207,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								85,
-								100
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "templates/restaurant/unit_detail.html",
-					"settings":
-					{
-						"buffer_size": 5955,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								112,
-								93
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 48.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "templates/mobile/shopping_cart.html",
-					"settings":
-					{
-						"buffer_size": 4672,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2941,
-								2946
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 914.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "media/dependencies.txt",
-					"settings":
-					{
-						"buffer_size": 322,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								238,
-								238
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "templates/base_alt.html",
-					"settings":
-					{
-						"buffer_size": 5405,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2617,
-								2621
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 192.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "templates/profiles/profile_detail.html",
-					"settings":
-					{
-						"buffer_size": 8158,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4512,
-								4512
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 515.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "userprofiles/models.py",
-					"settings":
-					{
-						"buffer_size": 6049,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5416,
-								5416
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "bonus/models.py",
-					"settings":
-					{
-						"buffer_size": 725,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 2.0,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -934,6 +378,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"viw",
+				"mobile/views.py"
+			],
 			[
 				"base",
 				"templates/base_alt.html"
