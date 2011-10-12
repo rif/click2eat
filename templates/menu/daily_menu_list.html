@@ -43,7 +43,7 @@ $(function(){
 	</tr>
 	{% for menu in daily_menus %}
 	<tr class="{% cycle 'even' 'odd'%}">
-          <td><a redir="{% url restaurant:detail menu.unit_id %}" class="item-add-link {{ menu.unit.get_package.get_class }}" href="{% url order:add_item menu.id user.username %}">{{ menu.unit }}</a></td>
+          <td><a redir="{% url restaurant:detail menu.unit_id %}" class="item-add-link {{ menu.unit.get_package.get_class }}" href="{% url order:shop user.username menu.id %}">{{ menu.unit }}</a></td>
 	  <td class="align-center">
 	    {% if not menu.unit.schedule.is_open %}<img src="{{ STATIC_URL }}images/template/icons/lock_icon.png" alt="{% trans 'Closed' %}" title="{% trans 'Closed' %}">{% endif %}
 	    {% if menu.unit.is_new %}<img src="{{ STATIC_URL }}images/template/icons/star_icon.png" alt="{% trans 'New' %}" title="{% trans 'New' %}">{% endif %}
