@@ -55,7 +55,8 @@
 function showHideMinOrder(){
     var ct = parseFloat($("#order-total").text());
     var mo = parseFloat($("#min-order").text());
-    if (ct > mo) {
+    console.log(ct, mo);
+    if (ct >= mo) {
       $("#min-span").hide();
     } else {
       $("#min-span").show();
