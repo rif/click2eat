@@ -199,7 +199,7 @@ def confirm_order(request, unit_id):
         dest = (current_order.address.latitude, current_order.address.longitude)
         dist = distance.distance(src, dest)
         if  dist.km > unit.delivery_range:
-            messages.warning(reques, _('We are sorry, you are not in the delivery range of this restaurant.'))
+            messages.warning(request, _('We are sorry, you are not in the delivery range of this restaurant.'))
             return redirect('restaurant:detail', unit_id=unit.id)"""
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -296,7 +296,7 @@ def restdetail(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     __is_restaurant_administrator(request, order.unit)
     if order.status == 'ST':
-        order.status = u'RV'
+        order.status = 'RV'
         order.save()
     return{'order': order}
 
@@ -304,7 +304,7 @@ def restdetail(request, order_id):
 def mark_delivered(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     __is_restaurant_administrator(request, order.unit)
-    order.status = u'DL'
+    order.status = 'DL'
     order.save()
     return HttpResponse(order.get_status_display())
 
