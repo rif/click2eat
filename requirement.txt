@@ -30,7 +30,7 @@ feedparser
 django-redis-cache
 hiredis
 django-newsletter
-django-celelry
+django-celery
 MySQL-python
 #fabric
 
