@@ -1,33 +1,54 @@
 {% load i18n cache %}
 <div id="footer">
     <div id="footerwrapper">
-      {% cache 86400 footer LANGUAGE_CODE %}
-      <ul>
-        <li class="primul"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/whatis/"><span class="footertextmare">{% trans 'what is'|upper %}</span><br/><span class="footertextmic">CLICK 2 EAT</span></a></li>
-        <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/howorder/"><span class="footertextmare">{% trans 'how do I'|upper %}</span><br/><span class="footertextmic">{% trans 'order'|upper %}</span></a></li>
-        <li><a target="_self" href="/contact/"><span class="footertextmare">{% trans 'form for'|upper %}</span><br/><span class="footertextmic">{% trans 'suggestions'|upper %}</span></a></li>
-        <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/fidelity/"><span class="footertextmare">{% trans 'program for'|upper %}</span><br/><span class="footertextmic">{% trans 'fidelity'|upper %}</span></a></li>
-        <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/privacy_policy/"><span class="footertextmare">{% trans 'policy for'|upper %}</span><br/><span class="footertextmic">{% trans 'privacy'|upper %}</span></a></li>
-        <li class="listdreapta"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/contact/"><span class="footertextmare">{% trans 'contact'|upper %}</span><br/><span class="footertextmic">{% trans 'an click2eat agent'|upper %}</span></a></li>
-      </ul>
-      <br/>
-      <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-    <div class="fb-like" data-href="http://click2eat.ro/" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-      <p class="footertext">
-      {% trans 'Click2Eat is a registered trademark. All rights reserved. All materials presented on this site are protected by copyright law.' %}.
-      </p>
-      {% endcache %}
-         <span class="right" id="langs">
-			{% csrf_token %}
-			{% for lang in LANGUAGES %} <a <href="" class="{{ lang.0 }}"><img src="{{ STATIC_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
-			{% endfor %}
-		</span>
-        <div id="fb-root"></div>
+        {% cache 86400 footer "sa5" LANGUAGE_CODE %}
+            <ul>
+                <li class="primul"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/whatis/"><span
+                        class="footertextmare">{% trans 'what is'|upper %}</span><br/><span class="footertextmic">CLICK 2 EAT</span></a>
+                </li>
+                <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/howorder/"><span
+                        class="footertextmare">{% trans 'how do I'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'order'|upper %}</span></a></li>
+                <li><a target="_self" href="/contact/"><span
+                        class="footertextmare">{% trans 'form for'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'suggestions'|upper %}</span></a></li>
+                <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/fidelity/"><span
+                        class="footertextmare">{% trans 'program for'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'fidelity'|upper %}</span></a></li>
+                <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/privacy_policy/"><span
+                        class="footertextmare">{% trans 'policy for'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'privacy'|upper %}</span></a></li>
+                <li class="listdreapta"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/contact/"><span
+                        class="footertextmare">{% trans 'contact'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'an click2eat agent'|upper %}</span></a></li>
+            </ul>
+            <br/>
+            <div id="fb-root"></div>
+            <div id="fb-root"></div>
+            <div id="fb-root"></div>
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <div class="fb-like" data-href="http://click2eat.ro/" data-send="false" data-layout="button_count"
+                 data-width="100" data-show-faces="true" data-colorscheme="dark"></div>
+            <span id="langs" class="right">
+                {% csrf_token %}
+                {% for lang in LANGUAGES %}
+                    <a href="" class="{{ lang.0 }}"><img src="{{ STATIC_URL }}images/flags/{{ lang.0 }}.png"
+                                                         alt="{{ lang.0 }}"/></a>
+                {% endfor %}
+            </span>
+            <p class="footertext">
+                {% trans 'Click2Eat is a registered trademark. All rights reserved. All materials presented on this site are protected by copyright law.' %}.
+            </p>
+        {% endcache %}
     </div> <!-- footerwrapper -->
 </div>
