@@ -217,6 +217,13 @@ def confirm_order(request, unit_id):
     form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
     return locals()
 
+@login_required
+@ajax_request
+def clear(request, unit_id):
+    for cn in __get_cart_names(request, unit_id):
+        del request.session[cn]
+    return dict(response='done!')
+
 def __get_cart_names(request, unit_id):
   return [key for key in request.session.keys() if key.split(':',1)[0] == unit_id]
 
