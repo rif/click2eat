@@ -11,6 +11,14 @@
         <li class="listdreapta"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/contact/"><span class="footertextmare">{% trans 'contact'|upper %}</span><br/><span class="footertextmic">{% trans 'an click2eat agent'|upper %}</span></a></li>
       </ul>
       <br/>
+      <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <div class="fb-like" data-href="http://click2eat.ro/" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
       <p class="footertext">
       {% trans 'Click2Eat is a registered trademark. All rights reserved. All materials presented on this site are protected by copyright law.' %}.
       </p>
@@ -20,5 +28,6 @@
 			{% for lang in LANGUAGES %} <a <href="" class="{{ lang.0 }}"><img src="{{ STATIC_URL }}images/flags/{{ lang.0 }}.png" alt="{{ lang.0 }}"/></a>
 			{% endfor %}
 		</span>
+        <div id="fb-root"></div>
     </div> <!-- footerwrapper -->
 </div>
