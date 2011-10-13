@@ -141,6 +141,7 @@ def send_order(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
         if not unit.is_open(): return {'error': '2e61'}
         if unit.minimum_ord_val > __count_cart_sum(request, unit_id): return {'error': '2e65'}
+        if 'da' not in request.GET or 'dt' not in request.GET: return {'error': '2e77'}
         address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
         delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
         order = Order(address=address, delivery_type=delivery_type)
