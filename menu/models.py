@@ -142,7 +142,7 @@ class Item(MultilingualModel):
       return ci
 
   def quantity_with_mu(self):
-      return u'%d%s' % (self.quantity, self.get_measurement_unit_display())
+      return '%d%s' % (self.quantity, self.get_measurement_unit_display())
   quantity_with_mu.short_description = _('Quantity')
   quantity_with_mu.admin_order_field = 'quantity'
 

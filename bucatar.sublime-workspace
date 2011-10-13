@@ -47,7 +47,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 5283,
+				"buffer_size": 6806,
 				"line_ending": "Unix"
 			}
 		},
@@ -283,21 +283,21 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 5283,
+						"buffer_size": 6806,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5254,
-								5254
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2.0,
+							"tab_size": 4.0,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,

@@ -80,11 +80,10 @@
             <a id="toggle-info" href="#">{% trans 'More info' %}</a>
             <div id="establishment_details">
                 <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
-                <strong>{% trans 'Email' %}:</strong> <a href="mailto:{{ object.email }}">{{ object.email }}</a><br/>
-                <strong>{% trans 'Phone' %}:</strong> {{ object.phone }}<br/>
-                <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}, {% trans 'Open' %}: {{ object.schedule.is_open|yesno }}
+                <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}
+                <strong>{%  if objecct.schedule.is_open %}{% trans 'Open' %}{%  else  %}{% trans 'Closed' %}{% endif %}</strong>
                 <br/>
-                {% if object.info %}<strong>{% trans 'Info' %}:</strong> {{ object.info|safe }}<br/>{% endif %}
+                {% if object.info %}<br/>{{ object.info|safe }}<br/>{% endif %}
             </div>
             {% if object.logo_path %}
                 <div id="establishment_picture">
