@@ -31,9 +31,9 @@
   <br/>
   <div class="textnota">NOTA DE PLATĂ:</div>
   <span class="totalnota">
-    <span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
     <span id="order-total">{{ total_sum|unlocalize }}</span> {% trans 'RON' %}
   </span>
+ <div id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</div>
 {% if show_confirm_order %}<a class="button" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</a>
 {% endif %}
 </div>
