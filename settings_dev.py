@@ -16,6 +16,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+SERVER_EMAIL = "click2eat.ro@gmail.com"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
