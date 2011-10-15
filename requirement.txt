@@ -5,7 +5,7 @@ http://bitbucket.org/ubernostrum/django-registration/downloads/django-registrati
 django-uni-form
 django-debug-toolbar
 django-extensions
-PIL
+pillow
 Werkzeug
 #coverage
 django-annoying
