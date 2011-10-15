@@ -10,7 +10,7 @@
 	<a class="back right" href="{% url blog %}">{% trans 'Back' %}</a>
 	<ul>
 	{% for image in post.images.all %}
-		<li><img src="{{ STATIC_URL }}{{ image.image_path }}" alt="{{ image }}"></li>
+		<li><img src="{{ MEDIA_URL }}{{ image.image_path }}" alt="{{ image }}"></li>
 	{% endfor %}
 	<ul>
 </div>
