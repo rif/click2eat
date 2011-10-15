@@ -63,7 +63,7 @@ class ItemAdmin(admin.ModelAdmin):
             'fields': ('internal_name', 'index', ('name_def', 'description_def'), ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
         }),
         ('Extra options', {
-            'fields': ('tags', 'active', 'speciality', 'fortune')
+            'fields': ('tags', 'active', 'speciality', 'fortune', 'image_path')
         }),
     )
 

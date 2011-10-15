@@ -42,14 +42,14 @@ def limited_object_detail(*args, **kwargs):
 def list(request):
     return list_detail.object_list(
         request,
-        queryset = Order.objects.filter(user__id=request.user.id).exclude(hidden=True).exclude(status='CR')[:50]
+        queryset = Order.objects.filter(user__id=request.user.id).exclude(hidden=True)[:50]
     )
 
 @login_required
 def list_unit(request, unit_id):
     return list_detail.object_list(
         request,
-        queryset = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(hidden=True).exclude(status='CR')[:50],
+        queryset = Order.objects.filter(user__id=request.user.id).filter(unit=unit_id).exclude(hidden=True)[:50],
         template_name = 'order/order_list_div.html',
     )
 

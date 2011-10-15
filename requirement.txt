@@ -35,6 +35,7 @@ MySQL-python
 git+git://github.com/eldarion/biblion.git
 creole
 pygments
+sorl-thumbnail
 #fabric
 
 # gunicorn stuff

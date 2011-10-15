@@ -4,6 +4,7 @@ from menu.models import ItemGroup, ToppingGroup
 from restaurant.forms import UnitForm, FlatPageForm
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
+from sorl.thumbnail.admin import AdminImageMixin
 
 class TinyMCEFlatPageAdmin(admin.ModelAdmin):
     form = FlatPageForm
@@ -30,7 +31,6 @@ class DeliveryTypeAdmin(admin.ModelAdmin):
 class CurrencyAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ['name']
-1
    
 class ItemGroupInline(admin.TabularInline):
    model = ItemGroup
@@ -59,11 +59,22 @@ class ScheduleAdmin(admin.ModelAdmin):
     search_fields = ['unit', 'description']
     inlines = [IntervalInline]
 
+class ScheduleAdmin(admin.ModelAdmin):
+    list_display = ('description', 'unit')
+    list_filter= ['unit']
+    search_fields = ['unit', 'description']
+    inlines = [IntervalInline]
+
+class UnitImageInline(AdminImageMixin, admin.TabularInline):
+    model = models.UnitImage
+    extra = 0
+    min_num = 1
+
 class UnitAdmin(admin.ModelAdmin):    
     form = UnitForm
     list_display = ('name', 'address', 'email', 'phone')
     search_fields = ['name', 'address']
-    inlines = [ItemGroupInline, ToppingGroupInline]
+    inlines = [UnitImageInline, ItemGroupInline, ToppingGroupInline]
     fieldsets = (
         (None, {
             'fields': ('name', 'address', ('email', 'phone', 'mobile'), 'logo_path')
