@@ -214,8 +214,9 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 GRAPPELLI_INDEX_DASHBOARD = 'bucatar.dashboard.CustomIndexDashboard'
+GRAPPELLI_ADMIN_TITLE = 'Click2eat'
 
-BROKER_TRANSPORT = "redis"
+BROKER_TRANSPORT = 'redis'
 
 BROKER_HOST = "localhost"  # Maps to redis host.
 BROKER_PORT = 6379         # Maps to redis port.

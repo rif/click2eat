@@ -53,6 +53,8 @@ def list_unit(request, unit_id):
         template_name = 'order/order_list_div.html',
     )
 
+
+
 @login_required
 @ajax_request
 def shop(request, cart_name, item_id):
@@ -274,7 +276,7 @@ def restlist(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
     orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV']).order_by('desired_delivery_time')
-    return {'order_list': orders, 'unit_id': unit_id}
+    return {'order_list': orders, 'unit_id': unit_id, 'orderstitle': _('Current orders')}
 
 @login_required
 @render_to('order/restaurant_order_list_div.html')
@@ -282,7 +284,15 @@ def restlist_ajax(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
     orders = Order.objects.filter(unit=unit_id).filter(status__in=['ST', 'RV']).order_by('desired_delivery_time')
-    return {'order_list': orders}
+    return {'order_list': orders, 'orderstitle': _('Current orders')}
+
+@login_required
+@render_to('order/restaurant_order_list_div.html')
+def restlist_history_ajax(request, unit_id):
+    unit = get_object_or_404(Unit, pk=unit_id)
+    __is_restaurant_administrator(request, unit)
+    orders = Order.objects.filter(unit=unit_id).filter(status__in=['DL', 'CN']).order_by('creation_date')
+    return {'order_list': orders, 'orderstitle': _('Order history')}
 
 @login_required
 def restlist_csv(request, unit_id):
