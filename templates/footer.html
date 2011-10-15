@@ -1,7 +1,7 @@
 {% load i18n cache %}
 <div id="footer">
     <div id="footerwrapper">
-        {% cache 86400 footer "sa5" LANGUAGE_CODE %}
+        {% cache 86400 footer LANGUAGE_CODE %}
             <ul>
                 <li class="primul"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/whatis/"><span
                         class="footertextmare">{% trans 'what is'|upper %}</span><br/><span class="footertextmic">CLICK 2 EAT</span></a>
@@ -18,6 +18,8 @@
                 <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/privacy_policy/"><span
                         class="footertextmare">{% trans 'policy for'|upper %}</span><br/><span
                         class="footertextmic">{% trans 'privacy'|upper %}</span></a></li>
+                <li><a target="_self" href="{% url blog %}"><span
+                        class="footertextmare">{% trans 'news'|upper %}</span></a></li>
                 <li class="listdreapta"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/contact/"><span
                         class="footertextmare">{% trans 'contact'|upper %}</span><br/><span
                         class="footertextmic">{% trans 'an click2eat agent'|upper %}</span></a></li>

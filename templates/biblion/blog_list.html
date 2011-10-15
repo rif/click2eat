@@ -1,0 +1,17 @@
+ {% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<ul id="blog">
+{% for post in posts %}
+	<li>
+		<a class="title" href="{% url blog_post post.published.year post.published.month post.published.day post.slug %}">{{ post.title }}</a>
+		<div class="published">{{ post.published|date:"l, d F Y" }}</div>
+		{{ post.teaser_html|safe }}
+		<span class="views right">&nbsp;({{ post.view_count }} {% trans 'views' %})</span>
+		<a class="seemore right" href="{% url blog_post post.published.year post.published.month post.published.day post.slug %}">{% trans 'read more...' %}</a>		
+	</li>
+{% endfor %}
+</ul>
+{% endblock %}

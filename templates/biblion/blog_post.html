@@ -1,0 +1,12 @@
+ {% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div id="blog">
+	<h1>{{ post.title }}</h1>
+	<div class="published">{{ post.published|date:"l, d F Y" }}</div>
+	{{ post.content_html|safe }}
+	<a class="back right" href="{% url blog %}">{% trans 'Back' %}</a>
+</div>
+{% endblock %}

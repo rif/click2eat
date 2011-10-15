@@ -18,7 +18,7 @@ django-filter
 django-tinymce
 #django-compressor
 BeautifulSoup
-git+http://github.com/ericflo/django-avatar.git
+git+git://github.com/ericflo/django-avatar.git
 django-rosetta-grappelli
 django-rosetta
 django-robots
@@ -32,6 +32,9 @@ hiredis
 django-newsletter
 django-celery
 MySQL-python
+git+git://github.com/eldarion/biblion.git
+creole
+pygments
 #fabric
 
 # gunicorn stuff
