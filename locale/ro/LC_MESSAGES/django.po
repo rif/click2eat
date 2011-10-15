@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-15 13:57+0300\n"
-"PO-Revision-Date: 2011-10-15 14:01\n"
+"POT-Creation-Date: 2011-10-15 19:47+0300\n"
+"PO-Revision-Date: 2011-10-15 19:49\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -78,39 +78,43 @@ msgstr "Românește"
 msgid "English"
 msgstr "Engleză"
 
-#: settings_dev.py:194
+#: settings_dev.py:195
 msgid "Choose"
 msgstr "Alege-ți"
 
-#: settings_dev.py:195
+#: settings_dev.py:196
 msgid "A general question regarding the website"
 msgstr "Întrebare generală legată de site"
 
-#: settings_dev.py:196
+#: settings_dev.py:197
 msgid "Suggestion"
 msgstr "Sugestie"
 
-#: settings_dev.py:197
+#: settings_dev.py:198
 msgid "Unsatisfactory service"
 msgstr "Serviciu nesatisfăcător"
 
-#: settings_dev.py:198
+#: settings_dev.py:199
 msgid "Site functionality problem"
 msgstr "Problemă de funcționalitate a site-ului"
 
-#: settings_dev.py:199
+#: settings_dev.py:200
 msgid "Other"
 msgstr "Alta"
 
-#: settings_dev.py:203 templates/footer.html:22
+#: settings_dev.py:203
+msgid "all"
+msgstr "toate"
+
+#: settings_dev.py:204 templates/footer.html:22
 msgid "news"
 msgstr "știri"
 
-#: settings_dev.py:203
+#: settings_dev.py:204
 msgid "promotions"
 msgstr "promoții"
 
-#: bonus/models.py:8 menu/models.py:270 order/models.py:14 order/models.py:120
+#: bonus/models.py:8 menu/models.py:271 order/models.py:14 order/models.py:120
 #: userprofiles/models.py:16 userprofiles/models.py:70
 msgid "user"
 msgstr "nume"
@@ -191,23 +195,23 @@ msgid "code"
 msgstr "Cod"
 
 #: menu/models.py:10 menu/models.py:16 menu/models.py:28 menu/models.py:34
-#: menu/models.py:63 menu/models.py:74 menu/models.py:86 menu/models.py:158
-#: menu/models.py:164 menu/models.py:198 menu/models.py:244
-#: restaurant/models.py:8 restaurant/models.py:23 restaurant/models.py:43
-#: restaurant/models.py:54 restaurant/models.py:64 restaurant/models.py:76
-#: restaurant/models.py:151
+#: menu/models.py:63 menu/models.py:74 menu/models.py:86 menu/models.py:159
+#: menu/models.py:165 menu/models.py:199 menu/models.py:245
+#: restaurant/models.py:9 restaurant/models.py:24 restaurant/models.py:44
+#: restaurant/models.py:55 restaurant/models.py:65 restaurant/models.py:77
+#: restaurant/models.py:163
 msgid "name"
 msgstr "nume"
 
-#: menu/models.py:17 menu/models.py:204
+#: menu/models.py:17 menu/models.py:205
 msgid "value"
 msgstr "valoare"
 
-#: menu/models.py:23 menu/models.py:24 menu/models.py:90 menu/models.py:167
+#: menu/models.py:23 menu/models.py:24 menu/models.py:90 menu/models.py:168
 msgid "VAT"
 msgstr "TVA"
 
-#: menu/models.py:32 menu/models.py:50 menu/models.py:84 menu/models.py:163
+#: menu/models.py:32 menu/models.py:50 menu/models.py:84 menu/models.py:164
 msgid "internal name"
 msgstr "Nume intern"
 
@@ -223,8 +227,9 @@ msgstr "Folosit pentru ordinea de afișare"
 msgid "The default name for this group"
 msgstr "Numele implicit pentru acest grup"
 
-#: menu/models.py:35 menu/models.py:51 menu/models.py:197 menu/models.py:242
-#: order/models.py:20 restaurant/models.py:22 restaurant/models.py:129
+#: menu/models.py:35 menu/models.py:51 menu/models.py:198 menu/models.py:243
+#: order/models.py:20 restaurant/models.py:23 restaurant/models.py:130
+#: restaurant/models.py:152
 msgid "unit"
 msgstr "unitate"
 
@@ -232,8 +237,8 @@ msgstr "unitate"
 msgid "exclusive"
 msgstr "exclusiv"
 
-#: menu/models.py:37 menu/models.py:97 menu/models.py:173
-#: restaurant/models.py:173
+#: menu/models.py:37 menu/models.py:97 menu/models.py:174
+#: restaurant/models.py:185
 msgid "active"
 msgstr "activ"
 
@@ -257,8 +262,8 @@ msgstr "Grup de mărfuri"
 msgid "Merchandise Category Groups"
 msgstr "Grupuri de mărfuri"
 
-#: menu/models.py:75 menu/models.py:87 menu/models.py:159 menu/models.py:165
-#: menu/models.py:245 restaurant/models.py:128
+#: menu/models.py:75 menu/models.py:87 menu/models.py:160 menu/models.py:166
+#: menu/models.py:246 restaurant/models.py:129
 msgid "description"
 msgstr "descriere"
 
@@ -266,16 +271,16 @@ msgstr "descriere"
 msgid "pieces"
 msgstr "bucăți"
 
-#: menu/models.py:86 menu/models.py:164
+#: menu/models.py:86 menu/models.py:165
 msgid "The default name for this item"
 msgstr "Numele implicit pentru acest articol"
 
-#: menu/models.py:87 menu/models.py:165
+#: menu/models.py:87 menu/models.py:166
 msgid "The default description for this item"
 msgstr "Descrierea implicită pentru acest articol"
 
-#: menu/models.py:88 menu/models.py:166 menu/models.py:246 order/models.py:78
-#: restaurant/models.py:65
+#: menu/models.py:88 menu/models.py:167 menu/models.py:247 order/models.py:78
+#: restaurant/models.py:66
 msgid "price"
 msgstr "preț"
 
@@ -283,15 +288,15 @@ msgstr "preț"
 msgid "promotion"
 msgstr "Promoție"
 
-#: menu/models.py:91 menu/models.py:168
+#: menu/models.py:91 menu/models.py:169
 msgid "quantity"
 msgstr "cantitate"
 
-#: menu/models.py:92 menu/models.py:169
+#: menu/models.py:92 menu/models.py:170
 msgid "MU"
 msgstr "UM"
 
-#: menu/models.py:92 menu/models.py:169
+#: menu/models.py:92 menu/models.py:170
 msgid "Measurement unit."
 msgstr "Unitate de masură."
 
@@ -299,7 +304,7 @@ msgstr "Unitate de masură."
 msgid "item group"
 msgstr "grup de articole"
 
-#: menu/models.py:94 menu/models.py:171 restaurant/models.py:171
+#: menu/models.py:94 menu/models.py:172 restaurant/models.py:183
 msgid "added date"
 msgstr "data de adăugare"
 
@@ -315,92 +320,96 @@ msgstr "specialitatea casei"
 msgid "display in the weel of fortune"
 msgstr "arată în roata norocului"
 
-#: menu/models.py:146
+#: menu/models.py:100 restaurant/models.py:153
+msgid "image path"
+msgstr "calea către imagine"
+
+#: menu/models.py:147
 msgid "Quantity"
 msgstr "Cantitate"
 
-#: menu/models.py:153 templates/order/restaurant_order_detail.html:45
+#: menu/models.py:154 templates/order/restaurant_order_detail.html:45
 msgid "Item"
 msgstr "Articol"
 
-#: menu/models.py:154
+#: menu/models.py:155
 msgid "Items"
 msgstr "Articole"
 
-#: menu/models.py:170
+#: menu/models.py:171
 msgid "topping group"
 msgstr "Grup de garnituri"
 
-#: menu/models.py:193
+#: menu/models.py:194
 msgid "Topping"
 msgstr "Garnitură"
 
-#: menu/models.py:194 templates/mobile/item_detail.html:20
+#: menu/models.py:195 templates/mobile/item_detail.html:20
 msgid "Toppings"
 msgstr "Garnituri"
 
-#: menu/models.py:199 restaurant/models.py:27
+#: menu/models.py:200 restaurant/models.py:28
 msgid "start date"
 msgstr "data de start"
 
-#: menu/models.py:200 restaurant/models.py:28
+#: menu/models.py:201 restaurant/models.py:29
 msgid "end date"
 msgstr "data de sfârșit"
 
-#: menu/models.py:201 restaurant/models.py:93
+#: menu/models.py:202 restaurant/models.py:94
 msgid "weekdays"
 msgstr "zile din săptămână"
 
-#: menu/models.py:201 restaurant/models.py:93
+#: menu/models.py:202 restaurant/models.py:94
 msgid "integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5"
 msgstr "cifre, seprate prin virgulă, începând cu luni, de ex. 1,2,4,5"
 
-#: menu/models.py:202 restaurant/models.py:94
+#: menu/models.py:203 restaurant/models.py:95
 msgid "start hour"
 msgstr "ora de început"
 
-#: menu/models.py:202
+#: menu/models.py:203
 msgid "e.g. 10:30"
 msgstr "de ex. 10:30"
 
-#: menu/models.py:203 restaurant/models.py:95
+#: menu/models.py:204 restaurant/models.py:96
 msgid "end hour"
 msgstr "ora de sfârșit"
 
-#: menu/models.py:203
+#: menu/models.py:204
 msgid "e.g. 15:00"
 msgstr "de ex. 15:00"
 
-#: menu/models.py:204
+#: menu/models.py:205
 msgid "Percentage"
 msgstr "Procentaj"
 
-#: menu/models.py:238
+#: menu/models.py:239
 msgid "Promotion"
 msgstr "Promoție"
 
-#: menu/models.py:239
+#: menu/models.py:240
 msgid "Promotions"
 msgstr "Promoții"
 
-#: menu/models.py:243
+#: menu/models.py:244
 msgid "day"
 msgstr "data"
 
-#: menu/models.py:266 menu/models.py:267 templates/menu/daily_menu.html:5
-#: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:96
+#: menu/models.py:267 menu/models.py:268 templates/menu/daily_menu.html:5
+#: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:129
 msgid "Menu of the day"
 msgstr "Meniul zilei"
 
-#: menu/models.py:271 order/models.py:17
+#: menu/models.py:272 order/models.py:17
 msgid "creation date"
 msgstr "data creării"
 
-#: menu/models.py:279
+#: menu/models.py:280
 msgid "Import"
 msgstr "Import"
 
-#: menu/models.py:280
+#: menu/models.py:281
 msgid "Imports"
 msgstr "Importuri"
 
@@ -436,11 +445,11 @@ msgstr "Livrat"
 msgid "Canceled"
 msgstr "Renunțat"
 
-#: order/models.py:15 restaurant/models.py:77 restaurant/models.py:152
+#: order/models.py:15 restaurant/models.py:78 restaurant/models.py:164
 msgid "address"
 msgstr "adresa"
 
-#: order/models.py:16 restaurant/models.py:169
+#: order/models.py:16 restaurant/models.py:181
 msgid "delivery type"
 msgstr "modelaitatea de livrare"
 
@@ -460,7 +469,7 @@ msgstr "informații suplimentare"
 msgid "Add here any relevant information."
 msgstr "Adaugați aici orice alte informatii relevante."
 
-#: order/models.py:22 restaurant/models.py:166
+#: order/models.py:22 restaurant/models.py:178
 msgid "employee"
 msgstr "angajat"
 
@@ -545,7 +554,7 @@ msgstr "Perfect"
 msgid "quality"
 msgstr "calitate"
 
-#: order/models.py:123 restaurant/models.py:162
+#: order/models.py:123 restaurant/models.py:174
 msgid "delivery time"
 msgstr "timpul de livrare"
 
@@ -594,212 +603,220 @@ msgstr "Mulțumim! Deja o apreciere pentru această comandă."
 msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
-#: restaurant/models.py:14 restaurant/models.py:15
+#: restaurant/models.py:15 restaurant/models.py:16
 #: templates/profiles/profile_detail.html:155
 msgid "Communication"
 msgstr "Comunicare"
 
-#: restaurant/models.py:19
+#: restaurant/models.py:20
 msgid "Standard"
 msgstr "Standard"
 
-#: restaurant/models.py:20
+#: restaurant/models.py:21
 msgid "Premium"
 msgstr "Premium"
 
-#: restaurant/models.py:24
+#: restaurant/models.py:25
 msgid "monthly fee"
 msgstr "Taxa lunară"
 
-#: restaurant/models.py:25 restaurant/models.py:82
+#: restaurant/models.py:26 restaurant/models.py:83
 msgid "rate"
 msgstr "rată"
 
-#: restaurant/models.py:25
+#: restaurant/models.py:26
 msgid "The percentage taken from every order"
 msgstr "Procentajul perceput pentru fiecare comandă"
 
-#: restaurant/models.py:26 restaurant/models.py:44
-#: templates/restaurant/unit_detail.html:79
+#: restaurant/models.py:27 restaurant/models.py:45
+#: templates/restaurant/unit_detail.html:104
 msgid "details"
 msgstr "detalii"
 
-#: restaurant/models.py:29
+#: restaurant/models.py:30
 msgid "current"
 msgstr "actual"
 
-#: restaurant/models.py:38
+#: restaurant/models.py:39
 msgid "Partner Package"
 msgstr "Clasa de partener"
 
-#: restaurant/models.py:39
+#: restaurant/models.py:40
 msgid "Partner Packages"
 msgstr "Clase de partener"
 
-#: restaurant/models.py:50
+#: restaurant/models.py:51
 msgid "Payment Method"
 msgstr "Modalitate de plată"
 
-#: restaurant/models.py:51
+#: restaurant/models.py:52
 msgid "Payment Methods"
 msgstr "Modalități de plată"
 
-#: restaurant/models.py:60 restaurant/models.py:61
+#: restaurant/models.py:61 restaurant/models.py:62
 msgid "Currency"
 msgstr "Moneda"
 
-#: restaurant/models.py:66
+#: restaurant/models.py:67
 msgid "require address"
 msgstr "cere adresă"
 
-#: restaurant/models.py:72
+#: restaurant/models.py:73
 msgid "Delivery Type"
 msgstr "Modul de livrare"
 
-#: restaurant/models.py:73
+#: restaurant/models.py:74
 msgid "Delivery Types"
 msgstr "Modurile de livrare"
 
-#: restaurant/models.py:78 restaurant/models.py:153
+#: restaurant/models.py:79 restaurant/models.py:165
 msgid "email"
 msgstr "e-mail"
 
-#: restaurant/models.py:79 restaurant/models.py:154 userprofiles/models.py:73
+#: restaurant/models.py:80 restaurant/models.py:166 userprofiles/models.py:73
 msgid "phone"
 msgstr "telefon"
 
-#: restaurant/models.py:80
+#: restaurant/models.py:81
 msgid "start_date"
 msgstr "data de start"
 
-#: restaurant/models.py:81
+#: restaurant/models.py:82
 msgid "end_date"
 msgstr "data de sfârșit"
 
-#: restaurant/models.py:88
+#: restaurant/models.py:89
 msgid "Employee"
 msgstr "Angajat"
 
-#: restaurant/models.py:89
+#: restaurant/models.py:90
 msgid "Employees"
 msgstr "Angajați"
 
-#: restaurant/models.py:92
+#: restaurant/models.py:93
 msgid "schedule"
 msgstr "orar"
 
-#: restaurant/models.py:94
+#: restaurant/models.py:95
 msgid "e.g. 10:30:00"
 msgstr "de ex. 10:30"
 
-#: restaurant/models.py:95
+#: restaurant/models.py:96
 msgid "e.g. 15:00:00"
 msgstr "de ex. 15:00"
 
-#: restaurant/models.py:124
+#: restaurant/models.py:125
 msgid "Interval"
 msgstr "Interval"
 
-#: restaurant/models.py:125
+#: restaurant/models.py:126
 msgid "Intervals"
 msgstr "Intervale"
 
-#: restaurant/models.py:128
+#: restaurant/models.py:129
 msgid "This text will appear on the frontend for open hours."
 msgstr "Acest text va apărea în interfață ca și orar."
 
-#: restaurant/models.py:147
+#: restaurant/models.py:148
 msgid "Schedule"
 msgstr "Orar"
 
-#: restaurant/models.py:148
+#: restaurant/models.py:149
 msgid "Schedules"
 msgstr "Orare"
 
-#: restaurant/models.py:155
+#: restaurant/models.py:159
+msgid "Unit Image"
+msgstr "Imagini Unitate"
+
+#: restaurant/models.py:160
+msgid "Unit Images"
+msgstr "Imagini unități"
+
+#: restaurant/models.py:167
 msgid "mobile"
 msgstr "mobil"
 
-#: restaurant/models.py:156
+#: restaurant/models.py:168
 msgid "logo path"
 msgstr "calea către siglă"
 
-#: restaurant/models.py:157
+#: restaurant/models.py:169
 msgid "accepted currencies"
 msgstr "Monede acceptate"
 
-#: restaurant/models.py:158
+#: restaurant/models.py:170
 msgid "overall_discount"
 msgstr "Reducerea generală"
 
-#: restaurant/models.py:159 userprofiles/models.py:27
+#: restaurant/models.py:171 userprofiles/models.py:27
 msgid "latitude"
 msgstr "latitudine"
 
-#: restaurant/models.py:160 userprofiles/models.py:28
+#: restaurant/models.py:172 userprofiles/models.py:28
 msgid "longitude"
 msgstr "longitudine"
 
-#: restaurant/models.py:161
+#: restaurant/models.py:173
 msgid "range"
 msgstr "raza"
 
-#: restaurant/models.py:161
+#: restaurant/models.py:173
 msgid "Delivery range in km"
 msgstr "Zona de livrare în km"
 
-#: restaurant/models.py:162
+#: restaurant/models.py:174
 msgid "In minutes"
 msgstr "În minute"
 
-#: restaurant/models.py:163 userprofiles/models.py:78
+#: restaurant/models.py:175 userprofiles/models.py:78
 msgid "communication"
 msgstr "comunicare"
 
-#: restaurant/models.py:164
+#: restaurant/models.py:176
 msgid "minimum order value"
 msgstr "valoare comandă minimă"
 
-#: restaurant/models.py:165
+#: restaurant/models.py:177
 msgid "payment method"
 msgstr "modalitate de plată"
 
-#: restaurant/models.py:166
+#: restaurant/models.py:178
 msgid "The internal employee responsible for this unit."
 msgstr "Angajatul intern responabil pentru această unitate."
 
-#: restaurant/models.py:167
+#: restaurant/models.py:179
 msgid "contact persoon"
 msgstr "persoana de contact"
 
-#: restaurant/models.py:168
+#: restaurant/models.py:180
 msgid "delivery time user"
 msgstr "timpul de livrare utilizator"
 
-#: restaurant/models.py:168
+#: restaurant/models.py:180
 msgid "Calculated as a avg from user feedback."
 msgstr "Calculat ca o media din raspunsurile utilizatorilor."
 
-#: restaurant/models.py:170
+#: restaurant/models.py:182
 msgid "admin users"
 msgstr "utilizatori administratori"
 
-#: restaurant/models.py:170
+#: restaurant/models.py:182
 msgid "the users that can access front-end administration pages for this unit."
 msgstr ""
 "utilizatorii care pot accesa paginile de administrare din interfata "
 "pentru această unitate."
 
-#: restaurant/models.py:172
+#: restaurant/models.py:184
 msgid "info"
 msgstr "informații"
 
-#: restaurant/models.py:225 templates/menu/daily_menu_list.html:39
+#: restaurant/models.py:237 templates/menu/daily_menu_list.html:39
 #: templates/restaurant/package_history.html:14
 msgid "Unit"
 msgstr "Unitate"
 
-#: restaurant/models.py:226 templates/mobile/units.html:4
+#: restaurant/models.py:238 templates/mobile/units.html:4
 #: templates/mobile/units.html.py:5
 msgid "Units"
 msgstr "Unități"
@@ -971,7 +988,7 @@ msgid "Upload New Image"
 msgstr "Încărcați o noua imagine"
 
 #: templates/avatar/add.html:14 templates/avatar/change.html:33
-#: templates/avatar/confirm_delete.html:26 templates/biblion/blog_post.html:10
+#: templates/avatar/confirm_delete.html:26 templates/biblion/blog_post.html:15
 #: templates/order/order_list.html:13
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:19
 #: templates/userprofiles/deliveryaddress_detail.html:95
@@ -1078,9 +1095,9 @@ msgstr "Trimite"
 #: templates/order/shopping_cart.html:115
 #: templates/profiles/profile_detail.html:45
 #: templates/profiles/profile_detail.html:96
-#: templates/restaurant/unit_detail.html:58
-#: templates/restaurant/unit_detail.html:122
-#: templates/restaurant/unit_detail.html:139
+#: templates/restaurant/unit_detail.html:72
+#: templates/restaurant/unit_detail.html:158
+#: templates/restaurant/unit_detail.html:175
 #: templates/wheel/random_item.html:8
 msgid "RON"
 msgstr "Lei"
@@ -1132,7 +1149,7 @@ msgid "Price"
 msgstr "Preț"
 
 #: templates/menu/daily_menu_list.html:48 templates/menu/item_list.html:75
-#: templates/restaurant/unit_detail.html:84
+#: templates/restaurant/unit_detail.html:115
 #: templates/restaurant/unit_list.html:19
 msgid "Closed"
 msgstr "Închis"
@@ -1162,8 +1179,8 @@ msgstr "Arată/ascunde cautarea avansată"
 msgid "Submit"
 msgstr "Trimite"
 
-#: templates/menu/item_list.html:63 templates/restaurant/unit_detail.html:124
-#: templates/restaurant/unit_detail.html:141
+#: templates/menu/item_list.html:63 templates/restaurant/unit_detail.html:160
+#: templates/restaurant/unit_detail.html:177
 msgid "Add to order"
 msgstr "Adaugă la comandă"
 
@@ -1171,11 +1188,11 @@ msgstr "Adaugă la comandă"
 msgid "Has discount"
 msgstr "Are reduceri"
 
-#: templates/menu/menu_list.html:9
+#: templates/menu/menu_list.html:18
 msgid "GENERAL CLICK2EAT MENU LIST"
 msgstr "Lista generala de meniuri click2eat"
 
-#: templates/menu/menu_list.html:19
+#: templates/menu/menu_list.html:28
 msgid "Menu"
 msgstr "Meniu"
 
@@ -1339,7 +1356,7 @@ msgstr "Modelaitatea de livrare"
 
 #: templates/order/restaurant_order_detail.html:31
 #: templates/profiles/profile_detail.html:170
-#: templates/restaurant/unit_detail.html:82
+#: templates/restaurant/unit_detail.html:113
 #: templates/userprofiles/deliveryaddress_detail.html:52
 msgid "Address"
 msgstr "Adresa"
@@ -1426,7 +1443,7 @@ msgstr "Subtotal"
 
 #: templates/order/shopping_cart.html:28
 msgid "Add shopping cart"
-msgstr "Adaugă un coș de cumpărături"
+msgstr "Adaugă coș"
 
 #: templates/order/shopping_cart.html:29
 msgid "Reset order"
@@ -1814,25 +1831,29 @@ msgstr "Activ"
 msgid "Sorry no partner package information."
 msgstr "Ne pare rău, nu sunt infomații despre clasele de partener."
 
-#: templates/restaurant/unit_detail.html:80
+#: templates/restaurant/unit_detail.html:110
 msgid "More info"
 msgstr "Mai multe informații"
 
-#: templates/restaurant/unit_detail.html:83
-msgid "Open hours"
-msgstr "Program de lucru"
-
-#: templates/restaurant/unit_detail.html:84
-msgid "Open"
-msgstr "Deschis"
-
-#: templates/restaurant/unit_detail.html:102
+#: templates/restaurant/unit_detail.html:111
 msgid "Previous orders at this restaurant"
 msgstr "Comenzi anterioare la acest restaurant"
 
-#: templates/restaurant/unit_detail.html:108
+#: templates/restaurant/unit_detail.html:114
+msgid "Open hours"
+msgstr "Program de lucru"
+
+#: templates/restaurant/unit_detail.html:115
+msgid "Open"
+msgstr "Deschis"
+
+#: templates/restaurant/unit_detail.html:139
 msgid "Menu list"
 msgstr "Meniu"
+
+#: templates/restaurant/unit_detail.html:151
+msgid "preview"
+msgstr "imagine"
 
 #: templates/restaurant/unit_list.html:9
 msgid "Restaurant list"
