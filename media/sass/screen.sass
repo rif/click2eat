@@ -5,6 +5,7 @@
 @import "compass/css3/border-radius"
 @import "compass/typography/lists"
 @import "compass/typography/links"
+@import "compass/css3/box-shadow"
 
 +blueprint
 +blueprint-utilities
@@ -896,7 +897,7 @@ body
     font-size: 12px
     line-height: 14px
   ul li.listdreapta
-    margin-left: 180px
+    margin-left: 140px
   p.footertext
     margin: 20px 0px 0px 15px
     font-family: 'Cardo', serif
@@ -1004,3 +1005,25 @@ body
   .back
     margin-right: 20px
     +link-colors(#562019, #6c6c6c, red, #562019,  #6c6c6c)
+
+#messages
+  margin-bottom: 10px
+  a.messages-close-link    
+    float: right    
+  .info, .warning, .error
+    +box-shadow(#303030 2px 2px 6px)
+    +border-radius
+    +text-shadow
+    padding: 5px
+  .info
+    border: 1px solid #92CAE4
+    color: #205791
+    background-color: #D5EDF8
+  .warning
+    border: 1px solid #FFD324
+    color: #514721
+    background-color: #FFF6BF
+  .error
+    border: 1px solid #FBC2C4
+    color: #8A1F11
+    background-color: #FBE3E4

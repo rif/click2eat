@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n thumbnail %}
+{% load i18n thumbnail item_trans %}
 
 {% block title %}{{ object.name }}{% endblock %}
 
@@ -140,20 +140,20 @@
             <div class="establishment-menu">
                 {% for itemgroup in object.itemgroup_set.iterator %}
                     {% if itemgroup.active %}
-                        <h2>{{ itemgroup.name_def }}</h2>
+                        <h2>{% get_name itemgroup %}</h2>
                         <ul>
                             {% for item in itemgroup.item_set.iterator %}
                                 {% if item.active %}
                                     <li class="item {% if item.is_new %}new-item{% endif %} pozrel">
                                         <div class="name">
-                                        {{ item.name_def }}
+                                        {% get_name item %}
                                         {% if item.image_path %}
                                         <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">{% trans 'preview' %}</a>
                                         {% endif %}
                                         </div>
                                         <br/>
 
-                                        <div class="description">{{ item.description_def }}</div>
+                                        <div class="description">{% get_desc item %}</div>
                                         <div class="price">
                                             {{ item.get_price }} {% trans 'RON' %}
                                             <a href="#" itemid="{{ item.id }}" title=""
@@ -167,10 +167,10 @@
                                                 <ul>
                                                     {% for top in item.toppings.topping_set.iterator %}
                                                         <li>
-                                                            <div class="name">{{ top.name_def }}</div>
+                                                            <div class="name">{% get_name top %}</div>
                                                             <br/>
 
-                                                            <div class="description">{{ top.description_def }}</div>
+                                                            <div class="description">{% get_desc top %}</div>
                                                             <div class="price">
                                                                 {{ top.get_price }} {% trans 'RON' %}
                                                                 <a itemid="{{ item.id }}" topid="{{ top.id }}" href="#"

@@ -55,14 +55,15 @@
             $('.clearme').one("focus", function() {
                 $(this).val("");
             });
-            $("#langs>a").click(function(e) {
+            $("#langs>a").click(function() {
+                console.log("test");
                 $.post("/i18n/setlang/", {
                     csrfmiddlewaretoken : $("#langs>div>input[name='csrfmiddlewaretoken']").val(),
                     language : $(this).attr("class")
                 }, function(data) {
                     location.reload(true);
                 });
-                e.preventDefault();
+                return false;
             });
             $(function() {
                 $(".submitlink").click(function(e) {

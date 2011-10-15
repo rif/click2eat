@@ -36,12 +36,12 @@
 </script>
 {% endblock %}
 
-{% block title %}{% trans 'Order' %}: {{ order }}{% endblock %}
+{% block title %}{% trans 'Order' %}{% endblock %}
 
 {% block content %}
 {% include 'order/shopping_cart.html' %}
 <div class="content_area">
-  <p>{% trans "If you don't have a delivery address" %}: <a href="{% url userprofiles:create_address %}" target="_blank">{% trans 'Add one now' %}</a></p>
+  <p>{% trans "If you don't have a delivery address" %}: <a href="{% url userprofiles:create_address_from_order unit.id %}">{% trans 'Add one now' %}</a></p>
 
   <form method="POST" action="" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}

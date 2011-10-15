@@ -1,7 +1,7 @@
-{% load i18n %}
+{% load i18n item_trans %}
 <div class="descmeniu">
-<b>{{ item.name_def|safe }}</b><br/>
-{{ item.description_def|safe }}
+<b>{% get_name item %}</b><br/>
+{% get_desc item %}
 </div>
 <div class="rezultat">
   <div class="rezpret">
