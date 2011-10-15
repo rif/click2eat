@@ -165,6 +165,7 @@ INSTALLED_APPS = (
     'newsletter',
     'djcelery',
     'biblion',
+    'sorl.thumbnail',
     # my apps
     'restaurant',
     'menu',
@@ -218,7 +219,7 @@ BROKER_TRANSPORT = "redis"
 
 BROKER_HOST = "localhost"  # Maps to redis host.
 BROKER_PORT = 6379         # Maps to redis port.
-BROKER_VHOST = "2"         # Maps to database number.
+BROKER_VHOST = 2         # Maps to database number.
 
 # CELERY_RESULT_BACKEND = "redis"
 # CELERY_REDIS_HOST = "localhost"
@@ -226,3 +227,10 @@ BROKER_VHOST = "2"         # Maps to database number.
 # CELERY_REDIS_DB = 2
 
 CELERY_IGNORE_RESULT = True
+
+THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
+THUMBNAIL_REDIS_HOST = 'localhost'
+THUMBNAIL_REDIS_PORT = 6379
+THUMBNAIL_REDIS_DB = 3
+THUMBNAIL_REDIS_PASSWORD = ''
+THUMBNAIL_DEBUG = True

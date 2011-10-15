@@ -97,6 +97,7 @@ class Item(MultilingualModel):
   active = models.BooleanField(_('active'), default=True)
   speciality = models.BooleanField(_('speciality of the house'), default=True)
   fortune = models.BooleanField(_('display in the weel of fortune'), default=True)
+  image_path = models.ImageField(_('image path'), upload_to="item_images", null=True, blank=True)
 
   tags = TaggableManager()
 

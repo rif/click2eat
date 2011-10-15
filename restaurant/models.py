@@ -3,6 +3,7 @@ from datetime import datetime, date
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
+from sorl.thumbnail import ImageField
 
 class Communication(models.Model):
     name = models.CharField(_('name'), max_length=200)
@@ -146,6 +147,17 @@ class Schedule(models.Model):
     class Meta:
       verbose_name = _('Schedule')
       verbose_name_plural = _('Schedules')
+
+class UnitImage(models.Model):
+    unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
+    image_path = ImageField(_('image path'), upload_to="restaurant_images") # sorl
+
+    def __unicode__(self):
+        return self.unit.name + ' image'
+
+    class Meta:
+      verbose_name = _('Unit Image')
+      verbose_name_plural = _('Unit Images')
 
 class Unit(models.Model):
     name = models.CharField(_('name'), unique=True, max_length=50)

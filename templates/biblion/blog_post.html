@@ -7,11 +7,11 @@
 	<h1>{{ post.title }}</h1>
 	<div class="published">{{ post.published|date:"l, d F Y" }}</div>
 	{{ post.content_html|safe }}
-	<a class="back right" href="{% url blog %}">{% trans 'Back' %}</a>
 	<ul>
 	{% for image in post.images.all %}
 		<li><img src="{{ MEDIA_URL }}{{ image.image_path }}" alt="{{ image }}"></li>
 	{% endfor %}
 	<ul>
+	<a class="back right" href="{% url blog %}">{% trans 'Back' %}</a>
 </div>
 {% endblock %}
