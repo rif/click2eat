@@ -1,5 +1,5 @@
 {% extends 'page.html' %}
-{% load i18n %}
+{% load i18n item_trans %}
 
 {% block title %}{{ unit.name }}{% endblock %}
 {% block pagetitle %}{{ unit.name }}{% endblock %}
@@ -9,14 +9,14 @@
 {% block content %}
 {% for itemgroup in unit.itemgroup_set.iterator %}
             {% if itemgroup.active %}
-            <h2>{{ itemgroup.name_def }}</h2>
+            <h2>{% get_name itemgroup %}</h2>
             <ul data-role="listview" data-inset="true">
               {% for item in itemgroup.item_set.iterator %}
               {% if item.active %}
               <li><a href="{% url mobile:item-detail item.id %}">
-              <h1>{{ item.name_def }}</h1>
+              <h1>{% get_name item %}</h1>
               <span class="ui-li-aside">{{ item.get_price }}{% trans 'RON' %}</span>
-              <p><b>{{ item.item_group.unit.name }}</b>: {{ item.description_def }}</p>
+              <p><b>{{ item.item_group.unit.name }}</b>: {% get_desc item %}</p>
               <p style="display: none;">{{ item.tags.all.values_list|first }}</p>
               </li></a>
               {% endif %}

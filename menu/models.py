@@ -36,6 +36,12 @@ class ItemGroup(MultilingualModel):
   exclusive = models.BooleanField(_('exclusive'))
   active = models.BooleanField(_('active'), default=True)
 
+  def get_name(self, lang=None):
+    try:
+      if lang == 'en': return self.name_en
+    except: pass
+    return self.name_def 
+
   def __unicode__(self):
       return self.internal_name
 
@@ -108,11 +114,17 @@ class Item(MultilingualModel):
   def __unicode__(self):
       return self.name_def
 
-  def get_name(self):
+  def get_name(self, lang=None):    
+    try:
+      if lang == 'en': return self.name_en
+    except: pass
     return self.name_def
 
-  def get_description(self):
-    return self.description_def
+  def get_description(self, lang=None):
+    try:
+      if lang == 'en': return self.description_en
+    except: pass
+    return self.description_def    
 
   def get_id(self):
     return self.id
@@ -173,11 +185,17 @@ class Topping(MultilingualModel):
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
 
-  def get_name(self):
-    return self.name_def
+  def get_name(self, lang=None):
+    try:
+      if lang == 'en': return self.name_en
+    except: pass
+    return self.name_def 
 
-  def get_description(self):
-    return self.description_def
+  def get_description(self, lang=None):
+    try:
+      if lang == 'en': return self.description_en
+    except: pass
+    return self.description_def 
 
   def get_id(self):
     return self.id
@@ -248,12 +266,12 @@ class MenuOfTheDay(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-	return ('menu:daily_menu', [str(self.id)])
+      return ('menu:daily_menu', [str(self.id)])
 
-    def get_name(self):
+    def get_name(self, lang=None):
       return self.name
 
-    def get_description(self):
+    def get_description(self, lang=None):
       return self.description
 
     def get_id(self):

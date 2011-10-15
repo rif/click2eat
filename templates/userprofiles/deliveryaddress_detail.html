@@ -92,7 +92,11 @@ $(function(){
       {% if object.ap_number %}{% trans 'apt.' %} {{ object.ap_number }}{% endif %}</li>
     {% if object.additional_info %}<li>{% trans 'Additional information' %}: {{ object.additional_info }}</li>{% endif %}
   </ul>
+  {% if back_to_order %}
+  <a class="button" href="{% url order:confirm-order back_to_order %}"><span class="leftarrow icon"></span>{% trans 'Back' %}</a>
+  {% else %}
   <a class="button" href="{% url profiles_profile_detail user %}"><span class="leftarrow icon"></span>{% trans 'Back' %}</a>
+  {% endif %}
   <a class="button" href="{% url userprofiles:update_address object.id %}"><span class="pen icon"></span>{% trans 'Edit' %}</a>
 
   <h2>{% trans 'Did we pinpoint your address?' %}</h2>

@@ -45,7 +45,7 @@ class Order(models.Model):
         return carts_dict
 
     def clone(self):
-        new_order = Order.objects.create(user=self.user, status='CR', unit_id=self.unit_id, employee_id=self.employee_id)
+        new_order = Order.objects.create(user=self.user, status='ST', unit_id=self.unit_id, employee_id=self.employee_id)
         for oi in self.orderitem_set.iterator():
             new_oi = OrderItem.objects.create(order=new_order, item=oi.item, count=oi.count, old_price=oi.item.get_price(), cart=oi.cart)
         return new_order

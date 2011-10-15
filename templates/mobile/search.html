@@ -1,5 +1,5 @@
 {% extends 'page.html' %}
-{% load i18n %}
+{% load i18n item_trans %}
 
 {% block title %}{% trans 'Search' %}{% endblock %}
 {% block pagetitle %}{% trans 'Search' %}{% endblock %}
@@ -10,9 +10,9 @@
 <ul data-role="listview" data-inset="true" data-filter="true">
 {% for item in items %}
 <li><a href="{% url mobile:item-detail item.id %}">
-<h1>{{ item.name_def }}</h1>
+<h1>{% get_name item %}</h1>
 <span class="ui-li-aside">{{ item.price }}{% trans 'RON' %}</span>
-<p><b>{{ item.item_group.unit.name }}</b>: {{ item.description_def }}</p>
+<p><b>{{ item.item_group.unit.name }}</b>: {% get_desc item %}</p>
 <p style="display: none;">{{ item.tags.all.values_list|first }}</p>
 </a></li>
 {% endfor %}

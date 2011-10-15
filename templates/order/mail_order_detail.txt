@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n item_trans %}
 {% trans 'Order details' %}
 
 {% trans 'User' %}: {{ order.user.get_full_name }}
@@ -12,9 +12,9 @@
 
 {% trans 'Item' %}              {% trans 'Count' %}             x       {% trans 'Price (RON)' %}
 {% for oi in order.orderitem_set.iterator %}{% if not oi.master %}
-{{ oi.get_payload.name_def }}          {{ oi.count }}          x       {{ oi.old_price }}
+{% get_name oi.get_payload %}          {{ oi.count }}          x       {{ oi.old_price }}
 {% if oi.orderitem_set.exists %}{% for slave_oi in oi.orderitem_set.iterator %}
- * {{ slave_oi.get_payload.name_def }}         {{ slave_oi.count }}            x       {{ slave_oi.old_price }}{% trans 'RON' %}
+ * {% get_name slave_oi.get_payload %}         {{ slave_oi.count }}            x       {{ slave_oi.old_price }}{% trans 'RON' %}
 {% endfor %}{% endif %}{% endif %}{% endfor %}
 {% trans 'Total' %}             {{ order.total_amount }}{% trans 'RON' %}
 
