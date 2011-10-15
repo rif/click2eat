@@ -164,6 +164,7 @@ INSTALLED_APPS = (
     'envelope',
     'newsletter',
     'djcelery',
+    'biblion',
     # my apps
     'restaurant',
     'menu',
@@ -197,6 +198,9 @@ ENVELOPE_CONTACT_CHOICES = (
     (40,    _("Site functionality problem")),
     (None,  _("Other")),
 )
+
+BIBLION_ALL_SECTION_NAME = 'toate'
+BIBLION_SECTIONS = (('news',_('news')), ('promo', _('promotions')))
 
 HONEYPOT_FIELD_NAME = 'information'
 

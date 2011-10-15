@@ -32,6 +32,7 @@ urlpatterns = patterns('',
                        (r'^robots.txt$', include('robots.urls')),
                        (r'^contact/',    include('envelope.urls')),
                        (r'^newsletter/', include('newsletter.urls')),
+                       (r'^weblog/', include('biblion.urls'))                      
                        )
 
 urlpatterns += patterns('profiles.views',
@@ -45,6 +46,7 @@ urlpatterns += patterns('',
                         url(r'^inviteaccept/(?P<confirmation_key>\w+)/$', views.invite_accept, name='friends_accept_join'),
                         url(r'^captcha/', include('captcha.urls')),
                         url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
+                        url(r'^feed/(?P<section>\w+)?/$', 'biblion.views.blog_feed', name='blog_feed'),
                         )
 
 if settings.DEBUG:
