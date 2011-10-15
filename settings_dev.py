@@ -199,7 +199,7 @@ ENVELOPE_CONTACT_CHOICES = (
     (None,  _("Other")),
 )
 
-BIBLION_ALL_SECTION_NAME = 'toate'
+BIBLION_ALL_SECTION_NAME = _('all')
 BIBLION_SECTIONS = (('news',_('news')), ('promo', _('promotions')))
 
 HONEYPOT_FIELD_NAME = 'information'
