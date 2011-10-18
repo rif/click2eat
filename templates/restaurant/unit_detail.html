@@ -19,6 +19,10 @@
                 $("#establishment_details").slideToggle();
                 e.preventDefault();
             });
+            $("#toggle-discount").click(function(e) {
+                $("#establishment_discount").slideToggle();
+                e.preventDefault();
+            });
             $(".shop-link").click(function(e) {
                 var id = $(this).attr("itemid");
                 shop(id);
@@ -107,8 +111,9 @@
                     <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
                 </div>
             {% endif %}
-            <a class="button lefta" id="toggle-info" href="#">{% trans 'More info' %}</a>
-            <a class="button righta" id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
+            <a class="button" id="toggle-discount" href="#">{% trans 'Discount products' %}</a>
+            <a class="button" id="toggle-info" href="#">{% trans 'More info' %}</a>
+            <a class="button" id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
             <div id="establishment_details">
                 <strong>{% trans 'Address' %}:</strong> {{ object.address }}<br/>
                 <strong>{% trans 'Open hours' %}:</strong> {{ object.schedule }}
@@ -122,6 +127,9 @@
                         </a>
                     {% endthumbnail %}
                 {% endfor %}
+            </div>
+            <div id="establishment_discount">                
+                {% if object.discount %}{{ object.discount|safe }}{% endif %} 
             </div>           
             {% if motd %}
                 <div class="clear"></div>
