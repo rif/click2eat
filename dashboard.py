@@ -23,7 +23,7 @@ class CustomIndexDashboard(Dashboard):
         
         # append a group for "Administration" & "Applications"
         self.children.append(modules.Group(
-            _('Group: Administration & Applications'),
+            _('Group: Internals'),
             column=1,
             collapsible=True,
             css_classes=('collapse closed',),
@@ -32,14 +32,14 @@ class CustomIndexDashboard(Dashboard):
                     _('Administration'),
                     column=1,
                     collapsible=False,
-                    models=('django.contrib.*',),
-                ),
-                modules.AppList(
-                    _('Applications'),
-                    column=1,
-                    css_classes=('collapse closed',),
-                    exclude=('django.contrib.*',),
-                )
+                    models=('django.contrib.*','djcelery.*', 'robots.*'),
+                ),                
+                #modules.AppList(
+                #    _('Applications'),
+                #    column=1,
+                #    css_classes=('collapse closed',),
+                #    exclude=('django.contrib.*',),
+                #)                
             ]
         ))
         
@@ -49,7 +49,7 @@ class CustomIndexDashboard(Dashboard):
             collapsible=True,
             column=1,
            
-            exclude=('django.contrib.*',),
+            exclude=('django.contrib.*','djcelery.*', 'robots.*'),
         ))
         
         # append an app list module for "Administration"
