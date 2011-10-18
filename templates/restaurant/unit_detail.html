@@ -111,7 +111,7 @@
                     <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
                 </div>
             {% endif %}
-            <a class="button" id="toggle-discount" href="#">{% trans 'Discount products' %}</a>
+            {% if object.discount %}<a class="button" id="toggle-discount" href="#">{% trans 'Discount products' %}</a>{% endif %}
             <a class="button" id="toggle-info" href="#">{% trans 'More info' %}</a>
             <a class="button" id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
             <div id="establishment_details">

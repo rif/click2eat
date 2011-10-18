@@ -73,7 +73,6 @@ class UserProfile(models.Model):
     phone = models.CharField(_('phone'), max_length=15, unique=True, validators=ROPhoneNumberField().validators)
     sex = models.CharField(_('sex'), max_length=1, choices=GENDER_CHOICES)
     birth_date = models.DateField(_('birth date'), null=True, blank=True)
-    newsletter = models.BooleanField(_('newsletter'), help_text=_("Do you want to receive our newsletter?"))
     public = models.BooleanField(_('public'), help_text=_("Do you want your profile to be public?"))
     communication = models.ManyToManyField('restaurant.Communication', verbose_name=_('communication'))
 

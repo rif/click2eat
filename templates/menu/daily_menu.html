@@ -32,27 +32,23 @@
   </span>
 </div>
 <div id="newsletter">
-  {% trans 'SUBSCRIBE HERE' %}<br/>
-  <span class="textmic">{% trans 'FOR THE MENU OF THE DAY NEWSLETTER' %}</span><br/>
-  <form target="_self" action="">
-    <input type="text" id="email" name="email"  />
-    <input type="image" id="newslettersubmit"  src="{{ STATIC_URL }}images/template/gonews.png"/>
-  </form>
+  <a href="{% url newsletter_subscribe_request 'newsletter-title' %}">{% trans 'SUBSCRIBE HERE' %}</a><br/>
+  <span class="textmic">{% trans 'FOR THE MENU OF THE DAY NEWSLETTER' %}</span><br/>  
 </div>
 <div class="recomandat"></div>
 
 <script type="text/javascript">
   $(function(){
-      $(".motdlinks").click(function(e){
-	  $("#tabla").load($(this).attr("href"));
-	  e.preventDefault();
+    $(".motdlinks").click(function(){
+      $("#tabla").load($(this).attr("href"));
+      return false;
+    });
+    $("#motd-add-link").click(function(){
+      var redir =  $(this).attr("redir");
+      $.get($(this).attr("href"), function(){
+            window.location = redir;
       });
-      $("#motd-add-link").click(function(e){
-	  var redir =  $(this).attr("redir");
-	  $.get($(this).attr("href"), function(){
-              window.location = redir;
-	  });
-	  e.preventDefault();
-      });
+      return false;
+    });    
   });
 </script>

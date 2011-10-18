@@ -150,7 +150,7 @@
 			<br/>
 			<strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}
 			<br/>
-			<strong>{% trans 'Newsletter' %}:</strong> {{ profile.newsletter|yesno }}
+			<a href="{% url newsletter_list %}">{% trans 'See newsleter list' %}</a>
 			<br/>
 			<strong>{% trans 'Communication' %}:</strong> {% for com in profile.communication.iterator %}{{ com.name }}, {% endfor %}
 			<br/>

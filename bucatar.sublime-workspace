@@ -58,6 +58,70 @@
 				"buffer_size": 16379,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "settings_dev.py",
+			"settings":
+			{
+				"buffer_size": 5990,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "restaurant/models.py",
+			"settings":
+			{
+				"buffer_size": 8827,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "restaurant/forms.py",
+			"settings":
+			{
+				"buffer_size": 635,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "restaurant/admin.py",
+			"settings":
+			{
+				"buffer_size": 3559,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/restaurant/unit_detail.html",
+			"settings":
+			{
+				"buffer_size": 10295,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "media/sass/screen.sass",
+			"settings":
+			{
+				"buffer_size": 21893,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/order/order_list_div.html",
+			"settings":
+			{
+				"buffer_size": 1700,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/newsletter/subscription_subscribe.html",
+			"settings":
+			{
+				"buffer_size": 1084,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -105,6 +169,7 @@
 	"file_history":
 	[
 		"/home/rif/Documents/webframeworks/bucatar/dashboard.py",
+		"/home/rif/Documents/webframeworks/bucatar/create_graphs.sh",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/send_confirmation.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_detail.html",
@@ -296,7 +361,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -323,6 +388,226 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 2440.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "settings_dev.py",
+					"settings":
+					{
+						"buffer_size": 5990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5486,
+								5486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3050.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "restaurant/models.py",
+					"settings":
+					{
+						"buffer_size": 8827,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7388,
+								7396
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2208.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "restaurant/forms.py",
+					"settings":
+					{
+						"buffer_size": 635,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								497,
+								497
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "restaurant/admin.py",
+					"settings":
+					{
+						"buffer_size": 3559,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3453,
+								3453
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 946.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/restaurant/unit_detail.html",
+					"settings":
+					{
+						"buffer_size": 10295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4601,
+								4601
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1584.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "media/sass/screen.sass",
+					"settings":
+					{
+						"buffer_size": 21893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10797,
+								10797
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5730.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "templates/order/order_list_div.html",
+					"settings":
+					{
+						"buffer_size": 1700,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1692,
+								1692
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/newsletter/subscription_subscribe.html",
+					"settings":
+					{
+						"buffer_size": 1084,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1062,
+								1062
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -372,6 +657,22 @@
 		"selected_items":
 		[
 			[
+				"das",
+				"dashboard.py"
+			],
+			[
+				"scr",
+				"media/sass/screen.sass"
+			],
+			[
+				"uni",
+				"templates/restaurant/unit_detail.html"
+			],
+			[
+				"mode",
+				"restaurant/models.py"
+			],
+			[
 				"vi",
 				"order/views.py"
 			],
@@ -386,10 +687,6 @@
 			[
 				"menu",
 				"templates/menu/daily_menu.html"
-			],
-			[
-				"uni",
-				"templates/restaurant/unit_detail.html"
 			],
 			[
 				"shopp",
