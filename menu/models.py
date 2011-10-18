@@ -38,7 +38,7 @@ class ItemGroup(MultilingualModel):
 
   def get_name(self, lang=None):
     try:
-      if lang == 'en': return self.name_en
+      if lang == 'en' and self.name_en: return self.name_en
     except: pass
     return self.name_def 
 
@@ -116,13 +116,13 @@ class Item(MultilingualModel):
 
   def get_name(self, lang=None):    
     try:
-      if lang == 'en': return self.name_en
+      if lang == 'en' and self.name_en: return self.name_en
     except: pass
     return self.name_def
 
   def get_description(self, lang=None):
     try:
-      if lang == 'en': return self.description_en
+      if lang == 'en' and self.description_en: return self.description_en
     except: pass
     return self.description_def    
 
@@ -187,13 +187,13 @@ class Topping(MultilingualModel):
 
   def get_name(self, lang=None):
     try:
-      if lang == 'en': return self.name_en
+      if lang == 'en' and self.name_en: return self.name_en
     except: pass
     return self.name_def 
 
   def get_description(self, lang=None):
     try:
-      if lang == 'en': return self.description_en
+      if lang == 'en' and self.description_en: return self.description_en
     except: pass
     return self.description_def 
 
