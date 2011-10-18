@@ -89,7 +89,7 @@ class UnitAdmin(admin.ModelAdmin):
             'fields': (('payment_method', 'currency'), 'overall_discount', 'minimum_ord_val')
         }),
         ('Other info', {
-            'fields': ('tags', 'info', 'active')
+            'fields': ('tags', 'info', 'discount', 'active')
         }),
     )
     

@@ -11,6 +11,7 @@ class FlatPageForm(forms.ModelForm):
 
 class UnitForm(forms.ModelForm):
     info = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}, mce_attrs={'theme': 'advanced',}))
+    discount = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}, mce_attrs={'theme': 'advanced',}))
 
     class Meta:
         model = Unit

@@ -4,11 +4,11 @@
 <script type="text/javascript">
     $(function(){
 	$(".hide-link").click(function(e){
-	    row = $(this).parents("tr");
+	    row = $(this).parents(".boxroz");
 	    $.get($(this).attr("href"), function(data) {
-		if(data.order_id != -1) {
+		  if(data.order_id != -1) {
 		    row.fadeOut();
-		}
+		  }
 	    });
 	    e.preventDefault();
 	});
@@ -36,7 +36,8 @@
       </span>
       <span class="restaurant">{{ order.unit }}</span>
 
-      <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>&nbsp;<a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
+      <!--&nbsp;<a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>-->
+      &nbsp;<a class="hide-link right" href="{% url order:hide order.id %}">{% trans 'Hide' %}</a>
     </div>
     {% empty %}
     <div class="boxroz">{% trans 'No orders yet? Bon apetit ;)' %}</div>
