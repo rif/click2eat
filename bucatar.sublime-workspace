@@ -52,66 +52,42 @@
 	"buffers":
 	[
 		{
-			"file": "order/views.py",
+			"file": "templates/menu/daily_menu.html",
 			"settings":
 			{
-				"buffer_size": 16379,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "settings_dev.py",
-			"settings":
-			{
-				"buffer_size": 5990,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "restaurant/models.py",
-			"settings":
-			{
-				"buffer_size": 8827,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "restaurant/forms.py",
-			"settings":
-			{
-				"buffer_size": 635,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "restaurant/admin.py",
-			"settings":
-			{
-				"buffer_size": 3559,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/restaurant/unit_detail.html",
-			"settings":
-			{
-				"buffer_size": 10295,
+				"buffer_size": 1591,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/footer.html",
+			"settings":
+			{
+				"buffer_size": 3303,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "menu/views.py",
+			"settings":
+			{
+				"buffer_size": 1857,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 21893,
+				"buffer_size": 21960,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "templates/order/order_list_div.html",
+			"file": "templates/newsletter/subscription_activate.html",
 			"settings":
 			{
-				"buffer_size": 1700,
+				"buffer_size": 949,
 				"line_ending": "Unix"
 			}
 		},
@@ -120,6 +96,54 @@
 			"settings":
 			{
 				"buffer_size": 1084,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/newsletter/common.html",
+			"settings":
+			{
+				"buffer_size": 126,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/profiles/profile_detail.html",
+			"settings":
+			{
+				"buffer_size": 8157,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/header.html",
+			"settings":
+			{
+				"buffer_size": 3712,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/newsletter/newsletter_list.html",
+			"settings":
+			{
+				"buffer_size": 1174,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "userprofiles/models.py",
+			"settings":
+			{
+				"buffer_size": 5940,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "userprofiles/admin.py",
+			"settings":
+			{
+				"buffer_size": 825,
 				"line_ending": "Unix"
 			}
 		}
@@ -168,23 +192,28 @@
 	},
 	"file_history":
 	[
+		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/settings_dev.py",
+		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/restaurant/forms.py",
+		"/home/rif/Documents/webframeworks/bucatar/restaurant/admin.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
+		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
+		"/home/rif/Documents/webframeworks/bucatar/templates/order/order_list_div.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/subscription_subscribe.html",
 		"/home/rif/Documents/webframeworks/bucatar/dashboard.py",
 		"/home/rif/Documents/webframeworks/bucatar/create_graphs.sh",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/send_confirmation.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/urls.py",
-		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/index.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/models.py",
 		"/home/rif/Documents/webframeworks/oiad/oiad.sublime-project",
-		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/order/models.py",
-		"/home/rif/Documents/webframeworks/bucatar/settings_dev.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
@@ -197,9 +226,7 @@
 		"/home/rif/.Sublime Text 2/Packages/User/Global.sublime-settings",
 		"/home/rif/Documents/webframeworks/bucatar/menu/templatetags/item_translations.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/menu_list.html",
-		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
-		"/home/rif/Documents/webframeworks/bucatar/restaurant/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/order/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_list_div.html",
@@ -294,6 +321,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"email",
 			"lang",
 			"float",
 			"MultilingualModel",
@@ -361,161 +389,51 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 11,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "order/views.py",
+					"file": "templates/menu/daily_menu.html",
 					"settings":
 					{
-						"buffer_size": 16379,
+						"buffer_size": 1591,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8174,
-								8174
+								1075,
+								1075
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2.0,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2440.0,
+						"translation.y": 144.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "settings_dev.py",
+					"file": "templates/footer.html",
 					"settings":
 					{
-						"buffer_size": 5990,
+						"buffer_size": 3303,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5486,
-								5486
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3050.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "restaurant/models.py",
-					"settings":
-					{
-						"buffer_size": 8827,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7388,
-								7396
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2208.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "restaurant/forms.py",
-					"settings":
-					{
-						"buffer_size": 635,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								497,
-								497
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "restaurant/admin.py",
-					"settings":
-					{
-						"buffer_size": 3559,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3453,
-								3453
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 946.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "templates/restaurant/unit_detail.html",
-					"settings":
-					{
-						"buffer_size": 10295,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4601,
-								4601
+								3049,
+								3033
 							]
 						],
 						"settings":
@@ -525,25 +443,53 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1584.0,
+						"translation.y": 192.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "media/sass/screen.sass",
+					"buffer": 2,
+					"file": "menu/views.py",
 					"settings":
 					{
-						"buffer_size": 21893,
+						"buffer_size": 1857,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10797,
-								10797
+								1430,
+								1430
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "media/sass/screen.sass",
+					"settings":
+					{
+						"buffer_size": 21960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6518,
+								6518
 							]
 						],
 						"settings":
@@ -553,31 +499,31 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5730.0,
+						"translation.y": 4658.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "templates/order/order_list_div.html",
+					"buffer": 4,
+					"file": "templates/newsletter/subscription_activate.html",
 					"settings":
 					{
-						"buffer_size": 1700,
+						"buffer_size": 949,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1692,
-								1692
+								186,
+								190
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2.0,
+							"tab_size": 4.0,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -587,7 +533,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 5,
 					"file": "templates/newsletter/subscription_subscribe.html",
 					"settings":
 					{
@@ -598,13 +544,178 @@
 						"selection":
 						[
 							[
-								1062,
-								1062
+								54,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "templates/newsletter/common.html",
+					"settings":
+					{
+						"buffer_size": 126,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								46,
+								46
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "templates/profiles/profile_detail.html",
+					"settings":
+					{
+						"buffer_size": 8157,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5483,
+								5483
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2050.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/header.html",
+					"settings":
+					{
+						"buffer_size": 3712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								541,
+								579
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "templates/newsletter/newsletter_list.html",
+					"settings":
+					{
+						"buffer_size": 1174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1148,
+								1148
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "userprofiles/models.py",
+					"settings":
+					{
+						"buffer_size": 5940,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3983,
+								3983
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 624.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "userprofiles/admin.py",
+					"settings":
+					{
+						"buffer_size": 825,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								825,
+								825
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -657,6 +768,26 @@
 		"selected_items":
 		[
 			[
+				"header",
+				"templates/header.html"
+			],
+			[
+				"scre",
+				"media/sass/screen.sass"
+			],
+			[
+				"vi",
+				"menu/views.py"
+			],
+			[
+				"foot",
+				"templates/footer.html"
+			],
+			[
+				"dail",
+				"templates/menu/daily_menu.html"
+			],
+			[
 				"das",
 				"dashboard.py"
 			],
@@ -673,16 +804,8 @@
 				"restaurant/models.py"
 			],
 			[
-				"vi",
-				"order/views.py"
-			],
-			[
 				"dash",
 				"dashboard.py"
-			],
-			[
-				"dail",
-				"templates/menu/daily_menu_list.html"
 			],
 			[
 				"menu",
@@ -719,10 +842,6 @@
 			[
 				"base",
 				"templates/base_alt.html"
-			],
-			[
-				"foot",
-				"templates/footer.html"
 			],
 			[
 				"item",
@@ -775,6 +894,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 248.0,
+	"side_bar_width": 307.0,
 	"status_bar_visible": true
 }
