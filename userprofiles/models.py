@@ -101,7 +101,7 @@ class UserProfile(models.Model):
 
     def get_bonus_money(self):
         result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('money'))
-        return round(result['money__sum'],2) or 0
+        return round(result['money__sum'] or 0,2)
 
     @models.permalink
     def get_absolute_url(self):

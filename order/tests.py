@@ -1,13 +1,16 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.db.models import Sum
 from datetime import datetime
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
+from bonus.models import Bonus
+from order.views import _consume_bonus
 
 class OrderTest(TestCase):
-  fixtures = ['restaurant.json', 'menu.json', 'order.json']
+  fixtures = ['restaurant.json', 'menu.json', 'order.json', 'user.json', 'bonus.json']
   def setUp(self):
     self.user = User.objects.create_user('rif', 'rif@test.te', 'test')
     self.user = User.objects.create_user('rif1', 'rif1@test.te', 'test')
@@ -146,3 +149,34 @@ class OrderTest(TestCase):
      self.assertEqual('{"error": "29a"}', r.content)
      r = self.client.get(reverse('order:decr-item', args=['rif', 1, 2]))
      self.assertEqual('{"error": "29a"}', r.content)
+
+  def test_not_enough_bonus_money(self):
+      user = User.objects.get(id=2)
+      ord1 = Order.objects.create(user=user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
+      OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=1), cart="1")      
+      result = _consume_bonus(ord1)
+      self.assertEqual(-1, result)
+      total = Bonus.objects.filter(user__id = 2).filter(used=False).aggregate(Sum('money'))      
+      self.assertEqual(8.71, round(total['money__sum'],2))
+      self.assertFalse(ord1.paid_with_bonus)
+
+  def test_use_partial_bonus_money(self):
+      user = User.objects.get(id=2)
+      ord1 = Order.objects.create(user=user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
+      OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=3), cart="1", )
+      result = _consume_bonus(ord1)      
+      self.assertEquals(0, result)
+      total = Bonus.objects.filter(user__id = 2).filter(used=False).aggregate(Sum('money'))
+      self.assertEqual(7.52, round(total['money__sum'],2))
+      self.assertTrue(ord1.paid_with_bonus)
+
+  def test_use_total_bonus_money(self):        
+      user = User.objects.get(id=2)
+      ord1 = Order.objects.create(user=user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
+      oi = OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=3), cart="1", )
+      oi.old_price = 8.71
+      oi.save()
+      result = _consume_bonus(ord1)      
+      self.assertEquals(0, result)
+      total = Bonus.objects.filter(user__id = 2).filter(used=False).aggregate(Sum('money'))
+      self.assertEqual(0, round(total['money__sum'] or 0,2))
