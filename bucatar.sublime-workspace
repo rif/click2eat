@@ -52,58 +52,10 @@
 	"buffers":
 	[
 		{
-			"file": "templates/menu/daily_menu.html",
+			"file": "bonus/models.py",
 			"settings":
 			{
-				"buffer_size": 1591,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/footer.html",
-			"settings":
-			{
-				"buffer_size": 3303,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "menu/views.py",
-			"settings":
-			{
-				"buffer_size": 1857,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "media/sass/screen.sass",
-			"settings":
-			{
-				"buffer_size": 21960,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/newsletter/subscription_activate.html",
-			"settings":
-			{
-				"buffer_size": 949,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/newsletter/subscription_subscribe.html",
-			"settings":
-			{
-				"buffer_size": 1084,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/newsletter/common.html",
-			"settings":
-			{
-				"buffer_size": 126,
+				"buffer_size": 725,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,39 +63,39 @@
 			"file": "templates/profiles/profile_detail.html",
 			"settings":
 			{
-				"buffer_size": 8157,
+				"buffer_size": 8187,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "templates/header.html",
+			"file": "templates/order/send_confirmation.html",
 			"settings":
 			{
-				"buffer_size": 3712,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/newsletter/newsletter_list.html",
-			"settings":
-			{
-				"buffer_size": 1174,
+				"buffer_size": 1809,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "userprofiles/models.py",
+			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 5940,
+				"buffer_size": 16493,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "userprofiles/admin.py",
+			"file": "media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 825,
+				"buffer_size": 22197,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bonus/tests.py",
+			"settings":
+			{
+				"buffer_size": 244,
 				"line_ending": "Unix"
 			}
 		}
@@ -192,15 +144,29 @@
 	},
 	"file_history":
 	[
+		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
+		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_list.html",
+		"/home/rif/Documents/webframeworks/bucatar/order/tests.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/subscription_activate.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/subscription_subscribe.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/common.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/profiles/profile_detail.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/header.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/newsletter_list.html",
+		"/home/rif/Documents/webframeworks/bucatar/userprofiles/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/userprofiles/admin.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/order/timer.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/newsletter_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/settings_dev.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/forms.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
-		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/order_list_div.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/subscription_subscribe.html",
 		"/home/rif/Documents/webframeworks/bucatar/dashboard.py",
 		"/home/rif/Documents/webframeworks/bucatar/create_graphs.sh",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/views.py",
@@ -208,14 +174,12 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/index.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/models.py",
 		"/home/rif/Documents/webframeworks/oiad/oiad.sublime-project",
 		"/home/rif/Documents/webframeworks/bucatar/order/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/templatetags/item_trans.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/search.html",
@@ -240,15 +204,11 @@
 		"/home/rif/Documents/webframeworks/bucatar/order/tasks.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/shopping_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/media/dependencies.txt",
-		"/home/rif/Documents/webframeworks/bucatar/templates/profiles/profile_detail.html",
-		"/home/rif/Documents/webframeworks/bucatar/userprofiles/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/bonus/models.py",
-		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/sidebar.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/order_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/bonus/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/bonus/history.html",
-		"/home/rif/Documents/webframeworks/bucatar/order/tests.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/invite_friend.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_confirm_delete.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/invite_friend_form.html",
@@ -259,9 +219,7 @@
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/forms.py",
 		"/home/rif/Documents/webframeworks/bucatar/wheel/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/wheel/urls.py",
-		"/home/rif/Documents/webframeworks/bucatar/templates/header.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/wheel/random_daily_menu.html",
-		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/media/css/css3buttons.css",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/random_daily_menu.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/wheel/fortune.html",
@@ -321,6 +279,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"star",
 			"email",
 			"lang",
 			"float",
@@ -389,58 +348,57 @@
 	"groups":
 	[
 		{
-			"selected": 11,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "templates/menu/daily_menu.html",
+					"file": "bonus/models.py",
 					"settings":
 					{
-						"buffer_size": 1591,
+						"buffer_size": 725,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1075,
-								1075
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 2.0,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 144.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "templates/footer.html",
+					"file": "templates/profiles/profile_detail.html",
 					"settings":
 					{
-						"buffer_size": 3303,
+						"buffer_size": 8187,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3049,
-								3033
+								1414,
+								1414
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 192.0,
@@ -450,18 +408,46 @@
 				},
 				{
 					"buffer": 2,
-					"file": "menu/views.py",
+					"file": "templates/order/send_confirmation.html",
 					"settings":
 					{
-						"buffer_size": 1857,
+						"buffer_size": 1809,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1430,
-								1430
+								1272,
+								1272
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 48.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "order/views.py",
+					"settings":
+					{
+						"buffer_size": 16493,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8518,
+								8518
 							]
 						],
 						"settings":
@@ -471,25 +457,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2676.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 21960,
+						"buffer_size": 22197,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6518,
-								6518
+								7490,
+								7490
 							]
 						],
 						"settings":
@@ -499,218 +485,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4658.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "templates/newsletter/subscription_activate.html",
-					"settings":
-					{
-						"buffer_size": 949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								186,
-								190
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4978.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "templates/newsletter/subscription_subscribe.html",
+					"file": "bonus/tests.py",
 					"settings":
 					{
-						"buffer_size": 1084,
+						"buffer_size": 244,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								54,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "templates/newsletter/common.html",
-					"settings":
-					{
-						"buffer_size": 126,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								46,
-								46
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "templates/profiles/profile_detail.html",
-					"settings":
-					{
-						"buffer_size": 8157,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5483,
-								5483
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2050.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "templates/header.html",
-					"settings":
-					{
-						"buffer_size": 3712,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								541,
-								579
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "templates/newsletter/newsletter_list.html",
-					"settings":
-					{
-						"buffer_size": 1174,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1148,
-								1148
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "userprofiles/models.py",
-					"settings":
-					{
-						"buffer_size": 5940,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3983,
-								3983
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4.0,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 624.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "userprofiles/admin.py",
-					"settings":
-					{
-						"buffer_size": 825,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								825,
-								825
+								174,
+								174
 							]
 						],
 						"settings":
@@ -768,6 +561,42 @@
 		"selected_items":
 		[
 			[
+				"scr",
+				"media/sass/screen.sass"
+			],
+			[
+				"vi",
+				"order/views.py"
+			],
+			[
+				"sen",
+				"templates/order/send_confirmation.html"
+			],
+			[
+				"profil",
+				"templates/profiles/profile_detail.html"
+			],
+			[
+				"scree",
+				"media/sass/screen.sass"
+			],
+			[
+				"uni",
+				"templates/restaurant/unit_list.html"
+			],
+			[
+				"test",
+				"order/tests.py"
+			],
+			[
+				"dail",
+				"templates/menu/daily_menu.html"
+			],
+			[
+				"",
+				"templates/menu/daily_menu.html"
+			],
+			[
 				"header",
 				"templates/header.html"
 			],
@@ -776,28 +605,12 @@
 				"media/sass/screen.sass"
 			],
 			[
-				"vi",
-				"menu/views.py"
-			],
-			[
 				"foot",
 				"templates/footer.html"
 			],
 			[
-				"dail",
-				"templates/menu/daily_menu.html"
-			],
-			[
 				"das",
 				"dashboard.py"
-			],
-			[
-				"scr",
-				"media/sass/screen.sass"
-			],
-			[
-				"uni",
-				"templates/restaurant/unit_detail.html"
 			],
 			[
 				"mode",
@@ -816,20 +629,12 @@
 				"templates/order/shopping_cart.html"
 			],
 			[
-				"scree",
-				"media/sass/screen.sass"
-			],
-			[
 				"address",
 				"templates/userprofiles/deliveryaddress_detail.html"
 			],
 			[
 				"model",
 				"order/models.py"
-			],
-			[
-				"sen",
-				"templates/order/send_confirmation.html"
 			],
 			[
 				"resta",
@@ -870,10 +675,6 @@
 			[
 				"viw",
 				"mobile/views.py"
-			],
-			[
-				"",
-				"templates/order/shopping_cart.html"
 			],
 			[
 				"unit_de",

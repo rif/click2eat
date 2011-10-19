@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-19 12:50+0300\n"
-"PO-Revision-Date: 2011-10-19 13:05\n"
+"POT-Creation-Date: 2011-10-19 21:42+0300\n"
+"PO-Revision-Date: 2011-10-19 21:46\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr "știri"
 msgid "promotions"
 msgstr "promoții"
 
-#: bonus/models.py:8 menu/models.py:289 order/models.py:14 order/models.py:120
+#: bonus/models.py:8 menu/models.py:289 order/models.py:14 order/models.py:121
 #: userprofiles/models.py:16 userprofiles/models.py:70
 msgid "user"
 msgstr "nume"
@@ -275,7 +275,7 @@ msgstr "Numele implicit pentru acest articol"
 msgid "The default description for this item"
 msgstr "Descrierea implicită pentru acest articol"
 
-#: menu/models.py:94 menu/models.py:179 menu/models.py:265 order/models.py:78
+#: menu/models.py:94 menu/models.py:179 menu/models.py:265 order/models.py:79
 #: restaurant/models.py:66
 msgid "price"
 msgstr "preț"
@@ -485,92 +485,97 @@ msgstr "timpul de livrare"
 msgid "Request this to order for a later time (yyyy-mm-dd hh:mm)."
 msgstr "Comandați pentru mai târziu (aaaa-ll-zz oo:mm)."
 
-#: order/models.py:67 order/models.py:68
+#: order/models.py:25
+msgid "paid with bonus"
+msgstr "plătit cu bonus"
+
+#: order/models.py:68 order/models.py:69
 #: templates/order/send_confirmation.html:39
 msgid "Order"
 msgstr "Comanda"
 
-#: order/models.py:72
+#: order/models.py:73
 msgid "master"
 msgstr "fel principal"
 
-#: order/models.py:73 order/models.py:121 templates/footer.html:11
+#: order/models.py:74 order/models.py:122 templates/footer.html:11
 msgid "order"
 msgstr "comanda"
 
-#: order/models.py:74
+#: order/models.py:75
 msgid "item"
 msgstr "articol"
 
-#: order/models.py:75
+#: order/models.py:76
 msgid "topping"
 msgstr "garnitură"
 
-#: order/models.py:76
+#: order/models.py:77
 msgid "menu of the day"
 msgstr "meniul zilei"
 
-#: order/models.py:77
+#: order/models.py:78
 msgid "count"
 msgstr "număr"
 
-#: order/models.py:79
+#: order/models.py:80
 msgid "cart"
 msgstr "coș"
 
-#: order/models.py:109
+#: order/models.py:110
 msgid "Order Item"
 msgstr "Articol din comandă"
 
-#: order/models.py:110
+#: order/models.py:111
 msgid "Order Items"
 msgstr "Articolele din comandă"
 
-#: order/models.py:114
+#: order/models.py:115
 msgid "Very Poor"
 msgstr "Foarte slabă"
 
-#: order/models.py:115
+#: order/models.py:116
 msgid "Not that bad"
 msgstr "Nu chiar așa de rea"
 
-#: order/models.py:116
+#: order/models.py:117
 msgid "Average"
 msgstr "Medie"
 
-#: order/models.py:117
+#: order/models.py:118
 msgid "Good"
 msgstr "Bună"
 
-#: order/models.py:118
+#: order/models.py:119
 msgid "Perfect"
 msgstr "Perfect"
 
-#: order/models.py:122
+#: order/models.py:123 templates/restaurant/unit_list.html:27
 msgid "quality"
 msgstr "calitate"
 
-#: order/models.py:123 restaurant/models.py:174
+#: order/models.py:124 restaurant/models.py:174
+#: templates/restaurant/unit_list.html:30
 msgid "delivery time"
 msgstr "timpul de livrare"
 
-#: order/models.py:124
+#: order/models.py:125
 msgid "feedback"
 msgstr "feedback"
 
-#: order/models.py:127
+#: order/models.py:128
 msgid "Rating"
 msgstr "Apreciere"
 
-#: order/models.py:128
+#: order/models.py:129
 msgid "Ratings"
 msgstr "Aprecieri"
 
-#: order/views.py:180
+#: order/views.py:181
 msgid "New Order"
 msgstr "Comandă nouă"
 
-#: order/views.py:196
+#: order/views.py:216
 msgid ""
 "This restaurant is now closed! Please check the open hours and set "
 "desired delivery time accordingly."
@@ -578,32 +583,52 @@ msgstr ""
 "Acest restaurant este momentan închis! Vă rugam să consultați orarul "
 "și să specificați ziua și ora de livrare în consecință."
 
-#: order/views.py:198
+#: order/views.py:218
 #, python-format
 msgid "This restaurant has a minimum order value of %(min)d"
 msgstr "Restaurantul are o comandă minimă de %(min)d"
 
-#: order/views.py:270
+#: order/views.py:244
+msgid ""
+"Congratulations! You have enough bonus to pay for your order. Please "
+"check \"Pay using bonus\" to use it."
+msgstr ""
+"Felicitări! Aveți destul bonus pentru a plăti această comandă. Va "
+"rugăm să bifați \"Plata cu bonus\" pentru a-l folosi."
+
+#: order/views.py:245
+msgid "Pay using bonus"
+msgstr "Plata cu bonus"
+
+#: order/views.py:245
+msgid ""
+"We shall use the minimum number of received bonuses enough to cover the"
+" order total amount"
+msgstr ""
+"Vom folosi un numar minim de bonus-uri primite car sunt suficiente "
+"pentru a acoperi suma totală a comenzii"
+
+#: order/views.py:296
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
-#: order/views.py:279 order/views.py:287
+#: order/views.py:305 order/views.py:313
 msgid "Current orders"
 msgstr "Comenzile curente"
 
-#: order/views.py:295
+#: order/views.py:321
 msgid "Order history"
 msgstr "Istoric comenzi"
 
-#: order/views.py:333
+#: order/views.py:359
 msgid "Click2eat: Order received"
 msgstr "Click2eat: Comanda primită"
 
-#: order/views.py:348
+#: order/views.py:374
 msgid "Thank you! You already sent feedback for this order."
 msgstr "Mulțumim! Deja o apreciere pentru această comandă."
 
-#: order/views.py:359
+#: order/views.py:385
 msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 

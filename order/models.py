@@ -22,6 +22,7 @@ class Order(models.Model):
     employee = models.ForeignKey('restaurant.Employee', verbose_name=_('employee'), help_text=_('The internal employee responsible for this order.'))
     hidden = models.BooleanField(_('hidden'))
     desired_delivery_time = models.DateTimeField(_('desired delivery time'), null=True, blank=True, help_text=_('Request this to order for a later time (yyyy-mm-dd hh:mm).'))
+    paid_with_bonus = models.BooleanField(_('paid with bonus'))
 
     def update_total_amount(self):
         total = 0

@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, redirect
 from django.template import RequestContext
+from django.db.models import Sum
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
@@ -183,12 +184,31 @@ def __construct_order(request, unit, order):
     send_to = (order.unit.email,)   
     send_email_task.delay(subject, body, send_from, send_to)
     
+def _consume_bonus(order):
+    amount = order.total_amount
+    bonuses = Bonus.objects.filter(user__id = order.user_id).filter(used=False).order_by('received_date')
+    total = bonuses.aggregate(Sum('money'))
+    total = round(total['money__sum'],2)
+    if amount > total: return -1
+    sum = 0
+    now = datetime.now()
+    for bonus in bonuses:
+        if sum < amount:
+            sum += bonus.money
+            bonus.used = True
+            bonus.used_date = now
+            bonus.save()
+        else:
+            order.paid_with_bonus = True
+            order.save()
+            break
+    return 0
     
 @login_required
 @render_to('order/send_confirmation.html')
 def confirm_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    total_sum = __count_cart_sum(request,unit_id)
+    total_sum = __count_cart_sum(request,unit_id)    
     carts = []
     for cn in __get_cart_names(request,unit_id):
         carts.append((cn.split(':',1)[1], request.session[cn], __count_cart_sum(request, cn)))    
@@ -210,6 +230,8 @@ def confirm_order(request, unit_id):
         if form.is_valid():
             order = form.save(commit=False)
             __construct_order(request, unit, order) 
+            if 'paid_with_bonus' in form.data:
+                _consume_bonus(order)
             if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=order.id)
@@ -217,6 +239,10 @@ def confirm_order(request, unit_id):
         form = OrderForm()
     form.fields['delivery_type'] = forms.ModelChoiceField(unit.delivery_type.all(), required=True, initial={'primary': True})
     form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
+    show_pay_with_bonus = request.user.get_profile() and request.user.get_profile().get_bonus_money() > total_sum
+    if show_pay_with_bonus:
+        messages.info(request, _('Congratulations! You have enough bonus to pay for your order. Please check "Pay using bonus" to use it.'))
+        form.fields['paid_with_bonus'] = forms.BooleanField(label=_('Pay using bonus'), help_text=_('We shall use the minimum number of received bonuses enough to cover the order total amount'), required=False)
     return locals()
 
 @login_required

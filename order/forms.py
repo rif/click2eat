@@ -7,7 +7,7 @@ from datetime import datetime
 class CartNameForm(forms.Form):
     name = forms.CharField(max_length=10)
 
-class OrderForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):    
     delivery_type = forms.ModelChoiceField(queryset=DeliveryType.objects.all())
     def clean_address(self):
         address = self.cleaned_data['address']

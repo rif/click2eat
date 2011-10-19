@@ -3,5 +3,5 @@ from bonus import views
 
 
 urlpatterns = patterns('',
-                       url(r'^history$', views.history, name='history'),
+                       url(r'^history/$', views.history, name='history'),
                        )
