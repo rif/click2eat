@@ -12,7 +12,7 @@ def item_list(request):
     query = request.GET.get('q', '')
     results = Item.objects.select_related('item_group__unit','promotion__unit')
     if query:
-        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query)).distinct()
+        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query) | Q(mcg__name__icontains=query)).distinct()
     f = ItemFilter(request.GET, queryset=results)
     return {'query': query, 'filter': f}
 
