@@ -24,10 +24,10 @@
 				Specific italian, 200 locuri, specialitati <a href="{% url restaurant:comments unit.id %}">{% trans 'Comments' %} ({{ unit.comment_count }})</a>
 			</div>
 			<div class="stele">
-				<div class="rating_bar">
+				<div class="rating_bar" title="{% trans 'quality' %}">
 					<div style="width:{{ unit.get_avg_quality }}%"></div>
 				</div>
-				<div class="rating_bar">
+				<div class="rating_bar" title="{% trans 'delivery time' %}">
 					<div style="width:{{ unit.get_avg_speed }}%"></div>
 				</div>
 			</div>
