@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-18 20:20+0300\n"
-"PO-Revision-Date: 2011-10-18 20:22\n"
+"POT-Creation-Date: 2011-10-19 12:50+0300\n"
+"PO-Revision-Date: 2011-10-19 13:05\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -773,7 +773,7 @@ msgstr "Zona de livrare în km"
 msgid "In minutes"
 msgstr "În minute"
 
-#: restaurant/models.py:175 userprofiles/models.py:78
+#: restaurant/models.py:175 userprofiles/models.py:77
 msgid "communication"
 msgstr "comunicare"
 
@@ -997,6 +997,7 @@ msgstr "Încărcați o noua imagine"
 
 #: templates/avatar/add.html:14 templates/avatar/change.html:33
 #: templates/avatar/confirm_delete.html:26 templates/biblion/blog_post.html:15
+#: templates/newsletter/newsletter_list.html:38
 #: templates/order/order_list.html:13
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:19
 #: templates/userprofiles/deliveryaddress_detail.html:96
@@ -1129,7 +1130,7 @@ msgstr "ABONEAZĂ-TE AICI"
 
 #: templates/menu/daily_menu.html:36
 msgid "FOR THE MENU OF THE DAY NEWSLETTER"
-msgstr "PENTRU EMAIL-UL CU MENIUL ZILEI"
+msgstr "PENTRU MAIL-UL CU MENIUL ZILEI"
 
 #: templates/menu/daily_menu_list.html:4
 msgid "Wheel of fortune"
@@ -1301,6 +1302,154 @@ msgstr "Comanda dumneavoastră a fost trimisă restaurantului!"
 #: templates/mobile/units.html:6
 msgid "List of restaurants"
 msgstr "Lista restaurantelor"
+
+#: templates/newsletter/newsletter_detail.html:3
+msgid "Newsletter detail"
+msgstr "Detalii e-mail cu știri"
+
+#: templates/newsletter/newsletter_detail.html:7
+#: templates/newsletter/newsletter_list.html:11
+#: templates/newsletter/newsletter_list.html:29
+#: templates/newsletter/subscription_activate.html:3
+#: templates/newsletter/subscription_activate.html:6
+msgid "Newsletter"
+msgstr "e-mail cu știri"
+
+#: templates/newsletter/newsletter_detail.html:10
+#: templates/newsletter/newsletter_list.html:13
+#: templates/newsletter/subscription_subscribe.html:16
+#: templates/newsletter/subscription_subscribe_user.html:19
+#: templates/newsletter/subscription_update.html:16
+msgid "Subscribe"
+msgstr "Abonare"
+
+#: templates/newsletter/newsletter_detail.html:14
+msgid "Update"
+msgstr "Actualizare"
+
+#: templates/newsletter/newsletter_detail.html:18
+#: templates/newsletter/subscription_unsubscribe.html:12
+#: templates/newsletter/subscription_unsubscribe_user.html:20
+msgid "Unsubscribe"
+msgstr "Dezabonare"
+
+#: templates/newsletter/newsletter_detail.html:21
+msgid "Archive"
+msgstr "Arhivă"
+
+#: templates/newsletter/newsletter_detail.html:24
+msgid "Back to list"
+msgstr "Înapoi la listă"
+
+#: templates/newsletter/newsletter_list.html:3
+msgid "Newsletter list"
+msgstr "Lista e-mail-uri cu știri"
+
+#: templates/newsletter/newsletter_list.html:24
+msgid "Update subscriptions"
+msgstr "Actualizare abonamente"
+
+#: templates/newsletter/submission_archive.html:3
+#: templates/newsletter/submission_archive.html:7
+msgid "Newsletter archive"
+msgstr "Arhiva de e-mail-uri cu stiri"
+
+#: templates/newsletter/subscription_activate.html:3
+#: templates/newsletter/subscription_activate.html:6
+msgid "activate"
+msgstr "activează"
+
+#: templates/newsletter/subscription_activate.html:10
+msgid "Your subscription has successfully been activated."
+msgstr "Abonamentul dumneavoastră a fost activat cu succes."
+
+#: templates/newsletter/subscription_activate.html:13
+msgid "You have successfully been unsubscribed."
+msgstr "Ați fost dezabonat cu success."
+
+#: templates/newsletter/subscription_activate.html:16
+msgid "Your subscription has successfully been updated."
+msgstr "Abonamentul dumneavoastră a fost actualizat cu succes."
+
+#: templates/newsletter/subscription_activate.html:23
+msgid "Activate"
+msgstr "Activează"
+
+#: templates/newsletter/subscription_subscribe.html:3
+#: templates/newsletter/subscription_subscribe.html:5
+#: templates/newsletter/subscription_subscribe_user.html:3
+#: templates/newsletter/subscription_subscribe_user.html:5
+msgid "Newsletter subscribe"
+msgstr "Abonare e-mail cu știri"
+
+#: templates/newsletter/subscription_subscribe.html:7
+#: templates/newsletter/subscription_update.html:7
+msgid ""
+"Due to a technical error we were not able to submit your confirmation "
+"email. This could be because your email address is invalid."
+msgstr ""
+"Din cauza unor probleme tehnice nu s-a putut realiza trimiterea "
+"emailului de confirmare. Aceasta poate fi din cauză ca adresa a fost "
+"invalidă."
+
+#: templates/newsletter/subscription_subscribe.html:8
+#: templates/newsletter/subscription_update.html:8
+msgid ""
+"If the error persists, please don't hesitate to contact us at the "
+"following email address:"
+msgstr ""
+"Daca probleme persistă, vă rugăm sa nu ezitați să ne contactați la "
+"urmatoarea adresă de e-mail:"
+
+#: templates/newsletter/subscription_subscribe.html:11
+msgid ""
+"Your subscription was successfully recieved and an activation email has"
+" been sent to you. In that email you will find a link which you need to"
+" follow in order to activate your subscription."
+msgstr ""
+"Abonarea dumneavoastră a fost înregistrată cu succes și vi s-a triumis"
+" un e-mail de activare. În acest email ve-ți găsi un link pe care "
+"trebuie să îl urmați pentru activarea abonamentului dumneavoastră."
+
+#: templates/newsletter/subscription_subscribe_user.html:16
+msgid "Do you want to subscribe to this newsletter?"
+msgstr "Doriți să primiți acest e-mail cu știri?"
+
+#: templates/newsletter/subscription_unsubscribe.html:3
+#: templates/newsletter/subscription_unsubscribe.html:5
+#: templates/newsletter/subscription_unsubscribe_user.html:3
+#: templates/newsletter/subscription_unsubscribe_user.html:5
+msgid "Newsletter unsubscribe"
+msgstr "Dezabonare de la e-mail cu știri"
+
+#: templates/newsletter/subscription_unsubscribe.html:7
+msgid ""
+"Your unsubscription request has successfully been recieved. An email "
+"has been sent to you with a link you need to follow in order to confirm"
+" your unsubscription."
+msgstr ""
+"Abonamentul dumneavoastră a fost înregistrat cu succes. Vi s-a trimis "
+"un e-mail cu un link pe care trebuie să-l urmați pentru a confirma "
+"abonamentul dumneavoastră."
+
+#: templates/newsletter/subscription_unsubscribe_user.html:17
+msgid "Do you want to unsubscribe from this newsletter?"
+msgstr "Doriți să vă dezabonați de la acest e-mail cu știri?"
+
+#: templates/newsletter/subscription_update.html:3
+#: templates/newsletter/subscription_update.html:5
+msgid "Newsletter update"
+msgstr "Actoalizate e-mail cu știri"
+
+#: templates/newsletter/subscription_update.html:11
+msgid ""
+"Your update request was successfully recieved and an activation email "
+"has been sent to you. In that email you will find a link which you need"
+" to follow in order to update your subscription."
+msgstr ""
+"Cererea de actualizare a fost primită și vi s-a trimis un e-mail. În "
+"acest e-mail ve-ți găsi un link pe care trebuie să îl urmați pentru a "
+"vă actualiza abonamentul."
 
 #: templates/order/cart_name.html:14 templates/order/shopping_cart.html:92
 msgid "Cancel"
@@ -1478,7 +1627,17 @@ msgstr "Până la livrare"
 msgid "Order countdown"
 msgstr "Numărătoare inversă pentru comandă"
 
-#: templates/order/timer.html:33
+#: templates/order/timer.html:34
+#, python-format
+msgid ""
+"\n"
+"  You will be contacted by the %(order.unit)s restaurant to confirm the order and to be informed about current promotions.\n"
+"  "
+msgstr ""
+"\n"
+"Ve-ți fi contactat de către restaurantul  %(order.unit)s pentru a confirma comanda și pentru a fi informat despre promoțiile curente."
+
+#: templates/order/timer.html:38
 msgid "Has arrived!"
 msgstr "A ajuns!"
 
@@ -1598,8 +1757,8 @@ msgid "Sex"
 msgstr "Sexul"
 
 #: templates/profiles/profile_detail.html:153
-msgid "Newsletter"
-msgstr "Scrisoare cu știri"
+msgid "See newsleter list"
+msgstr "Vedeți lista e-mail-uri cu știri"
 
 #: templates/profiles/profile_detail.html:158
 #: templates/profiles/profile_detail.html:185
@@ -2075,26 +2234,18 @@ msgid "birth date"
 msgstr "Data nașterii"
 
 #: userprofiles/models.py:76
-msgid "newsletter"
-msgstr "email de știri"
-
-#: userprofiles/models.py:76
-msgid "Do you want to receive our newsletter?"
-msgstr "Doriți să primiți e-mail cu știri?"
-
-#: userprofiles/models.py:77
 msgid "public"
 msgstr "public"
 
-#: userprofiles/models.py:77
+#: userprofiles/models.py:76
 msgid "Do you want your profile to be public?"
 msgstr "Doriți ca profilul dumeanvoastră să fie public?"
 
-#: userprofiles/models.py:115
+#: userprofiles/models.py:114
 msgid "User Profile"
 msgstr "Profil iutilizator"
 
-#: userprofiles/models.py:116
+#: userprofiles/models.py:115
 msgid "User Profiles"
 msgstr "Profiluri utilizator"
 
