@@ -49,7 +49,7 @@ class OrderTest(TestCase):
     delta = datetime.now() - ord2.creation_date
     self.assertTrue(delta.seconds < 5)
     self.assertEqual(ord1.employee, ord2.employee)
-    self.assertEqual('CR', ord2.status)
+    self.assertEqual('ST', ord2.status)
     self.assertEqual(3, ord2.orderitem_set.count())
     self.assertEqual(21.99, ord2.total_amount)
 
