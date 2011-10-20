@@ -179,7 +179,7 @@ def __construct_order(request, unit, order):
     if initial_friend:
         b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
     subject = _('New Order')
-    body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
+    body = render_to_string('order/mail_order_detail.html', {'order': order}, context_instance=RequestContext(request))
     send_from = 'office@click2eat.ro'
     send_to = (order.unit.email,)   
     send_email_task.delay(subject, body, send_from, send_to)
@@ -357,7 +357,7 @@ def send_confiramtion_email(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     __is_restaurant_administrator(request, order.unit)
     subject = _('Click2eat: Order received')
-    body = render_to_string('order/confirmation_email.txt', {'order': order, 'site_name': Site.objects.get_current().domain}, context_instance=RequestContext(request)),
+    body = render_to_string('order/confirmation_email.html', {'order': order, 'site_name': Site.objects.get_current().domain}, context_instance=RequestContext(request)),
     send_from = order.unit.email
     send_to = (order.user.email,)   
     send_email_task.delay(subject, body, send_from, send_to)
