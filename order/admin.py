@@ -7,8 +7,8 @@ class OrderItemInline(admin.TabularInline):
    min_num = 1
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'unit', 'status', 'creation_date', 'total_amount', 'employee', 'additional_info')
-    list_filter = ('status', 'creation_date')
+    list_display = ('user', 'unit', 'status', 'creation_date', 'total_amount', 'paid_with_bonus', 'employee', 'additional_info')
+    list_filter = ('status', 'creation_date', 'paid_with_bonus')
     inlines=[OrderItemInline]
 
 class OrderItemAdmin(admin.ModelAdmin):
