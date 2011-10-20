@@ -1,19 +1,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-19 21:42+0300\n"
+"POT-Creation-Date: 2011-10-19 22:16+0300\n"
 "PO-Revision-Date: 2011-10-19 21:46\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 "X-Translated-Using: django-rosetta 0.6.2\n"
@@ -324,7 +324,7 @@ msgstr "calea către imagine"
 msgid "Quantity"
 msgstr "Cantitate"
 
-#: menu/models.py:166 templates/order/restaurant_order_detail.html:45
+#: menu/models.py:166 templates/order/restaurant_order_detail.html:46
 msgid "Item"
 msgstr "Articol"
 
@@ -422,8 +422,8 @@ msgid ""
 "As the restaurant is closed please set a desired delivery time in the "
 "restaurant open hours range."
 msgstr ""
-"Având în vedere că restaurantul e închis vă rugăm să specificați ziua "
-"și ora de livrare."
+"Având în vedere că restaurantul e închis vă rugăm să specificați ziua și ora "
+"de livrare."
 
 #: order/models.py:9
 msgid "Sent"
@@ -577,11 +577,11 @@ msgstr "Comandă nouă"
 
 #: order/views.py:216
 msgid ""
-"This restaurant is now closed! Please check the open hours and set "
-"desired delivery time accordingly."
+"This restaurant is now closed! Please check the open hours and set desired "
+"delivery time accordingly."
 msgstr ""
-"Acest restaurant este momentan închis! Vă rugam să consultați orarul "
-"și să specificați ziua și ora de livrare în consecință."
+"Acest restaurant este momentan închis! Vă rugam să consultați orarul și să "
+"specificați ziua și ora de livrare în consecință."
 
 #: order/views.py:218
 #, python-format
@@ -590,11 +590,11 @@ msgstr "Restaurantul are o comandă minimă de %(min)d"
 
 #: order/views.py:244
 msgid ""
-"Congratulations! You have enough bonus to pay for your order. Please "
-"check \"Pay using bonus\" to use it."
+"Congratulations! You have enough bonus to pay for your order. Please check "
+"\"Pay using bonus\" to use it."
 msgstr ""
-"Felicitări! Aveți destul bonus pentru a plăti această comandă. Va "
-"rugăm să bifați \"Plata cu bonus\" pentru a-l folosi."
+"Felicitări! Aveți destul bonus pentru a plăti această comandă. Va rugăm să "
+"bifați \"Plata cu bonus\" pentru a-l folosi."
 
 #: order/views.py:245
 msgid "Pay using bonus"
@@ -602,11 +602,11 @@ msgstr "Plata cu bonus"
 
 #: order/views.py:245
 msgid ""
-"We shall use the minimum number of received bonuses enough to cover the"
-" order total amount"
+"We shall use the minimum number of received bonuses enough to cover the "
+"order total amount"
 msgstr ""
-"Vom folosi un numar minim de bonus-uri primite car sunt suficiente "
-"pentru a acoperi suma totală a comenzii"
+"Vom folosi un numar minim de bonus-uri primite car sunt suficiente pentru a "
+"acoperi suma totală a comenzii"
 
 #: order/views.py:296
 msgid "The price of some items has changed. Please review the order!"
@@ -833,8 +833,8 @@ msgstr "utilizatori administratori"
 #: restaurant/models.py:182
 msgid "the users that can access front-end administration pages for this unit."
 msgstr ""
-"utilizatorii care pot accesa paginile de administrare din interfata "
-"pentru această unitate."
+"utilizatorii care pot accesa paginile de administrare din interfata pentru "
+"această unitate."
 
 #: restaurant/models.py:184
 msgid "info"
@@ -904,12 +904,12 @@ msgstr "un agent click2eat"
 
 #: templates/footer.html:45
 msgid ""
-"Click2Eat is a registered trademark. All rights reserved. All materials"
-" presented on this site are protected by copyright law."
+"Click2Eat is a registered trademark. All rights reserved. All materials "
+"presented on this site are protected by copyright law."
 msgstr ""
 "Click2Eat este marca inregistrata. Toate drepturile rezervate. Toate "
-"materialele prezente pe acest website sunt protejate prin legea "
-"copywrite-ului"
+"materialele prezente pe acest website sunt protejate prin legea copywrite-"
+"ului"
 
 #: templates/header.html:6
 msgid "How do I order"
@@ -1050,11 +1050,11 @@ msgstr "Vă rugăm să selectați avatarul pe care doriți să îl stergeți."
 #: templates/avatar/confirm_delete.html:15
 #, python-format
 msgid ""
-"You have no avatars to delete. Please <a "
-"href=\"%(avatar_change_url)s\">upload one</a> now."
+"You have no avatars to delete. Please <a href=\"%(avatar_change_url)s"
+"\">upload one</a> now."
 msgstr ""
-"Nu aveți nici un avatar de șters. Vă rugăm să <a "
-"href=\"%(avatar_change_url)s\">încărcați unul</a> acum."
+"Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s"
+"\">încărcați unul</a> acum."
 
 #: templates/avatar/confirm_delete.html:22
 msgid "Delete These"
@@ -1075,19 +1075,39 @@ msgstr "Istoricul bonusurilor"
 
 #: templates/bonus/history.html:5
 msgid ""
-"Here you can check your bonus history, how you received and how you "
-"used your bnus points."
+"Here you can check your bonus history, how you received and how you used "
+"your bnus points."
 msgstr ""
-"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum "
-"ați folosit punctele bonus."
+"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum ați "
+"folosit punctele bonus."
 
 #: templates/bonus/history.html:17
 msgid "Received date"
 msgstr "Data primirii"
 
-#: templates/bonus/history.html:18
-msgid "Points"
-msgstr "Puncte"
+#: templates/bonus/history.html:18 templates/menu/daily_menu.html:14
+#: templates/menu/item_list.html:77 templates/mobile/item_detail.html:12
+#: templates/mobile/item_detail.html:23 templates/mobile/item_detail.html:56
+#: templates/mobile/menu.html:18 templates/mobile/menu.html.py:29
+#: templates/mobile/search.html:14 templates/mobile/shopping_cart.html:13
+#: templates/mobile/shopping_cart.html:17
+#: templates/mobile/shopping_cart.html:23
+#: templates/mobile/shopping_cart.html:24
+#: templates/mobile/shopping_cart.html:74
+#: templates/order/order_list_div.html:30
+#: templates/order/shopping_cart.html:15 templates/order/shopping_cart.html:21
+#: templates/order/shopping_cart.html:37 templates/order/shopping_cart.html:41
+#: templates/order/shopping_cart.html:68
+#: templates/order/shopping_cart.html:104
+#: templates/order/shopping_cart.html:116
+#: templates/profiles/profile_detail.html:45
+#: templates/profiles/profile_detail.html:96
+#: templates/restaurant/unit_detail.html:76
+#: templates/restaurant/unit_detail.html:166
+#: templates/restaurant/unit_detail.html:183
+#: templates/wheel/random_item.html:8
+msgid "RON"
+msgstr "Lei"
 
 #: templates/bonus/history.html:19
 msgid "From friend"
@@ -1112,30 +1132,6 @@ msgstr "Contact"
 #: templates/envelope/contact.html:22
 msgid "Send"
 msgstr "Trimite"
-
-#: templates/menu/daily_menu.html:14 templates/menu/item_list.html:77
-#: templates/mobile/item_detail.html:12 templates/mobile/item_detail.html:23
-#: templates/mobile/item_detail.html:56 templates/mobile/menu.html:18
-#: templates/mobile/menu.html.py:29 templates/mobile/search.html:14
-#: templates/mobile/shopping_cart.html:13
-#: templates/mobile/shopping_cart.html:17
-#: templates/mobile/shopping_cart.html:23
-#: templates/mobile/shopping_cart.html:24
-#: templates/mobile/shopping_cart.html:74
-#: templates/order/order_list_div.html:30
-#: templates/order/shopping_cart.html:15 templates/order/shopping_cart.html:21
-#: templates/order/shopping_cart.html:37 templates/order/shopping_cart.html:41
-#: templates/order/shopping_cart.html:68
-#: templates/order/shopping_cart.html:104
-#: templates/order/shopping_cart.html:116
-#: templates/profiles/profile_detail.html:45
-#: templates/profiles/profile_detail.html:96
-#: templates/restaurant/unit_detail.html:76
-#: templates/restaurant/unit_detail.html:166
-#: templates/restaurant/unit_detail.html:183
-#: templates/wheel/random_item.html:8
-msgid "RON"
-msgstr "Lei"
 
 #: templates/menu/daily_menu.html:18
 msgid "Order this menu"
@@ -1163,13 +1159,12 @@ msgstr "Roata norocului"
 
 #: templates/menu/daily_menu_list.html:5
 msgid ""
-"If you are undecided about what to eat today, here you can let the fate"
-" decide. Just spin the wheel an find out what the it was meant for you "
-"today."
+"If you are undecided about what to eat today, here you can let the fate "
+"decide. Just spin the wheel an find out what the it was meant for you today."
 msgstr ""
-"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa "
-"soarta să decidă pentru dumneavoastră. Doar învartiti roata ca să "
-"vedeți ce vi-a fost scris pentru astăzi."
+"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa soarta "
+"să decidă pentru dumneavoastră. Doar învartiti roata ca să vedeți ce vi-a "
+"fost scris pentru astăzi."
 
 #: templates/menu/daily_menu_list.html:34
 msgid "Today's menu"
@@ -1410,31 +1405,30 @@ msgstr "Abonare e-mail cu știri"
 #: templates/newsletter/subscription_subscribe.html:7
 #: templates/newsletter/subscription_update.html:7
 msgid ""
-"Due to a technical error we were not able to submit your confirmation "
-"email. This could be because your email address is invalid."
+"Due to a technical error we were not able to submit your confirmation email. "
+"This could be because your email address is invalid."
 msgstr ""
-"Din cauza unor probleme tehnice nu s-a putut realiza trimiterea "
-"emailului de confirmare. Aceasta poate fi din cauză ca adresa a fost "
-"invalidă."
+"Din cauza unor probleme tehnice nu s-a putut realiza trimiterea emailului de "
+"confirmare. Aceasta poate fi din cauză ca adresa a fost invalidă."
 
 #: templates/newsletter/subscription_subscribe.html:8
 #: templates/newsletter/subscription_update.html:8
 msgid ""
-"If the error persists, please don't hesitate to contact us at the "
-"following email address:"
+"If the error persists, please don't hesitate to contact us at the following "
+"email address:"
 msgstr ""
 "Daca probleme persistă, vă rugăm sa nu ezitați să ne contactați la "
 "urmatoarea adresă de e-mail:"
 
 #: templates/newsletter/subscription_subscribe.html:11
 msgid ""
-"Your subscription was successfully recieved and an activation email has"
-" been sent to you. In that email you will find a link which you need to"
-" follow in order to activate your subscription."
+"Your subscription was successfully recieved and an activation email has been "
+"sent to you. In that email you will find a link which you need to follow in "
+"order to activate your subscription."
 msgstr ""
-"Abonarea dumneavoastră a fost înregistrată cu succes și vi s-a triumis"
-" un e-mail de activare. În acest email ve-ți găsi un link pe care "
-"trebuie să îl urmați pentru activarea abonamentului dumneavoastră."
+"Abonarea dumneavoastră a fost înregistrată cu succes și vi s-a triumis un e-"
+"mail de activare. În acest email ve-ți găsi un link pe care trebuie să îl "
+"urmați pentru activarea abonamentului dumneavoastră."
 
 #: templates/newsletter/subscription_subscribe_user.html:16
 msgid "Do you want to subscribe to this newsletter?"
@@ -1449,13 +1443,13 @@ msgstr "Dezabonare de la e-mail cu știri"
 
 #: templates/newsletter/subscription_unsubscribe.html:7
 msgid ""
-"Your unsubscription request has successfully been recieved. An email "
-"has been sent to you with a link you need to follow in order to confirm"
-" your unsubscription."
+"Your unsubscription request has successfully been recieved. An email has "
+"been sent to you with a link you need to follow in order to confirm your "
+"unsubscription."
 msgstr ""
-"Abonamentul dumneavoastră a fost înregistrat cu succes. Vi s-a trimis "
-"un e-mail cu un link pe care trebuie să-l urmați pentru a confirma "
-"abonamentul dumneavoastră."
+"Abonamentul dumneavoastră a fost înregistrat cu succes. Vi s-a trimis un e-"
+"mail cu un link pe care trebuie să-l urmați pentru a confirma abonamentul "
+"dumneavoastră."
 
 #: templates/newsletter/subscription_unsubscribe_user.html:17
 msgid "Do you want to unsubscribe from this newsletter?"
@@ -1468,13 +1462,13 @@ msgstr "Actoalizate e-mail cu știri"
 
 #: templates/newsletter/subscription_update.html:11
 msgid ""
-"Your update request was successfully recieved and an activation email "
-"has been sent to you. In that email you will find a link which you need"
-" to follow in order to update your subscription."
+"Your update request was successfully recieved and an activation email has "
+"been sent to you. In that email you will find a link which you need to "
+"follow in order to update your subscription."
 msgstr ""
-"Cererea de actualizare a fost primită și vi s-a trimis un e-mail. În "
-"acest e-mail ve-ți găsi un link pe care trebuie să îl urmați pentru a "
-"vă actualiza abonamentul."
+"Cererea de actualizare a fost primită și vi s-a trimis un e-mail. În acest e-"
+"mail ve-ți găsi un link pe care trebuie să îl urmați pentru a vă actualiza "
+"abonamentul."
 
 #: templates/order/cart_name.html:14 templates/order/shopping_cart.html:92
 msgid "Cancel"
@@ -1564,28 +1558,34 @@ msgstr "Stare"
 msgid "Order price"
 msgstr "Prețul comenzii"
 
-#: templates/order/restaurant_order_detail.html:46
+#: templates/order/restaurant_order_detail.html:40
+#: templates/order/restaurant_order_detail.html:74
+#, fuzzy
+msgid "Paid with bonus"
+msgstr "plătit cu bonus"
+
+#: templates/order/restaurant_order_detail.html:47
 msgid "Count"
 msgstr "Număr"
 
-#: templates/order/restaurant_order_detail.html:47
+#: templates/order/restaurant_order_detail.html:48
 msgid "Price (RON)"
 msgstr "Preț (Lei)"
 
-#: templates/order/restaurant_order_detail.html:68
+#: templates/order/restaurant_order_detail.html:69
 #: templates/restaurant/invoice.html:34
 msgid "Total"
 msgstr "Total"
 
-#: templates/order/restaurant_order_detail.html:74
+#: templates/order/restaurant_order_detail.html:80
 msgid "Additional info"
 msgstr "Informații suplimentare"
 
-#: templates/order/restaurant_order_detail.html:80
+#: templates/order/restaurant_order_detail.html:86
 msgid "Send confirmation email"
 msgstr "Trimite e-mail de confirmare"
 
-#: templates/order/restaurant_order_detail.html:81
+#: templates/order/restaurant_order_detail.html:87
 msgid "Mark delivered"
 msgstr "Marchează ca livrat"
 
@@ -1593,11 +1593,11 @@ msgstr "Marchează ca livrat"
 msgid "List current orders"
 msgstr "Comenzile curente"
 
-#: templates/order/restaurant_order_list.html:49
+#: templates/order/restaurant_order_list.html:51
 msgid "Show order history"
 msgstr "Istoric comenzi"
 
-#: templates/order/restaurant_order_list.html:50
+#: templates/order/restaurant_order_list.html:52
 msgid "Download all orders (CSV)"
 msgstr "Descarcă toate comenzile (CSV)"
 
@@ -1656,11 +1656,13 @@ msgstr "Numărătoare inversă pentru comandă"
 #, python-format
 msgid ""
 "\n"
-"  You will be contacted by the %(order.unit)s restaurant to confirm the order and to be informed about current promotions.\n"
+"  You will be contacted by the %(order.unit)s restaurant to confirm the "
+"order and to be informed about current promotions.\n"
 "  "
 msgstr ""
 "\n"
-"Ve-ți fi contactat de către restaurantul  %(order.unit)s pentru a confirma comanda și pentru a fi informat despre promoțiile curente."
+"Ve-ți fi contactat de către restaurantul  %(order.unit)s pentru a confirma "
+"comanda și pentru a fi informat despre promoțiile curente."
 
 #: templates/order/timer.html:38
 msgid "Has arrived!"
@@ -1732,9 +1734,8 @@ msgid ""
 "The amount added from your friends orders can be used anytime to order "
 "products from our partners."
 msgstr ""
-"Valoarea în lei acumulată din comenzile efectuate de prietenii tăi o "
-"poți folosi oricând pentru ați comanda produse furnizate de partenerii"
-" noștrii."
+"Valoarea în lei acumulată din comenzile efectuate de prietenii tăi o poți "
+"folosi oricând pentru ați comanda produse furnizate de partenerii noștrii."
 
 #: templates/profiles/profile_detail.html:55
 msgid "Invite a friend now."
@@ -1826,8 +1827,7 @@ msgstr "Invită un prieten"
 
 #: templates/registration/activate.html:6
 msgid ""
-"Account failed to be activated! Please try again or contact the "
-"adminstrator"
+"Account failed to be activated! Please try again or contact the adminstrator"
 msgstr "Contul NU a fost activat! Vă rugăm să contactați administratorii"
 
 #: templates/registration/activation_complete.html:6
@@ -1909,11 +1909,11 @@ msgstr "Cont nou"
 
 #: templates/registration/registration_complete.html:11
 msgid ""
-"Thank you for signing up. An email with the activation code has been "
-"send to your inbox"
+"Thank you for signing up. An email with the activation code has been send to "
+"your inbox"
 msgstr ""
-"Multumim că v-ați înregistrat. A fost trimis un email cu codul de "
-"activare spre căsuța dvs de email"
+"Multumim că v-ați înregistrat. A fost trimis un email cu codul de activare "
+"spre căsuța dvs de email"
 
 #: templates/registration/registration_form.html:4
 msgid "Sign Up"
@@ -1937,11 +1937,11 @@ msgstr "Ne pare rau, nu administrați nici un restaurant"
 
 #: templates/restaurant/administrator.html:15
 msgid ""
-"If you are an restaurant administrator and you want to find out how you"
-" can benefit from the services offered by our portal"
+"If you are an restaurant administrator and you want to find out how you can "
+"benefit from the services offered by our portal"
 msgstr ""
-"În cazul în care administrați un restaurant și doriți să aflați cum "
-"anume puteți beneficia de serviciile oferite de portalul nostru "
+"În cazul în care administrați un restaurant și doriți să aflați cum anume "
+"puteți beneficia de serviciile oferite de portalul nostru "
 
 #: templates/restaurant/administrator.html:15
 msgid "Contact a Click2eat Agent"
@@ -2074,8 +2074,8 @@ msgstr "Sunteți sigur?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:9
 msgid ""
-" Are you sure you want to delete the selected Delivery Address objects?"
-" All of the following objects and their related items will be deleted: "
+" Are you sure you want to delete the selected Delivery Address objects? All "
+"of the following objects and their related items will be deleted: "
 msgstr "Sunteți sigur/ă că vreți să ștergeți următoarea adresă de livrare?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:11
@@ -2163,11 +2163,11 @@ msgstr "Invită prieten"
 
 #: templates/userprofiles/invite_friend.html:6
 msgid ""
-"Here you can invite your friendts to join the site. You'll get bonus "
-"points for free meal if they join :)"
+"Here you can invite your friendts to join the site. You'll get bonus points "
+"for free meal if they join :)"
 msgstr ""
-"Aici vă puteți invita prietenii să devină membrii ai acestui site. "
-"Veți primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
+"Aici vă puteți invita prietenii să devină membrii ai acestui site. Veți "
+"primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
 
 #: userprofiles/forms.py:19
 msgid "message"
