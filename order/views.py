@@ -360,7 +360,7 @@ def send_confiramtion_email(request, order_id):
     body = render_to_string('order/confirmation_email.html', {'order': order, 'site_name': Site.objects.get_current().domain}, context_instance=RequestContext(request)),
     send_from = order.unit.email
     send_to = (order.user.email,)   
-    send_email_task.delay(subject, body, send_from, send_to)
+    send_email_task.delay(subject, body[0], send_from, send_to)
     return HttpResponse('Sent!')
 
 @login_required
