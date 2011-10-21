@@ -1,7 +1,7 @@
 {% load i18n cache %}
 <div id="footer">
     <div id="footerwrapper">
-        {% cache 86400 footer LANGUAGE_CODE %}
+        {% cache 86400 footer 'ca11' LANGUAGE_CODE %}
             <ul>
                 <li class="primul"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/whatis/"><span
                         class="footertextmare">{% trans 'what is'|upper %}</span><br/><span class="footertextmic">CLICK 2 EAT</span></a>
@@ -10,14 +10,14 @@
                         class="footertextmare">{% trans 'how do I'|upper %}</span><br/><span
                         class="footertextmic">{% trans 'order'|upper %}</span></a></li>
                 <li><a target="_self" href="/contact/"><span
-                        class="footertextmare">{% trans 'form for'|upper %}</span><br/><span
-                        class="footertextmic">{% trans 'suggestions'|upper %}</span></a></li>
+                        class="footertextmare">{% trans 'suggestions'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'form'|upper %}</span></a></li>
                 <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/fidelity/"><span
-                        class="footertextmare">{% trans 'program for'|upper %}</span><br/><span
-                        class="footertextmic">{% trans 'fidelity'|upper %}</span></a></li>
+                        class="footertextmare">{% trans 'fidelity'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'program'|upper %}</span></a></li>
                 <li><a target="_self" href="/flat/{{LANGUAGE_CODE}}/privacy_policy/"><span
-                        class="footertextmare">{% trans 'policy for'|upper %}</span><br/><span
-                        class="footertextmic">{% trans 'privacy'|upper %}</span></a></li>
+                        class="footertextmare">{% trans 'privacy'|upper %}</span><br/><span
+                        class="footertextmic">{% trans 'policy'|upper %}</span></a></li>
                 <li><a target="_self" href="{% url blog %}"><span
                         class="footertextmare">{% trans 'news'|upper %}</span></a></li>
                 <li class="listdreapta"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/contact/"><span

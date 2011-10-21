@@ -43,7 +43,6 @@ def random_motd(request):
 
 @render_to('menu/daily_menu.html')
 def daily_menu(request, menu_id):
-    motds = MenuOfTheDay.objects.filter(day=date.today())
-    form = SubscribeRequestForm(newsletter=my_newsletter)
+    motds = MenuOfTheDay.objects.filter(day=date.today())    
     motd = motds.get(pk=menu_id) if len(motds) else None
     return locals()

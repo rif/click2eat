@@ -76,6 +76,9 @@
                         $("#login").submit();
                     }
                 });
+                if($.browser.msie){
+                    $("div").css("font-family", "Cardo");
+                }
             });
         });
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-20 20:42+0300\n"
-"PO-Revision-Date: 2011-10-20 20:54\n"
+"POT-Creation-Date: 2011-10-21 17:41+0300\n"
+"PO-Revision-Date: 2011-10-21 17:44\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -871,27 +871,27 @@ msgid "how do I"
 msgstr "cum se"
 
 #: templates/footer.html:13
-msgid "form for"
-msgstr "formular"
+msgid "suggestions"
+msgstr "formular de"
 
 #: templates/footer.html:14
-msgid "suggestions"
+msgid "form"
 msgstr "sugestii"
 
 #: templates/footer.html:16
-msgid "program for"
-msgstr "program"
+msgid "fidelity"
+msgstr "program de"
 
 #: templates/footer.html:17
-msgid "fidelity"
+msgid "program"
 msgstr "fidelizare"
 
 #: templates/footer.html:19
-msgid "policy for"
+msgid "privacy"
 msgstr "politica de"
 
 #: templates/footer.html:20
-msgid "privacy"
+msgid "policy"
 msgstr "confidențialitate"
 
 #: templates/footer.html:24
@@ -982,7 +982,7 @@ msgstr "Login"
 
 #: templates/reclame.html:5
 msgid "Chose where you want to eat today ?"
-msgstr "Alege unde vrei sa mănânci astazi"
+msgstr "Alege unde vrei sa mănânci astazi?"
 
 #: templates/reclame.html:8 templates/mobile/home.html:15
 msgid "See all restaurants"
@@ -1978,10 +1978,10 @@ msgstr "sau ... te simți norocos ?"
 
 #: templates/restaurant/index.html:89
 msgid "You don't know what you want to eat today?"
-msgstr "Nu Stii ce vrei să mănânci astăzi"
+msgstr "Nu știi ce vrei să mănânci astăzi"
 
 #: templates/restaurant/index.html:90
-msgid "Welcome to the weel of fortune ! Click on the dish to START."
+msgid "Welcome to the wheel of fortune ! Click on the dish to START."
 msgstr "Bine ați venit la roata norocului! Click pe farfurie pentru START."
 
 #: templates/restaurant/invoice.html:22
