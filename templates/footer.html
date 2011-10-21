@@ -1,7 +1,7 @@
 {% load i18n cache %}
 <div id="footer">
     <div id="footerwrapper">
-        {% cache 86400 footer 'ca11' LANGUAGE_CODE %}
+        {% cache 86400 footer LANGUAGE_CODE %}
             <ul>
                 <li class="primul"><a target="_self" href="/flat/{{LANGUAGE_CODE}}/whatis/"><span
                         class="footertextmare">{% trans 'what is'|upper %}</span><br/><span class="footertextmic">CLICK 2 EAT</span></a>
