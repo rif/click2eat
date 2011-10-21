@@ -199,9 +199,9 @@ def _consume_bonus(order):
             bonus.used_date = now
             bonus.save()
         else:
-            order.paid_with_bonus = True
-            order.save()
             break
+    order.paid_with_bonus = True
+    order.save()    
     return 0
     
 @login_required
