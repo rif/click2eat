@@ -1,6 +1,6 @@
  {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n comments %}
 
 {% block content %}
 <div id="blog">
@@ -11,7 +11,20 @@
 	{% for image in post.images.all %}
 		<li><img src="{{ MEDIA_URL }}{{ image.image_path }}" alt="{{ image }}"></li>
 	{% endfor %}
-	<ul>
+	</ul>	
+	<h2>{% trans 'Comments' %}</h2>
+	{% render_comment_list for post %}
 	<a class="back right" href="{% url blog %}">{% trans 'Back' %}</a>
-</div>
+	<h2>{% trans 'Post a new comment' %}</h2>
+	{% get_comment_form for post as form %}	
+	<div id="comment-form">
+		<form action="{% comment_form_target %}" method="post">
+		    {% csrf_token %}
+		    {{ form.as_p }}	    
+		    <button type="submit" name="submit">{% trans 'Post' %}</button>
+		    <button type="submit" name="preview">{% trans 'Preview' %}</button>        	    
+		    <input type="hidden" name="next" value="{% url blog_post post.published.year post.published.month post.published.day post.slug %}" />
+		</form>	
+	</div>
+	</div>
 {% endblock %}
