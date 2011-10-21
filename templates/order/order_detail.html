@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n order_tags %}
+{% block title %}{% trans 'Order: ' %}{{ order }}{% endblock %}
+
+{% block content %}
+{% load  %}
+<div class="content_area">
+    <div class="title"><h1 class="light_green">{% trans 'Order details' %}</h1></div>
+    <ul>
+        <li>{% trans 'Unit' %}: <a href="{% url restaurant:detail order.unit.id %}">{{ order.unit }}</a></li>
+	<li><strong>{% trans 'Open hours' %}:</strong> {{ order.unit.schedule }}, {% trans 'Open' %}: {{ order.unit.schedule.is_open|yesno }}</li>
+        <li>{% trans 'Creation date' %}: {{ order.creation_date }}</li>
+        <li>{% trans 'Status' %}: {{ order.get_status_display }}</li>
+    </ul>
+</div> <!-- content_area -->
+
+<div class="content_area">
+    <div class="title"><h2> {% trans 'Cart items' %}</h2></div>
+    <div id="cart">
+        {% for cartname, oil in order.get_carts.items %}
+            <table>
+                <tr>
+                    <th>{{ cartname|slugify }}</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th class="del">{% if order.status == 'CR' %}<a href="#" title="" target="_self"><img
+                            src="{{ STATIC_URL }}images/template/cart_delete_btn.png" alt="{% trans 'Delete cart' %}">
+                        </a>{% endif %}</th>
+                </tr>
+                {% for oi in oil %}
+                    <tr>
+                        <td class="item">{{ oi.get_payload.name_def }}</td>
+                        <td class="count">{{ oi.count }}</td>
+                        <td class="price">{{ oi.old_price }} RON</td>                        
+                    </tr>
+                {% empty %}
+                    <tr>{% trans 'There are no order items for' %} {{ cartname|slugify }}</tr>
+                {% endfor %}
+                <tr class="total">
+                    <td></td>
+                    <td>{% trans 'Subtotal' %}</td>
+                    <td>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            {% cycle '' '' '<div class="clear"></div>' %}
+        {% endfor %}
+        {% if forloop.counter < 3 %}
+            <div class="clear"></div>
+        {% endif %}
+        <div class="total_price">{% trans 'Total amount' %} <span
+                id="order-total-amount">{{ order.total_amount }}</span> RON
+        </div>
+    </div> <!-- cart -->
+</div> <!-- content_area -->
+<br/>
+{% if order %}
+<!--<a href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>-->
+<a href="{% url order:list %}">{% trans 'Back' %}</a>
+{% endif %}
+{% endblock %}
