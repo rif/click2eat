@@ -1020,13 +1020,24 @@ body
     margin-bottom: 10px
   .views
     padding-top: 3px
-    margin-left: 20px
-    font-size: .8em
+    margin-right: 10px
+    font-size: .8em  
+  .comments
+    padding-top: 3px
+    margin-right: 10px
+    font-size: .8em  
   .seemore,
     +link-colors(#562019, #6c6c6c, red, #562019,  #6c6c6c)
   .back
     margin-right: 20px
     +link-colors(#562019, #6c6c6c, red, #562019,  #6c6c6c)
+  form>p
+    margin: 0px
+  form>p:last
+    display: none
+  form>p>label
+    width: 300px
+    display: inline-block
 
 #messages
   margin-bottom: 10px
