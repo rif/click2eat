@@ -32,7 +32,8 @@ urlpatterns = patterns('',
                        (r'^robots.txt$', include('robots.urls')),
                        (r'^contact/',    include('envelope.urls')),
                        (r'^newsletter/', include('newsletter.urls')),
-                       (r'^weblog/', include('biblion.urls'))                      
+                       (r'^weblog/', include('biblion.urls')),                   
+                       (r'^comments/', include('django.contrib.comments.urls')),
                        )
 
 urlpatterns += patterns('profiles.views',
