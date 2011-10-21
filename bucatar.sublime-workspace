@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"s",
+				"size"
+			],
+			[
 				"hi",
 				"history"
 			],
@@ -55,15 +59,71 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 17604,
+				"buffer_size": 17592,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "templates/order/confirmation_email.html",
+			"file": "templates/menu/item_list.html",
 			"settings":
 			{
-				"buffer_size": 473,
+				"buffer_size": 2888,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/restaurant/unit_list.html",
+			"settings":
+			{
+				"buffer_size": 1834,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "media/sass/screen.sass",
+			"settings":
+			{
+				"buffer_size": 22595,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "menu/views.py",
+			"settings":
+			{
+				"buffer_size": 1877,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "settings_dev.py",
+			"settings":
+			{
+				"buffer_size": 6019,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/biblion/blog_list.html",
+			"settings":
+			{
+				"buffer_size": 777,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/biblion/blog_post.html",
+			"settings":
+			{
+				"buffer_size": 1051,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/comments/base.html",
+			"settings":
+			{
+				"buffer_size": 25,
 				"line_ending": "Unix"
 			}
 		}
@@ -112,13 +172,23 @@
 	},
 	"file_history":
 	[
+		"/home/rif/Documents/webframeworks/bucatar/urls.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/menu/menu_list.html",
+		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
+		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/index.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
+		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/wheel/random_item.html",
+		"/home/rif/Documents/webframeworks/bucatar/media/sass/ie.sass",
+		"/home/rif/Documents/webframeworks/bucatar/templates/order/confirmation_email.html",
+		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/order/forms.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/send_confirmation.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/profiles/profile_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/bonus/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/bonus/history.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_detail.html",
-		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/reclame.html",
@@ -132,9 +202,7 @@
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/test_run.sh",
 		"/home/rif/Documents/webframeworks/bucatar/mobile/tests.py",
-		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/subscription_activate.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/subscription_subscribe.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/common.html",
@@ -144,7 +212,6 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/timer.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/newsletter/newsletter_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
-		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/forms.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
@@ -156,24 +223,19 @@
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu_list.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/index.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/models.py",
 		"/home/rif/Documents/webframeworks/oiad/oiad.sublime-project",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/templatetags/item_trans.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/search.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/menu.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/wheel/random_item.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/mail_order_detail.txt",
 		"/home/rif/.Sublime Text 2/Packages/User/Global.sublime-settings",
 		"/home/rif/Documents/webframeworks/bucatar/menu/templatetags/item_translations.py",
-		"/home/rif/Documents/webframeworks/bucatar/templates/menu/menu_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/order/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_list_div.html",
 		"/home/rif/Documents/webframeworks/bucatar/mobile/views.py",
-		"/home/rif/Documents/webframeworks/bucatar/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/biblion/blog_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/biblion/blog_post.html",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/urls.py",
@@ -252,6 +314,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pozrel",
+			"font-famil",
+			"'Cardo'",
+			"font-family",
 			"render_to_string",
 			"star",
 			"email",
@@ -310,6 +376,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Cardo",
 			"item",
 			"assertEqual"
 		],
@@ -322,7 +389,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -330,15 +397,15 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 17604,
+						"buffer_size": 17592,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15713,
-								15729
+								8795,
+								8795
 							]
 						],
 						"settings":
@@ -348,25 +415,215 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5290.0,
+						"translation.y": 2938.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "templates/order/confirmation_email.html",
+					"file": "templates/menu/item_list.html",
 					"settings":
 					{
-						"buffer_size": 473,
+						"buffer_size": 2888,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
+								25,
 								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/restaurant/unit_list.html",
+					"settings":
+					{
+						"buffer_size": 1834,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								573,
+								485
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "media/sass/screen.sass",
+					"settings":
+					{
+						"buffer_size": 22595,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22073,
+								22073
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 15762.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "menu/views.py",
+					"settings":
+					{
+						"buffer_size": 1877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1257,
+								1257
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "settings_dev.py",
+					"settings":
+					{
+						"buffer_size": 6019,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3752,
+								3752
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1776.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "templates/biblion/blog_list.html",
+					"settings":
+					{
+						"buffer_size": 777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								777,
+								777
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "templates/biblion/blog_post.html",
+					"settings":
+					{
+						"buffer_size": 1051,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								826,
+								826
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/comments/base.html",
+					"settings":
+					{
+						"buffer_size": 25,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25,
+								25
 							]
 						],
 						"settings":
@@ -424,6 +681,34 @@
 		"selected_items":
 		[
 			[
+				"scr",
+				"media/sass/screen.sass"
+			],
+			[
+				"bas",
+				"templates/base_alt.html"
+			],
+			[
+				"whe",
+				"templates/wheel/random_item.html"
+			],
+			[
+				"inde",
+				"templates/restaurant/index.html"
+			],
+			[
+				"footer",
+				"templates/footer.html"
+			],
+			[
+				"base",
+				"templates/base_alt.html"
+			],
+			[
+				"scree",
+				"media/sass/screen.sass"
+			],
+			[
 				"uni",
 				"templates/restaurant/unit_list.html"
 			],
@@ -444,10 +729,6 @@
 				"templates/order/send_confirmation.html"
 			],
 			[
-				"scr",
-				"media/sass/screen.sass"
-			],
-			[
 				"vi",
 				"order/views.py"
 			],
@@ -458,10 +739,6 @@
 			[
 				"profil",
 				"templates/profiles/profile_detail.html"
-			],
-			[
-				"scree",
-				"media/sass/screen.sass"
 			],
 			[
 				"test",
@@ -518,10 +795,6 @@
 			[
 				"rand",
 				"templates/wheel/random_item.html"
-			],
-			[
-				"base",
-				"templates/base_alt.html"
 			],
 			[
 				"item",
