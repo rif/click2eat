@@ -23,7 +23,7 @@
 			e.preventDefault();
 		});
 		$("#show-advanced").click(function(e) {
-			$("#advanced-search").toggle();
+			$("#advanced-search").slideToggle();
 			e.preventDefault();
 		});
 		$("a.fancy").fancybox({
@@ -59,15 +59,15 @@
 <div id="establishment-menu">
 <ul>
 	{% for obj in filter %}
-	<li class=" item pozrel">
+	<li class="item pozrel {{ obj.item_group.unit.get_package.get_class|default:"regular" }}">
 		<div class="name">
 			{% get_name obj %}			
 			{% if obj.image_path %}
             <a class="fancy" href="{{ MEDIA_URL }}{{ obj.image_path }}">{% trans 'preview' %}</a>
             {% endif %}
-		</div>
+			</div>		
 		<div class="clear"></div>
-		<div id="unit">
+		<div class="unit">
 			{{ obj.item_group.unit }}
 		</div>
 		<div class="description">
