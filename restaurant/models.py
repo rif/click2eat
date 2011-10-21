@@ -173,7 +173,7 @@ class Unit(models.Model):
     delivery_range = models.FloatField(_('range'), help_text=_('Delivery range in km'))
     delivery_time = models.IntegerField(_('delivery time'), help_text=_('In minutes'))
     communication = models.ManyToManyField(Communication, verbose_name=_('communication'))
-    minimum_ord_val = models.IntegerField(_('minimum order value'))
+    minimum_ord_val = models.IntegerField(_('minimum order value'), default=1)
     payment_method = models.ManyToManyField(PaymentMethod, verbose_name=_('payment method'))
     employee = models.ForeignKey(Employee, verbose_name=_('employee'), help_text=_('The internal employee responsible for this unit.'))
     contact_person = models.CharField(_('contact persoon'), max_length=50)
