@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 17:41+0300\n"
-"PO-Revision-Date: 2011-10-21 17:44\n"
+"POT-Creation-Date: 2011-10-22 12:35+0300\n"
+"PO-Revision-Date: 2011-10-22 12:43\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -74,39 +74,39 @@ msgstr "Românește"
 msgid "English"
 msgstr "Engleză"
 
-#: settings_dev.py:195
+#: settings_dev.py:196
 msgid "Choose"
 msgstr "Alege-ți"
 
-#: settings_dev.py:196
+#: settings_dev.py:197
 msgid "A general question regarding the website"
 msgstr "Întrebare generală legată de site"
 
-#: settings_dev.py:197
+#: settings_dev.py:198
 msgid "Suggestion"
 msgstr "Sugestie"
 
-#: settings_dev.py:198
+#: settings_dev.py:199
 msgid "Unsatisfactory service"
 msgstr "Serviciu nesatisfăcător"
 
-#: settings_dev.py:199
+#: settings_dev.py:200
 msgid "Site functionality problem"
 msgstr "Problemă de funcționalitate a site-ului"
 
-#: settings_dev.py:200
+#: settings_dev.py:201
 msgid "Other"
 msgstr "Alta"
 
-#: settings_dev.py:203
+#: settings_dev.py:204
 msgid "all"
 msgstr "toate"
 
-#: settings_dev.py:204 templates/footer.html:22
+#: settings_dev.py:205 templates/footer.html:22
 msgid "news"
 msgstr "știri"
 
-#: settings_dev.py:204
+#: settings_dev.py:205
 msgid "promotions"
 msgstr "promoții"
 
@@ -550,12 +550,12 @@ msgstr "Bună"
 msgid "Perfect"
 msgstr "Perfect"
 
-#: order/models.py:123 templates/restaurant/unit_list.html:27
+#: order/models.py:123 templates/restaurant/unit_list.html:26
 msgid "quality"
 msgstr "calitate"
 
 #: order/models.py:124 restaurant/models.py:174
-#: templates/restaurant/unit_list.html:30
+#: templates/restaurant/unit_list.html:29
 msgid "delivery time"
 msgstr "timpul de livrare"
 
@@ -845,6 +845,7 @@ msgid "discount"
 msgstr "ofertă"
 
 #: restaurant/models.py:238 templates/menu/daily_menu_list.html:39
+#: templates/order/order_detail.html:10
 #: templates/restaurant/package_history.html:14
 msgid "Unit"
 msgstr "Unitate"
@@ -1021,9 +1022,9 @@ msgid "Upload New Image"
 msgstr "Încărcați o noua imagine"
 
 #: templates/avatar/add.html:14 templates/avatar/change.html:33
-#: templates/avatar/confirm_delete.html:26 templates/biblion/blog_post.html:15
+#: templates/avatar/confirm_delete.html:26 templates/biblion/blog_post.html:17
 #: templates/newsletter/newsletter_list.html:38
-#: templates/order/order_list.html:13
+#: templates/order/order_detail.html:58 templates/order/order_list.html:13
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:19
 #: templates/userprofiles/deliveryaddress_detail.html:96
 #: templates/userprofiles/deliveryaddress_detail.html:98
@@ -1061,12 +1062,34 @@ msgid "Delete These"
 msgstr "Șterge"
 
 #: templates/biblion/blog_list.html:12
+msgid "read more..."
+msgstr "mai mult..."
+
+#: templates/biblion/blog_list.html:13
 msgid "views"
 msgstr "vizualizări"
 
-#: templates/biblion/blog_list.html:13
-msgid "read more..."
-msgstr "mai mult..."
+#: templates/biblion/blog_list.html:14
+msgid "comments"
+msgstr "comentarii"
+
+#: templates/biblion/blog_post.html:15 templates/restaurant/unit_list.html:23
+msgid "Comments"
+msgstr "Comentarii"
+
+#: templates/biblion/blog_post.html:18
+msgid "Post a new comment"
+msgstr "Adăugați un comentariu"
+
+#: templates/biblion/blog_post.html:24 templates/comments/form.html:17
+#: templates/comments/preview.html:32
+msgid "Post"
+msgstr "Trimite"
+
+#: templates/biblion/blog_post.html:25 templates/comments/form.html:18
+#: templates/comments/preview.html:33
+msgid "Preview"
+msgstr "Previszualizare"
 
 #: templates/bonus/history.html:4 templates/bonus/history.html.py:11
 #: templates/profiles/profile_detail.html:48
@@ -1125,6 +1148,91 @@ msgstr "Data folosirii"
 msgid "Sorry no bonuses yet."
 msgstr "Ne pare rău, nu aveți puncte bonus, încă."
 
+#: templates/comments/approve.html:4
+msgid "Approve a comment"
+msgstr "Aprobare comentariu"
+
+#: templates/comments/approve.html:7
+msgid "Really make this comment public?"
+msgstr "Chiar faci acest comentariu public?"
+
+#: templates/comments/approve.html:12
+msgid "Approve"
+msgstr "Aprobă"
+
+#: templates/comments/approved.html:4
+msgid "Thanks for approving"
+msgstr "Multumim pentru aprobare"
+
+#: templates/comments/approved.html:7 templates/comments/deleted.html:7
+#: templates/comments/flagged.html:7
+msgid ""
+"Thanks for taking the time to improve the quality of discussion on our "
+"site"
+msgstr "Multumim pentru timpul dumneavoastra "
+
+#: templates/comments/delete.html:4
+msgid "Remove a comment"
+msgstr "Șterge comentariu"
+
+#: templates/comments/delete.html:7
+msgid "Really remove this comment?"
+msgstr "Chiar ștergi acest comentariu"
+
+#: templates/comments/delete.html:12
+msgid "Remove"
+msgstr "Șterge"
+
+#: templates/comments/deleted.html:4
+msgid "Thanks for removing"
+msgstr "Mulțumim penru ștergere"
+
+#: templates/comments/flag.html:4
+msgid "Flag this comment"
+msgstr "Marcheaza acest comentariu"
+
+#: templates/comments/flag.html:7
+msgid "Really flag this comment?"
+msgstr "Chiar marchezi acest comentariu?"
+
+#: templates/comments/flag.html:12
+msgid "Flag"
+msgstr "Marcaj"
+
+#: templates/comments/flagged.html:4
+msgid "Thanks for flagging"
+msgstr "Multumim pentru marcare"
+
+#: templates/comments/posted.html:4
+msgid "Thanks for commenting"
+msgstr "Mulțumim pentru comentariu"
+
+#: templates/comments/posted.html:7
+msgid "Thank you for your comment"
+msgstr "Mulțumim pentru comentariul"
+
+#: templates/comments/preview.html:4 templates/comments/preview.html.py:13
+msgid "Preview your comment"
+msgstr "Previzualizați comentariul dumneavoastră"
+
+#: templates/comments/preview.html:11
+msgid "Please correct the error below"
+msgid_plural "Please correct the errors below"
+msgstr[0] "Vă rugăm să corectați erorile de mai jos"
+msgstr[1] "Vă rugăm să corectați eroarea de mai jos"
+
+#: templates/comments/preview.html:16
+msgid "and"
+msgstr "și"
+
+#: templates/comments/preview.html:16
+msgid "Post your comment"
+msgstr "Trimiteți comentariul dumneavoastră"
+
+#: templates/comments/preview.html:16
+msgid "or make changes"
+msgstr "sau feaceți schimbări"
+
 #: templates/envelope/contact.html:15
 msgid "Contact"
 msgstr "Contact"
@@ -1181,12 +1289,12 @@ msgstr "Preț"
 
 #: templates/menu/daily_menu_list.html:48
 #: templates/restaurant/unit_detail.html:120
-#: templates/restaurant/unit_list.html:19
+#: templates/restaurant/unit_list.html:18
 msgid "Closed"
 msgstr "Închis"
 
 #: templates/menu/daily_menu_list.html:49
-#: templates/restaurant/unit_list.html:20
+#: templates/restaurant/unit_list.html:19
 msgid "New"
 msgstr "Nou"
 
@@ -1219,11 +1327,11 @@ msgstr "imagine"
 msgid "Add to order"
 msgstr "Adaugă la comandă"
 
-#: templates/menu/menu_list.html:10
+#: templates/menu/menu_list.html:8
 msgid "GENERAL CLICK2EAT MENU LIST"
 msgstr "Lista generala de meniuri click2eat"
 
-#: templates/menu/menu_list.html:20
+#: templates/menu/menu_list.html:18
 msgid "Menu"
 msgstr "Meniu"
 
@@ -1496,6 +1604,55 @@ msgstr "Apreciere pentru timpul de livrare"
 msgid "Submit feedback"
 msgstr "Trimite apreciere"
 
+#: templates/order/order_detail.html:3
+msgid "Order: "
+msgstr "Comanda:"
+
+#: templates/order/order_detail.html:8
+#: templates/order/restaurant_order_detail.html:24
+msgid "Order details"
+msgstr "Detalii comandă"
+
+#: templates/order/order_detail.html:11
+#: templates/restaurant/unit_detail.html:119
+msgid "Open hours"
+msgstr "Program de lucru"
+
+#: templates/order/order_detail.html:11
+#: templates/restaurant/unit_detail.html:120
+msgid "Open"
+msgstr "Deschis"
+
+#: templates/order/order_detail.html:12
+msgid "Creation date"
+msgstr "Data creării"
+
+#: templates/order/order_detail.html:13
+#: templates/order/restaurant_order_detail.html:38
+msgid "Status"
+msgstr "Stare"
+
+#: templates/order/order_detail.html:18
+msgid "Cart items"
+msgstr "Articolele din coș"
+
+#: templates/order/order_detail.html:28
+msgid "Delete cart"
+msgstr "Șterge coș"
+
+#: templates/order/order_detail.html:38
+msgid "There are no order items for"
+msgstr "Nu există elemente de comandă pentru"
+
+#: templates/order/order_detail.html:50
+msgid "Total amount"
+msgstr "Suma totala"
+
+#: templates/order/order_detail.html:57 templates/order/order_list_div.html:39
+#: templates/profiles/profile_detail.html:103
+msgid "Order again"
+msgstr "Comandă din nou"
+
 #: templates/order/order_list.html:4 templates/profiles/profile_list.html:4
 msgid "List profile all"
 msgstr "Listează toate profilele"
@@ -1504,11 +1661,6 @@ msgstr "Listează toate profilele"
 #: templates/profiles/profile_detail.html:90
 msgid "My orders"
 msgstr "Comenzile mele"
-
-#: templates/order/order_list_div.html:39
-#: templates/profiles/profile_detail.html:103
-msgid "Order again"
-msgstr "Comandă din nou"
 
 #: templates/order/order_list_div.html:40
 #: templates/profiles/profile_detail.html:105
@@ -1519,10 +1671,6 @@ msgstr "Ascunde"
 #: templates/profiles/profile_detail.html:110
 msgid "No orders yet? Bon apetit ;)"
 msgstr "Nu ați comandat nimic încă? Poftă bună ;)"
-
-#: templates/order/restaurant_order_detail.html:24
-msgid "Order details"
-msgstr "Detalii comandă"
 
 #: templates/order/restaurant_order_detail.html:28
 #: templates/profiles/profile_detail.html:149
@@ -1551,10 +1699,6 @@ msgstr "Timpul de livrare"
 #: templates/order/restaurant_order_detail.html:37
 msgid "Send time"
 msgstr "Data trimiterii"
-
-#: templates/order/restaurant_order_detail.html:38
-msgid "Status"
-msgstr "Stare"
 
 #: templates/order/restaurant_order_detail.html:39
 msgid "Order price"
@@ -1654,14 +1798,13 @@ msgid "Order countdown"
 msgstr "Numărătoare inversă pentru comandă"
 
 #: templates/order/timer.html:34
-#, python-format
 msgid ""
 "\n"
-"  You will be contacted by the %(order.unit)s restaurant to confirm the order and to be informed about current promotions.\n"
+"  You will be contacted by the chosen restaurant to confirm the order or to select discounted products.\n"
 "  "
 msgstr ""
 "\n"
-"Ve-ți fi contactat de către restaurantul  %(order.unit)s pentru a confirma comanda și pentru a fi informat despre promoțiile curente."
+"Veți fi contactat de către restaurantul ales pentru a confirma comanda sau pentru a alege produsele la ofertă."
 
 #: templates/order/timer.html:38
 msgid "Has arrived!"
@@ -2037,14 +2180,6 @@ msgstr "Mai multe informații"
 msgid "Previous orders at this restaurant"
 msgstr "Comenzi anterioare la acest restaurant"
 
-#: templates/restaurant/unit_detail.html:119
-msgid "Open hours"
-msgstr "Program de lucru"
-
-#: templates/restaurant/unit_detail.html:120
-msgid "Open"
-msgstr "Deschis"
-
 #: templates/restaurant/unit_detail.html:147
 msgid "Menu list"
 msgstr "Meniu"
@@ -2053,15 +2188,11 @@ msgstr "Meniu"
 msgid "Restaurant list"
 msgstr "Restaurante"
 
-#: templates/restaurant/unit_list.html:21
+#: templates/restaurant/unit_list.html:20
 msgid "Has discount"
 msgstr "Are reduceri"
 
-#: templates/restaurant/unit_list.html:24
-msgid "Comments"
-msgstr "Comentarii"
-
-#: templates/restaurant/unit_list.html:35
+#: templates/restaurant/unit_list.html:34
 msgid "visit"
 msgstr "vizitează"
 
