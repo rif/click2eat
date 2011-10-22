@@ -126,6 +126,22 @@
 				"buffer_size": 25,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "templates/order/order_detail.html",
+			"settings":
+			{
+				"buffer_size": 2541,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/profiles/profile_detail.html",
+			"settings":
+			{
+				"buffer_size": 8165,
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -314,6 +330,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"detail",
 			"pozrel",
 			"font-famil",
 			"'Cardo'",
@@ -389,7 +406,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 9,
 			"sheets":
 			[
 				{
@@ -404,8 +421,8 @@
 						"selection":
 						[
 							[
-								8795,
-								8795
+								1645,
+								1645
 							]
 						],
 						"settings":
@@ -415,7 +432,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2938.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -602,7 +619,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -632,6 +650,61 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "templates/order/order_detail.html",
+					"settings":
+					{
+						"buffer_size": 2541,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2054,
+								2054
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 192.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "templates/profiles/profile_detail.html",
+					"settings":
+					{
+						"buffer_size": 8165,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3104,
+								3104
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 912.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -681,6 +754,10 @@
 		"selected_items":
 		[
 			[
+				"pro",
+				"templates/profiles/profile_detail.html"
+			],
+			[
 				"scr",
 				"media/sass/screen.sass"
 			],
@@ -719,10 +796,6 @@
 			[
 				"scre",
 				"media/sass/screen.sass"
-			],
-			[
-				"pro",
-				"templates/profiles/profile_detail.html"
 			],
 			[
 				"send",
