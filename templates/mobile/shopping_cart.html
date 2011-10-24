@@ -29,7 +29,7 @@
     <fieldset data-role="controlgroup">
         <legend>{% trans 'Choose a delivery type' %}</legend>
         {% for dt in unit.delivery_type.iterator %}
-           <input type="radio" name="dt-1" id="dt-{{ dt.id }}" value="{{ dt.id }}" {% if forloop.counter == 1 %}checked="checked"{% endif %} />
+           <input type="radio" name="dt-1" id="dt-{{ dt.id }}" requireAddress="{{ dt.require_address }}" value="{{ dt.id }}" {% if forloop.counter == 1 %}checked="checked"{% endif %} />
            <label for="dt-{{ dt.id }}">{{ dt }}</label>
         {% empty %}
         <h1>{% trans 'You have no delivery addreses defined' %}!<h1>
@@ -55,7 +55,6 @@
 function showHideMinOrder(){
     var ct = parseFloat($("#order-total").text());
     var mo = parseFloat($("#min-order").text());
-    console.log(ct, mo);
     if (ct >= mo) {
       $("#min-span").hide();
     } else {
@@ -74,12 +73,16 @@ $(function(){
       alert("{% trans 'Minimum order for this unit is:' %} {{ unit.minimum_ord_val }}{% trans 'RON' %}");
       send_error = true;
     }
+    if($("#dt input:checked").attr("requireAddress") == "True" && $("#da input:checked").length == 0){
+      alert("{% trans 'You need to have at least one delivery address defined and selected. Please go to the main site to define one!' %}");
+      send_error = true;
+    }
     if (! send_error)  {
       $.get($(this).attr("href"),{'dt':$("#dt input:checked").val(), 'da':$("#da input:checked").val()}, function(){
         alert("{% trans 'Your order has been sent to the restaurant!' %}");
       });
       $.mobile.changePage("{% url mobile:home %}");
-    }
+    }    
     return false;
   });
   $("#items>li").each(function(){
