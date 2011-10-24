@@ -8,7 +8,7 @@
 {% trans 'Address additional info' %}: {{ order.address.additional_info }}{% endif %}
 {% trans 'Creation date' %}: {{ order.creation_date }}
 {% trans 'Status' %}: {{ order.get_status_display }}
-{% trans 'Order price' %}: {{ order.total_amount }}
+{% trans 'Order price' %}: {{ order.total_amount }} - {% if order.paid_with_bonus %}{% trans 'Paid with bonus' %}{% endif %}
 
 {% trans 'Item' %}              {% trans 'Count' %}             x       {% trans 'Price (RON)' %}
 {% for oi in order.orderitem_set.iterator %}{% if not oi.master %}

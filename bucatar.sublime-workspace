@@ -142,6 +142,14 @@
 				"buffer_size": 8165,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "templates/order/timer.html",
+			"settings":
+			{
+				"buffer_size": 1301,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -406,7 +414,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 11,
 			"sheets":
 			[
 				{
@@ -432,7 +440,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3288.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -708,6 +716,34 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "templates/order/timer.html",
+					"settings":
+					{
+						"buffer_size": 1301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1129,
+								1129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -753,6 +789,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"tim",
+				"templates/order/timer.html"
+			],
 			[
 				"pro",
 				"templates/profiles/profile_detail.html"
