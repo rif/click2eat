@@ -150,10 +150,10 @@ def send_order(request, unit_id):
         if 'da' in request.GET:
             address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])        
         order = Order(address=address, delivery_type=delivery_type)
-        __construct_order(request, unit, order)                        
+        __construct_order(request, unit, order, False)                        
         return {}
 
-def __construct_order(request, unit, order):    
+def __construct_order(request, unit, order, paid_with_bonus):    
     order.user = request.user
     order.employee_id=unit.employee_id
     order.unit = unit
@@ -177,8 +177,10 @@ def __construct_order(request, unit, order):
               OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])
         del request.session[cn]
     #give bonus to the friend
+    if paid_with_bonus:
+        _consume_bonus(order)
     initial_friend = order.user.get_profile().get_initial_friend()
-    if initial_friend:
+    if initial_friend and not order.paid_with_bonus:
         b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
     subject = _('New Order')
     body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))    
@@ -231,9 +233,8 @@ def confirm_order(request, unit_id):
         form.unit = unit
         if form.is_valid():
             order = form.save(commit=False)
-            __construct_order(request, unit, order) 
-            if 'paid_with_bonus' in form.data:
-                _consume_bonus(order)
+            paid_with_bonus = 'paid_with_bonus' in form.data
+            __construct_order(request, unit, order, paid_with_bonus) 
             if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=order.id)
