@@ -3,7 +3,7 @@
 {% trans 'Hello' %} {{ order.user.get_full_name }},
 
 {% blocktrans %}
-Your order with id {{ order.id}} was received and will be processed as soon as possible. The usual waiting time is {{ order.unit.delivery_time }} minutes.
+Your order with id {{ order.id}} is on its way to you. You can set the table because we will do our best to arrive as quickly as possible.
 {% endblocktrans %}
 
 {% trans 'Thank you for your order' %}!

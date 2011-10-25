@@ -29,6 +29,5 @@ urlpatterns += patterns('',
                         url(r'^rl/(?P<unit_id>\d+)/$', views.restlist_ajax, name='restaurant_list_ajax'),
                         url(r'^rhl/(?P<unit_id>\d+)/$', views.restlist_history_ajax, name='restaurant_list_history_ajax'),
                         url(r'^rest/(?P<order_id>\d+)/$', views.restdetail, name='restaurant_detail'),
-                        url(r'^delivered/(?P<order_id>\d+)/$', views.mark_delivered, name='restaurant_deliver'),
-                        url(r'^confirm/(?P<order_id>\d+)/$', views.send_confiramtion_email, name='restaurant_confirm'),
+                        url(r'^delivered/(?P<order_id>\d+)/$', views.mark_delivered, name='restaurant_deliver'),                        
                         )
