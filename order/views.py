@@ -353,18 +353,12 @@ def mark_delivered(request, order_id):
     __is_restaurant_administrator(request, order.unit)
     order.status = 'DL'
     order.save()
-    return HttpResponse(order.get_status_display())
-
-@login_required
-def send_confiramtion_email(request, order_id):
-    order = get_object_or_404(Order, pk=order_id)
-    __is_restaurant_administrator(request, order.unit)
-    subject = _('Click2eat: Order received')
+    subject = _('Click2eat: Order sent to you!')
     body = render_to_string('order/confirmation_email.txt', {'order': order, 'site_name': Site.objects.get_current().domain}, context_instance=RequestContext(request)),
     send_from = order.unit.email
     send_to = (order.user.email,)   
     send_email_task.delay(subject, body[0], send_from, send_to)
-    return HttpResponse('Sent!')
+    return HttpResponse(order.get_status_display())
 
 @login_required
 def feedback(request, order_id):

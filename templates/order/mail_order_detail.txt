@@ -10,10 +10,6 @@
 {% trans 'Status' %}: {{ order.get_status_display }}
 {% trans 'Order price' %}: {{ order.total_amount }} {% if order.paid_with_bonus %}- {% trans 'Paid with bonus' %}{% endif %}
 
-DEBUG:
-Paid with bonus: {{ order.paid_with_bonus }}
-Id: {{ order.id }}
-
 {% trans 'Item' %}              {% trans 'Count' %}             x       {% trans 'Price (RON)' %}
 {% for oi in order.orderitem_set.iterator %}{% if not oi.master %}
 {% get_name oi.get_payload %}          {{ oi.count }}          x       {{ oi.old_price }}
