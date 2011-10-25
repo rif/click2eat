@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-22 12:35+0300\n"
-"PO-Revision-Date: 2011-10-22 12:43\n"
+"PO-Revision-Date: 2011-10-25 12:49\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1089,7 +1089,7 @@ msgstr "Trimite"
 #: templates/biblion/blog_post.html:25 templates/comments/form.html:18
 #: templates/comments/preview.html:33
 msgid "Preview"
-msgstr "Previszualizare"
+msgstr "Previzualizare"
 
 #: templates/bonus/history.html:4 templates/bonus/history.html.py:11
 #: templates/profiles/profile_detail.html:48
