@@ -86,7 +86,7 @@ def decr_item(request, cart_name, unit_id, item_id):
           if request.session[cn][item_id][0] > 1:
             request.session[cn][item_id][0] -= 1
             count = request.session[cn][item_id][0]
-            unit_price = request.session[cn][item_id][1]            
+            unit_price = request.session[cn][item_id][1]
             subtotal = __count_cart_sum(request,cn)
           else:
             count = 0
@@ -94,11 +94,11 @@ def decr_item(request, cart_name, unit_id, item_id):
             del request.session[cn][item_id]
             """ Delete assocaited toppings """
             for top in [k for k in request.session[cn].keys() if item_id + '_' in k]:
-              del request.session[cn][top]              
+              del request.session[cn][top]
             subtotal = __count_cart_sum(request,cn)
             """ Delete the cart if all the items are removed """
-            if len(request.session[cn]) == 0: 
-              del request.session[cn]          
+            if len(request.session[cn]) == 0:
+              del request.session[cn]
           request.session.modified = True
           total = __count_cart_sum(request,unit_id)
           return {'total': total,
@@ -127,7 +127,7 @@ def incr_item(request, cart_name, unit_id, item_id):
 @render_to('order/shopping_cart.html')
 def shopping_cart(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
-        if not __have_unit_cart(request, unit_id):               
+        if not __have_unit_cart(request, unit_id):
 			cn = '%s:%s' % (unit_id, request.user.username)
 			request.session[cn] = {}
         total_sum = __count_cart_sum(request,unit_id)
@@ -144,16 +144,16 @@ def send_order(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
         if not unit.is_open(): return {'error': '2e61'}
         if unit.minimum_ord_val > __count_cart_sum(request, unit_id): return {'error': '2e65'}
-        if 'dt' not in request.GET: return {'error': '2e77'}        
+        if 'dt' not in request.GET: return {'error': '2e77'}
         delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
-        if delivery_type.require_address and 'da' not in request.GET: return {'error': '2e78'}  
+        if delivery_type.require_address and 'da' not in request.GET: return {'error': '2e78'}
         if 'da' in request.GET:
-            address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])        
+            address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
         order = Order(address=address, delivery_type=delivery_type)
-        __construct_order(request, unit, order, False)                        
+        __construct_order(request, unit, order, False)
         return {}
 
-def __construct_order(request, unit, order, paid_with_bonus):    
+def __construct_order(request, unit, order, paid_with_bonus):
     order.user = request.user
     order.employee_id=unit.employee_id
     order.unit = unit
@@ -161,15 +161,15 @@ def __construct_order(request, unit, order, paid_with_bonus):
         order.desired_delivery_time = datetime.now()
     order.save() # save it to be able to bind OrderItems
     unit_id = str(unit.id)
-    for cn in __get_cart_names(request, unit_id):        
+    for cn in __get_cart_names(request, unit_id):
         cart = request.session[cn]
         for item_id in sorted(cart.keys()): # sorting to get the items before the toppings
-            values = cart[item_id]            
+            values = cart[item_id]
             if item_id.startswith('m'):
               motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
               OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
             elif '_' in item_id:
-              top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])         
+              top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
               master = order.orderitem_set.get(item__id=item_id.split('_',1)[0])
               OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
             else:
@@ -183,11 +183,11 @@ def __construct_order(request, unit, order, paid_with_bonus):
     if initial_friend and not order.paid_with_bonus:
         b = Bonus.objects.create(user=initial_friend, from_user=order.user, money=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
     subject = _('New Order')
-    body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))    
+    body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
     send_from = 'office@click2eat.ro'
-    send_to = (order.unit.email,)   
+    send_to = (order.unit.email,)
     send_email_task.delay(subject, body, send_from, send_to)
-    
+
 def _consume_bonus(order):
     amount = order.total_amount
     bonuses = Bonus.objects.filter(user__id = order.user_id).filter(used=False).order_by('received_date')
@@ -205,17 +205,17 @@ def _consume_bonus(order):
         else:
             break
     order.paid_with_bonus = True
-    order.save()    
+    order.save()
     return 0
-    
+
 @login_required
 @render_to('order/send_confirmation.html')
 def confirm_order(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
-    total_sum = __count_cart_sum(request,unit_id)    
+    total_sum = __count_cart_sum(request,unit_id)
     carts = []
     for cn in __get_cart_names(request,unit_id):
-        carts.append((cn.split(':',1)[1], request.session[cn], __count_cart_sum(request, cn)))    
+        carts.append((cn.split(':',1)[1], request.session[cn], __count_cart_sum(request, cn)))
     if not unit.is_open():
         messages.warning(request, _('This restaurant is now closed! Please check the open hours and set desired delivery time accordingly.'))
     if unit.minimum_ord_val > total_sum:
@@ -234,7 +234,7 @@ def confirm_order(request, unit_id):
         if form.is_valid():
             order = form.save(commit=False)
             paid_with_bonus = 'paid_with_bonus' in form.data
-            __construct_order(request, unit, order, paid_with_bonus) 
+            __construct_order(request, unit, order, paid_with_bonus)
             if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=order.id)
@@ -356,7 +356,7 @@ def mark_delivered(request, order_id):
     subject = _('Click2eat: Order sent to you!')
     body = render_to_string('order/confirmation_email.txt', {'order': order, 'site_name': Site.objects.get_current().domain}, context_instance=RequestContext(request)),
     send_from = order.unit.email
-    send_to = (order.user.email,)   
+    send_to = (order.user.email,)
     send_email_task.delay(subject, body[0], send_from, send_to)
     return HttpResponse(order.get_status_display())
 
