@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-26 16:28+0300\n"
-"PO-Revision-Date: 2011-10-26 16:29\n"
+"PO-Revision-Date: 2011-10-26 16:32\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1688,7 +1688,7 @@ msgstr "Telefon"
 
 #: templates/order/restaurant_order_detail.html:21
 msgid "Delivery type"
-msgstr "Modelaitatea de livrare"
+msgstr "Modalitatea de livrare"
 
 #: templates/order/restaurant_order_detail.html:23
 #: templates/profiles/profile_detail.html:170
