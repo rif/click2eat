@@ -8,7 +8,7 @@
   <div class="title"><h1 class="light_green">{% trans 'Your units' %}</h1></div><br>
   <ul>
     {% for unit in user.get_profile.administred_units %}
-    <li><a href="{% url order:restaurant_list unit.id %}">{{ unit }}</a></li>
+    <li><a href="{% url order:restaurant_list unit.id %}">{{ unit }}</a> <a style="margin-left: 100px;" href="{% url restaurant:invoice unit.id %}">{% trans 'Current invoice' %}</a></li>
     {% empty %}
     <li>{% trans "Sorry, you don't administer any units." %}</li>
     <li>

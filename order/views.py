@@ -24,6 +24,7 @@ from bonus.models import Bonus, BONUS_PERCENTAGE
 from order.tasks import send_email_task
 
 def __is_restaurant_administrator(request, unit):
+    if request.user.username == 'admin': return
     if not unit.admin_users: raise PermissionDenied()
     admin_user_list = [u.strip() for u in unit.admin_users.split(",")]
     if request.user.username not in admin_user_list:

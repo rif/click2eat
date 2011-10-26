@@ -16,7 +16,7 @@
   <tbody>
     {% for order in orders.iterator %}
     <tr>
-      <td>{{ order }}</td><td>{{ order.total_amount }}</td>
+      <td><!--a href="{% url order:detail order.id %}"-->{{ order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</td><td>{{ order.total_amount }}</td>
     </tr>
     {% empty %}
     <tr><td>{% trans 'Sorry, no orders for this restaurant' %}.</td><td>0</td></tr>
@@ -25,10 +25,10 @@
       <td></td><td><b>{{ total_sum|floatformat:2 }}</b></td>
     </tr>
     <tr>
-      <td>{{ unit.get_package }}{% trans ' package monthly rate' %}</td><td>{{ unit.get_package.monthly_fee }}</td>
+      <td>{% trans 'Package monthly rate' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.monthly_fee }}</td>
     </tr>
     <tr>
-      <td>{{ unit.get_package }}{% trans ' package percentage rate' %}</td><td>{{ unit.get_package.rate }}</td>
+      <td>{% trans 'Package percentage rate' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.rate }}</td>
     </tr>
     <tr>
       <td>{% trans 'Total' %}</td><td><b>{{ grand_total|floatformat:2 }}</b></td>
