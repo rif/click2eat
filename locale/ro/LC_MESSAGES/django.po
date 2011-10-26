@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-25 14:24+0300\n"
-"PO-Revision-Date: 2011-10-26 14:36\n"
+"POT-Creation-Date: 2011-10-26 16:28+0300\n"
+"PO-Revision-Date: 2011-10-26 16:29\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -571,11 +571,11 @@ msgstr "Apreciere"
 msgid "Ratings"
 msgstr "Aprecieri"
 
-#: order/views.py:185
+#: order/views.py:186
 msgid "New Order"
 msgstr "Comandă nouă"
 
-#: order/views.py:220
+#: order/views.py:221
 msgid ""
 "This restaurant is now closed! Please check the open hours and set "
 "desired delivery time accordingly."
@@ -583,12 +583,12 @@ msgstr ""
 "Acest restaurant este momentan închis! Vă rugam să consultați orarul "
 "și să specificați ziua și ora de livrare în consecință."
 
-#: order/views.py:222
+#: order/views.py:223
 #, python-format
 msgid "This restaurant has a minimum order value of %(min)d"
 msgstr "Restaurantul are o comandă minimă de %(min)d"
 
-#: order/views.py:247
+#: order/views.py:248
 msgid ""
 "Congratulations! You have enough bonus to pay for your order. Please "
 "check \"Pay using bonus\" to use it."
@@ -596,11 +596,11 @@ msgstr ""
 "Felicitări! Ați acumulat suficient bonus pentru a plăti această "
 "comandă. Vă rugăm să bifați \"Plata cu bonus\" pentru a-l folosi."
 
-#: order/views.py:248
+#: order/views.py:249
 msgid "Pay using bonus"
 msgstr "Plata cu bonus"
 
-#: order/views.py:248
+#: order/views.py:249
 msgid ""
 "We shall use the minimum number of received bonuses enough to cover the"
 " order total amount"
@@ -608,27 +608,27 @@ msgstr ""
 "Vom folosi un numar minim de bonus-uri primite car sunt suficiente "
 "pentru a acoperi suma totală a comenzii"
 
-#: order/views.py:299
+#: order/views.py:300
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
-#: order/views.py:308 order/views.py:316
+#: order/views.py:309 order/views.py:317
 msgid "Current orders"
 msgstr "Comenzile curente"
 
-#: order/views.py:324
+#: order/views.py:325
 msgid "Order history"
 msgstr "Istoric comenzi"
 
-#: order/views.py:356
+#: order/views.py:357
 msgid "Click2eat: Order sent to you!"
 msgstr "Click2eat: Comanda trimisă"
 
-#: order/views.py:371
+#: order/views.py:372
 msgid "Thank you! You already sent feedback for this order."
 msgstr "Mulțumim! Deja o apreciere pentru această comandă."
 
-#: order/views.py:382
+#: order/views.py:383
 msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
@@ -1593,32 +1593,6 @@ msgstr ""
 msgid "Cancel"
 msgstr "Renunțați"
 
-#: templates/order/confirmation_email.html:3
-msgid "Hello"
-msgstr "Bună"
-
-#: templates/order/confirmation_email.html:5
-#, python-format
-msgid ""
-"\n"
-"Your order with id %(order.id)s is on its way to you. You can set the table because we will do our best to arrive as quickly as possible.\n"
-msgstr ""
-"\n"
-"Comanda cu id-ul %(order.id)s este în drum spre dumneavaostră. Puteți pune masa deoarece vom face tot posibilul să ajungă cât mai repede.\n"
-
-#: templates/order/confirmation_email.html:9
-msgid "Thank you for your order"
-msgstr "Mulțumim pentru comanda dumneavoastră"
-
-#: templates/order/confirmation_email.html:11
-msgid "You can send a rating for our services"
-msgstr "Puteți da o apreciere pentru serviciile noastre"
-
-#: templates/order/confirmation_email.html:11
-#: templates/userprofiles/deliveryaddress_detail.html:103
-msgid "here"
-msgstr "aici"
-
 #: templates/order/feedback.html:34
 msgid "Feedback"
 msgstr "Apreciere"
@@ -2106,6 +2080,10 @@ msgstr "Sunt de acord cu termenii și condițiile"
 msgid "Your units"
 msgstr "Restaurantele dumneavoastră"
 
+#: templates/restaurant/administrator.html:11
+msgid "Current invoice"
+msgstr "Factura curentă"
+
 #: templates/restaurant/administrator.html:13
 msgid "Sorry, you don't administer any units."
 msgstr "Ne pare rau, nu administrați nici un restaurant"
@@ -2163,12 +2141,12 @@ msgid "Sorry, no orders for this restaurant"
 msgstr "Ne pare rău, nu sunt comenzi pentru acest restaurant"
 
 #: templates/restaurant/invoice.html:28
-msgid " package monthly rate"
+msgid "Package monthly rate"
 msgstr "Taxa lunară a pachetului"
 
 #: templates/restaurant/invoice.html:31
-msgid " package percentage rate"
-msgstr " procentajul perceput aferent pachetului "
+msgid "Package percentage rate"
+msgstr "Procentajul perceput aferent pachetului "
 
 #: templates/restaurant/package_history.html:4
 #: templates/restaurant/package_history.html:9
@@ -2297,6 +2275,10 @@ msgstr "Am reușit să vă localizăm adresa?"
 #: templates/userprofiles/deliveryaddress_detail.html:103
 msgid "If not, please let us know by clicking"
 msgstr "Dacă nu, vă rugăm să ne anunțați apăsând"
+
+#: templates/userprofiles/deliveryaddress_detail.html:103
+msgid "here"
+msgstr "aici"
 
 #: templates/userprofiles/deliveryaddress_detail.html:104
 msgid "You can try to find addresses here"

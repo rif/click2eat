@@ -15,6 +15,7 @@ from restaurant.models import Unit, PartnerPackage
 from order.models import Order, Rating, OrderItem
 from order import views
 from menu.models import MenuOfTheDay
+from order.views import __is_restaurant_administrator
 
 def __user_has_profile(user):
     if not user.is_authenticated() or user.is_anonymous() : return None
@@ -74,8 +75,9 @@ def package_history(request, unit_id):
 
 @user_passes_test(lambda u: u.is_authenticated() and u.is_staff)
 @render_to('restaurant/invoice.html')
-def invoice(request, unit_id):
+def invoice(request, unit_id):    
     unit = get_object_or_404(Unit, pk=unit_id)
+    __is_restaurant_administrator(request, unit)
     today = date.today()
     start = date(today.year, today.month - 1, 1)
     end = date(today.year, today.month - 1, 30)
