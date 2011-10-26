@@ -83,8 +83,10 @@ def invoice(request, unit_id):
     end = date(today.year, today.month - 1, 30)
     last_month_orders = Order.objects.filter(unit=unit).filter(creation_date__range=(start, end)).filter(status__in=['ST', 'RV', 'DL'])
     total_amount_sum = last_month_orders.aggregate(Sum('total_amount'))['total_amount__sum']
+    package = unit.get_package()
     if total_amount_sum != None:
-        grand_total = (total_amount_sum * unit.get_package().rate/100) + unit.get_package().monthly_fee
+        grand_total = (total_amount_sum * package.rate/100) + package.monthly_fee + package.menu_management_fee
     else:
-        grand_total = unit.get_package().monthly_fee
-    return {'unit': unit, 'orders': last_month_orders, 'total_sum': total_amount_sum, 'grand_total': grand_total}
+        grand_total = package.monthly_fee + package.menu_management_fee
+    tva_grand_total = grand_total * 1.24
+    return {'unit': unit, 'orders': last_month_orders, 'total_sum': total_amount_sum, 'grand_total': grand_total, 'tva_grand_total': tva_grand_total}

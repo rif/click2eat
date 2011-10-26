@@ -16,7 +16,7 @@ class CommunicationAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 class PartnerPackageAdmin(admin.ModelAdmin):
-    list_display = ('unit','name', 'start_date', 'end_date', 'monthly_fee', 'rate', 'details', 'current')
+    list_display = ('unit','name', 'start_date', 'end_date', 'monthly_fee', 'menu_management_fee', 'rate', 'details', 'current')
     list_filter= ['unit']
     search_fields = ['name', 'details']
 
