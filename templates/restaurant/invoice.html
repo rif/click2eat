@@ -25,13 +25,19 @@
       <td></td><td><b>{{ total_sum|floatformat:2 }}</b></td>
     </tr>
     <tr>
-      <td>{% trans 'Package monthly rate' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.monthly_fee }}</td>
+      <td>{% trans 'Package monthly fee' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.monthly_fee }}</td>
+    </tr>
+     <tr>
+      <td>{% trans 'Menu management fee' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.menu_management_fee }}</td>
     </tr>
     <tr>
       <td>{% trans 'Package percentage rate' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.rate }}</td>
-    </tr>
+    </tr>   
     <tr>
       <td>{% trans 'Total' %}</td><td><b>{{ grand_total|floatformat:2 }}</b></td>
+    </tr>
+    <tr>
+      <td>{% trans 'Total VAT' %}</td><td><b>{{ tva_grand_total|floatformat:2 }}</b></td>
     </tr>
   </tbody>
 </table>
