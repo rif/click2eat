@@ -75,7 +75,7 @@
 		</div>
 		<div class="price">
 			{{ obj.get_price }} {% trans 'RON' %}
-			{% if user.is_authenticated %} <a redir="{% url restaurant:detail obj.item_group.unit.id %}" class="item-add-link button comanda" href="{% url order:shop user.username obj.id %}" id="{{ obj.id }}">{% trans 'Add to order'%}</a>
+			{% if user.is_authenticated and obj.item_group %} <a redir="{% url restaurant:detail obj.item_group.unit_id %}" class="item-add-link button comanda" href="{% url order:shop user.username obj.id %}" id="{{ obj.id }}">{% trans 'Add to order'%}</a>
 			{% endif %}
 		</div>
 		<div class="clear"></div>
