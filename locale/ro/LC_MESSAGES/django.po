@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-25 14:24+0300\n"
-"PO-Revision-Date: 2011-10-25 14:29\n"
+"PO-Revision-Date: 2011-10-26 14:36\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -399,7 +399,7 @@ msgstr "Meniul zilei"
 
 #: menu/models.py:290 order/models.py:17
 msgid "creation date"
-msgstr "data creării"
+msgstr "data realizării"
 
 #: menu/models.py:298
 msgid "Import"
@@ -1595,7 +1595,7 @@ msgstr "Renunțați"
 
 #: templates/order/confirmation_email.html:3
 msgid "Hello"
-msgstr ""
+msgstr "Bună"
 
 #: templates/order/confirmation_email.html:5
 #, python-format
@@ -1660,7 +1660,7 @@ msgstr "Deschis"
 
 #: templates/order/order_detail.html:12
 msgid "Creation date"
-msgstr "Data creării"
+msgstr "Data realizării"
 
 #: templates/order/order_detail.html:13
 #: templates/order/restaurant_order_detail.html:30
