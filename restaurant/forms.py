@@ -15,3 +15,7 @@ class UnitForm(forms.ModelForm):
 
     class Meta:
         model = Unit
+
+class InvoiceForm(forms.Form):
+    start_date = forms.DateField(required=True)
+    end_date = forms.DateField(required=True)

@@ -26,7 +26,7 @@ class PartnerPackage(models.Model):
     menu_management_fee = models.FloatField(_('menu management fee'), default=0)
     rate = models.FloatField(_('rate'), help_text=_('The percentage taken from every order'))
     details = models.TextField(_('details'))
-    start_date = models.DateField(_('start date'), auto_now_add=True)
+    start_date = models.DateField(_('start date'), default=date.today())
     end_date = models.DateField(_('end date'), null=True, blank=True)
     current = models.BooleanField(_('current'))
 

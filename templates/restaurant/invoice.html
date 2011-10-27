@@ -1,12 +1,34 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n uni_form_tags %}
 
 {% block title %}Invoice for {{unit}}{% endblock %}
 
-{% block scripts %}
+{% block style %}
+<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css" />
 {% endblock %}
 
+{% block script-links %}
+<script src="{{ STATIC_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+{% endblock %}
+
+
 {% block content %}
+<form action="." method="post" class="uniForm">{% csrf_token %}
+{{ form|as_uni_form }}
+<button type="submit">{% trans 'Submit' %}</button>
+</form>
+<br />
+{% if package %}
+<div id=current-package">
+	<ul>
+	  <li>{% trans 'Package' %}: {{ package.get_name_display }}</li>
+  	  <li>{% trans 'Start date' %}: {{ package.start_date }}</li>
+  	  <li>{% trans 'End date' %}: {{ package.end_date }}</li>
+  	  <li>{% trans 'Current' %}: {{ package.current|yesno }}</li>
+  </ul>
+</div>
+{% endif %}
 <table>
   <thead>
     <tr>
@@ -15,8 +37,8 @@
   </thead>
   <tbody>
     {% for order in orders.iterator %}
-    <tr>
-      <td><!--a href="{% url order:detail order.id %}"-->{{ order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</td><td>{{ order.total_amount }}</td>
+    <tr>    	
+      <td>{{ forloop.counter }}. <!--a href="{% url order:detail order.id %}"-->{{ order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}</td><td>{{ order.total_amount }}</td>
     </tr>
     {% empty %}
     <tr><td>{% trans 'Sorry, no orders for this restaurant' %}.</td><td>0</td></tr>
@@ -25,13 +47,13 @@
       <td></td><td><b>{{ total_sum|floatformat:2 }}</b></td>
     </tr>
     <tr>
-      <td>{% trans 'Package monthly fee' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.monthly_fee }}</td>
+      <td>{% trans 'Package monthly fee' %} ({{ package.get_name_display }})</td><td>{{ package.monthly_fee }}</td>
     </tr>
      <tr>
-      <td>{% trans 'Menu management fee' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.menu_management_fee }}</td>
+      <td>{% trans 'Menu management fee' %} ({{ package.get_name_display }})</td><td>{{ package.menu_management_fee }}</td>
     </tr>
     <tr>
-      <td>{% trans 'Package percentage rate' %} ({{ unit.get_package.get_name_display }})</td><td>{{ unit.get_package.rate }}</td>
+      <td>{% trans 'Package percentage rate' %} ({{ package.get_name_display }})</td><td>{{ package.rate }}</td>
     </tr>   
     <tr>
       <td>{% trans 'Total' %}</td><td><b>{{ grand_total|floatformat:2 }}</b></td>
