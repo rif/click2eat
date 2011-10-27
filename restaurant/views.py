@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
-#from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
@@ -9,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from django.db.models import Sum, Avg, Count
+from django.db.models import Q
 from annoying.decorators import render_to
 from datetime import date
 from restaurant.models import Unit, PartnerPackage
@@ -16,6 +16,7 @@ from order.models import Order, Rating, OrderItem
 from order import views
 from menu.models import MenuOfTheDay
 from order.views import __is_restaurant_administrator
+from restaurant.forms import InvoiceForm
 
 def __user_has_profile(user):
     if not user.is_authenticated() or user.is_anonymous() : return None
@@ -73,20 +74,34 @@ def package_history(request, unit_id):
     history = PartnerPackage.objects.filter(unit__id=unit_id)
     return {'history':history}
 
-@user_passes_test(lambda u: u.is_authenticated() and u.is_staff)
+@login_required
 @render_to('restaurant/invoice.html')
-def invoice(request, unit_id):    
+def invoice(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
-    today = date.today()
-    start = date(today.year, today.month - 1, 1)
-    end = date(today.year, today.month - 1, 30)
-    last_month_orders = Order.objects.filter(unit=unit).filter(creation_date__range=(start, end)).filter(status__in=['ST', 'RV', 'DL'])
-    total_amount_sum = last_month_orders.aggregate(Sum('total_amount'))['total_amount__sum']
-    package = unit.get_package()
-    if total_amount_sum != None:
-        grand_total = (total_amount_sum * package.rate/100) + package.monthly_fee + package.menu_management_fee
+    end = today = date.today()
+    start = today.replace(day=1)    
+    if request.method == 'POST':
+        form = InvoiceForm(request.POST)
+        if form.is_valid():
+            start = form.cleaned_data['start_date']
+            end = form.cleaned_data['end_date']            
+    else:
+        form = InvoiceForm(initial={'start_date':start, 'end_date':today})
+    orders = Order.objects.filter(unit=unit).filter(creation_date__range=(start, end)).filter(status__in=['ST', 'RV', 'DL'])
+    total_sum = orders.aggregate(Sum('total_amount'))['total_amount__sum']
+    package = unit.partnerpackage_set.filter(start_date__lte=start).filter(Q(end_date__gte=end) | (Q(end_date=None) & Q(current=True)))
+    if package.exists():
+        package = package[0]
+    else:
+        messages.error(request, _('No partner package found for selected time range!'))
+        grand_total = 0
+        tva_grand_total = 0
+        return locals()
+    
+    if total_sum != None:
+        grand_total = (total_sum * package.rate/100) + package.monthly_fee + package.menu_management_fee
     else:
         grand_total = package.monthly_fee + package.menu_management_fee
-    tva_grand_total = grand_total * 1.24
-    return {'unit': unit, 'orders': last_month_orders, 'total_sum': total_amount_sum, 'grand_total': grand_total, 'tva_grand_total': tva_grand_total}
+    tva_grand_total = grand_total * 1.24            
+    return locals()
