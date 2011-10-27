@@ -16,13 +16,13 @@
           </a>
         </div>
         <div class="name"><a href="{% url menu:item_tag_list tag.slug %}">{% trans 'Menu' %} {{ tag.name }}</a></div>
-        <div class="description2">Supe crema<br/>Supe vegetariene<br/>Supe cu carne</div>
+        {# <div class="description2">Supe crema<br/>Supe vegetariene<br/>Supe cu carne</div> #}
         <div class="click2eat">
-          <span class="recom">Recomandari supe si ciorbe</span>
-          <div class="restaurante">
-            RESTAURANT <strong>PRESIDENT</strong><br/>
-            RESTAURANT <strong>ALEXANDRE</strong>
-          </div>
+          <span class="recom">{% trans 'Good appetite!' %}</span>
+          {#<div class="restaurante">#}
+          {# RESTAURANT <strong>PRESIDENT</strong><br/>#}
+          {# RESTAURANT <strong>ALEXANDRE</strong>#}
+          </div-->
 	</div>
         <div class="clear"></div>
       </div>
