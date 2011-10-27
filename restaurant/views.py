@@ -97,7 +97,7 @@ def invoice(request, unit_id):
         if package.count() > 1:
             messages.error(request, _('Multiple packages found for selected period!'))
         else:
-            messages.error(request, _('No partner package found for selected time range!'))
+            messages.error(request, _('No (unique) partner package found for selected time range!'))
         grand_total = 0
         tva_grand_total = 0
         return locals()

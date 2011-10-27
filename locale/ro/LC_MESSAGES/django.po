@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-26 16:52+0300\n"
-"PO-Revision-Date: 2011-10-26 16:53\n"
+"POT-Creation-Date: 2011-10-27 17:26+0300\n"
+"PO-Revision-Date: 2011-10-27 17:27\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -490,7 +490,8 @@ msgid "paid with bonus"
 msgstr "plătit cu bonus"
 
 #: order/models.py:68 order/models.py:69
-#: templates/order/send_confirmation.html:39
+#: templates/order/send_confirmation.html:38
+#: templates/restaurant/invoice.html:49
 msgid "Order"
 msgstr "Comanda"
 
@@ -858,6 +859,16 @@ msgstr "Unitate"
 #: templates/mobile/units.html.py:5
 msgid "Units"
 msgstr "Unități"
+
+#: restaurant/views.py:98
+msgid "Multiple packages found for selected period!"
+msgstr "S-au găsit mai multe pachete de parteneriat pentru perioada selectată!"
+
+#: restaurant/views.py:100
+msgid "No (unique) partner package found for selected time range!"
+msgstr ""
+"Nu a fost găsit un pachet de parteneriat (unic) pentru perioada "
+"selectată!"
 
 #: templates/404.html:4 templates/404.html.py:9
 msgid "Page not found"
@@ -1319,6 +1330,7 @@ msgstr "Arată/ascunde cautarea avansată"
 #: templates/registration/password_change_form.html:27
 #: templates/registration/password_reset_confirm.html:28
 #: templates/registration/password_reset_form.html:27
+#: templates/restaurant/invoice.html:33
 msgid "Submit"
 msgstr "Trimite"
 
@@ -1338,6 +1350,10 @@ msgstr "Lista generala de meniuri click2eat"
 #: templates/menu/menu_list.html:18
 msgid "Menu"
 msgstr "Meniu"
+
+#: templates/menu/menu_list.html:21
+msgid "Good appetite!"
+msgstr "Poftă bună"
 
 #: templates/mobile/home.html:7
 msgid "Welcome to click2eat.ro"
@@ -1731,7 +1747,7 @@ msgid "Price (RON)"
 msgstr "Preț (Lei)"
 
 #: templates/order/restaurant_order_detail.html:61
-#: templates/restaurant/invoice.html:37
+#: templates/restaurant/invoice.html:73
 msgid "Total"
 msgstr "Total"
 
@@ -1755,20 +1771,20 @@ msgstr "Istoric comenzi"
 msgid "Download all orders (CSV)"
 msgstr "Descarcă toate comenzile (CSV)"
 
-#: templates/order/send_confirmation.html:44
+#: templates/order/send_confirmation.html:43
 msgid "If you don't have a delivery address"
 msgstr "Dacă nu ați definit o adresă de livrare"
 
-#: templates/order/send_confirmation.html:44
+#: templates/order/send_confirmation.html:43
 #: templates/profiles/profile_detail.html:192
 msgid "Add one now"
 msgstr "Adăugați una acum"
 
-#: templates/order/send_confirmation.html:48
+#: templates/order/send_confirmation.html:47
 msgid "Yes, send the order"
 msgstr "Da, trimite comanda"
 
-#: templates/order/send_confirmation.html:48
+#: templates/order/send_confirmation.html:47
 msgid "Return to menu selection"
 msgstr "Întoarceti-vă la selecția din meniu"
 
@@ -2085,8 +2101,8 @@ msgid "Your units"
 msgstr "Restaurantele dumneavoastră"
 
 #: templates/restaurant/administrator.html:11
-msgid "Current invoice"
-msgstr "Factura curentă"
+msgid "Invoices"
+msgstr "Facturi"
 
 #: templates/restaurant/administrator.html:13
 msgid "Sorry, you don't administer any units."
@@ -2140,21 +2156,46 @@ msgstr "Nu știi ce vrei să mănânci astăzi"
 msgid "Welcome to the wheel of fortune ! Click on the dish to START."
 msgstr "Bine ați venit la roata norocului! Click pe farfurie pentru START."
 
-#: templates/restaurant/invoice.html:22
+#: templates/restaurant/invoice.html:39
+#: templates/restaurant/package_history.html:15
+msgid "Package"
+msgstr "Pachet"
+
+#: templates/restaurant/invoice.html:40
+msgid "Start date"
+msgstr "Data de start"
+
+#: templates/restaurant/invoice.html:41
+msgid "End date"
+msgstr "Data de sfârșit"
+
+#: templates/restaurant/invoice.html:42
+msgid "Current"
+msgstr "Actual"
+
+#: templates/restaurant/invoice.html:49
+msgid "Sum"
+msgstr "Suma"
+
+#: templates/restaurant/invoice.html:58
 msgid "Sorry, no orders for this restaurant"
 msgstr "Ne pare rău, nu sunt comenzi pentru acest restaurant"
 
-#: templates/restaurant/invoice.html:28
+#: templates/restaurant/invoice.html:64
 msgid "Package monthly fee"
 msgstr "Taxa lunară a pachetului"
 
-#: templates/restaurant/invoice.html:31
+#: templates/restaurant/invoice.html:67
 msgid "Menu management fee"
 msgstr "Taxa de prelucrare a meniului"
 
-#: templates/restaurant/invoice.html:34
+#: templates/restaurant/invoice.html:70
 msgid "Package percentage rate"
 msgstr "Procentajul perceput aferent pachetului "
+
+#: templates/restaurant/invoice.html:76
+msgid "Total VAT"
+msgstr "Total cu TVA"
 
 #: templates/restaurant/package_history.html:4
 #: templates/restaurant/package_history.html:9
@@ -2164,10 +2205,6 @@ msgstr "Clasa de partener"
 #: templates/restaurant/package_history.html:5
 msgid "The partner package history for this unit."
 msgstr "Istoricul claselor de partener pentru acest restaurant."
-
-#: templates/restaurant/package_history.html:15
-msgid "Package"
-msgstr "Pachet"
 
 #: templates/restaurant/package_history.html:16
 msgid "Start Date"
