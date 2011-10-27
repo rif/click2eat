@@ -91,10 +91,13 @@ def invoice(request, unit_id):
     orders = Order.objects.filter(unit=unit).filter(creation_date__range=(start, end)).filter(status__in=['ST', 'RV', 'DL'])
     total_sum = orders.aggregate(Sum('total_amount'))['total_amount__sum']
     package = unit.partnerpackage_set.filter(start_date__lte=start).filter(Q(end_date__gte=end) | (Q(end_date=None) & Q(current=True)))
-    if package.exists():
+    if package.exists() and package.count() == 1:
         package = package[0]
     else:
-        messages.error(request, _('No partner package found for selected time range!'))
+        if package.count() > 1:
+            messages.error(request, _('Multiple packages found for selected period!'))
+        else:
+            messages.error(request, _('No partner package found for selected time range!'))
         grand_total = 0
         tva_grand_total = 0
         return locals()
