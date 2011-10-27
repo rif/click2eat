@@ -13,6 +13,20 @@
 {% endblock %}
 
 
+{% block scripts %}
+<script type="text/javascript">
+  $(function() {
+     $.datepicker.setDefaults( $.datepicker.regional[ "{{ LANGUAGE_CODE }}" ] );
+     $( "#id_start_date, #id_end_date" ).datepicker({
+       dateFormat: 'yy-mm-dd',
+       changeMonth: true,
+       changeYear: true,       
+     });
+  });
+</script>
+{% endblock %}
+
+
 {% block content %}
 <form action="." method="post" class="uniForm">{% csrf_token %}
 {{ form|as_uni_form }}
