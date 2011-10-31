@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
-{% load uni_form_tags %}
+{% load i18n uni_form_tags %}
 {% block title %}{% trans 'Sign Up' %}{% endblock %}
 
 {% block style %}
@@ -32,11 +31,10 @@ $(function(){
     	{% trans 'New account' %}
     </div>
     <div class="datep">
-    	{% trans 'Personal data' %}
        
 <form method="POST" action="{% url registration_register %}" class="uniForm">{% csrf_token %}
     {{ form|as_uni_form }}
-    <input id="submit" class="form_button" type="submit" value="{% trans 'Register' %}" disabled="true">
+    <button id="submit" type="submit" disabled="true">{% trans 'Register' %}</button>
    <input id="terms" type="checkbox" name="terms" value="agree" /> <a target="_blank" href="/flat/{{ LANGUAGE_CODE }}/terms/">{% trans 'I agree with the terms and conditions.' %}</a>
 </form>
     </div>

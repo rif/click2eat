@@ -1,7 +1,7 @@
 {% load i18n %}
 {{ message }}
 
-{{ user }}
+{{ user.first_name }} {{ user.last_name }} ({{ user }})
 
 {% trans 'You can accept the invitation by clicking on the link below' %}:
 {{ accept_url }}
