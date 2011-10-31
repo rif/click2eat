@@ -6,6 +6,8 @@
 {% block scripts %}
     <script type="text/javascript">
         $(function() {
+        	// in this view we don't have commercials
+        	$("#content, #sidebar2").css("margin-top", "70px");
             $("#shopping-cart").load("{% url order:shopping-cart object.id %}");
 
             $("#last-orders").load("{% url order:list_unit object.id %}", function() {
@@ -105,7 +107,7 @@
 
     <div class="content_area">
         <div id="paginarestaurant">
-            <div class="title"><h1>{{ object.name|upper }} {% trans 'details'|upper %}</h1></div>
+            <div class="title"><h1>{{ object.name|upper }}</h1></div>
              {% if object.logo_path %}
                 <div id="establishment_picture">
                     <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
@@ -143,8 +145,6 @@
             <div id="last-orders" style="display:none">                
             </div>
             <div class="clear"></div>
-
-            <div class="title"><h1>{% trans 'Menu list'|upper %}</h1></div>
             <div class="establishment-menu">
                 {% for itemgroup in object.itemgroup_set.iterator %}
                     {% if itemgroup.active %}
