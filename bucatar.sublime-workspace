@@ -62,6 +62,14 @@
 				"buffer_size": 2907,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "media/sass/screen.sass",
+			"settings":
+			{
+				"buffer_size": 21026,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -252,6 +260,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"400px",
 			"detail",
 			"pozrel",
 			"font-famil",
@@ -328,6 +337,7 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -352,7 +362,35 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 576.0,
+						"translation.y": 32.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "media/sass/screen.sass",
+					"settings":
+					{
+						"buffer_size": 21026,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11188,
+								11188
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7826.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -402,6 +440,10 @@
 		"selected_items":
 		[
 			[
+				"scre",
+				"media/sass/screen.sass"
+			],
+			[
 				"tim",
 				"templates/order/timer.html"
 			],
@@ -444,10 +486,6 @@
 			[
 				"recl",
 				"templates/reclame.html"
-			],
-			[
-				"scre",
-				"media/sass/screen.sass"
 			],
 			[
 				"send",
