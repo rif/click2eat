@@ -14,17 +14,13 @@
 			<table id="daily_table">
 				<tbody>
 					<tr class="platinum">
-						<th>{% trans 'Transaction date' %}</th>
-						<th>{% trans 'RON' %}</th>
-						<th>{% trans 'From friend' %}</th>
+						<th>{% trans 'RON' %}</th>						
 						<th>{% trans 'Order' %}</th>						
 					</tr>
 					{% for bonus in object_list %}
-					<tr>
-						<td class="align-center">{{ bonus.transaction_date }}</td>
-						<td class="align-center">{{ bonus.amount }}</td>
-						<td class="align-center">{{ bonus.from_user.get_full_name }}</td>
-						<td class="align-center">{% if bonus.order %}{{ bonus.order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ bonus.order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}{% endif %}</td>						
+					<tr>						
+						<td class="align-center">{{ bonus.amount }}</td>						
+						<td class="align-center">{{ bonus.order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ bonus.order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %} {% trans 'to' %} {{ bonus.order.user.get_full_name }}</td>						
 					</tr>
 					{% empty %}
 					<tr>

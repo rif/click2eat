@@ -7,5 +7,5 @@ from bonus.models import BonusTransaction
 @login_required
 @render_to('bonus/history.html')
 def history(request):
-    bonuses = BonusTransaction.objects.filter(user__id = request.user.id)
+    bonuses = BonusTransaction.objects.filter(order__user__id = request.user.id).select_related('order__user')
     return {'object_list': bonuses}
