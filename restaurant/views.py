@@ -15,6 +15,7 @@ from restaurant.models import Unit, PartnerPackage
 from order.models import Order, Rating, OrderItem
 from order import views
 from menu.models import MenuOfTheDay
+from userprofiles.models import BonusTransaction
 from order.views import __is_restaurant_administrator
 from restaurant.forms import InvoiceForm
 
@@ -90,6 +91,8 @@ def invoice(request, unit_id):
         form = InvoiceForm(initial={'start_date':start, 'end_date':today})
     orders = Order.objects.filter(unit=unit).filter(creation_date__range=(start, end)).filter(status__in=['ST', 'RV', 'DL'])
     total_sum = orders.aggregate(Sum('total_amount'))['total_amount__sum']
+    bonuses = BonusTransaction.objects.filter(order__unit=unit).filter(transaction_date__range=(start, end))
+    total_bonus = bonuses.aggregate(Sum('amount'))['amount__sum'] or 0
     package = unit.partnerpackage_set.filter(start_date__lte=start).filter(Q(end_date__gte=end) | (Q(end_date=None) & Q(current=True)))
     if package.exists() and package.count() == 1:
         package = package[0]
@@ -103,7 +106,7 @@ def invoice(request, unit_id):
         return locals()
     
     if total_sum != None:
-        grand_total = (total_sum * package.rate/100) + package.monthly_fee + package.menu_management_fee
+        grand_total = (total_sum * package.rate/100) + package.monthly_fee + package.menu_management_fee + total_bonus
     else:
         grand_total = package.monthly_fee + package.menu_management_fee
     tva_grand_total = grand_total * 1.24            

@@ -37,7 +37,7 @@
 		<span class="textmare">
 			{% trans 'Untill now you invited' %}
 			<span class="special">{{ user.userprofile.get_invited_friends }}</span> {% trans 'friends and gathered' %}
-			<span class="special">{{ user.userprofile.get_bonus_money }} {% trans 'RON' %}</span> {% trans 'from the orders made by your friends' %}.
+			<span class="special">{{ user.userprofile.get_current_bonus }} {% trans 'RON' %}</span> {% trans 'from the orders made by your friends' %}.
 		</span>
 		<br/></br/>
 		<a class="button" href="{% url bonus:history %}"><span class="calendar icon"></span>{% trans 'Bonus history' %}</a>

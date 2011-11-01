@@ -6,36 +6,36 @@
 
 {% block content %}
 <div class="content_area720">
-<div id="paginaregister">
-	<div class="titlu">
-    	{% trans 'Bonus history' %}
-    </div>
-	<div id="establishment_list">
-    <table id="daily_table">
-      <tbody>
-	<tr class="platinum">
-          <th>{% trans 'Received date' %}</th>
-          <th>{% trans 'RON' %}</th>
-	  <th>{% trans 'From friend' %}</th>
-	  <th>{% trans 'Used' %}</th>
-          <th>{% trans 'Used date' %}</th>
-	</tr>
-	{% for bonus in object_list %}
-        <tr>
-        <td class="align-center">{{ bonus.received_date }}</td>
-        <td class="align-center">{{ bonus.money }}</td>
-        <td class="align-center">{{ bonus.from_user.get_full_name }}</td>
-        <td class="align-center">{{ bonus.used|yesno }}</td>
-        <td class="align-center">{% if bonus.used %}{{ bonus.used_date }}{% else %}-{% endif %}</td>        
-        </tr>
-	{% empty %}
-	<tr><td colspan="5">{% trans 'Sorry no bonuses yet.' %}</td></tr>
-	{% endfor %}
-      </tbody>
-    </table>
-  </div> <!-- establishment_list -->
-  
-  <div class="clear"></div>
-</div>
+	<div id="paginaregister">
+		<div class="titlu">
+			<h1>{% trans 'Bonus history' %}</h1>
+		</div>
+		<div id="establishment_list">
+			<table id="daily_table">
+				<tbody>
+					<tr class="platinum">
+						<th>{% trans 'Transaction date' %}</th>
+						<th>{% trans 'RON' %}</th>
+						<th>{% trans 'From friend' %}</th>
+						<th>{% trans 'Order' %}</th>						
+					</tr>
+					{% for bonus in object_list %}
+					<tr>
+						<td class="align-center">{{ bonus.transaction_date }}</td>
+						<td class="align-center">{{ bonus.amount }}</td>
+						<td class="align-center">{{ bonus.from_user.get_full_name }}</td>
+						<td class="align-center">{% if bonus.order %}{{ bonus.order }} {% if LANGUAGE_CODE == 'ro' %}acum{% endif %} {{ bonus.order.creation_date|timesince }} {% if LANGUAGE_CODE == 'en' %}ago{% endif %}{% endif %}</td>						
+					</tr>
+					{% empty %}
+					<tr>
+						<td colspan="5">{% trans 'Sorry no bonuses yet.' %}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<!-- establishment_list -->
+		<div class="clear"></div>
+	</div>
 </div>
 {% endblock %}
