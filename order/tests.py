@@ -69,7 +69,7 @@ class OrderTest(TestCase):
       self.client.login(username='bobo1', password='test')
       r = self.client.get(reverse('order:restaurant_deliver', args=[ord.id]))
       self.assertEqual(200, r.status_code)
-      self.assertEqual('Livrat', r.content)
+      self.assertEqual('Livrat\xc4\x83', r.content)
 
   def test_restricted_views(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
