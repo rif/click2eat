@@ -10,4 +10,5 @@ class SimpleTest(TestCase):
 
     def test_total_sum(self):
         user = User.objects.get(pk=2)
+        print BonusTransaction.objects.all().values()
         self.assertEqual(6.0, user.get_profile().get_current_bonus())
