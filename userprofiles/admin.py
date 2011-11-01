@@ -11,7 +11,7 @@ class DeliveryAddressAdmin(admin.ModelAdmin):
         obj.save()
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'phone', 'sex', 'birth_date','public')
+    list_display = ('__unicode__', 'phone', 'sex', 'birth_date', 'get_current_bonus', 'public')
     search_fields = ['__unicode__']
     list_filter = ['public']
 

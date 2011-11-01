@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Sum
 from order.models import Order
 from friends.models import Friendship, JoinInvitation, Contact
-from bonus.models import Bonus
+from bonus.models import BonusTransaction
 from restaurant.models import Unit
 from django.core.validators import RegexValidator
 from django.contrib.localflavor.ro.forms import ROPhoneNumberField
@@ -99,9 +99,10 @@ class UserProfile(models.Model):
     def get_invited_friends(self):
         return JoinInvitation.objects.filter(status=5).filter(from_user=self.user).count()
 
-    def get_bonus_money(self):
-        result = Bonus.objects.filter(user__id = self.user_id).filter(used=False).aggregate(Sum('money'))
-        return round(result['money__sum'] or 0,2)
+    def get_current_bonus(self):
+        bonuses = BonusTransaction.objects.filter(user__id = self.user_id).all()        
+        total = bonuses.aggregate(Sum('amount'))        
+        return round(total['amount__sum'] or 0, 2)
 
     @models.permalink
     def get_absolute_url(self):

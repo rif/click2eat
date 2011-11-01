@@ -6,7 +6,6 @@ from registration.backends.default import DefaultBackend
 from annoying.functions import get_object_or_None
 from userprofiles.models import DeliveryAddress
 from friends.models import JoinInvitation
-from bonus.models import Bonus
 from envelope.forms import ContactForm
 
 class DeliveryAddressForm(forms.ModelForm):
