@@ -7,6 +7,7 @@ from order.models import Order
 BONUS_PERCENTAGE = 0.5
 
 class BonusTransaction(models.Model):
+    user = models.ForeignKey(User, verbose_name=_('user'))
     order = models.ForeignKey(Order, verbose_name=_('order'), null=True, blank=True)
     amount = models.FloatField(_('amount'))
     

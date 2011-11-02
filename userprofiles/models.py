@@ -100,7 +100,7 @@ class UserProfile(models.Model):
         return JoinInvitation.objects.filter(status=5).filter(from_user=self.user).count()
 
     def get_current_bonus(self):
-        total = BonusTransaction.objects.filter(order__user__id = self.user_id).aggregate(Sum('amount'))        
+        total = BonusTransaction.objects.filter(user__id = self.user_id).aggregate(Sum('amount'))        
         return round(total['amount__sum'] or 0, 2)
 
     @models.permalink
