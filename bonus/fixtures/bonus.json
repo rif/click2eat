@@ -1,1 +1,1 @@
-[{"pk": 1, "model": "bonus.bonustransaction", "fields": {"amount": 10.0, "order": 159}}, {"pk": 3, "model": "bonus.bonustransaction", "fields": {"amount": -2.0, "order": 159}}, {"pk": 2, "model": "bonus.bonustransaction", "fields": {"amount": -2.0, "order": 159}}]
+[{"pk": 2, "model": "bonus.bonustransaction", "fields": {"amount": -2.0, "user": 2, "order": 249}}, {"pk": 1, "model": "bonus.bonustransaction", "fields": {"amount": 10.0, "user": 2, "order": 250}}, {"pk": 3, "model": "bonus.bonustransaction", "fields": {"amount": -2.0, "user": 2, "order": 250}}]

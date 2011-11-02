@@ -182,7 +182,7 @@ def __construct_order(request, unit, order, paid_with_bonus):
         _consume_bonus(order)
     initial_friend = order.user.get_profile().get_initial_friend()
     if initial_friend and not order.paid_with_bonus:
-        b = BonusTransaction.objects.create(order=order, amount=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
+        b = BonusTransaction.objects.create(user=initial_friend, order=order, amount=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
     subject = _('New Order')
     body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
     send_from = 'office@click2eat.ro'
@@ -194,7 +194,7 @@ def _consume_bonus(order):
     user = order.user
     if not user.get_profile(): return -2    
     if amount > user.get_profile().get_current_bonus(): return -1
-    BonusTransaction.objects.create(order=order, amount=-round(amount,2))   
+    BonusTransaction.objects.create(user=order.user, order=order, amount=-round(amount,2))   
     order.paid_with_bonus = True
     order.save()
     return 0
