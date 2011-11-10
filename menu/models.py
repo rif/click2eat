@@ -101,9 +101,11 @@ class Item(MultilingualModel):
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
-  speciality = models.BooleanField(_('speciality of the house'), default=True)
-  fortune = models.BooleanField(_('display in the weel of fortune'), default=True)
+  speciality = models.BooleanField(_('speciality'), help_text=_('speciality of the house'))
+  fortune = models.BooleanField(_('fortune'), help_text=_('display in the weel of fortune'))
+  free_pair = models.BooleanField(_('free_pair'), help_text=_('given free with a similar more expensive pair'))
   image_path = models.ImageField(_('image path'), upload_to="item_images", null=True, blank=True)
+  
 
   tags = TaggableManager()
 
