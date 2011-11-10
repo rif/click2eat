@@ -2,10 +2,10 @@
 
 
 <div id="carts">
-    {% for cn, cart, subtotal in carts %}
+    {% for cn, cartitems, subtotal in carts %}
         <a href="#" class="{% if cn == user.username %}selected-cart{% endif %} cart-name">{{ cn }}</a>
         <ul class="items">
-            {% for item, values in cart.iteritems %}
+            {% for item, values in cartitems %}
                 <li class="cart-item" itemid="{{ item }}">
                     <span class="item-count">{{ values.0 }}</span>
                     <span class="item-price">{{ values.1|unlocalize }}</span>
@@ -105,6 +105,7 @@
                     $('#carts>#' + newCart).click();
                 }
                 $("#cart-name-form").remove();
+                $(".top-span").fadeOut();
                 return false;
             });
             return false;
@@ -115,24 +116,26 @@
                 $("#carts").html('<a class="cart-name selected-cart" href="#">{{  user.username }}</a><ul class="items"></ul><div class="subtotal-div">\
 {% trans 'Subtotal' %}: <span class="cart-subtotal">0</span> {% trans "RON" %}</div>');
             }
+            $(".top-span").fadeOut();
             return false;
         });
-        $("#carts").delegate(".cart-name", "click", function() {
+        $("#carts").on("click", ".cart-name", function() {
             $(".cart-name").removeClass("selected-cart");
             $(this).addClass("selected-cart");
             return false;
         });
-        $("#carts").delegate(".decr-link, .incr-link", "click", function() {
+        $("#carts").on("click", ".decr-link, .incr-link", function() {
             var isMinus = $(this).hasClass("decr-link");
             var parent = $(this).parents("li:first");
             var iid = parent.attr("itemid");
+            var pos = parent.index();
             var parentUL = parent.parent("ul.items");
             var parentCart = parentUL.prev("a.cart-name:first");
             parentCart.click(); // select cart
             if (isMinus) {
-                var href = "/order/decritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
+                var href = "/order/decritem/" + parentCart.text() + "/{{ unit.id }}/" + pos + '_' + iid + "/";
             } else {
-                var href = "/order/incritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
+                var href = "/order/incritem/" + parentCart.text() + "/{{ unit.id }}/" + pos + '_' + iid + "/";
             }
             $.get(href, function(data) {
                 parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
@@ -146,6 +149,7 @@
                 }
                 showHideMinOrder();
             });
+            $(".top-span").fadeOut();
             return false;
         });
         $("#carts").ajaxError(function(event, request, settings) {

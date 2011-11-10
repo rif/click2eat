@@ -28,11 +28,18 @@
             $(".shop-link").click(function(e) {
                 var id = $(this).attr("itemid");
                 shop(id);
-                $(this).parents("li.item:first").next(".top-span").fadeIn();
+                // fade out all toppings except current one
+                $(this).parents("li.item:first").siblings().each(function(){
+                	$(this).next(".top-span").fadeOut();
+                });
+                $(this).parents("li.item:first").next(".top-span").fadeIn();                
                 e.preventDefault();
             });
             $(".shop-top-link").click(function(e) {
                 var id = $(this).attr("itemid") + "_" + $(this).attr("topid");
+                // select the master element for the toppings
+                var masterElement = $("a.selected-cart").next("ul.items").children("li[itemid=" + $(this).attr("itemid") + "]:last");
+                masterElement.children(".decr-link, .incr-link").hide();
                 shop(id);
                 e.preventDefault();
             });
@@ -55,17 +62,18 @@
         function shop(id) {
             var selCart = $("a.selected-cart");
             var parentUL = selCart.next("ul");
-            var menuItem = parentUL.children("li[itemid='" + id + "']");
-            if (menuItem.length > 0) {
-                $("a.incr-link", menuItem).click();
-            } else {
-                $.get("/order/shop/" + selCart.text() + "/" + id + "/", function(data) {
-                    parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
-                    parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
-                    $("#order-total").text(data['total']);
-                    showHideMinOrder();
-                });
+            var pos = parentUL.children('li.cart-item').length;
+            if(id.indexOf("_") != -1) {
+            	// if it is a topping get parents position
+            	pos -= 1;
             }
+            console.log(pos);
+            $.get("/order/shop/" + selCart.text() + "/" + pos + "_" + id + "/", function(data) {
+                parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
+                parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
+                $("#order-total").text(data['total']);
+                showHideMinOrder();
+            });            
         }
 
         function itemTemplate(id, price, title) {

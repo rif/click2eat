@@ -60,19 +60,20 @@ def list_unit(request, unit_id):
 @login_required
 @ajax_request
 def shop(request, cart_name, item_id):
-        item, unit_id = __get_payload(item_id)
+        pos, item_info = item_id.split('_', 1)        
+        item, unit_id = __get_payload(item_info)        
         cn = '%s:%s' % (unit_id, cart_name)
         if cn not in request.session and '_' in item_id: #first added item is a topping
             return {'error': '2e62'} # kriptic errors for hackers delight :)
-        if cn in request.session and '_' in item_id and item_id.split('_',1)[0] not in request.session[cn]: # added topping without item
+        if cn in request.session and item_id.count('_') == 2 and item_id.rsplit('_',1)[0] not in request.session[cn]: # added topping without item            
             return {'error': '2e6z'}
         if cn not in request.session:
-          request.session[cn] = {}
-        if item_id not in request.session[cn]:
+          request.session[cn] = {}        
+        if item_id not in request.session[cn]:          
           request.session[cn][item_id] = [1, item.get_price(), item.get_name()]
-        else:
-          request.session[cn][item_id][0] += 1
-        request.session.modified = True
+        else:          
+          request.session[cn][item_id][0] += 1        
+        request.session.modified = True        
         return {'total': __count_cart_sum(request, unit_id),
             'subtotal': __count_cart_sum(request, cn),
             'id':item_id,
@@ -135,7 +136,7 @@ def shopping_cart(request, unit_id):
         show_confirm_order = True
         carts = []
         for cn in __get_cart_names(request,unit_id):
-        	carts.append((cn.split(':',1)[1], request.session[cn], __count_cart_sum(request, cn)))
+        	carts.append((cn.split(':',1)[1], sorted(request.session[cn].items()), __count_cart_sum(request, cn)))
         return locals()
 
 @login_required
@@ -162,20 +163,22 @@ def __construct_order(request, unit, order, paid_with_bonus):
         order.desired_delivery_time = datetime.now()
     order.save() # save it to be able to bind OrderItems
     unit_id = str(unit.id)
+    master = None
     for cn in __get_cart_names(request, unit_id):
         cart = request.session[cn]
         for item_id in sorted(cart.keys()): # sorting to get the items before the toppings
             values = cart[item_id]
+            pos, item_id = item_id.split('_', 1)            
             if item_id.startswith('m'):
               motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
               OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
             elif '_' in item_id:
               top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
-              master = order.orderitem_set.get(item__id=item_id.split('_',1)[0])
+              if not master: pass # shit there is no master for this topping, figure out what to do              
               OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
             else:
               item = get_object_or_404(Item, pk=item_id)
-              OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])
+              master = OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])                        
         del request.session[cn]
     #give bonus to the friend
     if paid_with_bonus:
@@ -206,7 +209,7 @@ def confirm_order(request, unit_id):
     total_sum = __count_cart_sum(request,unit_id)
     carts = []
     for cn in __get_cart_names(request,unit_id):
-        carts.append((cn.split(':',1)[1], request.session[cn], __count_cart_sum(request, cn)))
+        carts.append((cn.split(':',1)[1], sorted(request.session[cn].items()), __count_cart_sum(request, cn)))
     if not unit.is_open():
         messages.warning(request, _('This restaurant is now closed! Please check the open hours and set desired delivery time accordingly.'))
     if unit.minimum_ord_val > total_sum:
@@ -234,8 +237,7 @@ def confirm_order(request, unit_id):
     form.fields['delivery_type'] = forms.ModelChoiceField(unit.delivery_type.all(), required=True, initial={'primary': True})
     form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
     profile = request.user.get_profile()
-    show_pay_with_bonus = profile and profile.get_current_bonus() > total_sum
-    print show_pay_with_bonus, profile.get_current_bonus(), total_sum
+    show_pay_with_bonus = profile and profile.get_current_bonus() > total_sum    
     if show_pay_with_bonus:
         messages.info(request, _('Congratulations! You have enough bonus to pay for your order. Please check "Pay using bonus" to use it.'))
         form.fields['paid_with_bonus'] = forms.BooleanField(label=_('Pay using bonus'), help_text=_('We shall use the minimum number of received bonuses enough to cover the order total amount'), required=False)
@@ -264,12 +266,12 @@ def __count_cart_sum(request, cart_name):
   return round(s,2)
 
 def __get_payload(item_id):
-  item, unit_id = None,None
+  item, unit_id = None,None  
   if item_id.startswith('m'):
     item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
     unit_id = item.unit_id
   elif '_' in item_id:
-    item = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
+    item = get_object_or_404(Topping, pk=item_id.split('_',1)[1])    
     unit_id = item.topping_group.unit_id
   else:
     item = get_object_or_404(Item, pk=item_id)
