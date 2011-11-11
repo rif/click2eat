@@ -55,6 +55,11 @@
             $("#min-span").show();
         }
     }
+    
+    function selectCart(cart){
+    	$(".cart-name").removeClass("selected-cart");
+        cart.addClass("selected-cart");
+    }
 
     $(function() {
         showHideMinOrder();
@@ -120,22 +125,21 @@
             return false;
         });
         $("#carts").on("click", ".cart-name", function() {
-            $(".cart-name").removeClass("selected-cart");
-            $(this).addClass("selected-cart");
+            selectCart($(this));
+            $(".top-span").fadeOut();
             return false;
         });
         $("#carts").on("click", ".decr-link, .incr-link", function() {
             var isMinus = $(this).hasClass("decr-link");
             var parent = $(this).parents("li:first");
             var iid = parent.attr("itemid");
-            var pos = parent.index();
             var parentUL = parent.parent("ul.items");
             var parentCart = parentUL.prev("a.cart-name:first");
-            parentCart.click(); // select cart
+            selectCart(parentCart);            
             if (isMinus) {
-                var href = "/order/decritem/" + parentCart.text() + "/{{ unit.id }}/" + pos + '_' + iid + "/";
+                var href = "/order/decritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
             } else {
-                var href = "/order/incritem/" + parentCart.text() + "/{{ unit.id }}/" + pos + '_' + iid + "/";
+                var href = "/order/incritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
             }
             $.get(href, function(data) {
                 parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
@@ -149,7 +153,10 @@
                 }
                 showHideMinOrder();
             });
-            $(".top-span").fadeOut();
+            var count = iid.match(/_/g);           
+            if(count.length < 2) {            	
+            	$(".top-span").fadeOut();
+            }
             return false;
         });
         $("#carts").ajaxError(function(event, request, settings) {

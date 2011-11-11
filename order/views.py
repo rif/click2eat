@@ -63,7 +63,7 @@ def shop(request, cart_name, item_id):
         pos, item_info = item_id.split('_', 1)        
         item, unit_id = __get_payload(item_info)        
         cn = '%s:%s' % (unit_id, cart_name)
-        if cn not in request.session and '_' in item_id: #first added item is a topping
+        if cn not in request.session and '_' in item_info: #first added item is a topping
             return {'error': '2e62'} # kriptic errors for hackers delight :)
         if cn in request.session and item_id.count('_') == 2 and item_id.rsplit('_',1)[0] not in request.session[cn]: # added topping without item            
             return {'error': '2e6z'}

@@ -28,6 +28,11 @@ class ItemInline(admin.TabularInline):
    extra = 0
    min_num = 1
 
+class SizeInline(admin.TabularInline):
+   model = models.Size
+   extra = 0
+   min_num = 1
+
 class ToppingInline(admin.TabularInline):
    model = models.Topping
    extra = 0
@@ -54,7 +59,7 @@ class ItemAdmin(admin.ModelAdmin):
     search_fields = ['internal_name', 'name_def', 'description_def']
     list_editable = ['promotion']
     list_filter = ['item_group']
-    inlines = [ItemTranslationInline]
+    inlines = [ItemTranslationInline, SizeInline]
     actions = ['clone_objects']
     #raw_id_fields = ('item_group',)
     #related_lookup_fields = {'fk': ['related_fk'],}

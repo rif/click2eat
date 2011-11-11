@@ -38,7 +38,7 @@
             $(".shop-top-link").click(function(e) {
                 var id = $(this).attr("itemid") + "_" + $(this).attr("topid");
                 // select the master element for the toppings
-                var masterElement = $("a.selected-cart").next("ul.items").children("li[itemid=" + $(this).attr("itemid") + "]:last");
+                var masterElement = $("a.selected-cart").next("ul.items").children("li[itemid$=" + $(this).attr("itemid") + "]:last");               
                 masterElement.children(".decr-link, .incr-link").hide();
                 shop(id);
                 e.preventDefault();
@@ -66,14 +66,13 @@
             if(id.indexOf("_") != -1) {
             	// if it is a topping get parents position
             	pos -= 1;
-            }
-            console.log(pos);
+            }  
             $.get("/order/shop/" + selCart.text() + "/" + pos + "_" + id + "/", function(data) {
                 parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
                 parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
                 $("#order-total").text(data['total']);
                 showHideMinOrder();
-            });            
+            });
         }
 
         function itemTemplate(id, price, title) {
@@ -171,7 +170,16 @@
 
                                         <div class="description">{% get_desc item %}</div>
                                         <div class="price">
+                                        	{% if item.size_set.count %}
+                                        	<select name="size" id="size">
+                                        		<option>{% trans 'Default' %} {{item.get_price}}{% trans 'RON' %}</option>
+                                        		{% for size in item.size_set.iterator %}
+	                                       		<option>{{size.name}} {{size.price}}{% trans 'RON' %}</option>
+    	                                    	{% endfor %}
+                                        	</select>
+                                        	{% else %}                                      
                                             {{ item.get_price }} {% trans 'RON' %}
+                                            {% endif %}
                                             <a href="#" itemid="{{ item.id }}" title=""
                                                class="button shop-link">{% trans 'Add to order' %}</a>
                                         </div>
