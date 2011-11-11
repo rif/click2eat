@@ -168,6 +168,16 @@ class Item(MultilingualModel):
       verbose_name = _('Item')
       verbose_name_plural = _('Items')
 
+class Size(models.Model):
+    name = models.CharField(_('name'), max_length=100)
+    item = models.ForeignKey('Item', verbose_name=_('item'))    
+    price = models.IntegerField(_('price'), default=1)
+    
+    class Meta:
+      ordering = ['name']        
+      verbose_name = _('Size')
+      verbose_name_plural = _('Sizes')
+
 class ToppingTranslation(models.Model):
   language = models.ForeignKey('Language')
   name = models.CharField(_('name'), max_length=100)
