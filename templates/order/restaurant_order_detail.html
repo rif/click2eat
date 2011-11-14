@@ -42,7 +42,12 @@
             {% for oi in order.orderitem_set.iterator %}
                 {% if not oi.master %}
                     <tr class="{% cycle 'odd' 'even' %}">
-                        <td class="item">{% get_name oi.get_payload %}</td>
+                        <td class="item">
+                        	{% get_name oi.get_payload %}
+                        	{% if oi.variation %}
+                        	{{ oi.variation.name }}
+                        	{% endif %}
+                        </td>
                         <td class="count">{{ oi.count }}</td>
                         <td class="price">{{ oi.old_price }}</td>
                     </tr>

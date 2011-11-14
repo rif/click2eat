@@ -12,12 +12,13 @@ from django.contrib.sites.models import Site
 from django import forms
 from django.views.generic import list_detail
 from annoying.decorators import render_to, ajax_request
+from annoying.functions import get_object_or_None
 import csv
 from datetime import datetime
 from geopy import distance
 from order.models import Order, OrderItem
 from restaurant.models import Unit, DeliveryType
-from menu.models import Item, Topping, MenuOfTheDay
+from menu.models import Item, Topping, MenuOfTheDay, Variation
 from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import BonusTransaction, BONUS_PERCENTAGE
@@ -55,30 +56,32 @@ def list_unit(request, unit_id):
         template_name = 'order/order_list_div.html',
     )
 
-
-
 @login_required
 @ajax_request
 def shop(request, cart_name, item_id):
-        pos, item_info = item_id.split('_', 1)        
-        item, unit_id = __get_payload(item_info)        
+        pos, item_info = item_id.split('_', 1)
+        vid = 0            
+        item, variation, unit_id = __get_payload(item_info)        
+        if variation: vid = str(variation.id)            
         cn = '%s:%s' % (unit_id, cart_name)
         if cn not in request.session and '_' in item_info: #first added item is a topping
             return {'error': '2e62'} # kriptic errors for hackers delight :)
         if cn in request.session and item_id.count('_') == 2 and item_id.rsplit('_',1)[0] not in request.session[cn]: # added topping without item            
             return {'error': '2e6z'}
         if cn not in request.session:
-          request.session[cn] = {}        
+          request.session[cn] = {}                      
+        price = item.get_price(variation_id=vid)
+        name = item.get_name(variation_id=vid)
         if item_id not in request.session[cn]:          
-          request.session[cn][item_id] = [1, item.get_price(), item.get_name()]
+          request.session[cn][item_id] = [1, price, name]
         else:          
           request.session[cn][item_id][0] += 1        
         request.session.modified = True        
         return {'total': __count_cart_sum(request, unit_id),
             'subtotal': __count_cart_sum(request, cn),
-            'id':item_id,
-            'price':item.get_price(),
-            'name':item.get_name()}
+            'id': item_id,
+            'price': price,
+            'name': name}
 
 @login_required
 @ajax_request
@@ -176,9 +179,14 @@ def __construct_order(request, unit, order, paid_with_bonus):
               top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
               if not master: pass # shit there is no master for this topping, figure out what to do              
               OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
-            else:
-              item = get_object_or_404(Item, pk=item_id)
-              master = OrderItem.objects.create(order=order, item=item, count=values[0], old_price=item.get_price(), cart=cn.split(':')[1])                        
+            else:              
+              if '-' in item_id: # we have a variation
+                  item_id, vari_id =  item_id.split('-',1)        
+                  variation = get_object_or_None(Variation, pk=vari_id)                            
+              item = get_object_or_404(Item, pk=item_id)              
+              if variation: price = variation.price
+              else: price = item.get_price()                            
+              master = OrderItem.objects.create(order=order, variation=variation, item=item, count=values[0], cart=cn.split(':')[1])                        
         del request.session[cn]
     #give bonus to the friend
     if paid_with_bonus:
@@ -266,7 +274,7 @@ def __count_cart_sum(request, cart_name):
   return round(s,2)
 
 def __get_payload(item_id):
-  item, unit_id = None,None  
+  item, unit_id, variation = None,None,None  
   if item_id.startswith('m'):
     item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
     unit_id = item.unit_id
@@ -274,9 +282,12 @@ def __get_payload(item_id):
     item = get_object_or_404(Topping, pk=item_id.split('_',1)[1])    
     unit_id = item.topping_group.unit_id
   else:
+    if '-' in item_id: # we have a variation
+        item_id, vari_id =  item_id.split('-',1)        
+        variation = get_object_or_None(Variation, pk=vari_id)
     item = get_object_or_404(Item, pk=item_id)
     unit_id = item.item_group.unit_id
-  return item, str(unit_id)
+  return item, variation, str(unit_id)
 
 @login_required
 @render_to('order/timer.html')

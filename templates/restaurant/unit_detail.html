@@ -27,7 +27,8 @@
             });
             $(".shop-link").click(function(e) {
                 var id = $(this).attr("itemid");
-                shop(id);
+                var vari_id = $(this).prev("#variation").val() | 0; // get the variation id or 0                
+                shop(id, vari_id);
                 // fade out all toppings except current one
                 $(this).parents("li.item:first").siblings().each(function(){
                 	$(this).next(".top-span").fadeOut();
@@ -36,11 +37,11 @@
                 e.preventDefault();
             });
             $(".shop-top-link").click(function(e) {
-                var id = $(this).attr("itemid") + "_" + $(this).attr("topid");
+                var id = $(this).attr("itemid") + "_" + $(this).attr("topid");                
                 // select the master element for the toppings
                 var masterElement = $("a.selected-cart").next("ul.items").children("li[itemid$=" + $(this).attr("itemid") + "]:last");               
                 masterElement.children(".decr-link, .incr-link").hide();
-                shop(id);
+                shop(id, 0);
                 e.preventDefault();
             });
             $("a.fancy").fancybox({
@@ -59,7 +60,7 @@
             });
         });
 
-        function shop(id) {
+        function shop(id, price_id) {
             var selCart = $("a.selected-cart");
             var parentUL = selCart.next("ul");
             var pos = parentUL.children('li.cart-item').length;
@@ -67,7 +68,7 @@
             	// if it is a topping get parents position
             	pos -= 1;
             }  
-            $.get("/order/shop/" + selCart.text() + "/" + pos + "_" + id + "/", function(data) {
+            $.get("/order/shop/" + selCart.text() + "/" + pos + "_" + id + "-" + price_id + "/", function(data) {
                 parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
                 parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
                 $("#order-total").text(data['total']);
@@ -170,11 +171,13 @@
 
                                         <div class="description">{% get_desc item %}</div>
                                         <div class="price">
-                                        	{% if item.size_set.count %}
-                                        	<select name="size" id="size">
-                                        		<option>{% trans 'Default' %} {{item.get_price}}{% trans 'RON' %}</option>
-                                        		{% for size in item.size_set.iterator %}
-	                                       		<option>{{size.name}} {{size.price}}{% trans 'RON' %}</option>
+                                        	{% if item.variation_set.exists%}
+                                        	<select name="variation" id="variation">
+                                        		<option value="0">{% trans 'Default' %} {{item.get_price}}{% trans 'RON' %}</option>
+                                        		{% for variation in item.variation_set.iterator %}
+                                        		{% if variation.active %}
+	                                       		<option value="{{ variation.id }}">{{variation.name}} {{variation.price}}{% trans 'RON' %}</option>
+	                                       		{% endif %}
     	                                    	{% endfor %}
                                         	</select>
                                         	{% else %}                                      

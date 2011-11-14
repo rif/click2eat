@@ -74,6 +74,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('order'))
     item = models.ForeignKey('menu.Item', verbose_name=_('item'), null=True)
     topping = models.ForeignKey('menu.Topping', verbose_name=_('topping'), null=True)
+    variation = models.ForeignKey('menu.Variation', verbose_name=_('variation'), null=True)
     menu_of_the_day = models.ForeignKey('menu.MenuOfTheDay', verbose_name=_('menu of the day'), null=True)
     count = models.IntegerField(_('count'), default=1)
     old_price = models.FloatField(_('price'), default=0)
@@ -90,6 +91,8 @@ class OrderItem(models.Model):
                 self.old_price = self.topping.price
             if self.menu_of_the_day:
                 self.old_price = self.menu_of_the_day.price
+            if self.variation:
+                self.old_price = self.variation.price
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_amount()
 

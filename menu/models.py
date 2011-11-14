@@ -2,6 +2,7 @@ from django.db import models
 from multiling import MultilingualModel
 from datetime import datetime, date
 from django.utils.translation import ugettext_lazy as _
+from annoying.functions import get_object_or_None
 from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 
@@ -116,11 +117,15 @@ class Item(MultilingualModel):
   def __unicode__(self):
       return self.name_def
 
-  def get_name(self, lang=None):    
-    try:
-      if lang == 'en' and self.name_en: return self.name_en
-    except: pass
-    return self.name_def
+  def get_name(self, lang=None, variation_id='0'):      
+      n = self.name_def     
+      try:
+          if lang == 'en' and self.name_en: n = self.name_en
+      except: pass
+      if str(variation_id) != '0':
+          variation = get_object_or_None(Variation, pk=variation_id)
+          n += ' ' + variation.name      
+      return n
 
   def get_description(self, lang=None):
     try:
@@ -131,9 +136,18 @@ class Item(MultilingualModel):
   def get_id(self):
     return self.id
 
-  def get_price(self):
+  def get_price(self, variation_id='0'):
+      variation = None      
+      if variation_id != '0':
+          variation = get_object_or_None(Variation, pk=variation_id)
       if self.promotion and self.promotion.is_active():
-          return self.promotion.get_new_price(self.price)
+          if variation:
+            variation = get_object_or_None(Variation, pk=variation_id)
+            return round(self.promotion.get_new_price(variation.price),2)
+          else:              
+            return round(self.promotion.get_new_price(self.price),2)
+      if variation:  
+          return round(variation.price,2) 
       return round(self.price,2)
 
   def has_promotion(self):
@@ -168,15 +182,19 @@ class Item(MultilingualModel):
       verbose_name = _('Item')
       verbose_name_plural = _('Items')
 
-class Size(models.Model):
+class Variation(models.Model):
     name = models.CharField(_('name'), max_length=100)
     item = models.ForeignKey('Item', verbose_name=_('item'))    
     price = models.IntegerField(_('price'), default=1)
+    active = models.BooleanField(_('active'), default=True)
+    
+    def __unicode__(self):
+      return self.name 
     
     class Meta:
       ordering = ['name']        
-      verbose_name = _('Size')
-      verbose_name_plural = _('Sizes')
+      verbose_name = _('Variation')
+      verbose_name_plural = _('Variation')
 
 class ToppingTranslation(models.Model):
   language = models.ForeignKey('Language')
