@@ -94,16 +94,14 @@ def decr_item(request, cart_name, unit_id, item_id):
             unit_price = request.session[cn][item_id][1]
             subtotal = __count_cart_sum(request,cn)
           else:
-            count = 0
-            unit_price = 0
+            count, unit_price = 0, 0
             del request.session[cn][item_id]
             """ Delete assocaited toppings """
             for top in [k for k in request.session[cn].keys() if item_id + '_' in k]:
               del request.session[cn][top]
             subtotal = __count_cart_sum(request,cn)
             """ Delete the cart if all the items are removed """
-            if len(request.session[cn]) == 0:
-              del request.session[cn]
+            if len(request.session[cn]) == 0: del request.session[cn]
           request.session.modified = True
           total = __count_cart_sum(request,unit_id)
           return {'total': total,
@@ -279,7 +277,9 @@ def __get_payload(item_id):
     item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
     unit_id = item.unit_id
   elif '_' in item_id:
-    item = get_object_or_404(Topping, pk=item_id.split('_',1)[1])    
+    id = item_id.split('_',1)[1]
+    id = id.split('-')[0]     
+    item = get_object_or_404(Topping, pk=id)    
     unit_id = item.topping_group.unit_id
   else:
     if '-' in item_id: # we have a variation

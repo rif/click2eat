@@ -171,7 +171,7 @@
 
                                         <div class="description">{% get_desc item %}</div>
                                         <div class="price">
-                                        	{% if item.variation_set.exists%}
+                                        	{% if item.variation_set.exists %}
                                         	<select name="variation" id="variation">
                                         		<option value="0">{% trans 'Default' %} {{item.get_price}}{% trans 'RON' %}</option>
                                         		{% for variation in item.variation_set.iterator %}
