@@ -38,18 +38,15 @@
             });
             $(".shop-top-link").click(function(e) { 
             	var masterItem = null;           	            	
-            	$("li.cart-item").each(function(){
+            	$(".selected-cart").next("ul.items").children("li.cart-item").each(function(){
             		var count = $(this).attr("itemid").match(/_/g);
-            		console.log(count.length);
             		if(count.length == 1) {
             			masterItem = $(this);
             		}
-            	});
+            	});            	
             	console.log(masterItem);
-                var id = masterItem.attr("itemid") + "_" + $(this).attr("topid");                
-                // select the master element for the toppings                
-                var masterElement = $("a.selected-cart").next("ul.items").children("li[itemid$=" + $(this).attr("itemid") + "]:last");               
-                masterElement.children(".decr-link, .incr-link").hide();
+                var id = masterItem.attr("itemid") + "_" + $(this).attr("topid");                               
+                masterItem.children(".decr-link, .incr-link").hide();
                 shop(id, 0);
                 e.preventDefault();
             });
