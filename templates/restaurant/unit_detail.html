@@ -44,9 +44,8 @@
             			masterItem = $(this);
             		}
             	});            	
-            	console.log(masterItem);
                 var id = masterItem.attr("itemid") + "_" + $(this).attr("topid");                               
-                masterItem.children(".decr-link, .incr-link").hide();
+                masterItem.children(".incr-link").hide();
                 shop(id, 0);
                 e.preventDefault();
             });
