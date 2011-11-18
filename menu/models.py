@@ -215,7 +215,7 @@ class Topping(MultilingualModel):
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
 
-  def get_name(self, lang=None):
+  def get_name(self, lang=None, variation_id='0'):
     try:
       if lang == 'en' and self.name_en: return self.name_en
     except: pass
@@ -230,7 +230,7 @@ class Topping(MultilingualModel):
   def get_id(self):
     return self.id
 
-  def get_price(self):
+  def get_price(self, variation_id='0'):
       return self.price
 
   def __unicode__(self):
@@ -298,7 +298,7 @@ class MenuOfTheDay(models.Model):
     def get_absolute_url(self):
       return ('menu:daily_menu', [str(self.id)])
 
-    def get_name(self, lang=None):
+    def get_name(self, lang=None, variation_id='0'):
       return self.name
 
     def get_description(self, lang=None):
@@ -307,7 +307,7 @@ class MenuOfTheDay(models.Model):
     def get_id(self):
       return 'm%d' % self.id
 
-    def get_price(self):
+    def get_price(self,variation_id='0'):
       return self.price
 
     class Meta:
