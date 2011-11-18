@@ -148,8 +148,9 @@
                     $("span.item-count", parent).text(data['count']);
                     $("span.item-total", parent).text(data['itemtotal']);
                 } else {
+                	// remove attached toppings
+                	parent.nextAll("li.cart-item[itemid^='" + iid + "']").remove();
                     parent.remove();
-                    $("#items>li[itemid^=" + iid + "]").fadeOut();
                 }
                 showHideMinOrder();
             });
@@ -162,5 +163,15 @@
         $("#carts").ajaxError(function(event, request, settings) {
             alert("{% trans 'Error processing your command!' %}");
         });
+        // hide -/+ actions where they are not appropriate
+        $("li.cart-item").each(function(){
+        	var nextItem = $(this).next("li.cart-item");
+     		if(nextItem.length) {
+				var count = nextItem.attr("itemid").match(/_/g);
+  				if(count.length == 2){
+		     		$(this).children(".incr-link").hide();
+  				}
+  			}
+		});
     });
 </script>
