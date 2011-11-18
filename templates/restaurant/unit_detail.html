@@ -36,9 +36,18 @@
                 $(this).parents("li.item:first").next(".top-span").fadeIn();                
                 e.preventDefault();
             });
-            $(".shop-top-link").click(function(e) {
-                var id = $(this).attr("itemid") + "_" + $(this).attr("topid");                
-                // select the master element for the toppings
+            $(".shop-top-link").click(function(e) { 
+            	var masterItem = null;           	            	
+            	$("li.cart-item").each(function(){
+            		var count = $(this).attr("itemid").match(/_/g);
+            		console.log(count.length);
+            		if(count.length == 1) {
+            			masterItem = $(this);
+            		}
+            	});
+            	console.log(masterItem);
+                var id = masterItem.attr("itemid") + "_" + $(this).attr("topid");                
+                // select the master element for the toppings                
                 var masterElement = $("a.selected-cart").next("ul.items").children("li[itemid$=" + $(this).attr("itemid") + "]:last");               
                 masterElement.children(".decr-link, .incr-link").hide();
                 shop(id, 0);
@@ -64,15 +73,20 @@
             var selCart = $("a.selected-cart");
             var parentUL = selCart.next("ul");
             var pos = parentUL.children('li.cart-item').length;
+            var args = pos + "_" + id + "-" + price_id + "/"
             if(id.indexOf("_") != -1) {
-            	// if it is a topping get parents position
-            	pos -= 1;
-            }  
-            $.get("/order/shop/" + selCart.text() + "/" + pos + "_" + id + "-" + price_id + "/", function(data) {
-                parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
-                parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
-                $("#order-total").text(data['total']);
-                showHideMinOrder();
+            	// if it is a topping then we only need the id             	
+            	args = id;
+            }              
+            $.get("/order/shop/" + selCart.text() + "/" + args , function(data) {
+            	if (data.hasOwnProperty('id') && data.hasOwnProperty('price') && data.hasOwnProperty('name')){
+                	parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
+                	parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
+                	$("#order-total").text(data['total']);
+                	showHideMinOrder();
+               } else {
+               		alert("{% trans 'Error processing your command!' %}");
+               }
             });
         }
 

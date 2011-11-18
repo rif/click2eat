@@ -69,7 +69,7 @@ def shop(request, cart_name, item_id):
         if cn in request.session and item_id.count('_') == 2 and item_id.rsplit('_',1)[0] not in request.session[cn]: # added topping without item            
             return {'error': '2e6z'}
         if cn not in request.session:
-          request.session[cn] = {}                      
+          request.session[cn] = {}                            
         price = item.get_price(variation_id=vid)
         name = item.get_name(variation_id=vid)
         if item_id not in request.session[cn]:          
@@ -272,7 +272,7 @@ def __count_cart_sum(request, cart_name):
   return round(s,2)
 
 def __get_payload(item_id):
-  item, unit_id, variation = None,None,None  
+  item, unit_id, variation = None,None,None
   if item_id.startswith('m'):
     item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
     unit_id = item.unit_id
@@ -286,7 +286,7 @@ def __get_payload(item_id):
         item_id, vari_id =  item_id.split('-',1)        
         variation = get_object_or_None(Variation, pk=vari_id)
     item = get_object_or_404(Item, pk=item_id)
-    unit_id = item.item_group.unit_id
+    unit_id = item.item_group.unit_id  
   return item, variation, str(unit_id)
 
 @login_required
