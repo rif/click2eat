@@ -14,7 +14,7 @@ def fortune_ajax(request):
     if request.user.is_authenticated():
         command_link = '<a onclick="addItem(\'%(href)s\', \'%(redir)s\'); return false;" href="#">%(order_now)s</a>' % \
             {'redir': reverse("restaurant:detail", args=[item.item_group.unit_id]),
-             'href': reverse("order:shop", args=[request.user.username, item.id]),
+             'href': reverse("order:shop", args=[request.user.username, '0_%s-0' % item.id]),
              'order_now': _('Order this Item')}
     if not item: item = _('No item yet defined!')
     return locals()
