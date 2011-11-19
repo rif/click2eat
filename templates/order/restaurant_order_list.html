@@ -6,10 +6,13 @@
 {% block extrastyle %}
 <link href="{{ STATIC_URL }}css/css3buttons.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <style type="text/css">
-  body {font-size: 16px;}
+  body {font-size: 16px;}  
   tr>td {font-size: 1.2em;}
+  tr.red {border: 1px solid indianred;}
   tr.red>td>a {color: indianred;}
+  tr.yellow {border: 1px solid #F2D61A;}
   tr.yellow>td>a {color: #F2D61A;}
+  tr.green {border: 1px solid #008000;}
   tr.green>td>a {color: #008000;}
   .details{line-height:1.3em;}
   .paid-with-bonus{color: indianred;}
@@ -26,16 +29,18 @@
     	var before = $("#order_history tr:last").attr("oid");    	
       	$(this).fadeOut();
       	$(this).load("{% url order:restaurant_list_ajax unit_id %}", function(){
-	        $(this).fadeIn();            	
+	        $(this).fadeIn();    
+	        //console.log(parseInt(before), parseInt($("#order_history tr:last").attr("oid")));     	
         	if($("#order_history tr").length > 0 && parseInt(before) < parseInt($("#order_history tr:last").attr("oid"))){        		        		
         		window.webkitNotifications.createNotification("http://click2eat.ro/static/images/favicon.ico", "{% trans 'Click2eat order received' %}", "{% trans 'You have received an order!' %}").show();
+        		new Audio("{{ STATIC_URL }}glass.wav").play();
         	}
       	});     	
     });
-    $("#order-list").delegate(".order-link", "click", function(){
+    $("#order-list").delegate(".order-tr", "click", function(){
       var orderinfo = $("#order-info");
       orderinfo.slideUp();
-      orderinfo.load($(this).attr("href"), function(){orderinfo.slideDown();});
+      orderinfo.load($(".order-link", this).attr("href"), function(){orderinfo.slideDown();});
       return false;
     });
     $("#show-order-history").click(function(){
@@ -54,7 +59,7 @@
     	window.webkitNotifications.requestPermission();
     	$("#show_notifications").hide();
         return false;
-      });
+      });      
      }
   });
 </script>

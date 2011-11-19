@@ -70,20 +70,26 @@
             var parentUL = selCart.next("ul");
             var pos = parentUL.children('li.cart-item').length;
             var args = pos + "_" + id + "-" + price_id + "/"
+            var existingTopping = null;
             if(id.indexOf("_") != -1) {
             	// if it is a topping then we only need the id             	
             	args = id;
-            }              
-            $.get("/order/shop/" + selCart.text() + "/" + args , function(data) {
-            	if (data.hasOwnProperty('id') && data.hasOwnProperty('price') && data.hasOwnProperty('name')){
-                	parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
-                	parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
-                	$("#order-total").text(data['total']);
-                	showHideMinOrder();
-               } else {
-               		alert("{% trans 'Error processing your command!' %}");
-               }
-            });
+            	existingTopping = $("li.cart-item[itemid='" + id + "']");
+            }           
+			if(existingTopping && existingTopping.length > 0){
+				$('a.incr-link', existingTopping).click();
+			} else {
+		        $.get("/order/shop/" + selCart.text() + "/" + args , function(data) {
+		        	if (data.hasOwnProperty('id') && data.hasOwnProperty('price') && data.hasOwnProperty('name')){
+		            	parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
+		            	parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
+		            	$("#order-total").text(data['total']);
+		            	showHideMinOrder();
+		           } else {
+		           		alert("{% trans 'Error processing your command!' %}");
+		           }
+		        });
+            }
         }
 
         function itemTemplate(id, price, title) {
