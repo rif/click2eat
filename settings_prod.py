@@ -11,12 +11,11 @@ DATABASES = {
     }
 }
 
-INSTALLED_APPS += ('sentry.client',)
+INSTALLED_APPS += ('raven.contrib.django',)
 
 ENVELOPE_EMAIL_RECIPIENTS = ('office@click2eat.ro')
 
-SENTRY_REMOTE_URL = 'http://click2eat.ro:9000/store/'
-SENTRY_CLIENT = 'sentry.client.async.AsyncSentryClient'
+SENTRY_SERVERS = ['http://click2eat.ro:9000/store/']
 SENTRY_KEY = 'mamaaremere'
 
 LOGGING = {
