@@ -5,7 +5,7 @@
     <table>
       <tbody>
 	    {% for order in order_list %}
-	    <tr oid="{{ order.id }}" class="{% cycle 'odd' 'even' %} {{ order.get_priority_class }}">
+	    <tr oid="{{ order.id }}" class="{% cycle 'odd' 'even' %} {{ order.get_priority_class }} order-tr">
 	      <td class="item"><a class="order-link" target="_self" href="{% url order:restaurant_detail order.id %}">{{order.user.get_full_name }}</a></td>
 	      <td>{{order.creation_date|timesince}}</td>
 	      <td>{{order.desired_delivery_time}} ({{order.desired_delivery_time|timeuntil}})</td>
