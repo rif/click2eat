@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-19 10:46+0200\n"
-"PO-Revision-Date: 2011-11-19 10:49\n"
+"PO-Revision-Date: 2011-11-22 21:35\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -452,11 +452,11 @@ msgstr "Trimisa"
 
 #: order/models.py:10
 msgid "Received"
-msgstr "Primit"
+msgstr "Primita"
 
 #: order/models.py:11
 msgid "Delivered"
-msgstr "Livrată"
+msgstr "Livrata"
 
 #: order/models.py:12
 msgid "Canceled"
