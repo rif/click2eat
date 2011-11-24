@@ -189,9 +189,12 @@ def __construct_order(request, unit, order, paid_with_bonus):
     #give bonus to the friend
     if paid_with_bonus:
         _consume_bonus(order)
-    initial_friend = order.user.get_profile().get_initial_friend()
-    if initial_friend and not order.paid_with_bonus:
-        b = BonusTransaction.objects.create(user=initial_friend, order=order, amount=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
+    try:
+        initial_friend = order.user.get_profile().get_initial_friend()
+        if initial_friend and not order.paid_with_bonus:
+            b = BonusTransaction.objects.create(user=initial_friend, order=order, amount=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
+    except: # if the user does not have userprofile then forget it
+        pass
     subject = _('New Order')
     body = render_to_string('order/mail_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
     send_from = 'office@click2eat.ro'
@@ -242,11 +245,14 @@ def confirm_order(request, unit_id):
         form = OrderForm()
     form.fields['delivery_type'] = forms.ModelChoiceField(unit.delivery_type.all(), required=True, initial={'primary': True})
     form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
-    profile = request.user.get_profile()
-    show_pay_with_bonus = profile and profile.get_current_bonus() > total_sum    
-    if show_pay_with_bonus:
-        messages.info(request, _('Congratulations! You have enough bonus to pay for your order. Please check "Pay using bonus" to use it.'))
-        form.fields['paid_with_bonus'] = forms.BooleanField(label=_('Pay using bonus'), help_text=_('We shall use the minimum number of received bonuses enough to cover the order total amount'), required=False)
+    try:
+        profile = request.user.get_profile()
+        show_pay_with_bonus = profile and profile.get_current_bonus() > total_sum    
+        if show_pay_with_bonus:
+            messages.info(request, _('Congratulations! You have enough bonus to pay for your order. Please check "Pay using bonus" to use it.'))
+            form.fields['paid_with_bonus'] = forms.BooleanField(label=_('Pay using bonus'), help_text=_('We shall use the minimum number of received bonuses enough to cover the order total amount'), required=False)
+    except: # if the user does not have userprofile then forget it
+        pass
     return locals()
 
 @login_required
