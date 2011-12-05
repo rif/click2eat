@@ -18,6 +18,7 @@ from menu.models import MenuOfTheDay
 from userprofiles.models import BonusTransaction
 from order.views import __is_restaurant_administrator
 from restaurant.forms import InvoiceForm
+from django.core.urlresolvers import reverse
 
 def __user_has_profile(user):
     if not user.is_authenticated() or user.is_anonymous() : return None
@@ -59,6 +60,14 @@ def unit_list(request):
 def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     motd = unit.get_motd()
+    unit_carts = [key.split(':',1)[0] for key in request.session.keys()\
+        if (key.split(':',1)[0].isdigit() and key.split(':',1)[0] != unit_id)]
+    if len(unit_carts) > 1:
+        unit_names = Unit.objects.filter(id__in=unit_carts).values_list('id', 'name')
+        msg = "You have more product added at the following restaurants: "
+        for u_id, u_name in unit_names:
+            msg += '<a href="%s">%s</a> ' % (reverse('restaurant:detail', kwargs={'unit_id': u_id}), u_name)
+        messages.warning(request, msg)
     if motd.exists(): motd = motd[0]
     else: motd = None
     return {'object': unit, 'motd': motd, 'we_are_in_unit_detail': True}

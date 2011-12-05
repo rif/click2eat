@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required
-#from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
 from django.core.cache import cache

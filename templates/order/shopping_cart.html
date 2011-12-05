@@ -9,7 +9,7 @@
                 <li class="cart-item" itemid="{{ item }}">
                     <span class="item-count">{{ values.0 }}</span>
                     <span class="item-price">{{ values.1|unlocalize }}</span>
-                    <span class="item-title">x {{ values.2 }}</span>
+                    <span class="item-title">x {{ values.2|truncatewords:3 }}</span>
                     <a class="decr-link" href="#"></a>
                     <a class="incr-link" href="#"></a>
                     <span class="item-currency">{% trans 'RON' %}</span>

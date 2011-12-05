@@ -7,6 +7,7 @@
     <script type="text/javascript">
         $(function() {
         	// in this view we don't have commercials
+            $("#messages").css("margin-top", "15px");
         	$("#content, #sidebar2").css("margin-top", "70px");
             $("#shopping-cart").load("{% url order:shopping-cart object.id %}");
 
