@@ -89,9 +89,9 @@ class Item(MultilingualModel):
       ('PC', _('pieces')),
       ('CM', _('cm')),
       )
-  internal_name = models.CharField(_('internal name'), max_length=50)
-  index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
-  name_def = models.CharField(_('name'), max_length=50, help_text=_('The default name for this item'))
+  internal_name = models.CharField(_('internal name'), max_length=70)
+  index = models.CharField(_('index'), max_length=70, help_text=_('Used for display order'))
+  name_def = models.CharField(_('name'), max_length=70, help_text=_('The default name for this item'))
   description_def = models.CharField(_('description'), max_length=200, help_text=_('The default description for this item'))
   price = models.FloatField(_('price'))
   promotion = models.ForeignKey('Promotion', verbose_name=_('promotion'), null=True, blank=True)
