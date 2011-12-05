@@ -179,13 +179,14 @@
                                     <li class="item {% if item.is_new %}new-item{% endif %} pozrel">
                                         <div class="name">
                                         {% get_name item %}
+                                        <span class="unit">{{ object.name }}</span>
                                         {% if item.image_path %}
                                         <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">{% trans 'preview' %}</a>
                                         {% endif %}
                                         </div>
                                         <br/>
 
-                                        <div class="description">{% get_desc item %}</div>
+                                        <div class="description">{% get_desc item %} {% if item.quantity %}{{ item.quantity }}{{ item.get_measurement_unit_display }}{% endif %}</div>
                                         <div class="price">
                                         	{% if item.variation_set.exists %}
                                         	<select name="variation" id="variation">

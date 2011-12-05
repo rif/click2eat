@@ -34,7 +34,7 @@ def profile_detail(request, username):
 @login_required
 def create(request, from_order=0):
     if from_order:
-        cache.set('back_to_order', from_order, 300) #hold the thought fro 5 minutes
+        cache.set('back_to_order', from_order, 300) #hold the thought for 5 minutes
     if request.method == 'POST':
         form = DeliveryAddressForm(request.POST)
         if form.is_valid():

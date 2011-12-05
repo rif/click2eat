@@ -48,11 +48,11 @@ def index(request):
 
 @render_to('restaurant/unit_list.html')
 def unit_list(request):
-    units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
+    units = Unit.objects.filter(active=True).annotate(avg_quality=Avg('order__rating__quality')).\
         annotate(avg_speed=Avg('order__rating__delivery_time')).\
         annotate(comment_count=Count('order__rating__feedback')).\
         order_by('?')
-    return {'units': units, 'gold': units.filter(name='GL'), 'platinum': units.filter(name='PL')}
+    return {'units': units}#, 'gold': units.filter(name='GL'), 'platinum': units.filter(name='PL')}
 
 @login_required
 @render_to('restaurant/unit_detail.html')
