@@ -15,7 +15,7 @@ from django.contrib.localflavor.ro.forms import ROPhoneNumberField
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     primary = models.BooleanField(_('primary'), help_text=_('Is this your most frequent used address?'))
-    city = models.CharField(_('city'), max_length=50, default='Timisoara')
+    city = models.CharField(_('city'), max_length=50, editable=False, default='Timisoara')
     street = models.CharField(_('street'), max_length=50)
     number = models.CharField(_('number'), max_length=5)
     block = models.CharField(_('block'), max_length=5, null=True, blank=True)

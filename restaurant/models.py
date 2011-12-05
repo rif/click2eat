@@ -183,6 +183,7 @@ class Unit(models.Model):
     admin_users = models.CharField(_('admin users'), max_length=100, null=True, blank=True, help_text=_('the users that can access front-end administration pages for this unit.'))
     added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
     info = models.TextField(_('info'), null=True, blank=True)
+    short_desc = models.CharField('short desc', max_length=200, null=True, blank=True, help_text=_('stuff like food specific'))
     discount = models.TextField(_('discount'), null=True, blank=True)
     active = models.BooleanField(_('active'), default=True)
 
