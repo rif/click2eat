@@ -206,7 +206,7 @@ BIBLION_SECTIONS = (('news',_('news')), ('promo', _('promotions')))
 
 HONEYPOT_FIELD_NAME = 'information'
 
-TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
+TINYMCE_JS_URL = STATIC_URL + 'tiny_mce/tiny_mce.js'
 TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_buttons1' : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
     'theme': "advanced",
