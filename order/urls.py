@@ -7,6 +7,7 @@ urlpatterns = patterns('',
        url(r'^list/(?P<unit_id>\d+)/$', views.list_unit, name='list_unit'),
        url(r'^(?P<object_id>\d+)/$', views.limited_object_detail,
                {'queryset': Order.objects.all(), 'template_object_name': 'order'}, name='detail'),
+       #Pos_mMasterId-VarID_TopId
        url(r'^shop/(?P<cart_name>.+)/(?P<item_id>\d+_m?\d+-\d+_?\d*)/$', views.shop, name='shop'),
        url(r'^decritem/(?P<cart_name>.+)/(?P<unit_id>\d+)/(?P<item_id>m?\d+_m?\d+-\d+_?\d*)/$', views.decr_item,
            name='decr-item'),

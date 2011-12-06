@@ -59,6 +59,7 @@ def list_unit(request, unit_id):
 @login_required
 @ajax_request
 def shop(request, cart_name, item_id):
+        #Pos_mMasterId-VarID_TopId
         pos, item_info = item_id.split('_', 1)
         vid = 0            
         item, variation, unit_id = __get_payload(item_info)        
@@ -278,9 +279,12 @@ def __count_cart_sum(request, cart_name):
   return round(s,2)
 
 def __get_payload(item_id):
+  #Pos_mMasterId-VarID_TopId
   item, unit_id, variation = None,None,None
   if item_id.startswith('m'):
-    item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
+    item_id = item_id[1:].split('-')[0]
+    #discard m char and variation id (not needed for motd)    
+    item = get_object_or_404(MenuOfTheDay, pk=item_id)
     unit_id = item.unit_id
   elif '_' in item_id:
     id = item_id.split('_',1)[1]
