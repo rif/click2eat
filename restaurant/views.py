@@ -61,8 +61,9 @@ def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     motd = unit.get_motd()
     unit_carts = [key.split(':',1)[0] for key in request.session.keys()\
-        if (key.split(':',1)[0].isdigit() and key.split(':',1)[0] != unit_id)]
-    if len(unit_carts) > 1:
+        if (key.split(':',1)[0].isdigit() and key.split(':',1)[0] != unit_id and len(request.session[key])>0)]
+    # the last one checks if there are actual products in the cart
+    if len(unit_carts) > 0:
         unit_names = Unit.objects.filter(id__in=unit_carts).values_list('id', 'name')
         msg = "You have more product added at the following restaurants: "
         for u_id, u_name in unit_names:
