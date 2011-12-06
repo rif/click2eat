@@ -4,6 +4,7 @@ from userprofiles import views
 from userprofiles.forms import BucatarRegistrationForm
 from restaurant.sitemaps import UnitSitemap
 from django.conf import settings
+from filebrowser.sites import site
 
 sitemaps = {'units': UnitSitemap}
 
@@ -17,7 +18,7 @@ urlpatterns = patterns('',
                        (r'^wheel/', include('wheel.urls', namespace='wheel')),
                        (r'^bonus/', include('bonus.urls', namespace='bonus')),
                        (r'^mobile/', include('mobile.urls', namespace='mobile')),
-                       (r'^admin/filebrowser/', include('filebrowser.urls')),
+                       url(r'^admin/filebrowser/', include(site.urls)),
                        (r'^grappelli/', include('grappelli.urls')),
                        (r'^admin/', include(admin.site.urls)),
                        url(r'^accounts/register/$', 'registration.views.register',
