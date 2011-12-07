@@ -45,6 +45,10 @@ class ItemGroup(MultilingualModel):
 
   def __unicode__(self):
       return self.internal_name
+  
+  @staticmethod
+  def autocomplete_search_fields():
+      return ("id__iexact", "name_def__icontains", "internal_name__icontains")
 
   class Meta:
       translation = ItemGroupTranslation
