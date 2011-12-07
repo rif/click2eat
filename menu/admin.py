@@ -44,7 +44,7 @@ class VATAdmin(admin.ModelAdmin):
 class ItemGroupAdmin(admin.ModelAdmin):
     prepopulated_fields = {"index": ("internal_name",)}
     list_display = ('internal_name', 'name_def', 'index', 'unit', 'exclusive', 'active')
-    search_fields = ['internal_name']
+    search_fields = ['internal_name', 'unit__name']
     list_filter = ['unit']
     inlines = [ItemGroupInline, ItemInline]
 
@@ -61,8 +61,8 @@ class ItemAdmin(admin.ModelAdmin):
     list_filter = ['item_group']
     inlines = [ItemTranslationInline, VariationInline]
     actions = ['clone_objects']
-    #raw_id_fields = ('item_group',)
-    #related_lookup_fields = {'fk': ['related_fk'],}
+    raw_id_fields = ('item_group',)
+    autocomplete_lookup_fields = {'fk': ['item_group'],}
     fieldsets = (
         (None, {
             'fields': ('internal_name', 'index', ('name_def', 'description_def'), ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
