@@ -127,7 +127,6 @@ def incr_item(request, cart_name, unit_id, item_id):
                 'itemtotal': count * unit_price}
         return {'error': '29a'}
 
-@login_required
 @render_to('order/shopping_cart.html')
 def shopping_cart(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)

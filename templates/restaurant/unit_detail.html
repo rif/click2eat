@@ -67,6 +67,9 @@
         });
 
         function shop(id, price_id) {
+            {% if not user.is_authenticated %}
+                window.location = "{% url auth_login %}";
+            {% endif %}
             var selCart = $("a.selected-cart");
             var parentUL = selCart.next("ul");
             var pos = parentUL.children('li.cart-item').length;
