@@ -55,7 +55,6 @@ def unit_list(request):
         order_by('?')
     return {'units': units}#, 'gold': units.filter(name='GL'), 'platinum': units.filter(name='PL')}
 
-@login_required
 @render_to('restaurant/unit_detail.html')
 def unit_detail(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
@@ -65,7 +64,7 @@ def unit_detail(request, unit_id):
     # the last one checks if there are actual products in the cart
     if len(unit_carts) > 0:
         unit_names = Unit.objects.filter(id__in=unit_carts).values_list('id', 'name')
-        msg = "You have more product added at the following restaurants: "
+        msg = _("You have more product added at the following restaurants: ")
         for u_id, u_name in unit_names:
             msg += '<a href="%s">%s</a> ' % (reverse('restaurant:detail', kwargs={'unit_id': u_id}), u_name)
         messages.warning(request, msg)
