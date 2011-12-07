@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-07 11:38+0200\n"
-"PO-Revision-Date: 2011-12-07 11:38\n"
+"POT-Creation-Date: 2011-12-07 12:31+0200\n"
+"PO-Revision-Date: 2011-12-07 12:34\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -418,7 +418,7 @@ msgid "day"
 msgstr "data"
 
 #: menu/models.py:316 menu/models.py:317 templates/menu/daily_menu.html:5
-#: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:164
+#: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:167
 msgid "Menu of the day"
 msgstr "Meniul zilei"
 
@@ -593,11 +593,11 @@ msgstr "Apreciere"
 msgid "Ratings"
 msgstr "Aprecieri"
 
-#: order/views.py:199
+#: order/views.py:198
 msgid "New Order"
 msgstr "Comandă nouă"
 
-#: order/views.py:224
+#: order/views.py:223
 msgid ""
 "This restaurant is now closed! Please check the open hours and set "
 "desired delivery time accordingly."
@@ -605,12 +605,12 @@ msgstr ""
 "Acest restaurant este momentan închis! Vă rugam să consultați orarul "
 "și să specificați ziua și ora de livrare în consecință."
 
-#: order/views.py:226
+#: order/views.py:225
 #, python-format
 msgid "This restaurant has a minimum order value of %(min)d"
 msgstr "Restaurantul are o comandă minimă de %(min)d"
 
-#: order/views.py:253
+#: order/views.py:252
 msgid ""
 "Congratulations! You have enough bonus to pay for your order. Please "
 "check \"Pay using bonus\" to use it."
@@ -618,11 +618,11 @@ msgstr ""
 "Felicitări! Ați acumulat suficient bonus pentru a plăti această "
 "comandă. Vă rugăm să bifați \"Plata cu bonus\" pentru a-l folosi."
 
-#: order/views.py:254
+#: order/views.py:253
 msgid "Pay using bonus"
 msgstr "Plata cu bonus"
 
-#: order/views.py:254
+#: order/views.py:253
 msgid ""
 "We shall use the minimum number of received bonuses enough to cover the"
 " order total amount"
@@ -630,27 +630,27 @@ msgstr ""
 "Vom folosi un numar minim de bonus-uri primite car sunt suficiente "
 "pentru a acoperi suma totală a comenzii"
 
-#: order/views.py:315
+#: order/views.py:314
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
-#: order/views.py:324 order/views.py:332
+#: order/views.py:323 order/views.py:331
 msgid "Current orders"
 msgstr "Comenzile curente"
 
-#: order/views.py:340
+#: order/views.py:339
 msgid "Order history"
 msgstr "Istoric comenzi"
 
-#: order/views.py:372
+#: order/views.py:371
 msgid "Click2eat: Order sent to you!"
 msgstr "Click2eat: Comanda trimisă"
 
-#: order/views.py:387
+#: order/views.py:386
 msgid "Thank you! You already sent feedback for this order."
 msgstr "Mulțumim! Deja o apreciere pentru această comandă."
 
-#: order/views.py:398
+#: order/views.py:397
 msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
@@ -883,6 +883,14 @@ msgstr "Unitate"
 #: templates/mobile/units.html.py:5
 msgid "Units"
 msgstr "Unități"
+
+#: restaurant/views.py:33
+msgid ""
+"Website in testing! You are welcome to have a peek but orders are not "
+"delivered yet. Please come back!"
+msgstr ""
+"Site în teste! Sunteți invitați să aruncați o privire dar comenzile nu"
+" sunt onorate încă. Penru comenzi vă rugăm să reveniti!"
 
 #: restaurant/views.py:68
 msgid "You have more product added at the following restaurants: "
@@ -1164,11 +1172,11 @@ msgstr ""
 #: templates/order/shopping_cart.html:122
 #: templates/profiles/profile_detail.html:40
 #: templates/profiles/profile_detail.html:91
-#: templates/restaurant/unit_detail.html:103
-#: templates/restaurant/unit_detail.html:195
+#: templates/restaurant/unit_detail.html:106
 #: templates/restaurant/unit_detail.html:198
-#: templates/restaurant/unit_detail.html:203
-#: templates/restaurant/unit_detail.html:221
+#: templates/restaurant/unit_detail.html:201
+#: templates/restaurant/unit_detail.html:206
+#: templates/restaurant/unit_detail.html:224
 #: templates/wheel/random_item.html:8
 msgid "RON"
 msgstr "Lei"
@@ -1321,7 +1329,7 @@ msgid "Price"
 msgstr "Preț"
 
 #: templates/menu/daily_menu_list.html:48
-#: templates/restaurant/unit_detail.html:147
+#: templates/restaurant/unit_detail.html:150
 #: templates/restaurant/unit_list.html:18
 msgid "Closed"
 msgstr "Închis"
@@ -1352,13 +1360,13 @@ msgstr "Arată/ascunde cautarea avansată"
 msgid "Submit"
 msgstr "Trimite"
 
-#: templates/menu/item_list.html:66 templates/restaurant/unit_detail.html:186
+#: templates/menu/item_list.html:66 templates/restaurant/unit_detail.html:189
 msgid "preview"
 msgstr "imagine"
 
-#: templates/menu/item_list.html:79 templates/restaurant/unit_detail.html:167
-#: templates/restaurant/unit_detail.html:206
-#: templates/restaurant/unit_detail.html:223
+#: templates/menu/item_list.html:79 templates/restaurant/unit_detail.html:170
+#: templates/restaurant/unit_detail.html:209
+#: templates/restaurant/unit_detail.html:226
 msgid "Add to order"
 msgstr "Adaugă la comandă"
 
@@ -1662,12 +1670,12 @@ msgid "Order details"
 msgstr "Detalii comandă"
 
 #: templates/order/order_detail.html:11
-#: templates/restaurant/unit_detail.html:146
+#: templates/restaurant/unit_detail.html:149
 msgid "Open hours"
 msgstr "Program de lucru"
 
 #: templates/order/order_detail.html:11
-#: templates/restaurant/unit_detail.html:147
+#: templates/restaurant/unit_detail.html:150
 msgid "Open"
 msgstr "Deschis"
 
@@ -1726,7 +1734,7 @@ msgstr "Modalitatea de livrare"
 
 #: templates/order/restaurant_order_detail.html:23
 #: templates/profiles/profile_detail.html:163
-#: templates/restaurant/unit_detail.html:145
+#: templates/restaurant/unit_detail.html:148
 #: templates/userprofiles/deliveryaddress_detail.html:52
 msgid "Address"
 msgstr "Adresa"
@@ -1833,7 +1841,7 @@ msgid "Are you sure you want to clear all items from this order?"
 msgstr "Sunteți sigur/ă că doriți resetarea acestei comenzi?"
 
 #: templates/order/shopping_cart.html:164
-#: templates/restaurant/unit_detail.html:90
+#: templates/restaurant/unit_detail.html:93
 msgid "Error processing your command!"
 msgstr "Eroare la procesarea comenzii!"
 
@@ -2248,19 +2256,19 @@ msgstr "Activ"
 msgid "Sorry no partner package information."
 msgstr "Ne pare rău, nu sunt infomații despre clasele de partener."
 
-#: templates/restaurant/unit_detail.html:141
+#: templates/restaurant/unit_detail.html:144
 msgid "Discount products"
 msgstr "Produse la oferta"
 
-#: templates/restaurant/unit_detail.html:142
+#: templates/restaurant/unit_detail.html:145
 msgid "More info"
 msgstr "Mai multe informații"
 
-#: templates/restaurant/unit_detail.html:143
+#: templates/restaurant/unit_detail.html:146
 msgid "Previous orders at this restaurant"
 msgstr "Comenzi anterioare la acest restaurant"
 
-#: templates/restaurant/unit_detail.html:195
+#: templates/restaurant/unit_detail.html:198
 msgid "Default"
 msgstr "Implită"
 
