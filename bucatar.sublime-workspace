@@ -59,7 +59,7 @@
 			"file": "media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 21235,
+				"buffer_size": 21273,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "templates/restaurant/unit_detail.html",
 			"settings":
 			{
-				"buffer_size": 12794,
+				"buffer_size": 12923,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,8 +83,24 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 18784,
+				"buffer_size": 18768,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "restaurant/views.py",
+			"settings":
+			{
+				"buffer_size": 5781,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/base_alt.html",
+			"settings":
+			{
+				"buffer_size": 6364,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -276,6 +292,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"auth",
+			"login",
 			"tiny",
 			"back",
 			"cac",
@@ -361,7 +379,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -369,15 +387,15 @@
 					"file": "media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 21235,
+						"buffer_size": 21273,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8099,
-								8099
+								20828,
+								20828
 							]
 						],
 						"settings":
@@ -387,7 +405,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5425.0,
+						"translation.y": 14350.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -397,15 +415,15 @@
 					"file": "templates/restaurant/unit_detail.html",
 					"settings":
 					{
-						"buffer_size": 12794,
+						"buffer_size": 12923,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								178,
-								4991
+								3000,
+								3000
 							]
 						],
 						"settings":
@@ -415,7 +433,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1563.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -453,15 +471,15 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 18784,
+						"buffer_size": 18768,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13413,
-								13413
+								5393,
+								5393
 							]
 						],
 						"settings":
@@ -471,7 +489,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3920.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "restaurant/views.py",
+					"settings":
+					{
+						"buffer_size": 5781,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1118,
+								1118
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/base_alt.html",
+					"settings":
+					{
+						"buffer_size": 6364,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1881,
+								1881
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -510,6 +584,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.package_control":
+	{
+		"height": 0.0
+	},
 	"replace":
 	{
 		"height": 62.0
@@ -521,12 +599,12 @@
 		"selected_items":
 		[
 			[
-				"un",
-				"templates/restaurant/unit_detail.html"
-			],
-			[
 				"base",
 				"templates/base_alt.html"
+			],
+			[
+				"un",
+				"templates/restaurant/unit_detail.html"
 			],
 			[
 				"scre",
