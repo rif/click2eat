@@ -23,6 +23,7 @@ from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import BonusTransaction, BONUS_PERCENTAGE
 from order.tasks import send_email_task
+from shopping_cart import ShoppingCart
 
 def __is_restaurant_administrator(request, unit):
     if request.user.username == 'admin': return

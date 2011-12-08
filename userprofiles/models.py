@@ -37,7 +37,19 @@ class DeliveryAddress(models.Model):
         return self.get_full_address()
 
     def get_full_address(self):
-        return _('%(street)s %(number)s, %(city)s') % {'street': self.street, 'number': self.number, 'city': self.city}
+        address = _('%(street)s %(number)s, %(city)s') % {'street': self.street, 'number': self.number, 'city': self.city}
+        if self.block:
+            address += _(', block: %s') % self.block
+        if self.entrance:
+            address += _(', entrance: %s') % self.entrance
+        if self.floor:
+            address += _(', floor: %s') % self.floor
+        if self.ap_number:
+            address += _(', ap number: %s') % self.ap_number
+        if self.additional_info:
+            address += _(', additional info: %s') % self.additional_info
+        return address
+    
 
     def save(self, *args, **kwargs):
         if self.primary == True:
