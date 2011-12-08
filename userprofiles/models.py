@@ -37,7 +37,7 @@ class DeliveryAddress(models.Model):
         return self.get_full_address()
 
     def get_full_address(self):
-        address = _('%(street)s %(number)s, %(city)s') % {'street': self.street, 'number': self.number, 'city': self.city}
+        address = _('%(st)s %(nb)s, %(city)s') % {'street': self.street, 'number': self.number, 'city': self.city}
         if self.block:
             address += _(', bl: %s') % self.block
         if self.entrance:
