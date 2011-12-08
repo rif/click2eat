@@ -39,15 +39,15 @@ class DeliveryAddress(models.Model):
     def get_full_address(self):
         address = _('%(street)s %(number)s, %(city)s') % {'street': self.street, 'number': self.number, 'city': self.city}
         if self.block:
-            address += _(', block: %s') % self.block
+            address += _(', bl: %s') % self.block
         if self.entrance:
-            address += _(', entrance: %s') % self.entrance
+            address += _(', ent: %s') % self.entrance
         if self.floor:
-            address += _(', floor: %s') % self.floor
+            address += _(', fl: %s') % self.floor
         if self.ap_number:
-            address += _(', ap number: %s') % self.ap_number
+            address += _(', ap: %s') % self.ap_number
         if self.additional_info:
-            address += _(', additional info: %s') % self.additional_info
+            address += _(', info: %s') % self.additional_info
         return address
     
 
