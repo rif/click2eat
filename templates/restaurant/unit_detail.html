@@ -164,8 +164,7 @@
             {% if motd %}
                 <div class="clear"></div>
                 <div class="content_area">
-                    <div class="title"><h3>{% trans 'Menu of the day' %}</h3></div>
-                    <h4>{{ motd.name }}</h4>
+                    <h4>{% trans 'Menu of the day' %}: {{ motd.name }}</h4>
                     {{ motd.description|safe }}
                     <div class="price">
                     {{ motd.get_price }} {% trans 'RON' %}
