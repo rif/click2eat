@@ -167,7 +167,10 @@
                     <div class="title"><h3>{% trans 'Menu of the day' %}</h3></div>
                     <h4>{{ motd.name }}</h4>
                     {{ motd.description|safe }}
-                    <a style="float: right; margin-right: 25px" class="button shop-link" itemid="{{ motd.get_id }}" href="#">{% trans 'Add to order' %}</a>
+                    <div class="price">
+                    {{ motd.get_price }} {% trans 'RON' %}
+                    <a style="margin-right: 25px;" class="button shop-link" itemid="{{ motd.get_id }}" href="#">{% trans 'Add to order' %}</a>
+                    </div>
                 </div><!-- content_area -->
             {% endif %}
             <div class="clear"></div>            
