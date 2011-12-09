@@ -31,7 +31,7 @@ class ItemGroupTranslation(models.Model):
 
 class ItemGroup(MultilingualModel):
   internal_name = models.CharField(_('internal name'), max_length=50)
-  index = models.CharField(_('index'), max_length=50, help_text=_('Used for display order'))
+  index = models.FloatField(_('index'), help_text=_('Used for display order'))
   name_def = models.CharField(_('name'), max_length=50, help_text=_('The default name for this group'))
   unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
   exclusive = models.BooleanField(_('exclusive'))
@@ -94,7 +94,7 @@ class Item(MultilingualModel):
       ('CM', _('cm')),
       )
   internal_name = models.CharField(_('internal name'), max_length=70)
-  index = models.CharField(_('index'), max_length=70, help_text=_('Used for display order'))
+  index = models.FloatField(_('index'), help_text=_('Used for display order'))
   name_def = models.CharField(_('name'), max_length=70, help_text=_('The default name for this item'))
   description_def = models.CharField(_('description'), max_length=200, help_text=_('The default description for this item'))
   price = models.FloatField(_('price'))
