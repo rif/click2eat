@@ -185,6 +185,7 @@ class Unit(models.Model):
     info = models.TextField(_('info'), null=True, blank=True)
     short_desc = models.CharField('short desc', max_length=200, null=True, blank=True, help_text=_('stuff like food specific'))
     discount = models.TextField(_('discount'), null=True, blank=True)
+    is_restaurant = models.BooleanField(_('is restuarnat'), default=True, help_text=_('check whether or not to put "restaurant" in front of the name'))
     active = models.BooleanField(_('active'), default=True)
 
     tags = TaggableManager()

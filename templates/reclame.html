@@ -12,7 +12,10 @@
 			{% for unit in random_units %}
 			<li class="slide primulslide">
 				<div class="titluslide">
-					<a href="{% url restaurant:detail unit.id %}" title="slide"> <span class="textmic">RESTAURANT</span>
+					<a href="{% url restaurant:detail unit.id %}" title="slide">
+					{% if unit.is_restuaurant %}
+					<span class="textmic">RESTAURANT</span>
+					{% endif %}					
 					<br/>
 					<span class="textmare">{{ unit.name|upper }}</span></a>
 				</div>

@@ -72,7 +72,7 @@ class UnitImageInline(AdminImageMixin, admin.TabularInline):
 
 class UnitAdmin(admin.ModelAdmin):    
     form = UnitForm
-    list_display = ('name', 'address', 'email', 'phone', 'active')
+    list_display = ('name', 'address', 'email', 'phone', 'is_restaurant', 'active')
     search_fields = ['name', 'address']
     inlines = [UnitImageInline, ItemGroupInline, ToppingGroupInline]
     fieldsets = (
@@ -89,7 +89,7 @@ class UnitAdmin(admin.ModelAdmin):
             'fields': (('payment_method', 'currency'), 'overall_discount', 'minimum_ord_val')
         }),
         ('Other info', {
-            'fields': ('tags', 'short_desc', 'info', 'discount', 'active')
+            'fields': ('tags', 'short_desc', 'info', 'discount', 'is_restaurant', 'active')
         }),
     )
     
