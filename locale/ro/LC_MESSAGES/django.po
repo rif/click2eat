@@ -1,19 +1,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-07 12:31+0200\n"
-"PO-Revision-Date: 2011-12-07 12:34\n"
+"POT-Creation-Date: 2011-12-12 17:34+0200\n"
+"PO-Revision-Date: 2011-12-12 17:33\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 "X-Translated-Using: django-rosetta 0.6.2\n"
@@ -114,8 +114,8 @@ msgstr "promoții"
 msgid "From User"
 msgstr "De la utilizatorul"
 
-#: bonus/models.py:10 menu/models.py:320 order/models.py:14
-#: order/models.py:124 userprofiles/models.py:16 userprofiles/models.py:70
+#: bonus/models.py:10 menu/models.py:324 order/models.py:14
+#: order/models.py:124 userprofiles/models.py:16 userprofiles/models.py:82
 msgid "user"
 msgstr "nume"
 
@@ -188,31 +188,31 @@ msgid "code"
 msgstr "Cod"
 
 #: menu/models.py:11 menu/models.py:17 menu/models.py:29 menu/models.py:35
-#: menu/models.py:70 menu/models.py:81 menu/models.py:94 menu/models.py:187
-#: menu/models.py:202 menu/models.py:208 menu/models.py:248 menu/models.py:294
+#: menu/models.py:74 menu/models.py:85 menu/models.py:98 menu/models.py:191
+#: menu/models.py:206 menu/models.py:212 menu/models.py:252 menu/models.py:298
 #: restaurant/models.py:9 restaurant/models.py:24 restaurant/models.py:45
 #: restaurant/models.py:56 restaurant/models.py:66 restaurant/models.py:78
 #: restaurant/models.py:164
 msgid "name"
 msgstr "nume"
 
-#: menu/models.py:18 menu/models.py:254
+#: menu/models.py:18 menu/models.py:258
 msgid "value"
 msgstr "valoare"
 
-#: menu/models.py:24 menu/models.py:25 menu/models.py:98 menu/models.py:211
+#: menu/models.py:24 menu/models.py:25 menu/models.py:102 menu/models.py:215
 msgid "VAT"
 msgstr "TVA"
 
-#: menu/models.py:33 menu/models.py:57 menu/models.py:92 menu/models.py:207
+#: menu/models.py:33 menu/models.py:61 menu/models.py:96 menu/models.py:211
 msgid "internal name"
 msgstr "Nume intern"
 
-#: menu/models.py:34 menu/models.py:69 menu/models.py:93
+#: menu/models.py:34 menu/models.py:73 menu/models.py:97
 msgid "index"
 msgstr "index"
 
-#: menu/models.py:34 menu/models.py:93
+#: menu/models.py:34 menu/models.py:97
 msgid "Used for display order"
 msgstr "Folosit pentru ordinea de afișare"
 
@@ -220,7 +220,7 @@ msgstr "Folosit pentru ordinea de afișare"
 msgid "The default name for this group"
 msgstr "Numele implicit pentru acest grup"
 
-#: menu/models.py:36 menu/models.py:58 menu/models.py:247 menu/models.py:292
+#: menu/models.py:36 menu/models.py:62 menu/models.py:251 menu/models.py:296
 #: order/models.py:20 restaurant/models.py:23 restaurant/models.py:131
 #: restaurant/models.py:153
 msgid "unit"
@@ -230,207 +230,207 @@ msgstr "unitate"
 msgid "exclusive"
 msgstr "exclusiv"
 
-#: menu/models.py:38 menu/models.py:105 menu/models.py:190 menu/models.py:217
-#: restaurant/models.py:188
+#: menu/models.py:38 menu/models.py:109 menu/models.py:194 menu/models.py:221
+#: restaurant/models.py:189
 msgid "active"
 msgstr "activ"
 
-#: menu/models.py:53
+#: menu/models.py:57
 msgid "Item Group"
 msgstr "Grup de articole"
 
-#: menu/models.py:54
+#: menu/models.py:58
 msgid "Item Groups"
 msgstr "Grupuri de articole"
 
-#: menu/models.py:65 menu/models.py:66
+#: menu/models.py:69 menu/models.py:70
 msgid "ToppingGroup"
 msgstr "Grup de garnituri"
 
-#: menu/models.py:76
+#: menu/models.py:80
 msgid "Merchandise Category Group"
 msgstr "Grup de mărfuri"
 
-#: menu/models.py:77
+#: menu/models.py:81
 msgid "Merchandise Category Groups"
 msgstr "Grupuri de mărfuri"
 
-#: menu/models.py:82 menu/models.py:95 menu/models.py:203 menu/models.py:209
-#: menu/models.py:295 restaurant/models.py:130
+#: menu/models.py:86 menu/models.py:99 menu/models.py:207 menu/models.py:213
+#: menu/models.py:299 restaurant/models.py:130
 msgid "description"
 msgstr "descriere"
 
-#: menu/models.py:89
+#: menu/models.py:93
 msgid "pieces"
 msgstr "bucăți"
 
-#: menu/models.py:90
+#: menu/models.py:94
 msgid "cm"
 msgstr "cm"
 
-#: menu/models.py:94 menu/models.py:208
+#: menu/models.py:98 menu/models.py:212
 msgid "The default name for this item"
 msgstr "Numele implicit pentru acest articol"
 
-#: menu/models.py:95 menu/models.py:209
+#: menu/models.py:99 menu/models.py:213
 msgid "The default description for this item"
 msgstr "Descrierea implicită pentru acest articol"
 
-#: menu/models.py:96 menu/models.py:189 menu/models.py:210 menu/models.py:296
+#: menu/models.py:100 menu/models.py:193 menu/models.py:214 menu/models.py:300
 #: order/models.py:80 restaurant/models.py:67
 msgid "price"
 msgstr "preț"
 
-#: menu/models.py:97
+#: menu/models.py:101
 msgid "promotion"
 msgstr "Promoție"
 
-#: menu/models.py:99 menu/models.py:212
+#: menu/models.py:103 menu/models.py:216
 msgid "quantity"
 msgstr "cantitate"
 
-#: menu/models.py:100 menu/models.py:213
+#: menu/models.py:104 menu/models.py:217
 msgid "MU"
 msgstr "UM"
 
-#: menu/models.py:100 menu/models.py:213
+#: menu/models.py:104 menu/models.py:217
 msgid "Measurement unit."
 msgstr "Unitate de masură."
 
-#: menu/models.py:101
+#: menu/models.py:105
 msgid "item group"
 msgstr "grup de articole"
 
-#: menu/models.py:102 menu/models.py:215 restaurant/models.py:184
+#: menu/models.py:106 menu/models.py:219 restaurant/models.py:184
 msgid "added date"
 msgstr "data de adăugare"
 
-#: menu/models.py:103
+#: menu/models.py:107
 msgid "toppings"
 msgstr "Garnituri"
 
-#: menu/models.py:106
+#: menu/models.py:110
 msgid "speciality"
 msgstr "specialitate"
 
-#: menu/models.py:106
+#: menu/models.py:110
 msgid "speciality of the house"
 msgstr "specialitatea casei"
 
-#: menu/models.py:107
+#: menu/models.py:111
 msgid "fortune"
 msgstr "noroc"
 
-#: menu/models.py:107
+#: menu/models.py:111
 msgid "display in the weel of fortune"
 msgstr "arată în roata norocului"
 
-#: menu/models.py:108
+#: menu/models.py:112
 msgid "free pair"
 msgstr "pereche gratis"
 
-#: menu/models.py:108
+#: menu/models.py:112
 msgid "given free with a similar more expensive pair"
 msgstr "dată gratis cu o pereche mai scumpa"
 
-#: menu/models.py:109 restaurant/models.py:154
+#: menu/models.py:113 restaurant/models.py:154
 msgid "image path"
 msgstr "calea către imagine"
 
-#: menu/models.py:176
+#: menu/models.py:180
 msgid "Quantity"
 msgstr "Cantitate"
 
-#: menu/models.py:183 templates/order/restaurant_order_detail.html:38
+#: menu/models.py:187 templates/order/restaurant_order_detail.html:38
 msgid "Item"
 msgstr "Articol"
 
-#: menu/models.py:184
+#: menu/models.py:188
 msgid "Items"
 msgstr "Articole"
 
-#: menu/models.py:188 order/models.py:75
+#: menu/models.py:192 order/models.py:75
 msgid "item"
 msgstr "articol"
 
-#: menu/models.py:197 menu/models.py:198
+#: menu/models.py:201 menu/models.py:202
 msgid "Variation"
 msgstr "Variantă"
 
-#: menu/models.py:214
+#: menu/models.py:218
 msgid "topping group"
 msgstr "Grup de garnituri"
 
-#: menu/models.py:243
+#: menu/models.py:247
 msgid "Topping"
 msgstr "Garnitură"
 
-#: menu/models.py:244 templates/mobile/item_detail.html:20
+#: menu/models.py:248 templates/mobile/item_detail.html:20
 msgid "Toppings"
 msgstr "Garnituri"
 
-#: menu/models.py:249 restaurant/models.py:29
+#: menu/models.py:253 restaurant/models.py:29
 msgid "start date"
 msgstr "data de start"
 
-#: menu/models.py:250 restaurant/models.py:30
+#: menu/models.py:254 restaurant/models.py:30
 msgid "end date"
 msgstr "data de sfârșit"
 
-#: menu/models.py:251 restaurant/models.py:95
+#: menu/models.py:255 restaurant/models.py:95
 msgid "weekdays"
 msgstr "zile din săptămână"
 
-#: menu/models.py:251 restaurant/models.py:95
+#: menu/models.py:255 restaurant/models.py:95
 msgid "integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5"
 msgstr "cifre, seprate prin virgulă, începând cu luni, de ex. 1,2,4,5"
 
-#: menu/models.py:252 restaurant/models.py:96
+#: menu/models.py:256 restaurant/models.py:96
 msgid "start hour"
 msgstr "ora de început"
 
-#: menu/models.py:252
+#: menu/models.py:256
 msgid "e.g. 10:30"
 msgstr "de ex. 10:30"
 
-#: menu/models.py:253 restaurant/models.py:97
+#: menu/models.py:257 restaurant/models.py:97
 msgid "end hour"
 msgstr "ora de sfârșit"
 
-#: menu/models.py:253
+#: menu/models.py:257
 msgid "e.g. 15:00"
 msgstr "de ex. 15:00"
 
-#: menu/models.py:254
+#: menu/models.py:258
 msgid "Percentage"
 msgstr "Procentaj"
 
-#: menu/models.py:288
+#: menu/models.py:292
 msgid "Promotion"
 msgstr "Promoție"
 
-#: menu/models.py:289
+#: menu/models.py:293
 msgid "Promotions"
 msgstr "Promoții"
 
-#: menu/models.py:293
+#: menu/models.py:297
 msgid "day"
 msgstr "data"
 
-#: menu/models.py:316 menu/models.py:317 templates/menu/daily_menu.html:5
+#: menu/models.py:320 menu/models.py:321 templates/menu/daily_menu.html:5
 #: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:167
 msgid "Menu of the day"
 msgstr "Meniul zilei"
 
-#: menu/models.py:321 order/models.py:17
+#: menu/models.py:325 order/models.py:17
 msgid "creation date"
 msgstr "data realizării"
 
-#: menu/models.py:329
+#: menu/models.py:333
 msgid "Import"
 msgstr "Import"
 
-#: menu/models.py:330
+#: menu/models.py:334
 msgid "Imports"
 msgstr "Importuri"
 
@@ -447,8 +447,8 @@ msgid ""
 "As the restaurant is closed please set a desired delivery time in the "
 "restaurant open hours range."
 msgstr ""
-"Având în vedere că restaurantul e închis vă rugăm să specificați ziua "
-"și ora de livrare."
+"Având în vedere că restaurantul e închis vă rugăm să specificați ziua și ora "
+"de livrare."
 
 #: order/models.py:9
 msgid "Sent"
@@ -593,64 +593,64 @@ msgstr "Apreciere"
 msgid "Ratings"
 msgstr "Aprecieri"
 
-#: order/views.py:198
+#: order/shopping_service.py:168
 msgid "New Order"
 msgstr "Comandă nouă"
 
-#: order/views.py:223
+#: order/views.py:127
 msgid ""
-"This restaurant is now closed! Please check the open hours and set "
-"desired delivery time accordingly."
+"This restaurant is now closed! Please check the open hours and set desired "
+"delivery time accordingly."
 msgstr ""
-"Acest restaurant este momentan închis! Vă rugam să consultați orarul "
-"și să specificați ziua și ora de livrare în consecință."
+"Acest restaurant este momentan închis! Vă rugam să consultați orarul și să "
+"specificați ziua și ora de livrare în consecință."
 
-#: order/views.py:225
+#: order/views.py:129
 #, python-format
 msgid "This restaurant has a minimum order value of %(min)d"
 msgstr "Restaurantul are o comandă minimă de %(min)d"
 
-#: order/views.py:252
+#: order/views.py:156
 msgid ""
-"Congratulations! You have enough bonus to pay for your order. Please "
-"check \"Pay using bonus\" to use it."
+"Congratulations! You have enough bonus to pay for your order. Please check "
+"\"Pay using bonus\" to use it."
 msgstr ""
-"Felicitări! Ați acumulat suficient bonus pentru a plăti această "
-"comandă. Vă rugăm să bifați \"Plata cu bonus\" pentru a-l folosi."
+"Felicitări! Ați acumulat suficient bonus pentru a plăti această comandă. Vă "
+"rugăm să bifați \"Plata cu bonus\" pentru a-l folosi."
 
-#: order/views.py:253
+#: order/views.py:157
 msgid "Pay using bonus"
 msgstr "Plata cu bonus"
 
-#: order/views.py:253
+#: order/views.py:157
 msgid ""
-"We shall use the minimum number of received bonuses enough to cover the"
-" order total amount"
+"We shall use the minimum number of received bonuses enough to cover the "
+"order total amount"
 msgstr ""
-"Vom folosi un numar minim de bonus-uri primite car sunt suficiente "
-"pentru a acoperi suma totală a comenzii"
+"Vom folosi un numar minim de bonus-uri primite car sunt suficiente pentru a "
+"acoperi suma totală a comenzii"
 
-#: order/views.py:314
+#: order/views.py:182
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
-#: order/views.py:323 order/views.py:331
+#: order/views.py:191 order/views.py:199
 msgid "Current orders"
 msgstr "Comenzile curente"
 
-#: order/views.py:339
+#: order/views.py:207
 msgid "Order history"
 msgstr "Istoric comenzi"
 
-#: order/views.py:371
+#: order/views.py:239
 msgid "Click2eat: Order sent to you!"
 msgstr "Click2eat: Comanda trimisă"
 
-#: order/views.py:386
+#: order/views.py:254
 msgid "Thank you! You already sent feedback for this order."
 msgstr "Mulțumim! Deja o apreciere pentru această comandă."
 
-#: order/views.py:397
+#: order/views.py:265
 msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
@@ -727,7 +727,7 @@ msgstr "Modurile de livrare"
 msgid "email"
 msgstr "e-mail"
 
-#: restaurant/models.py:81 restaurant/models.py:167 userprofiles/models.py:73
+#: restaurant/models.py:81 restaurant/models.py:167 userprofiles/models.py:85
 msgid "phone"
 msgstr "telefon"
 
@@ -823,7 +823,7 @@ msgstr "Zona de livrare în km"
 msgid "In minutes"
 msgstr "În minute"
 
-#: restaurant/models.py:176 userprofiles/models.py:77
+#: restaurant/models.py:176 userprofiles/models.py:89
 msgid "communication"
 msgstr "comunicare"
 
@@ -858,8 +858,8 @@ msgstr "utilizatori administratori"
 #: restaurant/models.py:183
 msgid "the users that can access front-end administration pages for this unit."
 msgstr ""
-"utilizatorii care pot accesa paginile de administrare din interfata "
-"pentru această unitate."
+"utilizatorii care pot accesa paginile de administrare din interfata pentru "
+"această unitate."
 
 #: restaurant/models.py:185
 msgid "info"
@@ -873,13 +873,21 @@ msgstr "chestiuni precum specificul restaurantului"
 msgid "discount"
 msgstr "ofertă"
 
-#: restaurant/models.py:240 templates/menu/daily_menu_list.html:39
+#: restaurant/models.py:188
+msgid "is restuarnat"
+msgstr "este restaurant"
+
+#: restaurant/models.py:188
+msgid "check whether or not to put \"restaurant\" in front of the name"
+msgstr "dacă să pun sau nu \"Restaurant\" în fața numelui"
+
+#: restaurant/models.py:241 templates/menu/daily_menu_list.html:39
 #: templates/order/order_detail.html:10
 #: templates/restaurant/package_history.html:14
 msgid "Unit"
 msgstr "Unitate"
 
-#: restaurant/models.py:241 templates/mobile/units.html:4
+#: restaurant/models.py:242 templates/mobile/units.html:4
 #: templates/mobile/units.html.py:5
 msgid "Units"
 msgstr "Unități"
@@ -889,8 +897,8 @@ msgid ""
 "Website in testing! You are welcome to have a peek but orders are not "
 "delivered yet. Please come back!"
 msgstr ""
-"Site în teste! Sunteți invitați să aruncați o privire dar comenzile nu"
-" sunt onorate încă. Penru comenzi vă rugăm să reveniti!"
+"Site în teste! Sunteți invitați să aruncați o privire dar comenzile nu sunt "
+"onorate încă. Penru comenzi vă rugăm să reveniti!"
 
 #: restaurant/views.py:68
 msgid "You have more product added at the following restaurants: "
@@ -903,8 +911,7 @@ msgstr "S-au găsit mai multe pachete de parteneriat pentru perioada selectată!
 #: restaurant/views.py:113
 msgid "No (unique) partner package found for selected time range!"
 msgstr ""
-"Nu a fost găsit un pachet de parteneriat (unic) pentru perioada "
-"selectată!"
+"Nu a fost găsit un pachet de parteneriat (unic) pentru perioada selectată!"
 
 #: templates/404.html:4 templates/404.html.py:9
 msgid "Page not found"
@@ -956,12 +963,12 @@ msgstr "un agent click2eat"
 
 #: templates/footer.html:45
 msgid ""
-"Click2Eat is a registered trademark. All rights reserved. All materials"
-" presented on this site are protected by copyright law."
+"Click2Eat is a registered trademark. All rights reserved. All materials "
+"presented on this site are protected by copyright law."
 msgstr ""
 "Click2Eat este marca inregistrata. Toate drepturile rezervate. Toate "
-"materialele prezente pe acest website sunt protejate prin legea "
-"copywrite-ului"
+"materialele prezente pe acest website sunt protejate prin legea copywrite-"
+"ului"
 
 #: templates/header.html:6
 msgid "How do I order"
@@ -1102,11 +1109,11 @@ msgstr "Vă rugăm să selectați avatarul pe care doriți să îl stergeți."
 #: templates/avatar/confirm_delete.html:15
 #, python-format
 msgid ""
-"You have no avatars to delete. Please <a "
-"href=\"%(avatar_change_url)s\">upload one</a> now."
+"You have no avatars to delete. Please <a href=\"%(avatar_change_url)s"
+"\">upload one</a> now."
 msgstr ""
-"Nu aveți nici un avatar de șters. Vă rugăm să <a "
-"href=\"%(avatar_change_url)s\">încărcați unul</a> acum."
+"Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s"
+"\">încărcați unul</a> acum."
 
 #: templates/avatar/confirm_delete.html:22
 msgid "Delete These"
@@ -1149,11 +1156,11 @@ msgstr "Istoricul bonusurilor"
 
 #: templates/bonus/history.html:5
 msgid ""
-"Here you can check your bonus history, how you received and how you "
-"used your bnus points."
+"Here you can check your bonus history, how you received and how you used "
+"your bnus points."
 msgstr ""
-"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum "
-"ați folosit punctele bonus."
+"Aici puteți verifica istoricul bonusurilor, cum le-ați primit și cum ați "
+"folosit punctele bonus."
 
 #: templates/bonus/history.html:17 templates/menu/daily_menu.html:14
 #: templates/menu/item_list.html:78 templates/mobile/item_detail.html:12
@@ -1165,18 +1172,19 @@ msgstr ""
 #: templates/mobile/shopping_cart.html:24
 #: templates/mobile/shopping_cart.html:73
 #: templates/order/order_list_div.html:15
-#: templates/order/shopping_cart.html:15 templates/order/shopping_cart.html:21
-#: templates/order/shopping_cart.html:37 templates/order/shopping_cart.html:41
-#: templates/order/shopping_cart.html:73
-#: templates/order/shopping_cart.html:109
-#: templates/order/shopping_cart.html:122
+#: templates/order/shopping_cart.html:14 templates/order/shopping_cart.html:20
+#: templates/order/shopping_cart.html:36 templates/order/shopping_cart.html:40
+#: templates/order/shopping_cart.html:72
+#: templates/order/shopping_cart.html:108
+#: templates/order/shopping_cart.html:121
 #: templates/profiles/profile_detail.html:40
 #: templates/profiles/profile_detail.html:91
 #: templates/restaurant/unit_detail.html:106
-#: templates/restaurant/unit_detail.html:198
-#: templates/restaurant/unit_detail.html:201
-#: templates/restaurant/unit_detail.html:206
-#: templates/restaurant/unit_detail.html:224
+#: templates/restaurant/unit_detail.html:170
+#: templates/restaurant/unit_detail.html:200
+#: templates/restaurant/unit_detail.html:203
+#: templates/restaurant/unit_detail.html:208
+#: templates/restaurant/unit_detail.html:226
 #: templates/wheel/random_item.html:8
 msgid "RON"
 msgstr "Lei"
@@ -1208,8 +1216,7 @@ msgstr "Multumim pentru aprobare"
 #: templates/comments/approved.html:7 templates/comments/deleted.html:7
 #: templates/comments/flagged.html:7
 msgid ""
-"Thanks for taking the time to improve the quality of discussion on our "
-"site"
+"Thanks for taking the time to improve the quality of discussion on our site"
 msgstr "Multumim pentru timpul dumneavoastra "
 
 #: templates/comments/delete.html:4
@@ -1308,13 +1315,12 @@ msgstr "Roata norocului"
 
 #: templates/menu/daily_menu_list.html:5
 msgid ""
-"If you are undecided about what to eat today, here you can let the fate"
-" decide. Just spin the wheel an find out what the it was meant for you "
-"today."
+"If you are undecided about what to eat today, here you can let the fate "
+"decide. Just spin the wheel an find out what the it was meant for you today."
 msgstr ""
-"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa "
-"soarta să decidă pentru dumneavoastră. Doar învartiti roata ca să "
-"vedeți ce vi-a fost scris pentru astăzi."
+"Dacă sunteți indecis despre ce să comandați astăzi, aici puteți lăsa soarta "
+"să decidă pentru dumneavoastră. Doar învartiti roata ca să vedeți ce vi-a "
+"fost scris pentru astăzi."
 
 #: templates/menu/daily_menu_list.html:34
 msgid "Today's menu"
@@ -1352,7 +1358,7 @@ msgid "Show/Hide advanced search"
 msgstr "Arată/ascunde cautarea avansată"
 
 #: templates/menu/item_list.html:55 templates/order/cart_name.html:13
-#: templates/order/shopping_cart.html:96
+#: templates/order/shopping_cart.html:95
 #: templates/registration/password_change_form.html:21
 #: templates/registration/password_reset_confirm.html:28
 #: templates/registration/password_reset_form.html:21
@@ -1360,13 +1366,13 @@ msgstr "Arată/ascunde cautarea avansată"
 msgid "Submit"
 msgstr "Trimite"
 
-#: templates/menu/item_list.html:66 templates/restaurant/unit_detail.html:189
+#: templates/menu/item_list.html:66 templates/restaurant/unit_detail.html:191
 msgid "preview"
 msgstr "imagine"
 
-#: templates/menu/item_list.html:79 templates/restaurant/unit_detail.html:170
-#: templates/restaurant/unit_detail.html:209
-#: templates/restaurant/unit_detail.html:226
+#: templates/menu/item_list.html:79 templates/restaurant/unit_detail.html:171
+#: templates/restaurant/unit_detail.html:211
+#: templates/restaurant/unit_detail.html:228
 msgid "Add to order"
 msgstr "Adaugă la comandă"
 
@@ -1439,7 +1445,7 @@ msgid "Paycheck"
 msgstr "Nota de plată"
 
 #: templates/mobile/shopping_cart.html:23
-#: templates/order/shopping_cart.html:40
+#: templates/order/shopping_cart.html:39
 msgid "Minimum order: "
 msgstr "Comandă minimă:"
 
@@ -1457,7 +1463,7 @@ msgstr "Alegeți o adresă de livrare"
 
 #: templates/mobile/shopping_cart.html:53
 #: templates/mobile/shopping_cart.html:69
-#: templates/order/shopping_cart.html:69
+#: templates/order/shopping_cart.html:68
 msgid "The restaurant is now closed"
 msgstr "Restaurantul e închis"
 
@@ -1466,21 +1472,20 @@ msgid "Send the order"
 msgstr "Da, trimite comanda"
 
 #: templates/mobile/shopping_cart.html:73
-#: templates/order/shopping_cart.html:73
+#: templates/order/shopping_cart.html:72
 msgid "Minimum order for this unit is:"
 msgstr "Valoarea minimă a comenzii este:"
 
 #: templates/mobile/shopping_cart.html:77
 msgid ""
-"You need to have at least one delivery address defined and selected. "
-"Please go to the main site to define one!"
+"You need to have at least one delivery address defined and selected. Please "
+"go to the main site to define one!"
 msgstr ""
-"Trebuie sa aveți cel puțiun o adresă de livarare definită și "
-"selectată. Pentru a crea o adresă de livrare vă rugăm să accesați "
-"site-ul principal."
+"Trebuie sa aveți cel puțiun o adresă de livarare definită și selectată. "
+"Pentru a crea o adresă de livrare vă rugăm să accesați site-ul principal."
 
 #: templates/mobile/shopping_cart.html:82
-#: templates/order/shopping_cart.html:78
+#: templates/order/shopping_cart.html:77
 msgid "Your order has been sent to the restaurant!"
 msgstr "Comanda dumneavoastră a fost trimisă restaurantului!"
 
@@ -1570,31 +1575,30 @@ msgstr "Abonare e-mail cu știri"
 #: templates/newsletter/subscription_subscribe.html:7
 #: templates/newsletter/subscription_update.html:7
 msgid ""
-"Due to a technical error we were not able to submit your confirmation "
-"email. This could be because your email address is invalid."
+"Due to a technical error we were not able to submit your confirmation email. "
+"This could be because your email address is invalid."
 msgstr ""
-"Din cauza unor probleme tehnice nu s-a putut realiza trimiterea "
-"emailului de confirmare. Aceasta poate fi din cauză ca adresa a fost "
-"invalidă."
+"Din cauza unor probleme tehnice nu s-a putut realiza trimiterea emailului de "
+"confirmare. Aceasta poate fi din cauză ca adresa a fost invalidă."
 
 #: templates/newsletter/subscription_subscribe.html:8
 #: templates/newsletter/subscription_update.html:8
 msgid ""
-"If the error persists, please don't hesitate to contact us at the "
-"following email address:"
+"If the error persists, please don't hesitate to contact us at the following "
+"email address:"
 msgstr ""
 "Daca probleme persistă, vă rugăm sa nu ezitați să ne contactați la "
 "urmatoarea adresă de e-mail:"
 
 #: templates/newsletter/subscription_subscribe.html:11
 msgid ""
-"Your subscription was successfully recieved and an activation email has"
-" been sent to you. In that email you will find a link which you need to"
-" follow in order to activate your subscription."
+"Your subscription was successfully recieved and an activation email has been "
+"sent to you. In that email you will find a link which you need to follow in "
+"order to activate your subscription."
 msgstr ""
-"Abonarea dumneavoastră a fost înregistrată cu succes și vi s-a triumis"
-" un e-mail de activare. În acest email ve-ți găsi un link pe care "
-"trebuie să îl urmați pentru activarea abonamentului dumneavoastră."
+"Abonarea dumneavoastră a fost înregistrată cu succes și vi s-a triumis un e-"
+"mail de activare. În acest email ve-ți găsi un link pe care trebuie să îl "
+"urmați pentru activarea abonamentului dumneavoastră."
 
 #: templates/newsletter/subscription_subscribe_user.html:16
 msgid "Do you want to subscribe to this newsletter?"
@@ -1609,13 +1613,13 @@ msgstr "Dezabonare de la e-mail cu știri"
 
 #: templates/newsletter/subscription_unsubscribe.html:7
 msgid ""
-"Your unsubscription request has successfully been recieved. An email "
-"has been sent to you with a link you need to follow in order to confirm"
-" your unsubscription."
+"Your unsubscription request has successfully been recieved. An email has "
+"been sent to you with a link you need to follow in order to confirm your "
+"unsubscription."
 msgstr ""
-"Abonamentul dumneavoastră a fost înregistrat cu succes. Vi s-a trimis "
-"un e-mail cu un link pe care trebuie să-l urmați pentru a confirma "
-"abonamentul dumneavoastră."
+"Abonamentul dumneavoastră a fost înregistrat cu succes. Vi s-a trimis un e-"
+"mail cu un link pe care trebuie să-l urmați pentru a confirma abonamentul "
+"dumneavoastră."
 
 #: templates/newsletter/subscription_unsubscribe_user.html:17
 msgid "Do you want to unsubscribe from this newsletter?"
@@ -1628,15 +1632,15 @@ msgstr "Actoalizate e-mail cu știri"
 
 #: templates/newsletter/subscription_update.html:11
 msgid ""
-"Your update request was successfully recieved and an activation email "
-"has been sent to you. In that email you will find a link which you need"
-" to follow in order to update your subscription."
+"Your update request was successfully recieved and an activation email has "
+"been sent to you. In that email you will find a link which you need to "
+"follow in order to update your subscription."
 msgstr ""
-"Cererea de actualizare a fost primită și vi s-a trimis un e-mail. În "
-"acest e-mail ve-ți găsi un link pe care trebuie să îl urmați pentru a "
-"vă actualiza abonamentul."
+"Cererea de actualizare a fost primită și vi s-a trimis un e-mail. În acest e-"
+"mail ve-ți găsi un link pe care trebuie să îl urmați pentru a vă actualiza "
+"abonamentul."
 
-#: templates/order/cart_name.html:14 templates/order/shopping_cart.html:97
+#: templates/order/cart_name.html:14 templates/order/shopping_cart.html:96
 msgid "Cancel"
 msgstr "Renunțați"
 
@@ -1822,25 +1826,25 @@ msgstr "Da, trimite comanda"
 msgid "Return to menu selection"
 msgstr "Întoarceti-vă la selecția din meniu"
 
-#: templates/order/shopping_cart.html:21
-#: templates/order/shopping_cart.html:109
-#: templates/order/shopping_cart.html:122
+#: templates/order/shopping_cart.html:20
+#: templates/order/shopping_cart.html:108
+#: templates/order/shopping_cart.html:121
 msgid "Subtotal"
 msgstr "Subtotal"
 
-#: templates/order/shopping_cart.html:28
+#: templates/order/shopping_cart.html:27
 msgid "Add shopping cart"
 msgstr "Adaugă coș"
 
-#: templates/order/shopping_cart.html:29
+#: templates/order/shopping_cart.html:28
 msgid "Reset order"
 msgstr "Resetează comanda"
 
-#: templates/order/shopping_cart.html:119
+#: templates/order/shopping_cart.html:118
 msgid "Are you sure you want to clear all items from this order?"
 msgstr "Sunteți sigur/ă că doriți resetarea acestei comenzi?"
 
-#: templates/order/shopping_cart.html:164
+#: templates/order/shopping_cart.html:163
 #: templates/restaurant/unit_detail.html:93
 msgid "Error processing your command!"
 msgstr "Eroare la procesarea comenzii!"
@@ -1860,11 +1864,13 @@ msgstr "Numărătoare inversă pentru comandă"
 #: templates/order/timer.html:34
 msgid ""
 "\n"
-"  You will be contacted by the chosen restaurant to confirm the order or to select discounted products.\n"
+"  You will be contacted by the chosen restaurant to confirm the order or to "
+"select discounted products.\n"
 "  "
 msgstr ""
 "\n"
-"Veți fi contactat de către restaurantul ales pentru a confirma comanda sau pentru a alege produsele la ofertă."
+"Veți fi contactat de către restaurantul ales pentru a confirma comanda sau "
+"pentru a alege produsele la ofertă."
 
 #: templates/order/timer.html:38
 msgid "Has arrived!"
@@ -1935,9 +1941,8 @@ msgid ""
 "The amount added from your friends orders can be used anytime to order "
 "products from our partners."
 msgstr ""
-"Valoarea în lei acumulată din comenzile efectuate de prietenii tăi o "
-"poți folosi oricând pentru ați comanda produse furnizate de partenerii"
-" noștrii."
+"Valoarea în lei acumulată din comenzile efectuate de prietenii tăi o poți "
+"folosi oricând pentru ați comanda produse furnizate de partenerii noștrii."
 
 #: templates/profiles/profile_detail.html:50
 msgid "Invite a friend now."
@@ -2029,8 +2034,7 @@ msgstr "Invită un prieten"
 
 #: templates/registration/activate.html:6
 msgid ""
-"Account failed to be activated! Please try again or contact the "
-"adminstrator"
+"Account failed to be activated! Please try again or contact the adminstrator"
 msgstr "Contul NU a fost activat! Vă rugăm să contactați administratorii"
 
 #: templates/registration/activation_complete.html:6
@@ -2112,11 +2116,11 @@ msgstr "Cont nou"
 
 #: templates/registration/registration_complete.html:11
 msgid ""
-"Thank you for signing up. An email with the activation code has been "
-"send to your inbox"
+"Thank you for signing up. An email with the activation code has been send to "
+"your inbox"
 msgstr ""
-"Multumim că v-ați înregistrat. A fost trimis un email cu codul de "
-"activare spre căsuța dvs de email"
+"Multumim că v-ați înregistrat. A fost trimis un email cu codul de activare "
+"spre căsuța dvs de email"
 
 #: templates/registration/registration_form.html:3
 msgid "Sign Up"
@@ -2140,11 +2144,11 @@ msgstr "Ne pare rau, nu administrați nici un restaurant"
 
 #: templates/restaurant/administrator.html:15
 msgid ""
-"If you are an restaurant administrator and you want to find out how you"
-" can benefit from the services offered by our portal"
+"If you are an restaurant administrator and you want to find out how you can "
+"benefit from the services offered by our portal"
 msgstr ""
-"În cazul în care administrați un restaurant și doriți să aflați cum "
-"anume puteți beneficia de serviciile oferite de portalul nostru "
+"În cazul în care administrați un restaurant și doriți să aflați cum anume "
+"puteți beneficia de serviciile oferite de portalul nostru "
 
 #: templates/restaurant/administrator.html:15
 msgid "Contact a Click2eat Agent"
@@ -2268,7 +2272,7 @@ msgstr "Mai multe informații"
 msgid "Previous orders at this restaurant"
 msgstr "Comenzi anterioare la acest restaurant"
 
-#: templates/restaurant/unit_detail.html:198
+#: templates/restaurant/unit_detail.html:200
 msgid "Default"
 msgstr "Implită"
 
@@ -2294,12 +2298,12 @@ msgstr "Sunteți sigur?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:9
 msgid ""
-" Are you sure you want to delete the selected Delivery Address objects?"
-" All of the following objects and their related items will be deleted: "
+" Are you sure you want to delete the selected Delivery Address objects? All "
+"of the following objects and their related items will be deleted: "
 msgstr "Sunteți sigur/ă că vreți să ștergeți următoarea adresă de livrare?"
 
 #: templates/userprofiles/deliveryaddress_confirm_delete.html:11
-#: userprofiles/models.py:62
+#: userprofiles/models.py:74
 msgid "Delivery Address"
 msgstr "Adresă de livrare"
 
@@ -2387,11 +2391,11 @@ msgstr "Invită prieten"
 
 #: templates/userprofiles/invite_friend.html:6
 msgid ""
-"Here you can invite your friendts to join the site. You'll get bonus "
-"points for free meal if they join :)"
+"Here you can invite your friendts to join the site. You'll get bonus points "
+"for free meal if they join :)"
 msgstr ""
-"Aici vă puteți invita prietenii să devină membrii ai acestui site. "
-"Veți primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
+"Aici vă puteți invita prietenii să devină membrii ai acestui site. Veți "
+"primi puncte bonus pentru o masă gratis dacă ni se alătură :)"
 
 #: userprofiles/forms.py:18
 msgid "message"
@@ -2445,56 +2449,76 @@ msgstr "adresa geolocalizată"
 msgid "geolocation error"
 msgstr "eroare de geolocare"
 
-#: userprofiles/models.py:40
+#: userprofiles/models.py:42
 #, python-format
-msgid "%(street)s %(number)s, %(city)s"
-msgstr "%(street)s %(number)s, %(city)s"
+msgid ", bl: %s"
+msgstr ", bl: %s"
 
-#: userprofiles/models.py:63
+#: userprofiles/models.py:44
+#, python-format
+msgid ", ent: %s"
+msgstr ", sc: %s"
+
+#: userprofiles/models.py:46
+#, python-format
+msgid ", fl: %s"
+msgstr ", et: %s"
+
+#: userprofiles/models.py:48
+#, python-format
+msgid ", ap: %s"
+msgstr ", ap: %s"
+
+#: userprofiles/models.py:50
+#, python-format
+msgid ", info: %s"
+msgstr ", info: %s"
+
+#: userprofiles/models.py:75
 msgid "Delivery Addresses"
 msgstr "Adrese de livrare"
 
-#: userprofiles/models.py:67
+#: userprofiles/models.py:79
 msgid "Male"
 msgstr "Masculin"
 
-#: userprofiles/models.py:68
+#: userprofiles/models.py:80
 msgid "Female"
 msgstr "Feminin"
 
-#: userprofiles/models.py:71
+#: userprofiles/models.py:83
 msgid "first name"
 msgstr "prenume"
 
-#: userprofiles/models.py:71 userprofiles/models.py:72
+#: userprofiles/models.py:83 userprofiles/models.py:84
 msgid "Only letters, please!"
 msgstr "Doar litere!"
 
-#: userprofiles/models.py:72
+#: userprofiles/models.py:84
 msgid "last name"
 msgstr "nume"
 
-#: userprofiles/models.py:74
+#: userprofiles/models.py:86
 msgid "sex"
 msgstr "sexul"
 
-#: userprofiles/models.py:75
+#: userprofiles/models.py:87
 msgid "birth date"
 msgstr "Data nașterii"
 
-#: userprofiles/models.py:76
+#: userprofiles/models.py:88
 msgid "public"
 msgstr "public"
 
-#: userprofiles/models.py:76
+#: userprofiles/models.py:88
 msgid "Do you want your profile to be public?"
 msgstr "Doriți ca profilul dumeanvoastră să fie public?"
 
-#: userprofiles/models.py:114
+#: userprofiles/models.py:126
 msgid "User Profile"
 msgstr "Profil iutilizator"
 
-#: userprofiles/models.py:115
+#: userprofiles/models.py:127
 msgid "User Profiles"
 msgstr "Profiluri utilizator"
 
