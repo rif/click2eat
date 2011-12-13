@@ -45,5 +45,5 @@ def random_motd(request):
 def daily_menu(request, menu_id):
     motds = MenuOfTheDay.objects.filter(day=date.today())    
     motd = motds.filter(pk=menu_id) if motds.exists() else None
-    motd = mmotd[0] if motd.exists() else None
+    motd = motd[0] if motd.exists() else None
     return locals()
