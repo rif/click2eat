@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from order import views
+import shopping_service
 from order.models import Order
 
 urlpatterns = patterns('',
@@ -8,12 +9,12 @@ urlpatterns = patterns('',
        url(r'^(?P<object_id>\d+)/$', views.limited_object_detail,
                {'queryset': Order.objects.all(), 'template_object_name': 'order'}, name='detail'),
        #Pos_mMasterId-VarID_TopId
-       url(r'^shop/(?P<cart_name>.+)/(?P<item_id>\d+_m?\d+-\d+_?\d*)/$', views.shop, name='shop'),
-       url(r'^decritem/(?P<cart_name>.+)/(?P<unit_id>\d+)/(?P<item_id>m?\d+_m?\d+-\d+_?\d*)/$', views.decr_item,
+       url(r'^shop/(?P<unit_id>\d+)/(?P<cart_name>.+)/(?P<item_id>m?\d+-\d+_?\d*)/$', shopping_service.shop, name='shop'),
+       url(r'^decritem/(?P<cart_name>.+)/(?P<unit_id>\d+)/(?P<item_id>m?\d+-\d+_?\d*)/$', views.decr_item,
            name='decr-item'),
-       url(r'^incritem/(?P<cart_name>.+)/(?P<unit_id>\d+)/(?P<item_id>m?\d+_m?\d+-\d+_?\d*)/$', views.incr_item,
+       url(r'^incritem/(?P<cart_name>.+)/(?P<unit_id>\d+)/(?P<item_id>m?\d+-\d+_?\d*)/$', views.incr_item,
            name='incr-item'),
-       url(r'^shoppingcart/(?P<unit_id>\d+)/$', views.shopping_cart, name='shopping-cart'),
+       url(r'^shoppingcart/(?P<unit_id>\d+)/$', shopping_service.shopping_cart, name='shopping-cart'),
        url(r'^confirmorder/(?P<unit_id>\d+)/$', views.confirm_order, name='confirm-order'),
        url(r'^sendorder/(?P<unit_id>\d+)/$', views.send_order, name='send-order'),
        url(r'^countdown/(?P<order_id>\d+)/$', views.timer, name='timer'),

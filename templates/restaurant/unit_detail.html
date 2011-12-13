@@ -72,8 +72,7 @@
             {% endif %}
             var selCart = $("a.selected-cart");
             var parentUL = selCart.next("ul");
-            var pos = parentUL.children('li.cart-item').length;
-            var args = pos + "_" + id + "-" + price_id + "/"
+            var args = id + "-" + price_id + "/"
             var existingTopping = null;
             if(id.indexOf("_") != -1) {
             	// if it is a topping then we only need the id             	
