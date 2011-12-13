@@ -1,24 +1,23 @@
 {% load i18n l10n %}
 
-
 <div id="carts">
-    {% for cn, cartitems, subtotal in carts %}
+    {% for cn, items in oc.get_carts.iteritems %}
         <a href="#" class="{% if cn == user.username %}selected-cart{% endif %} cart-name">{{ cn }}</a>
         <ul class="items">
-            {% for item, values in cartitems %}
-                <li class="cart-item" itemid="{{ item }}">
-                    <span class="item-count">{{ values.0 }}</span>
-                    <span class="item-price">{{ values.1|unlocalize }}</span>
-                    <span class="item-title">x {{ values.2|truncatewords:3 }}</span>
+            {% for item in items %}
+                <li class="cart-item" itemid="{{ item.get_item_id }}">
+                    <span class="item-count">{{ item.get_count }}</span>
+                    <span class="item-price">{{ item.get_price|unlocalize }}</span>
+                    <span class="item-title">x {{ item.get_name|truncatewords:3 }}</span>
                     <a class="decr-link" href="#"></a>
                     <a class="incr-link" href="#"></a>
                     <span class="item-currency">{% trans 'RON' %}</span>
-                    <span class="item-total"></span>
+                    <span class="item-total">{{ item.get_total }}</span>
                 </li>
             {% endfor %}
         </ul>
         <div class="subtotal-div">
-            {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ subtotal|unlocalize }}</span> {% trans 'RON' %}
+            {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ oc.get_total_sum.cn|unlocalize }}</span> {% trans 'RON' %}
         </div>
     {% endfor %}
 </div>
@@ -34,14 +33,14 @@
 
     <div class="textnota">NOTA DE PLATĂ:</div>
   <span class="totalnota">
-    <span id="order-total">{{ total_sum|unlocalize }}</span> {% trans 'RON' %}
+    <span id="order-total">{{ oc.get_total_sum|unlocalize }}</span> {% trans 'RON' %}
   </span>
 
     <div id="min-span">({% trans 'Minimum order: ' %}<span
             id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)
     </div>
     <div class="clear"></div>
-    {% if show_confirm_order %}<a class="button" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</a>
+    {% if show_confirm_order %}<a class="button" href="{% url order:confirm-order oc.get_unit.id %}">CONFIRMA COMANDA</a>
     {% endif %}
 </div>
 
@@ -117,7 +116,7 @@
         });
         $("#clear-order").click(function() {
             if (confirm("{%  trans 'Are you sure you want to clear all items from this order?' %}")) {
-                $.get("{% url order:clear unit.id %}");
+                $.get("{% url order:clear oc.get_unit.id %}");
                 $("#carts").html('<a class="cart-name selected-cart" href="#">{{  user.username }}</a><ul class="items"></ul><div class="subtotal-div">\
 {% trans 'Subtotal' %}: <span class="cart-subtotal">0</span> {% trans "RON" %}</div>');
             }
