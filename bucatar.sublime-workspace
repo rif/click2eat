@@ -67,7 +67,15 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 18768,
+				"buffer_size": 12391,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "order/shopping_service.py",
+			"settings":
+			{
+				"buffer_size": 7438,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,59 +83,43 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 7571,
+				"buffer_size": 7642,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "templates/menu/menu_list.html",
+			"file": "menu/views.py",
 			"settings":
 			{
-				"buffer_size": 1386,
+				"buffer_size": 1934,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "templates/admin/base_site.html",
+			"file": "order/urls.py",
 			"settings":
 			{
-				"buffer_size": 509,
+				"buffer_size": 2209,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "menu/admin.py",
+			"file": "templates/restaurant/unit_detail.html",
 			"settings":
 			{
-				"buffer_size": 6086,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "menu/models.py",
-			"settings":
-			{
-				"buffer_size": 12450,
-				"line_ending": "Unix"
+				"buffer_size": 12907,
+				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 107.0,
+		"height": 202.0,
 		"selected_items":
 		[
 			[
-				"spac",
-				"Indentation: Convert to Spaces"
-			],
-			[
 				"space",
-				"Indentation: Convert to Spaces"
-			],
-			[
-				"spaces",
 				"Indentation: Convert to Spaces"
 			],
 			[
@@ -135,11 +127,19 @@
 				"Indentation: Convert to Tabs"
 			],
 			[
+				"spac",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
 				"",
 				"Indentation: Convert to Spaces"
 			]
 		],
-		"width": 392.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -156,34 +156,40 @@
 	},
 	"file_history":
 	[
-		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/urls.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/shopping_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
+		"/home/rif/Documents/webframeworks/bucatar/order/shopping_service.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
+		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/reclame.html",
+		"/home/rif/Documents/webframeworks/bucatar/restaurant/admin.py",
+		"/home/rif/Documents/webframeworks/bucatar/userprofiles/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/menu/models.py",
+		"/home/rif/Documents/webframeworks/bucatar/order/shopping_cart.py",
+		"/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/menu/menu_list.html",
+		"/home/rif/Documents/webframeworks/bucatar/templates/admin/base_site.html",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
-		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/item_list.html",
-		"/home/rif/Documents/webframeworks/bucatar/menu/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/userprofiles/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/settings_dev.py",
 		"/home/rif/Documents/webframeworks/bucatar/urls.py",
-		"/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/messages.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu.html",
-		"/home/rif/Documents/webframeworks/bucatar/userprofiles/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_form.html",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/templatetags/units.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_list.html",
-		"/home/rif/Documents/webframeworks/bucatar/restaurant/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
-		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/biblion/blog_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/biblion/blog_post.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/comments/base.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/order_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/profiles/profile_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/timer.html",
-		"/home/rif/Documents/webframeworks/bucatar/templates/menu/menu_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/index.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/footer.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/wheel/random_item.html",
@@ -196,7 +202,6 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/admin.py",
-		"/home/rif/Documents/webframeworks/bucatar/templates/reclame.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/tests.py",
 		"/home/rif/Documents/webframeworks/bucatar/bonus/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/bonus/tests.py",
@@ -225,13 +230,11 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/mail_order_detail.txt",
 		"/home/rif/.Sublime Text 2/Packages/User/Global.sublime-settings",
 		"/home/rif/Documents/webframeworks/bucatar/menu/templatetags/item_translations.py",
-		"/home/rif/Documents/webframeworks/bucatar/menu/admin.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/restaurant_order_list_div.html",
 		"/home/rif/Documents/webframeworks/bucatar/mobile/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/item_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/tasks.py",
-		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/shopping_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/media/dependencies.txt",
 		"/home/rif/Documents/webframeworks/bucatar/templates/sidebar.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/order_cart.html",
@@ -280,9 +283,7 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/jqm/messages.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/urls.py",
 		"/home/rif/Documents/webframeworks/jquery_mobile/hello.html",
-		"/home/rif/Documents/webframeworks/web2py/applications/exs/controllers/default.py",
-		"/home/rif/Documents/webframeworks/web2py/applications/exs/static/sass/_base.sass",
-		"/home/rif/Documents/webframeworks/oiad/kohana/application/classes/controller/categories.php"
+		"/home/rif/Documents/webframeworks/web2py/applications/exs/controllers/default.py"
 	],
 	"find":
 	{
@@ -300,6 +301,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"%s:",
+			"user",
+			"pos",
+			"get_unit",
+			"pos",
+			"print",
+			"shc",
+			"set_count",
+			"clea",
+			"confirm-o",
+			"confirm_order",
+			"daily_menu",
+			"total",
+			"st",
+			"shopping_cart",
 			"auth",
 			"login",
 			"tiny",
@@ -387,7 +403,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -402,8 +418,8 @@
 						"selection":
 						[
 							[
-								20828,
-								20828
+								3810,
+								3810
 							]
 						],
 						"settings":
@@ -413,7 +429,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 760.0,
+						"translation.y": 2335.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -423,7 +439,7 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 18768,
+						"buffer_size": 12391,
 						"regions":
 						{
 						},
@@ -448,18 +464,46 @@
 				},
 				{
 					"buffer": 2,
-					"file": "templates/order/shopping_cart.html",
+					"file": "order/shopping_service.py",
 					"settings":
 					{
-						"buffer_size": 7571,
+						"buffer_size": 7438,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2196,
+								2196
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1233.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/order/shopping_cart.html",
+					"settings":
+					{
+						"buffer_size": 7642,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
 							]
 						],
 						"settings":
@@ -475,52 +519,26 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "templates/menu/menu_list.html",
-					"settings":
-					{
-						"buffer_size": 1386,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1251,
-								1251
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 4,
-					"file": "templates/admin/base_site.html",
+					"file": "menu/views.py",
 					"settings":
 					{
-						"buffer_size": 509,
+						"buffer_size": 1934,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								440,
-								440
+								1879,
+								1879
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -530,56 +548,56 @@
 				},
 				{
 					"buffer": 5,
-					"file": "menu/admin.py",
+					"file": "order/urls.py",
 					"settings":
 					{
-						"buffer_size": 6086,
+						"buffer_size": 2209,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2045,
-								2045
+								537,
+								537
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 7,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 405.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "menu/models.py",
+					"file": "templates/restaurant/unit_detail.html",
 					"settings":
 					{
-						"buffer_size": 12450,
+						"buffer_size": 12907,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1761,
-								1761
+								3589,
+								3596
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 86.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -629,6 +647,18 @@
 		"selected_items":
 		[
 			[
+				"uni",
+				"templates/restaurant/unit_detail.html"
+			],
+			[
+				"shop",
+				"templates/order/shopping_cart.html"
+			],
+			[
+				"sho",
+				"templates/mobile/shopping_cart.html"
+			],
+			[
 				"menu",
 				"templates/menu/menu_list.html"
 			],
@@ -675,10 +705,6 @@
 			[
 				"scree",
 				"media/sass/screen.sass"
-			],
-			[
-				"uni",
-				"templates/restaurant/unit_list.html"
 			],
 			[
 				"recl",
