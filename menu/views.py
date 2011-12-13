@@ -38,11 +38,12 @@ def menu_list(request):
 @render_to('menu/daily_menu.html')
 def random_motd(request):
     motds = MenuOfTheDay.objects.filter(day=date.today())#.order_by('?')
-    motd = motds[0] if len(motds) else None
+    motd = motds[0] if motds.exists() else None
     return locals()
 
 @render_to('menu/daily_menu.html')
 def daily_menu(request, menu_id):
     motds = MenuOfTheDay.objects.filter(day=date.today())    
-    motd = motds.get(pk=menu_id) if len(motds) else None
+    motd = motds.filter(pk=menu_id) if motds.exists() else None
+    motd = mmotd[0] if motd.exists() else None
     return locals()
