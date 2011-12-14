@@ -44,6 +44,12 @@
 		<![endif]-->
     {% block script-links %}{% endblock %}
     <script type="text/javascript">
+
+        function uid(){
+            // generate unique id
+            return (new Date()).getTime()
+        }
+        
         $(function() {
             $.ajaxSetup({
                 cache : false

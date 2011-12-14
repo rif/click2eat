@@ -67,7 +67,7 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 12391,
+				"buffer_size": 10696,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "order/shopping_service.py",
 			"settings":
 			{
-				"buffer_size": 7438,
+				"buffer_size": 8745,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,23 +83,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 7642,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "menu/views.py",
-			"settings":
-			{
-				"buffer_size": 1934,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "order/urls.py",
-			"settings":
-			{
-				"buffer_size": 2209,
+				"buffer_size": 1925,
 				"line_ending": "Unix"
 			}
 		},
@@ -107,7 +91,23 @@
 			"file": "templates/restaurant/unit_detail.html",
 			"settings":
 			{
-				"buffer_size": 12907,
+				"buffer_size": 16681,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "order/urls.py",
+			"settings":
+			{
+				"buffer_size": 2253,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/base_alt.html",
+			"settings":
+			{
+				"buffer_size": 6484,
 				"line_ending": "Windows"
 			}
 		}
@@ -115,9 +115,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 202.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"spa",
+				"Indentation: Convert to Spaces"
+			],
 			[
 				"space",
 				"Indentation: Convert to Spaces"
@@ -156,13 +160,15 @@
 	},
 	"file_history":
 	[
+		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
+		"/home/rif/Documents/webframeworks/bucatar/order/templatetags/order_tags.py",
+		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/mobile/shopping_cart.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_detail.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/shopping_service.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/order/shopping_cart.html",
-		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/reclame.html",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/admin.py",
@@ -182,7 +188,6 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/menu/daily_menu.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/userprofiles/deliveryaddress_form.html",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/templatetags/units.py",
-		"/home/rif/Documents/webframeworks/bucatar/templates/restaurant/unit_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/media/sass/screen.sass",
 		"/home/rif/Documents/webframeworks/bucatar/templates/biblion/blog_list.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/biblion/blog_post.html",
@@ -282,8 +287,7 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/jqm/v1_0_0b1.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/jqm/messages.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/urls.py",
-		"/home/rif/Documents/webframeworks/jquery_mobile/hello.html",
-		"/home/rif/Documents/webframeworks/web2py/applications/exs/controllers/default.py"
+		"/home/rif/Documents/webframeworks/jquery_mobile/hello.html"
 	],
 	"find":
 	{
@@ -301,6 +305,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"hide",
+			"incr",
+			"carts",
+			"count =",
+			"oc.",
+			"count",
+			"selectCart",
+			"pageLinks",
+			"itemTemplate",
+			"get_cart_name",
 			"%s:",
 			"user",
 			"pos",
@@ -385,7 +399,7 @@
 			"get_object_or_404"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -439,15 +453,15 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 12391,
+						"buffer_size": 10696,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								684,
+								1424
 							]
 						],
 						"settings":
@@ -457,7 +471,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -467,15 +481,15 @@
 					"file": "order/shopping_service.py",
 					"settings":
 					{
-						"buffer_size": 7438,
+						"buffer_size": 8745,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2196,
-								2196
+								3926,
+								3926
 							]
 						],
 						"settings":
@@ -485,7 +499,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1233.0,
+						"translation.y": 1428.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -495,15 +509,15 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 7642,
+						"buffer_size": 1925,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								255,
-								255
+								1173,
+								1142
 							]
 						],
 						"settings":
@@ -513,35 +527,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 45.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "menu/views.py",
+					"file": "templates/restaurant/unit_detail.html",
 					"settings":
 					{
-						"buffer_size": 1934,
+						"buffer_size": 16681,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1879,
-								1879
+								8537,
+								8537
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2395.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -551,15 +565,15 @@
 					"file": "order/urls.py",
 					"settings":
 					{
-						"buffer_size": 2209,
+						"buffer_size": 2253,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								537,
-								537
+								693,
+								693
 							]
 						],
 						"settings":
@@ -568,7 +582,7 @@
 							"tab_size": 7,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
+						"translation.x": 42.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -576,18 +590,18 @@
 				},
 				{
 					"buffer": 6,
-					"file": "templates/restaurant/unit_detail.html",
+					"file": "templates/base_alt.html",
 					"settings":
 					{
-						"buffer_size": 12907,
+						"buffer_size": 6484,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3589,
-								3596
+								3709,
+								3709
 							]
 						],
 						"settings":
@@ -597,7 +611,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 86.0,
+						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -647,6 +661,10 @@
 		"selected_items":
 		[
 			[
+				"bas",
+				"templates/base_alt.html"
+			],
+			[
 				"uni",
 				"templates/restaurant/unit_detail.html"
 			],
@@ -685,10 +703,6 @@
 			[
 				"scr",
 				"media/sass/screen.sass"
-			],
-			[
-				"bas",
-				"templates/base_alt.html"
 			],
 			[
 				"whe",
