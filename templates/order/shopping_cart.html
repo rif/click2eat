@@ -1,8 +1,8 @@
-{% load i18n l10n %}
+{% load i18n l10n order_tags %}
 
 <div id="carts">
     {% for cn, items in oc.get_carts.iteritems %}
-        <a href="#" class="{% if cn == user.username %}selected-cart{% endif %} cart-name">{{ cn }}</a>
+        <a href="#" class="{% if cn|clean_cn == user.username %}selected-cart{% endif %} cart-name">{{ cn|clean_cn }}{{ get_cart_total}}</a>
         <ul class="items">
             {% for item in items %}
                 <li class="cart-item" itemid="{{ item.get_item_id }}">
@@ -17,7 +17,7 @@
             {% endfor %}
         </ul>
         <div class="subtotal-div">
-            {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ oc.get_total_sum.cn|unlocalize }}</span> {% trans 'RON' %}
+            {% trans 'Subtotal' %}: <span class="cart-subtotal">{% get_cart_total %}</span> {% trans 'RON' %}
         </div>
     {% endfor %}
 </div>
