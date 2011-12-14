@@ -56,48 +56,6 @@ def list_unit(request, unit_id):
         template_name = 'order/order_list_div.html',
     )
 
-@login_required
-@ajax_request
-def decr_item(request, cart_name, unit_id, item_id):
-    cn = '%s:%s' % (unit_id, cart_name)
-    if cn in request.session and item_id in request.session[cn]:
-      if request.session[cn][item_id][0] > 1:
-        request.session[cn][item_id][0] -= 1
-        count = request.session[cn][item_id][0]
-        unit_price = request.session[cn][item_id][1]
-        subtotal = __count_cart_sum(request,cn)
-      else:
-        count, unit_price = 0, 0
-        del request.session[cn][item_id]
-        """ Delete assocaited toppings """
-        for top in [k for k in request.session[cn].keys() if item_id + '_' in k]:
-          del request.session[cn][top]
-        subtotal = __count_cart_sum(request,cn)
-        """ Delete the cart if all the items are removed """
-        if len(request.session[cn]) == 0: del request.session[cn]
-      request.session.modified = True
-      total = __count_cart_sum(request,unit_id)
-      return {'total': total,
-            'subtotal': subtotal,
-            'count': count,
-            'itemtotal': count * unit_price}
-    return {'error': '29a'}
-
-
-@login_required
-@ajax_request
-def incr_item(request, cart_name, unit_id, item_id):
-    cn = '%s:%s' % (unit_id, cart_name)
-    if cn in request.session and item_id in request.session[cn]:
-        request.session[cn][item_id][0] += 1
-        request.session.modified = True
-        count = request.session[cn][item_id][0]
-        unit_price = request.session[cn][item_id][1]
-        return {'total': __count_cart_sum(request,unit_id),
-            'subtotal': __count_cart_sum(request,cn),
-            'count': count,
-            'itemtotal': count * unit_price}
-    return {'error': '29a'}
 
 @login_required
 @ajax_request

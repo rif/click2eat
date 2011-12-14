@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load cache %}
-{% load i18n %}
+{% load cache i18n %}
 
 {% block style %}
 <!--link href="{{ STATIC_URL }}css/stars/jquery.ui.stars.min.css" rel="stylesheet" type="text/css" media="screen"-->
@@ -59,7 +58,7 @@
   <div id="primapagina" class="span-16 last">
     {% cache 300 home LANGUAGE_CODE %}
     <div class="titlu">
-      {% trans 'or chose what you want to eat today ?' %}
+      {% trans 'or choose what you want to eat today ?' %}
     </div>
     <div class="vezitoate">
       <a href="{% url menu:menu_list %}" title="{% trans 'See all menues'%}">{% trans 'See all menues'%}</a>
@@ -73,7 +72,7 @@
       {% endfor %}
     </div>
     <div id="titletabla">
-      {% trans 'or chose menu of the day' %}
+      {% trans 'or choose menu of the day' %}
     </div>
     {% endcache %}
   </div><!-- primapagina -->

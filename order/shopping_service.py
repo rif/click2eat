@@ -9,6 +9,7 @@ class CartItem:
     def __init__(self, item_id, count = 0):
         #mMasterId-VarID_TopId
         self.count, self.item_id = count, item_id
+        uid, item_id = item_id.split('!')
         self.item, self.variation = None,None
         if item_id.startswith('m'):
             item_id = item_id[1:].split('-')[0] #discard m char and variation id
@@ -48,9 +49,6 @@ class CartItem:
 
     def get_session_value():
         return self.item_id, self.get_count()
-    
-    def __eq__(self, other):
-        return self.item_id == other.get_item_id()
     
     def __str__(self):
         return '%s: %d' % (self.item_id, self.count)
@@ -100,9 +98,24 @@ class OrderCarts:
     
     def add_item(self, cn, item_id):
         self.create_cart_if_not_exists(cn)
+        self.carts[cn].append(CartItem(item_id, 1))
+    
+    def decr_item(self, cn, item_id):
         item = self.get_item(cn, item_id)
-        if not item: self.carts[cn].append(CartItem(item_id, 1))
-        else: item.set_count(item.get_count() + 1)
+        if not item: return #we have an hacker case here?
+        if item.get_count() > 1:
+            item.set_count(item.get_count() - 1)
+        else:                
+            self.carts[cn].remove(item)
+            """ Delete assocaited toppings """
+            for top in [ci for ci in self.carts[cn] if (item_id + '_') in ci.get_item_id()]:
+                self.carts[cn].remove(top)
+            """ Delete the cart if all the items are removed """
+            if len(self.carts[cn]) == 0 and len(self.carts) > 1: del self.carts[cn]
+
+    def incr_item(self, cn, item_id):
+        item = self.get_item(cn, item_id)
+        if item: item.set_count(item.get_count() + 1)
     
     def __str__(self):
         result = ''
@@ -110,6 +123,14 @@ class OrderCarts:
             result += '%s\t%s\n' %(cn, '\t\n'.join([str(i) for i in items]))
         return result
 
+
+@render_to('order/shopping_cart.html')
+def shopping_cart(request, unit_id):
+    #del request.session['1:rif']
+    oc = OrderCarts(request.session, unit_id)
+    if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
+    show_confirm_order = True
+    return locals()
 
 @login_required
 @render_to('order/shopping_cart.html')
@@ -119,17 +140,32 @@ def shop(request,unit_id,  cart_name, item_id):
 
     if cn not in oc.get_carts() and '_' in item_id: #first added item is a topping
         return {'error': '2e62'} # kriptic errors for hackers delight :)
-    if cn in oc.get_carts() and '_' in item_id and item_id.rsplit('_')[0] not in oc.get_carts(cn): # added topping without item            
-        return {'error': '2e6z'}
+    #if cn in oc.get_carts() and '_' in item_id and item_id.rsplit('_')[0] not in oc.get_carts(cn): # added topping without item            
+    #    return {'error': '2e6z'}
 
     oc.add_item(cn, item_id)
     oc.update_session(request.session)
+    show_confirm_order = True
     return locals()
 
+@login_required
 @render_to('order/shopping_cart.html')
-def shopping_cart(request, unit_id):
-    oc = OrderCarts(request.session, unit_id)
-    if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
+def decr_item(request, unit_id, cart_name, item_id):
+    oc = OrderCarts(request.session,unit_id)
+    cn = '%s:%s' % (unit_id, cart_name)
+    oc.decr_item(cn, item_id)
+    oc.update_session(request.session)
+    show_confirm_order = True
+    return locals()
+
+
+@login_required
+@render_to('order/shopping_cart.html')
+def incr_item(request,  unit_id, cart_name, item_id):
+    oc = OrderCarts(request.session,unit_id)
+    cn = '%s:%s' % (unit_id, cart_name)
+    oc.incr_item(cn, item_id)
+    oc.update_session(request.session)
     show_confirm_order = True
     return locals()
 
