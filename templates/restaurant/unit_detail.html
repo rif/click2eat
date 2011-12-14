@@ -11,8 +11,11 @@
         	$("#content, #sidebar2").css("margin-top", "70px");
             $("#shopping-cart").load("{% url order:shopping-cart object.id %}");
 
-            $("#last-orders").load("{% url order:list_unit object.id %}", function() {
-                pageLinks();
+            $("#last-orders").load("{% url order:list_unit object.id %}").on("click", ".page, .next, .prev", function(){
+                $.get("{% url order:list_unit object.id %}" + $(this).attr("href"), function(data) {
+                    $("#last-orders").html(data);
+                });
+                return false;
             });
             $("#show-previous-link").click(function(e) {
                 $("#last-orders").slideToggle();
@@ -82,39 +85,8 @@
 			if(existingTopping && existingTopping.length > 0){
 				$('a.incr-link', existingTopping).click();
 			} else {
-		        $.get("/order/shop/" + selCart.text() + "/" + args , function(data) {
-		        	if (data.hasOwnProperty('id') && data.hasOwnProperty('price') && data.hasOwnProperty('name')){
-		            	parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
-		            	parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
-		            	$("#order-total").text(data['total']);
-		            	showHideMinOrder();
-		           } else {
-		           		alert("{% trans 'Error processing your command!' %}");
-		           }
-		        });
+		        $("div#carts").load("/order/shop/{{ object.id }}/" + selCart.text() + "/" + args);
             }
-        }
-
-        function itemTemplate(id, price, title) {
-            return '<li itemid="' + id + '" class="cart-item">\
-          <span class="item-count">1</span>\
-          <span class="item-price">' + price + '</span>\
-          <span class="item-title">x ' + title + '</span>\
-          <a href="#" class="decr-link"></a>\
-          <a href="#" class="incr-link"></a>\
-          <span class="item-currency">{% trans "RON" %}</span>\
-          <span class="item-total">' + price + '</span>\
-          </li>';
-        }
-
-        function pageLinks() {
-            $(".page, .next, .prev").click(function(e) {
-                $.get("{% url order:list_unit object.id %}" + $(this).attr("href"), function(data) {
-                    $("#last-orders").html(data);
-                    pageLinks();
-                });
-                e.preventDefault();
-            });
         }
     </script>
 {% endblock %}
