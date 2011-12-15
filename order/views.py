@@ -22,7 +22,7 @@ from order.forms import CartNameForm, OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from bonus.models import BonusTransaction, BONUS_PERCENTAGE
 from order.tasks import send_email_task
-import shopping_service
+from shopping_service import CartItem, OrderCarts, construct_order
 
 def __is_restaurant_administrator(request, unit):
     if request.user.username == 'admin': return
@@ -76,11 +76,9 @@ def send_order(request, unit_id):
 @login_required
 @render_to('order/send_confirmation.html')
 def confirm_order(request, unit_id):
-    unit = get_object_or_404(Unit, pk=unit_id)
-    total_sum = __count_cart_sum(request,unit_id)
-    carts = []
-    for cn in __get_cart_names(request,unit_id):
-        carts.append((cn.split(':',1)[1], sorted(request.session[cn].items()), __count_cart_sum(request, cn)))
+    oc = OrderCarts(request.session,unit_id)
+    unit = oc.get_unit()
+    total_sum = oc.get_total_sum()
     if not unit.is_open():
         messages.warning(request, _('This restaurant is now closed! Please check the open hours and set desired delivery time accordingly.'))
     if unit.minimum_ord_val > total_sum:
@@ -99,7 +97,7 @@ def confirm_order(request, unit_id):
         if form.is_valid():
             order = form.save(commit=False)
             paid_with_bonus = 'paid_with_bonus' in form.data
-            __construct_order(request, unit, order, paid_with_bonus)
+            construct_order(request, oc, unit, order, paid_with_bonus)
             if not unit.is_open():
                 return redirect('restaurant:detail', unit_id=unit.id)
             return redirect('order:timer', order_id=order.id)
@@ -118,11 +116,13 @@ def confirm_order(request, unit_id):
     return locals()
 
 @login_required
-@ajax_request
+@render_to('order/shopping_cart.html')
 def clear(request, unit_id):
-    for cn in __get_cart_names(request, unit_id):
+    oc = OrderCarts(request.session,unit_id)
+    for cn in oc.get_cart_names():
         del request.session[cn]
-    return dict(response='done!')
+    oc.create_cart_if_not_exists(request.user.username)
+    return locals()
 
 @login_required
 @render_to('order/timer.html')

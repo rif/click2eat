@@ -72,6 +72,10 @@ class OrderCarts:
 
     def have_unit_cart(self):
         return len(self.carts.keys()) > 0
+    
+    def is_below_minimum(self):
+        unit = self.get_unit()
+        return self.get_total_sum() < unit.minimum_ord_val
 
     def get_total_sum(self, cn=None):
         if cn: s = sum([v.get_total() for v in self.carts[cn]])
@@ -129,7 +133,6 @@ def shopping_cart(request, unit_id):
     #del request.session['1:rif']
     oc = OrderCarts(request.session, unit_id)
     if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
-    show_confirm_order = True
     return locals()
 
 @login_required
@@ -145,7 +148,6 @@ def shop(request,unit_id,  cart_name, item_id):
 
     oc.add_item(cn, item_id)
     oc.update_session(request.session)
-    show_confirm_order = True
     return locals()
 
 @login_required
@@ -155,7 +157,6 @@ def decr_item(request, unit_id, cart_name, item_id):
     cn = '%s:%s' % (unit_id, cart_name)
     oc.decr_item(cn, item_id)
     oc.update_session(request.session)
-    show_confirm_order = True
     return locals()
 
 
@@ -166,10 +167,9 @@ def incr_item(request,  unit_id, cart_name, item_id):
     cn = '%s:%s' % (unit_id, cart_name)
     oc.incr_item(cn, item_id)
     oc.update_session(request.session)
-    show_confirm_order = True
     return locals()
 
-def construct_order(request, unit, order, paid_with_bonus):
+def construct_order(request, oc, order, paid_with_bonus):
     order.user = request.user
     order.employee_id=unit.employee_id
     order.unit = unit
@@ -178,11 +178,9 @@ def construct_order(request, unit, order, paid_with_bonus):
     order.save() # save it to be able to bind OrderItems
     unit_id = str(unit.id)
     master = None
-    for cn in __get_cart_names(request, unit_id):
-        cart = request.session[cn]
-        for item_id in cart.keys():
-            values = cart[item_id]
-            item_id = item_id.split('_', 1)            
+    for cn, items in oc.get_carts().iteritems():
+        for item in items:
+            item_id = item.get_item_id().split('_', 1)            
             if item_id.startswith('m'):
               motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
               OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)

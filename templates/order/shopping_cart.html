@@ -2,7 +2,7 @@
 
 <div id="carts">
     {% for cn, items in oc.get_carts.iteritems %}
-        <a href="#" class="{% if cn|clean_cn == user.username %}selected-cart{% endif %} cart-name">{{ cn|clean_cn }}{{ get_cart_total}}</a>
+        <a href="#" class="{% if forloop.counter == 1 %}selected-cart{% endif %} cart-name">{{ cn|clean_cn }}{{ get_cart_total}}</a>
         <ul class="items">
             {% for item in items %}
                 <li class="cart-item" itemid="{{ item.get_item_id }}">
@@ -10,7 +10,7 @@
                     <span class="item-price">{{ item.get_price|unlocalize }}</span>
                     <span class="item-title">x {{ item.get_name|truncatewords:3 }}</span>
                     <a class="decr-link" href="#"></a>
-                    <a class="incr-link" href="#"></a>
+                    {% show_incr_link %}
                     <span class="item-currency">{% trans 'RON' %}</span>
                     <span class="item-total">{{ item.get_total }}</span>
                 </li>
@@ -22,12 +22,10 @@
     {% endfor %}
 </div>
 <div class="nota">
-    {% if show_confirm_order %}
-        <div id="new-cart-placeholder"></div>
-        <a href="#" id="add-cart">{% trans 'Add shopping cart' %}</a>
-        <a href="#" id="clear-order">{% trans 'Reset order' %}</a>
-        <br/>
-    {% endif %}
+    <div id="new-cart-placeholder"></div>
+    <a href="#" id="add-cart">{% trans 'Add shopping cart' %}</a>
+    <a href="#" id="clear-order">{% trans 'Reset order' %}</a>
+    <br/>
     _________________________
     <br/>
 
@@ -35,12 +33,12 @@
   <span class="totalnota">
     <span id="order-total">{{ oc.get_total_sum|unlocalize }}</span> {% trans 'RON' %}
   </span>
-
+    {% if oc.is_below_minimum %}
     <div id="min-span">({% trans 'Minimum order: ' %}<span
-            id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)
+            id="min-order">{{ oc.get_unit.minimum_ord_val }}</span>{% trans 'RON' %}.)
     </div>
-    <div class="clear"></div>
-    {% if show_confirm_order %}<a class="button" href="{% url order:confirm-order oc.get_unit.id %}">CONFIRMA COMANDA</a>
     {% endif %}
+    <div class="clear"></div>
+    <a class="button" href="{% url order:confirm-order oc.get_unit.id %}">CONFIRMA COMANDA</a>
 </div>
 
