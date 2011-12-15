@@ -5,61 +5,12 @@
 
 {% block scripts %}
 <script type="text/javascript">
-    function showHideMinOrder() {
-        var ct = parseFloat($("#order-total").text());
-        var mo = parseFloat($("#min-order").text());
-        if (ct >= mo) {
-            $("#min-span").hide();
-        } else {
-            $("#min-span").show();
-        }
-    }
-
-    function hideIncr(){
-        // hide -/+ actions where they are not appropriate
-        $("li.cart-item").each(function(){
-            var nextItem = $(this).next("li.cart-item");
-            if(nextItem.length) {
-                var count = nextItem.attr("itemid").match(/_/g);
-                if(count && count.length == 1){
-                    $(this).children(".incr-link").hide();
-                }
-            }
-        });
-    }
-    
     function selectCart(cart){
         $(".cart-name").removeClass("selected-cart");
         cart.addClass("selected-cart");
     }
 
     function prepareCarts() {
-        showHideMinOrder();
-        $("#confirm").click(function() {
-            var send_error = false;
-            if ($("#unit-closed").length > 0) {
-                alert("{% trans 'The restaurant is now closed' %}!");
-                send_error = true;
-            }
-            if (! send_error && $("#min-span:visible").length > 0) {
-                alert("{% trans 'Minimum order for this unit is:' %} {{ unit.minimum_ord_val }}{% trans 'RON' %}");
-                send_error = true;
-            }
-            if (! send_error) {
-                $.get($(this).attr("href"), {'dt':$("#dt input:checked").val(), 'da':$("#da input:checked").val()}, function() {
-                    alert("{% trans 'Your order has been sent to the restaurant!' %}");
-                });
-                $.mobile.changePage("{% url mobile:home %}");
-            }
-            return false;
-        });
-        $(".items>li").each(function() {
-            var parent = $(this);
-            var count = parseInt($("span.item-count", parent).text());
-            var price = parseFloat($("span.item-price", parent).text());
-            $("span.item-total", parent).text(count * price);
-        });
-
         $("#add-cart").click(function() {
             if ($("#id_name").length == 0) { // we don't have one already
                 $("#new-cart-placeholder").html('<form action="" method="post" id="cart-name-form">\
@@ -90,8 +41,6 @@
         $("#clear-order").click(function() {
             if (confirm("{%  trans 'Are you sure you want to clear all items from this order?' %}")) {
                 $.get("{% url order:clear object.id %}");
-                $("#carts").html('<a class="cart-name selected-cart" href="#">{{  user.username }}</a><ul class="items"></ul><div class="subtotal-div">\
-{% trans 'Subtotal' %}: <span class="cart-subtotal">0</span> {% trans "RON" %}</div>');
             }
             $(".top-span").fadeOut();
             return false;
@@ -113,20 +62,20 @@
             } else {
                 var href = "/order/incritem" + "/{{ object.id }}/" + parentCart.text() + "/" + iid + "/";
             }
-            $("div#shopping-cart").load(href, function(){
-                hideIncr();
-            });
+            
+            // get new carts
+            $("div#shopping-cart").load(href);
+
+            // hide toppings from the menu menu
             var count = iid.match(/_/g);           
             if(count && count.length < 1) {              
                 $(".top-span").fadeOut();
             }
-            hideIncr();
             return false;
         });
         $("#shopping-cart").ajaxError(function(event, request, settings) {
             alert("{% trans 'Error processing your command!' %}");
         });
-        hideIncr();
     }
     $(function() {
     	// in this view we don't have commercials
