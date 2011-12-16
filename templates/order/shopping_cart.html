@@ -22,9 +22,11 @@
     {% endfor %}
 </div>
 <div class="nota">
+    {% if we_are_are_in_cart %}
     <div id="new-cart-placeholder"></div>
     <a href="#" id="add-cart">{% trans 'Add shopping cart' %}</a>
     <a href="#" id="clear-order">{% trans 'Reset order' %}</a>
+    {% endif %}
     <br/>
     _________________________
     <br/>
@@ -39,6 +41,8 @@
     </div>
     {% endif %}
     <div class="clear"></div>
+    {% if we_are_are_in_cart %}
     <a class="button" href="{% url order:confirm-order oc.get_unit.id %}">CONFIRMA COMANDA</a>
+    {% endif %}
 </div>
 

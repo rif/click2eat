@@ -1,13 +1,20 @@
 from annoying.functions import get_object_or_None
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
-from annoying.decorators import render_to, ajax_request
-from menu.models import Item, Topping, Variation
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
+from annoying.decorators import render_to
+from menu.models import Item, MenuOfTheDay, Topping, Variation
+from order.models import OrderItem
 from restaurant.models import Unit
+from datetime import datetime
+from bonus.models import BonusTransaction, BONUS_PERCENTAGE
+from order.tasks import send_email_task
 
 class CartItem:
     def __init__(self, item_id, count = 0):
-        #mMasterId-VarID_TopId
+        #mUID!MasterId-VarID_TopId
         self.count, self.item_id = count, item_id
         uid, item_id = item_id.split('!')
         self.item, self.variation = None,None
@@ -46,9 +53,6 @@ class CartItem:
     
     def get_item_id(self):
         return self.item_id
-
-    def get_session_value():
-        return self.item_id, self.get_count()
     
     def __str__(self):
         return '%s: %d' % (self.item_id, self.count)
@@ -65,7 +69,7 @@ class OrderCarts:
             self.carts[cart] = items
     
     def get_carts(self, cn=None):
-        return self.carts if cn == None else self.carts[cn]
+        return self.carts if cn is None else self.carts[cn]
 
     def get_cart_names(self):
         return self.carts.keys()
@@ -111,10 +115,10 @@ class OrderCarts:
             item.set_count(item.get_count() - 1)
         else:                
             self.carts[cn].remove(item)
-            """ Delete assocaited toppings """
+            # Delete assocaited toppings
             for top in [ci for ci in self.carts[cn] if (item_id + '_') in ci.get_item_id()]:
                 self.carts[cn].remove(top)
-            """ Delete the cart if all the items are removed """
+            #Delete the cart if all the items are removed
             if len(self.carts[cn]) == 0 and len(self.carts) > 1: del self.carts[cn]
 
     def incr_item(self, cn, item_id):
@@ -133,6 +137,7 @@ def shopping_cart(request, unit_id):
     #del request.session['1:rif']
     oc = OrderCarts(request.session, unit_id)
     if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
+    we_are_are_in_cart = True
     return locals()
 
 @login_required
@@ -148,6 +153,7 @@ def shop(request,unit_id,  cart_name, item_id):
 
     oc.add_item(cn, item_id)
     oc.update_session(request.session)
+    we_are_are_in_cart = True
     return locals()
 
 @login_required
@@ -157,6 +163,7 @@ def decr_item(request, unit_id, cart_name, item_id):
     cn = '%s:%s' % (unit_id, cart_name)
     oc.decr_item(cn, item_id)
     oc.update_session(request.session)
+    we_are_are_in_cart = True
     return locals()
 
 
@@ -167,9 +174,10 @@ def incr_item(request,  unit_id, cart_name, item_id):
     cn = '%s:%s' % (unit_id, cart_name)
     oc.incr_item(cn, item_id)
     oc.update_session(request.session)
+    we_are_are_in_cart = True
     return locals()
 
-def construct_order(request, oc, order, paid_with_bonus):
+def construct_order(request, oc, unit, order, paid_with_bonus):
     order.user = request.user
     order.employee_id=unit.employee_id
     order.unit = unit
@@ -177,33 +185,31 @@ def construct_order(request, oc, order, paid_with_bonus):
         order.desired_delivery_time = datetime.now()
     order.save() # save it to be able to bind OrderItems
     unit_id = str(unit.id)
-    master = None
+    master, variation = None, None
     for cn, items in oc.get_carts().iteritems():
         for item in items:
-            item_id = item.get_item_id().split('_', 1)            
+            item_id = item.get_item_id().split('!', 1)[1]
             if item_id.startswith('m'):
-              motd = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
-              OrderItem.objects.create(order=order, menu_of_the_day=motd, count=values[0], old_price=motd.get_price(), cart=unit_id)
+              motd = item.get_item()
+              OrderItem.objects.create(order=order, menu_of_the_day=motd, count=item.get_count(), old_price=motd.get_price(), cart=unit_id)
             elif '_' in item_id:
               top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
               if not master: pass # shit there is no master for this topping, figure out what to do              
-              OrderItem.objects.create(master=master, order=order, topping=top, count=values[0], old_price=top.get_price(), cart=unit_id)
+              OrderItem.objects.create(master=master, order=order, topping=top, count=item.get_count(), old_price=top.get_price(), cart=unit_id)
             else:              
               if '-' in item_id: # we have a variation
                   item_id, vari_id =  item_id.split('-',1)        
                   variation = get_object_or_None(Variation, pk=vari_id)                            
-              item = get_object_or_404(Item, pk=item_id)              
-              if variation: price = variation.price
-              else: price = item.get_price()                            
-              master = OrderItem.objects.create(order=order, variation=variation, item=item, count=values[0], cart=cn.split(':')[1])                        
+              payload = item.get_item()
+              master = OrderItem.objects.create(order=order, variation=variation, item=payload, count=item.get_count(), cart=cn.split(':')[1])
         del request.session[cn]
     #give bonus to the friend
     if paid_with_bonus:
-        _consume_bonus(order)
+        consume_bonus(order)
     try:
         initial_friend = order.user.get_profile().get_initial_friend()
         if initial_friend and not order.paid_with_bonus:
-            b = BonusTransaction.objects.create(user=initial_friend, order=order, amount=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
+            BonusTransaction.objects.create(user=initial_friend, order=order, amount=round((order.total_amount * BONUS_PERCENTAGE / 100),2))
     except: # if the user does not have userprofile then forget it
         pass
     subject = _('New Order')
