@@ -13,9 +13,7 @@
 			<li class="slide primulslide">
 				<div class="titluslide">
 					<a href="{% url restaurant:detail unit.id %}" title="slide">
-					{% if unit.is_restaurant %}
-					<span class="textmic">RESTAURANT</span>
-					{% endif %}					
+					<span class="textmic">{{ unit.descriptive_type }}</span>
 					<br/>
 					<span class="textmare">{{ unit.name|upper }}</span></a>
 				</div>
