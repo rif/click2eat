@@ -3,7 +3,6 @@ from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, redirect
 from django.template import RequestContext
-from django.db.models import Sum
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
@@ -13,16 +12,13 @@ from django import forms
 from django.views.generic import list_detail
 from annoying.decorators import render_to, ajax_request
 import csv
-from datetime import datetime
-from geopy import distance
-from order.models import Order, OrderItem
+from order.models import Order
 from restaurant.models import Unit, DeliveryType
-from menu.models import Item, Topping, MenuOfTheDay
-from order.forms import CartNameForm, OrderForm, RatingForm
+from order.forms import OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
-from bonus.models import BonusTransaction, BONUS_PERCENTAGE
 from order.tasks import send_email_task
-from shopping_service import CartItem, OrderCarts, construct_order
+from shopping_service import OrderCarts, construct_order
+from geopy import distance
 
 def __is_restaurant_administrator(request, unit):
     if request.user.username == 'admin': return
