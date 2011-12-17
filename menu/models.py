@@ -250,12 +250,16 @@ class Topping(MultilingualModel):
 class Promotion(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
     name = models.CharField(_('name'), max_length=50)
+    internal_name = models.CharField(_('internal name'), max_length=100)
     start_date = models.DateTimeField(_('start date'), null=True, blank=True)
     end_date = models.DateTimeField(_('end date'), null=True, blank=True)
     weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, null=True, blank=True, help_text=_('integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5'))
     start_hour = models.CharField(_('start hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 10:30'))
     end_hour = models.CharField(_('end hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 15:00'))
-    value = models.IntegerField(_('value'), default=0, help_text=_('Percentage'))
+    numer_of_items = models.IntegerField(_('numer of items'), default=1, help_text=_('Number of items involved'))
+    total_sum_trigger = models.FloatField(_('total sum trigger'), default=0, help_text=_('Total order sum for which this promotion will become active'))
+    procentage = models.IntegerField(_('procentage'), default=0, help_text=_('Percentage'), null=True, blank=True)
+    absolute_price = models.FloatField(_('absolute value'), default=0, help_text=_('Absolute price'), null=True, blank=True)
 
     def __unicode__(self):
         return self.name
