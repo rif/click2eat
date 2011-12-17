@@ -40,15 +40,15 @@ USE_I18N = True
 USE_L10N = True
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'click2eat.ro@gmail.com'
+EMAIL_HOST_USER = 'bucatar@click2eat.ro'
 EMAIL_HOST_PASSWORD = 'testus_cumulus'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = ' [Click2eat.ro] '
 
 SITE_NAME = 'bucatar'
-CONTACT_EMAIL = 'contact@mailinator.com'
-DEFAULT_FROM_EMAIL = 'default@mailinator.com'
+CONTACT_EMAIL = 'office@click2eat.ro'
+DEFAULT_FROM_EMAIL = 'office@click2eat.ro'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 PAGINATION_DEFAULT_WINDOW = 3
