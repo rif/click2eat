@@ -16,7 +16,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-SERVER_EMAIL = "click2eat.ro@gmail.com"
+SERVER_EMAIL = "office@click2eat.ro"
 
 DATABASES = {
     'default': {
