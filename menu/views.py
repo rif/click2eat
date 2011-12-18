@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
-from django.shortcuts import get_object_or_404
 from datetime import date
 from django.db.models import Q
 from menu.models import Item, MenuOfTheDay
@@ -45,5 +44,5 @@ def random_motd(request):
 def daily_menu(request, menu_id):
     motds = MenuOfTheDay.objects.filter(day=date.today())    
     motd = motds.filter(pk=menu_id) if motds.exists() else None
-    motd = motd[0] if motd.exists() else None
+    motd = motd[0] if motd and motd.exists() else None
     return locals()
