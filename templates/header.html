@@ -10,18 +10,22 @@
 
         <div class="separatorl"></div>
         <a id="btn_contulmeu" title="{% trans 'My profile' %}"
-           href="{% if user.is_anonymous %}{% url auth_login %}{% else %}{% url profiles_profile_detail user %}{% endif %}">
-            <span class="textmare2">{% trans 'MY'|upper %}</span>
-            <br/>
-            {% trans 'ACCOUNT'|upper %} </a>
+           href="{% if user.is_anonymous %}{% url registration_register %}{% else %}{% url profiles_profile_detail user %}{% endif %}">
+           {%  if LANGUAGE_CODE == 'ro' %}
+               {% if user.is_anonymous %}
+                   <span class="textmare2">CONT</span><br/>NOU
+               {% else %}
+                   <span class="textmare2">CONTUL</span><br/>MEU
+               {% endif %}
+           {% else %}
+               {% if user.is_anonymous %}
+                   <span class="textmare2">{% trans 'NEW'|upper %}</span><br/>{% trans 'ACCOUNT'|upper %}
+               {% else %}
+                   <span class="textmare2">{% trans 'MY'|upper %}</span><br/>{% trans 'ACCOUNT'|upper %}
+               {% endif %}
+           {% endif %}
+        </a>
         <div id="logintop">
-            {#% if not user.is_authenticated %#} <!--
-			<div id="top_links">
-			{#% trans 'Forgot password?' %} <a href="{% url auth_password_reset %}" target="_self">{% trans 'Reset it' %}</a>!#}
-			{#% trans 'Not member?' %} <a href="{% url registration_register %}" target="_self">{% trans 'Register' %}</a>#}!
-			</div>
-			-->
-            {#% endif %#}
             <div id="top_register{% if user.is_authenticated %}_auth{% endif %}">
                 {% if user.is_authenticated %}
                     <span class="loggedin"> {% if user.is_superuser %}
