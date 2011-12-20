@@ -138,7 +138,7 @@
             <div class="title"><h1>{{ object.name|upper }}</h1></div>
              {% if object.logo_path %}
                 <div id="establishment_picture">
-                    {% thumbnail object.logo_path "x100" as im %}
+                    {% thumbnail object.logo_path "x100" format="PNG" as im %}
                         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ object.name }}-logo">
                     {% endthumbnail %}
                 </div>

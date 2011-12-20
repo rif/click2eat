@@ -19,7 +19,7 @@
 				</div>
 				<div class="logorestaurant">
 					{% if unit.logo_path %}
-                        {% thumbnail unit.logo_path "x55" as im %}
+                        {% thumbnail unit.logo_path "x55" format="PNG" as im %}
                             <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ unit.name }}-logo">
                         {% endthumbnail %}
 					{% else %}
