@@ -113,6 +113,38 @@
 				"buffer_size": 418,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "restaurant/views.py",
+			"settings":
+			{
+				"buffer_size": 5646,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/base_alt.html",
+			"settings":
+			{
+				"buffer_size": 6359,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/header.html",
+			"settings":
+			{
+				"buffer_size": 3950,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/registration/registration_form.html",
+			"settings":
+			{
+				"buffer_size": 1451,
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -421,7 +453,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -447,7 +479,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2335.0,
+						"translation.y": 111.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -618,6 +650,118 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "restaurant/views.py",
+					"settings":
+					{
+						"buffer_size": 5646,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1191,
+								1191
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/base_alt.html",
+					"settings":
+					{
+						"buffer_size": 6359,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3584,
+								3584
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "templates/header.html",
+					"settings":
+					{
+						"buffer_size": 3950,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								542,
+								542
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "templates/registration/registration_form.html",
+					"settings":
+					{
+						"buffer_size": 1451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								900,
+								900
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -653,10 +797,6 @@
 		]
 	},
 	"menu_visible": true,
-	"output.package_control":
-	{
-		"height": 98.0
-	},
 	"replace":
 	{
 		"height": 62.0

@@ -30,6 +30,7 @@ $(function(){
 	<div class="titlu">
     	{% trans 'New account' %}
     </div>
+    {% trans 'Already have an account?' %} <a href="{% url auth_login %}">{% trans 'Login'%}</a>
     <div class="datep">
        
 <form method="POST" action="{% url registration_register %}" class="uniForm">{% csrf_token %}
