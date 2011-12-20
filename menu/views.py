@@ -9,7 +9,7 @@ from taggit.models import Tag
 @render_to('menu/item_list.html')
 def item_list(request):
     query = request.GET.get('q', '')
-    results = Item.objects.select_related('item_group__unit','promotion__unit').order_by('name_def')
+    results = Item.objects.filter(active=True).select_related('item_group__unit','promotion__unit').order_by('name_def')
     if query:
         results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query) | Q(mcg__name__icontains=query)).distinct()
     f = ItemFilter(request.GET, queryset=results)
@@ -24,7 +24,7 @@ def daily_menus(request):
 
 @render_to('menu/item_list.html')
 def item_tag_list(request, tag):
-    results = Item.objects.select_related('item_group__unit', 'promotion__unit').filter(Q(tags__slug__icontains=tag)).order_by('name_def').distinct()
+    results = Item.objects.filter(active=True).select_related('item_group__unit', 'promotion__unit').filter(Q(tags__slug__icontains=tag)).order_by('name_def').distinct()
     f = ItemFilter(request.GET, queryset=results)
     return {'tag': tag, 'filter': f}
 
