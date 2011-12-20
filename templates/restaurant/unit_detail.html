@@ -188,7 +188,7 @@
                                     <li class="item {% if item.is_new %}new-item{% endif %} pozrel">
                                         <div class="name">
                                         {% get_name item %}
-                                        <span class="unit">{{ object.name }}</span>
+                                        <span class="unit">{{ object.descriptive_type|title }} {{ object.name }}</span>
                                         {% if item.image_path %}
                                         <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">{% trans 'preview' %}</a>
                                         {% endif %}
