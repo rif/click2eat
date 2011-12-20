@@ -133,13 +133,11 @@
 		<div class="datecont">
 			<strong>{{ profile.user.get_full_name }}</strong>
 			<br/>
-			{% trans 'Tel'%}: {{ profile.phone }}
+			{% trans 'Phone'%}: {{ profile.phone }}
 			<br/>
 			<a target="_self" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a>
 			<br/>
 			<strong>{% trans 'Birth date' %}:</strong> {{ profile.birth_date }}
-			<br/>
-			<strong>{% trans 'Phone' %}:</strong>
 			<br/>
 			<strong>{% trans 'Sex' %}:</strong> {{ profile.get_sex_display }}
 			<br/>
