@@ -68,7 +68,7 @@
 			</div>		
 		<div class="clear"></div>
 		<div class="unit">
-			{{ obj.item_group.unit }}
+			{{ obj.item_group.unit.descriptive_type|title }} {{ obj.item_group.unit }}
 		</div>
 		<div class="description">
 			{% get_desc obj %}
