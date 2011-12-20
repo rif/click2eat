@@ -23,7 +23,7 @@ For running sudo on remote machine:
 @task
 @hosts('rif@click2eat.ro:22011', 'rif@demo.click2eat.ro:22011')
 def deploy():
-    'Deploy the app to the target environment'
+    """Deploy the app to the target environment"""
     print(green('deploying...'))
     push()
     with cd('/home/www-data/bucatar'):

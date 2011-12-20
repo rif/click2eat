@@ -138,7 +138,9 @@
             <div class="title"><h1>{{ object.name|upper }}</h1></div>
              {% if object.logo_path %}
                 <div id="establishment_picture">
-                    <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
+                    {% thumbnail object.logo_path "x100" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ object.name }}-logo">
+                    {% endthumbnail %}
                 </div>
             {% endif %}
             {% if object.discount %}<a class="button" id="toggle-discount" href="#">{% trans 'Discount products' %}</a>{% endif %}
