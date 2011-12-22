@@ -1,12 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
-from django.core.cache import cache
 from django.views.generic.create_update import update_object, delete_object
 from django.views.generic.list_detail import object_detail
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
-from django.http import HttpResponse
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
@@ -33,7 +31,7 @@ def profile_detail(request, username):
 @login_required
 def create(request, from_order=0):
     if from_order:
-        cache.set('back_to_order', from_order, 300) #hold the thought for 5 minutes
+        request.session['back_to_order'] = from_order
     if request.method == 'POST':
         form = DeliveryAddressForm(request.POST)
         if form.is_valid():
@@ -113,6 +111,8 @@ def limited_object_detail(*args, **kwargs):
     request = args[0]
     queryset = kwargs['queryset']
     object_id = kwargs['object_id']
+    kwargs['extra_context'] = {}
+    kwargs['extra_context']['back_to_order'] = request.session['back_to_order']
     addr = queryset.get(pk=object_id)
     if addr.user_id != request.user.id: raise PermissionDenied()
     return object_detail(*args, **kwargs)
