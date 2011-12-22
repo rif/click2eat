@@ -41,7 +41,7 @@
             id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)
     </div>
     <div class="clear"></div>
-    {% if show_confirm_order %}<a class="button positive" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</a>
+    {% if show_confirm_order %}<a id="confirm-button" class="button positive" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</a>
     {% endif %}
 </div>
 
