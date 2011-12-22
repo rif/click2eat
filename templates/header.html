@@ -3,11 +3,14 @@
 <div id="header">
     <div id="header_content">
         <a id="logo" href="/"></a>
+        <a id="btn_home" title="{% trans 'Home page' %}" href="/"> {% trans 'HOME'|upper %}
+            <br/>
+            <span class="textmare">{% trans 'PAGE'|upper %}</span> </a>
+        <div class="separatorl"></div>
         <a id="btn_cumcomanzi" title="{% trans 'How do I order' %}"
            href="/flat/{{LANGUAGE_CODE}}/howorder/"> {% trans 'HOW DO I'|upper %}
             <br/>
             <span class="textmare">{% trans 'ORDER ?'|upper %}</span> </a>
-
         <div class="separatorl"></div>
         <a id="btn_contulmeu" title="{% trans 'My profile' %}"
            href="{% if user.is_anonymous %}{% url registration_register %}{% else %}{% url profiles_profile_detail user %}{% endif %}">
