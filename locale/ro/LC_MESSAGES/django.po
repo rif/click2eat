@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-22 13:06+0200\n"
-"PO-Revision-Date: 2011-12-22 13:06\n"
+"POT-Creation-Date: 2011-12-22 15:18+0200\n"
+"PO-Revision-Date: 2011-12-22 15:19\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -418,7 +418,7 @@ msgid "day"
 msgstr "data"
 
 #: menu/models.py:319 menu/models.py:320 templates/menu/daily_menu.html:5
-#: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:175
+#: templates/mobile/home.html:17 templates/restaurant/unit_detail.html:174
 msgid "Menu of the day"
 msgstr "Meniul zilei"
 
@@ -791,7 +791,7 @@ msgstr "Imagini unități"
 msgid "descriptive type"
 msgstr "tipul restaurantului"
 
-#: restaurant/models.py:163 templates/header.html:63
+#: restaurant/models.py:163 templates/header.html:66
 msgid "restaurant"
 msgstr "restaurant"
 
@@ -968,66 +968,79 @@ msgstr ""
 "copywrite-ului"
 
 #: templates/header.html:6
+#, fuzzy
+msgid "Home page"
+msgstr "Acasă"
+
+#: templates/header.html:6
+msgid "HOME"
+msgstr "PRIMA"
+
+#: templates/header.html:8
+msgid "PAGE"
+msgstr "PAGINA"
+
+#: templates/header.html:10
 msgid "How do I order"
 msgstr "Cum comand"
 
-#: templates/header.html:7
+#: templates/header.html:11
 msgid "HOW DO I"
 msgstr "CUM"
 
-#: templates/header.html:9
+#: templates/header.html:13
 msgid "ORDER ?"
 msgstr "COMAND ?"
 
-#: templates/header.html:12
+#: templates/header.html:15
 msgid "My profile"
 msgstr "Profilul meu"
 
-#: templates/header.html:22
+#: templates/header.html:25
 msgid "NEW"
 msgstr "NOU"
 
-#: templates/header.html:22 templates/header.html.py:24
+#: templates/header.html:25 templates/header.html.py:27
 msgid "ACCOUNT"
 msgstr "CONTUL"
 
-#: templates/header.html:24
+#: templates/header.html:27
 msgid "MY"
 msgstr "MEU"
 
-#: templates/header.html:32 templates/header.html.py:34
+#: templates/header.html:35 templates/header.html.py:37
 #: templates/profiles/profile_detail.html:32
 msgid "Welcome"
 msgstr "Bine ai venit"
 
-#: templates/header.html:35 templates/page.html:19
+#: templates/header.html:38 templates/page.html:19
 #: templates/mobile/home.html:23
 msgid "Logout"
 msgstr "Iesire"
 
-#: templates/header.html:41 templates/order/restaurant_order_detail.html:19
+#: templates/header.html:44 templates/order/restaurant_order_detail.html:19
 msgid "User"
 msgstr "Nume"
 
-#: templates/header.html:46
+#: templates/header.html:49
 msgid "Password"
 msgstr "Parola"
 
-#: templates/header.html:51
+#: templates/header.html:54
 msgid "Enter"
 msgstr "Intră"
 
-#: templates/header.html:61
+#: templates/header.html:64
 msgid "area for"
 msgstr "zona"
 
-#: templates/header.html:69 templates/menu/item_list.html:44
+#: templates/header.html:72 templates/menu/item_list.html:44
 #: templates/mobile/home.html:16 templates/mobile/search.html:4
 #: templates/mobile/search.html.py:5
 msgid "Search"
 msgstr "Caută"
 
-#: templates/header.html:72
+#: templates/header.html:75
 msgid "SEARCH FOOD HERE"
 msgstr "CAUTĂ ORICE AICI"
 
@@ -1178,12 +1191,12 @@ msgstr ""
 #: templates/profiles/profile_detail.html:40
 #: templates/profiles/profile_detail.html:91
 #: templates/restaurant/unit_detail.html:106
-#: templates/restaurant/unit_detail.html:140
-#: templates/restaurant/unit_detail.html:178
-#: templates/restaurant/unit_detail.html:208
-#: templates/restaurant/unit_detail.html:211
-#: templates/restaurant/unit_detail.html:216
-#: templates/restaurant/unit_detail.html:234
+#: templates/restaurant/unit_detail.html:149
+#: templates/restaurant/unit_detail.html:177
+#: templates/restaurant/unit_detail.html:207
+#: templates/restaurant/unit_detail.html:210
+#: templates/restaurant/unit_detail.html:215
+#: templates/restaurant/unit_detail.html:233
 #: templates/wheel/random_item.html:8
 msgid "RON"
 msgstr "Lei"
@@ -1336,7 +1349,7 @@ msgid "Price"
 msgstr "Preț"
 
 #: templates/menu/daily_menu_list.html:48
-#: templates/restaurant/unit_detail.html:158
+#: templates/restaurant/unit_detail.html:157
 #: templates/restaurant/unit_list.html:18
 msgid "Closed"
 msgstr "Închis"
@@ -1367,13 +1380,13 @@ msgstr "Arată/ascunde cautarea avansată"
 msgid "Submit"
 msgstr "Trimite"
 
-#: templates/menu/item_list.html:66 templates/restaurant/unit_detail.html:199
+#: templates/menu/item_list.html:66 templates/restaurant/unit_detail.html:198
 msgid "preview"
 msgstr "imagine"
 
-#: templates/menu/item_list.html:79 templates/restaurant/unit_detail.html:179
-#: templates/restaurant/unit_detail.html:219
-#: templates/restaurant/unit_detail.html:236
+#: templates/menu/item_list.html:79 templates/restaurant/unit_detail.html:178
+#: templates/restaurant/unit_detail.html:218
+#: templates/restaurant/unit_detail.html:235
 msgid "Add to order"
 msgstr "Adaugă la comandă"
 
@@ -1676,12 +1689,12 @@ msgid "Order details"
 msgstr "Detalii comandă"
 
 #: templates/order/order_detail.html:11
-#: templates/restaurant/unit_detail.html:157
+#: templates/restaurant/unit_detail.html:156
 msgid "Open hours"
 msgstr "Program de lucru"
 
 #: templates/order/order_detail.html:11
-#: templates/restaurant/unit_detail.html:158
+#: templates/restaurant/unit_detail.html:157
 msgid "Open"
 msgstr "Deschis"
 
@@ -1740,7 +1753,7 @@ msgstr "Modalitatea de livrare"
 
 #: templates/order/restaurant_order_detail.html:23
 #: templates/profiles/profile_detail.html:163
-#: templates/restaurant/unit_detail.html:156
+#: templates/restaurant/unit_detail.html:155
 #: templates/userprofiles/deliveryaddress_detail.html:52
 msgid "Address"
 msgstr "Adresa"
@@ -1843,7 +1856,7 @@ msgid "Reset order"
 msgstr "Resetează comanda"
 
 #: templates/order/shopping_cart.html:40
-#: templates/restaurant/unit_detail.html:140
+#: templates/restaurant/unit_detail.html:149
 msgid "Minimum order"
 msgstr "Comanda minimă"
 
@@ -2040,7 +2053,7 @@ msgstr "Invită un prieten"
 
 #: templates/profiles/profile_detail.html:217
 msgid "Become friend with"
-msgstr ""
+msgstr "Împrietenește-te cu"
 
 #: templates/registration/activate.html:6
 msgid ""
@@ -2174,7 +2187,7 @@ msgid "Quality"
 msgstr "Calitate"
 
 #: templates/restaurant/comments.html:12
-#: templates/restaurant/unit_detail.html:139
+#: templates/restaurant/unit_detail.html:148
 msgid "Delivery time"
 msgstr "Timpul de livrare"
 
@@ -2276,23 +2289,23 @@ msgstr "Activ"
 msgid "Sorry no partner package information."
 msgstr "Ne pare rău, nu sunt infomații despre clasele de partener."
 
-#: templates/restaurant/unit_detail.html:139
+#: templates/restaurant/unit_detail.html:148
 msgid "min"
-msgstr ""
+msgstr "min"
 
-#: templates/restaurant/unit_detail.html:152
+#: templates/restaurant/unit_detail.html:151
 msgid "Discount products"
 msgstr "Produse la oferta"
 
-#: templates/restaurant/unit_detail.html:153
+#: templates/restaurant/unit_detail.html:152
 msgid "More info"
 msgstr "Mai multe informații"
 
-#: templates/restaurant/unit_detail.html:154
+#: templates/restaurant/unit_detail.html:153
 msgid "Previous orders at this restaurant"
 msgstr "Comenzi anterioare la acest restaurant"
 
-#: templates/restaurant/unit_detail.html:208
+#: templates/restaurant/unit_detail.html:207
 msgid "Default"
 msgstr "Normală"
 
