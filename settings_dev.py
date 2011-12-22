@@ -40,7 +40,7 @@ USE_I18N = True
 USE_L10N = True
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'bucatar@click2eat.ro'
+EMAIL_HOST_USER = 'click2eat@click2eat.ro'
 EMAIL_HOST_PASSWORD = 'testus_cumulus'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
