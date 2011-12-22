@@ -189,7 +189,7 @@ class Item(MultilingualModel):
 class Variation(models.Model):
     name = models.CharField(_('name'), max_length=100)
     item = models.ForeignKey('Item', verbose_name=_('item'))    
-    price = models.IntegerField(_('price'), default=1)
+    price = models.FloatField(_('price'), default=1)
     active = models.BooleanField(_('active'), default=True)
     
     def __unicode__(self):
