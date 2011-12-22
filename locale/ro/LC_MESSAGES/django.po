@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-20 13:18+0200\n"
-"PO-Revision-Date: 2011-12-20 13:30\n"
+"PO-Revision-Date: 2011-12-22 12:38\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2280,7 +2280,7 @@ msgstr "Comenzi anterioare la acest restaurant"
 
 #: templates/restaurant/unit_detail.html:200
 msgid "Default"
-msgstr "Implită"
+msgstr "Normală"
 
 #: templates/restaurant/unit_list.html:9
 msgid "Restaurant list"
