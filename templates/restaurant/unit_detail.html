@@ -135,16 +135,19 @@
 
     <div class="content_area">
         <div id="paginarestaurant">
-            <div class="title"><h1>{{ object.name|upper }}</h1></div>
+            <div class="title"><h1>{{ object.name|upper }}</h1>
+            </div>
              {% if object.logo_path %}
                 <div id="establishment_picture">
                     {% thumbnail object.logo_path "x100" format="PNG" as im %}
                         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ object.name }}-logo">
                     {% endthumbnail %}
-                    <p>{%  trans 'Delivery time' %}: {{ object.delivery_time }}{% trans 'min' %}</p>
-                    <p>{%  trans 'Minimum order' %}: {{ object.minimum_ord_val }}{% trans 'RON' %}</p>
                 </div>
             {% endif %}
+            <div id="miniinfo">
+                <p>{%  trans 'Delivery time' %}: {{ object.delivery_time }}{% trans 'min' %}</p>
+                <p>{%  trans 'Minimum order' %}: {{ object.minimum_ord_val }}{% trans 'RON' %}</p>
+            </div>
             {% if object.discount %}<a class="button" id="toggle-discount" href="#">{% trans 'Discount products' %}</a>{% endif %}
             <a class="button" id="toggle-info" href="#">{% trans 'More info' %}</a>
             <a class="button" id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
