@@ -1,8 +1,8 @@
 {% load i18n item_trans %}
 {% trans 'Hello' %} {{ order.user.get_full_name }},
 
-{% blocktrans %}
-Your order with id {{ order.id}} is on its way to you. You can set the table because we will do our best to arrive as quickly as possible.
+{% blocktrans  with id=order.id %}
+Your order with id {{ id }} is on its way to you. You can set the table because we will do our best to arrive as quickly as possible.
 {% endblocktrans %}
 
 {% trans 'Item' %}              {% trans 'Count' %}             x       {% trans 'Price (RON)' %}

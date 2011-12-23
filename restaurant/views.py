@@ -29,8 +29,7 @@ def __user_has_profile(user):
         return redirect('profiles_create_profile')
 
 
-def index(request):
-    messages.warning(request, _('Website in testing! You are welcome to have a peek but orders are not delivered yet. Please come back!'))
+def index(request):    
     if 'django_language' not in request.session:
          request.session['django_language'] = 'ro'
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\

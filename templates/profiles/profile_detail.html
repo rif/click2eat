@@ -210,14 +210,11 @@
 		<div id="invite-placeholder">
 		</div>
 		{% else %}
-		{% if False and not profile.user in user.get_profile.get_friends_list %}
+		{% if False and profile.user not in user.get_profile.get_friends_list %}
 		<div class="general_button">
 			<p>
 				<a id="" href="#">
-				{%
-				<tr>
-
-				</tr>ans 'Become friend with' %} {{ profile.user }}
+				{% trans 'Become friend with' %} {{ profile.user }}
 				</a>
 			</p>
 		</div>

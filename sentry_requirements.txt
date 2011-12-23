@@ -10,3 +10,4 @@ greenlet
 lockfile
 python-daemon
 South
+django-celery

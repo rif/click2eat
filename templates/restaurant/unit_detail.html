@@ -177,12 +177,19 @@
 
     <div class="content_area">
         <div id="paginarestaurant">
-            <div class="title"><h1>{{ object.name|upper }}</h1></div>
+            <div class="title"><h1>{{ object.name|upper }}</h1>
+            </div>
              {% if object.logo_path %}
                 <div id="establishment_picture">
-                    <img height="100" src="{{ MEDIA_URL }}{{ object.logo_path }}" alt="logo"/>
+                    {% thumbnail object.logo_path "x100" format="PNG" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ object.name }}-logo">
+                    {% endthumbnail %}
                 </div>
             {% endif %}
+            <div id="miniinfo">
+                <p>{%  trans 'Delivery time' %}: {{ object.delivery_time }}{% trans 'min' %}</p>
+                <p>{%  trans 'Minimum order' %}: {{ object.minimum_ord_val }}{% trans 'RON' %}</p>
+            </div>
             {% if object.discount %}<a class="button" id="toggle-discount" href="#">{% trans 'Discount products' %}</a>{% endif %}
             <a class="button" id="toggle-info" href="#">{% trans 'More info' %}</a>
             <a class="button" id="show-previous-link" href="#">{% trans 'Previous orders at this restaurant' %}</a>
@@ -228,7 +235,7 @@
                                     <li class="item {% if item.is_new %}new-item{% endif %} pozrel">
                                         <div class="name">
                                         {% get_name item %}
-                                        <span class="unit">{{ object.name }}</span>
+                                        <span class="unit">{{ object.descriptive_type|title }} {{ object.name }}</span>
                                         {% if item.image_path %}
                                         <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">{% trans 'preview' %}</a>
                                         {% endif %}

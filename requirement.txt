@@ -1,4 +1,4 @@
-Django==<1.4
+Django<=1.4
 South
 django-profiles==0.2
 http://bitbucket.org/ubernostrum/django-registration/downloads/django-registration-0.8-alpha-1.tar.gz
@@ -26,6 +26,7 @@ django-honeypot
 django-envelope
 django-grappelli
 django-filebrowser
+django-sentry
 feedparser
 django-redis-cache
 hiredis

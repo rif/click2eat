@@ -106,12 +106,11 @@ class Item(MultilingualModel):
   added_date = models.DateField(_('added date'), auto_now_add=True, editable=False)
   toppings = models.ForeignKey(ToppingGroup, verbose_name=_('toppings'), null=True, blank=True)
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
-  active = models.BooleanField(_('active'), default=True)
   speciality = models.BooleanField(_('speciality'), help_text=_('speciality of the house'))
   fortune = models.BooleanField(_('fortune'), help_text=_('display in the weel of fortune'))
   free_pair = models.BooleanField(_('free pair'), help_text=_('given free with a similar more expensive pair'))
   image_path = models.ImageField(_('image path'), upload_to="item_images", null=True, blank=True)
-  
+  active = models.BooleanField(_('active'), default=True)
 
   tags = TaggableManager()
 
@@ -190,7 +189,7 @@ class Item(MultilingualModel):
 class Variation(models.Model):
     name = models.CharField(_('name'), max_length=100)
     item = models.ForeignKey('Item', verbose_name=_('item'))    
-    price = models.IntegerField(_('price'), default=1)
+    price = models.FloatField(_('price'), default=1)
     active = models.BooleanField(_('active'), default=True)
     
     def __unicode__(self):
