@@ -105,7 +105,6 @@ class Interval(models.Model):
     def _is_open(self, check_date):
         now = check_date
         starth = None
-        endh = None
         weekday = now.isoweekday()
         if str(weekday) not in self.weekdays:
             return False
@@ -161,6 +160,7 @@ class UnitImage(models.Model):
       verbose_name_plural = _('Unit Images')
 
 class Unit(models.Model):
+    descriptive_type = models.CharField(_('descriptive type'), default=_('restaurant'),  max_length=50, help_text=_('It will be placed before the name'))
     name = models.CharField(_('name'), unique=True, max_length=50)
     address = models.CharField(_('address'), max_length=200)
     email = models.EmailField(_('email'))
@@ -185,7 +185,6 @@ class Unit(models.Model):
     info = models.TextField(_('info'), null=True, blank=True)
     short_desc = models.CharField('short desc', max_length=200, null=True, blank=True, help_text=_('stuff like food specific'))
     discount = models.TextField(_('discount'), null=True, blank=True)
-    is_restaurant = models.BooleanField(_('is restuarnat'), default=True, help_text=_('check whether or not to put "restaurant" in front of the name'))
     active = models.BooleanField(_('active'), default=True)
 
     tags = TaggableManager()
@@ -203,16 +202,6 @@ class Unit(models.Model):
             if promo.is_active():
                 return True
         return False
-
-    def get_avg_quality(self):
-        if not self.avg_quality:
-            return 0
-        return unicode(self.avg_quality * 100/5)
-
-    def get_avg_speed(self):
-        if not self.avg_speed:
-            return 0
-        return unicode(self.avg_speed * 100/5)
 
     def get_package(self):
         return self.partnerpackage_set.get(current=True)
@@ -235,7 +224,7 @@ class Unit(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('restaurant:detail', [str(self.id)])
+        return 'restaurant:detail', [str(self.id)]
 
     class Meta:
       verbose_name = _('Unit')

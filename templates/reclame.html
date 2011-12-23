@@ -1,4 +1,4 @@
-{% load i18n units %}
+{% load i18n units thumbnail %}
 <div id="topcontent" class="span-24">
 	<div id="baraalba">{% random_units %}
 		<div class="titlu">
@@ -13,17 +13,17 @@
 			<li class="slide primulslide">
 				<div class="titluslide">
 					<a href="{% url restaurant:detail unit.id %}" title="slide">
-					{% if unit.is_restaurant %}
-					<span class="textmic">RESTAURANT</span>
-					{% endif %}					
+					<span class="textmic">{{ unit.descriptive_type|upper }}</span>
 					<br/>
 					<span class="textmare">{{ unit.name|upper }}</span></a>
 				</div>
 				<div class="logorestaurant">
 					{% if unit.logo_path %}
-					<img height="55px" src="{{ MEDIA_URL }}{{ unit.logo_path }}" alt="{{ unit.name }}-logo"/>
+                        {% thumbnail unit.logo_path "x55" format="PNG" as im %}
+                            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ unit.name }}-logo">
+                        {% endthumbnail %}
 					{% else %}
-					<img src="{{ STATIC_URL }}images/template/generic_logo.png" alt="" />
+					    <img src="{{ STATIC_URL }}images/template/generic_logo.png" alt="" />
 					{% endif %}
 				</div>
 				{% if unit.get_package.name == 'PR' %}

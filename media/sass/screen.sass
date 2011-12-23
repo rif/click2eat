@@ -34,9 +34,9 @@ html
     height: 85px
     margin: 10px 0 0 20px
     float: left
-  #btn_cumcomanzi, #btn_contulmeu
-    font-size: 12px
-    margin: 5px 0 0 25px
+  #btn_home, #btn_cumcomanzi, #btn_contulmeu
+    font-size: 11px
+    margin: 5px 0 0 5px
     float: left
     text-align: center
   #btn_estirestaurant
@@ -49,7 +49,7 @@ html
     float: left
     height: 30px
     width: 3px
-    margin: 8px 0 0 20px
+    margin: 8px 0 0 5px
   #btn_contulmeu
     margin-top: 9px
   .textmare
@@ -527,7 +527,7 @@ body
       background: url(../images/template/full_star.png) 0 0 repeat-x      
 
   .establishment-menu
-    height: 600px
+    height: 550px
     width: 700px
     overflow: auto    
 
@@ -537,6 +537,8 @@ body
 
 #establishment_picture
   float: right
+  img
+    max-width: 240px
 
 #paginarestaurant
   .top-span
@@ -546,6 +548,14 @@ body
       font-size: 15px
     .description
       font-size: 12px
+
+  #miniinfo
+    float: right
+    color: #562019
+    font-size: 14px
+    clear: both
+    p
+      margin: 0
 
 #paginarestaurant
   a
@@ -726,16 +736,16 @@ body
     padding: 234px 0 0 75px
   .text_specialitate
     line-height: 19px
-    font-size: 17px
+    font-size: 16px
     color: #60251c
   .meniu_special
     color: #ae1d2e
-    font-size: 27px
+    font-size: 23px
     line-height: 24px
     margin: 18px 20px 10px 0px
   .meniu_restaurant
     color: #000
-    font-size: 20px
+    font-size: 18px
     line-height: 8px
   .linkcomanda
     margin-top: 30px
@@ -762,7 +772,14 @@ body
     font-weight: normal
     letter-spacing: -1px
   #clear-order
-    margin-left: 50px
+    margin-left: 25px
+    img
+      position: relative
+      top: 4px
+  #add-cart
+    img
+      position: relative
+      top: 4px
   #carts
     height: 290px
     width: 255px
@@ -813,6 +830,17 @@ body
     a
       +link-colors(#562019, #6c6c6c, red, #562019,  #6c6c6c)
       +hover-link
+    #confirm-button
+      +unstyled-link
+      background-position: 0 -320px
+      background-color: #45BF55
+      border-color: #45BF55
+      color: white
+      font-weight: bold
+      &:hover
+        background-position: 0 -280px
+        background-color: #96ED89
+        border-color: #45BF55
     position: absolute
     bottom: 15px
     .textnota
@@ -986,7 +1014,8 @@ body
     +box-shadow(#303030 2px 2px 6px)
     +border-radius
     +text-shadow
-    padding: 5px
+    font-size: 14px
+    padding: 10px
   .info
     border: 1px solid #92CAE4
     color: #205791

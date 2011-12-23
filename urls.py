@@ -38,7 +38,7 @@ urlpatterns = patterns('',
                        )
 
 urlpatterns += patterns('profiles.views',
-                        url(r'^profiles/create/$', 'create_profile', name='profiles_create_profile'),
+                        url(r'^profiles/create/$', 'create_profile', {'success_url': '/'}, name='profiles_create_profile'),
                         url(r'^profiles/edit/$', 'edit_profile', name='profiles_edit_profile'),
                         url(r'^profiles/(?P<username>\w+)/$', views.profile_detail, name='profiles_profile_detail'),
                         url(r'^profiles/$', 'profile_list', {'public_profile_field': 'public'}, name='profiles_profile_list'),

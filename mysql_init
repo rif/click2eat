@@ -1,0 +1,3 @@
+create database click2eat;
+grant usage on *.* to django_login@localhost identified by 'testus_cumulus';
+grant all privileges on click2eat.* to django_login@localhost;
