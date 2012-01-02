@@ -1,14 +1,8 @@
 #!/bin/bash
 data=`date +%d_%H%M`
-mysqldump --user=django_login --password="testus_cumulus" click2eat | xz > /mnt/local-backup/backup-$data.sql.xz
+mysqldump --single-transaction --user=django_login --password="testus_cumulus" click2eat > /tmp/sqldump.sql
+tar cJf /mnt/local-backup/backup-$data.tar.xz /tmp/sqldump.sql /home/www-data/bucatar/static/upload/
+rm /tmp/sqldump.sql
 rsync -var /mnt/local-backup/ /mnt/remote-backup/
 
-## Putting the backup on a ftp
-#cd db
-#ftp -i -n << EOF
-#open ftpserver.example.net
-#user username password
-#bin
-#mput backup-$data.sql.gz
-#bye
-#EOF
+
