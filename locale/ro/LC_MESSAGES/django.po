@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-22 15:18+0200\n"
-"PO-Revision-Date: 2011-12-22 15:19\n"
+"POT-Creation-Date: 2012-01-03 16:37+0200\n"
+"PO-Revision-Date: 2012-01-03 16:38\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -968,7 +968,6 @@ msgstr ""
 "copywrite-ului"
 
 #: templates/header.html:6
-#, fuzzy
 msgid "Home page"
 msgstr "Acasă"
 
@@ -1051,7 +1050,7 @@ msgid "Login"
 msgstr "Login"
 
 #: templates/reclame.html:5
-msgid "Chose where you want to eat today ?"
+msgid "Choose where you want to eat today ?"
 msgstr "Alege unde vrei sa mănânci astazi?"
 
 #: templates/reclame.html:8 templates/mobile/home.html:15
@@ -2196,7 +2195,7 @@ msgid "Sorry no feedback for this restaurant"
 msgstr "Ne pare rău, nu exista aprecieri pentru acest restaurant"
 
 #: templates/restaurant/index.html:62
-msgid "or chose what you want to eat today ?"
+msgid "or choose what you want to eat today ?"
 msgstr "sau alege ce vrei sa mănânci azi"
 
 #: templates/restaurant/index.html:65
@@ -2204,7 +2203,7 @@ msgid "See all menues"
 msgstr "Vezi toate meniurile"
 
 #: templates/restaurant/index.html:76
-msgid "or chose menu of the day"
+msgid "or choose menu of the day"
 msgstr "sau alege ofertele zilei"
 
 #: templates/restaurant/index.html:85
@@ -2434,7 +2433,7 @@ msgstr ""
 msgid "message"
 msgstr "mesaj"
 
-#: userprofiles/forms.py:18 userprofiles/views.py:70
+#: userprofiles/forms.py:18 userprofiles/views.py:68
 msgid "Join me for lunch!"
 msgstr "Hai cu mine la masă!"
 
@@ -2555,23 +2554,23 @@ msgstr "Profil iutilizator"
 msgid "User Profiles"
 msgstr "Profiluri utilizator"
 
-#: userprofiles/views.py:58
+#: userprofiles/views.py:56
 msgid "Thank you, we will try to correct this."
 msgstr "Mulțumim, vom încerca să corectăm problema."
 
-#: userprofiles/views.py:73
+#: userprofiles/views.py:71
 msgid "You cannot sens an invitation to yourself!"
 msgstr "Nu puteți să vă trimiteți invitație la propria adresă."
 
-#: userprofiles/views.py:76
+#: userprofiles/views.py:74
 msgid "You already sent an invitation to this email!"
 msgstr "Ați trimis deja o invitație la acest e-mail!"
 
-#: userprofiles/views.py:79
+#: userprofiles/views.py:77
 msgid "There is already a register user with this email!"
 msgstr "Există deja un utilizator cu acest email!"
 
-#: userprofiles/views.py:83
+#: userprofiles/views.py:81
 #, python-format
 msgid "The invitation email was send to %s."
 msgstr "Email-ul de invitație a fost trimis catre %s."
