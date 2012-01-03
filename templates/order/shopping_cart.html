@@ -1,5 +1,4 @@
 {% load i18n l10n order_tags %}
-
 <div id="carts">
     {% for cn, items in oc.get_carts.iteritems %}
         <a href="#" class="{% if forloop.counter == 1 %}selected-cart{% endif %} cart-name">{{ cn|clean_cn }}{{ get_cart_total}}</a>
@@ -42,7 +41,7 @@
     {% endif %}
     <div class="clear"></div>
     {% if we_are_are_in_cart %}
-    <a class="button positive" href="{% url order:confirm-order oc.get_unit.id %}">CONFIRMA COMANDA</a>
+    <a id="confirm-button" class="button positive" href="{% url order:confirm-order oc.get_unit.id %}">CONFIRMA COMANDA</a>
     {% endif %}
 </div>
 
