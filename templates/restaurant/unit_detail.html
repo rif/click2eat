@@ -62,9 +62,14 @@
             } else {
                 var href = "/order/incritem" + "/{{ object.id }}/" + parentCart.text() + "/" + iid + "/";
             }
-            
+
+            $("#loading-img").fadeIn("fast");
+
             // get new carts
-            $("div#shopping-cart").load(href);
+            $("div#shopping-cart").load(href, function(){
+                console.log("ttttt");
+                $("#loading-img").fadeOut("fast");
+            });
 
             // hide toppings from the menu menu
             var count = iid.match(/_/g);           
@@ -154,8 +159,9 @@
 		if(existingTopping && existingTopping.length > 0){
 			$('a.incr-link', existingTopping).click();
 		} else {
+            $("#loading-img").fadeIn("fast");
 	        $("div#shopping-cart").load("/order/shop/{{ object.id }}/" + selCart.text() + "/" + args, function(){
-                hideIncr();   
+                $("#loading-img").fadeOut("fast");
             });
         }
     }

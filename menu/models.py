@@ -144,12 +144,12 @@ class Item(MultilingualModel):
       variation = None      
       if variation_id != '0':
           variation = get_object_or_None(Variation, pk=variation_id)
-      if self.promotion and self.promotion.is_active():
+      """if self.promotion and self.promotion.is_active():
           if variation:
             variation = get_object_or_None(Variation, pk=variation_id)
             return round(self.promotion.get_new_price(variation.price),2)
           else:              
-            return round(self.promotion.get_new_price(self.price),2)
+            return round(self.promotion.get_new_price(self.price),2)"""
       if variation:  
           return round(variation.price,2) 
       return round(self.price,2)
