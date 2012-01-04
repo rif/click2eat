@@ -112,15 +112,6 @@ def confirm_order(request, unit_id):
     return locals()
 
 @login_required
-@render_to('order/shopping_cart.html')
-def clear(request, unit_id):
-    oc = OrderCarts(request.session,unit_id)
-    for cn in oc.get_cart_names():
-        del request.session[cn]
-    oc.create_cart_if_not_exists(request.user.username)
-    return locals()
-
-@login_required
 @render_to('order/timer.html')
 def timer(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
