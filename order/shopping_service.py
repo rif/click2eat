@@ -158,9 +158,13 @@ class OrderCarts:
                     item.set_price(promotion.get_new_price(item.get_item_price()))
         for promotion, items in multiple_item_promotions.iteritems():
             sorted_items = sorted(items, key=lambda item: item.get_price())
-            for i in range(len(sorted_items)/2):
+            items_middle_index = len(sorted_items)/promotion.numer_of_items
+            for i in range(len(sorted_items)):
                 item = sorted_items[i]
-                item.set_price(promotion.get_new_price(item.get_item_price()))
+                if i < items_middle_index:
+                    item.set_price(promotion.get_new_price(item.get_item_price()))
+                else:
+                    item.set_price(item.get_item_price())
 
 
 
@@ -207,6 +211,7 @@ def decr_item(request, unit_id, cart_name, item_id):
     cn = '%s:%s' % (unit_id, cart_name)
     oc.decr_item(cn, item_id)
     oc.update_session(request.session)
+    oc.update_prices()
     we_are_are_in_cart = True
     return locals()
 
@@ -218,6 +223,7 @@ def incr_item(request,  unit_id, cart_name, item_id):
     cn = '%s:%s' % (unit_id, cart_name)
     oc.incr_item(cn, item_id)
     oc.update_session(request.session)
+    oc.update_prices()
     we_are_are_in_cart = True
     return locals()
 
