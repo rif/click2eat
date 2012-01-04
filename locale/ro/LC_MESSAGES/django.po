@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-04 20:22+0200\n"
-"PO-Revision-Date: 2012-01-04 20:26\n"
+"POT-Creation-Date: 2012-01-04 20:33+0200\n"
+"PO-Revision-Date: 2012-01-04 20:34\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -407,8 +407,12 @@ msgid "numer of items"
 msgstr "număr de articole"
 
 #: menu/models.py:258
-msgid "Number of items involved"
-msgstr "Număr de articole implicate"
+msgid ""
+"Number of items involved. If there are 4+1 free then this value should "
+"be 5."
+msgstr ""
+"Numărul de articole implicate. Daca sunt 4+1 gratis atunci ar trebui "
+"pus aici 5."
 
 #: menu/models.py:259
 msgid "total sum trigger"
@@ -423,16 +427,16 @@ msgid "procentage"
 msgstr "procentaj"
 
 #: menu/models.py:260
-msgid "Percentage"
-msgstr "Procentaj"
+msgid "Percentage of the actual price"
+msgstr "Procent din pretul initial"
 
 #: menu/models.py:261
 msgid "absolute value"
 msgstr "valoare absolută (fixă)"
 
 #: menu/models.py:261
-msgid "Absolute price"
-msgstr "Pret absolut"
+msgid "Absolute price (fixed price)"
+msgstr "Preț absolut (fix)"
 
 #: menu/models.py:299
 msgid "Promotion"
