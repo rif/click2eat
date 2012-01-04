@@ -44,6 +44,9 @@ class CartItem:
     def get_price(self):
         return self.price
 
+    def set_price(self, price):
+        self.price = price
+
     def get_item_price(self):
         vid = self.variation.id if self.variation else 0
         return self.item.get_price(variation_id=vid)
@@ -135,8 +138,30 @@ class OrderCarts:
             result += '%s\t%s\n' %(cn, '\t\n'.join([str(i) for i in items]))
         return result
 
-    def update_price(self):
-        pass
+    def update_prices(self):
+        multiple_item_promotions={}
+        for cn, items in self.carts.iteritems():
+            for item in items:
+                promotion = item.get_item().promotion
+                if promotion and (not promotion.is_active() or promotion.total_sum_trigger > self.get_total_sum()):
+                    # if promotion is not active or the total sum threshold was not reached the skip to next item
+                    continue
+                if promotion and promotion.numer_of_items > 1:
+                    # if promotion spans multiple items save for later analysis
+                    if promotion not in multiple_item_promotions:
+                        multiple_item_promotions[promotion] = []
+                    multiple_item_promotions[promotion].append(item)
+                    continue
+                if promotion:
+                    # we should get here if the promotion it is active, sum trigger was activated
+                    # and it affects only one item
+                    item.set_price(promotion.get_new_price(item.get_item_price()))
+        for promotion, items in multiple_item_promotions.iteritems():
+            sorted_items = sorted(items, key=lambda item: item.get_price())
+            for i in range(len(sorted_items)/2):
+                item = sorted_items[i]
+                item.set_price(promotion.get_new_price(item.get_item_price()))
+
 
 
 @render_to('order/shopping_cart.html')
@@ -171,6 +196,7 @@ def shop(request,unit_id,  cart_name, item_id):
 
     oc.add_item(cn, item_id)
     oc.update_session(request.session)
+    oc.update_prices()
     we_are_are_in_cart = True
     return locals()
 
