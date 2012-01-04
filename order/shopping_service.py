@@ -30,6 +30,7 @@ class CartItem:
                 item_id, vari_id =  item_id.split('-',1)        
                 self.variation = get_object_or_None(Variation, pk=vari_id)
             self.item = get_object_or_404(Item, pk=item_id)
+        self.price = self.get_item_price()
 
     def set_count(self, count):
         self.count = count
@@ -41,6 +42,9 @@ class CartItem:
         return self.item
 
     def get_price(self):
+        return self.price
+
+    def get_item_price(self):
         vid = self.variation.id if self.variation else 0
         return self.item.get_price(variation_id=vid)
     
@@ -131,11 +135,25 @@ class OrderCarts:
             result += '%s\t%s\n' %(cn, '\t\n'.join([str(i) for i in items]))
         return result
 
+    def update_price(self):
+        pass
+
 
 @render_to('order/shopping_cart.html')
 def shopping_cart(request, unit_id):
     #del request.session['1:rif']
     oc = OrderCarts(request.session, unit_id)
+    if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
+    we_are_are_in_cart = True
+    return locals()
+
+@login_required
+@render_to('order/shopping_cart.html')
+def clear(request, unit_id):
+    oc = OrderCarts(request.session,unit_id)
+    for cn in oc.get_cart_names():
+        del request.session[cn]
+    oc.get_carts().clear()
     if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
     we_are_are_in_cart = True
     return locals()
@@ -199,7 +217,7 @@ def construct_order(request, oc, unit, order, paid_with_bonus):
             else:              
               if '-' in item_id: # we have a variation
                   item_id, vari_id =  item_id.split('-',1)        
-                  variation = get_object_or_None(Variation, pk=vari_id)                            
+                  variation = get_object_or_None(Variation, pk=vari_id)
               payload = item.get_item()
               master = OrderItem.objects.create(order=order, variation=variation, item=payload, count=item.get_count(), cart=cn.split(':')[1])
         del request.session[cn]

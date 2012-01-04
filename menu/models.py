@@ -248,7 +248,7 @@ class Topping(MultilingualModel):
 
 class Promotion(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
-    name = models.CharField(_('name'), max_length=50)
+    name = models.CharField(_('name'), max_length=100)
     internal_name = models.CharField(_('internal name'), max_length=100)
     start_date = models.DateTimeField(_('start date'), null=True, blank=True)
     end_date = models.DateTimeField(_('end date'), null=True, blank=True)

@@ -11,7 +11,7 @@
     }
 
     function prepareCarts() {
-        $("#add-cart").click(function() {
+        $("#shopping-cart").on("click", "#add-cart", function() {
             if ($("#id_name").length == 0) { // we don't have one already
                 $("#new-cart-placeholder").html('<form action="" method="post" id="cart-name-form">\
             <label for="id_name">Name:</label>\
@@ -38,9 +38,9 @@
             });
             return false;
         });
-        $("#clear-order").click(function() {
+        $("#shopping-cart").on("click", "#clear-order", function() {
             if (confirm("{%  trans 'Are you sure you want to clear all items from this order?' %}")) {
-                $.get("{% url order:clear object.id %}");
+                $("div#shopping-cart").load("{% url order:clear object.id %}");
             }
             $(".top-span").fadeOut();
             return false;
@@ -67,7 +67,6 @@
 
             // get new carts
             $("div#shopping-cart").load(href, function(){
-                console.log("ttttt");
                 $("#loading-img").fadeOut("fast");
             });
 
