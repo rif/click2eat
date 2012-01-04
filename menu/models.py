@@ -255,10 +255,10 @@ class Promotion(models.Model):
     weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, null=True, blank=True, help_text=_('integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5'))
     start_hour = models.CharField(_('start hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 10:30'))
     end_hour = models.CharField(_('end hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 15:00'))
-    numer_of_items = models.IntegerField(_('numer of items'), default=1, help_text=_('Number of items involved'))
+    numer_of_items = models.IntegerField(_('numer of items'), default=1, help_text=_('Number of items involved. If there are 4+1 free then this value should be 5.'))
     total_sum_trigger = models.FloatField(_('total sum trigger'), default=0, help_text=_('Total order sum for which this promotion will become active'))
-    procentage = models.IntegerField(_('procentage'), default=0, help_text=_('Percentage'), null=True, blank=True)
-    absolute_price = models.FloatField(_('absolute value'), default=0, help_text=_('Absolute price'), null=True, blank=True)
+    procentage = models.IntegerField(_('procentage'), default=0, help_text=_('Percentage of the actual price'), null=True, blank=True)
+    absolute_price = models.FloatField(_('absolute value'), default=0, help_text=_('Absolute price (fixed price)'), null=True, blank=True)
 
     def __unicode__(self):
         return self.name
