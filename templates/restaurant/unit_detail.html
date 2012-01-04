@@ -4,120 +4,167 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript">
-        $(function() {
-        	// in this view we don't have commercials
-            $("#messages").css("margin-top", "15px");
-        	$("#content, #sidebar2").css("margin-top", "70px");
-            $("#shopping-cart").load("{% url order:shopping-cart object.id %}");
+<script type="text/javascript">
+    function selectCart(cart){
+        $(".cart-name").removeClass("selected-cart");
+        cart.addClass("selected-cart");
+    }
 
-            $("#last-orders").load("{% url order:list_unit object.id %}", function() {
-                pageLinks();
+    function prepareCarts() {
+        $("#shopping-cart").on("click", "#add-cart", function() {
+            if ($("#id_name").length == 0) { // we don't have one already
+                $("#new-cart-placeholder").html('<form action="" method="post" id="cart-name-form">\
+            <label for="id_name">Name:</label>\
+            <input type="text" maxlength="10" name="name" id="id_name"><br/>\
+            <button class="button" type="submit">{% trans "Submit" %}</button>\
+            <a href="#" class="button" id="new-cart-cancel">{% trans "Cancel" %}</a>\
+            </form>');
+            }
+            $("#id_name").focus();
+            $("#new-cart-cancel").click(function() {
+                $("#cart-name-form").remove();
+                return false;
             });
-            $("#show-previous-link").click(function(e) {
-                $("#last-orders").slideToggle();
-                e.preventDefault();
-            })
-            $("#toggle-info").click(function(e) {
-                $("#establishment_details").slideToggle();
-                e.preventDefault();
+            $("#cart-name-form").submit(function() {
+                var newCart = $("#id_name").val().replace(/ <>&/g, '-');
+                if ($('#carts>#' + newCart).length == 0) {
+                    $("#carts").append('<a id="' + newCart + '" class="cart-name" href="#">' + newCart + '</a><ul class="items"></ul><div class="subtotal-div">\
+                    {% trans "Subtotal" %}: <span class="cart-subtotal">0</span> {% trans "RON" %}</div>');
+                    $('#carts>#' + newCart).click();
+                }
+                $("#cart-name-form").remove();
+                $(".top-span").fadeOut();
+                return false;
             });
-            $("#toggle-discount").click(function(e) {
-                $("#establishment_discount").slideToggle();
-                e.preventDefault();
+            return false;
+        });
+        $("#shopping-cart").on("click", "#clear-order", function() {
+            if (confirm("{%  trans 'Are you sure you want to clear all items from this order?' %}")) {
+                $("div#shopping-cart").load("{% url order:clear object.id %}");
+            }
+            $(".top-span").fadeOut();
+            return false;
+        });
+        $("#shopping-cart").on("click", ".cart-name", function() {
+            selectCart($(this));
+            $(".top-span").fadeOut();
+            return false;
+        });
+        $("#shopping-cart").on("click", ".decr-link, .incr-link", function() {
+            var isMinus = $(this).hasClass("decr-link");
+            var parent = $(this).parents("li:first");
+            var iid = parent.attr("itemid");
+            var parentUL = parent.parent("ul.items");
+            var parentCart = parentUL.prev("a.cart-name:first");
+            selectCart(parentCart);            
+            if (isMinus) {
+                var href = "/order/decritem" + "/{{ object.id }}/" + parentCart.text() + "/" + iid + "/";
+            } else {
+                var href = "/order/incritem" + "/{{ object.id }}/" + parentCart.text() + "/" + iid + "/";
+            }
+
+            $("#loading-img").fadeIn("fast");
+
+            // get new carts
+            $("div#shopping-cart").load(href, function(){
+                $("#loading-img").fadeOut("fast");
             });
-            $(".shop-link").click(function(e) {
-                var id = $(this).attr("itemid");
-                var vari_id = $(this).prev("#variation").val() | 0; // get the variation id or 0                
-                shop(id, vari_id);
-                // fade out all toppings except current one
-                $(this).parents("li.item:first").siblings().each(function(){
-                	$(this).next(".top-span").fadeOut();
-                });
-                $(this).parents("li.item:first").next(".top-span").fadeIn();                
-                e.preventDefault();
-            });
-            $(".shop-top-link").click(function(e) { 
-            	var masterItem = null;           	            	
-            	$(".selected-cart").next("ul.items").children("li.cart-item").each(function(){
-            		var count = $(this).attr("itemid").match(/_/g);
-            		if(count.length == 1) {
-            			masterItem = $(this);
-            		}
-            	});            	
-                var id = masterItem.attr("itemid") + "_" + $(this).attr("topid");                               
-                masterItem.children(".incr-link").hide();
-                shop(id, 0);
-                e.preventDefault();
-            });
-            $("a.fancy").fancybox({
-                'transitionIn'  :   'elastic',
-                'transitionOut' :   'elastic',
-                'speedIn'       :   400, 
-                'speedOut'      :   200, 
-                'overlayShow'   :   false
-            });
-            $("a.gallery").fancybox({
-                'transitionIn'  :   'elastic',
-                'transitionOut' :   'elastic',
-                'speedIn'       :   400, 
-                'speedOut'      :   200, 
-                'overlayShow'   :   false
-            });
+
+            // hide toppings from the menu menu
+            var count = iid.match(/_/g);           
+            if(count && count.length < 1) {              
+                $(".top-span").fadeOut();
+            }
+            return false;
+        });
+        $("#shopping-cart").ajaxError(function(event, request, settings) {
+            alert("{% trans 'Error processing your command!' %}");
+        });
+    }
+    $(function() {
+    	// in this view we don't have commercials
+        $("#messages").css("margin-top", "15px");
+    	$("#content, #sidebar2").css("margin-top", "70px");
+        $("#shopping-cart").load("{% url order:shopping-cart object.id %}", function(){
+            prepareCarts();
         });
 
-        function shop(id, price_id) {
-            {% if not user.is_authenticated %}
-                window.location = "{% url auth_login %}";
-            {% endif %}
-            var selCart = $("a.selected-cart");
-            var parentUL = selCart.next("ul");
-            var pos = parentUL.children('li.cart-item').length;
-            var args = pos + "_" + id + "-" + price_id + "/"
-            var existingTopping = null;
-            if(id.indexOf("_") != -1) {
-            	// if it is a topping then we only need the id             	
-            	args = id;
-            	existingTopping = $("li.cart-item[itemid='" + id + "']");
-            }           
-			if(existingTopping && existingTopping.length > 0){
-				$('a.incr-link', existingTopping).click();
-			} else {
-		        $.get("/order/shop/" + selCart.text() + "/" + args , function(data) {
-		        	if (data.hasOwnProperty('id') && data.hasOwnProperty('price') && data.hasOwnProperty('name')){
-		            	parentUL.append(itemTemplate(data['id'], data['price'], data['name']));
-		            	parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
-		            	$("#order-total").text(data['total']);
-		            	showHideMinOrder();
-		           } else {
-		           		alert("{% trans 'Error processing your command!' %}");
-		           }
-		        });
-            }
-        }
+        $("#last-orders").load("{% url order:list_unit object.id %}").on("click", ".page, .next, .prev", function(){
+            $.get("{% url order:list_unit object.id %}" + $(this).attr("href"), function(data) {
+                $("#last-orders").html(data);
+            });
+            return false;
+        });
+        $("#show-previous-link").click(function(e) {
+            $("#last-orders").slideToggle();
+            e.preventDefault();
+        })
+        $("#toggle-info").click(function(e) {
+            $("#establishment_details").slideToggle();
+            e.preventDefault();
+        });
+        $("#toggle-discount").click(function(e) {
+            $("#establishment_discount").slideToggle();
+            e.preventDefault();
+        });
+        $(".shop-link").click(function() {
+            var id = $(this).attr("itemid");
+            var vari_id = $(this).prev("#variation").val() | 0; // get the variation id or 0                
+            shop(id, vari_id);
+            // fade out all toppings except current one
+            $(this).parents("li.item:first").siblings().each(function(){
+            	$(this).next(".top-span").fadeOut();
+            });
+            $(this).parents("li.item:first").next(".top-span").fadeIn();                
+            return false;
+        });
+        $(".shop-top-link").click(function() { 
+        	var masterItem = null;           	            	
+        	masterItem = $(".selected-cart").next("ul.items").children("li.cart-item:last");
+            var id = masterItem.attr("itemid") + "_" + $(this).attr("topid");
+            shop(id, 0);
+            return false;
+        });
+        $("a.fancy").fancybox({
+            'transitionIn'  :   'elastic',
+            'transitionOut' :   'elastic',
+            'speedIn'       :   400, 
+            'speedOut'      :   200, 
+            'overlayShow'   :   false
+        });
+        $("a.gallery").fancybox({
+            'transitionIn'  :   'elastic',
+            'transitionOut' :   'elastic',
+            'speedIn'       :   400, 
+            'speedOut'      :   200, 
+            'overlayShow'   :   false
+        });
+    });
 
-        function itemTemplate(id, price, title) {
-            return '<li itemid="' + id + '" class="cart-item">\
-          <span class="item-count">1</span>\
-          <span class="item-price">' + price + '</span>\
-          <span class="item-title">x ' + title + '</span>\
-          <a href="#" class="decr-link"></a>\
-          <a href="#" class="incr-link"></a>\
-          <span class="item-currency">{% trans "RON" %}</span>\
-          <span class="item-total">' + price + '</span>\
-          </li>';
+    function shop(id, price_id) {
+        {% if not user.is_authenticated %}
+            window.location = "{% url auth_login %}";
+        {% endif %}
+        var selCart = $("a.selected-cart");
+        var parentUL = selCart.next("ul");
+        var args = uid() + "!" + id + "-" + price_id;
+        var existingTopping = null;
+        if(id.indexOf("_") != -1) {
+        	// if it is a topping then we only need the id             	
+        	args = id;
+        	existingTopping = $("li.cart-item[itemid='" + id + "']");
         }
-
-        function pageLinks() {
-            $(".page, .next, .prev").click(function(e) {
-                $.get("{% url order:list_unit object.id %}" + $(this).attr("href"), function(data) {
-                    $("#last-orders").html(data);
-                    pageLinks();
-                });
-                e.preventDefault();
+        args += "/";
+		if(existingTopping && existingTopping.length > 0){
+			$('a.incr-link', existingTopping).click();
+		} else {
+            $("#loading-img").fadeIn("fast");
+	        $("div#shopping-cart").load("/order/shop/{{ object.id }}/" + selCart.text() + "/" + args, function(){
+                $("#loading-img").fadeOut("fast");
             });
         }
-    </script>
+    }
+</script>
 {% endblock %}
 
 

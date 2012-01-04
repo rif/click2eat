@@ -59,7 +59,7 @@
 			"file": "media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 21273,
+				"buffer_size": 21894,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 18807,
+				"buffer_size": 10461,
 				"line_ending": "Unix"
 			}
 		},
@@ -86,7 +86,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 7571,
+				"buffer_size": 2108,
 				"line_ending": "Unix"
 			}
 		},
@@ -94,7 +94,7 @@
 			"file": "templates/restaurant/unit_detail.html",
 			"settings":
 			{
-				"buffer_size": 12983,
+				"buffer_size": 15196,
 				"line_ending": "Windows"
 			}
 		},
@@ -102,7 +102,7 @@
 			"file": "order/urls.py",
 			"settings":
 			{
-				"buffer_size": 2162,
+				"buffer_size": 2253,
 				"line_ending": "Unix"
 			}
 		},
@@ -110,7 +110,7 @@
 			"file": "order/templatetags/order_tags.py",
 			"settings":
 			{
-				"buffer_size": 418,
+				"buffer_size": 718,
 				"line_ending": "Unix"
 			}
 		},
@@ -126,7 +126,7 @@
 			"file": "templates/base_alt.html",
 			"settings":
 			{
-				"buffer_size": 6359,
+				"buffer_size": 6479,
 				"line_ending": "Windows"
 			}
 		},
@@ -134,7 +134,7 @@
 			"file": "templates/header.html",
 			"settings":
 			{
-				"buffer_size": 3950,
+				"buffer_size": 4086,
 				"line_ending": "Windows"
 			}
 		},
@@ -142,7 +142,7 @@
 			"file": "templates/registration/registration_form.html",
 			"settings":
 			{
-				"buffer_size": 1451,
+				"buffer_size": 1450,
 				"line_ending": "Windows"
 			}
 		}
@@ -461,15 +461,15 @@
 					"file": "media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 21273,
+						"buffer_size": 21894,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3810,
-								3810
+								0,
+								0
 							]
 						],
 						"settings":
@@ -489,7 +489,7 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 18807,
+						"buffer_size": 10461,
 						"regions":
 						{
 						},
@@ -545,7 +545,7 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 7571,
+						"buffer_size": 2108,
 						"regions":
 						{
 						},
@@ -573,7 +573,7 @@
 					"file": "templates/restaurant/unit_detail.html",
 					"settings":
 					{
-						"buffer_size": 12983,
+						"buffer_size": 15196,
 						"regions":
 						{
 						},
@@ -601,7 +601,7 @@
 					"file": "order/urls.py",
 					"settings":
 					{
-						"buffer_size": 2162,
+						"buffer_size": 2253,
 						"regions":
 						{
 						},
@@ -629,7 +629,7 @@
 					"file": "order/templatetags/order_tags.py",
 					"settings":
 					{
-						"buffer_size": 418,
+						"buffer_size": 718,
 						"regions":
 						{
 						},
@@ -643,6 +643,7 @@
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -684,15 +685,15 @@
 					"file": "templates/base_alt.html",
 					"settings":
 					{
-						"buffer_size": 6359,
+						"buffer_size": 6479,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3584,
-								3584
+								0,
+								0
 							]
 						],
 						"settings":
@@ -712,21 +713,21 @@
 					"file": "templates/header.html",
 					"settings":
 					{
-						"buffer_size": 3950,
+						"buffer_size": 4086,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								542,
-								542
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -740,15 +741,15 @@
 					"file": "templates/registration/registration_form.html",
 					"settings":
 					{
-						"buffer_size": 1451,
+						"buffer_size": 1450,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								900,
-								900
+								0,
+								0
 							]
 						],
 						"settings":
