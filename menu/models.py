@@ -287,7 +287,11 @@ class Promotion(models.Model):
         return True
 
     def get_new_price(self, old_price):
-        return (old_price * (100-self.value))/100
+        if self.absolute_price:
+            return self.absolute_price
+        if self.procentage:
+            return (old_price * (100-self.procentage))/100
+        return 0
 
 
     class Meta:
