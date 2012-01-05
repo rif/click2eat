@@ -66,7 +66,7 @@ class Order(models.Model):
 
     class Meta:
         verbose_name = _('Order')
-        verbose_name_plural = _('Order')
+        verbose_name_plural = _('Orders')
         ordering = ['-creation_date']
 
 class OrderItem(models.Model):
