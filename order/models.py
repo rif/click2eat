@@ -84,15 +84,15 @@ class OrderItem(models.Model):
         return str(self.count) + ' x item from ' + str(self.cart)
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            if self.item :
-                self.old_price = self.item.get_price()
-            if self.topping :
-                self.old_price = self.topping.price
-            if self.menu_of_the_day:
-                self.old_price = self.menu_of_the_day.price
-            if self.variation:
-                self.old_price = self.variation.price
+#        if not self.id:
+#            if self.item :
+#                self.old_price = self.item.get_price()
+#            if self.topping :
+#                self.old_price = self.topping.price
+#            if self.menu_of_the_day:
+#                self.old_price = self.menu_of_the_day.price
+#            if self.variation:
+#                self.old_price = self.variation.price
         super(OrderItem, self).save(*args, **kwargs)
         self.order.update_total_amount()
 

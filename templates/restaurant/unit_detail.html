@@ -244,6 +244,9 @@
                                         {% if item.image_path %}
                                         <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">{% trans 'preview' %}</a>
                                         {% endif %}
+                                        {%  if item.promotion and item.promotion.logo %}
+                                        <img class="promotion-logo" src="{{ MEDIA_URL }}{{ item.promotion.logo }}" alt="{{ item.promotion.name }}">
+                                        {%  endif %}
                                         </div>
                                         <br/>
 

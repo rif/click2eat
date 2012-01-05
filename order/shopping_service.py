@@ -241,17 +241,17 @@ def construct_order(request, oc, unit, order, paid_with_bonus):
             item_id = item.get_item_id().split('!', 1)[1]
             if item_id.startswith('m'):
               motd = item.get_item()
-              OrderItem.objects.create(order=order, menu_of_the_day=motd, count=item.get_count(), old_price=motd.get_price(), cart=unit_id)
+              OrderItem.objects.create(order=order, menu_of_the_day=motd, count=item.get_count(), old_price=item.get_price(), cart=unit_id)
             elif '_' in item_id:
               top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
               if not master: pass # shit there is no master for this topping, figure out what to do              
-              OrderItem.objects.create(master=master, order=order, topping=top, count=item.get_count(), old_price=top.get_price(), cart=unit_id)
+              OrderItem.objects.create(master=master, order=order, topping=top, count=item.get_count(), old_price=item.get_price(), cart=unit_id)
             else:              
               if '-' in item_id: # we have a variation
                   item_id, vari_id =  item_id.split('-',1)        
                   variation = get_object_or_None(Variation, pk=vari_id)
               payload = item.get_item()
-              master = OrderItem.objects.create(order=order, variation=variation, item=payload, count=item.get_count(), cart=cn.split(':')[1])
+              master = OrderItem.objects.create(order=order, variation=variation, item=payload, old_price=item.get_price(), count=item.get_count(), cart=cn.split(':')[1])
         del request.session[cn]
     #give bonus to the friend
     if paid_with_bonus:
