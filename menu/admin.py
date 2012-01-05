@@ -104,7 +104,7 @@ class PromotionAdmin(admin.ModelAdmin):
     search_fields = ['internal_name']
     fieldsets = (
         (None, {
-            'fields': (('name', 'internal_name'), 'unit', ('procentage', 'absolute_price'))
+            'fields': (('name', 'internal_name'), ('unit', 'logo'), ('procentage', 'absolute_price'))
         }),
         ('Order Options', {
             'fields': (('numer_of_items', 'total_sum_trigger'))
