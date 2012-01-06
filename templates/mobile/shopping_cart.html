@@ -7,111 +7,124 @@
 {% block pageid %}cart{% endblock %}
 
 {% block content %}
-<ul id="items" data-role="listview" data-inset="true" data-count-theme="b">
-{% for item, values in cart.iteritems %}
-  <li itemid="{{ item }}">
-    <h1>{{values.2}}: <span class="item-count">{{ values.0 }}</span> x <span class="item-price">{{ values.1|unlocalize }}</span>{% trans 'RON' %}</h1>
+    <ul id="items" data-role="listview" data-inset="true" data-count-theme="b">
+        {% for cn, items in oc.get_carts.iteritems %}
+            {% for item in items %}
+                <li itemid="{{ item }}">
+                    <h1>{{ item.get_name }}: <span class="item-count">{{ item.get_count }}</span> x <span
+                            class="item-price">{{ item.get_price|unlocalize }}</span>{% trans 'RON' %}</h1>
     <span class="ui-li-aside">
-    <a style="margin-right: 20px;" class="decr-link" rel="external" href="{% url order:decr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png" alt="minus"/></a>
-    <a style="margin-right: 20px;" class="incr-link" rel="external" href="{% url order:incr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png" alt="plus"/></a>
+    <a style="margin-right: 20px;" class="decr-link" rel="external"
+       href="{% url order:decr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png"
+                                                                        alt="minus"/></a>
+    <a style="margin-right: 20px;" class="incr-link" rel="external"
+       href="{% url order:incr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png"
+                                                                        alt="plus"/></a>
     <span class="item-total"></span>{% trans 'RON' %}
     </span>
-  </li>
-  {% endfor %}
-</ul>
-<h1>{% trans 'Paycheck' %}:
-<span id="min-span">({% trans 'Minimum order: ' %}<span id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
-<span id="order-total">{{ total }}</span>{% trans 'RON' %}
-</h1>
-<br/>
-<div id="dt">
-<div data-role="fieldcontain">
-    <fieldset data-role="controlgroup">
-        <legend>{% trans 'Choose a delivery type' %}</legend>
-        {% for dt in unit.delivery_type.iterator %}
-           <input type="radio" name="dt-1" id="dt-{{ dt.id }}" requireAddress="{{ dt.require_address }}" value="{{ dt.id }}" {% if forloop.counter == 1 %}checked="checked"{% endif %} />
-           <label for="dt-{{ dt.id }}">{{ dt }}</label>
-        {% empty %}
-        <h1>{% trans 'You have no delivery addreses defined' %}!<h1>
+                </li>
+            {% endfor %}
         {% endfor %}
-    </fieldset>
-</div>
-</div>
+    </ul>
+    <h1>{% trans 'Paycheck' %}:
+        <span id="min-span">({% trans 'Minimum order: ' %}<span
+                id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
+        <span id="order-total">{{ total }}</span>{% trans 'RON' %}
+    </h1>
+    <br/>
+    <div id="dt">
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <legend>{% trans 'Choose a delivery type' %}</legend>
+                {% for dt in unit.delivery_type.iterator %}
+                    <input type="radio" name="dt-1" id="dt-{{ dt.id }}" requireAddress="{{ dt.require_address }}"
+                           value="{{ dt.id }}" {% if forloop.counter == 1 %}checked="checked"{% endif %}/>
+                    <label for="dt-{{ dt.id }}">{{ dt }}</label>
+                {% empty %}
+                    <h1>{% trans 'You have no delivery addreses defined' %}!<h1>
+                {% endfor %}
+            </fieldset>
+        </div>
+    </div>
 
-<div id="da">
-<div data-role="fieldcontain">
-    <fieldset data-role="controlgroup">
-        <legend>{% trans 'Choose a delivery address' %}</legend>
-        {% for da in user.deliveryaddress_set.iterator %}
-           <input type="radio" name="da-1" id="da-{{ da.id }}" value="{{ da.id }}" {% if da.primary %}checked="checked"{% endif %} />
-           <label for="da-{{ da.id }}">{{ da }}</label>
-        {% endfor %}
-    </fieldset>
-</div>
-</div>
-<br/>
-<a id="confirm" href="{% url order:send-order unit_id %}" rel="external" data-role="button">{% if not unit.is_open %}<span id="unit-closed">{% trans 'The restaurant is now closed'|upper %}!</span>{% else %}{% trans 'Send the order' %} {% endif %}</a>
-<script type="text/javascript">
-function showHideMinOrder(){
-    var ct = parseFloat($("#order-total").text());
-    var mo = parseFloat($("#min-order").text());
-    if (ct >= mo) {
-      $("#min-span").hide();
-    } else {
-      $("#min-span").show();
-    }
-}
-$(function(){
-  showHideMinOrder();
-  $("#confirm").click(function(){
-    var send_error = false;
-    if ($("#unit-closed").length > 0){
-      alert("{% trans 'The restaurant is now closed' %}!");
-      send_error = true;
-    }
-    if (! send_error && $("#min-span:visible").length > 0){
-      alert("{% trans 'Minimum order for this unit is:' %} {{ unit.minimum_ord_val }}{% trans 'RON' %}");
-      send_error = true;
-    }
-    if($("#dt input:checked").attr("requireAddress") == "True" && $("#da input:checked").length == 0){
-      alert("{% trans 'You need to have at least one delivery address defined and selected. Please go to the main site to define one!' %}");
-      send_error = true;
-    }
-    if (! send_error)  {
-      $.get($(this).attr("href"),{'dt':$("#dt input:checked").val(), 'da':$("#da input:checked").val()}, function(){
-        alert("{% trans 'Your order has been sent to the restaurant!' %}");
-      });
-      $.mobile.changePage("{% url mobile:home %}");
-    }    
-    return false;
-  });
-  $("#items>li").each(function(){
-    var parent = $(this);
-    var count = parseInt($("span.item-count", parent).text());
-    var price = parseFloat($("span.item-price", parent).text());
-    $("span.item-total", parent).text(count*price);
-  });
-  $(".decr-link, .incr-link").click(function(){
-    var isMinus = $(this).hasClass("decr-link");
-    var parent = $(this).parents("li:first");
-    var iid = parent.attr("itemid");
-    $.get($(this).attr("href"), function(data){
-       $("#order-total").text(data['count']);
-       var count = $("span.item-count", parent);
-       var price = $("span.item-price", parent);
-       var total = $("span.item-total", parent);
-       $("#order-total").text(data['total']);     
-       if(data['count'] > 0) {
-        $("span.item-count", parent).text(data['count']);
-        $("span.item-total", parent).text(data['itemtotal']);
-       } else {
-        parent.remove();
-        $("#items>li[itemid^="+iid+"]").remove();        
-       }              
-       showHideMinOrder();
-    });
-    return false;
-  });
-});
-</script>
+    <div id="da">
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <legend>{% trans 'Choose a delivery address' %}</legend>
+                {% for da in user.deliveryaddress_set.iterator %}
+                    <input type="radio" name="da-1" id="da-{{ da.id }}" value="{{ da.id }}"
+                           {% if da.primary %}checked="checked"{% endif %}/>
+                    <label for="da-{{ da.id }}">{{ da }}</label>
+                {% endfor %}
+            </fieldset>
+        </div>
+    </div>
+    <br/>
+    <a id="confirm" href="{% url order:send-order unit_id %}" rel="external"
+       data-role="button">{% if not unit.is_open %}<span
+            id="unit-closed">{% trans 'The restaurant is now closed'|upper %}!</span>
+        {% else %}{% trans 'Send the order' %} {% endif %}</a>
+    <script type="text/javascript">
+        function showHideMinOrder() {
+            var ct = parseFloat($("#order-total").text());
+            var mo = parseFloat($("#min-order").text());
+            if (ct >= mo) {
+                $("#min-span").hide();
+            } else {
+                $("#min-span").show();
+            }
+        }
+        $(function () {
+            showHideMinOrder();
+            $("#confirm").click(function () {
+                var send_error = false;
+                if ($("#unit-closed").length > 0) {
+                    alert("{% trans 'The restaurant is now closed' %}!");
+                    send_error = true;
+                }
+                if (!send_error && $("#min-span:visible").length > 0) {
+                    alert("{% trans 'Minimum order for this unit is:' %} {{ unit.minimum_ord_val }}{% trans 'RON' %}");
+                    send_error = true;
+                }
+                if ($("#dt input:checked").attr("requireAddress") == "True" && $("#da input:checked").length == 0) {
+                    alert("{% trans 'You need to have at least one delivery address defined and selected. Please go to the main site to define one!' %}");
+                    send_error = true;
+                }
+                if (!send_error) {
+                    $.get($(this).attr("href"), {'dt':$("#dt input:checked").val(), 'da':$("#da input:checked").val()}, function () {
+                        alert("{% trans 'Your order has been sent to the restaurant!' %}");
+                    });
+                    $.mobile.changePage("{% url mobile:home %}");
+                }
+                return false;
+            });
+            $("#items>li").each(function () {
+                var parent = $(this);
+                var count = parseInt($("span.item-count", parent).text());
+                var price = parseFloat($("span.item-price", parent).text());
+                $("span.item-total", parent).text(count * price);
+            });
+            $(".decr-link, .incr-link").click(function () {
+                var isMinus = $(this).hasClass("decr-link");
+                var parent = $(this).parents("li:first");
+                var iid = parent.attr("itemid");
+                $.get($(this).attr("href"), function (data) {
+                    $("#order-total").text(data['count']);
+                    var count = $("span.item-count", parent);
+                    var price = $("span.item-price", parent);
+                    var total = $("span.item-total", parent);
+                    $("#order-total").text(data['total']);
+                    if (data['count'] > 0) {
+                        $("span.item-count", parent).text(data['count']);
+                        $("span.item-total", parent).text(data['itemtotal']);
+                    } else {
+                        parent.remove();
+                        $("#items>li[itemid^=" + iid + "]").remove();
+                    }
+                    showHideMinOrder();
+                });
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
