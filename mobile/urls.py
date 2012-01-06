@@ -10,7 +10,7 @@ urlpatterns = patterns('',
                        url(r'^units/$', views.units, name='units'),
                        url(r'^menu/(?P<unit_id>\d+)/$', views.menu, name='menu'),
                        url(r'^search/$', views.search, name='search'),
-                       url(r'^itemdetail/(?P<item_id>m?\d+)/$', views.item_detail, name='item-detail'),
+                       url(r'^itemdetail/(?P<unit_id>\d+)/(?P<item_id>m?\d+)/$', views.item_detail, name='item-detail'),
                        url(r'^motd/$', views.motd, name='motd'),
                        url(r'^shoppingcart/(?P<unit_id>\d+)/$', views.shopping_cart, name='shopping-cart'),
                        )

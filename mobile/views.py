@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from annoying.decorators import render_to, ajax_request
+from annoying.decorators import render_to
 from django.shortcuts import get_object_or_404
 from restaurant.models import Unit
 from menu.models import Item, MenuOfTheDay
-from order import views
+from order.shopping_service import OrderCarts, CartItem
 from datetime import date
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -16,10 +16,9 @@ def units(request):
 @render_to('mobile/menu.html')
 def menu(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
+        oc = OrderCarts(request.session, unit_id)
         cn = '%s:%s' % (unit_id,  request.user.username)
-        total = 0
-        if cn in request.session:
-          total = views.__count_cart_sum(request, cn)
+        total = oc.get_total_sum(cn)
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -30,15 +29,11 @@ def search(request):
 
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/item_detail.html')
-def item_detail(request, item_id):
-        item, unit_id = views.__get_payload(item_id)
+def item_detail(request, unit_id, item_id):
+        item = get_object_or_404(Item, pk=item_id)
         cn = '%s:%s' % (unit_id,  request.user.username)
-        total = 0        
-        show_toppings = False        
-        if cn in request.session:
-            total = views.__count_cart_sum(request, cn)
-            if item_id in request.session[cn]:
-                show_toppings = True                    
+        oc = OrderCarts(request.session, unit_id)
+        total = oc.get_total_sum(cn)
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
@@ -51,9 +46,7 @@ def motd(request):
 @render_to('mobile/shopping_cart.html')
 def shopping_cart(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
-        total = 0
+        oc = OrderCarts(request.session, unit_id)
         cn = '%s:%s' % (unit_id,  request.user.username)
-        if cn in request.session:
-          total = views.__count_cart_sum(request,cn)
-          cart = request.session[cn]
+        total = oc.get_total_sum(cn)
         return locals()

@@ -8,7 +8,7 @@ from restaurant.models import Unit
 from userprofiles.models import UserProfile
 from menu.models import Item
 from bonus.models import BonusTransaction
-from order.views import _consume_bonus
+from order.shopping_service import consume_bonus
 
 class OrderTest(TestCase):
   fixtures = ['restaurant.json', 'menu.json', 'order.json', 'users.json', 'userprofiles.json', 'bonus.json']

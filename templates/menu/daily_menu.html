@@ -15,7 +15,7 @@
 </div>
 {% if user.is_authenticated %}
 <div id="comanda">
-<a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="/order/shop/{{ user.username }}/0_{{motd.get_id }}-0" title="">{% trans 'Order this menu' %}</a>
+<a id="motd-add-link" redir="{% url restaurant:detail motd.unit_id %}" href="/order/shop/{{ motd.unit_id }}/{{ user.username }}/{{ uid }}!{{motd.get_id }}-0" title="">{% trans 'Order this menu' %}</a>
 </div>
 {% endif %}
 {% else %}

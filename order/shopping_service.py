@@ -89,6 +89,8 @@ class OrderCarts:
         return self.get_total_sum() < unit.minimum_ord_val
 
     def get_total_sum(self, cn=None):
+        if cn and cn not in self.get_cart_names():
+            return 0
         if cn: s = sum([v.get_total() for v in self.carts[cn]])
         else:
             s = 0
@@ -179,7 +181,7 @@ def shopping_cart(request, unit_id):
 @login_required
 @render_to('order/shopping_cart.html')
 def clear(request, unit_id):
-    oc = OrderCarts(request.session,unit_id)
+    oc = OrderCarts(request.session, unit_id)
     for cn in oc.get_cart_names():
         del request.session[cn]
     oc.get_carts().clear()
@@ -190,7 +192,7 @@ def clear(request, unit_id):
 @login_required
 @render_to('order/shopping_cart.html')
 def shop(request,unit_id,  cart_name, item_id):       
-    oc = OrderCarts(request.session,unit_id)
+    oc = OrderCarts(request.session, unit_id)
     cn = '%s:%s' % (unit_id, cart_name)
 
     if cn not in oc.get_carts() and '_' in item_id: #first added item is a topping
@@ -207,7 +209,7 @@ def shop(request,unit_id,  cart_name, item_id):
 @login_required
 @render_to('order/shopping_cart.html')
 def decr_item(request, unit_id, cart_name, item_id):
-    oc = OrderCarts(request.session,unit_id)
+    oc = OrderCarts(request.session, unit_id)
     cn = '%s:%s' % (unit_id, cart_name)
     oc.decr_item(cn, item_id)
     oc.update_session(request.session)
@@ -219,7 +221,7 @@ def decr_item(request, unit_id, cart_name, item_id):
 @login_required
 @render_to('order/shopping_cart.html')
 def incr_item(request,  unit_id, cart_name, item_id):
-    oc = OrderCarts(request.session,unit_id)
+    oc = OrderCarts(request.session, unit_id)
     cn = '%s:%s' % (unit_id, cart_name)
     oc.incr_item(cn, item_id)
     oc.update_session(request.session)
