@@ -109,6 +109,8 @@ class OrderCarts:
         return get_object_or_None(Unit, pk=self.unit_id)
     
     def get_item(self, cn, item_id):
+        if cn not in self.carts:
+            return None
         for item in self.carts[cn]:
             if item.get_item_id() == item_id: return item
         return None
