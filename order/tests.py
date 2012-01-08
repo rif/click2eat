@@ -1,20 +1,20 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.db.models import Sum
 from datetime import datetime
 from order.models import Order, OrderItem
 from restaurant.models import Unit
-from userprofiles.models import UserProfile
 from menu.models import Item
-from bonus.models import BonusTransaction
-from order.shopping_service import consume_bonus
+from time import time
+
+def uid(id):
+    return '%s!%s-0' %(int(time()*1000), id)
 
 class OrderTest(TestCase):
   fixtures = ['restaurant.json', 'menu.json', 'order.json', 'users.json', 'userprofiles.json', 'bonus.json']
   def setUp(self):
-    rif = User.objects.create_user('rif0', 'rif@test.te', 'test')
-    rif1 = User.objects.create_user('rif1', 'rif1@test.te', 'test')
+    User.objects.create_user('rif0', 'rif@test.te', 'test')
+    User.objects.create_user('rif1', 'rif1@test.te', 'test')
     self.user = User.objects.create_user('bobo1', 'bobo@test.te', 'test')    
     self.unit = Unit.objects.get(pk=1)
     self.unit.admin_users='rif0,bobo1'
@@ -98,9 +98,9 @@ class OrderTest(TestCase):
 
   def test_count_add(self):
      self.client.login(username='rif0', password='test')
-     r = self.client.get(reverse('order:shop', args=["rif0", 1]))
+     r = self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('1')]))
      self.assertEqual(200, r.status_code)
-     self.assertEqual('{"price": 10.0, "total": 10.0, "subtotal": 10.0, "id": "1", "name": "Tocanita de puioc"}', r.content)
+     self.assertTrue("Tocanita de puioc" in r.content)
 
   def test_count_remove(self):
     self.client.login(username='rif0', password='test')

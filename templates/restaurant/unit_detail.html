@@ -120,7 +120,7 @@
         });
         $(".shop-top-link").click(function() { 
         	var masterItem = null;           	            	
-        	masterItem = $(".selected-cart").next("ul.items").children("li.cart-item:last");
+        	masterItem = $(".selected-cart").next("ul.items").children("li.cart-item:not([itemid*='_']):last");
             var id = masterItem.attr("itemid") + "_" + $(this).attr("topid");
             shop(id, 0);
             return false;
@@ -153,6 +153,7 @@
         	// if it is a topping then we only need the id             	
         	args = id;
         	existingTopping = $("li.cart-item[itemid='" + id + "']");
+            console.log("exists!", id)
         }
         args += "/";
 		if(existingTopping && existingTopping.length > 0){
