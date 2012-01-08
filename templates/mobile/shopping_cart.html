@@ -21,8 +21,10 @@
         {% endfor %}
     </ul>
     <h1>{% trans 'Paycheck' %}:
+        {% if unit.minimum_ord_val > oc.get_total_sum %}
         <span id="min-span">({% trans 'Minimum order: ' %}<span
                 id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
-        <span id="order-total">{{ total }}</span>{% trans 'RON' %}
+        {% endif %}
+        <span id="order-total">{{ oc.get_total_sum }}</span>{% trans 'RON' %}
     </h1>
 {% endblock %}
