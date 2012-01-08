@@ -1,0 +1,90 @@
+{% extends 'page.html' %}
+{% load i18n l10n %}
+
+{% block title %}{% trans 'Shopping cart' %}{% endblock %}
+{% block pagetitle %}{% trans 'Shopping cart' %}{% endblock %}
+{% block description %}{% trans 'List of all menu items in your shopping cart' %}{% endblock %}
+{% block pageid %}cart{% endblock %}
+
+{% block content %}
+    <div id="shopping-cart">
+    {% include 'mobile/shopping_cart.html' %}
+    </div>
+
+    <br/>
+    <div id="dt">
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <legend>{% trans 'Choose a delivery type' %}</legend>
+                {% for dt in unit.delivery_type.iterator %}
+                    <input type="radio" name="dt-1" id="dt-{{ dt.id }}" requireAddress="{{ dt.require_address }}"
+                           value="{{ dt.id }}" {% if forloop.counter == 1 %}checked="checked"{% endif %}/>
+                    <label for="dt-{{ dt.id }}">{{ dt }}</label>
+                {% empty %}
+                    <h1>{% trans 'You have no delivery addreses defined' %}!<h1>
+                {% endfor %}
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="da">
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <legend>{% trans 'Choose a delivery address' %}</legend>
+                {% for da in user.deliveryaddress_set.iterator %}
+                    <input type="radio" name="da-1" id="da-{{ da.id }}" value="{{ da.id }}"
+                           {% if da.primary %}checked="checked"{% endif %}/>
+                    <label for="da-{{ da.id }}">{{ da }}</label>
+                {% endfor %}
+            </fieldset>
+        </div>
+    </div>
+    <br/>
+    <a id="confirm" href="{% url order:send-order unit_id %}" rel="external"
+       data-role="button">{% if not unit.is_open %}<span
+            id="unit-closed">{% trans 'The restaurant is now closed'|upper %}!</span>
+        {% else %}{% trans 'Send the order' %} {% endif %}</a>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#confirm").click(function () {
+                var send_error = false;
+                if ($("#unit-closed").length > 0) {
+                    alert("{% trans 'The restaurant is now closed' %}!");
+                    send_error = true;
+                }
+                if (!send_error && $("#min-span:visible").length > 0) {
+                    alert("{% trans 'Minimum order for this unit is:' %} {{ unit.minimum_ord_val }}{% trans 'RON' %}");
+                    send_error = true;
+                }
+                if ($("#dt input:checked").attr("requireAddress") == "True" && $("#da input:checked").length == 0) {
+                    alert("{% trans 'You need to have at least one delivery address defined and selected. Please go to the main site to define one!' %}");
+                    send_error = true;
+                }
+                if (!send_error) {
+                    $.get($(this).attr("href"), {'dt':$("#dt input:checked").val(), 'da':$("#da input:checked").val()}, function () {
+                        alert("{% trans 'Your order has been sent to the restaurant!' %}");
+                    });
+                    $.mobile.changePage("{% url mobile:home %}");
+                }
+                return false;
+            });
+            $("#shopping-cart").on("click", ".decr-link,", function () {
+                $.mobile.showPageLoadingMsg();
+                $("#shopping-cart").load("/mobile/decr/{{ unit_id }}/" + $(this).attr("itemid"), function(){
+                    $("#items").listview();
+                    $.mobile.hidePageLoadingMsg();
+                });
+                return false;
+            });
+            $("#shopping-cart").on("click", ".incr-link", function () {
+                $.mobile.showPageLoadingMsg();
+                $("#shopping-cart").load("/mobile/incr/{{ unit_id }}/" + $(this).attr("itemid"), function(){
+                    $("#items").listview();
+                    $.mobile.hidePageLoadingMsg();
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

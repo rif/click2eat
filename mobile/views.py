@@ -43,7 +43,7 @@ def motd(request):
         return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
-@render_to('mobile/shopping_cart.html')
+@render_to('mobile/shopping_cart_container.html')
 def shopping_cart(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
         oc = OrderCarts(request.session, unit_id)
