@@ -15,11 +15,11 @@
                             class="item-price">{{ item.get_price|unlocalize }}</span>{% trans 'RON' %}</h1>
     <span class="ui-li-aside">
     <a style="margin-right: 20px;" class="decr-link" rel="external"
-       href="{% url order:decr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/minus.png"
-                                                                        alt="minus"/></a>
+       href="#" itemid={{ item.get_item_id }}><img src="{{ STATIC_URL }}images/minus.png"
+                     alt="minus"/></a>
     <a style="margin-right: 20px;" class="incr-link" rel="external"
-       href="{% url order:incr-item user.username unit_id item %}"><img src="{{ STATIC_URL }}images/plus.png"
-                                                                        alt="plus"/></a>
+       href="#" itemid={{ item.get_item_id }}><img src="{{ STATIC_URL }}images/plus.png"
+                     alt="plus"/></a>
     <span class="item-total"></span>{% trans 'RON' %}
     </span>
                 </li>
@@ -65,17 +65,7 @@
             id="unit-closed">{% trans 'The restaurant is now closed'|upper %}!</span>
         {% else %}{% trans 'Send the order' %} {% endif %}</a>
     <script type="text/javascript">
-        function showHideMinOrder() {
-            var ct = parseFloat($("#order-total").text());
-            var mo = parseFloat($("#min-order").text());
-            if (ct >= mo) {
-                $("#min-span").hide();
-            } else {
-                $("#min-span").show();
-            }
-        }
         $(function () {
-            showHideMinOrder();
             $("#confirm").click(function () {
                 var send_error = false;
                 if ($("#unit-closed").length > 0) {
@@ -105,23 +95,8 @@
                 $("span.item-total", parent).text(count * price);
             });
             $(".decr-link, .incr-link").click(function () {
-                var isMinus = $(this).hasClass("decr-link");
-                var parent = $(this).parents("li:first");
-                var iid = parent.attr("itemid");
-                $.get($(this).attr("href"), function (data) {
-                    $("#order-total").text(data['count']);
-                    var count = $("span.item-count", parent);
-                    var price = $("span.item-price", parent);
-                    var total = $("span.item-total", parent);
-                    $("#order-total").text(data['total']);
-                    if (data['count'] > 0) {
-                        $("span.item-count", parent).text(data['count']);
-                        $("span.item-total", parent).text(data['itemtotal']);
-                    } else {
-                        parent.remove();
-                        $("#items>li[itemid^=" + iid + "]").remove();
-                    }
-                    showHideMinOrder();
+                $.get("/mobile/incr/{{ unit_id }}/" + $(this).attr("itemid"), function(data){
+                   console.log(data);
                 });
                 return false;
             });
