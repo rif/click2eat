@@ -39,16 +39,17 @@
 
     <script type="text/javascript">
         $(function () {
+            var args = null;
             $("#shop-link").click(function (e) {
-                var args = uid() + "!" + $(this).attr("itemid") + "-0/";
-                $.get("/mobile/shop/{{ unit_id }}/" + args, function (data) {
+                args = uid() + "!" + $(this).attr("itemid") + "-0";
+                $.get("/mobile/shop/{{ unit_id }}/" + args + "/", function (data) {
                     $("#cart-count").text(data['total']);
                     $("#toppings").fadeIn();
                 });
                 e.preventDefault();
             });
             $(".top-shop-link").click(function (e) {
-                $.get("/mobile/shop/{{ user.username }}/{{ item.id }}_" + $(this).attr("topid"), function (data) {
+                $.get("/mobile/shop/{{ unit_id }}/" + args + "_" + $(this).attr("topid") + "/", function (data) {
                     $("#cart-count").text(data['total']);
                 });
                 e.preventDefault();
