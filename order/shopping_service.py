@@ -17,7 +17,7 @@ class CartItem:
         #mUID!MasterId-VarID_TopId
         self.count, self.item_id = count, item_id
         uid, item_id = item_id.split('!')
-        self.item, self.variation = None,None
+        self.item, self.variation, self.promotion = None, None, None
         if item_id.startswith('m'):
             item_id = item_id[1:].split('-')[0] #discard m char and variation id
             self.item = get_object_or_404(MenuOfTheDay, pk=item_id)
@@ -26,10 +26,10 @@ class CartItem:
             id = id.split('-')[0]     
             self.item = get_object_or_404(Topping, pk=id)    
         else:
-            if '-' in item_id: # we have a variation
-                item_id, vari_id =  item_id.split('-',1)        
-                self.variation = get_object_or_None(Variation, pk=vari_id)
+            item_id, vari_id =  item_id.split('-',1)
+            self.variation = get_object_or_None(Variation, pk=vari_id)
             self.item = get_object_or_404(Item, pk=item_id)
+            self.promotion = self.item.promotion
         self.price = self.get_item_price()
 
     def set_count(self, count):
@@ -40,6 +40,9 @@ class CartItem:
 
     def get_item(self):
         return self.item
+
+    def get_promotion(self):
+        return self.promotion
 
     def get_price(self):
         return self.price
@@ -144,7 +147,7 @@ class OrderCarts:
         multiple_item_promotions={}
         for cn, items in self.carts.iteritems():
             for item in items:
-                promotion = item.get_item().promotion
+                promotion = item.get_promotion()
                 if promotion and (not promotion.is_active() or promotion.total_sum_trigger > self.get_total_sum()):
                     # if promotion is not active or the total sum threshold was not reached the skip to next item
                     continue
@@ -172,7 +175,6 @@ class OrderCarts:
 
 @render_to('order/shopping_cart.html')
 def shopping_cart(request, unit_id):
-    #del request.session['1:rif']
     oc = OrderCarts(request.session, unit_id)
     if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
     we_are_are_in_cart = True
