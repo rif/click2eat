@@ -52,23 +52,6 @@ def list_unit(request, unit_id):
         template_name = 'order/order_list_div.html',
     )
 
-
-@login_required
-@ajax_request
-def send_order(request, unit_id):
-    if not __have_unit_cart(request, unit_id): return {'error': '2e45'} # kriptic errors for hackers delight :)
-    unit = get_object_or_404(Unit, pk=unit_id)
-    if not unit.is_open(): return {'error': '2e61'}
-    if unit.minimum_ord_val > __count_cart_sum(request, unit_id): return {'error': '2e65'}
-    if 'dt' not in request.GET: return {'error': '2e77'}
-    delivery_type = get_object_or_404(DeliveryType, pk=request.GET['dt'])
-    if delivery_type.require_address and 'da' not in request.GET: return {'error': '2e78'}
-    if 'da' in request.GET:
-        address = get_object_or_404(DeliveryAddress, pk=request.GET['da'])
-    order = Order(address=address, delivery_type=delivery_type)
-    __construct_order(request, unit, order, False)
-    return {}
-
 @login_required
 @render_to('order/send_confirmation.html')
 def confirm_order(request, unit_id):

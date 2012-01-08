@@ -40,7 +40,7 @@
         </div>
     </div>
     <br/>
-    <a id="confirm" href="{% url order:send-order unit_id %}" rel="external"
+    <a id="confirm" href="{% url mobile:send-order unit_id %}" rel="external"
        data-role="button">{% if not unit.is_open %}<span
             id="unit-closed">{% trans 'The restaurant is now closed'|upper %}!</span>
         {% else %}{% trans 'Send the order' %} {% endif %}</a>
