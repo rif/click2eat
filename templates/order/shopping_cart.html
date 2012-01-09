@@ -8,7 +8,7 @@
                     <span class="item-price">{{ item.get_price|unlocalize }}</span>
                     <span class="item-title">{{ item.get_name|truncatewords:3 }}</span>
                     <a class="decr-link" href="#"></a>
-                    {% show_incr_link %}
+                    <a class="incr-link" href="#"></a>
                     <span class="item-currency">{% trans 'RON' %}</span>
                     <span class="item-total">{{ item.get_total }}</span>
                 </li>
