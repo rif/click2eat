@@ -237,7 +237,7 @@
                                         <span class="unit">{{ object.descriptive_type|title }} {{ object.name }}</span>
                                         {% if item.image_path %}
                                         <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">
-                                            {% thumbnail item.image_path "x40" format="PNG" as im %}
+                                            {% thumbnail item.image_path "x20" format="PNG" as im %}
                                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{% trans 'preview' %}">
                                             {% endthumbnail %}
                                         </a>
