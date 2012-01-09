@@ -151,18 +151,13 @@
         if(id.indexOf("_") != -1) {
         	// if it is a topping then we only need the id             	
         	args = id;
-        	existingTopping = $("li.cart-item[itemid='" + id + "']");
         }
         args += "/";
-		if(existingTopping && existingTopping.length > 0){
-			$('a.incr-link', existingTopping).click();
-		} else {
-            $("#loading-img").fadeIn("fast");
-	        $("div#shopping-cart").load("/order/shop/{{ object.id }}/" + selCart.text() + "/" + args, function(){
-                $("#loading-img").fadeOut("fast");
-            });
+        $("#loading-img").fadeIn("fast");
+        $("div#shopping-cart").load("/order/shop/{{ object.id }}/" + selCart.text() + "/" + args, function(){
+            $("#loading-img").fadeOut("fast");
+        });
         }
-    }
 </script>
 {% endblock %}
 
