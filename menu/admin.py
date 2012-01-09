@@ -67,7 +67,7 @@ class ItemAdmin(admin.ModelAdmin):
         (None, {
             'fields': ('internal_name', 'index', ('name_def', 'description_def'), ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
         }),
-        ('Extra options', {
+        (_('Extra options'), {
             'fields': ('tags', 'active', 'speciality', 'fortune', 'image_path')
         }),
     )
@@ -106,10 +106,10 @@ class PromotionAdmin(admin.ModelAdmin):
         (None, {
             'fields': (('name', 'internal_name'), ('unit', 'logo'), ('procentage', 'absolute_price'))
         }),
-        ('Order Options', {
+        (_('Order options'), {
             'fields': (('numer_of_items', 'total_sum_trigger'))
         }),
-        ('Activation option', {
+        (_('Activation options'), {
             'fields': (('start_date', 'end_date'), 'weekdays', ('start_hour', 'end_hour'))
         }),
     )

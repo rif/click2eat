@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-05 13:49+0200\n"
-"PO-Revision-Date: 2012-01-08 17:16\n"
+"POT-Creation-Date: 2012-01-09 14:18+0200\n"
+"PO-Revision-Date: 2012-01-09 14:20\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
-"X-Translated-Using: django-rosetta 0.6.2\n"
+"X-Translated-Using: django-rosetta 0.6.3\n"
 
 #: dashboard.py:26
 msgid "Group: Internals"
@@ -136,6 +136,10 @@ msgstr "Tranzacții de bonus-uri"
 msgid "Bonus Transactions"
 msgstr "Tranzacții de bonus-uri"
 
+#: menu/admin.py:70
+msgid "Extra options"
+msgstr "Extra opțiuni"
+
 #: menu/admin.py:80
 msgid "1 item was"
 msgstr "1 articol a fost"
@@ -153,6 +157,14 @@ msgstr "%s clonat cu succes."
 #: menu/admin.py:84
 msgid "Clone selected items"
 msgstr "Clonează articolele selectate"
+
+#: menu/admin.py:109
+msgid "Order Options"
+msgstr "Opțiuni de comanda"
+
+#: menu/admin.py:112
+msgid "Activation options"
+msgstr "Opțiuni de activare"
 
 #: menu/admin.py:142
 #, python-format
@@ -634,11 +646,11 @@ msgstr "Apreciere"
 msgid "Ratings"
 msgstr "Aprecieri"
 
-#: order/shopping_service.py:265
+#: order/shopping_service.py:275
 msgid "New Order"
 msgstr "Comandă nouă"
 
-#: order/views.py:79
+#: order/views.py:62
 msgid ""
 "This restaurant is now closed! Please check the open hours and set "
 "desired delivery time accordingly."
@@ -646,12 +658,12 @@ msgstr ""
 "Acest restaurant este momentan închis! Vă rugam să consultați orarul "
 "și să specificați ziua și ora de livrare în consecință."
 
-#: order/views.py:81
+#: order/views.py:64
 #, python-format
 msgid "This restaurant has a minimum order value of %(min)d"
 msgstr "Restaurantul are o comandă minimă de %(min)d"
 
-#: order/views.py:108
+#: order/views.py:91
 msgid ""
 "Congratulations! You have enough bonus to pay for your order. Please "
 "check \"Pay using bonus\" to use it."
@@ -659,11 +671,11 @@ msgstr ""
 "Felicitări! Ați acumulat suficient bonus pentru a plăti această "
 "comandă. Vă rugăm să bifați \"Plata cu bonus\" pentru a-l folosi."
 
-#: order/views.py:109
+#: order/views.py:92
 msgid "Pay using bonus"
 msgstr "Plata cu bonus"
 
-#: order/views.py:109
+#: order/views.py:92
 msgid ""
 "We shall use the minimum number of received bonuses enough to cover the"
 " order total amount"
@@ -671,27 +683,27 @@ msgstr ""
 "Vom folosi un numar minim de bonus-uri primite car sunt suficiente "
 "pentru a acoperi suma totală a comenzii"
 
-#: order/views.py:127
+#: order/views.py:110
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
-#: order/views.py:136 order/views.py:144
+#: order/views.py:119 order/views.py:127
 msgid "Current orders"
 msgstr "Comenzile curente"
 
-#: order/views.py:152
+#: order/views.py:135
 msgid "Order history"
 msgstr "Istoric comenzi"
 
-#: order/views.py:184
+#: order/views.py:167
 msgid "Click2eat: Order sent to you!"
 msgstr "Click2eat: Comanda trimisă"
 
-#: order/views.py:199
+#: order/views.py:182
 msgid "Thank you! You already sent feedback for this order."
 msgstr "Mulțumim! Deja o apreciere pentru această comandă."
 
-#: order/views.py:210
+#: order/views.py:193
 msgid "Thank you! Your feedback is very appreciated!"
 msgstr "Mulțumim! Feedback-ul dumneavoastra este foarte apreciat!"
 
@@ -1215,13 +1227,13 @@ msgstr ""
 
 #: templates/bonus/history.html:17 templates/menu/daily_menu.html:14
 #: templates/menu/item_list.html:78 templates/mobile/item_detail.html:12
-#: templates/mobile/item_detail.html:23 templates/mobile/item_detail.html:56
+#: templates/mobile/item_detail.html:24 templates/mobile/item_detail.html:62
 #: templates/mobile/menu.html:18 templates/mobile/menu.html.py:29
-#: templates/mobile/search.html:14 templates/mobile/shopping_cart.html:13
+#: templates/mobile/search.html:14 templates/mobile/shopping_cart.html:9
 #: templates/mobile/shopping_cart.html:17
-#: templates/mobile/shopping_cart.html:23
-#: templates/mobile/shopping_cart.html:24
-#: templates/mobile/shopping_cart.html:73
+#: templates/mobile/shopping_cart.html:26
+#: templates/mobile/shopping_cart.html:28
+#: templates/mobile/shopping_cart_container.html:57
 #: templates/order/order_list_div.html:15
 #: templates/order/shopping_cart.html:13 templates/order/shopping_cart.html:19
 #: templates/order/shopping_cart.html:35 templates/order/shopping_cart.html:39
@@ -1447,11 +1459,11 @@ msgstr "Bine ați venit la click2eat.ro"
 msgid "Menu item details"
 msgstr "Detalii articol"
 
-#: templates/mobile/item_detail.html:36
+#: templates/mobile/item_detail.html:38
 msgid "Add to shopping cart"
 msgstr "Adaugă la coșul de cumpărături"
 
-#: templates/mobile/item_detail.html:56 templates/mobile/menu.html:29
+#: templates/mobile/item_detail.html:62 templates/mobile/menu.html:29
 msgid "Cart total"
 msgstr "Totalul comenzii"
 
@@ -1483,49 +1495,50 @@ msgstr "Lista meniurilor zilei"
 msgid "List of all menu items"
 msgstr "Toate meniurile"
 
-#: templates/mobile/shopping_cart.html:4 templates/mobile/shopping_cart.html:5
-msgid "Shopping cart"
-msgstr "Coș de cumpărături"
-
-#: templates/mobile/shopping_cart.html:6
-msgid "List of all menu items in your shopping cart"
-msgstr "Lista articolelor din coșul de cumpărături"
-
-#: templates/mobile/shopping_cart.html:22
+#: templates/mobile/shopping_cart.html:23
 msgid "Paycheck"
 msgstr "Nota de plată"
 
-#: templates/mobile/shopping_cart.html:23
+#: templates/mobile/shopping_cart.html:25
 #: templates/order/shopping_cart.html:38
 msgid "Minimum order: "
 msgstr "Comandă minimă:"
 
-#: templates/mobile/shopping_cart.html:30
+#: templates/mobile/shopping_cart_container.html:4
+#: templates/mobile/shopping_cart_container.html:5
+msgid "Shopping cart"
+msgstr "Coș de cumpărături"
+
+#: templates/mobile/shopping_cart_container.html:6
+msgid "List of all menu items in your shopping cart"
+msgstr "Lista articolelor din coșul de cumpărături"
+
+#: templates/mobile/shopping_cart_container.html:18
 msgid "Choose a delivery type"
 msgstr "Alegeți modelaitatea de livrare"
 
-#: templates/mobile/shopping_cart.html:35
+#: templates/mobile/shopping_cart_container.html:24
 msgid "You have no delivery addreses defined"
 msgstr "Nu ați introdus nici o adresa de livrare."
 
-#: templates/mobile/shopping_cart.html:44
+#: templates/mobile/shopping_cart_container.html:33
 msgid "Choose a delivery address"
 msgstr "Alegeți o adresă de livrare"
 
-#: templates/mobile/shopping_cart.html:53
-#: templates/mobile/shopping_cart.html:69
+#: templates/mobile/shopping_cart_container.html:45
+#: templates/mobile/shopping_cart_container.html:53
 msgid "The restaurant is now closed"
 msgstr "Restaurantul e închis"
 
-#: templates/mobile/shopping_cart.html:53
+#: templates/mobile/shopping_cart_container.html:46
 msgid "Send the order"
 msgstr "Da, trimite comanda"
 
-#: templates/mobile/shopping_cart.html:73
+#: templates/mobile/shopping_cart_container.html:57
 msgid "Minimum order for this unit is:"
 msgstr "Valoarea minimă a comenzii este:"
 
-#: templates/mobile/shopping_cart.html:77
+#: templates/mobile/shopping_cart_container.html:61
 msgid ""
 "You need to have at least one delivery address defined and selected. "
 "Please go to the main site to define one!"
@@ -1534,7 +1547,7 @@ msgstr ""
 "selectată. Pentru a crea o adresă de livrare vă rugăm să accesați "
 "site-ul principal."
 
-#: templates/mobile/shopping_cart.html:82
+#: templates/mobile/shopping_cart_container.html:66
 msgid "Your order has been sent to the restaurant!"
 msgstr "Comanda dumneavoastră a fost trimisă restaurantului!"
 

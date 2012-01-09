@@ -256,7 +256,7 @@ class Promotion(models.Model):
     absolute_price = models.FloatField(_('absolute value'), default=0, help_text=_('Absolute price (fixed price)'), null=True, blank=True)
 
     def __unicode__(self):
-        return self.name
+        return self.internal_name
 
     def is_active(self):
         return self._is_active(datetime.now())
