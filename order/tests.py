@@ -5,11 +5,7 @@ from datetime import datetime
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
-from time import time
 from order.shopping_service import consume_bonus
-
-def uid(id):
-    return '%s!%s-0' %(int(time()*1000), id)
 
 class OrderTest(TestCase):
   fixtures = ['restaurant.json', 'menu.json', 'order.json', 'users.json', 'userprofiles.json', 'bonus.json']
@@ -99,33 +95,33 @@ class OrderTest(TestCase):
 
   def test_count_add(self):
      self.client.login(username='rif0', password='test')
-     r = self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('1')]))
+     r = self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '1-0']))
      self.assertEqual(200, r.status_code)
      self.assertTrue("Tocanita de puioc" in r.content)
 
   def test_count_remove(self):
     self.client.login(username='rif0', password='test')
-    self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('1')]))
-    r = self.client.get(reverse('order:decr-item', args=[self.unit.id, "rif0", uid('1')]))
+    self.client.get(reverse('order:shop', args=[self.unit.id, "rif0",'1-0']))
+    r = self.client.get(reverse('order:decr-item', args=[self.unit.id, "rif0", '1-0']))
     self.assertEqual(200, r.status_code)
-    self.assertTrue('<span id="order-total">12.0</span>' in r.content)
+    self.assertTrue('<span id="order-total">0.0</span>' in r.content)
 
   def test_subtotal_cart(self):
      self.client.login(username='rif0', password='test')
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('1')]))
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('2')]))
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('3')]))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '1-0']))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '2-0']))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '3-0']))
      r = self.client.get(reverse('order:shopping-cart', args=[1]))
      self.assertEqual(200, r.status_code)
      self.assertTrue('<span class="cart-subtotal">23.99</span>' in r.content)
 
   def test_total_cart(self):
      self.client.login(username='rif0', password='test')
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('1')]))
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('2')]))
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('2')]))
-     self.client.get(reverse('order:shop', args=[self.unit.id, "mama", uid('1')]))
-     self.client.get(reverse('order:shop', args=[self.unit.id, "mama", uid('1')]))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '1-0']))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '2-0']))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '2-0']))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "mama", '1-0']))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "mama", '1-0']))
      r = self.client.get(reverse('order:shopping-cart', args=[1]))
      self.assertEqual(200, r.status_code)
      self.assertTrue('<span class="cart-subtotal">33.98</span>' in r.content)
@@ -134,23 +130,19 @@ class OrderTest(TestCase):
 
   def test_total(self):
      self.client.login(username='rif0', password='test')
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('1')]))
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('2')]))
-     r = self.client.get(reverse('order:shop', args=[self.unit.id, "rif", uid('2')]))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '1-0']))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '1-0']))
+     r = self.client.get(reverse('order:shop', args=[self.unit.id, "rif", '2-0']))
      self.assertEqual(200, r.status_code)
-     self.assertTrue('<span id="order-total">33.98</span>' in r.content)
+     self.assertTrue('<span id="order-total">34.99</span>' in r.content)
 
-  def test_no_exception_incr_decr(self):
+  def test_no_exception_decr(self):
      self.client.login(username='rif0', password='test')
-     r = self.client.get(reverse('order:incr-item', args=[self.unit.id, "tata", uid('1')]))
+     r = self.client.get(reverse('order:decr-item', args=[self.unit.id, "rif0", '1-0']))
      self.assertTrue('<span id="order-total">0.0</span>' in r.content)
-     r = self.client.get(reverse('order:decr-item', args=[self.unit.id, "rif0", uid('1')]))
+     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '1-0']))
+     r = self.client.get(reverse('order:decr-item', args=[self.unit.id, "rif0", '1-0']))
      self.assertTrue('<span id="order-total">0.0</span>' in r.content)
-     self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", uid('1')]))
-     r = self.client.get(reverse('order:incr-item', args=[self.unit.id, "rif0", uid('1')]))
-     self.assertTrue('<span id="order-total">12.0</span>' in r.content)
-     r = self.client.get(reverse('order:decr-item', args=[self.unit.id, "rif0", uid('1')]))
-     self.assertTrue('<span id="order-total">12.0</span>' in r.content)
 
   def test_not_enough_bonus_money(self):
       user = User.objects.get(id=2)      

@@ -36,7 +36,6 @@
         <table id="cart-{{ cartname|slugify }}-table">
             <tr class="header">
                 <th class="item">{% trans 'Item' %}</th>
-                <th class="count">{% trans 'Count' %}</th>
                 <th class="price">{% trans 'Price (RON)' %}</th>
             </tr>
             {% for oi in order.orderitem_set.iterator %}

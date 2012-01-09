@@ -11,7 +11,7 @@
     <h2>{{ item.get_description|safe }} {{ item.quantity }}{{ item.get_measurement_unit_display }}</h2>
     <h3>{% trans 'Price' %}: {{ item.get_price }}{% trans 'RON' %}</h3>
     {% if item.has_promotion %}
-        <h4>{{ item.promotion }}</h4>
+        <h4>{{ item.promotion.name }}</h4>
     {% endif %}
 
     <div id="toppings" style="display:none">
@@ -41,7 +41,7 @@
         $(function () {
             var args = null;
             $("#shop-link").click(function (e) {
-                args = uid() + "!" + $(this).attr("itemid") + "-0";
+                args = $(this).attr("itemid") + "-0";
                 $.get("/mobile/shop/{{ unit_id }}/" + args + "/", function (data) {
                     $("#cart-count").text(data['total']);
                     $("#toppings").fadeIn();

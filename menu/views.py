@@ -4,7 +4,6 @@ from datetime import date
 from django.db.models import Q
 from menu.models import Item, MenuOfTheDay
 from menu.filter import ItemFilter
-from time import time
 
 @render_to('menu/item_list.html')
 def item_list(request):
@@ -45,5 +44,4 @@ def daily_menu(request, menu_id):
     motds = MenuOfTheDay.objects.filter(day=date.today())    
     motd = motds.filter(pk=menu_id) if motds.exists() else None
     motd = motd[0] if motd and motd.exists() else None
-    uid = int(time()*1000) # analogous javascript uid
     return locals()
