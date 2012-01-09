@@ -242,9 +242,13 @@
                                         {% get_name item %}
                                         <span class="unit">{{ object.descriptive_type|title }} {{ object.name }}</span>
                                         {% if item.image_path %}
-                                        <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">{% trans 'preview' %}</a>
+                                        <a class="fancy" href="{{ MEDIA_URL }}{{ item.image_path }}">
+                                            {% thumbnail item.image_path "x40" format="PNG" as im %}
+                                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{% trans 'preview' %}">
+                                            {% endthumbnail %}
+                                        </a>
                                         {% endif %}
-                                        {%  if item.promotion and item.promotion.logo %}
+                                        {%  if item.promotion %}
                                         <img class="promotion-logo" src="{{ MEDIA_URL }}{{ item.promotion.logo }}" title="{{ item.promotion.name }}" alt="{{ item.promotion.name }}">
                                         {%  endif %}
                                         </div>

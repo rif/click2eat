@@ -156,6 +156,7 @@ class OrderCarts:
                 if not promotion.is_active():
                     continue
                 if promotion.total_sum_trigger > self.get_total_sum(no_promotion=True):
+                    # if we are below threshold make sure we get the old price (useful when deleting items)
                     item.set_price(item.get_item_price())
                     continue
                 if promotion.numer_of_items > 1:
