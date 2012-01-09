@@ -59,7 +59,7 @@
 			"file": "media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 21894,
+				"buffer_size": 22018,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,18 +67,15 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 10461,
+				"buffer_size": 9366,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "",
 			"file": "order/shopping_service.py",
-			"file_size": -1,
-			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 11466,
 				"line_ending": "Unix"
 			}
 		},
@@ -94,7 +91,7 @@
 			"file": "templates/restaurant/unit_detail.html",
 			"settings":
 			{
-				"buffer_size": 15196,
+				"buffer_size": 15547,
 				"line_ending": "Windows"
 			}
 		},
@@ -102,7 +99,7 @@
 			"file": "order/urls.py",
 			"settings":
 			{
-				"buffer_size": 2253,
+				"buffer_size": 2181,
 				"line_ending": "Unix"
 			}
 		},
@@ -126,7 +123,7 @@
 			"file": "templates/base_alt.html",
 			"settings":
 			{
-				"buffer_size": 6479,
+				"buffer_size": 6509,
 				"line_ending": "Windows"
 			}
 		},
@@ -150,9 +147,21 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 183.0,
 		"selected_items":
 		[
+			[
+				"hg",
+				"SublimeHg: Open Hg Command Prompt"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
 			[
 				"spa",
 				"Indentation: Convert to Spaces"
@@ -453,7 +462,7 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -461,7 +470,7 @@
 					"file": "media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 21894,
+						"buffer_size": 22018,
 						"regions":
 						{
 						},
@@ -489,7 +498,7 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 10461,
+						"buffer_size": 9366,
 						"regions":
 						{
 						},
@@ -517,15 +526,15 @@
 					"file": "order/shopping_service.py",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 11466,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1161,
+								1161
 							]
 						],
 						"settings":
@@ -573,7 +582,7 @@
 					"file": "templates/restaurant/unit_detail.html",
 					"settings":
 					{
-						"buffer_size": 15196,
+						"buffer_size": 15547,
 						"regions":
 						{
 						},
@@ -601,7 +610,7 @@
 					"file": "order/urls.py",
 					"settings":
 					{
-						"buffer_size": 2253,
+						"buffer_size": 2181,
 						"regions":
 						{
 						},
@@ -685,7 +694,7 @@
 					"file": "templates/base_alt.html",
 					"settings":
 					{
-						"buffer_size": 6479,
+						"buffer_size": 6509,
 						"regions":
 						{
 						},
@@ -703,7 +712,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 48.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
