@@ -285,7 +285,7 @@ class Promotion(models.Model):
         if self.absolute_price:
             return self.absolute_price
         if self.procentage:
-            return (old_price * (100-self.procentage))/100
+            return round((old_price * (100-self.procentage))/100, 2)
         return 0
 
 
