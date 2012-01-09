@@ -47,17 +47,15 @@
                         	{{ oi.variation.name }}
                         	{% endif %}
                         </td>
-                        <td class="count">{{ oi.count }}</td>
                         <td class="price">{{ oi.old_price }}</td>
                     </tr>
                     {% if oi.orderitem_set.exists %}
-                        <tr class="topping-row">
                             {% for slave_oi in oi.orderitem_set.iterator %}
+                                <tr class="topping-row">
                                 <td class="item">*{% get_name slave_oi.get_payload %}</td>
-                                <td class="count">{{ slave_oi.count }}</td>
                                 <td class="price">{{ slave_oi.old_price }}</td>
+                                </tr>
                             {% endfor %}
-                        </tr>
                     {% endif %}
                 {% endif %}
             {% endfor %}
