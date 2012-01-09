@@ -52,9 +52,11 @@ class CartItem:
 
     def get_item_price(self):
         vid = self.variation.id if self.variation else 0
-        return self.item.get_price(variation_id=vid)
+        return round(self.item.get_price(variation_id=vid), 2)
     
-    def get_total(self):
+    def get_total(self, no_promotion=False):
+        if no_promotion:
+            return self.count * self.get_item_price()
         return self.count * self.get_price()
 
     def get_name(self):
@@ -91,14 +93,14 @@ class OrderCarts:
         unit = self.get_unit()
         return self.get_total_sum() < unit.minimum_ord_val
 
-    def get_total_sum(self, cn=None):
+    def get_total_sum(self, cn=None, no_promotion=False):
         if cn and cn not in self.get_cart_names():
             return 0
-        if cn: s = sum([v.get_total() for v in self.carts[cn]])
+        if cn: s = sum([v.get_total(no_promotion) for v in self.carts[cn]])
         else:
             s = 0
             for values in self.carts.itervalues():
-              s += sum([v.get_total() for v in values])
+              s += sum([v.get_total(no_promotion) for v in values])
         return round(s, 2)
     
     def update_session(self, session):
@@ -150,19 +152,21 @@ class OrderCarts:
         for cn, items in self.carts.iteritems():
             for item in items:
                 promotion = item.get_promotion()
-                if promotion and (not promotion.is_active() or promotion.total_sum_trigger > self.get_total_sum()):
-                    # if promotion is not active or the total sum threshold was not reached the skip to next item
+                if not promotion: continue
+                if not promotion.is_active():
                     continue
-                if promotion and promotion.numer_of_items > 1:
+                if promotion.total_sum_trigger > self.get_total_sum(no_promotion=True):
+                    item.set_price(item.get_item_price())
+                    continue
+                if promotion.numer_of_items > 1:
                     # if promotion spans multiple items save for later analysis
                     if promotion not in multiple_item_promotions:
                         multiple_item_promotions[promotion] = []
                     multiple_item_promotions[promotion].append(item)
                     continue
-                if promotion:
-                    # we should get here if the promotion it is active, sum trigger was activated
-                    # and it affects only one item
-                    item.set_price(promotion.get_new_price(item.get_item_price()))
+                # we should get here if the promotion it is active, sum trigger was activated
+                # and it affects only one item
+                item.set_price(promotion.get_new_price(item.get_item_price()))
         for promotion, items in multiple_item_promotions.iteritems():
             sorted_items = sorted(items, key=lambda item: item.get_price())
             items_middle_index = len(sorted_items)/promotion.numer_of_items
