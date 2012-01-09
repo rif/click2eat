@@ -44,12 +44,6 @@
 		<![endif]-->
     {% block script-links %}{% endblock %}
     <script type="text/javascript">
-
-        function uid(){
-            // generate unique id for shopping carts items (to be identified when using incr)
-            return (new Date()).getTime()
-        }
-        
         $(function() {
             $.ajaxSetup({
                 cache : false

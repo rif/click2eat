@@ -13,10 +13,9 @@ from bonus.models import BonusTransaction, BONUS_PERCENTAGE
 from order.tasks import send_email_task
 
 class CartItem:
-    def __init__(self, item_id, count = 0):
-        #mUID!MasterId-VarID_TopId
-        self.count, self.item_id = count, item_id
-        uid, item_id = item_id.split('!')
+    def __init__(self, item_id):
+        #MasterId-VarID_TopId
+        self.item_id = item_id
         self.item, self.variation, self.promotion = None, None, None
         if item_id.startswith('m'):
             item_id = item_id[1:].split('-')[0] #discard m char and variation id
@@ -31,12 +30,6 @@ class CartItem:
             self.item = get_object_or_404(Item, pk=item_id)
             self.promotion = self.item.promotion
         self.price = self.get_item_price()
-
-    def set_count(self, count):
-        self.count = count
-    
-    def get_count(self):
-        return self.count
 
     def get_item(self):
         return self.item
@@ -56,8 +49,8 @@ class CartItem:
     
     def get_total(self, no_promotion=False):
         if no_promotion:
-            return self.count * self.get_item_price()
-        return self.count * self.get_price()
+            return self.get_item_price()
+        return self.get_price()
 
     def get_name(self):
         vid = self.variation.id if self.variation else 0
@@ -67,7 +60,7 @@ class CartItem:
         return self.item_id
     
     def __str__(self):
-        return '%s: %d' % (self.item_id, self.count)
+        return self.item_id
 
 
 class OrderCarts:
@@ -122,24 +115,17 @@ class OrderCarts:
     
     def add_item(self, cn, item_id):
         self.create_cart_if_not_exists(cn)
-        self.carts[cn].append(CartItem(item_id, 1))
+        self.carts[cn].append(CartItem(item_id))
     
     def decr_item(self, cn, item_id):
         item = self.get_item(cn, item_id)
         if not item: return #we have an hacker case here?
-        if item.get_count() > 1:
-            item.set_count(item.get_count() - 1)
-        else:                
-            self.carts[cn].remove(item)
-            # Delete assocaited toppings
-            for top in [ci for ci in self.carts[cn] if (item_id + '_') in ci.get_item_id()]:
-                self.carts[cn].remove(top)
-            #Delete the cart if all the items are removed
-            if len(self.carts[cn]) == 0 and len(self.carts) > 1: del self.carts[cn]
-
-    def incr_item(self, cn, item_id):
-        item = self.get_item(cn, item_id)
-        if item: item.set_count(item.get_count() + 1)
+        self.carts[cn].remove(item)
+        # Delete assocaited toppings
+        for top in [ci for ci in self.carts[cn] if (item_id + '_') in ci.get_item_id()]:
+            self.carts[cn].remove(top)
+        #Delete the cart if all the items are removed
+        if len(self.carts[cn]) == 0 and len(self.carts) > 1: del self.carts[cn]
     
     def __str__(self):
         result = ''
@@ -182,6 +168,7 @@ class OrderCarts:
 
 @render_to('order/shopping_cart.html')
 def shopping_cart(request, unit_id):
+    #del request.session['1:rif']
     oc = OrderCarts(request.session, unit_id)
     if not oc.have_unit_cart(): oc.create_cart_if_not_exists('%s:%s' % (unit_id, request.user.username))
     we_are_are_in_cart = True
@@ -226,18 +213,6 @@ def decr_item(request, unit_id, cart_name, item_id):
     we_are_are_in_cart = True
     return locals()
 
-
-@login_required
-@render_to('order/shopping_cart.html')
-def incr_item(request,  unit_id, cart_name, item_id):
-    oc = OrderCarts(request.session, unit_id)
-    cn = '%s:%s' % (unit_id, cart_name)
-    oc.incr_item(cn, item_id)
-    oc.update_session(request.session)
-    oc.update_prices()
-    we_are_are_in_cart = True
-    return locals()
-
 def construct_order(request, oc, unit, order, paid_with_bonus):
     order.user = request.user
     order.employee_id=unit.employee_id
@@ -249,20 +224,20 @@ def construct_order(request, oc, unit, order, paid_with_bonus):
     master, variation = None, None
     for cn, items in oc.get_carts().iteritems():
         for item in items:
-            item_id = item.get_item_id().split('!', 1)[1]
+            item_id = item.get_item_id()
             if item_id.startswith('m'):
               motd = item.get_item()
-              OrderItem.objects.create(order=order, menu_of_the_day=motd, count=item.get_count(), old_price=item.get_price(), cart=unit_id)
+              OrderItem.objects.create(order=order, menu_of_the_day=motd, old_price=item.get_price(), cart=unit_id)
             elif '_' in item_id:
               top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
               if not master: pass # shit there is no master for this topping, figure out what to do              
-              OrderItem.objects.create(master=master, order=order, topping=top, count=item.get_count(), old_price=item.get_price(), cart=unit_id)
+              OrderItem.objects.create(master=master, order=order, topping=top, old_price=item.get_price(), cart=unit_id)
             else:              
               if '-' in item_id: # we have a variation
                   item_id, vari_id =  item_id.split('-',1)        
                   variation = get_object_or_None(Variation, pk=vari_id)
               payload = item.get_item()
-              master = OrderItem.objects.create(order=order, variation=variation, item=payload, old_price=item.get_price(), count=item.get_count(), cart=cn.split(':')[1])
+              master = OrderItem.objects.create(order=order, variation=variation, item=payload, old_price=item.get_price(), cart=cn.split(':')[1])
         del request.session[cn]
     #give bonus to the friend
     if paid_with_bonus:

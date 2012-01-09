@@ -23,7 +23,6 @@
                     <th>{{ cartname|slugify }}</th>
                     <th></th>
                     <th></th>
-                    <th></th>
                     <th class="del">{% if order.status == 'CR' %}<a href="#" title="" target="_self"><img
                             src="{{ STATIC_URL }}images/template/cart_delete_btn.png" alt="{% trans 'Delete cart' %}">
                         </a>{% endif %}</th>
@@ -31,7 +30,6 @@
                 {% for oi in oil %}
                     <tr>
                         <td class="item">{{ oi.get_payload.name_def }}</td>
-                        <td class="count">{{ oi.count }}</td>
                         <td class="price">{{ oi.old_price }} RON</td>                        
                     </tr>
                 {% empty %}

@@ -5,7 +5,7 @@
         {% for cn, items in oc.get_carts.iteritems %}
             {% for item in items %}
                 <li itemid="{{ item }}">
-                    <h1>{{ item.get_name }}: <span class="item-count">{{ item.get_count }}</span> x <span
+                    <h1>{{ item.get_name }}: <span
                             class="item-price">{{ item.get_price|unlocalize }}</span>{% trans 'RON' %}</h1>
     <span class="ui-li-aside">
     <a style="margin-right: 20px;" class="decr-link" rel="external"
@@ -22,8 +22,8 @@
     </ul>
     <h1>{% trans 'Paycheck' %}:
         {% if unit.minimum_ord_val > oc.get_total_sum %}
-        <span id="min-span">({% trans 'Minimum order: ' %}<span
-                id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
+            <span id="min-span">({% trans 'Minimum order: ' %}<span
+                    id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)</span>
         {% endif %}
         <span id="order-total">{{ oc.get_total_sum }}</span>{% trans 'RON' %}
     </h1>

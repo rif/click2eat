@@ -60,7 +60,7 @@
             if (isMinus) {
                 var href = "/order/decritem" + "/{{ object.id }}/" + parentCart.text() + "/" + iid + "/";
             } else {
-                var href = "/order/incritem" + "/{{ object.id }}/" + parentCart.text() + "/" + iid + "/";
+                var href = "/order/shop/{{ object.id }}/" + $("a.selected-cart").text() + "/" + iid + "/";
             }
 
             $("#loading-img").fadeIn("fast");
@@ -146,8 +146,7 @@
             window.location = "{% url auth_login %}";
         {% endif %}
         var selCart = $("a.selected-cart");
-        var parentUL = selCart.next("ul");
-        var args = uid() + "!" + id + "-" + price_id;
+        var args = id + "-" + price_id;
         var existingTopping = null;
         if(id.indexOf("_") != -1) {
         	// if it is a topping then we only need the id             	

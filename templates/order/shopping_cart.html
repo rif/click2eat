@@ -5,9 +5,8 @@
         <ul class="items">
             {% for item in items %}
                 <li class="cart-item" itemid="{{ item.get_item_id }}">
-                    <span class="item-count">{{ item.get_count }}</span>
                     <span class="item-price">{{ item.get_price|unlocalize }}</span>
-                    <span class="item-title">x {{ item.get_name|truncatewords:3 }}</span>
+                    <span class="item-title">{{ item.get_name|truncatewords:3 }}</span>
                     <a class="decr-link" href="#"></a>
                     {% show_incr_link %}
                     <span class="item-currency">{% trans 'RON' %}</span>

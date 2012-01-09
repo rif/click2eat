@@ -51,16 +51,16 @@ def motd(request):
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/shopping_cart_container.html')
 def shopping_cart(request, unit_id):
-        unit = get_object_or_404(Unit, pk=unit_id)
-        oc = OrderCarts(request.session, unit_id)
-        cn = '%s:%s' % (unit_id,  request.user.username)
-        total = oc.get_total_sum(cn)
-        return locals()
+    #del request.session['1:rif']
+    unit = get_object_or_404(Unit, pk=unit_id)
+    oc = OrderCarts(request.session, unit_id)
+    cn = '%s:%s' % (unit_id,  request.user.username)
+    total = oc.get_total_sum(cn)
+    return locals()
 
 @login_required(login_url='/mobile/accounts/login/')
 @ajax_request
 def shop(request, unit_id, item_id):
-    print "test"
     oc = OrderCarts(request.session, unit_id)
     cn = '%s:%s' % (unit_id, request.user.username)
 
@@ -93,7 +93,7 @@ def incr_item(request,  unit_id, item_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     oc = OrderCarts(request.session, unit_id)
     cn = '%s:%s' % (unit_id, request.user.username)
-    oc.incr_item(cn, item_id)
+    oc.add_item(cn, item_id)
     oc.update_session(request.session)
     oc.update_prices()
     we_are_are_in_cart = True

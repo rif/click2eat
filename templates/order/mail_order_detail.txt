@@ -10,11 +10,11 @@
 {% trans 'Status' %}: {{ order.get_status_display }}
 {% trans 'Order price' %}: {{ order.total_amount }} {% if order.paid_with_bonus %}- {% trans 'Paid with bonus' %}{% endif %}
 
-{% trans 'Item' %}              {% trans 'Count' %}             x       {% trans 'Price (RON)' %}
+{% trans 'Item' %}  {% trans 'Price (RON)' %}
 {% for oi in order.orderitem_set.iterator %}{% if not oi.master %}
-{% get_name oi.get_payload %}          {{ oi.count }}          x       {{ oi.old_price }}
+{% get_name oi.get_payload %}   {{ oi.old_price }}
 {% if oi.orderitem_set.exists %}{% for slave_oi in oi.orderitem_set.iterator %}
- * {% get_name slave_oi.get_payload %}         {{ slave_oi.count }}            x       {{ slave_oi.old_price }}{% trans 'RON' %}
+ * {% get_name slave_oi.get_payload %}  {{ slave_oi.old_price }}{% trans 'RON' %}
 {% endfor %}{% endif %}{% endif %}{% endfor %}
 {% trans 'Total' %}             {{ order.total_amount }}{% trans 'RON' %}
 
