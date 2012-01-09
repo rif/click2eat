@@ -83,7 +83,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 2033,
+				"buffer_size": 2047,
 				"line_ending": "Unix"
 			}
 		},
@@ -107,7 +107,7 @@
 			"file": "order/templatetags/order_tags.py",
 			"settings":
 			{
-				"buffer_size": 718,
+				"buffer_size": 372,
 				"line_ending": "Unix"
 			}
 		},
@@ -141,6 +141,14 @@
 			{
 				"buffer_size": 1450,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/order/restaurant_order_detail.html",
+			"settings":
+			{
+				"buffer_size": 3947,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -462,7 +470,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 11,
 			"sheets":
 			[
 				{
@@ -554,15 +562,15 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 2033,
+						"buffer_size": 2047,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								627,
+								627
 							]
 						],
 						"settings":
@@ -638,15 +646,15 @@
 					"file": "order/templatetags/order_tags.py",
 					"settings":
 					{
-						"buffer_size": 718,
+						"buffer_size": 372,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								273,
+								273
 							]
 						],
 						"settings":
@@ -769,6 +777,34 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "templates/order/restaurant_order_detail.html",
+					"settings":
+					{
+						"buffer_size": 3947,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2775,
+								2732
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 457.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
