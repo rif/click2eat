@@ -33,7 +33,10 @@ def search(request):
 @login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/item_detail.html')
 def item_detail(request, unit_id, item_id):
-        item = get_object_or_404(Item, pk=item_id)
+        if item_id.startswith('m'):
+            item = get_object_or_404(MenuOfTheDay, pk=item_id[1:])
+        else:
+            item = get_object_or_404(Item, pk=item_id)
         cn = '%s:%s' % (unit_id,  request.user.username)
         oc = OrderCarts(request.session, unit_id)
         total = oc.get_total_sum(cn)
