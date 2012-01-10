@@ -147,7 +147,7 @@
 			"file": "templates/order/restaurant_order_detail.html",
 			"settings":
 			{
-				"buffer_size": 3947,
+				"buffer_size": 3825,
 				"line_ending": "Unix"
 			}
 		}
@@ -786,15 +786,15 @@
 					"file": "templates/order/restaurant_order_detail.html",
 					"settings":
 					{
-						"buffer_size": 3947,
+						"buffer_size": 3825,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2775,
-								2732
+								0,
+								0
 							]
 						],
 						"settings":
