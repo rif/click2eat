@@ -58,6 +58,8 @@ def confirm_order(request, unit_id):
     oc = OrderCarts(request.session,unit_id)
     unit = oc.get_unit()
     total_sum = oc.get_total_sum()
+    oc.update_prices()
+    oc.check_and_show_odd_promotion_message(request)
     if not unit.is_open():
         messages.warning(request, _('This restaurant is now closed! Please check the open hours and set desired delivery time accordingly.'))
     if unit.minimum_ord_val > total_sum:

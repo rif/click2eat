@@ -157,8 +157,12 @@ class OrderCarts:
                 # we should get here if the promotion it is active, sum trigger was activated
                 # and it affects only one item
                 item.set_price(promotion.get_new_price(item.get_item_price()))
+        self.odd_promotion_item_selection = False
         for pair, items in multiple_item_promotions.iteritems():
             promotion, variation = pair
+            if len(items) % promotion.numer_of_items == promotion.numer_of_items - 1:
+                # if the user only selected the paid items (or selected different variations)
+                self.odd_promotion_item_selection = True
             sorted_items = sorted(items, key=lambda item: item.get_price())
             items_middle_index = len(sorted_items)/promotion.numer_of_items
             for i in range(len(sorted_items)):
@@ -168,7 +172,11 @@ class OrderCarts:
                 else:
                     item.set_price(item.get_item_price())
 
-
+    def check_and_show_odd_promotion_message(self, request):
+        mes = _('Please select the paid and bonus items from the promotion.\
+         They have to have the same size for the promotion to be applied!')
+        if self.odd_promotion_item_selection:
+            messages.add_message(request, messages.INFO, mes)
 
 @render_to('order/shopping_cart.html')
 def shopping_cart(request, unit_id):
@@ -202,7 +210,8 @@ def shop(request,unit_id,  cart_name, item_id):
 
     oc.add_item(cn, item_id)
     oc.update_session(request.session)
-    oc.update_prices()
+    m = oc.update_prices()
+    if m: messages.add_message(request, messages.INFO, NO_PROMOTION_MESSAGE)
     we_are_are_in_cart = True
     return locals()
 
