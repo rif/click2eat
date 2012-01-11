@@ -11,6 +11,7 @@ from restaurant.models import Unit
 from datetime import datetime
 from bonus.models import BonusTransaction, BONUS_PERCENTAGE
 from order.tasks import send_email_task
+from django.contrib import messages
 
 class CartItem:
     def __init__(self, item_id):
@@ -37,20 +38,20 @@ class CartItem:
     def get_promotion(self):
         return self.promotion
 
-    def get_price(self):
-        return self.price
-
     def set_price(self, price):
         self.price = price
+
+    def get_price(self, no_promotion=False):
+        if no_promotion:
+            return self.get_item_price()
+        return self.price
 
     def get_item_price(self):
         vid = self.variation.id if self.variation else 0
         return round(self.item.get_price(variation_id=vid), 2)
-    
-    def get_total(self, no_promotion=False):
-        if no_promotion:
-            return self.get_item_price()
-        return self.get_price()
+
+    def get_variation(self):
+        return self.variation
 
     def get_name(self):
         vid = self.variation.id if self.variation else 0
@@ -89,11 +90,11 @@ class OrderCarts:
     def get_total_sum(self, cn=None, no_promotion=False):
         if cn and cn not in self.get_cart_names():
             return 0
-        if cn: s = sum([v.get_total(no_promotion) for v in self.carts[cn]])
+        if cn: s = sum([v.get_price(no_promotion) for v in self.carts[cn]])
         else:
             s = 0
             for values in self.carts.itervalues():
-              s += sum([v.get_total(no_promotion) for v in values])
+              s += sum([v.get_price(no_promotion) for v in values])
         return round(s, 2)
     
     def update_session(self, session):
@@ -146,15 +147,18 @@ class OrderCarts:
                     item.set_price(item.get_item_price())
                     continue
                 if promotion.numer_of_items > 1:
+                    # the items in the same promotion hav to have the same variation
+                    pair = (promotion, item.get_variation())
                     # if promotion spans multiple items save for later analysis
-                    if promotion not in multiple_item_promotions:
-                        multiple_item_promotions[promotion] = []
-                    multiple_item_promotions[promotion].append(item)
+                    if pair not in multiple_item_promotions:
+                        multiple_item_promotions[pair] = []
+                    multiple_item_promotions[pair].append(item)
                     continue
                 # we should get here if the promotion it is active, sum trigger was activated
                 # and it affects only one item
                 item.set_price(promotion.get_new_price(item.get_item_price()))
-        for promotion, items in multiple_item_promotions.iteritems():
+        for pair, items in multiple_item_promotions.iteritems():
+            promotion, variation = pair
             sorted_items = sorted(items, key=lambda item: item.get_price())
             items_middle_index = len(sorted_items)/promotion.numer_of_items
             for i in range(len(sorted_items)):
@@ -187,7 +191,7 @@ def clear(request, unit_id):
 
 @login_required
 @render_to('order/shopping_cart.html')
-def shop(request,unit_id,  cart_name, item_id):       
+def shop(request,unit_id,  cart_name, item_id):
     oc = OrderCarts(request.session, unit_id)
     cn = '%s:%s' % (unit_id, cart_name)
 
