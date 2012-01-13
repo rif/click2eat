@@ -3,7 +3,6 @@ from django.utils.translation import ugettext as _
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from annoying.decorators import render_to
-from datetime import date
 from menu.models import Item
 
 
@@ -14,7 +13,7 @@ def fortune_ajax(request):
     if request.user.is_authenticated():
         command_link = '<a onclick="addItem(\'%(href)s\', \'%(redir)s\'); return false;" href="#">%(order_now)s</a>' % \
             {'redir': reverse("restaurant:detail", args=[item.item_group.unit_id]),
-             'href': reverse("order:shop", args=[request.user.username, '0_%s-0' % item.id]),
+             'href': reverse("order:shop", args=[item.item_group.unit_id, request.user.username, '%s-0' %  item.id]), # with time() we generate the analogous javascript uid
              'order_now': _('Order this Item')}
     if not item: item = _('No item yet defined!')
     return locals()

@@ -417,13 +417,25 @@ body
     font-weight: bold
     text-decoration: none
     line-height: 16px
-    float: left 
+    float: left
+    &>span.promo-text
+      font-size: 14px
+      color: #5C5E24
   ul li .name>span.unit   
     font-size: .7em
     color: #000
     font-weight: normal
   a.fancy,
     font-size: .7em
+    &>img
+      position: relative
+      top: 5px
+      margin: 0px 10px
+  img.promotion-logo
+    float: right
+    height: 40px
+    position: relative
+    top: 10px
   ul li .description
     font-family: Arial, Helvetica, sans-serif
     font-size: 12px
@@ -780,6 +792,11 @@ body
     img
       position: relative
       top: 4px
+  #loading-img
+    position: relative
+    top: -24px
+    left: -9px
+    float: left
   #carts
     height: 290px
     width: 255px
@@ -802,8 +819,6 @@ body
       position: relative
       .item-price
         display: none
-      .item-count
-        float: left
       .item-title
         float: left
         margin-left: 2px

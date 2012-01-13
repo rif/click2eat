@@ -12,7 +12,8 @@ class OrderAdmin(admin.ModelAdmin):
     inlines=[OrderItemInline]
 
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ('order', 'item', 'count')
+    list_display = ('order', 'master', 'item', 'topping', 'variation', 'menu_of_the_day', 'count', 'old_price')
+
 
 class RatingAdmin(admin.ModelAdmin):
     list_display = ('order', 'user', 'quality', 'delivery_time', 'feedback')

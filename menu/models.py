@@ -144,12 +144,6 @@ class Item(MultilingualModel):
       variation = None      
       if variation_id != '0':
           variation = get_object_or_None(Variation, pk=variation_id)
-      if self.promotion and self.promotion.is_active():
-          if variation:
-            variation = get_object_or_None(Variation, pk=variation_id)
-            return round(self.promotion.get_new_price(variation.price),2)
-          else:              
-            return round(self.promotion.get_new_price(self.price),2)
       if variation:  
           return round(variation.price,2) 
       return round(self.price,2)
@@ -248,16 +242,21 @@ class Topping(MultilingualModel):
 
 class Promotion(models.Model):
     unit = models.ForeignKey('restaurant.Unit', verbose_name=_('unit'))
-    name = models.CharField(_('name'), max_length=50)
+    name = models.CharField(_('name'), max_length=100)
+    internal_name = models.CharField(_('internal name'), max_length=100)
+    logo = models.ImageField(_('promotion logo'), upload_to="promotions_logos", null=True, blank=True)
     start_date = models.DateTimeField(_('start date'), null=True, blank=True)
     end_date = models.DateTimeField(_('end date'), null=True, blank=True)
     weekdays = models.CommaSeparatedIntegerField(_('weekdays'), max_length=13, null=True, blank=True, help_text=_('integer, comma separated, starting Monday=1 e.g. 1,2,3,4,5'))
     start_hour = models.CharField(_('start hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 10:30'))
     end_hour = models.CharField(_('end hour'), max_length=5, null=True, blank=True, help_text=_('e.g. 15:00'))
-    value = models.IntegerField(_('value'), default=0, help_text=_('Percentage'))
+    numer_of_items = models.IntegerField(_('numer of items'), default=1, help_text=_('Number of items involved. If there are 4+1 free then this value should be 5.'))
+    total_sum_trigger = models.FloatField(_('total sum trigger'), default=0, help_text=_('Total order sum for which this promotion will become active'))
+    procentage = models.IntegerField(_('procentage'), default=0, help_text=_('Percentage of the actual price'), null=True, blank=True)
+    absolute_price = models.FloatField(_('absolute value'), default=0, help_text=_('Absolute price (fixed price)'), null=True, blank=True)
 
     def __unicode__(self):
-        return self.name
+        return self.internal_name
 
     def is_active(self):
         return self._is_active(datetime.now())
@@ -283,7 +282,11 @@ class Promotion(models.Model):
         return True
 
     def get_new_price(self, old_price):
-        return (old_price * (100-self.value))/100
+        if self.absolute_price:
+            return self.absolute_price
+        if self.procentage:
+            return round((old_price * (100-self.procentage))/100, 2)
+        return 0
 
 
     class Meta:

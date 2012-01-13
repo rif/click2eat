@@ -59,7 +59,7 @@
 			"file": "media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 21273,
+				"buffer_size": 22053,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,18 +67,15 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 18807,
+				"buffer_size": 9366,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "",
 			"file": "order/shopping_service.py",
-			"file_size": -1,
-			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 10554,
 				"line_ending": "Unix"
 			}
 		},
@@ -86,7 +83,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 7571,
+				"buffer_size": 2047,
 				"line_ending": "Unix"
 			}
 		},
@@ -94,7 +91,7 @@
 			"file": "templates/restaurant/unit_detail.html",
 			"settings":
 			{
-				"buffer_size": 12983,
+				"buffer_size": 15628,
 				"line_ending": "Windows"
 			}
 		},
@@ -102,7 +99,7 @@
 			"file": "order/urls.py",
 			"settings":
 			{
-				"buffer_size": 2162,
+				"buffer_size": 2008,
 				"line_ending": "Unix"
 			}
 		},
@@ -110,7 +107,7 @@
 			"file": "order/templatetags/order_tags.py",
 			"settings":
 			{
-				"buffer_size": 418,
+				"buffer_size": 372,
 				"line_ending": "Unix"
 			}
 		},
@@ -126,7 +123,7 @@
 			"file": "templates/base_alt.html",
 			"settings":
 			{
-				"buffer_size": 6359,
+				"buffer_size": 6329,
 				"line_ending": "Windows"
 			}
 		},
@@ -134,7 +131,7 @@
 			"file": "templates/header.html",
 			"settings":
 			{
-				"buffer_size": 3950,
+				"buffer_size": 4086,
 				"line_ending": "Windows"
 			}
 		},
@@ -142,17 +139,37 @@
 			"file": "templates/registration/registration_form.html",
 			"settings":
 			{
-				"buffer_size": 1451,
+				"buffer_size": 1450,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/order/restaurant_order_detail.html",
+			"settings":
+			{
+				"buffer_size": 3825,
+				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 183.0,
 		"selected_items":
 		[
+			[
+				"hg",
+				"SublimeHg: Open Hg Command Prompt"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
 			[
 				"spa",
 				"Indentation: Convert to Spaces"
@@ -453,7 +470,7 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 11,
 			"sheets":
 			[
 				{
@@ -461,15 +478,15 @@
 					"file": "media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 21273,
+						"buffer_size": 22053,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3810,
-								3810
+								9079,
+								9079
 							]
 						],
 						"settings":
@@ -479,7 +496,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 111.0,
+						"translation.y": 6341.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -489,7 +506,7 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 18807,
+						"buffer_size": 9366,
 						"regions":
 						{
 						},
@@ -517,7 +534,7 @@
 					"file": "order/shopping_service.py",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 10554,
 						"regions":
 						{
 						},
@@ -545,15 +562,15 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 7571,
+						"buffer_size": 2047,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								627,
+								627
 							]
 						],
 						"settings":
@@ -573,15 +590,15 @@
 					"file": "templates/restaurant/unit_detail.html",
 					"settings":
 					{
-						"buffer_size": 12983,
+						"buffer_size": 15628,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								11112,
+								11112
 							]
 						],
 						"settings":
@@ -591,7 +608,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 3144.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -601,7 +618,7 @@
 					"file": "order/urls.py",
 					"settings":
 					{
-						"buffer_size": 2162,
+						"buffer_size": 2008,
 						"regions":
 						{
 						},
@@ -629,20 +646,21 @@
 					"file": "order/templatetags/order_tags.py",
 					"settings":
 					{
-						"buffer_size": 418,
+						"buffer_size": 372,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								273,
+								273
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -684,15 +702,15 @@
 					"file": "templates/base_alt.html",
 					"settings":
 					{
-						"buffer_size": 6359,
+						"buffer_size": 6329,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3584,
-								3584
+								0,
+								0
 							]
 						],
 						"settings":
@@ -702,7 +720,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 48.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -712,21 +730,21 @@
 					"file": "templates/header.html",
 					"settings":
 					{
-						"buffer_size": 3950,
+						"buffer_size": 4086,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								542,
-								542
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -740,15 +758,15 @@
 					"file": "templates/registration/registration_form.html",
 					"settings":
 					{
-						"buffer_size": 1451,
+						"buffer_size": 1450,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								900,
-								900
+								0,
+								0
 							]
 						],
 						"settings":
@@ -759,6 +777,34 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "templates/order/restaurant_order_detail.html",
+					"settings":
+					{
+						"buffer_size": 3825,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 457.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -807,6 +853,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"unit",
+				"templates/restaurant/unit_detail.html"
+			],
 			[
 				"bas",
 				"templates/base_alt.html"
@@ -946,10 +996,6 @@
 			[
 				"sett",
 				"settings_dev.py"
-			],
-			[
-				"unit",
-				"templates/restaurant/unit_detail.html"
 			],
 			[
 				"foo",

@@ -1,177 +1,46 @@
-{% load i18n l10n %}
-
-
+{% load i18n l10n order_tags %}
 <div id="carts">
-    {% for cn, cartitems, subtotal in carts %}
-        <a href="#" class="{% if cn == user.username %}selected-cart{% endif %} cart-name">{{ cn }}</a>
+    {% for cn, items in oc.get_carts.iteritems %}
+        <a href="#" class="{% if forloop.counter == 1 %}selected-cart{% endif %} cart-name">{{ cn|clean_cn }}{{ get_cart_total}}</a>
         <ul class="items">
-            {% for item, values in cartitems %}
-                <li class="cart-item" itemid="{{ item }}">
-                    <span class="item-count">{{ values.0 }}</span>
-                    <span class="item-price">{{ values.1|unlocalize }}</span>
-                    <span class="item-title">x {{ values.2|truncatewords:3 }}</span>
+            {% for item in items %}
+                <li class="cart-item" itemid="{{ item.get_item_id }}">
+                    <span class="item-price">{{ item.get_price|unlocalize }}</span>
+                    <span class="item-title">{{ item.get_name|truncatewords:3 }}</span>
                     <a class="decr-link" href="#"></a>
                     <a class="incr-link" href="#"></a>
                     <span class="item-currency">{% trans 'RON' %}</span>
-                    <span class="item-total"></span>
+                    <span class="item-total">{{ item.get_price}}</span>
                 </li>
             {% endfor %}
         </ul>
         <div class="subtotal-div">
-            {% trans 'Subtotal' %}: <span class="cart-subtotal">{{ subtotal|unlocalize }}</span> {% trans 'RON' %}
+            {% trans 'Subtotal' %}: <span class="cart-subtotal">{% get_cart_total %}</span> {% trans 'RON' %}
         </div>
     {% endfor %}
 </div>
 <div class="nota">
-    {% if show_confirm_order %}
-        <div id="new-cart-placeholder"></div>
-        <a href="#" id="add-cart"><img height="16px" src="{{ STATIC_URL }}images/new-cart.png" alt="">{% trans 'Add shopping cart' %}</a>
-        <a href="#" id="clear-order"><img height="16px" src="{{ STATIC_URL }}images/reset.png" alt="">{% trans 'Reset order' %}</a>
-        <br/>
+    {% if we_are_are_in_cart %}
+    <div id="new-cart-placeholder"></div>
+    <a href="#" id="add-cart"><img height="16px" src="{{ STATIC_URL }}images/new-cart.png" alt="">{% trans 'Add shopping cart' %}</a>
+    <a href="#" id="clear-order"><img height="16px" src="{{ STATIC_URL }}images/reset.png" alt="">{% trans 'Reset order' %}</a>
     {% endif %}
+    <br/>
     _________________________
     <br/>
 
     <div class="textnota">NOTA DE PLATĂ:</div>
   <span class="totalnota">
-    <span id="order-total">{{ total_sum|unlocalize }}</span> {% trans 'RON' %}
+    <span id="order-total">{{ oc.get_total_sum|unlocalize }}</span> {% trans 'RON' %}
   </span>
-
-    <div id="min-span">({% trans 'Minimum order' %}: <span
-            id="min-order">{{ unit.minimum_ord_val }}</span>{% trans 'RON' %}.)
+    {% if oc.is_below_minimum %}
+    <div id="min-span">({% trans 'Minimum order: ' %}<span
+            id="min-order">{{ oc.get_unit.minimum_ord_val }}</span>{% trans 'RON' %}.)
     </div>
+    {% endif %}
     <div class="clear"></div>
-    {% if show_confirm_order %}<a id="confirm-button" class="button positive" href="{% url order:confirm-order unit.id %}">CONFIRMA COMANDA</a>
+    {% if we_are_are_in_cart %}
+    <a id="confirm-button" class="button positive" href="{% url order:confirm-order oc.get_unit.id %}">CONFIRMA COMANDA</a>
     {% endif %}
 </div>
 
-<script type="text/javascript">
-    function showHideMinOrder() {
-        var ct = parseFloat($("#order-total").text());
-        var mo = parseFloat($("#min-order").text());
-        if (ct >= mo) {
-            $("#min-span").hide();
-        } else {
-            $("#min-span").show();
-        }
-    }
-    
-    function selectCart(cart){
-    	$(".cart-name").removeClass("selected-cart");
-        cart.addClass("selected-cart");
-    }
-
-    $(function() {
-        showHideMinOrder();
-        $("#confirm").click(function() {
-            var send_error = false;
-            if ($("#unit-closed").length > 0) {
-                alert("{% trans 'The restaurant is now closed' %}!");
-                send_error = true;
-            }
-            if (! send_error && $("#min-span:visible").length > 0) {
-                alert("{% trans 'Minimum order for this unit is:' %} {{ unit.minimum_ord_val }}{% trans 'RON' %}");
-                send_error = true;
-            }
-            if (! send_error) {
-                $.get($(this).attr("href"), {'dt':$("#dt input:checked").val(), 'da':$("#da input:checked").val()}, function() {
-                    alert("{% trans 'Your order has been sent to the restaurant!' %}");
-                });
-                $.mobile.changePage("{% url mobile:home %}");
-            }
-            return false;
-        });
-        $(".items>li").each(function() {
-            var parent = $(this);
-            var count = parseInt($("span.item-count", parent).text());
-            var price = parseFloat($("span.item-price", parent).text());
-            $("span.item-total", parent).text(count * price);
-        });
-
-        $("#add-cart").click(function() {
-            if ($("#id_name").length == 0) { // we don't have one already
-                $("#new-cart-placeholder").html('<form action="" method="post" id="cart-name-form">\
-            <label for="id_name">Name:</label>\
-            <input type="text" maxlength="10" name="name" id="id_name"><br/>\
-            <button class="button" type="submit">{% trans "Submit" %}</button>\
-            <a href="#" class="button" id="new-cart-cancel">{% trans "Cancel" %}</a>\
-            </form>');
-            }
-            $("#id_name").focus();
-            $("#new-cart-cancel").click(function() {
-                $("#cart-name-form").remove();
-                return false;
-            });
-            $("#cart-name-form").submit(function() {
-                var newCart = $("#id_name").val().replace(/ <>&/g, '-');
-                if ($('#carts>#' + newCart).length == 0) {
-                    $("#carts").append('<a id="' + newCart + '" class="cart-name" href="#">' + newCart + '</a><ul class="items"></ul><div class="subtotal-div">\
-  {% trans "Subtotal" %}: <span class="cart-subtotal">0</span> {% trans "RON" %}</div>');
-                    $('#carts>#' + newCart).click();
-                }
-                $("#cart-name-form").remove();
-                $(".top-span").fadeOut();
-                return false;
-            });
-            return false;
-        });
-        $("#clear-order").click(function() {
-            if (confirm("{%  trans 'Are you sure you want to clear all items from this order?' %}")) {
-                $.get("{% url order:clear unit.id %}");
-                $("#carts").html('<a class="cart-name selected-cart" href="#">{{  user.username }}</a><ul class="items"></ul><div class="subtotal-div">\
-{% trans 'Subtotal' %}: <span class="cart-subtotal">0</span> {% trans "RON" %}</div>');
-            }
-            $(".top-span").fadeOut();
-            return false;
-        });
-        $("#carts").on("click", ".cart-name", function() {
-            selectCart($(this));
-            $(".top-span").fadeOut();
-            return false;
-        });
-        $("#carts").on("click", ".decr-link, .incr-link", function() {
-            var isMinus = $(this).hasClass("decr-link");
-            var parent = $(this).parents("li:first");
-            var iid = parent.attr("itemid");
-            var parentUL = parent.parent("ul.items");
-            var parentCart = parentUL.prev("a.cart-name:first");
-            selectCart(parentCart);            
-            if (isMinus) {
-                var href = "/order/decritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
-            } else {
-                var href = "/order/incritem/" + parentCart.text() + "/{{ unit.id }}/" + iid + "/";
-            }
-            $.get(href, function(data) {
-                parentUL.next("div.subtotal-div").children("span.cart-subtotal:first").text(data['subtotal']);
-                $("#order-total").text(data['total']);
-                if (data['count'] > 0) {
-                    $("span.item-count", parent).text(data['count']);
-                    $("span.item-total", parent).text(data['itemtotal']);
-                } else {
-                	// remove attached toppings
-                	parent.nextAll("li.cart-item[itemid^='" + iid + "']").remove();
-                    parent.remove();
-                }
-                showHideMinOrder();
-            });
-            var count = iid.match(/_/g);           
-            if(count.length < 2) {            	
-            	$(".top-span").fadeOut();
-            }
-            return false;
-        });
-        $("#carts").ajaxError(function(event, request, settings) {
-            alert("{% trans 'Error processing your command!' %}");
-        });
-        // hide -/+ actions where they are not appropriate
-        $("li.cart-item").each(function(){
-        	var nextItem = $(this).next("li.cart-item");
-     		if(nextItem.length) {
-				var count = nextItem.attr("itemid").match(/_/g);
-  				if(count.length == 2){
-		     		$(this).children(".incr-link").hide();
-  				}
-  			}
-		});
-    });
-</script>

@@ -67,7 +67,7 @@ class ItemAdmin(admin.ModelAdmin):
         (None, {
             'fields': ('internal_name', 'index', ('name_def', 'description_def'), ('price', 'promotion','vat'), ('quantity', 'measurement_unit'), ('item_group', 'toppings', 'mcg'))
         }),
-        ('Extra options', {
+        (_('Extra options'), {
             'fields': ('tags', 'active', 'speciality', 'fortune', 'image_path')
         }),
     )
@@ -99,14 +99,17 @@ class ToppingAdmin(admin.ModelAdmin):
     )
 
 class PromotionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'unit', 'value', 'start_date', 'end_date', 'weekdays', 'start_hour', 'end_hour', 'is_active')
+    list_display = ('name', 'unit', 'procentage', 'absolute_price', 'numer_of_items', 'total_sum_trigger', 'start_date', 'end_date', 'weekdays', 'start_hour', 'end_hour', 'is_active')
     list_filter = ['unit', 'start_date']
     search_fields = ['internal_name']
     fieldsets = (
         (None, {
-            'fields': ('name', 'unit', 'value')
+            'fields': (('name', 'internal_name'), ('unit', 'logo'), ('procentage', 'absolute_price'))
         }),
-        ('Time option', {
+        (_('Order options'), {
+            'fields': (('numer_of_items', 'total_sum_trigger'))
+        }),
+        (_('Activation options'), {
             'fields': (('start_date', 'end_date'), 'weekdays', ('start_hour', 'end_hour'))
         }),
     )
