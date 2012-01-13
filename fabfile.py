@@ -1,4 +1,4 @@
-from fabric.api import sudo, prompt, run, local, cd, env, parallel
+from fabric.api import sudo, prompt, run, local, cd, env
 from fabric.decorators import runs_once, task
 from fabric.colors import green
 
@@ -23,7 +23,6 @@ For running sudo on remote machine:
     comment out: #Default requiretty
 """
 @task
-@parallel
 def deploy():
     """Deploy the app to the target environment"""
     print(green('deploying...'))

@@ -93,10 +93,25 @@ file { $ssl_dir:
 	require => Package['nginx']
 }
 
-exec { 
-	'/usr/bin/openssl genrsa -out bucatar.key 1024': cwd => $ssl_dir, require => File[$ssl_dir], creates => '/etc/nginx/ssl/bucatar.key';
-	'/usr/bin/openssl req -batch -new -key bucatar.key -out bucatar.csr': cwd => $ssl_dir, require => File[$ssl_dir], creates => '/etc/nginx/ssl/bucatar.csr';
-	'/usr/bin/openssl x509 -req -days 1780 -in bucatar.csr -signkey bucatar.key -out bucatar.crt': cwd => $ssl_dir, require => File[$ssl_dir], creates => '/etc/nginx/ssl/bucatar.crt';
+exec { 'key':
+    command => '/usr/bin/openssl genrsa -out bucatar.key 1024',
+	cwd => $ssl_dir,
+	require => File[$ssl_dir],
+	creates => '/etc/nginx/ssl/bucatar.key'
+}
+
+exec { 'csr':
+    command  => '/usr/bin/openssl req -batch -new -key bucatar.key -out bucatar.csr',
+    cwd => $ssl_dir,
+    require => Exec['key'],
+    creates => '/etc/nginx/ssl/bucatar.csr'
+}
+
+exec { 'crt':
+    command => '/usr/bin/openssl x509 -req -days 1780 -in bucatar.csr -signkey bucatar.key -out bucatar.crt',
+    cwd => $ssl_dir,
+    require => Exec['csr'],
+    creates => '/etc/nginx/ssl/bucatar.crt'
 }
 
 #exec { '/usr/bin/mysql_secure_installation':
