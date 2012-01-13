@@ -13,7 +13,7 @@
             <ul data-role="listview" data-inset="true">
               {% for item in itemgroup.item_set.iterator %}
               {% if item.active %}
-              <li><a href="{% url mobile:item-detail item.id %}">
+              <li><a href="{% url mobile:item-detail unit.id item.id %}">
               <h1>{% get_name item %}</h1>
               <span class="ui-li-aside">{{ item.get_price }}{% trans 'RON' %}</span>
               <p><b>{{ item.item_group.unit.name }}</b>: {% get_desc item %}</p>
