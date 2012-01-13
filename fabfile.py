@@ -1,8 +1,6 @@
-from fabric.api import sudo, prompt, run, local, cd, env
-from fabric.decorators import runs_once, task
+from fabric.api import sudo, prompt, run, local, cd, parallel
+from fabric.decorators import runs_once, task, hosts
 from fabric.colors import green
-
-env.hosts = ['rif@click2eat.ro:22011', 'rif@demo.click2eat.ro:22011']
 
 @task
 def ci():
@@ -23,6 +21,8 @@ For running sudo on remote machine:
     comment out: #Default requiretty
 """
 @task
+@parallel
+@hosts('rif@click2eat.ro:22011', 'rif@demo.click2eat.ro:22011')
 def deploy():
     """Deploy the app to the target environment"""
     print(green('deploying...'))
@@ -32,6 +32,7 @@ def deploy():
         run('source /etc/bash_completion.d/virtualenvwrapper; workon bucatar; python manage.py collectstatic --noinput')
 
 @task
+@hosts('rif@click2eat.ro:22011', 'rif@demo.click2eat.ro:22011')
 def reload():
     print(green('reloading...'))
     'fires an uwsgi graceful reload'
