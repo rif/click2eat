@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django import forms
 from django.utils.translation import ugettext_lazy as _
 from menu import models
 from menu.forms import MenuOfTheDayForm

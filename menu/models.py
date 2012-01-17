@@ -108,7 +108,6 @@ class Item(MultilingualModel):
   mcg = models.ForeignKey(MerchandiseCategoryGroup, verbose_name=('mcg'), null=True, blank=True)
   speciality = models.BooleanField(_('speciality'), help_text=_('speciality of the house'))
   fortune = models.BooleanField(_('fortune'), help_text=_('display in the weel of fortune'))
-  free_pair = models.BooleanField(_('free pair'), help_text=_('given free with a similar more expensive pair'))
   image_path = models.ImageField(_('image path'), upload_to="item_images", null=True, blank=True)
   active = models.BooleanField(_('active'), default=True)
 
@@ -155,15 +154,20 @@ class Item(MultilingualModel):
       ci = Item()
       ci.internal_name = self.internal_name
       ci.index = self.index
-      ci.unit = self.unit
+      ci.name_def = self.name_def
+      ci.description_def = self.description_def
       ci.price = self.price
       ci.quantity = self.quantity
       ci.promotion = self.promotion
       ci.measurement_unit = self.measurement_unit
       ci.vat = self.vat
       ci.item_group = self.item_group
-      ci.new_item_end_date = self.new_item_end_date
+      ci.added_date = self.added_date
       ci.toppings = self.toppings
+      ci.mcg = self.mcg
+      ci.speciality = self.speciality
+      ci.fortune = self.fortune
+      ci.image_path = self.image_path
       ci.active = self.active
       ci.save()
       return ci
