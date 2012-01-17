@@ -123,10 +123,10 @@ class OrderTest(TestCase):
      self.client.get(reverse('order:shop', args=[self.unit.id, "mama", '1-0']))
      self.client.get(reverse('order:shop', args=[self.unit.id, "mama", '1-0']))
      r = self.client.get(reverse('order:shopping-cart', args=[1]))
-     self.assertEqual(200, r.status_code)
-     self.assertTrue('<span class="cart-subtotal">33.98</span>' in r.content)
+     self.assertEqual(200, r.status_code)     
+     self.assertTrue('<span class="cart-subtotal">22.99</span>' in r.content)
      self.assertTrue('<span class="cart-subtotal">24.0</span>' in r.content)
-     self.assertTrue('<span id="order-total">57.98</span>' in r.content)
+     self.assertTrue('<span id="order-total">46.99</span>' in r.content)
 
   def test_total(self):
      self.client.login(username='rif0', password='test')
