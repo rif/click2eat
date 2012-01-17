@@ -59,7 +59,7 @@
 			"file": "media/sass/screen.sass",
 			"settings":
 			{
-				"buffer_size": 22053,
+				"buffer_size": 22116,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 9366,
+				"buffer_size": 9442,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "order/shopping_service.py",
 			"settings":
 			{
-				"buffer_size": 10554,
+				"buffer_size": 11436,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 2047,
+				"buffer_size": 2046,
 				"line_ending": "Unix"
 			}
 		},
@@ -91,7 +91,7 @@
 			"file": "templates/restaurant/unit_detail.html",
 			"settings":
 			{
-				"buffer_size": 15628,
+				"buffer_size": 15927,
 				"line_ending": "Windows"
 			}
 		},
@@ -357,6 +357,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"session",
 			"carts",
 			"hide",
 			"incr",
@@ -470,7 +471,7 @@
 	"groups":
 	[
 		{
-			"selected": 11,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -478,15 +479,15 @@
 					"file": "media/sass/screen.sass",
 					"settings":
 					{
-						"buffer_size": 22053,
+						"buffer_size": 22116,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9079,
-								9079
+								0,
+								0
 							]
 						],
 						"settings":
@@ -506,7 +507,7 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 9366,
+						"buffer_size": 9442,
 						"regions":
 						{
 						},
@@ -534,7 +535,7 @@
 					"file": "order/shopping_service.py",
 					"settings":
 					{
-						"buffer_size": 10554,
+						"buffer_size": 11436,
 						"regions":
 						{
 						},
@@ -552,7 +553,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2016.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -562,15 +563,15 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 2047,
+						"buffer_size": 2046,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								627,
-								627
+								0,
+								0
 							]
 						],
 						"settings":
@@ -590,15 +591,15 @@
 					"file": "templates/restaurant/unit_detail.html",
 					"settings":
 					{
-						"buffer_size": 15628,
+						"buffer_size": 15927,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11112,
-								11112
+								0,
+								0
 							]
 						],
 						"settings":
@@ -804,7 +805,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 457.0,
+						"translation.y": 41.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
