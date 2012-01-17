@@ -2,49 +2,51 @@
 {% load i18n uni_form_tags %}
 
 {% block style %}
-<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" type="text/css" />
-<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css"/>
 {% endblock %}
 
 {% block script-links %}
-<script src="{{ STATIC_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript">
-  $(function() {
-  $.datepicker.setDefaults( $.datepicker.regional[ "{{ LANGUAGE_CODE }}" ] );
-  $( "#id_desired_delivery_time" ).datepicker({
-  dateFormat: "yy-mm-dd 'hh:mm'",
-  showOn: 'button',
-  });
-  });
-</script>
-<script type="text/javascript">
-  $(function(){
-  $("#id_delivery_type").change(function(){
-  $.get("/order/requireaddress/" + $(this).val(), function(data){
-  if(data.require_address){
-  $("#div_id_address").fadeIn('fast');
-  } else {
-  $("#div_id_address").fadeOut('fast');
-  }
-  });
-  });
-  });
-</script>
+    <script type="text/javascript">
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional[ "{{ LANGUAGE_CODE }}" ]);
+            $("#id_desired_delivery_time").datepicker({
+                dateFormat:"yy-mm-dd 'hh:mm'",
+                showOn:'button'
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#id_delivery_type").change(function () {
+                $.get("/order/requireaddress/" + $(this).val(), function (data) {
+                    if (data.require_address) {
+                        $("#div_id_address").fadeIn('fast');
+                    } else {
+                        $("#div_id_address").fadeOut('fast');
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block title %}{% trans 'Order' %}{% endblock %}
 
 {% block content %}
-{% include 'order/shopping_cart.html' %}
-<div class="content_area">
-  <p>{% trans "If you don't have a delivery address" %}: <a href="{% url userprofiles:create_address_from_order unit.id %}">{% trans 'Add one now' %}</a></p>
+    {% include 'order/shopping_cart.html' %}
+    <div class="content_area">
+        <p>{% trans "If you don't have a delivery address" %}: <a
+                href="{% url userprofiles:create_address_from_order unit.id %}">{% trans 'Add one now' %}</a></p>
 
-  <form method="POST" action="" class="uniForm">{% csrf_token %}
-    {{ form|as_uni_form }}
-    <button class="big" type="submit">{% trans 'Yes, send the order' %}</button> <a href="{% url restaurant:detail unit.id %}">{% trans 'Return to menu selection' %}</a>
-  </form>
-</div>
+        <form method="POST" action="" class="uniForm">{% csrf_token %}
+            {{ form|as_uni_form }}
+            <button class="big" type="submit">{% trans 'Yes, send the order' %}</button>
+            <a href="{% url restaurant:detail unit.id %}">{% trans 'Return to menu selection' %}</a>
+        </form>
+    </div>
 {% endblock %}
