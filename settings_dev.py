@@ -65,7 +65,12 @@ CACHES = {
     },
 }
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS_HOST = 'localhost'
+SESSION_REDIS_PORT = 6379
+SESSION_REDIS_DB = 0
+#SESSION_REDIS_PASSWORD = 'password'
 
 CAPTCHA_NOISE_FUNCTIONS =  ('captcha.helpers.noise_dots',) # ('captcha.helpers.noise_arcs','captcha.helpers.noise_dots',)
 
@@ -181,7 +186,7 @@ if DEBUG:
     INSTALLED_APPS += ('debug_toolbar',
                        'rosetta-grappelli',
                        'rosetta',
-                       'django.contrib.sessions', # session in database
+                       #'django.contrib.sessions', # session in database
                        )
 
 INTERNAL_IPS = ('127.0.0.1',)

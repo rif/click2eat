@@ -29,6 +29,7 @@ django-filebrowser
 django-sentry
 feedparser
 django-redis-cache
+django-redis-sessions
 hiredis
 django-newsletter
 django-celery

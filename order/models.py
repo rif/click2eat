@@ -45,12 +45,6 @@ class Order(models.Model):
             carts_dict[cart] = ois.filter(cart=cart)
         return carts_dict
 
-    def clone(self):
-        new_order = Order.objects.create(user=self.user, status='ST', unit_id=self.unit_id, employee_id=self.employee_id)
-        for oi in self.orderitem_set.iterator():
-            OrderItem.objects.create(order=new_order, item=oi.item, count=oi.count, old_price=oi.item.get_price(), cart=oi.cart)
-        return new_order
-
     def get_priority_class(self):
         delta = (self.desired_delivery_time - datetime.now()).seconds / 3600
         if delta <= 1: return "red"

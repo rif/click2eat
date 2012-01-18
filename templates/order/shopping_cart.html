@@ -20,7 +20,7 @@
     {% endfor %}
 </div>
 <div class="nota">
-    {% if we_are_are_in_cart %}
+    {% if we_are_are_in_cart and user.is_authenticated %}
     <div id="new-cart-placeholder"></div>
     <a href="#" id="add-cart"><img height="16px" src="{{ STATIC_URL }}images/new-cart.png" alt="">{% trans 'Add shopping cart' %}</a>
     <a href="#" id="clear-order"><img height="16px" src="{{ STATIC_URL }}images/reset.png" alt="">{% trans 'Reset order' %}</a>
