@@ -5,7 +5,7 @@ from datetime import datetime
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
-from order.shopping_service import consume_bonus
+from order.shopping_service import consume_bonus, OrderCarts
 
 class OrderTest(TestCase):
   fixtures = ['restaurant.json', 'menu.json', 'order.json', 'users.json', 'userprofiles.json', 'bonus.json']
@@ -40,19 +40,6 @@ class OrderTest(TestCase):
     self.assertEqual(oi1, ord.get_carts()['1'][0])
     self.assertEqual(oi2, ord.get_carts()['1'][1])
     self.assertEqual(oi3, ord.get_carts()['2'][0])
-
-  def test_clone(self):
-    ord1 = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
-    OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=1), cart="1")
-    OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=2), cart="1")
-    OrderItem.objects.create(order=ord1, item=Item.objects.get(pk=3), cart="2")
-    ord2 = ord1.clone()
-    delta = datetime.now() - ord2.creation_date
-    self.assertTrue(delta.seconds < 5)
-    self.assertEqual(ord1.employee, ord2.employee)
-    self.assertEqual('ST', ord2.status)
-    self.assertEqual(3, ord2.orderitem_set.count())
-    self.assertEqual(21.99, ord2.total_amount)
 
   def test_mark_delivered_weird(self):
       ord = Order.objects.create(user=self.user, unit_id=self.unit.id, employee_id=self.unit.employee_id)
@@ -143,6 +130,12 @@ class OrderTest(TestCase):
      self.client.get(reverse('order:shop', args=[self.unit.id, "rif0", '1-0']))
      r = self.client.get(reverse('order:decr-item', args=[self.unit.id, "rif0", '1-0']))
      self.assertTrue('<span id="order-total">0.0</span>' in r.content)
+
+  def test_clone(self):
+      self.client.login(username='rif', password='test')
+      order = Order.objects.get(pk=32)
+      self.client.get(reverse('order:clone', args=[order.id]))
+      self.assertTrue('1:rif' in self.client.session and  '1:mama' in self.client.session)
 
   def test_not_enough_bonus_money(self):
       user = User.objects.get(id=2)      

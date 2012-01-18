@@ -95,7 +95,7 @@ class OrderCarts:
         else:
             s = 0
             for values in self.carts.itervalues():
-              s += sum([v.get_price(no_promotion) for v in values])
+                s += sum([v.get_price(no_promotion) for v in values])
         return round(s, 2)
     
     def update_session(self, session):
@@ -291,8 +291,8 @@ def clone(request, order_id):
     carts = oc.get_carts()
     for oi in order.orderitem_set.iterator():
         cart = oi.cart
-        if ':' not in cart:
-            cart = '%s:%s' % (oc.unit_id, oi.cart)
+        if not cart or ':' not in cart:
+            cart = '%s:%s' % (oc.unit_id, oi.cart or request.user.username)
         if cart not in carts:
             carts[cart] = []
         #MasterId-VarID_TopId
