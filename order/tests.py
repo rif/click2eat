@@ -1,11 +1,10 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from datetime import datetime
 from order.models import Order, OrderItem
 from restaurant.models import Unit
 from menu.models import Item
-from order.shopping_service import consume_bonus, OrderCarts
+from order.shopping_service import consume_bonus
 
 class OrderTest(TestCase):
   fixtures = ['restaurant.json', 'menu.json', 'order.json', 'users.json', 'userprofiles.json', 'bonus.json']

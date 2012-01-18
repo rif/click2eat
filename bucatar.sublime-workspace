@@ -67,7 +67,7 @@
 			"file": "order/views.py",
 			"settings":
 			{
-				"buffer_size": 9442,
+				"buffer_size": 8986,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "order/shopping_service.py",
 			"settings":
 			{
-				"buffer_size": 11436,
+				"buffer_size": 12702,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "templates/order/shopping_cart.html",
 			"settings":
 			{
-				"buffer_size": 2046,
+				"buffer_size": 2072,
 				"line_ending": "Unix"
 			}
 		},
@@ -99,7 +99,7 @@
 			"file": "order/urls.py",
 			"settings":
 			{
-				"buffer_size": 2008,
+				"buffer_size": 2019,
 				"line_ending": "Unix"
 			}
 		},
@@ -123,7 +123,7 @@
 			"file": "templates/base_alt.html",
 			"settings":
 			{
-				"buffer_size": 6329,
+				"buffer_size": 6393,
 				"line_ending": "Windows"
 			}
 		},
@@ -212,6 +212,7 @@
 	},
 	"file_history":
 	[
+		"/home/rif/factorial.go",
 		"/home/rif/Documents/webframeworks/bucatar/templates/base_alt.html",
 		"/home/rif/Documents/webframeworks/bucatar/menu/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/order/templatetags/order_tags.py",
@@ -338,8 +339,7 @@
 		"/home/rif/Documents/webframeworks/bucatar/templates/jqm/simple.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/jqm/v1_0_0b1.html",
 		"/home/rif/Documents/webframeworks/bucatar/templates/jqm/messages.html",
-		"/home/rif/Documents/webframeworks/bucatar/menu/urls.py",
-		"/home/rif/Documents/webframeworks/jquery_mobile/hello.html"
+		"/home/rif/Documents/webframeworks/bucatar/menu/urls.py"
 	],
 	"find":
 	{
@@ -507,7 +507,7 @@
 					"file": "order/views.py",
 					"settings":
 					{
-						"buffer_size": 9442,
+						"buffer_size": 8986,
 						"regions":
 						{
 						},
@@ -535,7 +535,7 @@
 					"file": "order/shopping_service.py",
 					"settings":
 					{
-						"buffer_size": 11436,
+						"buffer_size": 12702,
 						"regions":
 						{
 						},
@@ -563,7 +563,7 @@
 					"file": "templates/order/shopping_cart.html",
 					"settings":
 					{
-						"buffer_size": 2046,
+						"buffer_size": 2072,
 						"regions":
 						{
 						},
@@ -619,7 +619,7 @@
 					"file": "order/urls.py",
 					"settings":
 					{
-						"buffer_size": 2008,
+						"buffer_size": 2019,
 						"regions":
 						{
 						},
@@ -703,7 +703,7 @@
 					"file": "templates/base_alt.html",
 					"settings":
 					{
-						"buffer_size": 6329,
+						"buffer_size": 6393,
 						"regions":
 						{
 						},
