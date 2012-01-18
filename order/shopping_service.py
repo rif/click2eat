@@ -2,6 +2,7 @@ from annoying.functions import get_object_or_None
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
+from django.core.exceptions import PermissionDenied
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from annoying.decorators import render_to
@@ -85,7 +86,7 @@ class OrderCarts:
     
     def is_below_minimum(self):
         unit = self.get_unit()
-        if unit is None: return False
+        if unit is None: raise PermissionDenied()
         return self.get_total_sum() < unit.minimum_ord_val
 
     def get_total_sum(self, cn=None, no_promotion=False):
@@ -280,10 +281,10 @@ def consume_bonus(order):
 @login_required
 def clone(request, order_id):
     order = Order.objects.select_related().filter(pk=order_id)
-    if not order: return redirect('restaurant:index')
+    if not order: raise PermissionDenied()
     order = order[0]
     # check if it is his order
-    if order.user_id != request.user.id: return redirect('restaurant:index')
+    if order.user_id != request.user.id: raise PermissionDenied()
     oc = OrderCarts(request.session, order.unit_id)
     for cn in oc.get_cart_names():
         del request.session[cn]
