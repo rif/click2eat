@@ -1,12 +1,12 @@
 from annoying.functions import get_object_or_None
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from annoying.decorators import render_to
 from menu.models import Item, MenuOfTheDay, Topping, Variation
-from order.models import OrderItem
+from order.models import OrderItem, Order
 from restaurant.models import Unit
 from datetime import datetime
 from bonus.models import BonusTransaction, BONUS_PERCENTAGE
@@ -73,7 +73,7 @@ class OrderCarts:
             for item in session[cart]:
                 items.append(item)
             self.carts[cart] = items
-    
+
     def get_carts(self, cn=None):
         return self.carts if cn is None else self.carts[cn]
 
@@ -85,6 +85,7 @@ class OrderCarts:
     
     def is_below_minimum(self):
         unit = self.get_unit()
+        if unit is None: return False
         return self.get_total_sum() < unit.minimum_ord_val
 
     def get_total_sum(self, cn=None, no_promotion=False):
@@ -240,17 +241,16 @@ def construct_order(request, oc, unit, order, paid_with_bonus):
             item_id = item.get_item_id()
             if item_id.startswith('m'):
               motd = item.get_item()
-              OrderItem.objects.create(order=order, menu_of_the_day=motd, old_price=item.get_price(), cart=unit_id)
+              OrderItem.objects.create(order=order, menu_of_the_day=motd, old_price=item.get_price(), cart=cn)
             elif '_' in item_id:
               top = get_object_or_404(Topping, pk=item_id.split('_',1)[1])
               if not master: pass # shit there is no master for this topping, figure out what to do              
-              OrderItem.objects.create(master=master, order=order, topping=top, old_price=item.get_price(), cart=unit_id)
-            else:              
-              if '-' in item_id: # we have a variation
-                  item_id, vari_id =  item_id.split('-',1)        
-                  variation = get_object_or_None(Variation, pk=vari_id)
+              OrderItem.objects.create(master=master, order=order, topping=top, old_price=item.get_price(), cart=cn)
+            else:
+              item_id, vari_id =  item_id.split('-',1)
+              variation = get_object_or_None(Variation, pk=vari_id)
               payload = item.get_item()
-              master = OrderItem.objects.create(order=order, variation=variation, item=payload, old_price=item.get_price(), cart=cn.split(':')[1])
+              master = OrderItem.objects.create(order=order, variation=variation, item=payload, old_price=item.get_price(), cart=cn)
         del request.session[cn]
     #give bonus to the friend
     if paid_with_bonus:
@@ -276,3 +276,32 @@ def consume_bonus(order):
     order.paid_with_bonus = True
     order.save()
     return 0
+
+@login_required
+def clone(request, order_id):
+    order = Order.objects.select_related().filter(pk=order_id)
+    if not order: return redirect('restaurant:index')
+    order = order[0]
+    # check if it is his order
+    if order.user_id != request.user.id: return redirect('restaurant:index')
+    oc = OrderCarts(request.session, order.unit_id)
+    for cn in oc.get_cart_names():
+        del request.session[cn]
+    oc.get_carts().clear()
+    carts = oc.get_carts()
+    for oi in order.orderitem_set.iterator():
+        cart = oi.cart
+        if ':' not in cart:
+            cart = '%s:%s' % (oc.unit_id, oi.cart)
+        if cart not in carts:
+            carts[cart] = []
+        #MasterId-VarID_TopId
+        if oi.master is None:
+            carts[cart].append(CartItem('%s-%s' % (oi.get_payload().get_id(), oi.variation_id or '0',)))
+        else:
+            carts[cart].append(CartItem('%s-%s_%s' % (oi.master.get_payload().get_id(), oi.variation or '0',oi.get_payload().get_id())))
+    oc.update_session(request.session)
+    oc.update_prices()
+    if oc.get_total_sum() != order.total_amount:
+        messages.add_message(request, messages.WARNING, _('The price of some items has changed. Please review the order!'))
+    return redirect('restaurant:detail', unit_id=oc.unit_id)

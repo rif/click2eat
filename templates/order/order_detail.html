@@ -23,9 +23,6 @@
                     <th>{{ cartname|slugify }}</th>
                     <th></th>
                     <th></th>
-                    <th class="del">{% if order.status == 'CR' %}<a href="#" title="" target="_self"><img
-                            src="{{ STATIC_URL }}images/template/cart_delete_btn.png" alt="{% trans 'Delete cart' %}">
-                        </a>{% endif %}</th>
                 </tr>
                 {% for oi in oil %}
                     <tr>
@@ -52,7 +49,7 @@
 </div> <!-- content_area -->
 <br/>
 {% if order %}
-<!--<a href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>-->
-<a href="{% url order:list %}">{% trans 'Back' %}</a>
+<a class="button lefta" href="{% url order:list %}">{% trans 'Back' %}</a>
+<a class="button righta" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>
 {% endif %}
 {% endblock %}

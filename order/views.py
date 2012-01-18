@@ -103,16 +103,6 @@ def timer(request, order_id):
     return {'order': order}
 
 @login_required
-def clone(request, order_id):
-    order = get_object_or_404(Order, pk=order_id)
-    current_order = __get_current_order(request, order.unit)
-    current_order.delete()
-    new_order = order.clone()
-    if new_order.total_amount != order.total_amount:
-        messages.add_message(request, messages.WARNING, _('The price of some items has changed. Please review the order!'))
-    return redirect('restaurant:detail', unit_id=order.unit_id)
-
-@login_required
 @render_to('order/restaurant_order_list.html')
 def restlist(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)

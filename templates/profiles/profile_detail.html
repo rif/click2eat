@@ -95,7 +95,7 @@
 			</span>
 			<span class="restaurant">{{ order.unit }}</span>
 			{% if order.id %}
-			<!-- <a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a-->
+			<a target="_self" class="right" href="{% url order:clone order.id %}">{% trans 'Order again' %}</a>
 			{% endif %}
 		</div>
 		{% empty %}
