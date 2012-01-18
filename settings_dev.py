@@ -186,7 +186,7 @@ if DEBUG:
     INSTALLED_APPS += ('debug_toolbar',
                        'rosetta-grappelli',
                        'rosetta',
-                       #'django.contrib.sessions', # session in database
+                       'django.contrib.sessions', # session in database
                        )
 
 INTERNAL_IPS = ('127.0.0.1',)
