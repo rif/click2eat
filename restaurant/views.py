@@ -32,6 +32,7 @@ def __user_has_profile(user):
 def index(request):    
     if 'django_language' not in request.session:
          request.session['django_language'] = 'ro'
+         request.session.modified = True
     units = Unit.objects.annotate(avg_quality=Avg('order__rating__quality')).\
         annotate(avg_speed=Avg('order__rating__delivery_time')).\
         annotate(comment_count=Count('order__rating__feedback')).\

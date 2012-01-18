@@ -180,6 +180,7 @@ INSTALLED_APPS = (
     'wheel',
     'bonus',
     'mobile',
+    'rsv',
 )
 
 if DEBUG:

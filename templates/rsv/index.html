@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+<script type="text/javascript">
+$(function(){
+	$("#q").keyup(function(){
+		var query = $(this).val();
+		$('span.key').each(function(){			
+			if (query == '' || $(this).text() == ){
+				$(this).parent().fadeIn();
+			} else {
+				$(this).parent().fadeOut();
+			}
+		});
+	});
+})
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Sessions</h1>
+<form action="">
+<input id="q" type="text">
+</form>
+<ol>
+{% for s in sessions %}
+<li><span class="key">{{ s.key }}</span>: {{ s.user.username }} ({{s.user.get_full_name}})</li>
+{% endfor %}
+</ol>
+{% endblock %}
