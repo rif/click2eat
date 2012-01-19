@@ -6,7 +6,7 @@ $(function(){
 	$("#q").keyup(function(){
 		var query = $(this).val();
 		$('span.key').each(function(){			
-			if (query == '' || $(this).text() == ){
+			if (query == '' || $(this).text().substring(0, query.length) === query ){
 				$(this).parent().fadeIn();
 			} else {
 				$(this).parent().fadeOut();
