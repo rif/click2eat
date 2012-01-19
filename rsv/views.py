@@ -24,8 +24,9 @@ class IndexView(TemplateView):
         sessions = []
         for session_id in r.keys('*'):
             d = ss.decode(r.get(session_id))
-            a = {'key': session_id, 'user': User.objects.get(pk=d['_auth_user_id'])}
-            sessions.append(a)
+            if '_auth_user_id' in d:
+                a = {'key': session_id, 'user': User.objects.get(pk=d['_auth_user_id'])}
+                sessions.append(a)
 
         context['sessions'] = sessions
         return context
