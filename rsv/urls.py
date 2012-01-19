@@ -1,8 +1,6 @@
 from django.conf.urls.defaults import patterns, url
-from rsv.views import IndexView
-from mobile import views
-
+from rsv import views
 
 urlpatterns = patterns('',
-    url(r'^', IndexView.as_view(), name='index'),
+    url(r'^', views.index, name='index'),
 )
