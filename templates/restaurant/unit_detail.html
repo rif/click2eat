@@ -241,16 +241,15 @@
                                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{% trans 'preview' %}">
                                             {% endthumbnail %}
                                         </a>
-                                        {% endif %}
+                                        {% endif %}                                        
+                                        </div>
                                         {%  if item.promotion %}
                                             {% if item.promotion.logo %}
                                                 <img class="promotion-logo" src="{{ MEDIA_URL }}{{ item.promotion.logo }}" title="{{ item.promotion.name }}" alt="{{ item.promotion.name }}">
                                             {%  else %}
                                                 <span class="promo-text">{{ item.promotion.name }}</span>
                                             {% endif %}
-                                        {%  endif %}
-                                        </div>
-                                        <br/>
+                                        {%  endif %}                                        
 
                                         <div class="description">{% get_desc item %} {% if item.quantity %}{{ item.quantity }}{{ item.get_measurement_unit_display }}{% endif %}</div>
                                         <div class="price">
