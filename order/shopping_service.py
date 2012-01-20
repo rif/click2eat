@@ -149,8 +149,8 @@ class OrderCarts:
                     item.set_price(item.get_item_price())
                     continue
                 if promotion.numer_of_items > 1:
-                    # the items in the same promotion hav to have the same variation
-                    pair = (promotion, item.get_variation())
+                    # the items in the same promotion have to have the same variation
+                    pair = (promotion, item.get_variation().name)
                     # if promotion spans multiple items save for later analysis
                     if pair not in multiple_item_promotions:
                         multiple_item_promotions[pair] = []
