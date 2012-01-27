@@ -8,7 +8,7 @@
 
 {% block content %}
     <h1>{{ item.get_name }}</h1>
-    <h2>{{ item.get_description|safe }} {{ item.quantity }}{{ item.get_measurement_unit_display }}</h2>
+    <h2>{{ item.item_group.unit }}: {{ item.get_description|safe }} {{ item.quantity }}{{ item.get_measurement_unit_display }}</h2>
     <h3>{% trans 'Price' %}: {{ item.get_price }}{% trans 'RON' %}</h3>
     {% if item.has_promotion %}
         <h4>{{ item.promotion.name }}</h4>
