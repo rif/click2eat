@@ -9,7 +9,7 @@
 {% block content %}
 <ul data-role="listview" data-inset="true" data-filter="true">
 {% for item in items %}
-<li><a href="{% url mobile:item-detail item.id %}">
+<li><a href="{% url mobile:item-detail item.item_group.unit_id item.id %}">
 <h1>{% get_name item %}</h1>
 <span class="ui-li-aside">{{ item.price }}{% trans 'RON' %}</span>
 <p><b>{{ item.item_group.unit.name }}</b>: {% get_desc item %}</p>
