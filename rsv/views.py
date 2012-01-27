@@ -1,4 +1,5 @@
 from django.core.exceptions import PermissionDenied
+from django.core.cache import cache
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
@@ -32,7 +33,11 @@ def index(request):
     for session_id in r.keys(query):
         d = ss.decode(r.get(session_id))
         if '_auth_user_id' in d:
-            a = {'key': session_id, 'user': User.objects.get(pk=d['_auth_user_id'])}
+            user = cache.get('_auth_user_id%s' % d['_auth_user_id'])
+            if not user:
+                user = User.objects.get(pk=d['_auth_user_id'])
+                cache.set('_auth_user_id%s' % d['_auth_user_id'], user, 30)
+            a = {'key': session_id, 'user': user}
             sessions.append(a)
 
     return {'form': form, 'sessions': sessions}
