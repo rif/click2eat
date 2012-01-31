@@ -18,6 +18,11 @@ ENVELOPE_EMAIL_RECIPIENTS = ('office@click2eat.ro')
 SENTRY_SERVERS = ['http://demo.click2eat.ro:9000/store/']
 SENTRY_KEY = '2d56cabc3073637ff33471e2ec84de27f99180f6'
 
+# Disable the default admins (for email)
+ADMINS = ()
+# Set Sentry's ADMINS to a raw list of email addresses
+SENTRY_ADMINS = ('radu@fericean.ro',)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
