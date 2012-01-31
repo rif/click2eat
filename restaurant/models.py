@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
@@ -116,7 +116,7 @@ class Interval(models.Model):
             endh = datetime.strptime(now.strftime("%d-%m-%Y ") + self.end_hour.strftime("%H:%M"), "%d-%m-%Y %H:%M")
             # correct after midnight end hour
             if starth and starth > endh:
-                endh = datetime(endh.year, endh.month, endh.day + 1, endh.hour, endh.minute)
+                endh += timedelta(1) # go to the next day
             if now > endh:
                 return False
         return True
