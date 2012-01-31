@@ -128,5 +128,4 @@ file { $venv_dir:
 exec {
 	'virtualenv --no-site-packages bucatar': cwd => $venv_dir, path => '/usr/bin', require => File[$venv_dir], user => 'rif', creates => '/home/rif//.virtualenvs/bucatar';
 #	'virtualenv --no-site-packages trac': cwd => $venv_dir, path => '/usr/bin', require => File[$venv_dir], user => 'rif', creates => '/home/rif//.virtualenvs/trac';
-#	'virtualenv --no-site-packages sentry': cwd => $venv_dir, path => '/usr/bin', require => File[$venv_dir], user => 'rif', creates => '/home/rif//.virtualenvs/bucatar/sentry';
 }
