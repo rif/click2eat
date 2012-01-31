@@ -21,7 +21,6 @@ from django.core.urlresolvers import reverse
 
 @login_required
 def profile_detail(request, username):
-    mama
     orders = request.user.order_set.exclude(hidden=True)[:20]
     extra_context = {'orders': orders}
     dict = {'username': username, 'extra_context': extra_context}
