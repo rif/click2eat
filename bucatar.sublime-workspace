@@ -60,10 +60,10 @@
 	"buffers":
 	[
 		{
-			"file": "restaurant/views.py",
+			"file": "settings_prod.py",
 			"settings":
 			{
-				"buffer_size": 5634,
+				"buffer_size": 1589,
 				"line_ending": "Unix"
 			}
 		}
@@ -128,13 +128,13 @@
 	},
 	"file_history":
 	[
+		"/home/rif/Documents/webframeworks/bucatar/restaurant/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/apache/supervizor/sentry.conf",
 		"/home/rif/Documents/webframeworks/bucatar/click2eat.pp",
 		"/home/rif/Documents/webframeworks/bucatar/rsv/urls.py",
 		"/home/rif/Documents/webframeworks/bucatar/rsv/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/templates/rsv/index.html",
 		"/home/rif/Documents/webframeworks/bucatar/order/shopping_service.py",
-		"/home/rif/Documents/webframeworks/bucatar/restaurant/views.py",
 		"/home/rif/Documents/webframeworks/bucatar/restaurant/models.py",
 		"/home/rif/Documents/webframeworks/bucatar/settings_dev.py",
 		"/home/rif/Documents/webframeworks/bucatar/urls.py",
@@ -393,18 +393,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "restaurant/views.py",
+					"file": "settings_prod.py",
 					"settings":
 					{
-						"buffer_size": 5634,
+						"buffer_size": 1589,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1428,
-								1428
+								550,
+								550
 							]
 						],
 						"settings":
