@@ -5,16 +5,12 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-from django.views.decorators.cache import cache_page
-from django.views.decorators.vary import vary_on_cookie
 from django.db.models import Sum, Avg, Count
 from django.db.models import Q
 from annoying.decorators import render_to
 from datetime import date
 from restaurant.models import Unit, PartnerPackage
-from order.models import Order, Rating, OrderItem
-from order import views
-from menu.models import MenuOfTheDay
+from order.models import Order, Rating
 from userprofiles.models import BonusTransaction
 from order.views import __is_restaurant_administrator
 from restaurant.forms import InvoiceForm
