@@ -111,8 +111,9 @@ def limited_object_detail(*args, **kwargs):
     request = args[0]
     queryset = kwargs['queryset']
     object_id = kwargs['object_id']
-    kwargs['extra_context'] = {}
-    kwargs['extra_context']['back_to_order'] = request.session['back_to_order']
-    addr = queryset.get(pk=object_id)
-    if addr.user_id != request.user.id: raise PermissionDenied()
+    if 'back_to_order' in request.session:
+        kwargs['extra_context'] = {}
+        kwargs['extra_context']['back_to_order'] = request.session['back_to_order']
+    address = queryset.get(pk=object_id)
+    if address.user_id != request.user.id: raise PermissionDenied()
     return object_detail(*args, **kwargs)
