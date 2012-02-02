@@ -56,9 +56,20 @@
                 $(this).parent("div").fadeOut("slow");
                 e.preventDefault();
             });
-            $('.clearme').one("focus", function() {
+            $(".clearme").one("focus", function() {
                 $(this).val("");
             });
+            // replaces romaninan characters from the query string
+            $('form.search').submit(function(){
+                var query = $(".clearme", this).val()
+                query = query.replace(/ă/gi, "a")
+                query = query.replace(/â/gi, "a")
+                query = query.replace(/î/gi, "i")
+                query = query.replace(/ș/gi, "s")
+                query = query.replace(/ț/gi, "t")                
+                $(".clearme", this).val(query)                
+                return true;
+            })
             $("#langs>a").click(function() {
                 $.post("/i18n/setlang/", {
                     csrfmiddlewaretoken : $("#langs>div>input[name='csrfmiddlewaretoken']").val(),
