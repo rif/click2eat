@@ -1,0 +1,25 @@
+{% load i18n item_trans %}
+{{ order.user.get_full_name }}
+{{ order.user.get_profile.phone }}
+{{ order.address }}
+{% spaceless %}
+{% if order.address.additional_info %}
+{{ order.address.additional_info }}
+{% endif %}
+{% endspaceless %}
+{{ order.creation_date }}
+
+{% spaceless %}
+{% trans 'Item' %} {% trans 'Price' %}
+{% for oi in order.orderitem_set.iterator %}{% if not oi.master %}
+{% get_name oi.get_payload %} {{ oi.old_price }}{% trans 'RON' %}
+{% if oi.orderitem_set.exists %}{% for slave_oi in oi.orderitem_set.iterator %}
+ * {% get_name slave_oi.get_payload %} {{ slave_oi.old_price }}{% trans 'RON' %}
+{% endfor %}{% endif %}{% endif %}{% endfor %}
+{% trans 'Total' %} {{ order.total_amount }}{% trans 'RON' %}{% if order.paid_with_bonus %} - {% trans 'Paid with bonus' %}{% endif %}
+{% endspaceless %}
+
+{% if order.additional_info %}
+{% trans 'Additional info' %}:
+{{ order.additional_info }}
+{% endif %}

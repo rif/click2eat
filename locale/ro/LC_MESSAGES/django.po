@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 12:10+0200\n"
+"POT-Creation-Date: 2012-02-03 11:36+0200\n"
 "PO-Revision-Date: 2012-02-01 12:10\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -244,7 +244,7 @@ msgid "exclusive"
 msgstr "exclusiv"
 
 #: menu/models.py:38 menu/models.py:112 menu/models.py:191 menu/models.py:218
-#: restaurant/models.py:188
+#: restaurant/models.py:189
 msgid "active"
 msgstr "activ"
 
@@ -314,7 +314,7 @@ msgstr "Unitate de masură."
 msgid "item group"
 msgstr "grup de articole"
 
-#: menu/models.py:106 menu/models.py:216 restaurant/models.py:184
+#: menu/models.py:106 menu/models.py:216 restaurant/models.py:185
 msgid "added date"
 msgstr "data de adăugare"
 
@@ -510,7 +510,7 @@ msgstr "Renunțat"
 msgid "address"
 msgstr "adresa"
 
-#: order/models.py:16 restaurant/models.py:182
+#: order/models.py:16 restaurant/models.py:183
 msgid "delivery type"
 msgstr "modalitateat de livrare"
 
@@ -530,7 +530,7 @@ msgstr "informatii suplimentare"
 msgid "Add here any relevant information."
 msgstr "Adaugați aici orice alte informatii relevante."
 
-#: order/models.py:22 restaurant/models.py:179
+#: order/models.py:22 restaurant/models.py:180
 msgid "employee"
 msgstr "angajat"
 
@@ -620,7 +620,7 @@ msgstr "Perfect"
 msgid "quality"
 msgstr "calitate"
 
-#: order/models.py:121 restaurant/models.py:175
+#: order/models.py:121 restaurant/models.py:176
 #: templates/restaurant/unit_list.html:28
 msgid "delivery time"
 msgstr "timpul de livrare"
@@ -650,7 +650,7 @@ msgstr ""
 msgid "New Order"
 msgstr "Comandă nouă"
 
-#: order/shopping_service.py:308
+#: order/shopping_service.py:312
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
@@ -780,7 +780,7 @@ msgstr "Modurile de livrare"
 msgid "email"
 msgstr "e-mail"
 
-#: restaurant/models.py:81 restaurant/models.py:167 userprofiles/models.py:85
+#: restaurant/models.py:81 restaurant/models.py:168 userprofiles/models.py:85
 msgid "phone"
 msgstr "telefon"
 
@@ -852,99 +852,109 @@ msgstr "restaurant"
 msgid "It will be placed before the name"
 msgstr "Va apărea înaintea numelui"
 
-#: restaurant/models.py:168
+#: restaurant/models.py:167
+#, fuzzy
+msgid "sms email"
+msgstr "e-mail"
+
+#: restaurant/models.py:167
+#, fuzzy
+msgid "used for sending order sms to restaurant"
+msgstr "Ne pare rău, nu sunt comenzi pentru acest restaurant"
+
+#: restaurant/models.py:169
 msgid "mobile"
 msgstr "mobil"
 
-#: restaurant/models.py:169
+#: restaurant/models.py:170
 msgid "logo path"
 msgstr "calea către siglă"
 
-#: restaurant/models.py:170
+#: restaurant/models.py:171
 msgid "accepted currencies"
 msgstr "Monede acceptate"
 
-#: restaurant/models.py:171
+#: restaurant/models.py:172
 msgid "overall_discount"
 msgstr "Reducerea generală"
 
-#: restaurant/models.py:172 userprofiles/models.py:27
+#: restaurant/models.py:173 userprofiles/models.py:27
 msgid "latitude"
 msgstr "latitudine"
 
-#: restaurant/models.py:173 userprofiles/models.py:28
+#: restaurant/models.py:174 userprofiles/models.py:28
 msgid "longitude"
 msgstr "longitudine"
 
-#: restaurant/models.py:174
+#: restaurant/models.py:175
 msgid "range"
 msgstr "raza"
 
-#: restaurant/models.py:174
+#: restaurant/models.py:175
 msgid "Delivery range in km"
 msgstr "Zona de livrare în km"
 
-#: restaurant/models.py:175
+#: restaurant/models.py:176
 msgid "In minutes"
 msgstr "În minute"
 
-#: restaurant/models.py:176 userprofiles/models.py:89
+#: restaurant/models.py:177 userprofiles/models.py:89
 msgid "communication"
 msgstr "comunicare"
 
-#: restaurant/models.py:177
+#: restaurant/models.py:178
 msgid "minimum order value"
 msgstr "valoare comandă minimă"
 
-#: restaurant/models.py:178
+#: restaurant/models.py:179
 msgid "payment method"
 msgstr "modalitate de plată"
 
-#: restaurant/models.py:179
+#: restaurant/models.py:180
 msgid "The internal employee responsible for this unit."
 msgstr "Angajatul intern responabil pentru această unitate."
 
-#: restaurant/models.py:180
+#: restaurant/models.py:181
 msgid "contact persoon"
 msgstr "persoana de contact"
 
-#: restaurant/models.py:181
+#: restaurant/models.py:182
 msgid "delivery time user"
 msgstr "timpul de livrare utilizator"
 
-#: restaurant/models.py:181
+#: restaurant/models.py:182
 msgid "Calculated as a avg from user feedback."
 msgstr "Calculat ca o media din raspunsurile utilizatorilor."
 
-#: restaurant/models.py:183
+#: restaurant/models.py:184
 msgid "admin users"
 msgstr "utilizatori administratori"
 
-#: restaurant/models.py:183
+#: restaurant/models.py:184
 msgid "the users that can access front-end administration pages for this unit."
 msgstr ""
 "utilizatorii care pot accesa paginile de administrare din interfata pentru "
 "această unitate."
 
-#: restaurant/models.py:185
+#: restaurant/models.py:186
 msgid "info"
 msgstr "informații"
 
-#: restaurant/models.py:186
+#: restaurant/models.py:187
 msgid "stuff like food specific"
 msgstr "chestiuni precum specificul restaurantului"
 
-#: restaurant/models.py:187
+#: restaurant/models.py:188
 msgid "discount"
 msgstr "ofertă"
 
-#: restaurant/models.py:230 templates/menu/daily_menu_list.html:39
+#: restaurant/models.py:231 templates/menu/daily_menu_list.html:39
 #: templates/order/order_detail.html:10
 #: templates/restaurant/package_history.html:14
 msgid "Unit"
 msgstr "Unitate"
 
-#: restaurant/models.py:231 templates/mobile/units.html:4
+#: restaurant/models.py:232 templates/mobile/units.html:4
 #: templates/mobile/units.html.py:5
 msgid "Units"
 msgstr "Unități"

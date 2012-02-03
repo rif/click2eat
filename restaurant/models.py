@@ -164,6 +164,7 @@ class Unit(models.Model):
     name = models.CharField(_('name'), unique=True, max_length=50)
     address = models.CharField(_('address'), max_length=200)
     email = models.EmailField(_('email'))
+    sms_email = models.EmailField(_('sms email'), null=True, blank=True, help_text=_('used for sending order sms to restaurant'))
     phone = models.CharField(_('phone'), max_length=15)
     mobile = models.CharField(_('mobile'), max_length=15)
     logo_path = models.ImageField(_('logo path'), upload_to="restaurant_logos", null=True, blank=True)
