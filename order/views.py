@@ -18,7 +18,7 @@ from order.forms import OrderForm, RatingForm
 from userprofiles.models import DeliveryAddress
 from order.tasks import send_email_task
 from shopping_service import OrderCarts, construct_order
-from geopy import distance
+#from geopy import distance
 
 def __is_restaurant_administrator(request, unit):
     if request.user.username == 'admin': return

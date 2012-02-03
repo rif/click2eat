@@ -77,7 +77,7 @@ class UnitAdmin(admin.ModelAdmin):
     inlines = [UnitImageInline, ItemGroupInline, ToppingGroupInline]
     fieldsets = (
         (None, {
-            'fields': ('descriptive_type', 'name', 'address', ('email', 'phone', 'mobile'), 'logo_path')
+            'fields': ('descriptive_type', 'name', 'address', ('email', 'sms_email', 'phone', 'mobile'), 'logo_path')
         }),
         ('Location options', {
             'fields': (('latitude', 'longitude', 'delivery_range'), ('delivery_type', 'delivery_time'))

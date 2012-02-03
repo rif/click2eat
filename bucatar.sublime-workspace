@@ -66,6 +66,33 @@
 				"buffer_size": 1589,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "templates/header.html",
+			"settings":
+			{
+				"buffer_size": 4086,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "from django.contrib.auth.decorators import login_required\nfrom annoying.decorators import render_to\nfrom datetime import date\nfrom django.db.models import Q\nfrom menu.models import Item, MenuOfTheDay\nfrom menu.filter import ItemFilter\n\ndef __replace_romanian_chars(query):\n    new_query = \n    return\n\n@render_to('menu/item_list.html')\ndef item_list(request):\n    query = request.GET.get('q', '')\n    results = Item.objects.filter(active=True).select_related('item_group__unit','promotion__unit').order_by('name_def')\n    if query:\n        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query) | Q(mcg__name__icontains=query)).distinct()\n    f = ItemFilter(request.GET, queryset=results)\n    return {'query': query, 'filter': f}\n\n@login_required\n@render_to('menu/daily_menu_list.html')\ndef daily_menus(request):\n    menus = MenuOfTheDay.objects.filter(day = date.today());\n    return {'daily_menus': menus}\n\n@render_to('menu/item_list.html')\ndef item_tag_list(request, tag):\n    results = Item.objects.filter(active=True).select_related('item_group__unit', 'promotion__unit').filter(Q(tags__slug__icontains=tag)).order_by('name_def').distinct()\n    f = ItemFilter(request.GET, queryset=results)\n    return {'tag': tag, 'filter': f}\n\n\n@render_to('menu/menu_list.html')\ndef menu_list(request):\n    tags = Item.tags.all()\n    return {'tags': tags}\n\n@render_to('menu/daily_menu.html')\ndef random_motd(request):\n    motds = MenuOfTheDay.objects.filter(day=date.today())#.order_by('?')\n    motd = motds[0] if motds.exists() else None\n    return locals()\n\n@render_to('menu/daily_menu.html')\ndef daily_menu(request, menu_id):\n    motds = MenuOfTheDay.objects.filter(day=date.today())    \n    motd = motds.filter(pk=menu_id) if motds.exists() else None\n    motd = motd[0] if motd and motd.exists() else None\n    return locals()\n",
+			"file": "menu/views.py",
+			"file_size": 1906,
+			"file_write_time": 1326805135000000,
+			"settings":
+			{
+				"buffer_size": 1971,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/base_alt.html",
+			"settings":
+			{
+				"buffer_size": 6945,
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -388,7 +415,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -415,6 +442,90 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "templates/header.html",
+					"settings":
+					{
+						"buffer_size": 4086,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4035,
+								4035
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Django.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 677.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "menu/views.py",
+					"settings":
+					{
+						"buffer_size": 1971,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								289,
+								289
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/base_alt.html",
+					"settings":
+					{
+						"buffer_size": 6945,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4070,
+								4070
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
