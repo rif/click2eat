@@ -1,19 +1,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Filemaker <r.fericean@filemaker-solutions.ro>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-03 11:36+0200\n"
-"PO-Revision-Date: 2012-02-01 12:10\n"
+"POT-Creation-Date: 2012-02-03 12:44+0200\n"
+"PO-Revision-Date: 2012-02-03 12:45\n"
 "Last-Translator: admin Admin <r.fericean@filemaker-solutions.ro>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 "X-Translated-Using: django-rosetta 0.6.5\n"
@@ -487,8 +487,8 @@ msgid ""
 "As the restaurant is closed please set a desired delivery time in the "
 "restaurant open hours range."
 msgstr ""
-"Având în vedere că restaurantul e închis vă rugăm să specificați ziua și ora "
-"de livrare."
+"Având în vedere că restaurantul e închis vă rugăm să specificați ziua și ora"
+" de livrare."
 
 #: order/models.py:9
 msgid "Sent"
@@ -638,19 +638,18 @@ msgid "Ratings"
 msgstr "Aprecieri"
 
 #: order/shopping_service.py:179
-#, fuzzy
 msgid ""
-"Please select the paid and bonus items from the promotion.         They have "
-"to have the same size for the promotion to be applied!"
+"Please select the paid and bonus items from the promotion.         They have"
+" to have the same size for the promotion to be applied!"
 msgstr ""
-"Vă rugăm să selectati articolele platite si cele bonus din promotie. Trebuie "
-"să fie de aceeași dimensiune ca să se aplice promoția."
+"Vă rugăm să selectati articolele platite si cele bonus din promotie. Trebuie"
+" să fie de aceeași dimensiune ca să se aplice promoția."
 
 #: order/shopping_service.py:266
 msgid "New Order"
 msgstr "Comandă nouă"
 
-#: order/shopping_service.py:312
+#: order/shopping_service.py:315
 msgid "The price of some items has changed. Please review the order!"
 msgstr "Prețul unor articole s-a schimbat. Vă rugăm să revizuiți comanda!"
 
@@ -853,14 +852,12 @@ msgid "It will be placed before the name"
 msgstr "Va apărea înaintea numelui"
 
 #: restaurant/models.py:167
-#, fuzzy
 msgid "sms email"
-msgstr "e-mail"
+msgstr "sms email"
 
 #: restaurant/models.py:167
-#, fuzzy
 msgid "used for sending order sms to restaurant"
-msgstr "Ne pare rău, nu sunt comenzi pentru acest restaurant"
+msgstr "folosit pentru a trimite restaurantelor comenzile prin sms "
 
 #: restaurant/models.py:169
 msgid "mobile"
@@ -931,7 +928,8 @@ msgid "admin users"
 msgstr "utilizatori administratori"
 
 #: restaurant/models.py:184
-msgid "the users that can access front-end administration pages for this unit."
+msgid ""
+"the users that can access front-end administration pages for this unit."
 msgstr ""
 "utilizatorii care pot accesa paginile de administrare din interfata pentru "
 "această unitate."
@@ -965,7 +963,8 @@ msgstr "Aveți alte produse selectate la urmatoarele restaurante:"
 
 #: restaurant/views.py:107
 msgid "Multiple packages found for selected period!"
-msgstr "S-au găsit mai multe pachete de parteneriat pentru perioada selectată!"
+msgstr ""
+"S-au găsit mai multe pachete de parteneriat pentru perioada selectată!"
 
 #: restaurant/views.py:109
 msgid "No (unique) partner package found for selected time range!"
@@ -1181,11 +1180,11 @@ msgstr "Vă rugăm să selectați avatarul pe care doriți să îl stergeți."
 #: templates/avatar/confirm_delete.html:15
 #, python-format
 msgid ""
-"You have no avatars to delete. Please <a href=\"%(avatar_change_url)s"
-"\">upload one</a> now."
+"You have no avatars to delete. Please <a "
+"href=\"%(avatar_change_url)s\">upload one</a> now."
 msgstr ""
-"Nu aveți nici un avatar de șters. Vă rugăm să <a href=\"%(avatar_change_url)s"
-"\">încărcați unul</a> acum."
+"Nu aveți nici un avatar de șters. Vă rugăm să <a "
+"href=\"%(avatar_change_url)s\">încărcați unul</a> acum."
 
 #: templates/avatar/confirm_delete.html:22
 msgid "Delete These"
@@ -1642,11 +1641,11 @@ msgstr "Abonare e-mail cu știri"
 #: templates/newsletter/subscription_subscribe.html:7
 #: templates/newsletter/subscription_update.html:7
 msgid ""
-"Due to a technical error we were not able to submit your confirmation email. "
-"This could be because your email address is invalid."
+"Due to a technical error we were not able to submit your confirmation email."
+" This could be because your email address is invalid."
 msgstr ""
-"Din cauza unor probleme tehnice nu s-a putut realiza trimiterea emailului de "
-"confirmare. Aceasta poate fi din cauză ca adresa a fost invalidă."
+"Din cauza unor probleme tehnice nu s-a putut realiza trimiterea emailului de"
+" confirmare. Aceasta poate fi din cauză ca adresa a fost invalidă."
 
 #: templates/newsletter/subscription_subscribe.html:8
 #: templates/newsletter/subscription_update.html:8
@@ -1659,12 +1658,12 @@ msgstr ""
 
 #: templates/newsletter/subscription_subscribe.html:11
 msgid ""
-"Your subscription was successfully recieved and an activation email has been "
-"sent to you. In that email you will find a link which you need to follow in "
-"order to activate your subscription."
+"Your subscription was successfully recieved and an activation email has been"
+" sent to you. In that email you will find a link which you need to follow in"
+" order to activate your subscription."
 msgstr ""
-"Abonarea dumneavoastră a fost înregistrată cu succes și vi s-a triumis un e-"
-"mail de activare. În acest email ve-ți găsi un link pe care trebuie să îl "
+"Abonarea dumneavoastră a fost înregistrată cu succes și vi s-a triumis un "
+"e-mail de activare. În acest email ve-ți găsi un link pe care trebuie să îl "
 "urmați pentru activarea abonamentului dumneavoastră."
 
 #: templates/newsletter/subscription_subscribe_user.html:16
@@ -1684,8 +1683,8 @@ msgid ""
 "been sent to you with a link you need to follow in order to confirm your "
 "unsubscription."
 msgstr ""
-"Abonamentul dumneavoastră a fost înregistrat cu succes. Vi s-a trimis un e-"
-"mail cu un link pe care trebuie să-l urmați pentru a confirma abonamentul "
+"Abonamentul dumneavoastră a fost înregistrat cu succes. Vi s-a trimis un "
+"e-mail cu un link pe care trebuie să-l urmați pentru a confirma abonamentul "
 "dumneavoastră."
 
 #: templates/newsletter/subscription_unsubscribe_user.html:17
@@ -1703,9 +1702,9 @@ msgid ""
 "been sent to you. In that email you will find a link which you need to "
 "follow in order to update your subscription."
 msgstr ""
-"Cererea de actualizare a fost primită și vi s-a trimis un e-mail. În acest e-"
-"mail ve-ți găsi un link pe care trebuie să îl urmați pentru a vă actualiza "
-"abonamentul."
+"Cererea de actualizare a fost primită și vi s-a trimis un e-mail. În acest "
+"e-mail ve-ți găsi un link pe care trebuie să îl urmați pentru a vă actualiza"
+" abonamentul."
 
 #: templates/order/cart_name.html:14 templates/restaurant/unit_detail.html:20
 msgid "Cancel"
@@ -1913,13 +1912,11 @@ msgstr "Numărătoare inversă pentru comandă"
 #: templates/order/timer.html:34
 msgid ""
 "\n"
-"  You will be contacted by the chosen restaurant to confirm the order or to "
-"select discounted products.\n"
+"  You will be contacted by the chosen restaurant to confirm the order or to select discounted products.\n"
 "  "
 msgstr ""
 "\n"
-"Veți fi contactat de către restaurantul ales pentru a confirma comanda sau "
-"pentru a alege produsele la ofertă."
+"Veți fi contactat de către restaurantul ales pentru a confirma comanda sau pentru a alege produsele la ofertă."
 
 #: templates/order/timer.html:38
 msgid "Has arrived!"
@@ -2169,8 +2166,8 @@ msgstr "Cont nou"
 
 #: templates/registration/registration_complete.html:11
 msgid ""
-"Thank you for signing up. An email with the activation code has been send to "
-"your inbox"
+"Thank you for signing up. An email with the activation code has been send to"
+" your inbox"
 msgstr ""
 "Multumim că v-ați înregistrat. A fost trimis un email cu codul de activare "
 "spre căsuța dvs de email"

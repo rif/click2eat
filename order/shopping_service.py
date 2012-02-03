@@ -268,10 +268,13 @@ def construct_order(request, oc, unit, order, paid_with_bonus):
     send_from = 'office@click2eat.ro'
     send_to = (order.unit.email,)
     send_email_task.delay(subject, body, send_from, send_to)
-    sms_body = render_to_string('order/sms_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
-    send_from = 'office@click2eat.ro'
-    send_to = (order.unit.sms_email,)
-    send_email_task.delay(subject, body, send_from, send_to)
+    sms_email = order.unit.sms_email
+    if sms_email:
+        subject = 'comanda'
+        body = render_to_string('order/sms_order_detail.txt', {'order': order}, context_instance=RequestContext(request))
+        send_from = 'office@click2eat.ro'
+        send_to = (sms_email,)
+        send_email_task.delay(subject, body, send_from, send_to)
 
 def consume_bonus(order):
     amount = order.total_amount    
