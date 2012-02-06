@@ -514,8 +514,8 @@
 						"selection":
 						[
 							[
-								4070,
-								4070
+								3307,
+								3307
 							]
 						],
 						"settings":
@@ -525,7 +525,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
+						"translation.y": 160.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
