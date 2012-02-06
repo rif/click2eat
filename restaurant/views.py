@@ -12,18 +12,9 @@ from datetime import date
 from restaurant.models import Unit, PartnerPackage
 from order.models import Order, Rating
 from userprofiles.models import BonusTransaction
-from order.views import __is_restaurant_administrator
+from order.views import __is_restaurant_administrator, __user_has_profile
 from restaurant.forms import InvoiceForm
 from django.core.urlresolvers import reverse
-
-def __user_has_profile(user):
-    if not user.is_authenticated() or user.is_anonymous() : return None
-    try:
-        user.get_profile()
-        return None
-    except:
-        return redirect('profiles_create_profile')
-
 
 def index(request):    
     if 'django_language' not in request.session:
@@ -54,6 +45,8 @@ def unit_list(request):
 
 @render_to('restaurant/unit_detail.html')
 def unit_detail(request, unit_id):
+    has_profile = __user_has_profile(request.user)
+    if has_profile != None: return has_profile
     unit = get_object_or_404(Unit, pk=unit_id)
     motd = unit.get_motd()
     unit_carts = [key.split(':',1)[0] for key in request.session.keys()\

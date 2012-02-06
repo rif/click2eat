@@ -14,7 +14,6 @@ def item_list(request):
     f = ItemFilter(request.GET, queryset=results)
     return {'query': query, 'filter': f}
 
-
 @login_required
 @render_to('menu/daily_menu_list.html')
 def daily_menus(request):
