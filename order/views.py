@@ -21,7 +21,7 @@ from shopping_service import OrderCarts, construct_order
 #from geopy import distance
 
 def __is_restaurant_administrator(request, unit):
-    if request.user.username == 'admin': return
+    if request.user.is_staff: return
     if not unit.admin_users: raise PermissionDenied()
     admin_user_list = [u.strip() for u in unit.admin_users.split(",")]
     if request.user.username not in admin_user_list:
