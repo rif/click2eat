@@ -120,7 +120,9 @@ class UserProfile(models.Model):
         return ('profiles_profile_detail', (), {'username': self.user.username})
 
     def administred_units(self):
-        return Unit.objects.filter(admin_users__contains=self.user.username)
+        if self.user.is_staff:
+            return Unit.objects.filter(active=True)
+        return Unit.objects.filter(active=True).filter(admin_users__contains=self.user.username)
 
     class Meta:
         verbose_name = _('User Profile')
