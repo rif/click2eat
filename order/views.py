@@ -27,6 +27,14 @@ def __is_restaurant_administrator(request, unit):
     if request.user.username not in admin_user_list:
         raise PermissionDenied()
 
+def __user_has_profile(user):
+    if not user.is_authenticated() or user.is_anonymous() : return None
+    try:
+        user.get_profile()
+        return None
+    except:
+        return redirect('profiles_create_profile')
+
 @login_required
 def limited_object_detail(*args, **kwargs):
     request = args[0]
@@ -55,6 +63,8 @@ def list_unit(request, unit_id):
 @login_required
 @render_to('order/send_confirmation.html')
 def confirm_order(request, unit_id):
+    has_profile = __user_has_profile(request.user)
+    if has_profile != None: return has_profile
     oc = OrderCarts(request.session,unit_id)
     unit = oc.get_unit()
     total_sum = oc.get_total_sum()
@@ -85,15 +95,11 @@ def confirm_order(request, unit_id):
     else:
         form = OrderForm()
     form.fields['delivery_type'] = forms.ModelChoiceField(unit.delivery_type.all(), required=True, initial={'primary': True})
-    form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})
-    try:
-        profile = request.user.get_profile()
-        show_pay_with_bonus = profile and profile.get_current_bonus() > total_sum    
-        if show_pay_with_bonus:
-            messages.info(request, _('Congratulations! You have enough bonus to pay for your order. Please check "Pay using bonus" to use it.'))
-            form.fields['paid_with_bonus'] = forms.BooleanField(label=_('Pay using bonus'), help_text=_('We shall use the minimum number of received bonuses enough to cover the order total amount'), required=False)
-    except: # if the user does not have userprofile then forget it
-        pass
+    form.fields['address'] = forms.ModelChoiceField(queryset=DeliveryAddress.objects.filter(user=request.user), required=True, initial={'primary': True})            
+    show_pay_with_bonus = profile and profile.get_current_bonus() > total_sum    
+    if show_pay_with_bonus:
+        messages.info(request, _('Congratulations! You have enough bonus to pay for your order. Please check "Pay using bonus" to use it.'))
+        form.fields['paid_with_bonus'] = forms.BooleanField(label=_('Pay using bonus'), help_text=_('We shall use the minimum number of received bonuses enough to cover the order total amount'), required=False)
     return locals()
 
 @login_required

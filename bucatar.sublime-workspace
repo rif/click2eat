@@ -76,13 +76,10 @@
 			}
 		},
 		{
-			"contents": "from django.contrib.auth.decorators import login_required\nfrom annoying.decorators import render_to\nfrom datetime import date\nfrom django.db.models import Q\nfrom menu.models import Item, MenuOfTheDay\nfrom menu.filter import ItemFilter\n\ndef __replace_romanian_chars(query):\n    new_query = \n    return\n\n@render_to('menu/item_list.html')\ndef item_list(request):\n    query = request.GET.get('q', '')\n    results = Item.objects.filter(active=True).select_related('item_group__unit','promotion__unit').order_by('name_def')\n    if query:\n        results = results.filter(Q(internal_name__icontains=query) | Q(name_def__icontains=query) | Q(description_def__icontains=query) | Q(tags__name__icontains=query) | Q(item_group__unit__name__icontains=query) | Q(mcg__name__icontains=query)).distinct()\n    f = ItemFilter(request.GET, queryset=results)\n    return {'query': query, 'filter': f}\n\n@login_required\n@render_to('menu/daily_menu_list.html')\ndef daily_menus(request):\n    menus = MenuOfTheDay.objects.filter(day = date.today());\n    return {'daily_menus': menus}\n\n@render_to('menu/item_list.html')\ndef item_tag_list(request, tag):\n    results = Item.objects.filter(active=True).select_related('item_group__unit', 'promotion__unit').filter(Q(tags__slug__icontains=tag)).order_by('name_def').distinct()\n    f = ItemFilter(request.GET, queryset=results)\n    return {'tag': tag, 'filter': f}\n\n\n@render_to('menu/menu_list.html')\ndef menu_list(request):\n    tags = Item.tags.all()\n    return {'tags': tags}\n\n@render_to('menu/daily_menu.html')\ndef random_motd(request):\n    motds = MenuOfTheDay.objects.filter(day=date.today())#.order_by('?')\n    motd = motds[0] if motds.exists() else None\n    return locals()\n\n@render_to('menu/daily_menu.html')\ndef daily_menu(request, menu_id):\n    motds = MenuOfTheDay.objects.filter(day=date.today())    \n    motd = motds.filter(pk=menu_id) if motds.exists() else None\n    motd = motd[0] if motd and motd.exists() else None\n    return locals()\n",
 			"file": "menu/views.py",
-			"file_size": 1906,
-			"file_write_time": 1326805135000000,
 			"settings":
 			{
-				"buffer_size": 1971,
+				"buffer_size": 1905,
 				"line_ending": "Unix"
 			}
 		},
@@ -92,6 +89,46 @@
 			{
 				"buffer_size": 6945,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "settings_dev.py",
+			"settings":
+			{
+				"buffer_size": 6179,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "restaurant/admin.py",
+			"settings":
+			{
+				"buffer_size": 3652,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "order/admin.py",
+			"settings":
+			{
+				"buffer_size": 874,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "order/views.py",
+			"settings":
+			{
+				"buffer_size": 8944,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "restaurant/views.py",
+			"settings":
+			{
+				"buffer_size": 5506,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -300,6 +337,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"profile",
+			"__user_has_profile",
+			"office",
 			"cache",
 			"session",
 			"carts",
@@ -415,7 +455,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -430,8 +470,8 @@
 						"selection":
 						[
 							[
-								550,
-								550
+								321,
+								327
 							]
 						],
 						"settings":
@@ -479,15 +519,15 @@
 					"file": "menu/views.py",
 					"settings":
 					{
-						"buffer_size": 1971,
+						"buffer_size": 1905,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								289,
-								289
+								237,
+								239
 							]
 						],
 						"settings":
@@ -525,7 +565,145 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 160.0,
+						"translation.y": 85.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "settings_dev.py",
+					"settings":
+					{
+						"buffer_size": 6179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								747,
+								725
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "restaurant/admin.py",
+					"settings":
+					{
+						"buffer_size": 3652,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2216,
+								2216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "order/admin.py",
+					"settings":
+					{
+						"buffer_size": 874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								241,
+								241
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "order/views.py",
+					"settings":
+					{
+						"buffer_size": 8944,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2199,
+								2199
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "restaurant/views.py",
+					"settings":
+					{
+						"buffer_size": 5506,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								790,
+								772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
