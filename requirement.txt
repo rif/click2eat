@@ -26,7 +26,8 @@ django-honeypot
 django-envelope
 django-grappelli
 django-filebrowser
-sentry
+#sentry
+raven
 feedparser
 django-redis-cache
 django-redis-sessions
