@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Sum, Avg, Count
 from django.db.models import Q
 from annoying.decorators import render_to
-from datetime import date
+from datetime import date, timedelta
 from restaurant.models import Unit, PartnerPackage
 from order.models import Order, Rating
 from userprofiles.models import BonusTransaction
@@ -79,7 +79,7 @@ def package_history(request, unit_id):
 def invoice(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
-    end = today = date.today()
+    end = today = date.today() + timedelta(1)
     start = today.replace(day=1)    
     if request.method == 'POST':
         form = InvoiceForm(request.POST)
