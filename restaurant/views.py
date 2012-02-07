@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Sum, Avg, Count
 from django.db.models import Q
 from annoying.decorators import render_to
-from datetime import date, timedelta
+from datetime import datetime
 from restaurant.models import Unit, PartnerPackage
 from order.models import Order, Rating
 from userprofiles.models import BonusTransaction
@@ -79,15 +79,16 @@ def package_history(request, unit_id):
 def invoice(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
     __is_restaurant_administrator(request, unit)
-    end = today = date.today() + timedelta(1)
-    start = today.replace(day=1)    
+    end = now = datetime.now()
+    start = now.replace(day=1)
     if request.method == 'POST':
         form = InvoiceForm(request.POST)
         if form.is_valid():
             start = form.cleaned_data['start_date']
-            end = form.cleaned_data['end_date']            
+            end = form.cleaned_data['end_date']
+            end = datetime.combine(end, now.time()) # to include the orders made today
     else:
-        form = InvoiceForm(initial={'start_date':start, 'end_date':today})
+        form = InvoiceForm(initial={'start_date':start, 'end_date':now})
     orders = Order.objects.filter(unit=unit).filter(creation_date__range=(start, end)).filter(status__in=['ST', 'RV', 'DL'])
     total_sum = orders.aggregate(Sum('total_amount'))['total_amount__sum'] or 0
     bonuses = BonusTransaction.objects.filter(order__unit=unit).filter(order__creation_date__range=(start, end)).filter(amount__lt=0)
