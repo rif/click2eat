@@ -24,7 +24,7 @@
     </div>
     <div class="linkcomanda">
       {% if user.is_authenticated %}
-      <a onclick="addItem('/order/shop/{{ user.username }}/0_{{special_item.id }}-0', '{% url restaurant:detail special_item.item_group.unit_id%}'); return false;" href="#" id="">{% trans 'Order this Item' %}</a>
+      <a onclick="addItem('/order/shop/{{ special_item.item_group.unit_id }}/{{ user.username }}/{{special_item.id }}-0', '{% url restaurant:detail special_item.item_group.unit_id%}'); return false;" href="#" id="">{% trans 'Order this Item' %}</a>
       {% endif %}
     </div>
   </div>
