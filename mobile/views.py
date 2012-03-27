@@ -9,13 +9,11 @@ from restaurant.models import DeliveryType
 from userprofiles.models import DeliveryAddress
 from datetime import date
 
-@login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/units.html')
 def units(request):
         units = Unit.objects.all()
         return locals()
 
-@login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/menu.html')
 def menu(request, unit_id):
         unit = get_object_or_404(Unit, pk=unit_id)
@@ -24,7 +22,6 @@ def menu(request, unit_id):
         total = oc.get_total_sum(cn)
         return locals()
 
-@login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/search.html')
 def search(request):
         items = Item.objects.select_related('tags', 'item_group', 'item_group__unit')
@@ -42,7 +39,6 @@ def item_detail(request, unit_id, item_id):
         total = oc.get_total_sum(cn)
         return locals()
 
-@login_required(login_url='/mobile/accounts/login/')
 @render_to('mobile/motd.html')
 def motd(request):
         motds = MenuOfTheDay.objects.filter(day = date.today());
