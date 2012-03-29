@@ -62,7 +62,6 @@ def unit_detail(request, unit_id):
     else: motd = None
     return {'object': unit, 'motd': motd, 'we_are_in_unit_detail': True}
 
-@login_required
 @render_to('restaurant/comments.html')
 def unit_comments(request, unit_id):
     unit = get_object_or_404(Unit, pk=unit_id)
