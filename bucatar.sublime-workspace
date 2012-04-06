@@ -63,7 +63,7 @@
 			"file": "settings_prod.py",
 			"settings":
 			{
-				"buffer_size": 1589,
+				"buffer_size": 1590,
 				"line_ending": "Unix"
 			}
 		},
@@ -127,7 +127,7 @@
 			"file": "restaurant/views.py",
 			"settings":
 			{
-				"buffer_size": 5493,
+				"buffer_size": 5477,
 				"line_ending": "Unix"
 			}
 		},
@@ -136,6 +136,14 @@
 			"settings":
 			{
 				"buffer_size": 5315,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/mobile.html",
+			"settings":
+			{
+				"buffer_size": 1049,
 				"line_ending": "Unix"
 			}
 		}
@@ -345,6 +353,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"rc.1",
 			"perce",
 			"profile",
 			"__user_has_profile",
@@ -451,6 +460,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"rc.2",
 			"Cardo",
 			"item",
 			"assertEqual"
@@ -464,6 +474,7 @@
 	"groups":
 	[
 		{
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -471,15 +482,15 @@
 					"file": "settings_prod.py",
 					"settings":
 					{
-						"buffer_size": 1589,
+						"buffer_size": 1590,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								321,
-								327
+								0,
+								0
 							]
 						],
 						"settings":
@@ -693,7 +704,7 @@
 					"file": "restaurant/views.py",
 					"settings":
 					{
-						"buffer_size": 5493,
+						"buffer_size": 5477,
 						"regions":
 						{
 						},
@@ -743,6 +754,32 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "templates/mobile.html",
+					"settings":
+					{
+						"buffer_size": 1049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								233,
+								233
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -788,6 +825,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"mob",
+				"templates/mobile.html"
+			],
 			[
 				"unit",
 				"templates/restaurant/unit_detail.html"
