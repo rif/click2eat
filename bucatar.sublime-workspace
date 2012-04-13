@@ -143,7 +143,7 @@
 			"file": "templates/mobile.html",
 			"settings":
 			{
-				"buffer_size": 1049,
+				"buffer_size": 1019,
 				"line_ending": "Unix"
 			}
 		}
@@ -353,6 +353,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"-rc.2",
 			"rc.1",
 			"perce",
 			"profile",
@@ -460,6 +461,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			"rc.2",
 			"Cardo",
 			"item",
@@ -760,15 +762,15 @@
 					"file": "templates/mobile.html",
 					"settings":
 					{
-						"buffer_size": 1049,
+						"buffer_size": 1019,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								233,
-								233
+								1019,
+								1019
 							]
 						],
 						"settings":
