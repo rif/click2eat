@@ -15,8 +15,9 @@ INSTALLED_APPS += ('raven.contrib.django',)
 
 ENVELOPE_EMAIL_RECIPIENTS = ('office@click2eat.ro',)
 
-SENTRY_SERVERS = ['http://demo.click2eat.ro:9000/store/']
-SENTRY_KEY = '2d56cabc3073637ff33471e2ec84de27f99180f6'
+SENTRY_DSN = 'http://40137848de274e519eeaebc69a9eec85:a00d93a1788b4112b3de044a1fb8c9e0@demo.click2eat.ro:9000/1'
+#SENTRY_SERVERS = ['http://demo.click2eat.ro:9000/store/']
+#SENTRY_KEY = '2d56cabc3073637ff33471e2ec84de27f99180f6'
 
 # Set Sentry's ADMINS to a raw list of email addresses
 SENTRY_ADMINS = ('fericean@gmail.com',)

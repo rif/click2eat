@@ -63,7 +63,7 @@
 			"file": "settings_prod.py",
 			"settings":
 			{
-				"buffer_size": 1590,
+				"buffer_size": 1705,
 				"line_ending": "Unix"
 			}
 		},
@@ -353,6 +353,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"rave",
 			"-rc.2",
 			"rc.1",
 			"perce",
@@ -476,7 +477,7 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -484,15 +485,15 @@
 					"file": "settings_prod.py",
 					"settings":
 					{
-						"buffer_size": 1590,
+						"buffer_size": 1705,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1319,
+								1319
 							]
 						],
 						"settings":
@@ -603,8 +604,8 @@
 						"selection":
 						[
 							[
-								747,
-								725
+								4269,
+								4271
 							]
 						],
 						"settings":
@@ -614,7 +615,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2267.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
