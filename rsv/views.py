@@ -6,6 +6,7 @@ from annoying.decorators import render_to
 from django.contrib.auth.models import User
 from redis_sessions import session
 from rsv.forms import QueryForm
+from order.models import Order
 import redis
 import base64
 import cPickle as pickle
