@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<h4>Order count: {{ order_count }}</h4>
 {% autopaginate sessions %} <h1>Sessions</h1>
 <form method="POST" action="" class="uniForm">
 	{% csrf_token %}

@@ -39,6 +39,6 @@ def index(request):
                 cache.set('_auth_user_id%s' % d['_auth_user_id'], user, 30)
             a = {'key': session_id, 'user': user}
             sessions.append(a)
-
-    return {'form': form, 'sessions': sessions}
+    order_count = Order.objects.count()
+    return {'form': form, 'sessions': sessions, 'order_count': order_count}
     
