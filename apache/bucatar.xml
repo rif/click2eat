@@ -1,4 +1,5 @@
 <uwsgi>
+    <plugin>python</plugin>
     <pythonpath>/home/rif/.virtualenvs/bucatar/lib/python2.7/site-packages/</pythonpath>
     <pythonpath>/home/www-data/bucatar/</pythonpath>
     <pythonpath>/home/www-data/</pythonpath>
