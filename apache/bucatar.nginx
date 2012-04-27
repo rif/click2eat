@@ -12,7 +12,7 @@ server {
 	}
 
         location / {
-                uwsgi_pass      unix:///var/run/uwsgi/bucatar/socket;
+                uwsgi_pass      unix:///var/run/uwsgi/app/bucatar/socket;
                 include         uwsgi_params;
                 uwsgi_param     UWSGI_SCHEME $scheme;
                 uwsgi_param     SERVER_SOFTWARE    nginx/$nginx_version;
