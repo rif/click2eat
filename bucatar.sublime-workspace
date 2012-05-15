@@ -79,7 +79,7 @@
 			"file": "rsv/views.py",
 			"settings":
 			{
-				"buffer_size": 1630,
+				"buffer_size": 1661,
 				"line_ending": "Unix"
 			}
 		},
@@ -422,7 +422,6 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
 				{
@@ -486,15 +485,15 @@
 					"file": "rsv/views.py",
 					"settings":
 					{
-						"buffer_size": 1630,
+						"buffer_size": 1661,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1548,
-								1548
+								0,
+								0
 							]
 						],
 						"settings":

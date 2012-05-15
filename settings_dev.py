@@ -196,7 +196,7 @@ DEBUG_TOOLBAR_CONFIG = {
     'HIDE_DJANGO_SQL': True,
 }
 
-ENVELOPE_EMAIL_RECIPIENTS=('r.fericean@filemaker-solutions.ro',)
+ENVELOPE_EMAIL_RECIPIENTS=('rif@click2eat.ro',)
 
 ENVELOPE_CONTACT_CHOICES = (
     ('',    _("Choose")),
